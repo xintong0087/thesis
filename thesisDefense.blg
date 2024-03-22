@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thesisDefense.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apalike.bst
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+Database file #1: refP1.bib
+Database file #2: refP2.bib
+Database file #3: refP3.bib
+Warning--empty booktitle in chung2014empirical
+Warning--empty institution in geneva2013variable
+You've used 80 entries,
+            1935 wiz_defined-function locations,
+            941 strings with 18043 characters,
+and the built_in function-call counts, 31921 in all, are:
+= -- 3161
+> -- 1347
+< -- 51
++ -- 476
+- -- 447
+* -- 2788
+:= -- 5610
+add.period$ -- 253
+call.type$ -- 80
+change.case$ -- 621
+chr.to.int$ -- 79
+cite$ -- 82
+duplicate$ -- 1138
+empty$ -- 2171
+format.name$ -- 581
+if$ -- 6135
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 76
+newline$ -- 412
+num.names$ -- 242
+pop$ -- 484
+preamble$ -- 1
+purify$ -- 620
+quote$ -- 0
+skip$ -- 859
+stack$ -- 0
+substring$ -- 2291
+swap$ -- 107
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 472
+warning$ -- 2
+while$ -- 270
+width$ -- 0
+write$ -- 1054
+(There were 2 warnings)

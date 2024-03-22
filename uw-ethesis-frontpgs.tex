@@ -1,0 +1,192 @@
+% T I T L E   P A G E
+% -------------------
+% Last updated June 14, 2017, by Stephen Carr, IST-Client Services
+% The title page is counted as page `i' but we need to suppress the
+% page number. Also, we don't want any headers or footers.
+\pagestyle{empty}
+\pagenumbering{roman}
+
+% The contents of the title page are specified in the "titlepage"
+% environment.
+\begin{titlepage}
+        \begin{center}
+        \vspace*{1.0cm}
+
+        \Huge
+        {\bf Efficient Nested Simulation of Tail Risk Measures with Machine Learning Proxies }
+
+        \vspace*{1.0cm}
+
+        \normalsize
+        by \\
+
+        \vspace*{1.0cm}
+
+        \Large
+        Xintong Li \\
+
+        \vspace*{3.0cm}
+
+        \normalsize
+        A thesis \\
+        presented to the University of Waterloo \\ 
+        in fulfillment of the \\
+        thesis requirement for the degree of \\
+        Doctor of Philosophy \\
+        in \\
+        Actuarial Science \\
+
+        \vspace*{2.0cm}
+
+        Waterloo, Ontario, Canada, 2022 \\
+
+        \vspace*{1.0cm}
+
+        \copyright\ Xintong Li, 2022 \\
+        \end{center}
+\end{titlepage}
+
+% The rest of the front pages should contain no headers and be numbered using Roman numerals starting with `ii'
+\pagestyle{plain}
+\setcounter{page}{2}
+
+\cleardoublepage % Ends the current page and causes all figures and tables that have so far appeared in the input to be printed.
+% In a two-sided printing style, it also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
+
+ 
+% E X A M I N I N G   C O M M I T T E E (Required for Ph.D. theses only)
+% Remove or comment out the lines below to remove this page
+\begin{center}\textbf{Examining Committee Membership}\end{center}
+  \noindent
+The following served on the Examining Committee for this thesis. The decision of the Examining Committee is by majority vote.
+  \bigskip
+  
+%   \noindent
+% \begin{tabbing}
+% Internal-External Member: \=  \kill % using longest text to define tab length
+% External Examiner: \>  John Smith \\ 
+% \> Professor, Dept. of Philosophy of XX, University of ABC \\
+% \end{tabbing} 
+%   \bigskip
+  
+  \noindent
+\begin{tabbing}
+Internal-External Member: \=  \kill % using longest text to define tab length
+Supervisor(s): \> Mingbin Feng \\
+\> Assistant Professor, Dept. of Statistics and Actuarial Science\\
+\> University of Waterloo \\[1cm]
+\> Tony S. Wirjanto \\
+\> Professor, Dept. of Statistics and Actuarial Science \\
+\> University of Waterloo \\
+\end{tabbing}
+  \bigskip
+  
+  \noindent
+  \begin{tabbing}
+Internal-External Member: \=  \kill % using longest text to define tab length
+Internal Member: \> Mary R. Hardy \\
+\> Professor, Dept. of Statistics and Actuarial Science \\
+\> University of Waterloo\\[1cm]
+\> Chengguo Weng \\
+\> Professor, Dept. of Statistics and Actuarial Science \\
+\> University of Waterloo \\
+\end{tabbing}
+  \bigskip
+  
+%   \noindent
+% \begin{tabbing}
+% Internal-External Member: \=  \kill % using longest text to define tab length
+% Internal-External Member: \> John Smith \\
+% \> Professor, Dept. of XX, University of ABC \\
+% \end{tabbing}
+%   \bigskip
+  
+%   \noindent
+% \begin{tabbing}
+% Internal-External Member: \=  \kill % using longest text to define tab length
+% Other Member(s): \> John Smith \\
+% \> Professor, Dept. of XX, University of ABC \\
+% \end{tabbing}
+
+\cleardoublepage
+
+% D E C L A R A T I O N   P A G E
+% -------------------------------
+  % The following is a sample Delaration Page as provided by the GSO
+  % December 13th, 2006.  It is designed for an electronic thesis.
+  \noindent
+I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+  \bigskip
+  
+  \noindent
+I understand that my thesis may be made electronically available to the public.
+
+\cleardoublepage
+
+% A B S T R A C T
+% ---------------
+
+\begin{center}\textbf{Abstract}\end{center}
+
+Nested simulation procedures are commonly required for estimating tail risk measures for complex financial contracts or portfolios. 
+In a standard nested simulation procedure, an outer simulation simulates $M$ risk scenarios under a real-world measure to reflect real-world uncertainties in portfolio values in different risk scenarios. 
+For each outer scenario, inner simulation estimates the corresponding portfolio loss based on $N$ sample paths simulated under a risk-neutral measure according to  the risk-neutral pricing theory. 
+This standard procedure is computationally expensive. 
+For example, the simulation budget, i.e., the total number of inner sample paths in all outer scenarios, is a common way to measure the computation required for a simulation procedure. For the standard nested simulation procedure, the simulation budget is $\Gamma = MN$.
+To alleviate computational burden of the standard procedure, many studies proposed to replace the inner simulation with alternative such as regression, kernel smoothing, likelihood ratio method, kernel ridge regression, etc. 
+We refer to these alternatives as proxies. 
+The above proxies have been demonstrated to have superior performance than the standard procedure in different examples. 
+
+The three parts of the thesis have different research focuses but serve one common theme.
+Chapter 2 compares four existing nested simulation methods on their theoretical convergence properties and practical performance. 
+Extensive numerical experiments are conducted for fair comparisons of proxy models on their practical performance in different angles. 
+Proxies in chapter 2 fail to perform for high dimensional scenarios. 
+In chapter 3, machine learning proxies are considered to model variable annuity contract losses.
+Numerical experiments show that, for scenarios with temporal structure, time-series machine learning models are better proxies than generic machine learning models. 
+The machine learning proxies are applied in a 2-stage nested simulation design. 
+Experiments show that machine learning proxies outperform payoff-specific proxies.
+Chapter 4 proposes direction for future research. In the 2-stage design, inner simulation in the second stage is still costly. 
+We propose replacing stage 2 with machine learning proxy predictions. 
+We test the accuracy, sensitivity, and resilience of such proposal.
+
+\cleardoublepage
+
+% A C K N O W L E D G E M E N T S
+% -------------------------------
+
+\begin{center}\textbf{Acknowledgements}\end{center}
+
+I would like to thank Professor Ben Feng and Professor Tony Wirjanto for they valuable support. They have patiently helped me through my journey as a Ph.D. student.  
+\cleardoublepage
+
+% T A B L E   O F   C O N T E N T S
+% ---------------------------------
+\renewcommand\contentsname{Table of Contents}
+\tableofcontents
+\cleardoublepage
+\phantomsection    % allows hyperref to link to the correct page
+
+% L I S T   O F   T A B L E S
+% ---------------------------
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% L I S T   O F   F I G U R E S
+% -----------------------------
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% GLOSSARIES (Lists of definitions, abbreviations, symbols, etc. provided by the glossaries-extra package)
+% -----------------------------
+\printglossaries
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% Change page numbering back to Arabic numerals
+\pagenumbering{arabic}
+
