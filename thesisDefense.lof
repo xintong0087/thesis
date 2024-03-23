@@ -1,1 +1,13 @@
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{16}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{25}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{25}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{26}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{27}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{28}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{31}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{35}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{36}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{37}{figure.caption.22}%

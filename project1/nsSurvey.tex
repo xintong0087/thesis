@@ -1,0 +1,190 @@
+%======================================================================
+\chapter{Nested Simulation Procedures in Financial Engineering: A Selected Review}
+%======================================================================
+
+\section{Introduction}
+
+Nested simulation procedures, also known as stochastic on stochastic simulation, are commonly used in financial engineering to estimate risk measures for portfolios of complex financial derivatives. 
+The term \textit{nested} is referred to a nested estimation problem, in which the estimation of the risk measure requires two levels of Monte Carlo (MC) simulations.
+In a typical nested simulation procedure, an outer level simulation model generates underlying risk factors, which is referred to as the \textit{outer scenarios}.
+For each outer scenario, an inner level simulation model generates scenario-wise samples of the portfolio losses, which is referred to as the \textit{inner replications}.
+
+The nested simulation procedure is computationally expensive due to its nested structure. 
+Given a fixed computational budget, the nested simulation procedure has to make a trade-off between the number of outer scenarios and the number of inner replications.
+~\cite{gordy2010nested} are the first to analyze and propose the optimal budget allocation of a standard nested simulation procedure. 
+The term \textit{standard} refers to using a standard Monte Carlo estimator, the sample mean of the inner replication to estimate a scenario-wise portfolio loss for an outer scenario.
+~\cite{gordy2010nested} investigate the optimal budget allocation for a standard nested simulation procedure with respect to the mean squared error (MSE) of the estimated risk measure.
+
+The standard nested simulation procedure is computationally expensive with a somewhat wasteful use of the simulation budget, as only the inner replications from the same outer scenario are used in estimating the scenario-wise portfolio loss for that outer scenario. 
+Subsequent research efforts have been made to improve the efficiency of nested simulation procedures by using the inner replications from other outer scenarios. 
+This is referred to as pooling. 
+Different methods pool in different ways, either by a trained proxy model or by pre-defined likelihood ratio weights.
+~\cite{broadie2015risk} propose a regression-based nested simulation procedure, which uses a trained regression proxy model to estimate the scenario-wise portfolio loss for an outer scenario by pooling the inner replications from all outer scenarios.
+For risk measures in certain forms,~\cite{broadie2015risk} show that it is optimal to allocate all simulation budget to the outer level simulation, and the inner replication should be kept to a minimum of $1$.
+Similarly,~\cite{hong2017kernel},~\cite{feng2020optimal}, and~\cite{zhang2022sample} propose to use a kernel smoothing model, a likelihood ratio model, and a kernel ridge regression model as proxies to pool the inner replications from all outer scenarios.
+Another line of research is the multi-level Monte Carlo (MLMC) method analyzed in~\cite{giles2019multilevel}, which is a variance reduction technique that uses a hierarchy of approximations to the risk measure of interest.
+
+This paper presents a survey study of some popular nested simulation procedures. 
+Many procedures are proposed in the literature, but they are not directly comparable due to different error metrics, different assumptions, and different numerical examples.
+Within a common analytical framework, we first summarize and compare their asymptotic rate of convergence.
+Their asymptotic convergence results are closely examined for their assumptions that guarantee the convergence.
+Furthermore, our study finds that different studies have used different examples in their numerical experiments, which introduces unfair advantages for certain simulation procedures over others. 
+A fair comparison among popular methods is therefore urgently needed in the literature. 
+Our numerical experiment is the first of its kind to subject back all the aforementioned simulation procedures to a complete and unbiased comparison. 
+Extensive numerical experiments are conducted to show, in practical examples, how well the finite-sample performance of a method matches its theoretical convergence behavior. 
+With our numerical examples, we compare the nested simulation procedures for different payoff complexity, problem dimensions, and risk measures. 
+
+The rest of the paper is organized as follows.
+% Section~\ref{sec:problem-formulation} introduces the nested simulation procedure and the standard Monte Carlo estimator.
+% Section~\ref{sec:asymptotic-convergence} provides new theoretical results on the convergence of existing nested simulation procedures.
+% Section~\ref{sec:convergence-orders} summarizes the asymptotic convergence orders and the critical assumptions of nested simulation procedures in the literature.
+% Section~\ref{sec:numerical-experiments} presents the numerical experiments and the comparisons of different nested simulation procedures with respect to different risk measures, problem dimensions, and payoff complexities.
+% Section~\ref{sec:computational-complexity} discusses the computational complexity of different nested simulation procedures.
+% Section~\ref{sec:conclusion} concludes the paper.
+
+
+
+\section{Problem Formulation} \label{sec:problem-formulation}
+
+In a nested estimation problem, we are interested in the quantity 
+
+$$\rho(g(X)), $$
+
+where $X \in \Omega$. 
+$g(X)$ can't be directly evaluated, but it is the output of 
+
+$$ g(X) = \mathbb{E}\left[ Y|X=x \right]\vert_{x=X} $$
+
+Some common risk measures are in the nested expectation form, in which 
+$$\rho(g(X)) = \mathbb{E}\left[ h(g(X)) \right]$$
+
+where $h(\cdot)$ is a known function. 
+Forms of $h$ include the following:
+\begin{itemize}
+    \item 	Smooth functions, e.g., a quadratic tracking error with benchmark $b$: $h(t) = (t - b)^2$
+    \item 	Lipschitz continuous functions, e.g., a mean excess loss over threshold $u$: $h(t) = \max\{t - u, 0\}$. Here, $h$ is a hockey-stick function.
+    \item 	Indicator functions, e.g., probability of a large loss over a threshold $u$: $h(t) = \mathbb{I}_{\{t \geqslant u\}}$
+\end{itemize}
+
+Other risk measures of interest that are not in the nested expectation form are the value at risk (VaR) and the conditional value at risk (CVaR). 
+The $\alpha$-VaR of $g(X)$ is defined as
+$$
+    \mbox{VaR}_\alpha(g(X)) = q_\alpha = \inf \left\{ q: \Pr(g(X)\leq q) \geq \alpha \right\}.
+$$
+The $\alpha$-CVaR of $g(X)$ is defined as
+$$
+    \mbox{VaR}_\alpha(g(X)) =\frac{1}{1-\alpha} \int_{\alpha}^{1} q_v dv. 
+$$
+
+\subsection{The Standard Nested Simulation Procedure}
+
+The standard nested simulation procedure first simulates $M$ independent and identically distributed (iid) outer scenarios $X_1, \dots, X_M$ from $F_X$, the distribution of $X$.
+For each $X_i$, again simulate $Y_{ij}$, $j = 1, \dots, N$ from $F_{Y|X_i}$, the conditional distribution of $Y$ given $X_i$. Given scenario $i$, the $Y_{ij}$ are conditionally iid. Let $\Gamma = M \cdot N$ denote the total simulation budget, $f_X(x)$ denote the density of $X$, and $\mathbf{X} = (X_1, \dots, X_M)$ denote the vector of outer scenarios.
+
+The standard nested simulation procedure estimates $g(X_i)$ with a standard Monte Carlo estimator 
+
+$$\hat{g}_N(X_i) = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
+
+Let $(\hat{g}_N(\mathbf{X}))_{[1]}, \dots, (\hat{g}_N(\mathbf{X}))_{[M]}$ be the order statistics of $\hat{g}_N(X_1), \dots \hat{g}_N(X_M)$. 
+The standard nested simulation estimators for different forms of $\rho$ are as follows:
+
+\begin{enumerate}
+    \item   Nested expectation form:
+            $$\hat{\rho}_{M, N} = \frac{1}{M} \sum_{i=1}^M h(\hat{g}_N(X_i)) = \frac{1}{M} \sum_{i=1}^M h(\bar{Y}_{N, i}); ~~~ X_i \sim F_X$$
+    \item   Value at risk (VaR):
+            $$\hat{\rho}_{M, N} = (\hat{g}_N(\mathbf{X}))_{\lceil \alpha M \rceil}$$
+    \item   Conditional value at risk (CVaR):
+            $$\hat{\rho}_{M, N} = (\hat{g}_N(\mathbf{X}))_{\lceil \alpha M \rceil} + \frac{1}{(1-\alpha) M} \sum_{i=1}^M \max \{\hat{g}_N(X_i) - (\hat{g}_N(\mathbf{X}))_{\lceil \alpha M \rceil}, 0 \}$$
+\end{enumerate}
+
+~\cite{gordy2010nested} analyze the optimal budget allocation of the standard nested simulation procedure with respect to the MSE of the estimator $\hat{\rho}_{M, N}$.
+
+\subsection{Supervised Learning Models}
+
+In supervised learning, $g(\cdot)$ can be approximated by $\hat{g}^{\text{SL}}_{M, N}(\cdot)$, which is based on a chosen function family $\mathcal{G}$ and observations from the standard nested simulation procedure.
+Consider the observation pairs $(X_i, \hat{g}_N(X_i))$ for $i \in \{1, \dots, M\}$ as training data, we can use supervised learning to approximate $g(\cdot)$ by $\hat{g}^{\text{SL}}_{M, N}(\cdot)$ and to pool the inner replications from all outer scenarios.
+Using the $M$ \textit{training} samples, a supervised learning-based nested simulation procedure estimates  $\rho$ by
+
+\begin{enumerate}
+    \item   Nested expectation form:
+            $$\hat{\rho}^{\text{SL}, \text{Train}}_{M, N} = \frac{1}{M} \sum_{i=1}^M h(\hat{g}^{\text{SL}}_{M, N}(X_i)); ~~~ X_i \sim F_X$$
+    \item   VaR:
+            $$\hat{\rho}^{\text{SL}, \text{Train}}_{M, N} = (\hat{g}^{\text{SL}}_{M, N}(\mathbf{X}))_{\lceil \alpha M \rceil}$$
+    \item   CVaR:
+            $$\hat{\rho}^{\text{SL}, \text{Train}}_{M, N} = (\hat{g}^{\text{SL}}_{M, N}(\mathbf{X}))_{\lceil \alpha M \rceil} + \frac{1}{(1-\alpha) M} \sum_{i=1}^M \max \{\hat{g}^{\text{SL}}_{M, N}(X_i) - (\hat{g}^{\text{SL}}_{M, N}(\mathbf{X}))_{\lceil \alpha M \rceil}, 0 \}$$
+\end{enumerate}
+where $(\hat{g}_{M, N}(\mathbf{X}))_{\lceil \alpha M \rceil}$ is the $\lceil \alpha M \rceil$-th order statistic of $\hat{g}^{\text{SL}}_{M, N}(X_1), \dots, \hat{g}_{M, N}(X_M)$.
+Similarly, with $M'$ \textit{test} samples of $X$, namely $\tilde{\mathbf{X}} = \tilde{X}_1, \dots, \tilde{X}_{M'}$, an estimator is given by
+
+\begin{enumerate}
+    \item   Nested expectation form:
+            $$\hat{\rho}^{\text{SL}, \text{Test}}_{M, N, M'} = \frac{1}{M} \sum_{i=1}^M h(\hat{g}^{\text{SL}}_{M, N}(\tilde{X}_i)); ~~~ \tilde{X}_i \sim F_X.$$
+    \item   VaR:
+            $$\hat{\rho}^{\text{SL}, \text{Test}}_{M, N, M'} = (\hat{g}^{\text{SL}}_{M, N}(\tilde{\mathbf{X}}))_{\lceil \alpha M \rceil}.$$
+    \item   CVaR:
+            $$\hat{\rho}^{\text{SL}, \text{Test}}_{M, N, M'} = (\hat{g}^{\text{SL}}_{M, N}(\tilde{\mathbf{X}}))_{\lceil \alpha M \rceil} + \frac{1}{(1-\alpha) M} \sum_{i=1}^M \max \{\hat{g}^{\text{SL}}_{M, N}(\tilde{X}_i) - (\hat{g}^{\text{SL}}_{M, N}(\tilde{\mathbf{X}}))_{\lceil \alpha M \rceil}, 0 \}, $$
+            where $(\hat{g}_{M, N}(\tilde{\mathbf{X}}))_{\lceil \alpha M \rceil}$ is the $\lceil \alpha M \rceil$-th order statistic of $\hat{g}^{\text{SL}}_{M, N}(\tilde{X}_1), \dots, \hat{g}_{M, N}(\tilde{X}_M)$. 
+            Note that $\hat{g}^{\text{SL}}_{M, N}(\cdot)$ is derived from the training samples $(X_1, \hat{g}_N(X_1)), \dots, (X_M, \hat{g}_N(X_M))$.
+\end{enumerate}
+
+Existing literature on nested simulation procedures has proposed different methods to approximate the true function $g(\cdot)$ with supervised learning algorithms. 
+Methods that include theoretical convergence results are regression~\citep{broadie2015risk}, kernel smoothing~\citep{hong2017kernel}, and kernel ridge regression~\citep{wang2022smooth}.
+Their estimators of $g(\cdot)$ are given by $\hat{g}^{\text{REG}}_{M, N}(\cdot)$, $\hat{g}^{\text{KS}}_{M, N}(\cdot)$, and $\hat{g}^{\text{KRR}}_{M, N}(\cdot)$, respectively.
+
+\begin{itemize}
+    \item   Regression:
+            $$\hat{g}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta},$$
+            where $\Phi$ is a chosen basis, and $\hat{\beta}$ is estimated from the training samples.
+    \item   Kernel smoothing:
+            $$\hat{g}^{\text{KS}}_{M, N}(X) = \frac{\sum_{i=1}^M \bar{Y}_{N, i} K_w(X - X_i)}{\sum_{i=1}^M K_w(X - X_i)}, $$
+            where $K_w$ is the kernel function with bandwidth $w$.
+    \item   Kernel ridge regression:
+            $$\hat{g}^{\text{KRR}}_{M, N}(X) = \argmin_{g \in \mathcal{N}_{\Psi}(\Omega)} \left( \frac{1}{M} \sum_{i=1}^M (\hat{g}_N(X_i) - g(X_i))^2 + \lambda \|g\|_{\mathcal{N}_{\Psi}(\Omega)}^2\right),$$
+            where $\mathcal{N}_{\Psi}(\Omega)$ is the reproducing kernel Hilbert space (RKHS) with kernel $\Psi$ defined domain $\Omega$, and $\lambda$ is the regularization parameter as in ridge regression. 
+            More specifically, $\Phi$ is a Mat\'ern kernel with smoothness parameter $\nu$ and length scale parameter $\ell$.
+\end{itemize}
+
+\subsection{Likelihood Ratio Method}
+
+Instead of using a supervised learning model,~\cite{zhang2022sample} uses the likelihood ratio weights to pool the inner replications from all outer scenarios.
+This method is also referred to as importance sampling.
+Here, we restrict our attention to problems in the nested expectation form whose outer scenarios characterize the stochasticity of the inner simulation model. 
+Specifically,
+$$ Y = Y(H, X), $$
+where $H$ is a random variable whose distribution is specified by the outer scenarios $X$. 
+We denote the conditional distribution of $H|X$ by $f_{H|X}$. 
+For a specific scenario $X_i$, we write $f_{H|X}(\cdot |X_i)$. 
+To reconcile with previously established notations, we note that inner simulation outputs $Y_{ij}$ can be written as
+$$ Y_{ij} = Y(H_{ij}, X_i), $$
+where $H_{ij} \sim f_{H|X}(\cdot |X_i)$.
+Suppose that one can generate random variable H from some sampling
+distribution $f_H$. Then, the likelihood ratio estimator of $\rho$ is given by
+$$\hat{\rho}^{\text{LR}}_{M,N} = \frac{1}{M} \sum_{i=1}^M h(\hat{g}^{\text{LR}}_N(X_i)), $$ where the inner replications are pooled by the likelihood ratio weights with
+$$\hat{g}^{\text{LR}}_N(X_i) = \frac{1}{N} \sum_{j=1}^N Y(H_j, X_i) \frac{f_{H|X}(H_{j}|X_i)}{f_H(H_{ij})}, \;\;\; H_j \sim f_H, \;\;\; i=1, \dots, M.$$
+
+\subsection{Multi-level Monte Carlo}
+
+The multi-level Monte Carlo (MLMC) method is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest, and it uses the difference between the approximations to reduce the variance of the estimator.
+A MLMC approach is particularly useful when the quantity of interest is expensive to evaluate, and the standard Monte Carlo estimator has a high variance.
+Instead of pooling from the inner samples, a MLMC-based nested simulation procedure estimates $\rho$ with a multi-level Monte Carlo estimator:
+
+\begin{equation*}
+    \hat{\rho}^{\text{MLMC}}_\Gamma = \sum_{\ell=0}^{L} \left( \frac{1}{M_{\ell}} \sum_{i=1}^{M_{\ell}} h(\hat{g}_{N_{\ell}}(X_{i, \ell})) - \frac{1}{M_{\ell-1}} \sum_{i=1}^{M_{\ell-1}} h(\hat{g}_{N_{\ell-1}}(X_{i, \ell-1})) \right), ~~~ X_{i, \ell} \sim F_X,
+\end{equation*}
+
+where $\hat{g}_N(\cdot) = 0$, $L$ is the number of levels, $M_{\ell}$ is the number of outer scenarios at level $\ell$, and $N_{\ell}$ is the number of inner replications at level $\ell$.
+Applying the analysis of~\cite{giles2015multilevel} in a nested simulation context,~\cite{giles2019multilevel} show that the MLMC method can achieve a similar level of accuracy as the standard nested simulation procedure with a lower total computational budget.
+The simulation budget $\Gamma$ is the sum of the computational budget at each level, that is, $\Gamma = \sum_{\ell=0}^{L} M_{\ell} \cdot N_{\ell}$.
+
+\subsection{Problem Statement}
+
+For all nested simulation procedures we are interested in the order of convergence of estimators in terms of the total simulation budget $\Gamma$.
+The convergence rate of an estimator is measured by the MSE of the estimator $\hat{\rho}_{M, N}$ about the true value $\rho$.
+
+\begin{align}
+    & \text{MSE}(\hat{\rho}_{M, N}) = \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] \nonumber \\
+    & \text{subject to} ~~~ M \cdot N = \Gamma, 
+\end{align}
+
+where $\Gamma = M \cdot N$ is the total simulation budget\footnote{For a MLMC-based nested simulation procedure, the total simulation budget $\Gamma$ is the sum of the computational budget at all levels.}. 
+For a given nested simulation procedure, we are interested in the optimal budget allocation that minimizes the MSE of the estimator $\hat{\rho}_{M, N}$.

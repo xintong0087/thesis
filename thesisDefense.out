@@ -1,4 +1,25 @@
 \BOOKMARK [0][-]{section*.2}{List of Tables}{}% 1
 \BOOKMARK [0][-]{section*.4}{List of Figures}{}% 2
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
-\BOOKMARK [0][-]{section*.8}{References}{}% 4
+\BOOKMARK [0][-]{chapter.2}{Nested Simulation Procedures in Financial Engineering: A Selected Review}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{Problem Formulation}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.1}{The Standard Nested Simulation Procedure}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.2}{Supervised Learning Models}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.3}{Likelihood Ratio Method}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.4}{Multi-level Monte Carlo}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.5}{Problem Statement}{section.2.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Problem Formulation}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.2.1}{Tail Risk Measures: VaR and CVaR}{section.3.2}% 15
+\BOOKMARK [2][-]{subsection.3.2.2}{Simulation Model for Variable Annuity Payouts}{section.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.2.3}{Dynamic Hedging for Variable Annuities}{section.3.2}% 17
+\BOOKMARK [1][-]{section.3.3}{Two-Stage Nested Simulation with Metamodels}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Single-Stage Nested Simulation with Neural Network Metamodels}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.5}{Numerical Results}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.5.1}{Two-Stage Procedure}{section.3.5}% 21
+\BOOKMARK [2][-]{subsection.3.5.2}{Noise Tolerance of Deep Neural Network Metamodels}{section.3.5}% 22
+\BOOKMARK [2][-]{subsection.3.5.3}{Single-Stage Procedure}{section.3.5}% 23
+\BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 24
+\BOOKMARK [0][-]{section*.23}{References}{}% 25

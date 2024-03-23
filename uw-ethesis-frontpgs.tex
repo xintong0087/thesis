@@ -129,27 +129,10 @@ I understand that my thesis may be made electronically available to the public.
 
 \begin{center}\textbf{Abstract}\end{center}
 
-Nested simulation procedures are commonly required for estimating tail risk measures for complex financial contracts or portfolios. 
-In a standard nested simulation procedure, an outer simulation simulates $M$ risk scenarios under a real-world measure to reflect real-world uncertainties in portfolio values in different risk scenarios. 
-For each outer scenario, inner simulation estimates the corresponding portfolio loss based on $N$ sample paths simulated under a risk-neutral measure according to  the risk-neutral pricing theory. 
-This standard procedure is computationally expensive. 
-For example, the simulation budget, i.e., the total number of inner sample paths in all outer scenarios, is a common way to measure the computation required for a simulation procedure. For the standard nested simulation procedure, the simulation budget is $\Gamma = MN$.
-To alleviate computational burden of the standard procedure, many studies proposed to replace the inner simulation with alternative such as regression, kernel smoothing, likelihood ratio method, kernel ridge regression, etc. 
-We refer to these alternatives as proxies. 
-The above proxies have been demonstrated to have superior performance than the standard procedure in different examples. 
-
-The three parts of the thesis have different research focuses but serve one common theme.
-Chapter 2 compares four existing nested simulation methods on their theoretical convergence properties and practical performance. 
-Extensive numerical experiments are conducted for fair comparisons of proxy models on their practical performance in different angles. 
-Proxies in chapter 2 fail to perform for high dimensional scenarios. 
-In chapter 3, machine learning proxies are considered to model variable annuity contract losses.
-Numerical experiments show that, for scenarios with temporal structure, time-series machine learning models are better proxies than generic machine learning models. 
-The machine learning proxies are applied in a 2-stage nested simulation design. 
-Experiments show that machine learning proxies outperform payoff-specific proxies.
-Chapter 4 proposes direction for future research. In the 2-stage design, inner simulation in the second stage is still costly. 
-We propose replacing stage 2 with machine learning proxy predictions. 
-We test the accuracy, sensitivity, and resilience of such proposal.
-
+In the task of estimating risk measures for portfolios of complex financial derivatives, nested simulation procedures are commonly required but often computationally expensive. 
+Tremendous efforts have been made to improve the efficiency of nested simulation procedures by approximating the inner simulation model with a proxy model. 
+In this study, we review the literature on nested simulation procedures in financial engineering and establish fair comparisons of different proxy models using the same set of numerical examples. 
+Our study shows interesting findings on the performance of different proxy models and provides useful insights for practitioners to choose proxy models for nested simulation procedures.
 \cleardoublepage
 
 % A C K N O W L E D G E M E N T S

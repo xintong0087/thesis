@@ -71,6 +71,8 @@
 % Some LaTeX commands I define for my own nomenclature.
 % If you have to, it's better to change nomenclature once here than in a 
 % million places throughout your thesis!
+
+% Project 1
 \newcommand{\E}{\mathbb{E}}
 \renewcommand{\Pr}{\mathbb{P}}
 
@@ -106,13 +108,17 @@
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{color}
+\usepackage{inputenc}
+\usepackage{amsmath, amsfonts, eucal, bbold}
+\usepackage[round]{natbib}
+\usepackage{amssymb}
 \usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{algorithmicx}
-\usepackage{bbm}
-\usepackage{xcolor}
+\usepackage{algorithmic}
+\usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{natbib}
+\usepackage{bm,enumitem}
+\usepackage{makecell}
+\usepackage{booktabs}
 
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathreplacing}
@@ -136,6 +142,19 @@
 \newcommand{\convergeP}{\xrightarrow{\mathbb{P}}}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\VaR}{\mbox{VaR}}
+\newcommand{\CVaR}{\mbox{CVaR}}
+\newcommand{\tail}{\mathcal{T}}
+\newcommand{\bS}{\bm{S}}
+\newcommand{\bStilde}{\widetilde{\bm{S}}}
+\newcommand{\Stilde}{\widetilde{S}}
+\newcommand{\Itilde}{\widetilde{I}}
+\newcommand{\Ftilde}{\widetilde{F}}
+\newcommand{\Gtilde}{\widetilde{G}}
+\newcommand{\Vhat}{\widehat{V}}
+\newcommand{\Lhat}{\widehat{L}}
+\newcommand{\Deltahat}{\widehat{\Delta}}
 
 % Hyperlinks make it very easy to navigate an electronic document.
 % In addition, this is where you should specify the thesis title
@@ -263,8 +282,10 @@ description={Loss random variable of a financial contract}
 % separate documents, they would each start with the \chapter command, i.e, 
 % do not contain \documentclass or \begin{document} and \end{document} commands.
 
-\input{introduction}
+\input{./introduction}
 
+\input{./project1/nsSurvey}
+\input{./project2/nnMetamodels}
 %----------------------------------------------------------------------
 % END MATERIAL
 %----------------------------------------------------------------------
