@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex thesisDefense"] 1711166201.43496 "thesisDefense.aux" "thesisDefense.bbl" "thesisDefense" 1711166316.60171 0
+["bibtex thesisDefense"] 1711284918.40158 "thesisDefense.aux" "thesisDefense.bbl" "thesisDefense" 1711285896.28532 0
   "./refP1.bib" 1710432909 3306 44973f9383b5dd462cda95f2950f47e7 ""
   "./refP2.bib" 1711072049 20943 d5b37437573daa39dd07222f2c5d06f5 ""
   "./refP3.bib" 1711071737 1067 cecef4ff51e03bc95fd180783c58527e ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/apalike.bst" 1291972791 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "thesisDefense.aux" 1711166315 18793 320929ad22749f1c0270ed4a5cfc9235 "pdflatex"
+  "thesisDefense.aux" 1711285895 18825 8455b26c1d477af66a41c58ce37248e3 "pdflatex"
   (generated)
   "thesisDefense.bbl"
   "thesisDefense.blg"
   (rewritten before read)
-["pdflatex"] 1711166313.59594 "c:/Users/XT/Documents/GitHub/thesis/thesisDefense.tex" "thesisDefense.pdf" "thesisDefense" 1711166316.6021 0
+["pdflatex"] 1711285892.91076 "c:/Users/XT/Documents/GitHub/thesis/thesisDefense.tex" "thesisDefense.pdf" "thesisDefense" 1711285896.28574 0
   "C:/Users/XT/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1711071206 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/XT/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1711071232 14064 2d8929603c9a93dcd199fb03e705bffb ""
   "C:/Users/XT/AppData/Local/MiKTeX/fonts/pk/ljfour/public/bbold/dpi600/bbold12.pk" 1711151427 14804 fb00d3797d26f0fa3eec9146a67ebdbf ""
@@ -281,20 +281,20 @@
   "project2/figures/sns.pdf" 1705416981 81995 5e6a7121f3b89a7502e0dc958f507f49 ""
   "project2/figures/tailMatches/nnLN.png" 1706576374 38520 5379eb932edbb118cb08126844b7ca32 ""
   "project2/figures/tailMatches/regLN.png" 1706576369 34537 cac27870f5cd9eb37e4552c5afb4660a ""
-  "project2/nnMetamodels.tex" 1711166313 88589 64a8dc8dd6520a0600dd72f1ee5e63be ""
-  "thesisDefense.aux" 1711166315 18793 320929ad22749f1c0270ed4a5cfc9235 "pdflatex"
-  "thesisDefense.bbl" 1711166201 20711 90a61dd5cc7c6b7f4ee22bb8072e5341 "bibtex thesisDefense"
-  "thesisDefense.glo" 1711166314 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "thesisDefense.glo-abr" 1711166314 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "thesisDefense.gls" 1711166314 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "thesisDefense.gls-abr" 1711166314 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "thesisDefense.lof" 1711166315 1748 a593c59348357995c521efc309a742c5 "pdflatex"
-  "thesisDefense.lot" 1711166315 776 88d5fe4b48c26b13103137abae2da881 "pdflatex"
-  "thesisDefense.out" 1711166315 1933 86f002d5bd6d442660c47deae1eff73c "pdflatex"
-  "thesisDefense.symbols-glo" 1711166314 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "thesisDefense.symbols-gls" 1711166314 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "project2/nnMetamodels.tex" 1711285893 88596 04ef83c00a2163e3cf59053a68d06e40 ""
+  "thesisDefense.aux" 1711285895 18825 8455b26c1d477af66a41c58ce37248e3 "pdflatex"
+  "thesisDefense.bbl" 1711284918 20711 90a61dd5cc7c6b7f4ee22bb8072e5341 "bibtex thesisDefense"
+  "thesisDefense.glo" 1711285894 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "thesisDefense.glo-abr" 1711285894 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "thesisDefense.gls" 1711285893 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "thesisDefense.gls-abr" 1711285894 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "thesisDefense.lof" 1711285895 1748 a593c59348357995c521efc309a742c5 "pdflatex"
+  "thesisDefense.lot" 1711285895 776 88d5fe4b48c26b13103137abae2da881 "pdflatex"
+  "thesisDefense.out" 1711285895 1933 86f002d5bd6d442660c47deae1eff73c "pdflatex"
+  "thesisDefense.symbols-glo" 1711285894 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "thesisDefense.symbols-gls" 1711285894 0 d41d8cd98f00b204e9800998ecf8427e ""
   "thesisDefense.tex" 1711151442 14854 eb9249e03632cda8e2405249b96c6e40 ""
-  "thesisDefense.toc" 1711166315 2323 9c21db91145248011bcfc856853c950b "pdflatex"
+  "thesisDefense.toc" 1711285895 2323 9c21db91145248011bcfc856853c950b "pdflatex"
   "uw-ethesis-frontpgs.tex" 1711139784 6089 61b35d969b9c800cdb3b8d9fdb6278d6 ""
   (generated)
   "thesisDefense.aux"

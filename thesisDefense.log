@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.16)  22 MAR 2024 23:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.16)  24 MAR 2024 09:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -973,28 +973,28 @@ File: ./project2/figures/qqPlots/lstmAll.png Graphic file (type png)
 Package pdftex.def Info: ./project2/figures/qqPlots/lstmAll.png  used on input line 641.
 (pdftex.def)             Requested size: 460.72124pt x 307.14674pt.
  [31 <./project2/figures/qqPlots/lstmAll.png>] [32] [33]
-<./project2/figures/singleStage/CVaRmediumNoise.png, id=705, 578.16pt x 433.62pt>
+<./project2/figures/singleStage/CVaRmediumNoise.png, id=706, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRmediumNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRmediumNoise.png>
 Package pdftex.def Info: ./project2/figures/singleStage/CVaRmediumNoise.png  used on input line 757.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project2/figures/singleStage/CVaRhighNoise.png, id=706, 578.16pt x 433.62pt>
+<./project2/figures/singleStage/CVaRhighNoise.png, id=707, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRhighNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRhighNoise.png>
 Package pdftex.def Info: ./project2/figures/singleStage/CVaRhighNoise.png  used on input line 761.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
  [34] [35 <./project2/figures/singleStage/CVaRmediumNoise.png> <./project2/figures/singleStage/CVaRhighNoise.png>]
-<./project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=721, 462.528pt x 346.896pt>
+<./project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=722, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png>
 Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 792.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=722, 462.528pt x 346.896pt>
+<./project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=723, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>
 Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 797.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=724, 867.24pt x 361.35pt>
+<./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=725, 867.24pt x 361.35pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>
 Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 815.
@@ -1024,16 +1024,16 @@ Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  31686 strings out of 474485
- 598396 string characters out of 5745150
+ 598428 string characters out of 5745150
  1944528 words of memory out of 5000000
  53158 multiletter control sequences out of 15000+600000
  577779 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  109i,15n,107p,2398b,784s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\XT\AppData\Local\MiKTeX\fonts/pk/ljfour/public/bbold/dpi600\bbold12.pk> <C:\Users\XT\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesisDefense.pdf (55 pages, 1002699 bytes).
+Output written on thesisDefense.pdf (55 pages, 1002662 bytes).
 PDF statistics:
- 984 PDF objects out of 1000 (max. 8388607)
+ 985 PDF objects out of 1000 (max. 8388607)
  233 named destinations out of 1000 (max. 500000)
  298 words of extra memory for PDF output out of 10000 (max. 10000000)
 
