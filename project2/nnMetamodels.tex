@@ -171,9 +171,10 @@ For example, consider the time-$t$ liability $V_t$ of a GMWB:
 Suppose that given the stock sample path, e.g., an outer path $S_1,\ldots,S_t$, one can simulate future stock prices $\Stilde_{t+1},\ldots,\Stilde_{T}$, e.g., inner sample paths, based on some asset model such as a Black-Scholes model.
 The tilde symbol ($\sim$) over a quantity denotes its association with the inner simulation.
 Given the time~$t$ state $(S_t,F_t,G_t)$, following~\cite{cathcart2015calculating} the sensitivity of $V_t$ with respect to $S_t$ can be estimated by a pathwise estimator~\citep{glasserman2004monte}:
-\begin{equation}\label{eq:delta}
-    \Delta_t(\Stilde_{t+1},\ldots,\Stilde_{T} | S_t) = \frac{\partial V_t}{\partial S_t} = \sum_{s=t+1}^{T} e^{-r(T-s)} \left[\bm{1}\{\Itilde_s > \Ftilde_s\}\cdot \left( \frac{\partial \Itilde_s}{ \partial S_t} - \frac{\partial \Ftilde_s}{ \partial S_t}\right)- \eta_n \frac{\partial \Ftilde_s}{ \partial S_t}\right], \quad t=0,\ldots,T-1,
-\end{equation}
+\begin{align}\label{eq:delta}
+    \Delta_t(\Stilde_{t+1},\ldots,\Stilde_{T} | S_t) = \frac{\partial V_t}{\partial S_t} = \sum_{s=t+1}^{T} e^{-r(T-s)} \left[\bm{1}\{\Itilde_s > \Ftilde_s\} \cdot \left( \frac{\partial \Itilde_s}{ \partial S_t} - \frac{\partial \Ftilde_s}{ \partial S_t}\right)- \eta_n \frac{\partial \Ftilde_s}{ \partial S_t}\right], \nonumber \\
+    t=0,\ldots,T-1,
+\end{align}
 where $\bm{1}\{\cdot\}$ is an indicator function and
 \begin{align*}
     \frac{\partial \Ftilde_s}{ \partial S_t} &= \bm{1}\{\Itilde_{s-1} < \Ftilde_{s-1}\}\cdot\left( \frac{\partial \Ftilde_{s-1}}{ \partial S_t} - \frac{\partial \Itilde_{s-1}}{ \partial S_t}\right) \cdot \frac{\Stilde_s}{\Stilde_{s-1}}\cdot (1-\eta_g),\\
@@ -414,7 +415,7 @@ In machine-learning terminologies, the three deep neural network models have muc
     \centering
     \begin{tabular}{lccccc}
     \toprule
-    \textbf{Model} & \textbf{\makecell{Layer size}} & \textbf{\makecell{\# parameters}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
+    \textbf{Model} & \textbf{\makecell{Layer size}} & \textbf{\makecell{Capacity}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
     \midrule
     MLR & N/A & $241$ & $0.707 (\pm 0.000)$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
     QPR & N/A & $481$ & $0.544 (\pm 0.000)$ & $0.636 (\pm 0.001)$ & $0.531 (\pm 0.000)$ \\
@@ -601,7 +602,7 @@ More specfically, the high-capacity LSTM metamodel has $128$ and $16$ hidden uni
     \centering
     \begin{tabular}{lccccc}
         \toprule
-        \textbf{Model}      & \textbf{Noise level of training labels}   & \textbf{Training error}   & \textbf{Test error}   & \textbf{True error}\\
+        \textbf{Model}      & \textbf{Noise level}   & \textbf{Training error}   & \textbf{Test error}   & \textbf{True error}\\
         \midrule
         LSTM                & $N=100$                                   & $0.075 (\pm0.004)$        & $0.079(\pm0.005)$     & $0.063 (\pm0.004)$ \\ 
         High-capacity LSTM  & $N=100$                                   & $0.068 (\pm0.004)$        & $0.102(\pm0.006)$     & $0.060 (\pm0.004)$ \\
@@ -754,11 +755,11 @@ The only difference from Section~\ref{subsec:twoStageProcedure} is that the meta
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project2/figures/singleStage/CVaRmediumNoise.png}
-        \caption{With medium noise training labels ($N=10$)}
+        \caption{Medium noise training labels ($N=10$)}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project2/figures/singleStage/CVaRhighNoise.png}
-        \caption{With high noise training labels ($N=1$)}
+        \caption{High noise training labels ($N=1$)}
     \end{subfigure}
     \caption{CVaR estimates of the single-stage procedure with metamodels.}
     \label{fig:CVaRsingleStage}
@@ -818,7 +819,7 @@ Instead, we try to analyze the effect of the number of outer scenarios and the n
 
 Figure~\ref{fig:mnConvergence} shows the log-log plots of the RRMSE between the LSTM metamodel CVaR predictions and the true CVaR against the simulation budget.
 The left figure shows the empirical convergence of the RRMSE for increasing inner replications with a fixed number of outer scenarios ($M=100\!,\!000$), and the right figure shows the empirical convergence of the RRMSE for increasing outer scenarios with a fixed number of inner replications ($N=10$).
-Due to computational constraints, we are not able to run the two-stage procedure and the standard procedure with a higher $M$ or $N$, therefore the comparison between the single-stage procedure is only available up to $M = 100\!,000$ and $N = 1\!,000$.
+Due to computational constraints, we are not able to run the two-stage procedure and the standard procedure with more outer scenarios or more inner replications, therefore the comparison between the single-stage procedure is only available up to $M = 100\!,000$ and $N = 1\!,000$.
 We observe that the RRMSE decreases as the simulation budget increases, and the rate of convergence is higher when the quantity of the data increases.
 For an LSTM metamodel, increasing the data quality of the training labels has diminishing returns, which is consistent with the results in Figure~\ref{fig:mnConvergence}.
 For an increasing number of inner replications with fixed number of outer scenarios, the RRMSE cease to decrease after reaching $N = 100$. 
