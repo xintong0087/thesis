@@ -1082,4 +1082,8 @@ A KRR-based procedure is computationally expensive, and its cost grows quickly w
 For kernel-based procedures, the computational cost is heavily dependent on the efficient implementation of the associated algorithms.
 For a nested estimation problem with a given computational budget, we suggest the use of the regression-based simulation procedure when the budget size is moderate. 
 It is efficient to implement, and it exhibits fast empirical convergence in estimating risk measures for option portfolios. 
-
+However, we have only examined the performance for option portfolios in this study, where finding a suitable set of basis functions for regression is relatively easy.
+For payoff functions with high complexity or high dimensionality, the regression-based procedure may not be the best choice.
+In practice, a variable annuity contract is often high-dimensional in time with a complex payoff structure, and it is a challenging problem for nested simulation procedures.
+In such cases, a neural network-based procedure may be more suitable, as it is a data-driven algorithm that finds a suitable set of basis functions automatically.
+In Chapter~\ref{ch2}, we will examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for variable annuities.

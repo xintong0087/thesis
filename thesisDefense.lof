@@ -2,9 +2,9 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with $d=1$\relax }}{28}{figure.caption.12}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with different asset dimensions\relax }}{29}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$\relax }}{30}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Empirical convergence of kernel smoothing procedure for different values of $d$\relax }}{31}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =100,000$\relax }}{32}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$\relax }}{31}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Empirical convergence of kernel smoothing procedure for different values of $d$\relax }}{32}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =100,000$\relax }}{33}{figure.caption.16}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$\relax }}{33}{figure.caption.17}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff\relax }}{34}{figure.caption.18}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$\relax }}{34}{figure.caption.19}%
@@ -13,15 +13,15 @@
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Total computational cost for different procedures with $d=10$\relax }}{39}{figure.caption.24}%
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time\relax }}{40}{figure.caption.25}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.\relax }}{49}{figure.caption.26}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.\relax }}{58}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.\relax }}{58}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.\relax }}{59}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.\relax }}{60}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.\relax }}{61}{figure.caption.32}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.\relax }}{64}{figure.caption.34}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.\relax }}{68}{figure.caption.38}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.\relax }}{69}{figure.caption.39}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.\relax }}{70}{figure.caption.40}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.\relax }}{50}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.\relax }}{59}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.\relax }}{59}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.\relax }}{60}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.\relax }}{61}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.\relax }}{62}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.\relax }}{65}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.\relax }}{69}{figure.caption.38}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.\relax }}{70}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.\relax }}{71}{figure.caption.40}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Initial numerical experiments for GMMB\relax }}{87}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Initial numerical experiments for GMMB\relax }}{86}{figure.caption.41}%

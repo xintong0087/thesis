@@ -2,12 +2,12 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Existing asymptotic convergence results of nested simulation procedures for MSE\relax }}{9}{table.caption.8}%
 \contentsline {table}{\numberline {2.2}{\ignorespaces Asymptotic rate of convergence of nested simulation procedures in MSE\relax }}{23}{table.caption.11}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces MSEs of the multi-level Monte Carlo procedure for different levels\relax }}{36}{table.caption.22}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation\relax }}{37}{table.caption.23}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces MSEs of the multi-level Monte Carlo procedure for different levels\relax }}{37}{table.caption.22}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation\relax }}{38}{table.caption.23}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.\relax }}{56}{table.caption.27}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.\relax }}{63}{table.caption.33}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.\relax }}{65}{table.caption.35}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.\relax }}{66}{table.caption.36}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.\relax }}{66}{table.caption.37}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.\relax }}{57}{table.caption.27}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.\relax }}{64}{table.caption.33}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.\relax }}{66}{table.caption.35}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.\relax }}{67}{table.caption.36}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.\relax }}{67}{table.caption.37}%
 \addvspace {10\p@ }

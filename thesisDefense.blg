@@ -1,102 +1,48 @@
 This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesisDefense.aux
-The style file: plainnat.bst
-Database file #1: refP3.bib
-Warning--I didn't find a database entry for "gordy2010nested"
-Warning--I didn't find a database entry for "broadie2015risk"
-Warning--I didn't find a database entry for "hong2017kernel"
-Warning--I didn't find a database entry for "feng2020optimal"
-Warning--I didn't find a database entry for "zhang2022sample"
-Warning--I didn't find a database entry for "barton1998simulation"
-Warning--I didn't find a database entry for "giles2019multilevel"
-Warning--I didn't find a database entry for "giles2015multilevel"
-Warning--I didn't find a database entry for "wang2022smooth"
-Warning--I didn't find a database entry for "mack1981local"
-Warning--I didn't find a database entry for "zhang2021bootstrap"
-Warning--I didn't find a database entry for "frazier2018bayesian"
-Warning--I didn't find a database entry for "stothers2010complexity"
-Warning--I didn't find a database entry for "strassen1969gaussian"
-Warning--I didn't find a database entry for "coppersmith1987matrix"
-Warning--I didn't find a database entry for "bentley1975multidimensional"
-Warning--I didn't find a database entry for "kim2008ratio"
-Warning--I didn't find a database entry for "scholkopf2002learning"
-Warning--I didn't find a database entry for "shahriari2015taking"
-Warning--I didn't find a database entry for "nystrom1930praktische"
-Warning--I didn't find a database entry for "scikit-learn"
-Warning--I didn't find a database entry for "hastie2009elements"
-Warning--I didn't find a database entry for "lecun2015deep"
-Warning--I didn't find a database entry for "silver2016mastering"
-Warning--I didn't find a database entry for "chatgpt"
-Warning--I didn't find a database entry for "mcculloch1943logical"
-Warning--I didn't find a database entry for "rosenblatt1958perceptron"
-Warning--I didn't find a database entry for "rumelhart1985learning"
-Warning--I didn't find a database entry for "williams1989learning"
-Warning--I didn't find a database entry for "sutskever2014sequence"
-Warning--I didn't find a database entry for "hochreiter1997long"
-Warning--I didn't find a database entry for "chung2014empirical"
-Warning--I didn't find a database entry for "poole2014analyzing"
-Warning--I didn't find a database entry for "neelakantan2015adding"
-Warning--I didn't find a database entry for "luo2016understanding"
-Warning--I didn't find a database entry for "srivastava2014dropout"
-Warning--I didn't find a database entry for "szegedy2013intriguing"
-Warning--I didn't find a database entry for "goodfellow2014explaining"
-Warning--I didn't find a database entry for "carlini2017towards"
-Warning--I didn't find a database entry for "jiang2020beyond"
-Warning--I didn't find a database entry for "fonseca2003simulation"
-Warning--I didn't find a database entry for "lieu2022adaptive"
-Warning--I didn't find a database entry for "salle2014efficient"
-Warning--I didn't find a database entry for "liu2010stochastic"
-Warning--I didn't find a database entry for "gan2015valuation"
-Warning--I didn't find a database entry for "rockafellar2002conditional"
-Warning--I didn't find a database entry for "eiopa2014underlying"
-Warning--I didn't find a database entry for "osfi2017life"
-Warning--I didn't find a database entry for "geneva2013variable"
-Warning--I didn't find a database entry for "hardy2003investment"
-Warning--I didn't find a database entry for "dang2021efficient"
-Warning--I didn't find a database entry for "cathcart2015calculating"
-Warning--I didn't find a database entry for "glasserman2004monte"
-Warning--I didn't find a database entry for "dang2020efficient"
-Warning--I didn't find a database entry for "kingma2014adam"
-You've used 17 entries,
-            2773 wiz_defined-function locations,
-            752 strings with 9230 characters,
-and the built_in function-call counts, 9915 in all, are:
-= -- 868
-> -- 705
-< -- 10
-+ -- 236
-- -- 219
-* -- 850
-:= -- 1508
-add.period$ -- 55
-call.type$ -- 17
-change.case$ -- 123
-chr.to.int$ -- 17
-cite$ -- 34
-duplicate$ -- 416
-empty$ -- 715
-format.name$ -- 240
-if$ -- 2082
-int.to.chr$ -- 1
-int.to.str$ -- 1
-missing$ -- 17
-newline$ -- 93
-num.names$ -- 68
-pop$ -- 250
+The style file: apalike.bst
+Database file #1: refP1.bib
+Database file #2: refP2.bib
+Database file #3: refP3.bib
+You've used 108 entries,
+            1935 wiz_defined-function locations,
+            1081 strings with 22880 characters,
+and the built_in function-call counts, 44851 in all, are:
+= -- 4440
+> -- 1949
+< -- 76
++ -- 686
+- -- 657
+* -- 3858
+:= -- 7793
+add.period$ -- 344
+call.type$ -- 108
+change.case$ -- 864
+chr.to.int$ -- 107
+cite$ -- 108
+duplicate$ -- 1639
+empty$ -- 3026
+format.name$ -- 831
+if$ -- 8722
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 105
+newline$ -- 552
+num.names$ -- 326
+pop$ -- 723
 preamble$ -- 1
-purify$ -- 106
+purify$ -- 864
 quote$ -- 0
-skip$ -- 348
+skip$ -- 1254
 stack$ -- 0
-substring$ -- 360
-swap$ -- 74
-text.length$ -- 7
+substring$ -- 3146
+swap$ -- 220
+text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 187
+type$ -- 638
 warning$ -- 0
-while$ -- 78
+while$ -- 371
 width$ -- 0
-write$ -- 229
-(There were 55 warnings)
+write$ -- 1420

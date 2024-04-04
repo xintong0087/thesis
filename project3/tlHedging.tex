@@ -25,83 +25,9 @@ In this paper, we propose a transfer learning approach to improve the risk manag
 VAs are popular retirement products that combine investment and insurance features, offering policyholders the potential for investment growth and the protection of a guaranteed minimum death benefit or income benefit.
 Due to the complexity of the products and the dynamic nature of the financial markets, the task of hedging VAs is particularly challenging.
 We aim to leverage the knowledge from the hedging strategies of financial derivatives to construct hedging strategies for VAs, thereby improving the risk management of these products.
-The rest of the paper is organized as follows: Section~\ref{sec:vaHedging} presents the problem formulation for hedging variable annuity with a deep neural network, Section~\ref{sec:tlHedging} presents the background knowledge for transfer learning, and Section~\ref{sec:numerical} states the plans for ongoing numerical experiments.
+The rest of the paper is organized as follows: Section~\ref{sec3:vaHedging} presents the problem formulation for hedging variable annuity with a deep neural network, Section~\ref{sec3:tlHedging} presents the background knowledge for transfer learning, and Section~\ref{sec3:numerical} states the plans for ongoing numerical experiments.
 
-\section{Dynamic Hedging of Variable Annuities} \label{sec:vaHedging}
-
-\subsection{Variable Annuities}
-Variable annuity contracts offer different types of guarantees.
-Generally speaking, a portion of the VA premium is invested in a sub-account whose return is linked to some stock indices.
-
-Two relevant types of guarantees in our studies are:
-\begin{itemize}[noitemsep]
-    \item \textbf{Guaranteed Minimum Maturity Benefit (GMMB)}: A GMMB contract pays a maturity benefit equal to the greater of the sub-account value and a fixed guarantee value.
-    The guarantee value is often set as a percentage, e.g., 75\% or 100\%, of the initial premium.
-
-    \item \textbf{Guaranteed Minimum Withdrawal Benefit (GMWB)}: A GMWB contract guarantees the minimum amount of periodic withdrawal the policyholder can take from the sub-account until maturity, even if the sub-account value reduces to zero.
-    The minimum withdrawal benefit is typically a fixed percentage of the guarantee value.
-    The guarantee value will decrease if the withdrawal exceeds the guaranteed minimum. The GMWB is typically offered with an accumulation period, during which no withdrawals are made but a GMDB is usually offered. Additional features offered with the GMWB include roll-up, ratchet, and reset~\citep{geneva2013variable}.
-\end{itemize}
-For a comprehensive review of other types of VA contracts such as Guaranteed Minimum Death Benefit (GMDB), Guaranteed Minimum Accumulation Benefit (GMAB) and Guaranteed Lifetime Withdrawal Benefit (GLWB), we refer readers to~\cite{hardy2003investment}.
-Next we present a summary of dynamic hedging for VA contracts.
-We refer readers to~\cite{dang2021efficient} for detailed modeling of insurer liabilities in different VA contracts and Greek estimation.
-
-Consider a generic VA contract with maturity $T>0$ periods, e.g., $T=240$ months.
-Denote the policyholder's (random) time of death by $\tau>0$.
-Then the contract expires at $T'=\min\{T,\tau\}$, i.e., the earlier of the contract maturity and the death of the policyholder.
-Let $S_t$, $F_t$, and $G_t$ be the indexed stock price, the subaccount value and the guarantee value, respectively, at time $t=1,2,\ldots,T$.
-Evolution of the subaccount value and the guarantee value of a VA contract affect the contract payout.
-Note that the policyholder's (random) time of death also affects the timing of the benefit payout for certain types of VA such as GMDB, but this is not considered in our study for simplicity.
-For clarity, we use $F_t$ and $F_{t_+}$ to denote the sub-account value just before and just after the withdrawal at time $t$, if any.
-Let $\eta_g$ be the gross rate of management fee that is deducted from the fund value at each period and let $\eta_n < \eta_g$ be the net rate of management fee income to the insurer.
-The difference between the gross management fee and the net management fee income represents the incurred investment expenses.
-
-At the inception of the contract, i.e., $t=0$, we assume that the whole premium is invested in the stock index and the guarantee base is set to the sub-account value:
-\begin{equation*}
-    S_0=F_0=G_0.
-\end{equation*}
-At each time $t=1,\ldots,T$, the following events take place in the following order:
-\begin{enumerate}
-    \item The sub-account value changes according to the growth of the underlying stock and the (gross) management fee is deducted. That is, 
-        \begin{equation*}
-            F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g),
-        \end{equation*} 
-    where $(x)^+=\max\{x,0\}$ and $F_{(t-1)_+}$ will be defined later. The insurer's income at time $t$ is the net management fee, i.e., $F_t\eta_n$. 
-
-    \item The guarantee value ratchets up (ratcheting is a common feature in GMWB) if the sub-account value exceeds the previous guarantee value, i.e., 
-        \begin{equation*}
-            G_t = \max\{G_{t-1},F_t\}.
-        \end{equation*} 
-
-    \item The withdrawal is made (for GMWB) and is deducted from the sub-account value, i.e., 
-        \begin{equation*}
-            F_{t_+} = (F_t - I_t)^+,
-        \end{equation*} 
-    where $I_t = \gamma G_t$. A GMMB can be modeled with $\gamma = 0$.
-\end{enumerate}
-
-We see from the above modeling steps that the status of a generic VA contract is summarized by a triplet $(S_t,F_t,G_t)$ whose evolution is driven by the stochasticity of $S_t$.
-In practice, the simulation model may also incorporate additional complications like mortality, lapse, and excess withdrawal, etc.
-
-At any time $t=1,\ldots,T$, the insurer's liability in a VA contract is the present value of all payments, net of the fee income.
-For example, suppose that the per-period risk-free rate is $r$, then
-the insurer's time-$t$ liability for a GMMB contract is $L_t = e^{-r(T-t)}\cdot (G_T - F_T)^+ - \sum_{s=t+1}^{T} e^{-r(T-s)} F_s \eta_n$.
-Also, the insurer's time-$t$ liability for a GMWB contract is $L_t = \sum_{s=t+1}^{T} e^{-r(T-s)} [(I_s - F_s)^+- \eta_n F_s] $.
-
-For example, consider the time-$t$ liability $L_t$ of a GMWB:
-Suppose that given the stock sample path, e.g., an outer path $S_1,\ldots,S_t$, one can simulate future stock prices $\Stilde_{t+1},\ldots,\Stilde_{T}$, e.g., inner sample paths, based on some asset model such as a Black-Scholes model.
-The tilde symbol ($\sim$) over a quantity denotes its association with the inner simulation.
-Given the time~$t$ state $(S_t,F_t,G_t)$, following~\cite{cathcart2015calculating} the sensitivity of $L_t$ with respect to $S_t$ can be estimated by a pathwise estimator~\citep{glasserman2004monte}:
-\begin{equation}\label{eq:delta}
-    \Delta_t(\Stilde_{t+1},\ldots,\Stilde_{T} | S_t) = \frac{\partial L_t}{\partial S_t} = \sum_{s=t+1}^{T} e^{-r(T-s)} \left[\bm{1}\{\Itilde_s > \Ftilde_s\}\cdot \left( \frac{\partial \Itilde_s}{ \partial S_t} - \frac{\partial \Ftilde_s}{ \partial S_t}\right)- \eta_n \frac{\partial \Ftilde_s}{ \partial S_t}\right], \quad t=0,\ldots,T-1,
-\end{equation}
-where $\bm{1}\{\cdot\}$ is an indicator function and
-\begin{align*}
-    \frac{\partial \Ftilde_s}{ \partial S_t} &= \bm{1}\{\Itilde_{s-1} < \Ftilde_{s-1}\}\cdot\left( \frac{\partial \Ftilde_{s-1}}{ \partial S_t} - \frac{\partial \Itilde_{s-1}}{ \partial S_t}\right) \cdot \frac{\Stilde_s}{\Stilde_{s-1}}\cdot (1-\eta_g),\\
-    \frac{\partial \Gtilde_s}{ \partial S_t} &= \bm{1}\{\Gtilde_{s-1} < \Ftilde_{s}\}\cdot\frac{\partial \Ftilde_{s}}{ \partial S_t} + \bm{1}\{\Gtilde_{s-1} \geq \Ftilde_{s}\}\cdot\frac{\partial \Gtilde_{s-1}}{ \partial S_t},\\
-    \frac{\partial \Itilde_s}{ \partial S_t} &= \gamma \frac{\partial \Gtilde_s}{ \partial S_t}.
-\end{align*}
-The recursion is initialized with $(\Stilde_t,\Ftilde_t,\Gtilde_t) = (S_t,F_t,G_t)$, $\frac{\partial \Ftilde_s}{ \partial S_t} = \frac{\Ftilde_t}{S_t}$, and $\frac{\partial \Gtilde_s}{ \partial S_t} = \frac{\partial \Itilde_s}{ \partial S_t} = 0$.
+\section{Dynamic Hedging of Variable Annuities} \label{sec3:vaHedging}
 
 \subsection{Markov Decision Process (MDP) for Hedging VAs}
 A Markov Decision Process (MDP) provides a mathematical framework for solving sequential decision-making tasks in situations where outcomes are partly random and partly under the control of an agent. 
@@ -119,7 +45,7 @@ An MDP is defined by the tuple $\mathcal{M} = (\mu_0, \mathcal{S}, \mathcal{A}, 
 
 The objective in an MDP is to find a policy, $\pi: \mathcal{S} \rightarrow \mathcal{A}$, that maximizes the cumulative reward over time, often referred to as the value function for a policy $\pi$ at state $s$: 
 
-\begin{equation} \label{eq:V_pi}
+\begin{equation} \label{eq3:V_pi}
     V^{\pi}_{\mathcal{M}}(s) = \mathbb{E}_{s_0 \sim \mu_0, a_i \sim \pi(\cdot|s_i), s_{i+1} \sim \mathcal{P}(\cdot|s, a)} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi, s \right],
 \end{equation}
 
@@ -136,7 +62,7 @@ Considering the task of hedging a GMWB contract, the hedging strategy aims to mi
     \min_{\pi} \mathbb{E}[\sum_{t=1}^{T} \gamma^t L_t | \pi, s_0],
 \end{equation}
 
-where it can be conveniently rewritten as the value function $V^{\pi}_{\mathcal{M}}(s)$ in Equation~\ref{eq:V_pi} by setting the reward function $R_{t} = -L_t$ and the discount factor $\gamma = \frac{1}{1+r}$. 
+where it can be conveniently rewritten as the value function $V^{\pi}_{\mathcal{M}}(s)$ in Equation~\ref{eq3:V_pi} by setting the reward function $R_{t} = -L_t$ and the discount factor $\gamma = \frac{1}{1+r}$. 
 Other value functions can be used to optimize over a risk measure on the cumulative liability, such as the Value-at-Risk (VaR) or the Conditional Value-at-Risk (CVaR).
 Denote the risk measure as $\rho_{\alpha}$, where $\alpha$ is the confidence level, then the value function can be set as
 
@@ -209,7 +135,7 @@ Model-free deep reinforcement learning algorithms can be broadly categorized int
     The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the PPO algorithm to hedge GMMB with a GMDB rider under the Black-Scholes framework.
 \end{enumerate}
 
-\section{Transfer Learning for Risk Management of Variable Annuities} \label{sec:tlHedging}
+\section{Transfer Learning for Risk Management of Variable Annuities} \label{sec3:tlHedging}
 
 Transfer learning is a machine learning technique that leverages knowledge from one domain to improve learning in another domain.
 In the context of deep reinforcement learning, transfer learning can be used to improve the risk management of VAs in five ways:
@@ -312,7 +238,7 @@ Generalization, on the other hand, refers to the agent's ability to quickly adap
     \item \textbf{Performance with fixed epochs:} the agent's performance in the target domain after a fixed number of epochs.
 \end{itemize}
 
-\section{Plans for Ongoing Numerical Experiments} \label{sec:numerical}
+\section{Plans for Ongoing Numerical Experiments} \label{sec3:numerical}
 
 As we aim to enhance the risk management strategies for variable annuities (VAs) through the application of transfer learning, our next step involves conducting a series of numerical experiments. These experiments are crucial for validating the theoretical frameworks and methodologies developed so far. Our plan includes:
 
@@ -342,12 +268,3 @@ This will provide strong evidence for the potential of transfer learning in impr
     \label{fig3:GMMB}
 \end{figure}
 
-
-\newpage
-\footnotesize 
-\bibliographystyle{plainnat}
-\bibliography{refP3}
-
-
-
-\end{document}
