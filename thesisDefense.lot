@@ -1,8 +1,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Existing asymptotic convergence results of nested simulation procedures for MSE}}{9}{table.caption.8}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Asymptotic rate of convergence of nested simulation procedures in MSE}}{23}{table.caption.11}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces MSEs of the multi-level Monte Carlo procedure for different levels}}{37}{table.caption.22}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{38}{table.caption.23}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{23}{table.caption.9}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.}}{30}{table.caption.15}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{32}{table.caption.17}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{33}{table.caption.18}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.}}{33}{table.caption.19}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{57}{table.caption.27}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.}}{64}{table.caption.33}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{66}{table.caption.35}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{67}{table.caption.36}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.}}{67}{table.caption.37}%

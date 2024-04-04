@@ -9,47 +9,44 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 Database file #1: refP1.bib
 Database file #2: refP2.bib
 Database file #3: refP3.bib
-Warning--empty booktitle in chung2014empirical
-Warning--empty institution in geneva2013variable
-You've used 80 entries,
+You've used 91 entries,
             1935 wiz_defined-function locations,
-            941 strings with 18043 characters,
-and the built_in function-call counts, 31921 in all, are:
-= -- 3161
-> -- 1347
-< -- 51
-+ -- 476
-- -- 447
-* -- 2788
-:= -- 5610
-add.period$ -- 253
-call.type$ -- 80
-change.case$ -- 621
-chr.to.int$ -- 79
-cite$ -- 82
-duplicate$ -- 1138
-empty$ -- 2171
-format.name$ -- 581
-if$ -- 6135
+            1000 strings with 19753 characters,
+and the built_in function-call counts, 36788 in all, are:
+= -- 3652
+> -- 1539
+< -- 65
++ -- 542
+- -- 513
+* -- 3175
+:= -- 6426
+add.period$ -- 289
+call.type$ -- 91
+change.case$ -- 708
+chr.to.int$ -- 90
+cite$ -- 91
+duplicate$ -- 1334
+empty$ -- 2512
+format.name$ -- 664
+if$ -- 7121
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 76
-newline$ -- 412
-num.names$ -- 242
-pop$ -- 484
+missing$ -- 88
+newline$ -- 467
+num.names$ -- 275
+pop$ -- 564
 preamble$ -- 1
-purify$ -- 620
+purify$ -- 708
 quote$ -- 0
-skip$ -- 859
+skip$ -- 1017
 stack$ -- 0
-substring$ -- 2291
-swap$ -- 107
-text.length$ -- 9
+substring$ -- 2641
+swap$ -- 152
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 472
-warning$ -- 2
-while$ -- 270
+type$ -- 536
+warning$ -- 0
+while$ -- 312
 width$ -- 0
-write$ -- 1054
-(There were 2 warnings)
+write$ -- 1199

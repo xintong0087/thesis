@@ -1,25 +1,45 @@
-\contentsline {chapter}{List of Tables}{viii}{section*.2}%
-\contentsline {chapter}{List of Figures}{ix}{section*.4}%
+\contentsline {chapter}{List of Tables}{ix}{section*.2}%
+\contentsline {chapter}{List of Figures}{x}{section*.4}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Nested Simulation Procedures in Financial Engineering: A Selected Review}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Introduction}{2}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Problem Formulation}{3}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}The Standard Nested Simulation Procedure}{4}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Supervised Learning Models}{5}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Likelihood Ratio Method}{7}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Multi-level Monte Carlo}{8}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Problem Statement}{8}{subsection.2.2.5}%
-\contentsline {chapter}{\numberline {3}Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{9}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{9}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Problem Formulation}{12}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tail Risk Measures: VaR and CVaR}{13}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Simulation Model for Variable Annuity Payouts}{13}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Dynamic Hedging for Variable Annuities}{16}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Two-Stage Nested Simulation with Metamodels}{18}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Single-Stage Nested Simulation with Neural Network Metamodels}{21}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Numerical Results}{21}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Two-Stage Procedure}{27}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of Deep Neural Network Metamodels}{29}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Single-Stage Procedure}{34}{subsection.3.5.3}%
-\contentsline {section}{\numberline {3.6}Conclusion}{37}{section.3.6}%
-\contentsline {chapter}{\textbf {References}}{40}{section*.23}%
+\contentsline {section}{\numberline {2.2}Problem Formulation}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}The Standard Nested Simulation Procedure}{5}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Multi-level Monte Carlo}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Supervised Learning Models}{6}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Likelihood Ratio Method}{8}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Asymptotic Analysis}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Connections between Convergence in MSE and Absolute Error}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Asymptotic Analysis for the Standard Nested Simulation Procedure}{13}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{19}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{23}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Standard Assumptions}{23}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Assumptions on Joint Density}{23}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Assumptions for the Multi-level Monte Carlo Procedure}{24}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Assumptions for the Likelihood Ratio-Based Procedure}{25}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Assumptions for the Kernel-Based Procedure}{25}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Assumptions for the KRR-Based Procedure}{26}{subsection.2.4.6}%
+\contentsline {section}{\numberline {2.5}Finite-Sample Experiments}{26}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Sensitivity to the Asset Dimension}{29}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Empirical Convergence of Parametric Regression Procedures}{30}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Empirical Convergence of Kernel Smoothing-Based Procedures}{31}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{33}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Sensitivity to level for VaR and CVaR}{35}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{36}{subsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.5.7}Empirical Convergence of Multi-level Monte Carlo}{36}{subsection.2.5.7}%
+\contentsline {section}{\numberline {2.6}Computational Complexity}{37}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Conclusion}{41}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{43}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{43}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Problem Formulation}{46}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tail Risk Measures: VaR and CVaR}{47}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Simulation Model for Variable Annuity Payouts}{47}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Dynamic Hedging for Variable Annuities}{50}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Two-Stage Nested Simulation with Metamodels}{52}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Single-Stage Nested Simulation with Neural Network Metamodels}{55}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Numerical Results}{55}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Two-Stage Procedure}{61}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of Deep Neural Network Metamodels}{63}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Single-Stage Procedure}{68}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Conclusion}{71}{section.3.6}%
+\contentsline {chapter}{\textbf {References}}{74}{section*.41}%

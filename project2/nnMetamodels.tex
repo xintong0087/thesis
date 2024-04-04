@@ -200,7 +200,7 @@ In a dynamic hedging program, a hedge portfolio is set up and periodically rebal
 For simplicity, in this study we consider delta hedging for a generic VA liability using one stock and one bond.
 The metamodeling procedures in Section~\ref{sec2:metamodel2Stage} and Section~\ref{sec2:metamodel1Stage} can be trivially adapted to more general hedging strategies.
 
-Consider a generic VA contract whose delta hedge portfolio at any time~$t$, $t=0,1,\ldots,T-1$, consists of $\Delta_t$ units in the underlying stock and $B_t$ amount of a risk-free zero-coupon bond maturing at time $T$.
+Consider a VA contract whose delta hedge portfolio at any time~$t$, $t=0,1,\ldots,T-1$, consists of $\Delta_t$ units in the underlying stock and $B_t$ amount of a risk-free zero-coupon bond maturing at time $T$.
 The value of the hedge portfolio at time~$(t-1)$ is:
 \begin{equation*}
     H_{t-1} = \Delta_{t-1} S_{t-1} + B_{t-1},
@@ -317,7 +317,9 @@ We propose a two-stage procedure with a neural network metamodel that aims to pr
     \STATE \textbf{Concentrate simulation on predicted tail scenarios:}
     \begin{enumerate} [label=\alph*., itemsep=0pt, parsep=0pt, topsep=0pt]
         \item Run Steps 2 and 3 of Algorithm~\ref{alg2:standardProcedure} with the same number of inner replications, $N$, but only on the predicted tail scenarios, i.e., scenarios in $\widehat{\tail}_{m}^{PD}$. Denote the standard procedure's estimated losses and sorted losses by $\Lhat^{ML}_i$ and $\Lhat^{ML}_{(i)}$, respectively, $i=1,\ldots,m$.
-        \item Estimate the $\alpha$-CVaR of $L$ by $\widehat{\CVaR}^{ML}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}\Lhat_{(i)}^{ML} = \frac{1}{(1-\alpha)M} \sum_{i \in \widehat{\tail}_{(1-\alpha )M}^{ML}}\Lhat_{i}^{ML}$, where $\widehat{\tail}_{k}^{ML}$ denotes a predicted tail scenario set associated with the largest $k$ estimated losses.
+        \item Estimate the $\alpha$-CVaR of $L$ by 
+        $$\widehat{\CVaR}^{ML}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}\Lhat_{(i)}^{ML} = \frac{1}{(1-\alpha)M} \sum_{i \in \widehat{\tail}_{(1-\alpha )M}^{ML}}\Lhat_{i}^{ML},$$ 
+        where $\widehat{\tail}_{k}^{ML}$ denotes a predicted tail scenario set associated with the largest $k$ estimated losses.
     \end{enumerate}
 \end{algorithmic}
 \end{algorithm}
@@ -411,8 +413,8 @@ We see that the three deep neural network metamodels' have orders of magnitudes 
 In machine-learning terminologies, the three deep neural network models have much higher \textit{model capacities}.
 
 \begin{table}[ht!]
-    \small
     \centering
+    \footnotesize
     \begin{tabular}{lccccc}
     \toprule
     \textbf{Model} & \textbf{\makecell{Layer size}} & \textbf{\makecell{Capacity}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\

@@ -5,6 +5,12 @@ Artzner, P., Delbaen, F., Eber, J.-M., and Heath, D. (1999).
 \newblock Coherent measures of risk.
 \newblock {\em Mathematical Finance}, 9(3):203--228.
 
+\bibitem[Barton, 1998]{barton1998simulation}
+Barton, R.~R. (1998).
+\newblock Simulation metamodels.
+\newblock In {\em 1998 Winter Simulation Conference. Proceedings (Cat. No.
+  98CH36274)}, volume~1, pages 167--174. IEEE.
+
 \bibitem[Bauer et~al., 2008]{bauer2008universal}
 Bauer, D., Kling, A., and Russ, J. (2008).
 \newblock A universal pricing framework for guaranteed minimum benefits in
@@ -16,6 +22,11 @@ Bauer, D., Reuss, A., and Singer, D. (2012).
 \newblock On the calculation of the solvency capital requirement based on
   nested simulations.
 \newblock {\em ASTIN Bulletin: The Journal of the IAA}, 42(2):453--499.
+
+\bibitem[Bentley, 1975]{bentley1975multidimensional}
+Bentley, J.~L. (1975).
+\newblock Multidimensional binary search trees used for associative searching.
+\newblock {\em Communications of the ACM}, 18(9):509--517.
 
 \bibitem[Boyle and Hardy, 2003]{boyle2003guaranteed}
 Boyle, P. and Hardy, M. (2003).
@@ -65,8 +76,15 @@ Chong, W.~F., Cui, H., and Li, Y. (2023).
 Chung, J., Gulcehre, C., Cho, K., and Bengio, Y. (2014).
 \newblock Empirical evaluation of gated recurrent neural networks on sequence
   modeling.
+\newblock {\em arXiv preprint arXiv:1412.3555}.
 \newblock \url{https://arxiv.org/abs/1412.3555}. Accessed 7$^{\textrm{th}}$ Sep
   2023.
+
+\bibitem[Coppersmith and Winograd, 1987]{coppersmith1987matrix}
+Coppersmith, D. and Winograd, S. (1987).
+\newblock Matrix multiplication via arithmetic progressions.
+\newblock In {\em Proceedings of the nineteenth annual ACM symposium on Theory
+  of computing}, pages 1--6.
 
 \bibitem[Dang, 2021]{dang2021efficient}
 Dang, O. (2021).
@@ -128,6 +146,12 @@ Fonseca, D.~J., Navaresse, D.~O., and Moynihan, G.~P. (2003).
 \newblock Simulation metamodeling through artificial neural networks.
 \newblock {\em Engineering applications of artificial intelligence},
   16(3):177--183.
+
+\bibitem[Frazier, 2018]{frazier2018bayesian}
+Frazier, P.~I. (2018).
+\newblock Bayesian optimization.
+\newblock In {\em Recent advances in optimization and modeling of contemporary
+  problems}, pages 255--278. Informs.
 
 \bibitem[Gan, 2013]{gan2013application}
 Gan, G. (2013).
@@ -242,6 +266,12 @@ Jiang, L., Huang, D., Liu, M., and Yang, W. (2020).
 \newblock In {\em International conference on machine learning}, pages
   4804--4815. PMLR.
 
+\bibitem[Kim and Kutzner, 2008]{kim2008ratio}
+Kim, P.-S. and Kutzner, A. (2008).
+\newblock Ratio based stable in-place merging.
+\newblock In {\em International Conference on Theory and Applications of Models
+  of Computation}, pages 246--257. Springer.
+
 \bibitem[Kingma and Ba, 2014]{kingma2014adam}
 Kingma, D.~P. and Ba, J. (2014).
 \newblock Adam: A method for stochastic optimization.
@@ -338,6 +368,12 @@ Neelakantan, A., Vilnis, L., Le, Q.~V., Sutskever, I., Kaiser, L., Kurach, K.,
 \newblock \url{https://arxiv.org/abs/1511.06807}. Accessed 1$^{\textrm{st}}$
   Jan 2024.
 
+\bibitem[Nystr{\"o}m, 1930]{nystrom1930praktische}
+Nystr{\"o}m, E.~J. (1930).
+\newblock {\"U}ber die praktische aufl{\"o}sung von integralgleichungen mit
+  anwendungen auf randwertaufgaben.
+\newblock {\em Acta Mathematica}.
+
 \bibitem[OpenAI, 2023]{chatgpt}
 OpenAI (2023).
 \newblock Chatgpt.
@@ -349,6 +385,14 @@ OSFI (2017).
 \newblock Life insurance capital adequacy test.
 \newblock Technical report, Office of the Superintendent of Financial
   Institutes Canada.
+
+\bibitem[Pedregosa et~al., 2011]{scikit-learn}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
+  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
+  Passos, A., Cournapeau, D., Brucher, M., Perrot, M., and Duchesnay, E.
+  (2011).
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830.
 
 \bibitem[Peng and Nagata, 2020]{peng2020empirical}
 Peng, Y. and Nagata, M.~H. (2020).
@@ -403,6 +447,17 @@ Salle, I. and Y{\i}ld{\i}zo{\u{g}}lu, M. (2014).
   models.
 \newblock {\em Computational Economics}, 44:507--536.
 
+\bibitem[Sch{\"o}lkopf and Smola, 2002]{scholkopf2002learning}
+Sch{\"o}lkopf, B. and Smola, A.~J. (2002).
+\newblock {\em Learning with kernels: support vector machines, regularization,
+  optimization, and beyond}.
+\newblock MIT press.
+
+\bibitem[Shahriari et~al., 2015]{shahriari2015taking}
+Shahriari, B., Swersky, K., Wang, Z., Adams, R.~P., and De~Freitas, N. (2015).
+\newblock Taking the human out of the loop: A review of bayesian optimization.
+\newblock {\em Proceedings of the IEEE}, 104(1):148--175.
+
 \bibitem[Silver et~al., 2016]{silver2016mastering}
 Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche,
   G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M.,
@@ -415,6 +470,16 @@ Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and Salakhutdinov,
   R. (2014).
 \newblock Dropout: A simple way to prevent neural networks from overfitting.
 \newblock {\em The Journal of Machine Learning Research}, 15(1):1929--1958.
+
+\bibitem[Stothers, 2010]{stothers2010complexity}
+Stothers, A.~J. (2010).
+\newblock On the complexity of matrix multiplication.
+\newblock {\em Edinburgh Research Archive}.
+
+\bibitem[Strassen, 1969]{strassen1969gaussian}
+Strassen, V. (1969).
+\newblock Gaussian elimination is not optimal.
+\newblock {\em Numerische mathematik}, 13(4):354--356.
 
 \bibitem[Sutskever et~al., 2014]{sutskever2014sequence}
 Sutskever, I., Vinyals, O., and Le, Q.~V. (2014).
@@ -434,10 +499,7 @@ Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I.,
 \bibitem[{The Geneva Association}, 2013]{geneva2013variable}
 {The Geneva Association} (2013).
 \newblock Variable annuities—an analysis of financial stability.
-\newblock Technical report.
-\newblock
-  \url{https://www.genevaassociation.org/sites/default/files/research-topics-document-type/pdf\_public/ga2013-variable\_annuities\_0.pdf}.
-  Accessed 7$^{\textrm{th}}$ Sep 2023.
+\newblock Technical report, The Geneva Association.
 
 \bibitem[Torres-Huitzil and Girau, 2017]{torres2017fault}
 Torres-Huitzil, C. and Girau, B. (2017).
