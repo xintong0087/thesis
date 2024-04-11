@@ -8,51 +8,52 @@
 \BOOKMARK [2][-]{subsection.2.2.2}{Multi-level Monte Carlo}{section.2.2}% 8
 \BOOKMARK [2][-]{subsection.2.2.3}{Supervised Learning Models}{section.2.2}% 9
 \BOOKMARK [2][-]{subsection.2.2.4}{Likelihood Ratio Method}{section.2.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Asymptotic Analysis}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.3.1}{Connections between Convergence in MSE and Absolute Error}{section.2.3}% 12
-\BOOKMARK [2][-]{subsection.2.3.2}{Asymptotic Analysis for the Standard Nested Simulation Procedure}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.3}{Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{section.2.3}% 14
-\BOOKMARK [1][-]{section.2.4}{Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.4.1}{Standard Assumptions}{section.2.4}% 16
-\BOOKMARK [2][-]{subsection.2.4.2}{Assumptions on Joint Density}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.3}{Assumptions for the Multi-level Monte Carlo Procedure}{section.2.4}% 18
-\BOOKMARK [2][-]{subsection.2.4.4}{Assumptions for the Likelihood Ratio-Based Procedure}{section.2.4}% 19
-\BOOKMARK [2][-]{subsection.2.4.5}{Assumptions for the Kernel-Based Procedure}{section.2.4}% 20
-\BOOKMARK [2][-]{subsection.2.4.6}{Assumptions for the KRR-Based Procedure}{section.2.4}% 21
-\BOOKMARK [1][-]{section.2.5}{Finite-Sample Experiments}{chapter.2}% 22
-\BOOKMARK [2][-]{subsection.2.5.1}{Sensitivity to the Asset Dimension}{section.2.5}% 23
-\BOOKMARK [2][-]{subsection.2.5.2}{Empirical Convergence of Parametric Regression Procedures}{section.2.5}% 24
-\BOOKMARK [2][-]{subsection.2.5.3}{Empirical Convergence of Kernel Smoothing-Based Procedures}{section.2.5}% 25
-\BOOKMARK [2][-]{subsection.2.5.4}{Sensitivity to the Option Types and Risk Measures}{section.2.5}% 26
-\BOOKMARK [2][-]{subsection.2.5.5}{Sensitivity to level for VaR and CVaR}{section.2.5}% 27
-\BOOKMARK [2][-]{subsection.2.5.6}{Sensitivity to the Asset Model}{section.2.5}% 28
-\BOOKMARK [2][-]{subsection.2.5.7}{Empirical Convergence of Multi-level Monte Carlo}{section.2.5}% 29
-\BOOKMARK [1][-]{section.2.6}{Computational Complexity}{chapter.2}% 30
-\BOOKMARK [1][-]{section.2.7}{Conclusion}{chapter.2}% 31
-\BOOKMARK [0][-]{chapter.3}{Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{}% 32
-\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 33
-\BOOKMARK [1][-]{section.3.2}{Problem Formulation}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.2.1}{Tail Risk Measures: VaR and CVaR}{section.3.2}% 35
-\BOOKMARK [2][-]{subsection.3.2.2}{Simulation Model for Variable Annuity Payouts}{section.3.2}% 36
-\BOOKMARK [2][-]{subsection.3.2.3}{Dynamic Hedging for Variable Annuities}{section.3.2}% 37
-\BOOKMARK [1][-]{section.3.3}{Two-Stage Nested Simulation with Metamodels}{chapter.3}% 38
-\BOOKMARK [1][-]{section.3.4}{Single-Stage Nested Simulation with Neural Network Metamodels}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.5}{Numerical Results}{chapter.3}% 40
-\BOOKMARK [2][-]{subsection.3.5.1}{Two-Stage Procedure}{section.3.5}% 41
-\BOOKMARK [2][-]{subsection.3.5.2}{Noise Tolerance of Deep Neural Network Metamodels}{section.3.5}% 42
-\BOOKMARK [2][-]{subsection.3.5.3}{Single-Stage Procedure}{section.3.5}% 43
-\BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 44
-\BOOKMARK [0][-]{chapter.4}{Efficient Transfer of Knowledge for Deep Hedging of Variable Annuities}{}% 45
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.2}{Dynamic Hedging of Variable Annuities}{chapter.4}% 47
-\BOOKMARK [2][-]{subsection.4.2.1}{Markov Decision Process \(MDP\) for Hedging VAs}{section.4.2}% 48
-\BOOKMARK [2][-]{subsection.4.2.2}{Deep Hedging Approaches}{section.4.2}% 49
-\BOOKMARK [2][-]{subsection.4.2.3}{Value-based and Policy-based Deep Reinforcement Learning}{section.4.2}% 50
-\BOOKMARK [1][-]{section.4.3}{Transfer Learning for Risk Management of Variable Annuities}{chapter.4}% 51
-\BOOKMARK [2][-]{subsection.4.3.1}{Reward Shaping}{section.4.3}% 52
-\BOOKMARK [2][-]{subsection.4.3.2}{Policy Transfer}{section.4.3}% 53
-\BOOKMARK [2][-]{subsection.4.3.3}{Representation Transfer}{section.4.3}% 54
-\BOOKMARK [2][-]{subsection.4.3.4}{Evaluation Metrics}{section.4.3}% 55
-\BOOKMARK [1][-]{section.4.4}{Plans for Ongoing Numerical Experiments}{chapter.4}% 56
-\BOOKMARK [2][-]{subsection.4.4.1}{Initial Numerical Experiments}{section.4.4}% 57
-\BOOKMARK [0][-]{section*.42}{References}{}% 58
+\BOOKMARK [2][-]{subsection.2.2.5}{Problem Statement}{section.2.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Asymptotic Analysis}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.3.1}{Connections between Convergence in MSE and Absolute Error}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.2}{Asymptotic Analysis for the Standard Nested Simulation Procedure}{section.2.3}% 14
+\BOOKMARK [2][-]{subsection.2.3.3}{Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{section.2.3}% 15
+\BOOKMARK [1][-]{section.2.4}{Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.4.1}{Standard Assumptions}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.2}{Assumptions on Joint Density}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.3}{Assumptions for the Multi-level Monte Carlo Procedure}{section.2.4}% 19
+\BOOKMARK [2][-]{subsection.2.4.4}{Assumptions for the Likelihood Ratio-Based Procedure}{section.2.4}% 20
+\BOOKMARK [2][-]{subsection.2.4.5}{Assumptions for the Kernel-Based Procedure}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.6}{Assumptions for the KRR-Based Procedure}{section.2.4}% 22
+\BOOKMARK [1][-]{section.2.5}{Finite-Sample Experiments}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.5.1}{Sensitivity to the Asset Dimension}{section.2.5}% 24
+\BOOKMARK [2][-]{subsection.2.5.2}{Empirical Convergence of Parametric Regression Procedures}{section.2.5}% 25
+\BOOKMARK [2][-]{subsection.2.5.3}{Empirical Convergence of Kernel Smoothing-Based Procedures}{section.2.5}% 26
+\BOOKMARK [2][-]{subsection.2.5.4}{Sensitivity to the Option Types and Risk Measures}{section.2.5}% 27
+\BOOKMARK [2][-]{subsection.2.5.5}{Sensitivity to level for VaR and CVaR}{section.2.5}% 28
+\BOOKMARK [2][-]{subsection.2.5.6}{Sensitivity to the Asset Model}{section.2.5}% 29
+\BOOKMARK [2][-]{subsection.2.5.7}{Empirical Convergence of Multi-level Monte Carlo}{section.2.5}% 30
+\BOOKMARK [1][-]{section.2.6}{Computational Complexity}{chapter.2}% 31
+\BOOKMARK [1][-]{section.2.7}{Conclusion}{chapter.2}% 32
+\BOOKMARK [0][-]{chapter.3}{Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{}% 33
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.2}{Problem Formulation}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.2.1}{Tail Risk Measures: VaR and CVaR}{section.3.2}% 36
+\BOOKMARK [2][-]{subsection.3.2.2}{Simulation Model for Variable Annuity Payouts}{section.3.2}% 37
+\BOOKMARK [2][-]{subsection.3.2.3}{Dynamic Hedging for Variable Annuities}{section.3.2}% 38
+\BOOKMARK [1][-]{section.3.3}{Two-Stage Nested Simulation with Metamodels}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.4}{Single-Stage Nested Simulation with Neural Network Metamodels}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.5}{Numerical Results}{chapter.3}% 41
+\BOOKMARK [2][-]{subsection.3.5.1}{Two-Stage Procedure}{section.3.5}% 42
+\BOOKMARK [2][-]{subsection.3.5.2}{Noise Tolerance of Deep Neural Network Metamodels}{section.3.5}% 43
+\BOOKMARK [2][-]{subsection.3.5.3}{Single-Stage Procedure}{section.3.5}% 44
+\BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 45
+\BOOKMARK [0][-]{chapter.4}{Efficient Transfer of Knowledge for Deep Hedging of Variable Annuities}{}% 46
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 47
+\BOOKMARK [1][-]{section.4.2}{Dynamic Hedging of Variable Annuities}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.2.1}{Markov Decision Process \(MDP\) for Hedging VAs}{section.4.2}% 49
+\BOOKMARK [2][-]{subsection.4.2.2}{Deep Hedging Approaches}{section.4.2}% 50
+\BOOKMARK [2][-]{subsection.4.2.3}{Value-based and Policy-based Deep Reinforcement Learning}{section.4.2}% 51
+\BOOKMARK [1][-]{section.4.3}{Transfer Learning for Risk Management of Variable Annuities}{chapter.4}% 52
+\BOOKMARK [2][-]{subsection.4.3.1}{Reward Shaping}{section.4.3}% 53
+\BOOKMARK [2][-]{subsection.4.3.2}{Policy Transfer}{section.4.3}% 54
+\BOOKMARK [2][-]{subsection.4.3.3}{Representation Transfer}{section.4.3}% 55
+\BOOKMARK [2][-]{subsection.4.3.4}{Evaluation Metrics}{section.4.3}% 56
+\BOOKMARK [1][-]{section.4.4}{Plans for Ongoing Numerical Experiments}{chapter.4}% 57
+\BOOKMARK [2][-]{subsection.4.4.1}{Initial Numerical Experiments}{section.4.4}% 58
+\BOOKMARK [0][-]{section*.43}{References}{}% 59
