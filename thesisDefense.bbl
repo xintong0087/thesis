@@ -3,8 +3,7 @@
 \bibitem[Andreas et~al., 2017]{andreas2017modular}
 Andreas, J., Klein, D., and Levine, S. (2017).
 \newblock Modular multitask reinforcement learning with policy sketches.
-\newblock In {\em International conference on machine learning}, pages
-  166--175. PMLR.
+\newblock In {\em International conference on machine learning}, pages 166--175. PMLR.
 
 \bibitem[Artzner et~al., 1999]{artzner1999coherent}
 Artzner, P., Delbaen, F., Eber, J.-M., and Heath, D. (1999).
@@ -14,19 +13,16 @@ Artzner, P., Delbaen, F., Eber, J.-M., and Heath, D. (1999).
 \bibitem[Barton, 1998]{barton1998simulation}
 Barton, R.~R. (1998).
 \newblock Simulation metamodels.
-\newblock In {\em 1998 Winter Simulation Conference. Proceedings (Cat. No.
-  98CH36274)}, volume~1, pages 167--174. IEEE.
+\newblock In {\em 1998 Winter Simulation Conference. Proceedings (Cat. No. 98CH36274)}, volume~1, pages 167--174. IEEE.
 
 \bibitem[Bauer et~al., 2008]{bauer2008universal}
 Bauer, D., Kling, A., and Russ, J. (2008).
-\newblock A universal pricing framework for guaranteed minimum benefits in
-  variable annuities.
+\newblock A universal pricing framework for guaranteed minimum benefits in variable annuities.
 \newblock {\em ASTIN Bulletin: The Journal of the IAA}, 38(2):621--651.
 
 \bibitem[Bauer et~al., 2012]{bauer2012calculation}
 Bauer, D., Reuss, A., and Singer, D. (2012).
-\newblock On the calculation of the solvency capital requirement based on
-  nested simulations.
+\newblock On the calculation of the solvency capital requirement based on nested simulations.
 \newblock {\em ASTIN Bulletin: The Journal of the IAA}, 42(2):453--499.
 
 \bibitem[Bentley, 1975]{bentley1975multidimensional}
@@ -62,78 +58,63 @@ Buehler, H., Gonon, L., Teichmann, J., and Wood, B. (2019).
 \bibitem[Carlini and Wagner, 2017]{carlini2017towards}
 Carlini, N. and Wagner, D. (2017).
 \newblock Towards evaluating the robustness of neural networks.
-\newblock In {\em 2017 ieee symposium on security and privacy (sp)}, pages
-  39--57. Ieee.
+\newblock In {\em 2017 ieee symposium on security and privacy (sp)}, pages 39--57. Ieee.
 
 \bibitem[Caruana et~al., 2000]{caruana2000overfitting}
 Caruana, R., Lawrence, S., and Giles, C. (2000).
-\newblock Overfitting in neural nets: Backpropagation, conjugate gradient, and
-  early stopping.
+\newblock Overfitting in neural nets: Backpropagation, conjugate gradient, and early stopping.
 \newblock {\em Advances in neural information processing systems}, 13.
 
 \bibitem[Cathcart et~al., 2015]{cathcart2015calculating}
 Cathcart, M.~J., Lok, H.~Y., McNeil, A.~J., and Morrison, S. (2015).
-\newblock Calculating variable annuity liability “greeks” using monte carlo
-  simulation.
+\newblock Calculating variable annuity liability “greeks” using monte carlo simulation.
 \newblock {\em ASTIN Bulletin: The Journal of the IAA}, 45(2):239--266.
 
 \bibitem[Chong et~al., 2023]{chong2023pseudo}
 Chong, W.~F., Cui, H., and Li, Y. (2023).
-\newblock Pseudo-model-free hedging for variable annuities via deep
-  reinforcement learning.
+\newblock Pseudo-model-free hedging for variable annuities via deep reinforcement learning.
 \newblock {\em Annals of Actuarial Science}, 17(3):503--546.
 
 \bibitem[Chung et~al., 2014]{chung2014empirical}
 Chung, J., Gulcehre, C., Cho, K., and Bengio, Y. (2014).
-\newblock Empirical evaluation of gated recurrent neural networks on sequence
-  modeling.
+\newblock Empirical evaluation of gated recurrent neural networks on sequence modeling.
 \newblock {\em arXiv preprint arXiv:1412.3555}.
-\newblock \url{https://arxiv.org/abs/1412.3555}. Accessed 7$^{\textrm{th}}$ Sep
-  2023.
+\newblock \url{https://arxiv.org/abs/1412.3555}. Accessed 7$^{\textrm{th}}$ Sep 2023.
 
 \bibitem[Coppersmith and Winograd, 1987]{coppersmith1987matrix}
 Coppersmith, D. and Winograd, S. (1987).
 \newblock Matrix multiplication via arithmetic progressions.
-\newblock In {\em Proceedings of the nineteenth annual ACM symposium on Theory
-  of computing}, pages 1--6.
+\newblock In {\em Proceedings of the nineteenth annual ACM symposium on Theory of computing}, pages 1--6.
 
 \bibitem[Dang, 2021]{dang2021efficient}
 Dang, O. (2021).
-\newblock {\em Efficient Nested Simulation of Tail Risk Measures for Variable
-  Annuities}.
-\newblock {Ph.D.} thesis, Department of Statistics and Actuarial Science,
-  University of Waterloo, Waterloo, ON, Canada.
+\newblock {\em Efficient Nested Simulation of Tail Risk Measures for Variable Annuities}.
+\newblock {Ph.D.} thesis, Department of Statistics and Actuarial Science, University of Waterloo, Waterloo, ON, Canada.
 \newblock \url{https://uwspace.uwaterloo.ca/handle/10012/17084}.
 
 \bibitem[Dang et~al., 2020]{dang2020efficient}
 Dang, O., Feng, M., and Hardy, M.~R. (2020).
-\newblock Efficient nested simulation for conditional tail expectation of
-  variable annuities.
+\newblock Efficient nested simulation for conditional tail expectation of variable annuities.
 \newblock {\em North American Actuarial Journal}, 24(2):187--210.
 
 \bibitem[Dang et~al., 2022]{dang2022dynamic}
 Dang, O., Feng, M., and Hardy, M.~R. (2022).
-\newblock Dynamic importance allocated nested simulation for variable annuity
-  risk measurement.
+\newblock Dynamic importance allocated nested simulation for variable annuity risk measurement.
 \newblock {\em Annals of Actuarial Science}, 16(2):319--348.
 
 \bibitem[Dang et~al., 2023]{dang2023two}
 Dang, O., Feng, M., and Hardy, M.~R. (2023).
-\newblock Two-stage nested simulation of tail risk measurement: A likelihood
-  ratio approach.
+\newblock Two-stage nested simulation of tail risk measurement: A likelihood ratio approach.
 \newblock {\em Insurance: Mathematics and Economics}, 108:1--24.
 
 \bibitem[EIOPA, 2014]{eiopa2014underlying}
 EIOPA (2014).
-\newblock The underlying assumptions in the standard formula for the solvency
-  capital requirement calculation.
-\newblock Technical report, The European Insurance and Occupational Pensions
-  Authority.
+\newblock The underlying assumptions in the standard formula for the solvency capital requirement calculation.
+\newblock Technical report, The European Insurance and Occupational Pensions Authority.
 
 \bibitem[Feng and Song, 2020]{feng2020optimal}
 Feng, M. and Song, E. (2020).
-\newblock Optimal nested simulation experiment design via likelihood ratio
-  method.
+\newblock Optimal nested simulation experiment design via likelihood ratio method.
 \newblock {\em arXiv preprint arXiv:2008.13087}.
 
 \bibitem[Feng et~al., 2016]{feng2016nested}
@@ -148,32 +129,27 @@ Feng, R., Gan, G., and Zhang, N. (2022).
 
 \bibitem[Feng and Jing, 2017]{feng2017analytical}
 Feng, R. and Jing, X. (2017).
-\newblock Analytical valuation and hedging of variable annuity guaranteed
-  lifetime withdrawal benefits.
+\newblock Analytical valuation and hedging of variable annuity guaranteed lifetime withdrawal benefits.
 \newblock {\em Insurance: Mathematics and Economics}, 72:36--48.
 
 \bibitem[Fonseca et~al., 2003]{fonseca2003simulation}
 Fonseca, D.~J., Navaresse, D.~O., and Moynihan, G.~P. (2003).
 \newblock Simulation metamodeling through artificial neural networks.
-\newblock {\em Engineering applications of artificial intelligence},
-  16(3):177--183.
+\newblock {\em Engineering applications of artificial intelligence}, 16(3):177--183.
 
 \bibitem[Frazier, 2018]{frazier2018bayesian}
 Frazier, P.~I. (2018).
 \newblock Bayesian optimization.
-\newblock In {\em Recent advances in optimization and modeling of contemporary
-  problems}, pages 255--278. Informs.
+\newblock In {\em Recent advances in optimization and modeling of contemporary problems}, pages 255--278. Informs.
 
 \bibitem[Gan, 2013]{gan2013application}
 Gan, G. (2013).
-\newblock Application of data clustering and machine learning in variable
-  annuity valuation.
+\newblock Application of data clustering and machine learning in variable annuity valuation.
 \newblock {\em Insurance: Mathematics and Economics}, 53(3):795--801.
 
 \bibitem[Gan and Lin, 2015]{gan2015valuation}
 Gan, G. and Lin, S.~X. (2015).
-\newblock Valuation of large variable annuity portfolios under nested
-  simulation: A functional data approach.
+\newblock Valuation of large variable annuity portfolios under nested simulation: A functional data approach.
 \newblock {\em Insurance: Mathematics and Economics}, 62:138--150.
 
 \bibitem[Giles, 2015]{giles2015multilevel}
@@ -200,8 +176,7 @@ Glasserman, P. (2004).
 Goodfellow, I.~J., Shlens, J., and Szegedy, C. (2014).
 \newblock Explaining and harnessing adversarial examples.
 \newblock {\em arXiv preprint arXiv:1412.6572}.
-\newblock \url{https://arxiv.org/abs/1412.6572}. Accessed 1$^{\textrm{st}}$ Jan
-  2024.
+\newblock \url{https://arxiv.org/abs/1412.6572}. Accessed 1$^{\textrm{st}}$ Jan 2024.
 
 \bibitem[Gordy and Juneja, 2010]{gordy2010nested}
 Gordy, M.~B. and Juneja, S. (2010).
@@ -210,13 +185,9 @@ Gordy, M.~B. and Juneja, S. (2010).
 
 \bibitem[Ha and Bauer, 2015]{bauer2015least}
 Ha, H. and Bauer, D. (2015).
-\newblock A least-squares monte carlo approach to the calculation of capital
-  requirements.
-\newblock In {\em World Risk and Insurance Economics Congress}, volume~6, pages
-  2--6.
-\newblock
-  \url{https://danielbaueracademic.files.wordpress.com/2013/11/bauerha\_2015.pdf}.
-  Accessed 7$^{\textrm{th}}$ Sep 2023.
+\newblock A least-squares monte carlo approach to the calculation of capital requirements.
+\newblock In {\em World Risk and Insurance Economics Congress}, volume~6, pages 2--6.
+\newblock \url{https://danielbaueracademic.files.wordpress.com/2013/11/bauerha\_2015.pdf}. Accessed 7$^{\textrm{th}}$ Sep 2023.
 
 \bibitem[H{\"a}rdle, 1990]{hardle1990applied}
 H{\"a}rdle, W. (1990).
@@ -230,8 +201,7 @@ Hardy, M.~R. (2001).
 
 \bibitem[Hardy, 2003]{hardy2003investment}
 Hardy, M.~R. (2003).
-\newblock {\em Investment Guarantees: Modeling and Risk Management for
-  Equity-Linked Life Insurance}, volume 168.
+\newblock {\em Investment Guarantees: Modeling and Risk Management for Equity-Linked Life Insurance}, volume 168.
 \newblock John Wiley \& Sons.
 
 \bibitem[Hardy, 2006]{hardy2006introduction}
@@ -242,13 +212,11 @@ Hardy, M.~R. (2006).
 \bibitem[Harutyunyan et~al., 2015]{harutyunyan2015expressing}
 Harutyunyan, A., Devlin, S., Vrancx, P., and Now{\'e}, A. (2015).
 \newblock Expressing arbitrary reward functions as potential-based advice.
-\newblock In {\em Proceedings of the AAAI conference on artificial
-  intelligence}, volume~29.
+\newblock In {\em Proceedings of the AAAI conference on artificial intelligence}, volume~29.
 
 \bibitem[Hastie et~al., 2009]{hastie2009elements}
 Hastie, T., Tibshirani, R., and Friedman, J.~H. (2009).
-\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
-  and Prediction}, volume~2.
+\newblock {\em The Elements of Statistical Learning: Data Mining, Inference, and Prediction}, volume~2.
 \newblock Springer.
 
 \bibitem[Hochreiter and Schmidhuber, 1997]{hochreiter1997long}
@@ -258,54 +226,44 @@ Hochreiter, S. and Schmidhuber, J. (1997).
 
 \bibitem[Hong et~al., 2014]{hong2014monte}
 Hong, J.~L., Hu, Z., and Liu, G. (2014).
-\newblock Monte carlo methods for value-at-risk and conditional value-at-risk:
-  A review.
-\newblock {\em ACM Transactions on Modeling and Computer Simulation (TOMACS)},
-  24(4):1--37.
+\newblock Monte carlo methods for value-at-risk and conditional value-at-risk: A review.
+\newblock {\em ACM Transactions on Modeling and Computer Simulation (TOMACS)}, 24(4):1--37.
 
 \bibitem[Hong et~al., 2017]{hong2017kernel}
 Hong, J.~L., Juneja, S., and Liu, G. (2017).
-\newblock Kernel smoothing for nested estimation with application to portfolio
-  risk measurement.
+\newblock Kernel smoothing for nested estimation with application to portfolio risk measurement.
 \newblock {\em Operations Research}, 65(3):657--673.
 
 \bibitem[Imaki et~al., 2021]{imaki2021no}
 Imaki, S., Imajo, K., Ito, K., Minami, K., and Nakagawa, K. (2021).
-\newblock No-transaction band network: A neural network architecture for
-  efficient deep hedging.
+\newblock No-transaction band network: A neural network architecture for efficient deep hedging.
 \newblock {\em arXiv preprint arXiv:2103.01775}.
 
 \bibitem[Jabbar and Khan, 2015]{jabbar2015methods}
 Jabbar, H. and Khan, R.~Z. (2015).
-\newblock Methods to avoid over-fitting and under-fitting in supervised machine
-  learning (comparative study).
-\newblock {\em Computer Science, Communication and Instrumentation Devices},
-  70(10.3850):978--981.
+\newblock Methods to avoid over-fitting and under-fitting in supervised machine learning (comparative study).
+\newblock {\em Computer Science, Communication and Instrumentation Devices}, 70(10.3850):978--981.
 
 \bibitem[Jennen-Steinmetz and Gasser, 1988]{jennen1988unifying}
 Jennen-Steinmetz, C. and Gasser, T. (1988).
 \newblock A unifying approach to nonparametric regression estimation.
-\newblock {\em Journal of the American Statistical Association},
-  83(404):1084--1089.
+\newblock {\em Journal of the American Statistical Association}, 83(404):1084--1089.
 
 \bibitem[Jiang et~al., 2020]{jiang2020beyond}
 Jiang, L., Huang, D., Liu, M., and Yang, W. (2020).
 \newblock Beyond synthetic noise: Deep learning on controlled noisy labels.
-\newblock In {\em International conference on machine learning}, pages
-  4804--4815. PMLR.
+\newblock In {\em International conference on machine learning}, pages 4804--4815. PMLR.
 
 \bibitem[Kim and Kutzner, 2008]{kim2008ratio}
 Kim, P.-S. and Kutzner, A. (2008).
 \newblock Ratio based stable in-place merging.
-\newblock In {\em International Conference on Theory and Applications of Models
-  of Computation}, pages 246--257. Springer.
+\newblock In {\em International Conference on Theory and Applications of Models of Computation}, pages 246--257. Springer.
 
 \bibitem[Kingma and Ba, 2014]{kingma2014adam}
 Kingma, D.~P. and Ba, J. (2014).
 \newblock Adam: A method for stochastic optimization.
 \newblock {\em arXiv preprint arXiv:1412.6980}.
-\newblock \url{https://arxiv.org/pdf/1412.6980.pdf}. Accessed 7$^{\textrm{th}}$
-  Sep 2023.
+\newblock \url{https://arxiv.org/pdf/1412.6980.pdf}. Accessed 7$^{\textrm{th}}$ Sep 2023.
 
 \bibitem[Kolm and Ritter, 2019]{kolm2019dynamic}
 Kolm, P.~N. and Ritter, G. (2019).
@@ -329,50 +287,42 @@ LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998).
 
 \bibitem[Lieu et~al., 2022]{lieu2022adaptive}
 Lieu, Q.~X., Nguyen, K.~T., Dang, K.~D., Lee, S., Kang, J., and Lee, J. (2022).
-\newblock An adaptive surrogate model to structural reliability analysis using
-  deep neural network.
+\newblock An adaptive surrogate model to structural reliability analysis using deep neural network.
 \newblock {\em Expert Systems with Applications}, 189:116104.
 
 \bibitem[Lillicrap et~al., 2015]{lillicrap2015continuous}
-Lillicrap, T.~P., Hunt, J.~J., Pritzel, A., Heess, N., Erez, T., Tassa, Y.,
-  Silver, D., and Wierstra, D. (2015).
+Lillicrap, T.~P., Hunt, J.~J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., Silver, D., and Wierstra, D. (2015).
 \newblock Continuous control with deep reinforcement learning.
 \newblock {\em arXiv preprint arXiv:1509.02971}.
 
 \bibitem[Lin, 1992]{lin1992self}
 Lin, L.-J. (1992).
-\newblock Self-improving reactive agents based on reinforcement learning,
-  planning and teaching.
+\newblock Self-improving reactive agents based on reinforcement learning, planning and teaching.
 \newblock {\em Machine learning}, 8:293--321.
 
 \bibitem[Lin and Yang, 2020a]{lin2020efficient}
 Lin, X.~S. and Yang, S. (2020a).
-\newblock Efficient dynamic hedging for large variable annuity portfolios with
-  multiple underlying assets.
+\newblock Efficient dynamic hedging for large variable annuity portfolios with multiple underlying assets.
 \newblock {\em ASTIN Bulletin: The Journal of the IAA}, 50(3):913--957.
 
 \bibitem[Lin and Yang, 2020b]{lin2020fast}
 Lin, X.~S. and Yang, S. (2020b).
-\newblock Fast and efficient nested simulation for large variable annuity
-  portfolios: A surrogate modeling approach.
+\newblock Fast and efficient nested simulation for large variable annuity portfolios: A surrogate modeling approach.
 \newblock {\em Insurance: Mathematics and Economics}, 91:85--103.
 
 \bibitem[Liu and Staum, 2010]{liu2010stochastic}
 Liu, M. and Staum, J. (2010).
-\newblock Stochastic kriging for efficient nested simulation of expected
-  shortfall.
+\newblock Stochastic kriging for efficient nested simulation of expected shortfall.
 \newblock {\em Journal of Risk}, 12(3):3.
 
 \bibitem[Longstaff and Schwartz, 2001]{longstaff2001valuing}
 Longstaff, F.~A. and Schwartz, E.~S. (2001).
-\newblock Valuing american options by simulation: A simple least-squares
-  approach.
+\newblock Valuing american options by simulation: A simple least-squares approach.
 \newblock {\em The Review of Financial Studies}, 14(1):113--147.
 
 \bibitem[Luo et~al., 2016]{luo2016understanding}
 Luo, W., Li, Y., Urtasun, R., and Zemel, R. (2016).
-\newblock Understanding the effective receptive field in deep convolutional
-  neural networks.
+\newblock Understanding the effective receptive field in deep convolutional neural networks.
 \newblock {\em Advances in Neural Information Processing Systems}, 29.
 
 \bibitem[Mack, 1981]{mack1981local}
@@ -386,12 +336,9 @@ Marshall, C., Hardy, M., and Saunders, D. (2010).
 \newblock {\em North American Actuarial Journal}, 14(1):38--58.
 
 \bibitem[Marukame et~al., 2016]{marukame2016error}
-Marukame, T., Ueyoshi, K., Asai, T., Motomura, M., Schmid, A., Suzuki, M.,
-  Higashi, Y., and Mitani, Y. (2016).
-\newblock Error tolerance analysis of deep learning hardware using a restricted
-  boltzmann machine toward low-power memory implementation.
-\newblock {\em IEEE Transactions on Circuits and Systems II: Express Briefs},
-  64(4):462--466.
+Marukame, T., Ueyoshi, K., Asai, T., Motomura, M., Schmid, A., Suzuki, M., Higashi, Y., and Mitani, Y. (2016).
+\newblock Error tolerance analysis of deep learning hardware using a restricted boltzmann machine toward low-power memory implementation.
+\newblock {\em IEEE Transactions on Circuits and Systems II: Express Briefs}, 64(4):462--466.
 
 \bibitem[McCulloch and Pitts, 1943]{mcculloch1943logical}
 McCulloch, W.~S. and Pitts, W. (1943).
@@ -399,81 +346,65 @@ McCulloch, W.~S. and Pitts, W. (1943).
 \newblock {\em The Bulletin of Mathematical Biophysics}, 5:115--133.
 
 \bibitem[Mnih et~al., 2015]{mnih2015human}
-Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A.~A., Veness, J., Bellemare,
-  M.~G., Graves, A., Riedmiller, M., Fidjeland, A.~K., Ostrovski, G., et~al.
-  (2015).
+Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A.~A., Veness, J., Bellemare, M.~G., Graves, A., Riedmiller, M., Fidjeland, A.~K., Ostrovski, G., et~al. (2015).
 \newblock Human-level control through deep reinforcement learning.
 \newblock {\em nature}, 518(7540):529--533.
 
 \bibitem[NAIC, 2021]{naic2021}
 NAIC (2021).
 \newblock {\em Valuation Manual}.
-\newblock National Association of Insurance Commissioners, Washington, DC, jan.
-  1 edition.
+\newblock National Association of Insurance Commissioners, Washington, DC, jan. 1 edition.
 \newblock \url{https://content.naic.org}.
 
 \bibitem[Neelakantan et~al., 2015]{neelakantan2015adding}
-Neelakantan, A., Vilnis, L., Le, Q.~V., Sutskever, I., Kaiser, L., Kurach, K.,
-  and Martens, J. (2015).
+Neelakantan, A., Vilnis, L., Le, Q.~V., Sutskever, I., Kaiser, L., Kurach, K., and Martens, J. (2015).
 \newblock Adding gradient noise improves learning for very deep networks.
 \newblock {\em arXiv preprint arXiv:1511.06807}.
-\newblock \url{https://arxiv.org/abs/1511.06807}. Accessed 1$^{\textrm{st}}$
-  Jan 2024.
+\newblock \url{https://arxiv.org/abs/1511.06807}. Accessed 1$^{\textrm{st}}$ Jan 2024.
 
 \bibitem[Ng et~al., 1999]{ng1999policy}
 Ng, A.~Y., Harada, D., and Russell, S. (1999).
-\newblock Policy invariance under reward transformations: Theory and
-  application to reward shaping.
+\newblock Policy invariance under reward transformations: Theory and application to reward shaping.
 \newblock In {\em Icml}, volume~99, pages 278--287. Citeseer.
 
 \bibitem[Nystr{\"o}m, 1930]{nystrom1930praktische}
 Nystr{\"o}m, E.~J. (1930).
-\newblock {\"U}ber die praktische aufl{\"o}sung von integralgleichungen mit
-  anwendungen auf randwertaufgaben.
+\newblock {\"U}ber die praktische aufl{\"o}sung von integralgleichungen mit anwendungen auf randwertaufgaben.
 \newblock {\em Acta Mathematica}.
 
 \bibitem[OpenAI, 2023]{chatgpt}
 OpenAI (2023).
 \newblock Chatgpt.
-\newblock \url{https://chat.openai.com/chat}. Accessed 7$^{\textrm{th}}$ Sep
-  2023.
+\newblock \url{https://chat.openai.com/chat}. Accessed 7$^{\textrm{th}}$ Sep 2023.
 
 \bibitem[OSFI, 2017]{osfi2017life}
 OSFI (2017).
 \newblock Life insurance capital adequacy test.
-\newblock Technical report, Office of the Superintendent of Financial
-  Institutes Canada.
+\newblock Technical report, Office of the Superintendent of Financial Institutes Canada.
 
 \bibitem[Pedregosa et~al., 2011]{scikit-learn}
-Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
-  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
-  Passos, A., Cournapeau, D., Brucher, M., Perrot, M., and Duchesnay, E.
-  (2011).
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., and Duchesnay, E. (2011).
 \newblock Scikit-learn: Machine learning in {P}ython.
 \newblock {\em Journal of Machine Learning Research}, 12:2825--2830.
 
 \bibitem[Peng and Nagata, 2020]{peng2020empirical}
 Peng, Y. and Nagata, M.~H. (2020).
-\newblock An empirical overview of nonlinearity and overfitting in machine
-  learning using covid-19 data.
+\newblock An empirical overview of nonlinearity and overfitting in machine learning using covid-19 data.
 \newblock {\em Chaos, Solitons \& Fractals}, 139:110055.
 
 \bibitem[Piscopo and Haberman, 2011]{piscopo2011valuation}
 Piscopo, G. and Haberman, S. (2011).
-\newblock The valuation of guaranteed lifelong withdrawal benefit options in
-  variable annuity contracts and the impact of mortality risk.
+\newblock The valuation of guaranteed lifelong withdrawal benefit options in variable annuity contracts and the impact of mortality risk.
 \newblock {\em North American Actuarial Journal}, 15(1):59--76.
 
 \bibitem[Poole et~al., 2014]{poole2014analyzing}
 Poole, B., Sohl-Dickstein, J., and Ganguli, S. (2014).
 \newblock Analyzing noise in autoencoders and deep networks.
 \newblock {\em arXiv preprint arXiv:1406.1831}.
-\newblock \url{https://arxiv.org/abs/1406.1831}. Accessed 1$^{\textrm{st}}$ Jan
-  2024.
+\newblock \url{https://arxiv.org/abs/1406.1831}. Accessed 1$^{\textrm{st}}$ Jan 2024.
 
 \bibitem[Raffin et~al., 2021]{stable-baselines3}
-Raffin, A., Hill, A., Gleave, A., Kanervisto, A., Ernestus, M., and Dormann, N.
-  (2021).
+Raffin, A., Hill, A., Gleave, A., Kanervisto, A., Ernestus, M., and Dormann, N. (2021).
 \newblock Stable-baselines3: Reliable reinforcement learning implementations.
 \newblock {\em Journal of Machine Learning Research}, 22(268):1--8.
 
@@ -484,8 +415,7 @@ Rockafellar, R.~T. and Uryasev, S. (2002).
 
 \bibitem[Rosenblatt, 1958]{rosenblatt1958perceptron}
 Rosenblatt, F. (1958).
-\newblock The perceptron: A probabilistic model for information storage and
-  organization in the brain.
+\newblock The perceptron: A probabilistic model for information storage and organization in the brain.
 \newblock {\em Psychological Review}, 65(6):386.
 
 \bibitem[Ruf and Wang, 2022]{ruf2022hedging}
@@ -496,26 +426,22 @@ Ruf, J. and Wang, W. (2022).
 \bibitem[Rumelhart et~al., 1985]{rumelhart1985learning}
 Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1985).
 \newblock Learning internal representations by error propagation.
-\newblock Technical report, California University San Diego La Jolla Institute
-  for Cognitive Science.
+\newblock Technical report, California University San Diego La Jolla Institute for Cognitive Science.
 
 \bibitem[Salle and Y{\i}ld{\i}zo{\u{g}}lu, 2014]{salle2014efficient}
 Salle, I. and Y{\i}ld{\i}zo{\u{g}}lu, M. (2014).
-\newblock Efficient eampling and meta-modeling for computational economic
-  models.
+\newblock Efficient eampling and meta-modeling for computational economic models.
 \newblock {\em Computational Economics}, 44:507--536.
 
 \bibitem[Sch{\"o}lkopf and Smola, 2002]{scholkopf2002learning}
 Sch{\"o}lkopf, B. and Smola, A.~J. (2002).
-\newblock {\em Learning with kernels: support vector machines, regularization,
-  optimization, and beyond}.
+\newblock {\em Learning with kernels: support vector machines, regularization, optimization, and beyond}.
 \newblock MIT press.
 
 \bibitem[Schulman et~al., 2015]{schulman2015trust}
 Schulman, J., Levine, S., Abbeel, P., Jordan, M., and Moritz, P. (2015).
 \newblock Trust region policy optimization.
-\newblock In {\em International conference on machine learning}, pages
-  1889--1897. PMLR.
+\newblock In {\em International conference on machine learning}, pages 1889--1897. PMLR.
 
 \bibitem[Schulman et~al., 2017]{schulman2017proximal}
 Schulman, J., Wolski, F., Dhariwal, P., Radford, A., and Klimov, O. (2017).
@@ -528,15 +454,12 @@ Shahriari, B., Swersky, K., Wang, Z., Adams, R.~P., and De~Freitas, N. (2015).
 \newblock {\em Proceedings of the IEEE}, 104(1):148--175.
 
 \bibitem[Silver et~al., 2016]{silver2016mastering}
-Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche,
-  G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M.,
-  et~al. (2016).
+Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche, G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M., et~al. (2016).
 \newblock Mastering the game of go with deep neural networks and tree search.
 \newblock {\em Nature}, 529(7587):484--489.
 
 \bibitem[Srivastava et~al., 2014]{srivastava2014dropout}
-Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and Salakhutdinov,
-  R. (2014).
+Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and Salakhutdinov, R. (2014).
 \newblock Dropout: A simple way to prevent neural networks from overfitting.
 \newblock {\em The Journal of Machine Learning Research}, 15(1):1929--1958.
 
@@ -553,21 +476,16 @@ Strassen, V. (1969).
 \bibitem[Sutskever et~al., 2014]{sutskever2014sequence}
 Sutskever, I., Vinyals, O., and Le, Q.~V. (2014).
 \newblock Sequence to sequence learning with neural networks.
-\newblock In Ghahramani, Z., Welling, M., Cortes, C., Lawrence, N., and
-  Weinberger, K., editors, {\em Advances in Neural Information Processing
-  Systems}, volume~27. Curran Associates, Inc.
+\newblock In Ghahramani, Z., Welling, M., Cortes, C., Lawrence, N., and Weinberger, K., editors, {\em Advances in Neural Information Processing Systems}, volume~27. Curran Associates, Inc.
 
 \bibitem[Szegedy et~al., 2013]{szegedy2013intriguing}
-Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I.,
-  and Fergus, R. (2013).
+Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I., and Fergus, R. (2013).
 \newblock Intriguing properties of neural networks.
 \newblock {\em arXiv preprint arXiv:1312.6199}.
-\newblock \url{https://arxiv.org/abs/1312.6199}. Accessed 1$^{\textrm{st}}$ Jan
-  2024.
+\newblock \url{https://arxiv.org/abs/1312.6199}. Accessed 1$^{\textrm{st}}$ Jan 2024.
 
 \bibitem[Teh et~al., 2017]{teh2017distral}
-Teh, Y., Bapst, V., Czarnecki, W.~M., Quan, J., Kirkpatrick, J., Hadsell, R.,
-  Heess, N., and Pascanu, R. (2017).
+Teh, Y., Bapst, V., Czarnecki, W.~M., Quan, J., Kirkpatrick, J., Hadsell, R., Heess, N., and Pascanu, R. (2017).
 \newblock Distral: Robust multitask reinforcement learning.
 \newblock {\em Advances in neural information processing systems}, 30.
 
@@ -583,20 +501,17 @@ Torres-Huitzil, C. and Girau, B. (2017).
 
 \bibitem[Wang et~al., 2022]{wang2022smooth}
 Wang, W., Wang, Y., and Zhang, X. (2022).
-\newblock Smooth nested simulation: bridging cubic and square root convergence
-  rates in high dimensions.
+\newblock Smooth nested simulation: bridging cubic and square root convergence rates in high dimensions.
 \newblock {\em arXiv preprint arXiv:2201.02958}.
 
 \bibitem[Wiewiora et~al., 2003]{wiewiora2003principled}
 Wiewiora, E., Cottrell, G.~W., and Elkan, C. (2003).
 \newblock Principled methods for advising reinforcement learning agents.
-\newblock In {\em Proceedings of the 20th international conference on machine
-  learning (ICML-03)}, pages 792--799.
+\newblock In {\em Proceedings of the 20th international conference on machine learning (ICML-03)}, pages 792--799.
 
 \bibitem[Williams and Zipser, 1989]{williams1989learning}
 Williams, R.~J. and Zipser, D. (1989).
-\newblock A learning algorithm for continually running fully recurrent neural
-  networks.
+\newblock A learning algorithm for continually running fully recurrent neural networks.
 \newblock {\em Neural Computation}, 1(2):270--280.
 
 \bibitem[Wirch and Hardy, 1999]{wirch1999synthesis}
@@ -607,21 +522,17 @@ Wirch, J.~L. and Hardy, M.~R. (1999).
 \bibitem[Xiao et~al., 2021]{xiao2021optimal}
 Xiao, B., Yao, W., and Zhou, X. (2021).
 \newblock Optimal option hedging with policy gradient.
-\newblock In {\em 2021 International Conference on Data Mining Workshops
-  (ICDMW)}, pages 1112--1119. IEEE.
+\newblock In {\em 2021 International Conference on Data Mining Workshops (ICDMW)}, pages 1112--1119. IEEE.
 
 \bibitem[Xu and Dai, 2022]{xu2022delta}
 Xu, W. and Dai, B. (2022).
-\newblock Delta-gamma-like hedging with transaction cost under reinforcement
-  learning technique.
+\newblock Delta-gamma-like hedging with transaction cost under reinforcement learning technique.
 \newblock {\em The Journal of Derivatives}, 29(5):60--82.
 
 \bibitem[Yang et~al., 2018]{yang2018bit}
 Yang, L., Bankman, D., Moons, B., Verhelst, M., and Murmann, B. (2018).
-\newblock Bit error tolerance of a cifar-10 binarized convolutional neural
-  network processor.
-\newblock In {\em 2018 IEEE International Symposium on Circuits and Systems
-  (ISCAS)}, pages 1--5. Institute of Electrical and Electronics Engineers.
+\newblock Bit error tolerance of a cifar-10 binarized convolutional neural network processor.
+\newblock In {\em 2018 IEEE International Symposium on Circuits and Systems (ISCAS)}, pages 1--5. Institute of Electrical and Electronics Engineers.
 
 \bibitem[Zhang et~al., 2018]{zhang2018decoupling}
 Zhang, A., Satija, H., and Pineau, J. (2018).
@@ -630,8 +541,7 @@ Zhang, A., Satija, H., and Pineau, J. (2018).
 
 \bibitem[Zhang et~al., 2022]{zhang2022sample}
 Zhang, K., Feng, M., Liu, G., and Wang, S. (2022).
-\newblock Sample recycling for nested simulation with application in portfolio
-  risk measurement.
+\newblock Sample recycling for nested simulation with application in portfolio risk measurement.
 \newblock {\em arXiv preprint arXiv:2203.15929}.
 
 \bibitem[Zhang et~al., 2021]{zhang2021bootstrap}
