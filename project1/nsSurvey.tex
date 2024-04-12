@@ -203,8 +203,23 @@ Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$
             $$\hat{L}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta},$$
             where $\Phi$ is a chosen basis, and $\hat{\beta}$ is estimated from the training samples.
     \item   Kernel smoothing:
-            $$\hat{L}^{\text{KS}}_{M, N}(X) = \frac{\sum_{i=1}^M \bar{Y}_{N, i} K_w(X - X_i)}{\sum_{i=1}^M K_w(X - X_i)}, $$
+            $$\hat{L}^{\text{KS}}_{M, N}(X) = \frac{\sum_{i=1}^M \hat{L}_{N, i} K_w(X - X_i)}{\sum_{i=1}^M K_w(X - X_i)}, $$
             where $K_w$ is the kernel function with bandwidth $w$.
+
+            In~\cite{hong2017kernel}, the k-nearest neighbor (KNN) method is also implemented as a kernel smoothing method, but the convergence analysis is not provided.
+
+    \item   kNN~\citep{mack1981local}:
+            \begin{equation*}
+            \hat{L}^{\text{kNN}}_{M, N}(x) 
+            = \frac{\frac{1}{M R_M^d} \sum_{i=1}^M \hat{L}_{N, i} K\left(\frac{x - X_i}{R_M}\right)}{\frac{1}{M R_M^d} \sum_{i=1}^M K\left(\frac{x - X_i}{R_M}\right)}
+            \end{equation*}
+            where $R_k$ is the Euclidean distance between $X_i$ and its $k$-th nearest neighbor, and $K:\mathbb{R}^d \rightarrow \mathbb{R}$ is a bounded, nonnegative kernel function satisfying 
+            \begin{align*}
+                \int K(u) du & = 1, \\
+                K(u) &= 0 ~~~ ~\text{for}~ \|u\| \geq 1,
+            \end{align*}
+            where $\|\cdot\|$ is the Euclidean norm, and  $k$ is the number of nearest neighbors to consider.
+
     \item   Kernel ridge regression:
             $$\hat{L}^{\text{KRR}}_{M, N}(X) = \argmin_{g \in \mathcal{N}_{\Psi}(\Omega)} \left( \frac{1}{M} \sum_{i=1}^M (\hat{L}_{N, i} - L_i)^2 + \lambda \|L\|_{\mathcal{N}_{\Psi}(\Omega)}^2\right),$$
             where $\mathcal{N}_{\Psi}(\Omega)$ is the reproducing kernel Hilbert space (RKHS) with kernel $\Psi$ defined domain $\Omega$, and $\lambda$ is the regularization parameter as in ridge regression. 
@@ -255,7 +270,7 @@ In this section, we summarize the existing asymptotic convergence results of the
     \footnotesize
     \begin{tabular}{|l|c|c|c|c|c|}
     \hline
-    \textbf{Estimator for} $g(X)$ & \textbf{Smooth} $h$ & \textbf{Lipschitz}(\textbf{hockey-stick} $h$) & \textbf{Indicator} $h$ & \textbf{VaR} & \textbf{CVaR} \\
+    \textbf{Estimator for} $L$ & \textbf{Smooth} $h$ & \textbf{Lipschitz}(\textbf{hockey-stick} $h$) & \textbf{Indicator} $h$ & \textbf{VaR} & \textbf{CVaR} \\
     \hline
     Standard Monte Carlo & $\star$ & $\star$($\checkmark$) & $\checkmark$ & $\checkmark$ & $\times$ \\
     \hline
@@ -408,7 +423,7 @@ The immediate implication is that the results in~\cite{wang2022smooth}, which sh
 In~\cite{gordy2010nested}, the authors analyze the asymptotic convergence of the standard nested simulation procedure in terms of MSE. 
 The analysis is complete for the nested expectation form where $h$ is either an indicator function or a hockey-stick function and VaR. 
 For the nested expectation form where $h$ is a smooth function or a Lipschitz continuous function, the analysis is incomplete.
-In this section, we fill in the holes in the analysis of~\cite{gordy2010nested}.
+In this section, we fill in the holes for the analysis of~\cite{gordy2010nested}.
 
 \begin{assumption} \label{as1:sns}
     $h(L)$ has finite second moment, i.e., $\mathbb{E} \left[ \left( h(L) \right)^2 \right] < \infty$.
@@ -423,22 +438,37 @@ Assumption~\ref{as1:sns} is a standard assumption in the literature~\citep{hong2
     $$
 \end{assumption}
 
-For simplicity, we denote $\hat{L}_N(X)$ as $\hat{L}_N$.
+For simplicity, we abbreviate $\hat{L}_N(X)$ as $\hat{L}_N$, $\bar{Z}_N(X)$ as $\bar{Z}_N$, and $\bar{Z}_{N, i}$ as $\bar{Z}_{N, i}$.
 Let $\rho_M = \frac{1}{M} \sum_{i=1}^M h(L_i)$ be the nested Monte Carlo estimator with the true function $g$.
-The MSE of the standard nested simulation procedure can be decomposed into two terms.
+The MSE of the standard nested simulation procedure can be decomposed into two ways.
 
 \begin{align} \label{eq1:mse-sns}
     & \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] \nonumber \\
     & \leq 2 \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho_M \right)^2 \right] 
             + 2  \mathbb{E} \left[ \left(\rho_M - \rho \right)^2 \right]  \nonumber \\
-    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{g}_{N}(X_i) \right) -  \frac{1}{M} \sum_{i=1}^M h\left(g(X_i) \right)  \right)^2\right] \nonumber \\
-    & ~~~~ + 2  \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h\left(g(X_i) \right) - \mathbb{E}\left[ h(g(X))\right] \right)^2 \right]  \nonumber \\
-    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{g}_{N}(X_i) \right) -  h\left(g(X_i) \right)  \right)^2\right] + \frac{2}{M} \text{Var}(h(g(X))) \nonumber \\
-    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{g}_{N}(X_i) \right) -  h\left(g(X_i) \right)  \right)^2\right] + \mathcal{O}(M^{-1}),
+    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  \frac{1}{M} \sum_{i=1}^M h\left(L_i \right)  \right)^2\right] \nonumber \\
+    & ~~~~ + 2  \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h\left(L_i \right) - \mathbb{E}\left[ h(L)\right] \right)^2 \right]  \nonumber \\
+    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] + \frac{2}{M} \text{Var}(h(L)) \nonumber \\
+    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] + \mathcal{O}(M^{-1}),
 \end{align}
-where the last equality follows from Assumption~\ref{as1:sns}.
+
+In~\ref{eq1:mse-sns}, the last equality follows from Assumption~\ref{as1:sns}.
 The analysis of the first term is different for smooth and Lipschitz continuous $h$. 
 We will analyze them separately.
+
+Another way to decompose the MSE is the bias-variance decomposition as in~\cite{gordy2010nested}.
+
+\begin{align} \label{eq1:mse-sns2}
+    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] 
+    & = \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \mathbb{E} \left[ \hat{\rho}_{M, N} \right] \right)^2 \right] + \left( \mathbb{E} \left[ \hat{\rho}_{M, N} \right] - \rho \right)^2 \nonumber \\
+    & = \text{Var}(\hat{\rho}_{M, N}) + \text{Bias}^2(\hat{\rho}_{M, N})
+\end{align}
+    
+where $\text{Var}(\hat{\rho}_{M, N})$ is the variance of the estimator and $\text{Bias}(\hat{\rho}_{M, N})$ is the bias of the estimator about $\rho$.
+For a smooth function $h$, both ways of decomposing the MSE lead to the same order of convergence.
+However, for a Lipschitz continuous function $h$, Equation~\ref{eq1:mse-sns2} leads to a stronger order of convergence than Equation~\ref{eq1:mse-sns}.
+In the following, we analyze the convergence of the standard nested simulation procedure for smooth and Lipschitz continuous $h$ using following both decompositions.
+Their critical assumptions and convergence results are summarized and compared.
 
 \subsubsection*{A Smooth Function $h$}
 \begin{assumption} \label{as1:sns-smooth}
@@ -452,26 +482,25 @@ Assumption~\ref{as1:sns-smooth} is similar to the smoothness assumption in~\cite
 Since $h$ is a smooth function, Taylor expansion can be applied to the first term in Equation~\ref{eq1:mse-sns}.
 
 \begin{align} \label{eq1:taylor-sns}
-    & \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{g}_{N}(X_i) \right) -  h\left(g(X_i) \right)  \right)^2\right] \nonumber \\
-    & = \mathbb{E} \left[ \left( \frac{1}{M} \sum_{i=1}^M h'\left( g(X_i) \right) \left( \hat{g}_{N}(X_i) - g(X_i) \right) +  \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{g}_{N}(X_i) - g(X_i) \right)^2 \right)^2\right] \nonumber \\
-    & \leq 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{M} \sum_{i=1}^M h'\left( g(X_i) \right) \left( \hat{g}_{ N}(X_i) - g(X_i) \right) \right)^2\right]}_{S_1} \nonumber \\
-    & ~~~~ + 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{g}_{N}(X_i) - g(X_i) \right)^2 \right)^2\right]}_{S_2}
+    & \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] \nonumber \\
+    & = \mathbb{E} \left[ \left( \frac{1}{M} \sum_{i=1}^M h'\left( L_i \right) \left( \hat{L}_{N, i} - L_i \right) +  \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}_{N, i} - L_i \right)^2 \right)^2\right] \nonumber \\
+    & \leq 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{M} \sum_{i=1}^M h'\left( L_i \right) \left( \hat{L}_{N, i}- L_i \right) \right)^2\right]}_{S_1} \nonumber \\
+    & ~~~~ + 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}_{N, i} - L_i \right)^2 \right)^2\right]}_{S_2}
 \end{align}
 where the last inequality is due to $2ab \leq a^2 + b^2$ for any $a, b \in \mathbb{R}$. 
-For different methods of nested estimation, each of the two terms on the right-hand side of Equation~\ref{eq1:taylor-sns} can be analyzed separately.
+The two terms on the right-hand side of Equation~\ref{eq1:taylor-sns} are analyzed separately.
 We start with the first term $S_1$.
-
 
 \begin{align} \label{eq1:s1-sns}
     S_1 
-    & = \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h'\left( g(X_i) \right) \left( \hat{g}_{N}(X_i) - g(X_i) \right) \right)^2 \right] \nonumber \\
-    & = \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h'\left( g(X_i) \right) \bar{Z}_N(X_i) \right)^2 \right] \nonumber \\
-    & \leq C_1^2 \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M \bar{Z}_N(X_i) \right)^2 \right] \nonumber \\
-    & = C_1^2 \mathbb{E} \left[ \frac{1}{M^2} \sum_{i=1}^M \sum_{j=1}^M \bar{Z}_N(X_i) \bar{Z}_N(X_j) \right] \nonumber \\
-    & = C_1^2 \mathbb{E} \left[ \frac{1}{M^2} \sum_{i=1}^M \bar{Z}_N^2(X_i) + \frac{1}{M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_N(X_i) \bar{Z}_N(X_j) \right] \nonumber \\
+    & = \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h'\left( L_i \right) \left( \hat{L}_{N, i} - L_i \right) \right)^2 \right] \nonumber \\
+    & = \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h'\left( L_i \right) \bar{Z}_{N, i} \right)^2 \right] \nonumber \\
+    & \leq C_1^2 \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M \bar{Z}_{N, i} \right)^2 \right] \nonumber \\
+    & = C_1^2 \mathbb{E} \left[ \frac{1}{M^2} \sum_{i=1}^M \sum_{j=1}^M \bar{Z}_{N, i} \bar{Z}_{N, j} \right] \nonumber \\
+    & = C_1^2 \mathbb{E} \left[ \frac{1}{M^2} \sum_{i=1}^M \bar{Z}_{N, i}^2 + \frac{1}{M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_{N, i} \bar{Z}_{N, j} \right] \nonumber \\
     & \leq  \frac{C_1^2 C_{\nu, 1}}{MN} = \mathcal{O}(M^{-1} N^{-1})
 \end{align}
-where the last inequality in Equation~\ref{eq1:s1-sns} is due to Assumption~\ref{as1:sns-noise}, independence of $X_i$ and $X_j$ for $i \neq j$, and the fact that $\mathbb{E} \left[ \bar{Z}_N(X) \right] = 0$. 
+where the last inequality in Equation~\ref{eq1:s1-sns} is due to Assumption~\ref{as1:sns-noise}, independence of $X_i$ and $X_j$ for $i \neq j$, and the fact that the inner simulation noise has zero mean, i.e., $\mathbb{E} \left[ \bar{Z}_N \right] = 0$. 
 It remains to analyze the second term $S_2$, where Assumption \ref{as1:sns-noise-var} is necessary to ensure the existence of the fourth moment of the simulation noise and the convergence of the second term.
 
 \begin{assumption} \label{as1:sns-noise-var}
@@ -479,27 +508,65 @@ It remains to analyze the second term $S_2$, where Assumption \ref{as1:sns-noise
 \end{assumption}
 
 \begin{align} \label{eq1:s2-sns}
-    S_2 & = \mathbb{E} \left[ \left( \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}^{\text{SL}}_{M, N}(X_i) - g(X_i) \right)^2 \right)^2\right] \nonumber \\
-    & = \mathbb{E} \left[ \left(\frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \bar{Z}^2_N(X_i) \right)^2 \right] \nonumber \\
-    & \leq C_2^2 \mathbb{E} \left[ \left(\frac{1}{2M} \sum_{i=1}^M \bar{Z}^2_N(X_i) \right)^2 \right] \nonumber \\
-    & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \sum_{j=1}^M \bar{Z}^2_N(X_i) \bar{Z}^2_N(X_j) \right] \nonumber \\
-    & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \bar{Z}_N^4(X_i) + \frac{1}{2M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_N^2(X_i) \bar{Z}_N^2(X_j) \right] \nonumber \\
+    S_2 & = \mathbb{E} \left[ \left( \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}^{\text{SL}}_{M, N}(X_i) - L_i \right)^2 \right)^2\right] \nonumber \\
+    & = \mathbb{E} \left[ \left(\frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \bar{Z}_{N, i}^2 \right)^2 \right] \nonumber \\
+    & \leq C_2^2 \mathbb{E} \left[ \left(\frac{1}{2M} \sum_{i=1}^M \bar{Z}_{N, i}^2 \right)^2 \right] \nonumber \\
+    & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \sum_{j=1}^M \bar{Z}_{N, i}^2 \bar{Z}_{N, j}^2 \right] \nonumber \\
+    & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \bar{Z}_{N, i}^4 + \frac{1}{2M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_N^2(X_i) \bar{Z}_N^2(X_j) \right] \nonumber \\
     & \leq  C_2^2 \left(\frac{ C_{\nu, 2} M}{2M^2N^2} + \frac{C_{\nu,1}^2M(M-1)}{2M^2N^2}\right) = \mathcal{O}(N^{-2})
 \end{align}
-where the second inequality is due to Assumption~\ref{as1:sns-smooth}, and the last inequality follows from Assumption~\ref{as1:sns-noise-var} and the fact that $\hat{g}_{N}(X)$ is a standard Monte Carlo estimator of $g(X)$.
+where the second inequality is due to Assumption~\ref{as1:sns-smooth}, and the last inequality follows from Assumption~\ref{as1:sns-noise-var} and the fact that $\hat{L}_N$ is a standard Monte Carlo estimator of $L$.
 Combining Equation~\ref{eq1:mse-sns},~\ref{eq1:taylor-sns},~\ref{eq1:s1-sns}, and~\ref{eq1:s2-sns}, we have
 
 \begin{equation} \label{eq1:mse-sns-smooth}
     \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-2})
 \end{equation}
 Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we provide the same rate of convergence as obtained for other risk measures in~\cite{gordy2010nested}.
-As shown in Section~\ref{sec1:connection-mse-absolute-error}, the convergence in MSE automatically implies the convergence in probabilistic order.
+However, we observe that Equation~\ref{eq1:s1-sns} converges in the order of $\mathcal{O}(M^{-1}N^{-1})$.
+The cross term here is potentially problematic \textcolor{red}{(Why?)}, as setting $N$ as a negative power of $M$ may result in Equation~\ref{eq1:s1-sns} to be divergent.
+
+In order to avoid the cross term, we proceed to follow the bias-variance decomposition in Equation~\ref{eq1:mse-sns2}.
+
+\begin{align} \label{eq1:bias-sns-smooth}
+    \text{Bias}(\hat{\rho}_{M, N})
+    & = \mathbb{E} \left[ \hat{\rho}_{M, N} \right] - \rho \nonumber \\
+    & = \mathbb{E} \left[ \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) \right] - \mathbb{E} \left[ h\left(L \right) \right]  \nonumber \\
+    & = \mathbb{E} \left[ h\left( \hat{L}_N \right) - h\left( L \right) \right] \nonumber \\
+    & = \mathbb{E} \left[h'\left( L \right) \left( \hat{L}_N - L \right) + \frac{1}{2} h''\left( z \right) \left( \hat{L}_N - L \right)^2 \right]
+\end{align}
+
+where the last equality follows from the Taylor expansion of the smooth function $h$.
+The first and second order Taylor expansion terms are analyzed separately in Equation~\ref{eq1:bias-sns-smooth-Taylor1} and Equation~\ref{eq1:bias-sns-smooth-Taylor2}.
+
+\begin{align} \label{eq1:bias-sns-smooth-Taylor1}
+    \mathbb{E} \left[ h'\left( L \right) \left( \hat{L}_N - L \right) \right]
+    & = \mathbb{E} \left[ h'\left( L \right) \left( \hat{L}_N - L \right) \right] \nonumber \\
+    & = \mathbb{E} \left[ \mathbb{E} \left[ h'\left( L \right) \left( \hat{L}_N - L \right)  | X \right] \right] \nonumber \\
+    & = \mathbb{E} \left[ h'\left( L \right) \mathbb{E} \left[ \hat{L}_N - L  | X \right] \right] = 0
+\end{align}
+
+\begin{align} \label{eq1:bias-sns-smooth-Taylor2}
+    \mathbb{E} \left[ h''\left( z \right) \left( \hat{L}_N - L \right)^2 \right]
+    & \leq \mathbb{E} \left[ |h''\left( z \right)| \left( \hat{L}_N - L \right)^2 \right] \nonumber \\
+    & \leq C_{h,2} \mathbb{E} \left[ \left( \hat{L}_N - L \right)^2 \right] \nonumber \\
+    & = C_{h,2} \text{Var}(\hat{L}_N) = \mathcal{O}\left( N^{-1} \right)
+\end{align}
+
+It remains to analyze the variance term in Equation~\ref{eq1:mse-sns2}.
+
+\begin{equation} \label{eq1:var-sns-smooth}
+    \text{Var}(\hat{\rho}_{M, N}) = \frac{1}{M} \text{Var}(h(\hat{L}_N)) = \mathcal{O}(M^{-1})
+\end{equation}
+
+Equation~\ref{eq1:var-sns-smooth} directly follows from Assumption~\ref{as1:sns} and the fact that $\hat{L}_N$ is a standard Monte Carlo estimator of $L$.
+Combining Equation~\ref{eq1:bias-sns-smooth-Taylor1},~\ref{eq1:bias-sns-smooth-Taylor2}, and~\ref{eq1:var-sns-smooth}, we are able to show the convergence order of the standard nested simulation procedure for a smooth function $h$ without the cross term as in Equation~\ref{eq1:s1-sns}.
 
 \begin{theorem} \label{thm1:sns-smooth}
     Let $h$ be a smooth function. 
     MSE of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
     $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-2/3}).$$
 \end{theorem}
+
 The proof techniques used in deriving Theorem~\ref{thm1:sns-smooth} is completely different from the one used in~\cite{gordy2010nested}.
 The analysis in~\cite{gordy2010nested} is based on the differentiablity of the joint density of $Y$ and the average inner simulation noise, which is difficult to verify in practice.
 Instead, we use the Taylor expansion of the smooth function $h$ to analyze the convergence of the standard nested simulation procedure.
@@ -527,9 +594,9 @@ Assumption~\ref{as1:sns-lip} is a standard assumption for analysis involving Lip
 For the Lipschitz continuous case, the first term in Equation~\ref{eq1:mse-sns} is analyzed differently.
 
 \begin{align}
-    \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{g}_{N}(X_i) \right) -  h\left(g(X_i) \right)  \right)^2\right]    
-    & \leq \mathbb{E} \left[ \left( h\left( \hat{g}_{N}(X) \right) -  h\left(g(X) \right)  \right)^2\right]  \nonumber \\
-    & \leq K^2 \mathbb{E} \left[ \left( \hat{g}_{N}(X) -  g(X)  \right)^2\right] \nonumber \\
+    \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right]    
+    & \leq \mathbb{E} \left[ \left( h\left( \hat{L}_N \right) -  h\left(L \right)  \right)^2\right]  \nonumber \\
+    & \leq K^2 \mathbb{E} \left[ \left( \hat{L}_N -  L  \right)^2\right] \nonumber \\
     & = K^2 \mathbb{E} \left[ \left( \bar{Z}_{N}(X) \right)^2\right] = \mathcal{O}(N^{-1})
 \end{align}
 where the first inequality follows from Cauchy-Schwarz inequality, the second equality follows from Assumption~\ref{as1:sns-lip}, and the last equality follows from Assumption~\ref{as1:sns-noise}.
@@ -538,18 +605,39 @@ where the first inequality follows from Cauchy-Schwarz inequality, the second eq
     \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-1})
 \end{equation}
 Setting $M = \mathcal{O}(\Gamma^{1/2})$ and $N = \mathcal{O}(\Gamma^{1/2})$, we provide a looser bound than the one obtained for hockey-stick $h$.
+This bound can be strengthened by using the bias-variance decomposition in Equation~\ref{eq1:mse-sns2}.
+
+\begin{align} \label{eq1:bias-sns-lip}
+    \text{Bias}(\hat{\rho}_{M, N})
+    & = \mathbb{E} \left[ \hat{\rho}_{M, N} \right] - \rho \nonumber \\
+    & = \mathbb{E} \left[ \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) \right] - \mathbb{E} \left[ h\left(L \right) \right]  \nonumber \\
+    & = \mathbb{E} \left[ h\left( \hat{L}_N \right) - h\left( L \right) \right] \nonumber \\
+    & \leq \mathbb{E} \left[ |h\left( \hat{L}_N \right) - h\left( L \right) | \right] \nonumber \\
+    & \leq K \mathbb{E} \left[ |\hat{L}_N - L| \right] \nonumber \\
+    & = K \mathbb{E} \left[ |\bar{Z}_N| \right] \nonumber \\
+    & \leq K \sqrt{\mathbb{E} \left[ \left( \bar{Z}_N \right)^2 \right]} = \mathcal{O}(N^{-1})
+\end{align}
+
+The variance term in Equation~\ref{eq1:mse-sns2} for Lipschitz continuous $h$ is identical to the one in Equation~\ref{eq1:var-sns-smooth}.
+Hence, the convergence order of the standard nested simulation procedure for Lipschitz continuous $h$ is the same as the one for smooth $h$.
+
+\begin{equation}
+    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-2})
+\end{equation}
+
+Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we provide the same rate of convergence as obtained for other risk measures in~\cite{gordy2010nested}.
 
 \begin{theorem}
     Let $h$ be a Lipschitz continuous function. 
-    MSE of the standard nested simulation procedure converges in order $\Gamma^{1/2}$, that is,
-    $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-1/2}).$$
+    MSE of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
+    $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-2/3}).$$
 \end{theorem}
 
 Immediately from Theorem~\ref{thm1:convergence-mse-prob}, the convergence in MSE automatically implies the convergence in probabilistic order.
 
 \begin{corollary}
-    Let $h$ be a Lipschitz continuous function. The absolute error of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/4}$, that is,
-    $$\left| \hat{\rho}_{M, N} - \rho \right| = \mathcal{O}_\mathbb{P}(\Gamma^{-1/4}).$$
+    Let $h$ be a Lipschitz continuous function. The absolute error of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/3}$, that is,
+    $$\left| \hat{\rho}_{M, N} - \rho \right| = \mathcal{O}_\mathbb{P}(\Gamma^{-1/3}).$$
 \end{corollary}
 
 \subsection{Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}
@@ -570,23 +658,18 @@ Let $k$ be a sequence of positive integers $k = k(M)$ such that
     \frac{k}{M}         & \rightarrow 0, ~~~ \text{as} ~ M \rightarrow \infty. \\
     \frac{\log(M)}{k}   & \rightarrow 0, ~~~ \text{as} ~ k \rightarrow \infty.
 \end{align*}
-A kNN-based nested simulation procedure with model parameter $k$ estimates the risk measure $\rho = \mathbb{E} \left[ h(g(X)) \right]$ with
+A kNN-based nested simulation procedure with model parameter $k$ estimates the risk measure $\rho = \mathbb{E} \left[ h(L) \right]$ with
 
-\begin{align*}
-\hat{\rho}^{\text{kNN}, \text{Test}}_{M, n, M'} 
-& = \frac{1}{M'} \sum_{i=1}^{M'} h(\hat{g}^{\text{kNN}}_{M, n}(\tilde{X}_i)); ~~~ \tilde{X}_i \sim F_X, \\
-\hat{g}^{\text{kNN}}_{M, n}(x) 
-& = \frac{\frac{1}{M R_k^d} \sum_{i=1}^M K\left(\frac{x - X_i}{R_k}\right) \bar{Y}_{n, i}}{\frac{1}{M R_k^d} \sum_{i=1}^M K\left(\frac{x - X_i}{R_k}\right)}
-\end{align*}
-
-where $R_k$ is the Euclidean distance between $X_i$ and its $k^{\text{th}}$ nearest neighbor, and $K(\cdot)$ is the kernel function satisfying 
-
-\begin{align*}
-    \int K(u) du & = 1, \\
-    K(u) &= 0 ~~~ ~\text{for}~ \|u\| \geq 1,
-\end{align*}
-
-where $\|\cdot\|$ is the Euclidean norm.
+\begin{equation*}
+    \hat{L}^{\text{kNN}}_{M, N}(x) 
+    = \frac{\frac{1}{M R_M^d} \sum_{i=1}^M \hat{L}_{N, i} K\left(\frac{x - X_i}{R_M}\right)}{\frac{1}{M R_M^d} \sum_{i=1}^M K\left(\frac{x - X_i}{R_M}\right)}
+    \end{equation*}
+    where $R_k$ is the Euclidean distance between $X_i$ and its $k$-th nearest neighbor, and $K:\mathbb{R}^d \rightarrow \mathbb{R}$ is a bounded, nonnegative kernel function satisfying 
+    \begin{align*}
+        \int K(u) du & = 1, \\
+        K(u) &= 0 ~~~ ~\text{for}~ \|u\| \geq 1,
+    \end{align*}
+where $\|\cdot\|$ is the Euclidean norm, and $k$ is the number of nearest neighbors to consider.
 For a kNN estimator trained with $M$ i.i.d. observations, denote $B_M(x)$ and $V_M(x)$ as its bias and variance at point $x$, respectively.
 
 \begin{assumption} \label{as1:knn}
@@ -611,23 +694,23 @@ The following lemma from~\cite{mack1981local} characterizes the pointwise conver
 Let $h$ be a smooth function, i.e., Assumption~\ref{as1:sns-smooth} holds.
 The bias of the estimator of $\rho$ for a kNN-based nested simulation procedure is analyzed following Taylor expansion.
 \begin{align} \label{eq1:bias-knn}
-    & \mathbb{E} \left[ h(\hat{g}^{\text{kNN}}_{M, n}(X)) - h(g(X)) \right] \nonumber \\
-    & = \mathbb{E} \left[ h'(g(X)) \left( \hat{g}^{\text{kNN}}_{M, n}(X) - g(X) \right) + \frac{1}{2} h''(z) \left( \hat{g}^{\text{kNN}}_{M, n}(X) - g(X) \right)^2 \right] 
+    & \mathbb{E} \left[ h(\hat{L}^{\text{kNN}}_{M, n}(X)) - h(L) \right] \nonumber \\
+    & = \mathbb{E} \left[ h'(L) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right) + \frac{1}{2} h''(z) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right)^2 \right] 
 \end{align}
-where the bias is decomposed into two terms, and $z$ is between $\hat{g}^{\text{kNN}}_{M, n}(X)$ and $g(X)$.
+where the bias is decomposed into two terms, and $z$ is between $\hat{L}^{\text{kNN}}_{M, n}(X)$ and $L$.
 The first term in Equation~\ref{eq1:bias-knn} is 
 \begin{align} \label{eq1:bias-knn-1}
-    & ~~~~ \mathbb{E} \left[ h'(g(X)) \left( \hat{g}^{\text{kNN}}_{M, n}(X) - g(X) \right) \right]  \nonumber \\
-    & = \mathbb{E} \left[ h'(g(X)) \mathbb{E}\left[ \hat{g}^{\text{kNN}}_{M, n}(X) - g(X) |X\right] \right] \nonumber \\
-    & = \int_{\Omega} h'(g(x)) B_M(x) f_X(x) dx \nonumber \\
-    & = \int_{\Omega} h'(g(x)) \left( A_{\text{kNN}}(x) \left(\frac{k}{M}\right)^{2/d} \left(1+o_x(1)\right) + B_{\text{kNN}} \cdot \left(\frac{1}{k} + o_x\left(\frac{1}{k}\right)\right) \right) f_X(x) dx \nonumber \\
-    & = \left(\frac{k}{M}\right)^{2/d} \mathbb{E} \left[ h'(g(X)) A_{\text{kNN}}(X) \right] (1+ o(1)) + \frac{B_{\text{kNN}}}{k} \mathbb{E} \left[ h'(g(X)) \right] (1+ o(1)).
+    & ~~~~ \mathbb{E} \left[ h'(L) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right) \right]  \nonumber \\
+    & = \mathbb{E} \left[ h'(L) \mathbb{E}\left[ \hat{L}^{\text{kNN}}_{M, n}(X) - L |X\right] \right] \nonumber \\
+    & = \int_{\Omega} h'(L) B_M(x) f_X(x) dx \nonumber \\
+    & = \int_{\Omega} h'(L) \left( A_{\text{kNN}}(x) \left(\frac{k}{M}\right)^{2/d} \left(1+o_x(1)\right) + B_{\text{kNN}} \cdot \left(\frac{1}{k} + o_x\left(\frac{1}{k}\right)\right) \right) f_X(x) dx \nonumber \\
+    & = \left(\frac{k}{M}\right)^{2/d} \mathbb{E} \left[ h'(L) A_{\text{kNN}}(X) \right] (1+ o(1)) + \frac{B_{\text{kNN}}}{k} \mathbb{E} \left[ h'(L) \right] (1+ o(1)).
 \end{align}
 
 The second term in Equation~\ref{eq1:bias-knn} is 
 \begin{align} \label{eq1:bias-knn-2}
-    & ~~~~ \mathbb{E} \left[ h''(z) \left( \hat{g}^{\text{kNN}}_{M, n}(X) - g(X) \right)^2 \right]  \nonumber \\
-    & = \int_{\Omega} h''(g(z)) \left(B_M^2(X) + V_M(x)\right) f_X(x) dx \nonumber \\
+    & ~~~~ \mathbb{E} \left[ h''(z) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right)^2 \right]  \nonumber \\
+    & = \int_{\Omega} h''(z) \left(B_M^2(X) + V_M(x)\right) f_X(x) dx \nonumber \\
     & \leq C_2 \int_{\Omega} \left( \frac{C_{\text{kNN}} \cdot \text{Var}[Y| X = x]}{k} \int K^2(u) du + o\left(\frac{1}{k}\right) \right) f_X(x) dx \nonumber \\
     & + C_2 \int_{\Omega} \left( A_{\text{kNN}}(x) \left(\frac{k}{M}\right)^{2/d} \left(1+o_x(1)\right) + B_{\text{kNN}} \cdot \left(\frac{1}{k} + o_x\left(\frac{1}{k}\right)\right) \right)^2 f_X(x) dx 
 \end{align}
@@ -639,7 +722,7 @@ Set $k = \mathcal{O}(M^{\frac{2}{2+d}})$ and $M = \mathcal{O}(\Gamma)$, the bias
 \begin{definition} \label{def:knn-smooth-bias}
     Let $h$ be a smooth function. 
     The bias of the kNN-based nested simulation procedure converges in the order of $\Gamma^{-\frac{2}{2+d}}$, that is,
-    $$ \mathbb{E} \left[ h(\hat{g}^{\text{kNN}}_{M, n}(X)) - h(g(X)) \right]  = \mathcal{O}(\Gamma^{-\frac{2}{2+d}}).$$
+    $$ \mathbb{E} \left[ h(\hat{L}^{\text{kNN}}_{M, n}(X)) - h(L) \right]  = \mathcal{O}(\Gamma^{-\frac{2}{2+d}}).$$
 \end{definition}
 
 Definition~\ref{def:knn-smooth-bias} is obtained by matching the orders of the bias terms in Equation~\ref{eq1:bias-knn-1} and~\ref{eq1:bias-knn-2}.
@@ -662,7 +745,7 @@ The results are summarized in~\ref{tab1:asymConv-order}, where the orders of con
     \tiny
     \begin{tabular}{|l|c|c|c|c|c|}
     \hline
-    \textbf{Estimator for} $g(X)$ & \textbf{Smooth} $h$ & \textbf{Lipschitz} / \textbf{hockey-stick} $h$ & \textbf{Indicator} $h$ & \textbf{VaR} & \textbf{CVaR} \\
+    \textbf{Estimator for} $L$ & \textbf{Smooth} $h$ & \textbf{Lipschitz} / \textbf{hockey-stick} $h$ & \textbf{Indicator} $h$ & \textbf{VaR} & \textbf{CVaR} \\
     \hline
     Standard Monte Carlo & $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-1/2})$ / $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-2/3})$ & $\times$ \\
     \hline
@@ -741,19 +824,19 @@ Furthermore, the likelihood ratio-based nested simulation procedure requires the
     The inner sample $H \sim f_H(y)$ is independent of $X$. Samples $\{X_i, i=1,\ldots,M\}$ and $\{H_i, i=1,\ldots,N\}$ are i.i.d. samples from $f_X(x)$ and $f_H(y)$, respectively.
 \end{assumption}
 
-Assumption~\ref{as1:likelihood-ratio-independence} is necessary for $\hat{g}^{\text{LR}}_N(X_i)$ to be an unbiased and strongly consistent estimator of $g(X_i)$, which is a necessary condition for the convergence of $\hat{\rho}^{\text{LR}}_{M,N}$, the likelihood ratio-based nested simulation estimator of $\rho$.
+Assumption~\ref{as1:likelihood-ratio-independence} is necessary for $\hat{L}^{\text{LR}}_N(X_i)$ to be an unbiased and strongly consistent estimator of $L_i$, which is a necessary condition for the convergence of $\hat{\rho}^{\text{LR}}_{M,N}$, the likelihood ratio-based nested simulation estimator of $\rho$.
 Assumption~\ref{as1:likelihood-ratio-marginal-density} and Assumption~\ref{as1:likelihood-ratio-independence} are likely to be satisfied in practice, as one can simulate $H$ separately from $X$ and evaluate $Y(H, X)$ for each pair of $(H, X)$.
 
 \subsection{Assumptions for the Kernel-Based Procedure}
-For the kernel-based nested simulation procedure,~\cite{hong2017kernel} simplifies the analysis by assuming that for each $X_i$, the inner simulation budget $N$ is fixed together with the variance of the inner simulation noise $\bar{Z}_N(X_i)$.
+For the kernel-based nested simulation procedure,~\cite{hong2017kernel} simplifies the analysis by assuming that for each $X_i$, the inner simulation budget $N$ is fixed together with the variance of the inner simulation noise $\bar{Z}_{N, i}$.
 In essence, this fixed variance design treats the $(X_i, \bar{Y}_{N, i})$ as independent and identically distributed observations of $(X, Y)$, and the kernel-based nested simulation procedure is analyzed as a nonparametric regression problem.
-Regularity conditions on $f_X(x)$, the density of $X$, and the conditional second moment of $Y$ are assumed to ensure the convergence of $\hat{g}^{\text{KS}}_{M, N}(X)$, the kernel smoothing estimator of $g(X)$.
+Regularity conditions on $f_X(x)$, the density of $X$, and the conditional second moment of $Y$ are assumed to ensure the convergence of $\hat{L}^{\text{KS}}_{M, N}(X)$, the kernel smoothing estimator of $L$.
 
 \begin{assumption}
     $f_X(x)$ and $\mathbb{E} \left[ Y^2 | X = x \right]$ exist, $f(x) > 0$, and $f(x)$ is thrice continuously differentiable at $x$ with bounded third-order derivative.
 \end{assumption}
 
-Further assumptions are made on the kernel function $K_w$ and the bandwidth $w$ to ensure the convergence of the kernel smoothing estimator $\hat{g}^{\text{KS}}_{M, N}(X)$.
+Further assumptions are made on the kernel function $K_w$ and the bandwidth $w$ to ensure the convergence of the kernel smoothing estimator $\hat{L}^{\text{KS}}_{M, N}(X)$.
 % A similar set of assumptions is made in~\cite{jennen1988unifying} for the convergence analysis of a kernel smoothing estimator with kernel functions of higher orders.
 
 \subsection{Assumptions for the KRR-Based Procedure}
