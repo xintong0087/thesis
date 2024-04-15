@@ -7,3 +7,10 @@ For financial products like option portfolios and variable annuity contracts, tr
 This is where advanced Monte Carlo simulation techniques, particularly nested simulation procedures, become indispensable.
 In contrast to finite-difference methods, a Monte Carlo simulation scheme is more flexible and can be easily adapted to model tail risk with a rule-based design.
 In this thesis, we focus on building and analyzing nested simulation procedures for risk management applications of financial derivatives and insurance products.
+Nested simulation, also known as nested stochastic modeling and stochastic-on-stochastic modeling, becomes necessary when stochastic simulation of a parameter of interest is contingent on another quantity to be determined stochastically.
+In the context of financial engineering, nested simulation is used to model the risk of a financial product whose payoff depends on a set of underlying risk factors.
+A nested simulation procedure consists of two levels of simulation: the outer level simulates the underlying risk factors, while the inner level estimates the conditional mean of the payoff for a given risk factor with another Monte Carlo simulation.
+
+
+
+
