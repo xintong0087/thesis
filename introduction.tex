@@ -8,8 +8,11 @@ This is where advanced Monte Carlo simulation techniques, particularly nested si
 In contrast to finite-difference methods, a Monte Carlo simulation scheme is more flexible and can be easily adapted to model tail risk with a rule-based design.
 In this thesis, we focus on building and analyzing nested simulation procedures for risk management applications of financial derivatives and insurance products.
 Nested simulation, also known as nested stochastic modeling and stochastic-on-stochastic modeling, becomes necessary when stochastic simulation of a parameter of interest is contingent on another quantity to be determined stochastically.
-In the context of financial engineering, nested simulation is used to model the risk of a financial product whose payoff depends on a set of underlying risk factors.
-A nested simulation procedure consists of two levels of simulation: the outer level simulates the underlying risk factors, while the inner level estimates the conditional mean of the payoff for a given risk factor with another Monte Carlo simulation.
+In the context of financial engineering, nested simulation is used to model the tail risk of a contract whose payoff depends on a set of underlying risk factors.
+For example, estimating the value of an exotic option at a risk horizon requires simulation given a realization of the underlying assets upto that horizon.
+A standard nested simulation procedure consists of two levels of simulation: the outer level simulates the underlying risk factors, while the inner level estimates the value of interest with the inner sample mean from another level of Monte Carlo simulation.
+The nested structure allows for accurate estimation given sufficient computational resources, but it also introduces additional complexity in the simulation design and implementation.
+% ~\cite{gordy2010nested} investigate the standard nested simulation method for estimating tail risk measures of financial portfolios and provide an optimal resource allocation strategy for nested simulation.
 
 
 
