@@ -49,5 +49,6 @@
 \contentsline {subsection}{\numberline {4.2.1}Deep Hedging Approaches}{79}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Value-based and Policy-based Deep Reinforcement Learning}{81}{subsection.4.2.2}%
 \contentsline {section}{\numberline {4.3}Proximal Policy Optimization for Hedging Variable Annuities}{83}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Markov Decision Process (MDP) for Hedging VAs}{83}{subsection.4.3.1}%
-\contentsline {chapter}{\textbf {References}}{86}{section*.42}%
+\contentsline {subsection}{\numberline {4.3.1}Simulation Model for Variable Annuities Hedging}{83}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Markov Decision Process (MDP) for Hedging VAs}{86}{subsection.4.3.2}%
+\contentsline {chapter}{\textbf {References}}{88}{section*.42}%

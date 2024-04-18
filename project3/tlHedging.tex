@@ -119,8 +119,71 @@ The policy network is updated by performing gradient ascent with respect to the 
 The PPO algorithm is particularly well-suited for continuous action spaces and has been successfully applied to a wide range of reinforcement learning tasks, including robotic control, game playing, and financial trading.
 In the context of hedging VAs, PPO can be used to learn an optimal hedging policy by maximizing a reward function that reflects the hedging performance.
 
+\subsection{Simulation Model for Variable Annuities Hedging}
+
+Consider a generic VA contract with maturity $T>0$ periods, e.g., $T=240$ months.
+Denote the policyholder's (random) time of death by $\tau>0$.
+Then the contract expires at $T'=\min\{T,\tau\}$, i.e., the earlier of the contract maturity and the death of the policyholder.
+Let $S_t$, $F_t$, and $G_t$ be the indexed stock price, the subaccount value and the guarantee value, respectively, at time $t=1,2,\ldots,T$.
+Evolution of the subaccount value and the guarantee value of a VA contract affect the contract payout.
+Note that the policyholder's (random) time of death also affects the timing of the benefit payout for certain types of VA such as GMDB, but this is not considered in our study for simplicity.
+For clarity, we use $F_t$ and $F_{t_+}$ to denote the sub-account value just before and just after the withdrawal at time $t$, if any.
+Let $\eta_g$ be the gross rate of management fee that is deducted from the fund value at each period and let $\eta_n < \eta_g$ be the net rate of management fee income to the insurer.
+The difference between the gross management fee and the net management fee income represents the incurred investment expenses.
+
+At the inception of the contract, i.e., $t=0$, we assume that the whole premium is invested in the stock index and the guarantee base is set to the sub-account value:
+\begin{equation*}
+    S_0=F_0=G_0.
+\end{equation*}
+At each time $t=1,\ldots,T$, the following events take place in the following order:
+\begin{enumerate}
+    \item The sub-account value changes according to the growth of the underlying stock and the (gross) management fee is deducted. That is, 
+        \begin{equation*}
+            F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g),
+        \end{equation*} 
+    where $(x)^+=\max\{x,0\}$ and $F_{(t-1)_+}$ will be defined later. The insurer's income at time $t$ is the net management fee, i.e., $F_t\eta_n$. 
+
+    \item The guarantee value ratchets up (ratcheting is a common feature in GMWB) if the sub-account value exceeds the previous guarantee value, i.e., 
+        \begin{equation*}
+            G_t = \max\{G_{t-1},F_t\}.
+        \end{equation*} 
+
+    \item The withdrawal is made (for GMWB) and is deducted from the sub-account value, i.e., 
+        \begin{equation*}
+            F_{t_+} = (F_t - I_t)^+,
+        \end{equation*} 
+    where $I_t = \gamma G_t$. A GMMB can be modeled with $\gamma = 0$.
+\end{enumerate}
+
+Consider a VA contract whose delta hedge portfolio at any time~$t$, $t=0,1,\ldots,T-1$, consists of $\Delta_t$ units in the underlying stock and $B_t$ amount of a risk-free zero-coupon bond maturing at time $T$.
+The value of the hedge portfolio at time~$(t-1)$ is:
+\begin{equation*}
+    H_{t-1} = \Delta_{t-1} S_{t-1} + B_{t-1},
+\end{equation*}
+where $S_t$ is the underlying stock price and any time $t>0$.
+This hedge portfolio is brought forward to the next rebalancing time~$t$, when its value becomes:
+\begin{equation*}
+    H_{t}^{bf} = \Delta_{t-1} S_{t} + B_{t-1}e^{r}.
+\end{equation*}
+Therefore, the time~$t$ hedging error, i.e., the cash flow incurred by the insurer due to rebalancing at time~$t$, is
+\begin{equation}
+    HE_t = H_t - H^{bf}_t, \quad t=1,\ldots, T-1.
+\end{equation}
+The P\&L of the VA contract includes the cost of the initial hedge ($H_0$), the hedging errors~\eqref{eq2:hedgingerror}, the unwinding of the hedge at maturity ($H^{bf}_T$), and the contract payout $P_t$ at time~$t\in \{0,\ldots,T\}$.
+Mathematically, the present value of these cash flows is given by
+\begin{align}
+L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t  + \sum_{t=1}^T e^{-rt} P_t \\ 
+    & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} \Delta_{t-1} (S_{t-1} - S_{t}) + B_{t-1}(1-e^{r}) + \sum_{t=1}^T e^{-rt} P_t \nonumber \\
+    & = \sum_{t=1}^T e^{-rt} \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + P_t \right) \label{eq3:lossrv}
+\end{align}
+where the last equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$.
+It is worth noting that the formulation Equation~\ref{eq3:lossrv} differ from the traditional loss reserve calculation in Equation~\ref{eq2:lossrv} as the later includes $V_0$, the unhedged liability at time $t=0$.
+Since we are interested in a model-free deep reinforcement learning approach to hedging VAs, the insurer does not have explicit knowledge of the underlying asset price dynamics or the future mortality rates when the contract is first issued.
+Therefore, the insurer must learn an optimal hedging policy from historical market data without relying on a predefined model to estimate $V_0$.
+
 
 \subsection{Markov Decision Process (MDP) for Hedging VAs}
+
 A Markov Decision Process (MDP) provides a mathematical framework for solving sequential decision-making tasks in situations where outcomes are partly random and partly under the control of an agent. 
 In the context of hedging VAs, an MDP can be used to model the decision-making process of an insurer who aims to minimize the liability of the VA by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets.
 In this section, we reformulate the hedging problem of VAs from Section~\ref{subsec:VApayout} as an MDP and define the key components of the MDP.
@@ -143,22 +206,27 @@ The objective in an MDP is to find a policy, $\pi: \mathcal{S} \rightarrow \math
 
 where $R_{t+1} = \mathcal{R}(s_i, a_i, s_{i+1})$ is the reward received by the agent after taking action $a_i$ in state $s_i$ and transitioning to state $s_{i+1}$, and the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
 
-In the context of hedging VAs, the initial states $\mu_0$ specifies the initial value of the VA and the market specifications. 
-The state space $\mathcal{S}$ represent the information available to the agent, such as current value of the underlying asset ($S_t$), the current subaccount value ($F_t$), and the guarantee value ($G_t$), as well as other relevant contract specifications.
-The action space $\mathcal{A}$ represent the hedging decisions, such as the hedging portfolio weights.
-The state transition probability distribution $\mathcal{P}$ and the reward function $\mathcal{R}$ are derived from the dynamics of the VA and the market specifications. Instead of having an infinite time horizon, the final reward is obtained at the maturity of the VA contract. Hence, $R_{t} = 0$ for all $t > T$.
-The discount factor $\gamma$ models the present value of future rewards and is conveniently inherited from the risk-free rate. 
-
-Considering the task of hedging a GMWB contract, the hedging strategy aims to minimize the insurer's liability $L_t$ at each time $t=1,\ldots,T$ by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets. The objective is to find a policy $\pi$ that minimizes the expected liability over time, i.e., 
+In the context of hedging VAs, the state space $\mathcal{S}$ represents the information available to the agent: the current value of the underlying asset ($S_t$), the current subaccount value ($F_t$), the guarantee value ($G_t$), the time to maturity ($\tau = T-t$), and the previous hedging weight ($\Delta_{t-1}$). 
+Let $\mathbf{S}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}) \in \mathcal{S} $ denote the state vector at time $t$.
+That is,
+$$
+    (S_t, F_t, G_t, \tau, \Delta_{t-1})  \in \mathbb{R}^+ \times \mathbb{R}^+ \times \mathbb{R}^+ \times \mathbb{N} \times \mathbb{R}.
+$$
+The action space $\mathcal{A}$ only contains the hedging portfolio weights ($\Delta_t$).
+$$
+    \Delta_t \in \mathbb{R}.
+$$
+The initial states $\mu_0 = (S_0, F_0, G_0, T, 0)$ specifies the initial values of the underlying asset, the subaccount value, the guarantee value, and the time to maturity. 
+The previous hedging weight $\Delta_{t-1}$ at $t=0$ is set to zero as no prior hedging has been done.
+The state transition probability distribution $\mathcal{P}$ is conveniently inherited from the dynamics of the VA in Section~\ref{subsec:VApayout}, and the reward function $\mathcal{R}$ and discount factor $\gamma$ are derived from Equation~\ref{eq2:lossrv}.
+\begin{align*}
+    R_{t+1} = -\Delta_t (S_t - e^{-r}S_{t+1}) + P_{t+1}, \quad & t \in \{0,\ldots,T-1\}, \\
+    & \gamma  = e^{-r},
+\end{align*}
+where the discount factor $\gamma$ models the present value of future rewards and is conveniently inherited from the risk-free rate $r$. 
+Hence, the objective of the insurer is to find a policy $\pi$ that minimizes the expected liability over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
 
 \begin{equation}
-    \min_{\pi} \mathbb{E}[\sum_{t=1}^{T} \gamma^t L_t | \pi, s_0],
+    V^{\pi}_{\mathcal{M}}(s) = \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t R_{t+1} | \pi, s\right],
 \end{equation}
-
-where it can be conveniently rewritten as the value function $V^{\pi}_{\mathcal{M}}(s)$ in Equation~\ref{eq3:V_pi} by setting the reward function $R_{t} = -L_t$ and the discount factor $\gamma = \frac{1}{1+r}$. 
-Other value functions can be used to optimize over a risk measure on the cumulative liability, such as the Value-at-Risk (VaR) or the Conditional Value-at-Risk (CVaR).
-Denote the risk measure as $\rho_{\alpha}$, where $\alpha$ is the confidence level, then the value function can be set as
-
-\begin{equation}
-    V^{\pi}_{\mathcal{M}}(s) = \rho_{\alpha}(\sum_{t=1}^{T} \gamma^t L_t | \pi, s_0).
-\end{equation}
+where the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
