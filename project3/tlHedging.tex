@@ -348,14 +348,20 @@ At each timestep, the observations are normalized and cliped between $-10$ and $
 For PPO, we follow the suggestions in~\cite{schulman2017proximal} and set the clipping hyperparameter $\epsilon$ to $0.2$ to prevent large policy updates. 
 More specifically, our implementation of the PPO uses a generalized advantage estimation~\citep{schulman2015high} to estimate the advantage function.
 The agent interacts with the environment for $10^6$ episodes, and the policy and value networks are updated every $64$ episodes and evaluated every $1000$ episodes.
-The performance of the agent is evaluated based on the average reward over an independent test set of $10^5$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
+The performance of the agent is evaluated based on the average reward over an independent test set of $10^4$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{./project3/figures/reward_distribution.png}
-    \caption{Performance of PPO for Hedging GMMB Contracts} 
+    \includegraphics[width=0.8\textwidth]{./project3/figures/loss_distribution.png}
+    \caption{Performance of PPO for Hedging GMMB Contracts on GBM Asset Model} 
     \label{fig3:ppo_hedging}
 \end{figure}
+
+Figure~\ref{fig3:ppo_hedging} shows the performance of the PPO algorithm for hedging GMMB contracts on a geometric Brownian motion (GBM) asset model.
+The figure shows the distribution of the hedging errors incurred by the agent over the $10^4$ test episodes.
+The hedging errors are calculated as the difference between the actual cash flow incurred by the agent due to rebalancing and the expected cash flow based on the optimal hedging policy.
+The results show that the PPO algorithm is able to learn an optimal hedging policy that minimizes the hedging errors, and it surpasses the benchmark delta hedging strategy in terms of hedging performance.
+
 
 \section{Transfer Learning for Hedging Variable Annuities}
 
