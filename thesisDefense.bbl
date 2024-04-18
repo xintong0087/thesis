@@ -54,6 +54,12 @@ Broadie, M., Du, Y., and Moallemi, C.~C. (2015).
 \newblock Risk estimation via regression.
 \newblock {\em Operations Research}, 63(5):1077--1097.
 
+\bibitem[Brockman et~al., 2016]{brockman2016openai}
+Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang,
+  J., and Zaremba, W. (2016).
+\newblock Openai gym.
+\newblock {\em arXiv preprint arXiv:1606.01540}.
+
 \bibitem[Buehler et~al., 2019]{buehler2019deep}
 Buehler, H., Gonon, L., Teichmann, J., and Wood, B. (2019).
 \newblock Deep hedging.
@@ -81,6 +87,11 @@ Cathcart, M.~J., Lok, H.~Y., McNeil, A.~J., and Morrison, S. (2015).
 \newblock Calculating variable annuity liability “greeks” using monte carlo
   simulation.
 \newblock {\em ASTIN Bulletin: The Journal of the IAA}, 45(2):239--266.
+
+\bibitem[Chen et~al., 2020]{chen2020note}
+Chen, P., Lezmi, E., Roncalli, T., and Xu, J. (2020).
+\newblock A note on portfolio optimization with quadratic transaction costs.
+\newblock {\em arXiv preprint arXiv:2001.01612}.
 
 \bibitem[Chong et~al., 2023]{chong2023pseudo}
 Chong, W.~F., Cui, H., and Li, Y. (2023).
@@ -192,6 +203,11 @@ Gan, G. and Lin, S.~X. (2015).
 \newblock Valuation of large variable annuity portfolios under nested
   simulation: A functional data approach.
 \newblock {\em Insurance: Mathematics and Economics}, 62:138--150.
+
+\bibitem[G{\^a}rleanu and Pedersen, 2013]{garleanu2013dynamic}
+G{\^a}rleanu, N. and Pedersen, L.~H. (2013).
+\newblock Dynamic trading with predictable returns and transaction costs.
+\newblock {\em The Journal of Finance}, 68(6):2309--2340.
 
 \bibitem[Giles, 2015]{giles2015multilevel}
 Giles, M.~B. (2015).
@@ -460,6 +476,12 @@ OSFI (2017).
 \newblock Life insurance capital adequacy test.
 \newblock Technical report, Office of the Superintendent of Financial
   Institutes Canada.
+
+\bibitem[Paszke et~al., 2019]{paszke2019pytorch}
+Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen,
+  T., Lin, Z., Gimelshein, N., Antiga, L., et~al. (2019).
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock {\em Advances in neural information processing systems}, 32.
 
 \bibitem[Pedregosa et~al., 2011]{scikit-learn}
 Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,

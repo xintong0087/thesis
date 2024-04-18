@@ -9,44 +9,44 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 Database file #1: refP1.bib
 Database file #2: refP2.bib
 Database file #3: refP3.bib
-You've used 112 entries,
+You've used 116 entries,
             1935 wiz_defined-function locations,
-            1098 strings with 23664 characters,
-and the built_in function-call counts, 46571 in all, are:
-= -- 4599
-> -- 2055
-< -- 77
-+ -- 725
-- -- 695
-* -- 4015
-:= -- 8109
-add.period$ -- 356
-call.type$ -- 112
-change.case$ -- 903
-chr.to.int$ -- 110
-cite$ -- 112
-duplicate$ -- 1693
-empty$ -- 3123
-format.name$ -- 873
-if$ -- 9039
+            1116 strings with 24468 characters,
+and the built_in function-call counts, 48409 in all, are:
+= -- 4763
+> -- 2187
+< -- 78
++ -- 775
+- -- 743
+* -- 4187
+:= -- 8450
+add.period$ -- 368
+call.type$ -- 116
+change.case$ -- 946
+chr.to.int$ -- 114
+cite$ -- 116
+duplicate$ -- 1746
+empty$ -- 3215
+format.name$ -- 927
+if$ -- 9374
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 109
-newline$ -- 572
-num.names$ -- 338
-pop$ -- 757
+missing$ -- 113
+newline$ -- 592
+num.names$ -- 350
+pop$ -- 795
 preamble$ -- 1
-purify$ -- 903
+purify$ -- 946
 quote$ -- 0
-skip$ -- 1294
+skip$ -- 1337
 stack$ -- 0
-substring$ -- 3238
-swap$ -- 224
+substring$ -- 3319
+swap$ -- 228
 text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 662
+type$ -- 686
 warning$ -- 0
-while$ -- 383
+while$ -- 393
 width$ -- 0
-write$ -- 1470
+write$ -- 1520

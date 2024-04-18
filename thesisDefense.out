@@ -54,4 +54,5 @@
 \BOOKMARK [2][-]{subsection.4.3.3}{Model-Free PPO for Hedging Variable Annuities}{section.4.3}% 54
 \BOOKMARK [1][-]{section.4.4}{Numerical Experiment}{chapter.4}% 55
 \BOOKMARK [1][-]{section.4.5}{Transfer Learning for Hedging Variable Annuities}{chapter.4}% 56
-\BOOKMARK [0][-]{section*.42}{References}{}% 57
+\BOOKMARK [2][-]{subsection.4.5.1}{Evaluation Metrics}{section.4.5}% 57
+\BOOKMARK [0][-]{section*.43}{References}{}% 58
