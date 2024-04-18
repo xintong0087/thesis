@@ -59,6 +59,11 @@ Buehler, H., Gonon, L., Teichmann, J., and Wood, B. (2019).
 \newblock Deep hedging.
 \newblock {\em Quantitative Finance}, 19(8):1271--1291.
 
+\bibitem[Carbonneau, 2021]{carbonneau2021deep}
+Carbonneau, A. (2021).
+\newblock Deep hedging of long-term financial derivatives.
+\newblock {\em Insurance: Mathematics and Economics}, 99:327--340.
+
 \bibitem[Carlini and Wagner, 2017]{carlini2017towards}
 Carlini, N. and Wagner, D. (2017).
 \newblock Towards evaluating the robustness of neural networks.
