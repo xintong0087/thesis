@@ -350,6 +350,13 @@ More specifically, our implementation of the PPO uses a generalized advantage es
 The agent interacts with the environment for $10^6$ episodes, and the policy and value networks are updated every $64$ episodes and evaluated every $1000$ episodes.
 The performance of the agent is evaluated based on the average reward over an independent test set of $10^5$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./project3/figures/reward_distribution.png}
+    \caption{Performance of PPO for Hedging GMMB Contracts} 
+    \label{fig3:ppo_hedging}
+\end{figure}
+
 \section{Transfer Learning for Hedging Variable Annuities}
 
 Transfer learning is a machine learning technique that leverages knowledge gained from one task to improve performance on another related task.

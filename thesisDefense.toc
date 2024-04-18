@@ -54,5 +54,5 @@
 \contentsline {subsection}{\numberline {4.3.3}Model-Free PPO for Hedging Variable Annuities}{87}{subsection.4.3.3}%
 \contentsline {section}{\numberline {4.4}Numerical Experiment}{90}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Transfer Learning for Hedging Variable Annuities}{91}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Evaluation Metrics}{93}{subsection.4.5.1}%
-\contentsline {chapter}{\textbf {References}}{95}{section*.43}%
+\contentsline {subsection}{\numberline {4.5.1}Evaluation Metrics}{94}{subsection.4.5.1}%
+\contentsline {chapter}{\textbf {References}}{95}{section*.44}%
