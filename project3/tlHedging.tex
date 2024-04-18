@@ -99,7 +99,7 @@ Model-free deep reinforcement learning algorithms can be broadly categorized int
     
     A policy gradient method uses policy gradient theorem to update the policy by performing gradient ascent with respect to the policy parameters.
     Representative algorithms include the Trust Region Policy Optimization (TRPO) algorithm proposed by~\cite{schulman2015trust} and the Proximal Policy Optimization (PPO) algorithm proposed by~\cite{schulman2017proximal}.
-
+    ~\cite{du2020deep} show that the PPO algorithm is more sample efficient and stable than the value-based approaches in training agents to hedge financial derivatives.
     The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the PPO algorithm to hedge GMMB with a GMDB rider under the Black-Scholes framework.
     However,~\cite{chong2023pseudo} implement the PPO algorithm with the knowing of the underlying asset model and the risk factors affecting the mortality rate, while our study focuses on the model-free deep reinforcement learning approach to hedge VAs without explicit model assumptions.
 
@@ -113,7 +113,7 @@ While TRPO uses a hard coded constraint on the policy update to ensure that the 
 This allows for more significant policy updates while maintaining the stability of the training process.
 
 The PPO algorithm consists of two main components: the policy network and the value network.
-The policy network learns the policy by outputting the action based on the current state, while the value network learns the value function by approximating the expected cumulative reward over time following the policy.
+The policy network learns the policy by outputting the action based on the current state, while the value network learns the value function (and an advantage function) by approximating the expected cumulative reward over time following the policy.
 The policy network is updated by performing gradient ascent with respect to the policy parameters, while the value network is updated by minimizing the mean squared error between the predicted value and the target value.
 
 The PPO algorithm is particularly well-suited for continuous action spaces and has been successfully applied to a wide range of reinforcement learning tasks, including robotic control, game playing, and financial trading.
@@ -137,16 +137,22 @@ At the inception of the contract, i.e., $t=0$, we assume that the whole premium 
 \end{equation*}
 At each time $t=1,\ldots,T$, the following events take place in the following order:
 \begin{enumerate}
+    \item The dynamic lapse rate $q_t$ is applied to the contract, i.e., $q$ of the policyholders leave the contract at time $t$.
+        \begin{equation*}
+            q_t = q_t^B \cdot \text{clip} (M_q (\frac{G_{t-1}}{F_{t-1}} - D_q), L_q, U_q),
+        \end{equation*}
+    where $q_t^B$ is the base lapse rate, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners’(NAIC) Valuation Manual 21~\citep{naic2021}.
     \item The sub-account value changes according to the growth of the underlying stock and the (gross) management fee is deducted. That is, 
         \begin{equation*}
-            F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g),
+            F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g)\cdot(1-q_t),
         \end{equation*} 
     where $(x)^+=\max\{x,0\}$ and $F_{(t-1)_+}$ will be defined later. The insurer's income at time $t$ is the net management fee, i.e., $F_t\eta_n$. 
 
     \item The guarantee value ratchets up (ratcheting is a common feature in GMWB) if the sub-account value exceeds the previous guarantee value, i.e., 
         \begin{equation*}
-            G_t = \max\{G_{t-1},F_t\}.
+            G_t = \max\{G_{t-1}\cdot(1-q_t),F_t\}.
         \end{equation*} 
+    A GMDB can be modeled with $G_t = G_{t-1}\cdot(1-q_t)$.
 
     \item The withdrawal is made (for GMWB) and is deducted from the sub-account value, i.e., 
         \begin{equation*}
@@ -177,12 +183,19 @@ L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t  + \sum_{t=1}^T e
     & = \sum_{t=1}^T e^{-rt} \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + P_t \right) \label{eq3:lossrv}
 \end{align}
 where the last equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$.
+For a GMMB contract, the payoff at time~$t$ is $P_t$ is defined as
+\begin{equation} \label{eq3:gmmb_payout}
+    P_t = 
+    \begin{cases}
+        \max\{G_T - F_T, 0\} & \text{if } t = T, \\
+        0 & \text{otherwise}.
+    \end{cases}
+\end{equation}
 It is worth noting that the formulation Equation~\ref{eq3:lossrv} differ from the traditional loss reserve calculation in Equation~\ref{eq2:lossrv} as the later includes $V_0$, the unhedged liability at time $t=0$.
 Since we are interested in a model-free deep reinforcement learning approach to hedging VAs, the insurer does not have explicit knowledge of the underlying asset price dynamics or the future mortality rates when the contract is first issued.
 Therefore, the insurer must learn an optimal hedging policy from historical market data without relying on a predefined model to estimate $V_0$.
 
-
-\subsection{Markov Decision Process (MDP) for Hedging VAs}
+\subsection{Markov Decision Process}
 
 A Markov Decision Process (MDP) provides a mathematical framework for solving sequential decision-making tasks in situations where outcomes are partly random and partly under the control of an agent. 
 In the context of hedging VAs, an MDP can be used to model the decision-making process of an insurer who aims to minimize the liability of the VA by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets.
@@ -198,15 +211,30 @@ An MDP is defined by the tuple $\mathcal{M} = (\mu_0, \mathcal{S}, \mathcal{A}, 
     \item $\gamma$ is a discount factor, $\gamma \in [0,1]$,  which models the present value of future rewards.
 \end{itemize}
 
-The objective in an MDP is to find a policy, $\pi: \mathcal{S} \rightarrow \mathcal{A}$, that maximizes the cumulative reward over time, often referred to as the value function for a policy $\pi$ at state $s$: 
+The objective in an MDP is to find a policy, $\pi: \mathcal{S} \rightarrow \mathbb{P}(\mathcal{A})$, that maximizes the cumulative reward over time, often referred to as the state value function for a policy $\pi$ at state $s$: 
 
 \begin{equation} \label{eq3:V_pi}
-    V^{\pi}_{\mathcal{M}}(s) = \mathbb{E}_{s_0 \sim \mu_0, a_i \sim \pi(\cdot|s_i), s_{i+1} \sim \mathcal{P}(\cdot|s, a)} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi, s \right],
+    V^{\pi}_{\mathcal{M}}(s_t) = \mathbb{E}_{s_{t+1}, a_{t}} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi, s_t \right],
 \end{equation}
 
-where $R_{t+1} = \mathcal{R}(s_i, a_i, s_{i+1})$ is the reward received by the agent after taking action $a_i$ in state $s_i$ and transitioning to state $s_{i+1}$, and the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
+where $R_{t+1} = \mathcal{R}(s_t, a_t, s_{t+1})$ is the reward received by the agent after taking action $a_t$ in state $s_t$ and transitioning to state $s_{t+1}$, and the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
+The state-action value function, $Q^{\pi}_{\mathcal{M}}(s_t, a_t)$, is defined as the expected cumulative reward starting from state $s_t$, taking action $a_t$, and following policy $\pi$ thereafter:
 
-In the context of hedging VAs, the state space $\mathcal{S}$ represents the information available to the agent: the current value of the underlying asset ($S_t$), the current subaccount value ($F_t$), the guarantee value ($G_t$), the time to maturity ($\tau = T-t$), and the previous hedging weight ($\Delta_{t-1}$). 
+\begin{equation} \label{eq3:Q_pi}
+    Q^{\pi}_{\mathcal{M}}(s_t, a_t) = \mathbb{E}_{s_{t+1}, a_{t+1}} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi, s_t, a_t \right],
+\end{equation}
+
+Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A^{\pi}_{\mathcal{M}}(s_t, a_t)$, is defined as the difference between the state-action value function and the state value function:
+
+\begin{equation} \label{eq3:A_pi}
+    A^{\pi}_{\mathcal{M}}(s_t, a_t) = Q^{\pi}_{\mathcal{M}}(s_t, a_t) - V^{\pi}_{\mathcal{M}}(s_t).
+\end{equation}
+
+The advantage function quantifies the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
+
+\subsection{Model-Free PPO for Hedging Variable Annuities}
+
+The state space $\mathcal{S}$ represents the information available to the agent: the current value of the underlying asset ($S_t$), the current subaccount value ($F_t$), the guarantee value ($G_t$), the time to maturity ($\tau = T-t$), and the previous hedging weight ($\Delta_{t-1}$). 
 Let $\mathbf{S}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}) \in \mathcal{S} $ denote the state vector at time $t$.
 That is,
 $$
@@ -224,9 +252,41 @@ The state transition probability distribution $\mathcal{P}$ is conveniently inhe
     & \gamma  = e^{-r},
 \end{align*}
 where the discount factor $\gamma$ models the present value of future rewards and is conveniently inherited from the risk-free rate $r$. 
-Hence, the objective of the insurer is to find a policy $\pi$ that minimizes the expected liability over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
+For a GMMB contract, the reward function $P_t$ defined in Equation~\ref{eq3:gmmb_payout} indicates that the payout is only made at the end of the contract, i.e., $t=T$, which makes it challenging to learn the optimal hedging policy without iterating through the entire contract period.
+Nevertheless, the objective of the insurer is to find a policy $\pi$ that minimizes the expected liability over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
 
 \begin{equation}
-    V^{\pi}_{\mathcal{M}}(s) = \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t R_{t+1} | \pi, s\right],
+    V^{\pi_{\theta}}(s_t) = \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t R_{t+1} | \pi_{\theta}, s_t\right],
 \end{equation}
-where the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
+where the expectation is taken over the possible sequences of states, and rewards that follow from the policy $\pi$.
+The action-value function $Q^{\pi_{\theta}}$ and the advantage function $A^{\pi_{\theta}}$ are similarly defined as in Equations~\ref{eq3:Q_pi} and~\ref{eq3:A_pi}, respectively.
+
+In a model-free PPO approach of reinforcement learning, the agent estimates the advantage function $A^{\pi_{\theta}}$ by learning the value function with a deep neural network.
+Denote the estimator of the andvantage function at time $t$ by $\hat{A}_{\pi_{\theta}}(s_t, a_t)$.
+The policy $\pi_\theta$ is also parameterized by a deep neural network with parameters $\theta$, and the policy is updated by performing gradient ascent with respect to the policy parameters to maximize an objective function that reflects the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$, i.e., the objective function involves the estimator $\hat{A}_{\pi}(s_t, a_t)$.
+\begin{align}
+    \max_{\theta} \mathbb{E}\left[ \min \left\{ r_t(\theta)\hat{A}^{\pi_{\theta}}(s_t, a_t), \text{clip}(r_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)  \right\} \right] \\
+    r_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} 
+\end{align}
+
+where $\theta_{old}$ denotes the policy parameters at the previous iteration, $\epsilon$ is a hyperparameter that controls the size of the policy update, and $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$.
+The policy is updated by performing gradient ascent with respect to the policy parameters $\theta$ to maximize the objective function, which is estimated by sampling from the environment and computing the empirical average of the objective function over the sampled trajectories.
+The first component in the objective function, $r_t(\theta) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a surrogate objective function that approximates the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$, and the second component, $\text{clip}(r_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a clipped surrogate objective function that prevents large policy updates and ensures more stable training.
+The TRPO algorithm proposed by~\cite{schulman2015trust} uses a similar clipped surrogate objective function to ensure that the policy update does not deviate too far from the old policy, but PPO simplifies the optimization problem by using a clipped surrogate objective function instead of a hard-coded constraint on the policy update.
+Compared to TRPO, PPO is more computationally efficient and easier to implement, making it a popular choice for training deep reinforcement learning agents.
+For a in-depth discussion on the implementation details of both TRPO and PPO, we refer the reader to~\cite{engstrom2020implementation}.
+
+In a model-free reinforcement learning approach, the agent learns the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
+In our context of hedging VAs, the agent does not have explicit knowledge of the underlying asset price dynamics or the future mortality rates, so the future payoff of the VA is uncertain and must be learned from interactions with the environment.
+This uncertainty results in the formulation of the hedging problem as in Equation~\ref{eq3:lossrv} instead of the traditional loss reserve calculation in Equation~\ref{eq2:lossrv}, where the initial liability $V_0$ can be estimated by simulating from a known financial (and actuarial) model.
+The model-free PPO algorithm allows the agent to learn an optimal hedging policy from past observations without relying on a predefined model, making it a suitable approach for hedging VAs in a dynamic and uncertain market environment.
+
+\section{Numerical Experiment}
+
+More specifically, our implementation of the PPO uses a generalized advantage estimation~\citep{schulman2015high} to estimate the advantage function.
+
+\section{Transfer Learning for Hedging Variable Annuities}
+
+Transfer learning is a machine learning technique that leverages knowledge gained from one task to improve performance on another related task.
+In the context of reinforcement learning, transfer learning can be used to transfer knowledge learned from one environment to another, allowing the agent to learn more efficiently and effectively in the new environment.
+In this section, we explore the potential of transfer learning for hedging VAs by transferring knowledge learned from a related financial derivative, such as a European option, to improve the performance of the hedging policy for VAs.
