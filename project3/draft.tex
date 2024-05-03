@@ -109,16 +109,17 @@ Therefore, the time~$t$ hedging error, i.e., the cash flow incurred by the insur
 The P\&L of the VA contract includes the cost of the initial hedge ($H_0$), the hedging errors~\eqref{eq2:hedgingerror}, the unwinding of the hedge at maturity ($H^{bf}_T$), and the contract payout at time~$t\in \{0,\ldots,T\}$.
 Mathematically, the present value of the liability for a GMMB contract is 
 \begin{align} \label{eq3:lossGMMB}
-L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t + \sum_{t=1}^T e^{-rt} C_t - \sum_{t=1}^T e^{-rt} F_t\eta_n + e^{-rT} (G_t - F_t)^+ nonumber \\ 
-    & = e^{-rT} (G_T - F_{T^+})^+ + \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t\eta_n \right) \label{eq3:lossrv}
+L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t + \sum_{t=1}^T e^{-rt} C_t(\Delta_{t-1}) - \sum_{t=1}^T e^{-rt} F_t\eta_n + e^{-rT} (G_t - F_t)^+  \nonumber \\ 
+    & = e^{-rT} (G_T - F_{T^+})^+ + \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t(\Delta_{t-1}) - F_t\eta_n \right) 
 \end{align}
-where the equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$, and $C_t := C \cdot S_{t-1} \cdot (|\Delta_{t-1}| + 0.01 \Delta_{t-1}^2)$ is the tranaction cost at time $t$~\cite{garleanu2013dynamic}.
+where the equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$, and $C_t(\Delta_{t-1}) := C \cdot S_{t-1} \cdot (|\Delta_{t-1}| + 0.01 \Delta_{t-1}^2)$ is the tranaction cost at time $t$~\cite{garleanu2013dynamic}.
 Hence, the present liability consist of the hedging errors, the transaction costs, the net management fees, and the contract payouts.
 Similarly, the present value of the liability for a GMWB contract is
 \begin{equation} \label{eq3:lossGMWB}
 L = \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t\eta_n \right)
 \end{equation}
 The GMWB payout is implicitly included in $F_t\eta_n$.
+Both Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} neglect the transaction cost to liquidate the hedge portfolio at maturity.
 The discrete-time hedging problem of VAs can be conveniently formulated as an MDP, where the states, actions, transition probabilities, policies, and rewards are defined as follows.
 
 \textbf{State Space}
@@ -136,62 +137,82 @@ The action space $\mathcal{A}$ represents the set of actions that the agent can 
 In a VA hedging problem, the action space only includes the hedging weight $\Delta_t$.
 
 \textbf{Policy}
+
 A policy $\pi$ determines the best action to take in a given state, i.e.,
 $$a_t \sim \pi(\cdot|\mathbf{s}_t).$$
-In a VA hedging problem the policy outputs the hedging weight $\Delta_t$ given the observed state $\mathbf{s}_t$.
+In a VA hedging problem the policy outputs the hedging weight $a_t = \Delta_t$ given the observed state $\mathbf{s}_t$.
+In the following sections, we will refer to $\Delta_t$ as the policy.
 
 \textbf{Transition Probabilities}
+
 The transition probabilities $\mathcal{P}$ represent the probability of transitioning from one state to another from taking an action.
 In our setup, the transition probabilities are fully determined by Equation~\ref{eq3:lapse}, Equation~\ref{eq3:subaccount}, Equation~\ref{eq3:guarantee}, and Equation~\ref{eq3:withdrawal}.
 Let $\mathcal{P}(\mathbf{s}_{t+1}|\mathbf{s}_t, a_t)$ be the probability of transitioning from state $\mathbf{s}_t$ to state $\mathbf{s}_{t+1}$ due to action $a_t$.
-Aside from the previous hedging weight $\Delta_{t-1}$, the transition probabilities are independent of the actions.
+Aside from the previous hedging weight $\Delta_{t-1}$, the transition probabilities are independent from the actions.
+Paths simulated from the transition probabilities are called trajectories (or episodes) of the MDP.
 
 \textbf{Reward and Discount Factor}
 The reward function $\mathcal{R}$ and discount factor $\gamma$ in a typical RL problem are defined as follows:
 \begin{align}
-    \mathcal{R} & = \sum_{t=0}^{T-1} \gamma^t R_t \\
+    \mathcal{R} & = \sum_{t=1}^{T-1} \gamma^t R_t \\
     \gamma      & = e^{-r}, \nonumber
 \end{align}
 where $R_t$ is the term reward received by the agent at time $t$, and the discount factor $\gamma$ is conveniently inherited from the risk-free rate $r$. 
 In hedging, the term reward $R_t$ should be drived from Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} to represent the performance of the hedging policy, i.e., how closely the hedging portfolio tracks the liability.
 For GMWB, we propose a term reward formulation that encourages the agent to maximize the expected reward with low hedging errors and transaction costs:
 \begin{equation} \label{eq3:rewardGMWB}
-    R_t = F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}, \quad t \in \{1,\ldots,T \}
+    R_t = F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}(\Delta_{t-1}), \quad t \in \{1,\ldots,T \}
 \end{equation}
 The reward function of GMWB directly links to the time-$t$ loss of a GMWB contract as in Equation~\ref{eq3:lossGMWB}.
 The GMMB loss consists of an additional payoff at maturity $T$, thus its term reward is formulated as:
 \begin{equation} \label{eq3:rewardGMMB}
     R_t = 
     \begin{cases}
-    F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1},                         & t\in \{1,\ldots,T-1 \} \\
-    F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1} + (G_T - F_{T^+})^+      & t = T
+    F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}(\Delta_{t-1}),                         & t\in \{1,\ldots,T-1 \} \\
+    F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}(\Delta_{t-1}) + (G_T - F_{T^+})^+      & t = T
     \end{cases}
 \end{equation}
 It is worth noting that learning to hedge GMWB is easier for an RL agent due to the absense of reward at maturity (long-term feedback).
 
-\subsection{From AlphaZero to Deep Hedging}
+\subsection{Model-Based RL: From AlphaZero to Deep Hedging}
 Deep reinforcement learning first attacted attentions when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
-Soon after, AlphaZero~\citep{silver2016mastering} emerged as an RL algorithm that improves over self-plays.
+Soon after, AlphaZero~\citep{silver2016mastering} emerged as a model-based RL algorithm that improves over self-plays.
 It quickly extended beyond Go to other games like Chess and Shogi.
 In essence, the AlphaZero agent use a neural network to paramaterize the policy and the value function.
 The neural network takes the current state of the game as input and outputs the probability distribution of the next move and a value of the current state.
 \begin{equation}
-    (\mathbf{\pi}, v) = f_{\theta}(s), \quad L(\theta) = (z - v)^2 - \mathbf{p}^T \log \mathbf{\pi} + c||\theta||^2,
+    (\mathbf{\pi}, v) = f_{\theta}(s), \quad L(\theta) = - \mathbf{\pi}^{\intercal} \log(\mathbf{p}) + (z - v)^2  + c||\theta||^2,
 \end{equation}
 where $f_{\theta}$ is the neural network with parameters $\theta$, $s$ is the current state of the game, $\pi$ is the policy, $v$ is the value of the current state, and $c$ is a regularization parameter.
 $\mathbf{p}$ and $z$ are the probability distribution of the next move and the outcome of the game, respectively.
 They are induced by a planning algorithm, i.e., Monte Carlo Tree Search (MCTS).
+Since it is infeasible to efficiently simulate trajectories in the game of Go, a planning algorithm is necessary to generate expected outcomes.
 The neural network $f_{\theta}$ is trained with a stochastic gradient descent algorithm to minimize $L$.
 $L$ has three components.
 The last term penalizes large neural network weights.
 Its first two terms measure the similarity between $f_{\theta}(s)$, the learned policy and value function, with the action and game outcome planned by the MCTS.
-A planning algorithm like the MCTS has to be present due to the large search space in the game of Go.
 
-\subsection{Model-Based and Model Free RL}
+In a typical hedging problem, the transition probabilities are independent from the hedging weights, i.e., the actions.
+This simplifies the training of the neural network as complete trajectories can be simulated without the need of a planning algorithm.
+More specifically, at any time $t$, the neural network can directly learn the policy from simulated trajectories upto maturity.
+The knowing of the model prior to maturity and the ability to move back in time makes an RL algorithm model-based~\citep{moerland2023model}.
+
+Let $(\tilde{\mathbf{s}}_0, \tilde{\Delta}_0, \tilde{\mathbf{s}}_1, \tilde{\Delta}_1, \ldots, \tilde{s}_T)$ and $\tilde{\mathcal{R}} = (R_1, \ldots, R_t)$ be a trajectory and the hedging reward of the MDP, respectively.
+The neural network $f_{\theta}$ takes the previous state and hedging weight as input and outputs the hedging weight at the current state.
+\begin{equation}
+    \mathbf{\Delta} = f_{\theta}(\mathbf{s}_0, \ldots, \mathbf{s}_T), \quad L(\theta) = \rho(L) = \rho(-\mathcal{R}) = \rho(- \sum_{t=0}^{T} \gamma^t R_t),
+\end{equation}
+where $\rho(L)$ is a convex risk measure of the total present liability $L$. 
+A common choice of $\rho$ is a CVaR.
+In practice, the neural network $f_{\theta}$ is trained to minimize the empirical CVaR over a batch of trajectories.
+
+\subsection{Model-Free RL}
 
 \section{Problem Formulation}
 
 \section{Numerical Experiments}
+
+All numerical experiments are run using~\cite{paszke2019pytorch}.
 
 \section{Conclusion}
 

@@ -438,6 +438,12 @@ Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A.~A., Veness, J., Bellemare,
 \newblock Human-level control through deep reinforcement learning.
 \newblock {\em nature}, 518(7540):529--533.
 
+\bibitem[Moerland et~al., 2023]{moerland2023model}
+Moerland, T.~M., Broekens, J., Plaat, A., Jonker, C.~M., et~al. (2023).
+\newblock Model-based reinforcement learning: A survey.
+\newblock {\em Foundations and Trends{\textregistered} in Machine Learning},
+  16(1):1--118.
+
 \bibitem[NAIC, 2021]{naic2021}
 NAIC (2021).
 \newblock {\em Valuation Manual}.

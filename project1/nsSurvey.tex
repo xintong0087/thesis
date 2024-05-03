@@ -102,7 +102,7 @@ A mean excess loss over a threshold $u$ is defined by setting $h(t) = \max\{t - 
 
 The probability of a large loss over a threshold $u$ is obtained by setting $h(t) = \mathbb{I}_{\{t \geq u\}}$.
 
-Other risk measures of interest that are not in the nested expectation form are the value at risk (VaR) and the conditional value at risk (CVaR). 
+Other risk measures of interest that are not in the nested expectation form are the value at risk (VaR) and the conditional value at risk(CVaR). 
 The $\alpha$-VaR of $L$ is defined as
 $$
     \mbox{VaR}_\alpha(L) = q_\alpha = \inf \left\{ q: \Pr(L\leq q) \geq \alpha \right\}.
@@ -129,7 +129,7 @@ The standard nested simulation estimators for different forms of $\rho$ are as f
             $$\hat{\rho}_{M, N} = \frac{1}{M} \sum_{i=1}^M h(\hat{L}_{N, i}) = \frac{1}{M} \sum_{i=1}^M h(\bar{Y}_{N, i}); ~~~ X_i \sim F_X$$
     \item   Value at risk (VaR):
             $$\hat{\rho}_{M, N} = \hat{L}_{(\lceil \alpha M \rceil)}$$
-    \item   Conditional value at risk (CVaR):
+    \item   CVaR:
             $$\hat{\rho}_{M, N} = \hat{L}_{(\lceil \alpha M \rceil)} + \frac{1}{(1-\alpha) M} \sum_{i=1}^M \max \{\hat{L}_{N, i} - \hat{L}_{(\lceil \alpha M \rceil)}, 0 \}$$
 \end{enumerate}
 
