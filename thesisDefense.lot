@@ -1,15 +1,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Smoothness assumption of $h$ for different nested simulation procedures}}{5}{table.caption.8}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Existing asymptotic convergence results of nested simulation procedures for MSE}}{11}{table.caption.9}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Asymptotic rate of convergence of nested simulation procedures in MSE}}{27}{table.caption.12}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the multi-level Monte Carlo procedure for different levels}}{41}{table.caption.23}%
-\contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{42}{table.caption.24}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Smoothness assumption of $h$ for different nested simulation procedures\relax }}{5}{table.caption.8}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Existing asymptotic convergence results of nested simulation procedures for MSE\relax }}{11}{table.caption.9}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Asymptotic rate of convergence of nested simulation procedures in MSE\relax }}{27}{table.caption.12}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the multi-level Monte Carlo procedure for different levels\relax }}{41}{table.caption.23}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation\relax }}{42}{table.caption.24}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{61}{table.caption.28}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.}}{68}{table.caption.34}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{70}{table.caption.36}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{71}{table.caption.37}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.}}{71}{table.caption.38}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.\relax }}{61}{table.caption.28}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.\relax }}{68}{table.caption.34}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.\relax }}{70}{table.caption.36}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.\relax }}{71}{table.caption.37}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.\relax }}{71}{table.caption.38}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{91}{table.caption.42}%

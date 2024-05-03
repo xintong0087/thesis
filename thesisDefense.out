@@ -45,14 +45,11 @@
 \BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 45
 \BOOKMARK [0][-]{chapter.4}{Model-Free Deep Hedging of Variable Annuities}{}% 46
 \BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.2}{Dynamic Hedging of Variable Annuities}{chapter.4}% 48
-\BOOKMARK [2][-]{subsection.4.2.1}{Deep Hedging Approaches}{section.4.2}% 49
-\BOOKMARK [2][-]{subsection.4.2.2}{Value-based and Policy-based Deep Reinforcement Learning}{section.4.2}% 50
-\BOOKMARK [1][-]{section.4.3}{Proximal Policy Optimization for Hedging Variable Annuities}{chapter.4}% 51
-\BOOKMARK [2][-]{subsection.4.3.1}{Simulation Model for Variable Annuities Hedging}{section.4.3}% 52
-\BOOKMARK [2][-]{subsection.4.3.2}{Markov Decision Process}{section.4.3}% 53
-\BOOKMARK [2][-]{subsection.4.3.3}{Model-Free PPO for Hedging Variable Annuities}{section.4.3}% 54
-\BOOKMARK [1][-]{section.4.4}{Numerical Experiment}{chapter.4}% 55
-\BOOKMARK [1][-]{section.4.5}{Transfer Learning for Hedging Variable Annuities}{chapter.4}% 56
-\BOOKMARK [2][-]{subsection.4.5.1}{Evaluation Metrics}{section.4.5}% 57
-\BOOKMARK [0][-]{section*.44}{References}{}% 58
+\BOOKMARK [1][-]{section.4.2}{Review of Reinforcement Learning}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.2.1}{Markov Decision Process}{section.4.2}% 49
+\BOOKMARK [2][-]{subsection.4.2.2}{From AlphaZero to Deep Hedging}{section.4.2}% 50
+\BOOKMARK [2][-]{subsection.4.2.3}{Model-Based and Model Free RL}{section.4.2}% 51
+\BOOKMARK [1][-]{section.4.3}{Problem Formulation}{chapter.4}% 52
+\BOOKMARK [1][-]{section.4.4}{Numerical Experiments}{chapter.4}% 53
+\BOOKMARK [1][-]{section.4.5}{Conclusion}{chapter.4}% 54
+\BOOKMARK [0][-]{section*.42}{References}{}% 55

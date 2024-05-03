@@ -1,27 +1,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with $d=1$}}{32}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with different asset dimensions}}{33}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$}}{35}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Empirical convergence of kernel smoothing procedure for different values of $d$}}{36}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =100,000$}}{37}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{37}{figure.caption.18}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff}}{38}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$}}{38}{figure.caption.20}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{39}{figure.caption.21}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different asset models}}{40}{figure.caption.22}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Total computational cost for different procedures with $d=10$}}{43}{figure.caption.25}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time}}{44}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with $d=1$\relax }}{32}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with different asset dimensions\relax }}{33}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$\relax }}{35}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Empirical convergence of kernel smoothing procedure for different values of $d$\relax }}{36}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =100,000$\relax }}{37}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$\relax }}{37}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff\relax }}{38}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$\relax }}{38}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options\relax }}{39}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different asset models\relax }}{40}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Total computational cost for different procedures with $d=10$\relax }}{43}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time\relax }}{44}{figure.caption.26}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{54}{figure.caption.27}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{63}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{63}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{64}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{65}{figure.caption.32}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{66}{figure.caption.33}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{69}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{73}{figure.caption.39}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{74}{figure.caption.40}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{75}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.\relax }}{54}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.\relax }}{63}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.\relax }}{63}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.\relax }}{64}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.\relax }}{65}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.\relax }}{66}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.\relax }}{69}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.\relax }}{73}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.\relax }}{74}{figure.caption.40}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.\relax }}{75}{figure.caption.41}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Performance of PPO for Hedging GMMB Contracts on GBM Asset Model}}{92}{figure.caption.43}%
