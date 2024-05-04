@@ -29,7 +29,7 @@ By leveraging the flexibility and adaptability of RL algorithms, we aim to devel
 
 The rest of the paper is organized as follows: Section~\ref{sec3:vaHedging} presents the problem formulation for hedging variable annuity with a deep neural network, 
 
-\section{Literature Review: Dynamic Hedging of Variable Annuities} \label{sec3:vaHedging}
+\section{Dynamic Hedging of Variable Annuities} \label{sec3:vaHedging}
 
 
 \subsection{Deep Hedging Approaches}
@@ -233,7 +233,6 @@ Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A
 
 The advantage function quantifies the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
 
-
 \subsection{Model-Free PPO for Hedging Variable Annuities}
 
 The state space $\mathcal{S}$ represents the information available to the agent: the current value of the underlying asset ($S_t$), the current subaccount value ($F_t$), the guarantee value ($G_t$), the time to maturity ($\tau = T-t$), and the previous hedging weight ($\Delta_{t-1}$). 
@@ -329,7 +328,6 @@ The environment is designed to simulate the dynamics of the VA contract and prov
         \midrule
         $|\mathcal{D}_k|$   & 64        \\
         $\epsilon$          & 0.2       \\
-        $\lambda$           & 0.01      \\
         Learning rate       & 0.0003    \\
         $r$                 & 0.002     \\
         $S_0$               & 1000      \\

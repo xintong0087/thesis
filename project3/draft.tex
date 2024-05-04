@@ -194,8 +194,10 @@ Its first two terms measure the similarity between $f_{\theta}(s)$, the learned 
 
 In a typical hedging problem, the transition probabilities are independent from the hedging weights, i.e., the actions.
 This simplifies the training of the neural network as complete trajectories can be simulated without the need of a planning algorithm.
-More specifically, at any time $t$, the neural network can directly learn the policy from simulated trajectories upto maturity.
-The knowing of the model prior to maturity and the ability to move back in time makes an RL algorithm model-based~\citep{moerland2023model}.
+In contrast to AlphaZero, deep hedging~\citep{buehler2019deep} uses $f_{\theta}$ for planning, as opposed to the MCTS.
+More specifically, at any time $t$, the neural network $f_{\theta}$ serves as a model that predict possible future rewards before they are actually observed.
+This is known as model-based RL. 
+Using a model allows for planning, i.e., decision-making take place using future situations that have not been experienced by the agent.
 
 Let $(\tilde{\mathbf{s}}_0, \tilde{\Delta}_0, \tilde{\mathbf{s}}_1, \tilde{\Delta}_1, \ldots, \tilde{s}_T)$ and $\tilde{\mathcal{R}} = (R_1, \ldots, R_t)$ be a trajectory and the hedging reward of the MDP, respectively.
 The neural network $f_{\theta}$ takes the previous state and hedging weight as input and outputs the hedging weight at the current state.
