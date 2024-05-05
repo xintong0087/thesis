@@ -24,3 +24,4 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{74}{figure.caption.40}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{75}{figure.caption.41}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Performance of PPO for Hedging GMMB Contracts on GBM Asset Model}}{91}{figure.caption.43}%

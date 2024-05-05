@@ -48,8 +48,8 @@
 \contentsline {section}{\numberline {4.2}Literature Review of Reinforcement Learning}{79}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Markov Decision Process}{79}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Model-Based RL: From AlphaZero to Deep Hedging}{84}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Model-Free RL: Hedging VAs with PPO}{85}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Problem Formulation}{87}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Numerical Experiments}{89}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Conclusion}{89}{section.4.5}%
-\contentsline {chapter}{\textbf {References}}{90}{section*.42}%
+\contentsline {subsection}{\numberline {4.2.3}Model-Free RL for Hedging}{85}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Hedging VAs with a PPO Agent}{87}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Numerical Experiments}{88}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Conclusion}{90}{section.4.5}%
+\contentsline {chapter}{\textbf {References}}{92}{section*.44}%

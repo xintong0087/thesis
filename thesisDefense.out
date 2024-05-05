@@ -48,8 +48,8 @@
 \BOOKMARK [1][-]{section.4.2}{Literature Review of Reinforcement Learning}{chapter.4}% 48
 \BOOKMARK [2][-]{subsection.4.2.1}{Markov Decision Process}{section.4.2}% 49
 \BOOKMARK [2][-]{subsection.4.2.2}{Model-Based RL: From AlphaZero to Deep Hedging}{section.4.2}% 50
-\BOOKMARK [2][-]{subsection.4.2.3}{Model-Free RL: Hedging VAs with PPO}{section.4.2}% 51
-\BOOKMARK [1][-]{section.4.3}{Problem Formulation}{chapter.4}% 52
+\BOOKMARK [2][-]{subsection.4.2.3}{Model-Free RL for Hedging}{section.4.2}% 51
+\BOOKMARK [1][-]{section.4.3}{Hedging VAs with a PPO Agent}{chapter.4}% 52
 \BOOKMARK [1][-]{section.4.4}{Numerical Experiments}{chapter.4}% 53
 \BOOKMARK [1][-]{section.4.5}{Conclusion}{chapter.4}% 54
-\BOOKMARK [0][-]{section*.42}{References}{}% 55
+\BOOKMARK [0][-]{section*.44}{References}{}% 55

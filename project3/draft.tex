@@ -24,7 +24,7 @@ Without relying on a model, model-free RL algorithms are more straightforward im
 A compelling application of RL is dynamic hedging, where the complexity and uncertainty of financial markets make traditional static models inadequate.
 RL's adaptability and learning capabilities offer a promising solution to dynamically adjust hedging strategies in response to market movements and assumptions changes.
 In particular, model-free RL has the potential to enhance risk management practices by developing robust strategies that can adapt in real-time.
-Some popular RL algorithms include Proximal Policy Optimization (PPO), Deep Q-Networks (DQN), and Actor-Critic methods.
+Some popular RL algorithms include Proximal Policy Optimization (PPO), Deep Q-Networks (DQN), and Deep Deterministic Policy Gradient (DDPG).
 
 In this paper, we propose a model-free RL algorithm to improve the risk management of variable annuities (VAs).
 VAs are popular insurance products that add investment features to an insurance contract.
@@ -225,7 +225,7 @@ In summary, model-based RL algorithms like deep hedging do not depend on the ass
 However, they are not model-free as designing a suitable cost function is necessary but challenging.
 In contrast, a model-free approach does not require a explicit design for different asset dynamics, making it more flexible and adaptable to different market conditions and more robust to model misspecification.
 
-\subsection{Model-Free RL: Hedging VAs with PPO}
+\subsection{Model-Free RL for Hedging}
 
 Model-free RL algorithms learn directly from interactions with the environment.
 Predominantly, they can be categorized into two types: value-based RL and policy-based RL.
@@ -252,20 +252,32 @@ The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the P
 However, information of the underlying risk factors is leaked to the agent, which makes their study pseudo-model-free.
 To further improve the risk management of VAs under rough volatility models, we propose a model-free deep reinforcement learning approach to hedge VAs without explicit or implicit knowledge of the underlying risk factors.
 
-\section{Problem Formulation}
+\section{Hedging VAs with a PPO Agent}
+In a hedging problem, an insurer aims to find a policy $\pi_\theta$ that maximize the expected reward over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
 
-The objective of an insurer is to find a policy $\pi$ that maximize the expected reward over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
-\begin{equation}
-    V^{\pi_{\theta}}(s_t) = \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t R_{t+1} | \pi_{\theta}, s_t\right],
+\begin{equation} \label{eq3:V_pi}
+    V^{\pi_\theta}(s_t) = \mathbb{E}_{s_{t+1}, a_{t}} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi_\theta, s_t \right],
 \end{equation}
-where the expectation is taken over the possible sequences of states, and rewards that follow from the policy $\pi$.
-The action-value function $Q^{\pi_{\theta}}$ and the advantage function $A^{\pi_{\theta}}$ are similarly defined as in Equations~\ref{eq3:Q_pi} and~\ref{eq3:A_pi}, respectively.
-However, 
+
+where $R_{t+1}$ is the reward received by the agent after taking action $a_t$ in state $s_t$ and transitioning to state $s_{t+1}$, and the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
+The state-action value function, $Q^{\pi_\theta}(s_t, a_t)$, is defined as the expected cumulative reward starting from state $s_t$, taking action $a_t$, and following policy $\pi$ thereafter:
+
+\begin{equation} \label{eq3:Q_pi}
+    Q^{\pi_\theta}(s_t, a_t) = \mathbb{E}_{s_{t+1}, a_{t+1}} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi, s_t, a_t \right],
+\end{equation}
+
+Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A^{\pi}(s_t, a_t)$, is defined as the difference between the state-action value function and the state value function:
+
+\begin{equation} \label{eq3:A_pi}
+    A^{\pi_\theta}(s_t, a_t) = Q^{\pi}(s_t, a_t) - V^{\pi}(s_t).
+\end{equation}
+
+In a model-free PPO approach of reinforcement learning, the agent estimates the advantage function $A^{\pi}$ by learning the value function with a deep neural network with parameters $\phi$.
 
 Denote the estimator of the andvantage function at time $t$ by $\hat{A}_{\pi_{\theta}}(s_t, a_t)$.
 In a model-free PPO approach of reinforcement learning, the agent estimates the advantage function $A^{\pi_{\theta}}$ by learning the value function with a deep neural network with parameters $\phi$, i.e.,
 \begin{equation}
-    \hat{A}_{\pi_{\theta}}(s_t, a_t) = V_{\phi}(s_t) - Q_{\phi}(s_t, a_t).
+    \hat{A}^{\pi_{\theta}}(s_t, a_t) = V_{\phi}(s_t) - Q_{\phi}(s_t, a_t).
 \end{equation}
 The policy $\pi_\theta$ is also parameterized by a deep neural network with parameters $\theta$, and the policy is updated by performing gradient ascent with respect to the policy parameters to maximize an objective function that reflects the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$, i.e., the objective function involves the estimator $\hat{A}_{\pi}(s_t, a_t)$.
 \begin{align}
@@ -300,12 +312,57 @@ For a in-depth discussion on the implementation details of both TRPO and PPO, we
     \end{algorithmic}
 \end{algorithm}
     
-In a model-free reinforcement learning approach, the agent learns the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
-In our context of hedging VAs, the agent does not have explicit knowledge of the underlying asset price dynamics or the future mortality rates, so the future payoff of the VA is uncertain and must be learned from interactions with the environment.
+In a model-free reinforcement learning approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
+For hedging VAs, the agent does not have access to a planning algorithm or a model of the underlying risk factors, and it must learn the optimal policy by directly interacting with the environment.
 
 \section{Numerical Experiments}
 
-All numerical experiments are run using~\cite{paszke2019pytorch}.
+We present a numerical experiment to demonstrate the effectiveness of the model-free PPO algorithm for hedging VAs with transaction costs.
+We consider a VA contract with a maturity of $T=240$ months and a guaranteed minimum maturity benefit (GMMB) rider with a simulation environment described in Section~\ref{subsec:VASimulation}.
+The simulation enviornment is implemented in Python using the OpenAI Gym framework~\citep{brockman2016openai}, and the neural networks are programmed using the PyTorch library~\citep{paszke2019pytorch}.
+The environment is designed to simulate the dynamics of the VA contract and provide the agent with the current state of the VA with the contract specifications and the financial market information described in Table~\ref{tab3:hyperparameters}.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{ll} 
+        \toprule
+        Hyperparameter & Value \\
+        \midrule
+        $|\mathcal{D}_k|$   & 64        \\
+        $\epsilon$          & 0.2       \\
+        Learning rate       & 0.0003    \\
+        $r$                 & 0.002     \\
+        $S_0$               & 1000      \\
+        $\mu$               & 0.00375   \\
+        $\sigma$            & 0.0457627 \\
+        $T$                 & 240       \\
+        \bottomrule
+    \end{tabular}
+    \caption{PPO Hyperparameters and GMMB Contract Specifications} 
+    \label{tab3:hyperparameters}
+\end{table}
+
+The underlying asset price $S_t$ is modeled as a geometric Brownian motion with a drift rate $\mu$ and a volatility $\sigma$.
+The weights of the value network and the policy network are initialized with orthogonal initialization~\citep{engstrom2020implementation} with scaling $\sqrt{2}$ and the bias terms set to zero.
+The value network and the policy network are implemented as fully connected neural networks with two hidden layers of 64 units each and $\tanh$ activation functions.
+They are trained using the Adam optimizer with a learning rate of $0.0003$ and a batch size automatically adjusted to the number of trajectories in the collected dataset.
+At each timestep, the observations are normalized and cliped between $-10$ and $10$ before being fed into the neural networks to stabilize the training process.
+For PPO, we follow the suggestions in~\cite{schulman2017proximal} and set the clipping hyperparameter $\epsilon$ to $0.2$ to prevent large policy updates. 
+More specifically, our implementation of the PPO uses a generalized advantage estimation~\citep{schulman2015high} to estimate the advantage function.
+The agent interacts with the environment for $10^6$ episodes, and the policy and value networks are updated every $64$ episodes and evaluated every $1000$ episodes.
+The performance of the agent is evaluated based on the average reward over an independent test set of $10^4$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./project3/figures/loss_distribution.png}
+    \caption{Performance of PPO for Hedging GMMB Contracts on GBM Asset Model} 
+    \label{fig3:ppo_hedging}
+\end{figure}
+
+Figure~\ref{fig3:ppo_hedging} shows the performance of the PPO algorithm for hedging GMMB contracts on a geometric Brownian motion (GBM) asset model.
+The figure shows the distribution of the hedging errors incurred by the agent over the $10^4$ test episodes.
+The hedging errors are calculated as the difference between the actual cash flow incurred by the agent due to rebalancing and the expected cash flow based on the optimal hedging policy.
+The results show that the PPO algorithm is able to learn an optimal hedging policy that minimizes the hedging errors, and it surpasses the benchmark delta hedging strategy in terms of hedging performance.
 
 \section{Conclusion}
 

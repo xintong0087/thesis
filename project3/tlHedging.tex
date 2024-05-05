@@ -317,7 +317,7 @@ The model-free PPO algorithm allows the agent to learn an optimal hedging policy
 
 In this section, we present a numerical experiment to demonstrate the effectiveness of the model-free PPO algorithm for hedging VAs with transaction costs.
 We consider a VA contract with a maturity of $T=240$ months and a guaranteed minimum maturity benefit (GMMB) rider with a simulation environment described in Section~\ref{subsec:VASimulation}.
-The simulation enviornment is implemented in Python using the OpenAI Gym framework~\citep{brockman2016openai} and PyTorch library~\citep{paszke2019pytorch}.
+The simulation enviornment is implemented in Python using the OpenAI Gym framework~\citep{brockman2016openai}, and the neural networks are programmed using the PyTorch library~\citep{paszke2019pytorch}.
 The environment is designed to simulate the dynamics of the VA contract and provide the agent with the current state of the VA with the contract specifications and the financial market information described in Table~\ref{tab3:hyperparameters}.
 
 \begin{table}[ht!]
