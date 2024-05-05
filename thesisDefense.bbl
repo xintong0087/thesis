@@ -608,6 +608,11 @@ Sutskever, I., Vinyals, O., and Le, Q.~V. (2014).
   Weinberger, K., editors, {\em Advances in Neural Information Processing
   Systems}, volume~27. Curran Associates, Inc.
 
+\bibitem[Sutton and Barto, 2018]{sutton2018reinforcement}
+Sutton, R.~S. and Barto, A.~G. (2018).
+\newblock {\em Reinforcement learning: An introduction}.
+\newblock MIT press.
+
 \bibitem[Szegedy et~al., 2013]{szegedy2013intriguing}
 Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I.,
   and Fergus, R. (2013).
