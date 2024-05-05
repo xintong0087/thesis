@@ -209,6 +209,11 @@ G{\^a}rleanu, N. and Pedersen, L.~H. (2013).
 \newblock Dynamic trading with predictable returns and transaction costs.
 \newblock {\em The Journal of Finance}, 68(6):2309--2340.
 
+\bibitem[Gatheral et~al., 2022]{gatheral2022volatility}
+Gatheral, J., Jaisson, T., and Rosenbaum, M. (2022).
+\newblock Volatility is rough.
+\newblock In {\em Commodities}, pages 659--690. Chapman and Hall/CRC.
+
 \bibitem[Giles, 2015]{giles2015multilevel}
 Giles, M.~B. (2015).
 \newblock Multilevel monte carlo methods.
@@ -301,6 +306,11 @@ Hong, J.~L., Juneja, S., and Liu, G. (2017).
 \newblock Kernel smoothing for nested estimation with application to portfolio
   risk measurement.
 \newblock {\em Operations Research}, 65(3):657--673.
+
+\bibitem[Horvath et~al., 2021]{horvath2021deep}
+Horvath, B., Teichmann, J., and {\v{Z}}uri{\v{c}}, {\v{Z}}. (2021).
+\newblock Deep hedging under rough volatility.
+\newblock {\em Risks}, 9(7):138.
 
 \bibitem[Imaki et~al., 2021]{imaki2021no}
 Imaki, S., Imajo, K., Ito, K., Minami, K., and Nakagawa, K. (2021).
@@ -671,6 +681,12 @@ Xu, W. and Dai, B. (2022).
 \newblock Delta-gamma-like hedging with transaction cost under reinforcement
   learning technique.
 \newblock {\em The Journal of Derivatives}, 29(5):60--82.
+
+\bibitem[Xu, 2020]{xu2020variable}
+Xu, X. (2020).
+\newblock {\em Variable annuity guaranteed benefits: An integrated study of
+  financial modelling, actuarial valuation and deep learning}.
+\newblock PhD thesis, UNSW Sydney.
 
 \bibitem[Yang et~al., 2018]{yang2018bit}
 Yang, L., Bankman, D., Moons, B., Verhelst, M., and Murmann, B. (2018).

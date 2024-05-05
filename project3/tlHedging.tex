@@ -262,7 +262,7 @@ To address this issue, we propose a new reward function that reflects the hedgin
     R_{t+1}^{\text{Hedge}} = R_{t+1}^{\text{Trade}} - \frac{\lambda}{2}(R_{t+1}^{\text{Trade}})^2, \quad t \in \{0,\ldots,T-1\},
 \end{equation}
 
-The objective of an insurer is to find a policy $\pi$ that maximize the expected reward () over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
+The objective of an insurer is to find a policy $\pi$ that maximize the expected reward over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
 \begin{equation}
     V^{\pi_{\theta}}(s_t) = \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t R_{t+1} | \pi_{\theta}, s_t\right],
 \end{equation}
