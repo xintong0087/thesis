@@ -321,6 +321,12 @@ For a in-depth discussion on the implementation details of both TRPO and PPO, we
     \end{algorithmic}
 \end{algorithm}
 
+Algorithm~\ref{alg3:ppoHedging} outlines the PPO algorithm for training an agent to hedge VAs.
+At each iteration $k$, the agent collects a set of trajectories $\mathcal{D}_k$ by interacting with the environment (Section~\ref{subsec:VASimulation}) with the current policy $\pi_{\theta_k}$.
+The agent then computes the rewards $\hat{R}_t$ for each trajectory in $\mathcal{D}_k$ and estimates the advantage function with $\hat{A}_{\pi_{\theta_k}}(s_t, a_t)$ using the value function $V_{\phi_k}$.
+The policy parameters $\theta_{k+1}$ are updated by performing gradient ascent with respect to the policy parameters to maximize the clipped surrogate objective function.
+The value function parameters $\phi_{k+1}$ are updated by minimizing the mean squared error between the predicted value and the actual collected reward.
+The agent iterates this process until convergence to learn an optimal policy for hedging VAs.
 
 \section{Numerical Experiments}
 
