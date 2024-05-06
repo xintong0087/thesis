@@ -336,9 +336,10 @@ To address the non-Markovian dynamics, an LSTM component is added to the state r
 This approach is known as recurrent PPO~\citep{ni2021recurrent}.
 Let $h_t$ be the hidden state of the LSTM at time $t$.
 The state representation $\mathbf{s}_t$ with recurrent PPO is defined as:
-\begin{equation}
+\begin{equation} \label{eq3:stateRNN}
     \mathbf{s}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}, h_t)
 \end{equation}
+The policy and reward function remain the same but with the new state representation in Equation~\ref{eq3:stateRNN}.
 Instead of following the standard PPO algorithm, the agent uses the recurrent PPO algorithm to learn an optimal policy for hedging VAs.
 
 \begin{algorithm} 
