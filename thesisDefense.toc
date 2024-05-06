@@ -59,5 +59,5 @@
 \contentsline {section}{\numberline {4.4}Hedging VAs with a PPO Agent}{88}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Accounting for Non-Markovian Dynamics}{90}{subsection.4.4.1}%
 \contentsline {section}{\numberline {4.5}Numerical Experiments}{91}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Conclusion}{92}{section.4.6}%
-\contentsline {chapter}{\textbf {References}}{93}{section*.44}%
+\contentsline {section}{\numberline {4.6}Conclusion}{93}{section.4.6}%
+\contentsline {chapter}{\textbf {References}}{94}{section*.44}%
