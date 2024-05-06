@@ -45,11 +45,18 @@
 \BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 45
 \BOOKMARK [0][-]{chapter.4}{Model-Free Deep Hedging of Variable Annuities}{}% 46
 \BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.2}{Literature Review of Reinforcement Learning}{chapter.4}% 48
-\BOOKMARK [2][-]{subsection.4.2.1}{Markov Decision Process}{section.4.2}% 49
-\BOOKMARK [2][-]{subsection.4.2.2}{Model-Based RL: From AlphaZero to Deep Hedging}{section.4.2}% 50
-\BOOKMARK [2][-]{subsection.4.2.3}{Model-Free RL for Hedging}{section.4.2}% 51
-\BOOKMARK [1][-]{section.4.3}{Hedging VAs with a PPO Agent}{chapter.4}% 52
-\BOOKMARK [1][-]{section.4.4}{Numerical Experiments}{chapter.4}% 53
-\BOOKMARK [1][-]{section.4.5}{Conclusion}{chapter.4}% 54
-\BOOKMARK [0][-]{section*.44}{References}{}% 55
+\BOOKMARK [1][-]{section.4.2}{Markov Decision Process}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.2.1}{Hedging Environment of Variable Annuities}{section.4.2}% 49
+\BOOKMARK [2][-]{subsection.4.2.2}{State Space}{section.4.2}% 50
+\BOOKMARK [2][-]{subsection.4.2.3}{Action Space}{section.4.2}% 51
+\BOOKMARK [2][-]{subsection.4.2.4}{Policy}{section.4.2}% 52
+\BOOKMARK [2][-]{subsection.4.2.5}{Transition Probabilities}{section.4.2}% 53
+\BOOKMARK [2][-]{subsection.4.2.6}{Reward and Discount Factor}{section.4.2}% 54
+\BOOKMARK [2][-]{subsection.4.2.7}{Value Function and Advantage Function}{section.4.2}% 55
+\BOOKMARK [1][-]{section.4.3}{Model-Based and Model-Free RL}{chapter.4}% 56
+\BOOKMARK [2][-]{subsection.4.3.1}{Model-Based RL: From AlphaZero to Deep Hedging}{section.4.3}% 57
+\BOOKMARK [2][-]{subsection.4.3.2}{Model-Free RL for Hedging}{section.4.3}% 58
+\BOOKMARK [1][-]{section.4.4}{Hedging VAs with a PPO Agent}{chapter.4}% 59
+\BOOKMARK [1][-]{section.4.5}{Numerical Experiments}{chapter.4}% 60
+\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 61
+\BOOKMARK [0][-]{section*.44}{References}{}% 62

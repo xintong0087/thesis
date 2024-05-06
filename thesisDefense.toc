@@ -45,11 +45,18 @@
 \contentsline {section}{\numberline {3.6}Conclusion}{75}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Model-Free Deep Hedging of Variable Annuities}{78}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introduction}{78}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Literature Review of Reinforcement Learning}{79}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Markov Decision Process}{79}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Model-Based RL: From AlphaZero to Deep Hedging}{84}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Model-Free RL for Hedging}{85}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Hedging VAs with a PPO Agent}{87}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Numerical Experiments}{88}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Conclusion}{90}{section.4.5}%
+\contentsline {section}{\numberline {4.2}Markov Decision Process}{79}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Hedging Environment of Variable Annuities}{80}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}State Space}{82}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Action Space}{82}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Policy}{83}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Transition Probabilities}{83}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Reward and Discount Factor}{83}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Value Function and Advantage Function}{84}{subsection.4.2.7}%
+\contentsline {section}{\numberline {4.3}Model-Based and Model-Free RL}{85}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Model-Based RL: From AlphaZero to Deep Hedging}{85}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Model-Free RL for Hedging}{87}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Hedging VAs with a PPO Agent}{88}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Numerical Experiments}{89}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Conclusion}{91}{section.4.6}%
 \contentsline {chapter}{\textbf {References}}{92}{section*.44}%

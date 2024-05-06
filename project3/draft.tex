@@ -34,9 +34,7 @@ By interacting with an enviornment, the hedging policy can effectively manage th
 
 The rest of the paper is organized as follows: 
 
-\section{Literature Review of Reinforcement Learning}
-
-\subsection{Markov Decision Process}
+\section{Markov Decision Process}
 
 An MDP is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$, where:
 
@@ -53,7 +51,7 @@ A Markov Decision Process (MDP) provides a mathematical framework for solving se
 For hedging VAs, the asset dynamics and the mortality model are not controlled by the agent, but the agent controls the cumulative reward by deciding on the hedging weights.
 In this section, we reformulate the hedging enviornment of VAs from Section~\ref{subsec:VApayout} as an MDP and define the key components of the MDP.
 
-\textbf{Hedging Environment of Variable Annuities} \label{subsec:VASimulation}
+\subsection{Hedging Environment of Variable Annuities} \label{subsec:VASimulation}
 
 Consider a generic VA contract with maturity $T>0$ periods, e.g., $T=240$ months.
 Then the contract expires at $T'=\min\{T,\tau\}$, i.e., the earlier of the contract maturity and the death of the policyholder.
@@ -123,7 +121,7 @@ The GMWB payout is implicitly included in $F_t\eta_n$.
 Both Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} neglect the transaction cost to liquidate the hedge portfolio at maturity.
 The discrete-time hedging problem of VAs can be conveniently formulated as an MDP, where the states, actions, transition probabilities, policies, and rewards are defined as follows.
 
-\textbf{State Space}
+\subsection{State Space}
 
 The state space $\mathcal{S}$ represents all the information needed to characterize the hedging environment.
 In a VA hedging problem, $\mathbf{s}_t$, the information available to a hedging agent at each time $t$ is 
@@ -132,19 +130,19 @@ where $\tau$ is the remaining time to maturity and $\Delta_{t-1}$ is the previou
 The hedging environment is partially observed, e.g., the agent does not have access to the contract specifications.
 It has to learn a representation of the relevant information from the observed state $\mathbf{s}_t$.
 
-\textbf{Action Space}
+\subsection{Action Space}
 
 The action space $\mathcal{A}$ represents the set of actions that the agent can take at each time $t$.
 In a VA hedging problem, the action space only includes the hedging weight $\Delta_t$.
 
-\textbf{Policy}
+\subsection{Policy}
 
 A policy $\pi$ determines the best action to take in a given state, i.e.,
 $$a_t \sim \pi(\cdot|\mathbf{s}_t).$$
 In a VA hedging problem the policy outputs the hedging weight $a_t = \Delta_t$ given the observed state $\mathbf{s}_t$.
 In the following sections, we will refer to $\Delta_t$ as the policy.
 
-\textbf{Transition Probabilities}
+\subsection{Transition Probabilities}
 
 The transition probabilities $\mathcal{P}$ represent the probability of transitioning from one state to another from taking an action.
 In our setup, the transition probabilities are fully determined by Equation~\ref{eq3:lapse}, Equation~\ref{eq3:subaccount}, Equation~\ref{eq3:guarantee}, and Equation~\ref{eq3:withdrawal}.
@@ -152,7 +150,7 @@ Let $\mathcal{P}(\mathbf{s}_{t+1}|\mathbf{s}_t, a_t)$ be the probability of tran
 Aside from the previous hedging weight $\Delta_{t-1}$, the transition probabilities are independent from the actions.
 Paths simulated from the transition probabilities are called trajectories (or episodes) of the MDP.
 
-\textbf{Reward and Discount Factor}
+\subsection{Reward and Discount Factor}
 The reward function $\mathcal{R}$ and discount factor $\gamma$ in a typical RL problem are defined as follows:
 \begin{align}
     \mathcal{R} & = \sum_{t=1}^{T-1} \gamma^t R_t \\
@@ -174,6 +172,35 @@ The GMMB loss consists of an additional payoff at maturity $T$, thus its term re
     \end{cases}
 \end{equation}
 It is worth noting that learning to hedge GMWB is easier for an RL agent due to the absense of reward at maturity (long-term feedback).
+
+\subsection{Value Function and Advantage Function}
+
+This section introduces some critical concepts in RL, i.e., the value function and the advantage function.
+They are essential for understanding the performance of the hedging policy and the learning process of the RL agent.
+
+A value function quantifies the expected cumulative reward over time.
+The state value function, $V^{\pi}(s_t)$, is defined as the expected cumulative reward starting from state $s_t$ and following policy $\pi$ thereafter:
+
+\begin{equation} \label{eq3:V_pi}
+    V^{\pi}(s_t) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R_t |\pi, s_t \right],
+\end{equation}
+
+where $R_t$ is the reward received by the agent after taking action $a_t$ in state $s_t$ and transitioning to state $s_{t+1}$, and the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
+The state-action value function, $Q^{\pi}(s_t, a_t)$, is defined as the expected cumulative reward starting from state $s_t$, taking action $a_t$, and following policy $\pi$ thereafter:
+
+\begin{equation} \label{eq3:Q_pi}
+    Q^{\pi}(s_t, a_t) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R_t |\pi, s_t, a_t \right],
+\end{equation}
+
+Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A^{\pi}(s_t, a_t)$, is defined as the difference between the state-action value function and the state value function:
+
+\begin{equation} \label{eq3:A_pi}
+    A^{\pi}(s_t, a_t) = Q^{\pi}(s_t, a_t) - V^{\pi}(s_t).
+\end{equation}
+
+The advantage function quantifies the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
+
+\section{Model-Based and Model-Free RL}
 
 \subsection{Model-Based RL: From AlphaZero to Deep Hedging}
 Deep reinforcement learning first attacted attentions when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
@@ -222,13 +249,16 @@ Among these rough volatility models, notable examples are rough Heston model and
 Model-based RL struggles in a rough volatility model due to difficulties in designing a suitable cost function.~\cite{horvath2021deep} shows that a CVaR-based cost function can lead to suboptimal hedging performance in a discretized rough Bergomi model. 
 The risk measure $\rho$ needs to be redesigned to account for jump risks, and it is still an open question.
 In summary, model-based RL algorithms like deep hedging do not depend on the asset model, i.e., they are \textbf{model-independent}.
-However, they are not model-free as designing a suitable cost function is necessary but challenging.
+However, they are not \textbf{model-free}.
+For example, deep hedging builds its own model of the hedging environment to plan the hedging strategy ahead of time using a neural network.
+Designing a suitable cost function for such a network is necessary but challenging.
 In contrast, a model-free approach does not require a explicit design for different asset dynamics, making it more flexible and adaptable to different market conditions and more robust to model misspecification.
 
 \subsection{Model-Free RL for Hedging}
-
-Model-free RL algorithms learn directly from interactions with the environment.
-Predominantly, they can be categorized into two types: value-based RL and policy-based RL.
+    
+In a model-free reinforcement learning approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
+For hedging VAs, the agent does not have access to a planning algorithm or a model of the underlying risk factors, and it must learn the optimal policy by directly interacting with the environment.
+Boardly speaking, model-free RL can be categorized into two types: value-based RL and policy-based RL.
 Value-based approaches learn the value function directly from the data and derive the policy from the learned value function. 
 The value function is learned by training a DNN to approximate the value function, which quantifies the expected cumulative reward over time. 
 The policy is then derived from the learned value function by selecting the action that maximizes the value function at each state. 
@@ -252,42 +282,21 @@ The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the P
 However, information of the underlying risk factors is leaked to the agent, which makes their study pseudo-model-free.
 To further improve the risk management of VAs under rough volatility models, we propose a model-free deep reinforcement learning approach to hedge VAs without explicit or implicit knowledge of the underlying risk factors.
 
+
 \section{Hedging VAs with a PPO Agent}
-In a hedging problem, an insurer aims to find a policy $\pi_\theta$ that maximize the expected reward over time by dynamically adjusting the hedging portfolio based on the current state of the VA and the financial markets, which is equivalent to finding the policy that maximizes the value function at each state $s$.
-
-\begin{equation} \label{eq3:V_pi}
-    V^{\pi_\theta}(s_t) = \mathbb{E}_{s_{t+1}, a_{t}} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi_\theta, s_t \right],
-\end{equation}
-
-where $R_{t+1}$ is the reward received by the agent after taking action $a_t$ in state $s_t$ and transitioning to state $s_{t+1}$, and the expectation is taken over the possible sequences of states and rewards that follow from the policy $\pi$.
-The state-action value function, $Q^{\pi_\theta}(s_t, a_t)$, is defined as the expected cumulative reward starting from state $s_t$, taking action $a_t$, and following policy $\pi$ thereafter:
-
-\begin{equation} \label{eq3:Q_pi}
-    Q^{\pi_\theta}(s_t, a_t) = \mathbb{E}_{s_{t+1}, a_{t+1}} \left[ \sum_{t=0}^{\infty} \gamma^t R_{t+1} |\pi, s_t, a_t \right],
-\end{equation}
-
-Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A^{\pi}(s_t, a_t)$, is defined as the difference between the state-action value function and the state value function:
-
-\begin{equation} \label{eq3:A_pi}
-    A^{\pi_\theta}(s_t, a_t) = Q^{\pi}(s_t, a_t) - V^{\pi}(s_t).
-\end{equation}
-
-In a model-free PPO approach of reinforcement learning, the agent estimates the advantage function $A^{\pi}$ by learning the value function with a deep neural network with parameters $\phi$.
-
-Denote the estimator of the andvantage function at time $t$ by $\hat{A}_{\pi_{\theta}}(s_t, a_t)$.
-In a model-free PPO approach of reinforcement learning, the agent estimates the advantage function $A^{\pi_{\theta}}$ by learning the value function with a deep neural network with parameters $\phi$, i.e.,
-\begin{equation}
-    \hat{A}^{\pi_{\theta}}(s_t, a_t) = V_{\phi}(s_t) - Q_{\phi}(s_t, a_t).
-\end{equation}
-The policy $\pi_\theta$ is also parameterized by a deep neural network with parameters $\theta$, and the policy is updated by performing gradient ascent with respect to the policy parameters to maximize an objective function that reflects the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$, i.e., the objective function involves the estimator $\hat{A}_{\pi}(s_t, a_t)$.
+In a hedging problem, an insurer aims to find a policy $\pi$ that maximize the expected reward over time.
+In a policy-based RL approach like the PPO, both the policy and the value function are parameterized by deep neural networks.
+We denote the policy by $\pi_{\theta}$ and the value function by $V_{\phi}$, where $\theta$ and $\phi$ are the parameters of the value network and the policy network, respectively.
+The policy is updated according to an objective function that reflects the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
 \begin{align}
-    \max_{\theta} \mathbb{E}\left[ \min \left\{ r_t(\theta)\hat{A}^{\pi_{\theta}}(s_t, a_t), \text{clip}(r_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)  \right\} \right] \\
-    r_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} 
+    \max_{\theta} \mathbb{E}\left[ \min \left\{ \Lambda_t(\theta)\hat{A}^{\pi_{\theta}}(s_t, a_t), \text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)  \right\} \right] \\
+    \Lambda_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} 
 \end{align}
 
-where $\theta_{old}$ denotes the policy parameters at the previous iteration, $\epsilon$ is a hyperparameter that controls the size of the policy update, and $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$.
+where $\theta_{old}$ denotes the policy parameters at the previous iteration, $\epsilon$ is a hyperparameter that controls the size of the policy update, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, and $\hat{A}^{\pi_{\theta}}(s_t, a_t)$ is the estimated advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$.
+In our implementation, the advantage function is estimated following the GAE method proposed by~\cite{schulman2015high}.
 The policy is updated by performing gradient ascent with respect to the policy parameters $\theta$ to maximize the objective function, which is estimated by sampling from the environment and computing the empirical average of the objective function over the sampled trajectories.
-The first component in the objective function, $r_t(\theta) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a surrogate objective function that approximates the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$, and the second component, $\text{clip}(r_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a clipped surrogate objective function that prevents large policy updates and ensures more stable training.
+The first component in the objective function, $\Lambda_t(\theta) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a surrogate objective function that approximates the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$, and the second component, $\text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a clipped surrogate objective function that prevents large policy updates and ensures more stable training.
 The TRPO algorithm proposed by~\cite{schulman2015trust} uses a similar clipped surrogate objective function to ensure that the policy update does not deviate too far from the old policy, but PPO simplifies the optimization problem by using a clipped surrogate objective function instead of a hard-coded constraint on the policy update.
 Compared to TRPO, PPO is more computationally efficient and easier to implement, making it a popular choice for training deep reinforcement learning agents.
 For a in-depth discussion on the implementation details of both TRPO and PPO, we refer the reader to~\cite{engstrom2020implementation}.
@@ -302,7 +311,7 @@ For a in-depth discussion on the implementation details of both TRPO and PPO, we
         \STATE  \quad Estimates the advantage function with $\hat{A}_{\pi_{\theta_k}}(s_t, a_t)$ using value function $V_{\phi_k}$.
         \STATE  \quad Update the policy parameters $\theta_{k+1}$ by 
         \begin{equation*}
-            \max_{\theta} \mathbb{E}\left[ \min \left\{ r_t(\theta)\hat{A}^{\pi_{\theta}}(s_t, a_t), \text{clip}(r_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)  \right\} \right]
+            \max_{\theta} \mathbb{E}\left[ \min \left\{ \Lambda_t(\theta)\hat{A}^{\pi_{\theta}}(s_t, a_t), \text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)  \right\} \right]
         \end{equation*}
         \STATE  \quad Update the value function parameters $\phi_{k+1}$ by minimizing the mean squared error between the predicted value and the actual collected reward.
         \begin{equation*}
@@ -311,9 +320,7 @@ For a in-depth discussion on the implementation details of both TRPO and PPO, we
         \STATE  \textbf{End For}
     \end{algorithmic}
 \end{algorithm}
-    
-In a model-free reinforcement learning approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
-For hedging VAs, the agent does not have access to a planning algorithm or a model of the underlying risk factors, and it must learn the optimal policy by directly interacting with the environment.
+
 
 \section{Numerical Experiments}
 
@@ -326,15 +333,15 @@ The environment is designed to simulate the dynamics of the VA contract and prov
     \centering
     \begin{tabular}{ll} 
         \toprule
-        Hyperparameter & Value \\
+        Hyperparameter      & Value \\
         \midrule
         $|\mathcal{D}_k|$   & 64        \\
         $\epsilon$          & 0.2       \\
         Learning rate       & 0.0003    \\
-        $r$                 & 0.002     \\
         $S_0$               & 1000      \\
         $\mu$               & 0.00375   \\
         $\sigma$            & 0.0457627 \\
+        $r$                 & 0.002     \\
         $T$                 & 240       \\
         \bottomrule
     \end{tabular}
