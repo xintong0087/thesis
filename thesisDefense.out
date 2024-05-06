@@ -57,6 +57,7 @@
 \BOOKMARK [2][-]{subsection.4.3.1}{Model-Based RL: From AlphaZero to Deep Hedging}{section.4.3}% 57
 \BOOKMARK [2][-]{subsection.4.3.2}{Model-Free RL for Hedging}{section.4.3}% 58
 \BOOKMARK [1][-]{section.4.4}{Hedging VAs with a PPO Agent}{chapter.4}% 59
-\BOOKMARK [1][-]{section.4.5}{Numerical Experiments}{chapter.4}% 60
-\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 61
-\BOOKMARK [0][-]{section*.44}{References}{}% 62
+\BOOKMARK [2][-]{subsection.4.4.1}{Accounting for Non-Markovian Dynamics}{section.4.4}% 60
+\BOOKMARK [1][-]{section.4.5}{Numerical Experiments}{chapter.4}% 61
+\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 62
+\BOOKMARK [0][-]{section*.44}{References}{}% 63

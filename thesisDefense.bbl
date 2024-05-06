@@ -475,6 +475,11 @@ Ng, A.~Y., Harada, D., and Russell, S. (1999).
   application to reward shaping.
 \newblock In {\em Icml}, volume~99, pages 278--287. Citeseer.
 
+\bibitem[Ni et~al., 2021]{ni2021recurrent}
+Ni, T., Eysenbach, B., and Salakhutdinov, R. (2021).
+\newblock Recurrent model-free rl can be a strong baseline for many pomdps.
+\newblock {\em arXiv preprint arXiv:2110.05038}.
+
 \bibitem[Nystr{\"o}m, 1930]{nystrom1930praktische}
 Nystr{\"o}m, E.~J. (1930).
 \newblock {\"U}ber die praktische aufl{\"o}sung von integralgleichungen mit
