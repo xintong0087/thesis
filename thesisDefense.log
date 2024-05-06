@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.16)  6 MAY 2024 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.16)  6 MAY 2024 11:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1101,17 +1101,17 @@ Chapter 4.
 
 
 ] [79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91]
-<./project3/figures/loss_distribution.png, id=1676, 722.7pt x 433.62pt>
+<./project3/figures/loss_distribution.png, id=1677, 722.7pt x 433.62pt>
 File: ./project3/figures/loss_distribution.png Graphic file (type png)
 <use ./project3/figures/loss_distribution.png>
-Package pdftex.def Info: ./project3/figures/loss_distribution.png  used on input line 404.
+Package pdftex.def Info: ./project3/figures/loss_distribution.png  used on input line 406.
 (pdftex.def)             Requested size: 368.57838pt x 221.14989pt.
-) [92 <./project3/figures/loss_distribution.png>] (thesisDefense.bbl [93
+) [92 <./project3/figures/loss_distribution.png>] [93] (thesisDefense.bbl [94
 
 
 
 
-] [94] [95] [96] [97] [98] [99] [100] [101] [102]) (appendix.tex) [103] (thesisDefense.aux)
+] [95] [96] [97] [98] [99] [100] [101] [102] [103]) (appendix.tex) [104] (thesisDefense.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
@@ -1120,17 +1120,17 @@ Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
 (rerunfilecheck)             Checksum: C790F8CCCAE296159D18151503ED7878;5228.
  ) 
 Here is how much of TeX's memory you used:
- 32311 strings out of 474485
- 612624 string characters out of 5745150
+ 32312 strings out of 474485
+ 612632 string characters out of 5745150
  1945528 words of memory out of 5000000
  53553 multiletter control sequences out of 15000+600000
  576156 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  109i,19n,107p,2398b,780s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\XT\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\XT\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesisDefense.pdf (115 pages, 2205855 bytes).
+Output written on thesisDefense.pdf (116 pages, 2206770 bytes).
 PDF statistics:
- 2007 PDF objects out of 2073 (max. 8388607)
- 476 named destinations out of 1000 (max. 500000)
+ 2012 PDF objects out of 2073 (max. 8388607)
+ 477 named destinations out of 1000 (max. 500000)
  717 words of extra memory for PDF output out of 10000 (max. 10000000)
 

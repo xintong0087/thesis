@@ -302,7 +302,7 @@ Compared to TRPO, PPO is more computationally efficient and easier to implement,
 For a in-depth discussion on the implementation details of both TRPO and PPO, we refer the reader to~\cite{engstrom2020implementation}.
 
 \begin{algorithm} 
-    \caption{PPO for Hedging Variable Annuities (Not Yet Done)} 
+    \caption{PPO for Hedging Variable Annuities} 
     \begin{algorithmic}[1] \label{alg3:ppoHedging}
         \STATE  Initialize policy parameters $\theta_0$ and value function parameters $\phi_0$.
         \STATE  \textbf{For} {iteration $k=0, 1,2,\ldots$} \textbf{do}
@@ -343,7 +343,7 @@ The state representation $\mathbf{s}_t$ with recurrent PPO is defined as:
 Instead of following the standard PPO algorithm, the agent uses the recurrent PPO algorithm to learn an optimal policy for hedging VAs.
 
 \begin{algorithm} 
-    \caption{Recurrent PPO for Hedging Variable Annuities} 
+    \caption{Recurrent PPO for Hedging Variable Annuities (Not Yet Done)} 
     \begin{algorithmic}[1] \label{alg3:ppoHedging-rnn}
         \STATE  Initialize policy parameters $\theta_0$ and value function parameters $\phi_0$.
         \STATE  \textbf{For} {iteration $k=0, 1,2,\ldots$} \textbf{do}
@@ -361,6 +361,8 @@ Instead of following the standard PPO algorithm, the agent uses the recurrent PP
         \STATE  \textbf{End For}
     \end{algorithmic}
 \end{algorithm}
+
+Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent PPO algorithm for training an agent to hedge VAs with non-Markovian dynamics.
 
 \section{Numerical Experiments}
 
