@@ -24,5 +24,7 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{74}{figure.caption.40}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{75}{figure.caption.41}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces PPO Network Architectures}}{90}{figure.caption.42}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Performance of PPO for Hedging GMMB Contracts on GBM Asset Model}}{93}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Model-based and Model-free RL Methods}}{87}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Neural Network Architectures}}{91}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces PPO Network Architectures}}{93}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance of PPO for Hedging GMMB Contracts on GBM Asset Model}}{95}{figure.caption.46}%

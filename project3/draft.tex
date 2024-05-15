@@ -219,24 +219,26 @@ The neural network $f_{\theta}$ is trained with a stochastic gradient descent al
 $L$ has three components.
 The last term penalizes large neural network weights.
 Its first two terms measure the similarity between $f_{\theta}(s)$, the learned policy and value function, with the action and game outcome planned by the MCTS.
-The neural network is trained to predict the outcome of the game and the next move before they are actually observed.
+The neural network is trained to fit the planned outcomes of the game.
+It stores a global solution that predicts the outcome of the game and the next move before they are actually observed.
 This is known as model-based RL~\citep{sutton2018reinforcement}.
 Using a model allows for planning, i.e., decision-making take place using future situations that have not been experienced by the agent.
 
 In a typical hedging problem, the transition probabilities are independent from the hedging weights, i.e., the actions.
-This simplifies the planning of the neural network as complete trajectories can be simulated without the need of a planning algorithm.
-In contrast to AlphaZero, deep hedging~\citep{buehler2019deep} only uses $f_{\theta}$ for planning.
-More specifically, at any time $t$, the neural network $f_{\theta}$ serves as a model that predict possible future rewards before they are actually observed.
+This simplifies the planning as complete trajectories can be simulated without the need of a planning algorithm.
+In contrast to AlphaZero, deep hedging~\citep{buehler2019deep} uses the model itself to simulate the complete trajectories following the transition probabilities of the MDP.
 Let $(\tilde{\mathbf{s}}_0, \tilde{\Delta}_0, \tilde{\mathbf{s}}_1, \tilde{\Delta}_1, \ldots, \tilde{s}_T)$ and $\tilde{\mathcal{R}} = (R_1, \ldots, R_t)$ be a trajectory and the hedging reward of the MDP, respectively.
-The neural network $f_{\theta}$ takes the previous state and hedging weight as input and outputs the hedging weight at the current state.
+The neural network $f_{\theta}$ stores a global solution, i.e., it takes the previous state and hedging weight as input and outputs the hedging weight at the current state.
 \begin{equation} \label{eq3:deephedging}
-    \mathbf{\Delta} = f_{\theta}(\mathbf{s}_0, \ldots, \mathbf{s}_T), \quad L(\theta) = \rho(L) = \rho(-\mathcal{R}) = \rho(- \sum_{t=0}^{T} \gamma^t R_t),
+    \mathbf{\Delta}_t = f_{\theta}(\mathbf{s}_t), \quad L(\theta) = \rho(L) = \rho(-\mathcal{R}) = \rho(- \sum_{t=0}^{T} \gamma^t R_t),
 \end{equation}
 where $\rho(L)$ is a convex risk measure of the total present liability $L$. 
+The risk measure $\rho$ serves as a model of the MDP that 
 A common choice of $\rho$ is a CVaR.
 In practice, the neural network $f_{\theta}$ is trained to minimize the empirical CVaR over a batch of trajectories.
-It serves as a model of the hedging environment which plans according to model predictions.
-~\cite{xu2020variable} propose a deep hedging algorithm for VAs that falls into this category of model-based RL.
+In other words, planning is done through $\rho$, which measures the performance of a hedging policy over a batch of complete trajectories.
+The ability to know the future outcomes of the hedging policy before they are actually observed and the use of a risk measure to guide the training of the neural network are the key features of model-based RL.
+For hedging VAs,~\cite{xu2020variable} propose a deep hedging algorithm that falls into this category of model-based RL.
 A cost function is defined to minimize the expected shortfall of the total present liability.
 ~\cite{carbonneau2021deep} extends the model-based approach to hedging long-term financial derivatives and compares the performance of deep hedging strategies trained with different cost functions.
 In Equation~\ref{eq3:deephedging}, the state space of the MDP contains the previous hedging weight.
@@ -258,6 +260,25 @@ In contrast, a model-free approach does not require a explicit design for differ
     
 In a model-free reinforcement learning approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
 For hedging VAs, the agent does not have access to a planning algorithm or a model of the underlying risk factors, and it must learn the optimal policy by directly interacting with the environment.
+Figure~\ref{fig3:RLMethods} illustrates the critical difference between model-based and model-free RL methods.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/tikz/modelBased.pdf}
+        \caption{Model-based RL (Deep Hedging)}
+        \label{subfig3:mbRL}
+    \end{subfigure}
+    \hspace{1cm}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/tikz/modelFree.pdf}
+        \caption{Model-free RL}
+        \label{subfig3:mfRL}
+    \end{subfigure}
+    \caption{Model-based and Model-free RL Methods}
+    \label{fig3:RLMethods}
+\end{figure}
+
 Boardly speaking, model-free RL can be categorized into two types: value-based RL and policy-based RL.
 Value-based approaches learn the value function directly from the data and derive the policy from the learned value function. 
 The value function is learned by training a DNN to approximate the value function, which quantifies the expected cumulative reward over time. 
@@ -339,30 +360,31 @@ The state representation $\mathbf{s}_t$ is fed into the LSTM at each time step t
 \begin{equation} \label{eq3:stateRNN}
     \mathbf{s}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}), \quad h_t = \text{LSTM}(\mathbf{s}_t, h_{t-1})
 \end{equation}
+The difference between a feedforward neural network (FNN) and a LSTM network is illustrated in Figure~\ref{fig3:nn}.
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{./project3/tikz/ppo_diagram.pdf}
-        \caption{regular PPO}
-        \label{subfig3:architecturePPO}
+        \includegraphics[width=\textwidth]{./project3/tikz/fnn.pdf}
+        \caption{FNN}
+        \label{subfig3:fnn}
     \end{subfigure}
     \hspace{1cm}
     \begin{subfigure}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{./project3/tikz/recurrentppo_diagram.pdf}
-        \caption{Recurrent PPO with LSTM}
-        \label{subfig3:architectureLSTMPPO}
+        \includegraphics[width=\textwidth]{./project3/tikz/lstm.pdf}
+        \caption{LSTM}
+        \label{subfig3:lstm}
     \end{subfigure}
-    \caption{PPO Network Architectures} 
-    \label{fig3:architecturePPO}
+    \caption{Neural Network Architectures}
+    \label{fig3:nn}
 \end{figure}
 
-The policy and reward function remain the same but with the new state representation in Equation~\ref{eq3:stateRNN}.
-Instead of following the standard PPO algorithm, the agent uses the recurrent PPO algorithm to learn an optimal policy for hedging VAs.
+In a LSTM, the cell state $c_t$ stores a representation of historical information up to time $t$.
+It is updated at each time step by a forget gate $f_t$, an input gate $i_t$, and an output gate $o_t$.
 
+In a recurrent PPO with LSTM, the policy and reward function remain the same but with the new state representation in Equation~\ref{eq3:stateRNN}.
+Instead of following the standard PPO algorithm, the agent uses the recurrent PPO algorithm to learn an optimal policy for hedging VAs.
 Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the standard PPO and the recurrent PPO with LSTM, and Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent PPO algorithm and for training an agent to hedge VAs with non-Markovian dynamics.
-The recurrent PPO algorithm is similar to the standard PPO algorithm, but it includes an LSTM component to capture the temporal dependencies in the data.
-However, the sequantial nature of the LSTM is not suitable for parallel computation, which slows down the training process.
 
 \begin{algorithm}
     \caption{Recurrent PPO with LSTM for Hedging Variable Annuities} 
@@ -386,6 +408,28 @@ However, the sequantial nature of the LSTM is not suitable for parallel computat
     \end{algorithmic}
 \end{algorithm}
 
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/tikz/ppo_diagram.pdf}
+        \caption{regular PPO}
+        \label{subfig3:architecturePPO}
+    \end{subfigure}
+    \hspace{1cm}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/tikz/recurrentppo_diagram.pdf}
+        \caption{Recurrent PPO with LSTM}
+        \label{subfig3:architectureLSTMPPO}
+    \end{subfigure}
+    \caption{PPO Network Architectures} 
+    \label{fig3:architecturePPO}
+\end{figure}
+
+The recurrent PPO algorithm is similar to the standard PPO algorithm, but it includes an LSTM component to capture the temporal dependencies in the data.
+However, the sequantial nature of the LSTM is not suitable for parallel computation, which slows down the training process.
+
+
+
 
 \section{Numerical Experiments}
 
@@ -400,9 +444,9 @@ The environment is designed to simulate the dynamics of the VA contract and prov
         \toprule
         Hyperparameter      & Value \\
         \midrule
-        $|\mathcal{D}_k|$   & 64        \\
+        $|\mathcal{D}_k|$   & 16        \\
         $\epsilon$          & 0.2       \\
-        Learning rate       & 0.0003    \\
+        Learning rate       & 0.0001    \\
         $S_0$               & 1000      \\
         $\mu$               & 0.00375   \\
         $\sigma$            & 0.0457627 \\
