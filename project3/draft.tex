@@ -335,19 +335,43 @@ Furthermore, a rough volatility model introduces non-Markovian dynamics, i.e., t
 To address the non-Markovian dynamics, an LSTM component is added to the state representation $\mathbf{s}_t$ to capture the temporal dependencies in the data.
 This approach is known as recurrent PPO~\citep{ni2021recurrent}.
 Let $h_t$ be the hidden state of the LSTM at time $t$.
-The state representation $\mathbf{s}_t$ with recurrent PPO is defined as:
+The state representation $\mathbf{s}_t$ is fed into the LSTM at each time step to update the hidden state $h_t$.
 \begin{equation} \label{eq3:stateRNN}
-    \mathbf{s}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}, h_t)
+    \mathbf{s}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}), \quad h_t = \text{LSTM}(\mathbf{s}_t, h_{t-1})
 \end{equation}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/tikz/ppo_diagram.pdf}
+        \caption{regular PPO}
+        \label{subfig3:architecturePPO}
+    \end{subfigure}
+    \hspace{1cm}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/tikz/recurrentppo_diagram.pdf}
+        \caption{Recurrent PPO with LSTM}
+        \label{subfig3:architectureLSTMPPO}
+    \end{subfigure}
+    \caption{PPO Network Architectures} 
+    \label{fig3:architecturePPO}
+\end{figure}
+
 The policy and reward function remain the same but with the new state representation in Equation~\ref{eq3:stateRNN}.
 Instead of following the standard PPO algorithm, the agent uses the recurrent PPO algorithm to learn an optimal policy for hedging VAs.
 
-\begin{algorithm} 
-    \caption{Recurrent PPO for Hedging Variable Annuities (Not Yet Done)} 
+Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the standard PPO and the recurrent PPO with LSTM, and Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent PPO algorithm and for training an agent to hedge VAs with non-Markovian dynamics.
+The recurrent PPO algorithm is similar to the standard PPO algorithm, but it includes an LSTM component to capture the temporal dependencies in the data.
+However, the sequantial nature of the LSTM is not suitable for parallel computation, which slows down the training process.
+
+\begin{algorithm}
+    \caption{Recurrent PPO with LSTM for Hedging Variable Annuities} 
     \begin{algorithmic}[1] \label{alg3:ppoHedging-rnn}
         \STATE  Initialize policy parameters $\theta_0$ and value function parameters $\phi_0$.
+        \STATE  Initialize the LSTM layers with random weights, and set the hidden state $h_0$ to zeros.
         \STATE  \textbf{For} {iteration $k=0, 1,2,\ldots$} \textbf{do}
         \STATE  \quad Collect a set of trajectories $\mathcal{D}_k$ by sampling from the environment with policy $\pi_{\theta_{k}}$.
+        \STATE  \quad Reset the LSTM hidden state $h_0$ to zeros at the beginning of each trajectory.
         \STATE  \quad Compute the rewards $\hat{R}_t$ for each trajectory in $\mathcal{D}_k$.
         \STATE  \quad Estimates the advantage function with $\hat{A}_{\pi_{\theta_k}}(\mathbf{s}_t, a_t)$ using value function $V_{\phi_k}$.
         \STATE  \quad Update the policy parameters $\theta_{k+1}$ by 
@@ -362,7 +386,6 @@ Instead of following the standard PPO algorithm, the agent uses the recurrent PP
     \end{algorithmic}
 \end{algorithm}
 
-Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent PPO algorithm for training an agent to hedge VAs with non-Markovian dynamics.
 
 \section{Numerical Experiments}
 
