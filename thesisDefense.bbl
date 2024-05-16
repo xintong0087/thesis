@@ -283,6 +283,11 @@ Harutyunyan, A., Devlin, S., Vrancx, P., and Now{\'e}, A. (2015).
 \newblock In {\em Proceedings of the AAAI conference on artificial
   intelligence}, volume~29.
 
+\bibitem[Hasbrouck, 1991]{hasbrouck1991measuring}
+Hasbrouck, J. (1991).
+\newblock Measuring the information content of stock trades.
+\newblock {\em The Journal of Finance}, 46(1):179--207.
+
 \bibitem[Hastie et~al., 2009]{hastie2009elements}
 Hastie, T., Tibshirani, R., and Friedman, J.~H. (2009).
 \newblock {\em The Elements of Statistical Learning: Data Mining, Inference,

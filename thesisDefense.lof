@@ -27,4 +27,8 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Model-based and Model-free RL Methods}}{87}{figure.caption.42}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Neural Network Architectures}}{91}{figure.caption.43}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces PPO Network Architectures}}{93}{figure.caption.44}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Performance of PPO for Hedging GMMB Contracts on GBM Asset Model}}{94}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{94}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{95}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{96}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{96}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{97}{figure.caption.50}%

@@ -244,6 +244,7 @@ A cost function is defined to minimize the expected shortfall of the total prese
 In Equation~\ref{eq3:deephedging}, the state space of the MDP contains the previous hedging weight.
 A more recent paper by~\cite{imaki2021no} proposes a new network architecture that removes the previous hedging weight from the state space by introducing a no-transaction band.
 It allows for a more efficient training of the neural network by removing the semi-recurrent problem structure.
+
 Despite the success of model-based RL in hedging, most studies focus on hedging different types of contracts on classical asset models, e.g., Black-Scholes model and Heston model.
 Motivated by the seminal work by~\cite{gatheral2022volatility}, there are a many subsequent works focusing on roughening the classical stochastic volatility models. 
 In the rough volatility models, the latent volatility process is modelled by a stochastic process that is rougher than the sample paths of diffusion process. 
@@ -252,8 +253,8 @@ Model-based RL struggles in a rough volatility model due to difficulties in desi
 The CVaR-based cost function needs to be redesigned to account for jump risks, and it is still an open question.
 In summary, model-based RL algorithms like deep hedging do not depend on the asset model, i.e., they are \textbf{model-independent}.
 However, they are not \textbf{model-free}.
-For example, deep hedging builds its own model of the hedging environment to plan the hedging strategy ahead of time using a neural network.
-Designing a suitable cost function for such a network is necessary but challenging.
+For example, deep hedging builds its own model of the hedging environment to plan the hedging strategy ahead of time using a neural network and a risk measure.
+Designing a suitable risk measure for such a network is necessary but challenging.
 In contrast, a model-free approach does not require a explicit design for different asset dynamics, making it more flexible and adaptable to different market conditions and more robust to model misspecification.
 
 \subsection{Model-Free RL for Hedging}
@@ -278,6 +279,13 @@ Figure~\ref{fig3:RLMethods} illustrates the critical difference between model-ba
     \caption{Model-based and Model-free RL Methods}
     \label{fig3:RLMethods}
 \end{figure}
+
+A model-based RL uses a model of the environment that enables decision-making with future situations that have not been experienced by the agent.
+However, the model bias can lead to suboptimal performance in the real environment.
+In contrast, a model-free RL learns directly from the environment without relying on a model, which makes it more flexible and robust to model misspecification.
+Model-free RL algorithms gain its popularity in robotics tasks, where transition probabilities in the environment are unknown and can be affected by the agent's actions.
+In the context of hedging, existing studies use transaction costs as a function of the hedging weights, which makes the transition probabilities independent on the actions.
+However, the trade size can affect the asset price in a real environment~\citep{hasbrouck1991measuring}, which makes the model-free approach a promising direction for hedging VAs in the real market.
 
 Boardly speaking, model-free RL can be categorized into two types: value-based RL and policy-based RL.
 Value-based approaches learn the value function directly from the data and derive the policy from the learned value function. 
@@ -428,8 +436,6 @@ Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the st
 The recurrent PPO algorithm is similar to the standard PPO algorithm, but it includes an LSTM component to capture the temporal dependencies in the data.
 However, the sequantial nature of the LSTM is not suitable for parallel computation, which slows down the training process.
 
-
-
 \section{Numerical Experiments}
 
 We present a numerical experiment to demonstrate the effectiveness of the model-free PPO algorithm for hedging VAs with transaction costs.
@@ -465,19 +471,86 @@ At each timestep, the observations are normalized and cliped between $-10$ and $
 For PPO, we follow the suggestions in~\cite{schulman2017proximal} and set the clipping hyperparameter $\epsilon$ to $0.2$ to prevent large policy updates. 
 More specifically, our implementation of the PPO uses a generalized advantage estimation~\citep{schulman2015high} to estimate the advantage function.
 The agent interacts with the environment for $10^5$ episodes, and the policy and value networks are evaluated every $1000$ episodes.
-The performance of the agent is evaluated based on the average reward over an independent test set of $10^4$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
+The performance of the agent is evaluated based on the average reward over an independent test set of $10^3$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
 
-\begin{figure}
+\begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{./project3/figures/loss_distribution.png}
-    \caption{Performance of PPO for Hedging GMMB Contracts on GBM Asset Model} 
-    \label{fig3:ppo_hedging}
+    \includegraphics[width=\textwidth]{./project3/figures/PPO_DH.png}
+    \caption{Hedging performance of recurrent PPO and deep hedging}
+    \label{fig3:ppo_dh}
 \end{figure}
 
-Figure~\ref{fig3:ppo_hedging} shows the performance of the PPO algorithm for hedging GMMB contracts on a GBM asset model.
-The figure shows the distribution of the hedging errors incurred by the agent over the $10^4$ test episodes.
-The hedging errors are calculated as the difference between the actual cash flow incurred by the agent due to rebalancing and the expected cash flow based on the optimal hedging policy.
-The results show that the PPO algorithm is able to learn an optimal hedging policy that minimizes the hedging errors, and it surpasses the benchmark delta hedging strategy in terms of hedging performance.
+This experiment compares the hedging performance of the recurrent PPO agent with LSTM and the deep hedging algorithm proposed by~\cite{buehler2019deep} for hedging VAs with a GMMB rider.
+The experiment is conducted with the same simulation budget.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/PPOs_GBM.png}
+        \caption{GBM}
+    \end{subfigure}
+    \hspace{1cm}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/PPOs_GBMRS.png}
+        \caption{Regime-switching GBM}
+    \end{subfigure}
+    \caption{Hedging performance of standard PPO and recurrent PPO} 
+    \label{fig3:ppo_result}
+\end{figure}
+
+Figure~\ref{fig3:ppo_result} illustrates the hedging performance of the standard PPO and the recurrent PPO with LSTM for hedging VAs with transaction costs $C=0.005$.
+The figures show the distributions of the hedging errors incurred by the agents over the $10^3$ test episodes for the GBM and the regime-switching GBM asset models.
+For both asset models, the recurrent PPO outperforms the standard PPO in terms of hedging performance.
+For the regime-switching GBM, the 95\%-VaR of hedging errors of the recurrent PPO and the standard PPO are $136.24$ and $147.14$, respectively.
+The hedging errors of the recurrent PPO are more concentrated around zero, indicating that historical information captured by the LSTM component helps the agent make better hedging decisions even in the enviornment is Markovian.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/PPO_cost_001.png}
+        \caption{$C = 0.001$}
+    \end{subfigure}
+    \hspace{1cm}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/PPO_cost_02.png}
+        \caption{$C = 0.02$}
+    \end{subfigure}
+    \caption{Hedging performance of recurrent PPO and delta hedging with different transaction costs} 
+    \label{fig3:ppo_cost}
+\end{figure}
+
+Figure~\ref{fig3:ppo_cost} shows the hedging performance of the recurrent PPO agent and the delta hedging strategy with different transaction costs when the asset model is a GBM.
+The experiment is conducted with transaction costs of $C=0.001$ and $C=0.02$.
+The delta hedging strategy is implemented with the Black-Scholes delta.
+When the transaction cost is low, the delta hedging strategy outperforms the recurrent PPO agent.
+However, as the transaction cost increases, delta hedging becomes less effective, and the recurrent PPO agent is able to learn from the environment and adapt its hedging strategy to minimize the hedging errors.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=\textwidth]{./project3/figures/PPO_anchor.png}
+    \caption{Hedging performance of recurrent PPO with or without anchor}
+    \label{fig3:ppo_anchor}
+\end{figure}
+
+Figure~\ref{fig3:ppo_anchor} illustrates the hedging performance of the recurrent PPO agent with and without the model information of the underlying asset model and the current value of the liability.
+The experiment is conducted for the GBM asset model with transaction costs of $C=0.005$.
+The results show that the agent with the model information does not outperform the agent without the model information.
+
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=\textwidth]{./project3/figures/PPO_GMWB.png}
+    \caption{Hedging performance of recurrent PPO with GMWB}
+    \label{fig3:ppo_GMWB}
+\end{figure}
+
+Figure~\ref{fig3:ppo_GMWB} illustrates the hedging performance of the recurrent PPO agent for hedging VAs with a GMWB rider.
+The experiment is conducted with the same hyperparameters as the experiment with the GMMB rider.
+Unlike the GMMB rider, the PPO agent struggles to learn an optimal hedging strategy for the VA with a GMWB rider.
+The hedging errors of the PPO agent are more dispersed, indicating that more training episodes are needed to achieve a satisfactory hedging performance.
+The results suggest that the GMWB rider introduces additional complexity to the hedging problem, and the model-free RL algorithm is not sample efficient.
+
+
 
 \section{Conclusion}
 

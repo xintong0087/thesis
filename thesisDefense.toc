@@ -56,8 +56,8 @@
 \contentsline {section}{\numberline {4.3}Model-Based and Model-Free RL}{85}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Model-Based RL: From AlphaZero to Deep Hedging}{85}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Model-Free RL for Hedging}{87}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Hedging VAs with a PPO Agent}{88}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Accounting for Non-Markovian Dynamics}{90}{subsection.4.4.1}%
-\contentsline {section}{\numberline {4.5}Numerical Experiments}{91}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Conclusion}{95}{section.4.6}%
-\contentsline {chapter}{\textbf {References}}{96}{section*.47}%
+\contentsline {section}{\numberline {4.4}Hedging VAs with a PPO Agent}{89}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Accounting for Non-Markovian Dynamics}{91}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.5}Numerical Experiments}{92}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Conclusion}{97}{section.4.6}%
+\contentsline {chapter}{\textbf {References}}{98}{section*.51}%
