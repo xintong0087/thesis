@@ -1,8 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1715799411.77381 "c:/Users/user/Documents/GitHub/thesis/project3/tikz/fnn.tex" "fnn.pdf" "fnn" 1715799412.47026 0
+["pdflatex"] 1715817522.53601 "c:/Users/user/Documents/GitHub/thesis/project3/tikz/fnn.tex" "fnn.pdf" "fnn" 1715817523.31195 0
   "C:/Users/user/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1715793392 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/user/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1713271673 24224574 d58509b34011e1d0e645931df564cfd1 ""
-  "C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
+  "C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmss10.tfm" 1136765053 1316 b636689f1933f24d1294acdf6041daaa ""
+  "C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmss8.tfm" 1136765053 1296 d77f431d10d47c8ea2cc18cf45346274 ""
+  "C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1247596667 24420 52dbb8e8aa0069a1b987309557f8d303 ""
   "C:/Users/user/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/user/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifluatex.sty" 1643997108 492 1994775aa15b0d1289725a0b1bbc2d4c ""
   "C:/Users/user/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty" 1643997108 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
@@ -91,9 +93,9 @@
   "C:/Users/user/AppData/Local/Programs/MiKTeX/tex/latex/tools/shellesc.sty" 1700599895 4121 f96144e646260251ded7f19bcb6f4e71 ""
   "C:/Users/user/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/user/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/user/Documents/GitHub/thesis/project3/tikz/fnn.tex" 1715799411 1383 6bee280d8316d8addd5c4f4d1ef26491 ""
-  "fnn.aux" 1715799412 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "fnn.tex" 1715799411 1383 6bee280d8316d8addd5c4f4d1ef26491 ""
+  "c:/Users/user/Documents/GitHub/thesis/project3/tikz/fnn.tex" 1715817522 1529 838407d716e03e044d6b0a4415712a49 ""
+  "fnn.aux" 1715817523 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "fnn.tex" 1715817522 1529 838407d716e03e044d6b0a4415712a49 ""
   (generated)
   "fnn.aux"
   "fnn.log"

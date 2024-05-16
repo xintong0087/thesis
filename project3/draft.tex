@@ -108,10 +108,10 @@ Therefore, the time~$t$ hedging error, i.e., the cash flow incurred by the insur
 The P\&L of the VA contract includes the cost of the initial hedge ($H_0$), the hedging errors~\eqref{eq2:hedgingerror}, the unwinding of the hedge at maturity ($H^{bf}_T$), and the contract payout at time~$t\in \{0,\ldots,T\}$.
 Mathematically, the present value of the liability for a GMMB contract is 
 \begin{align} \label{eq3:lossGMMB}
-L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t + \sum_{t=1}^T e^{-rt} C_t(\Delta_{t-1}) - \sum_{t=1}^T e^{-rt} F_t\eta_n + e^{-rT} (G_t - F_t)^+  \nonumber \\ 
-    & = e^{-rT} (G_T - F_{T^+})^+ + \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t(\Delta_{t-1}) - F_t\eta_n \right) 
+L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t + \sum_{t=1}^T e^{-rt} C_t - \sum_{t=1}^T e^{-rt} F_t\eta_n + e^{-rT} (G_t - F_t)^+  \nonumber \\ 
+    & = e^{-rT} (G_T - F_{T^+})^+ + \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t\eta_n \right) 
 \end{align}
-where the equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$, and $C_t(\Delta_{t-1}) := C \cdot S_{t-1} \cdot (|\Delta_{t-1}| + 0.01 \Delta_{t-1}^2)$ is the tranaction cost at time $t$~\cite{garleanu2013dynamic}.
+where the equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$, and $C_t := C \cdot S_{t-1} \cdot |\Delta_t - \Delta_{t-1}|$ is the tranaction cost at time $t$~\citep{garleanu2013dynamic}.
 Hence, the present liability consist of the hedging errors, the transaction costs, the net management fees, and the contract payouts.
 Similarly, the present value of the liability for a GMWB contract is
 \begin{equation} \label{eq3:lossGMWB}
@@ -430,7 +430,6 @@ However, the sequantial nature of the LSTM is not suitable for parallel computat
 
 
 
-
 \section{Numerical Experiments}
 
 We present a numerical experiment to demonstrate the effectiveness of the model-free PPO algorithm for hedging VAs with transaction costs.
@@ -458,14 +457,14 @@ The environment is designed to simulate the dynamics of the VA contract and prov
     \label{tab3:hyperparameters}
 \end{table}
 
-The underlying asset price $S_t$ is modeled as a geometric Brownian motion with a drift rate $\mu$ and a volatility $\sigma$.
+The underlying asset price $S_t$ is modeled as a geometric Brownian motion (GBM) with a drift rate $\mu$ and a volatility $\sigma$.
 The weights of the value network and the policy network are initialized with orthogonal initialization~\citep{engstrom2020implementation} with scaling $\sqrt{2}$ and the bias terms set to zero.
-The value network and the policy network are implemented as fully connected neural networks with two hidden layers of 64 units each and $\tanh$ activation functions.
-They are trained using the Adam optimizer with a learning rate of $0.0003$ and a batch size automatically adjusted to the number of trajectories in the collected dataset.
+The value network and the policy network are implemented as fully connected neural networks with two hidden layers of 16 units each and $\tanh$ activation functions.
+They are trained using the Adam optimizer with a learning rate of $0.0001$ and a batch size automatically adjusted to the number of trajectories in the collected dataset.
 At each timestep, the observations are normalized and cliped between $-10$ and $10$ before being fed into the neural networks to stabilize the training process.
 For PPO, we follow the suggestions in~\cite{schulman2017proximal} and set the clipping hyperparameter $\epsilon$ to $0.2$ to prevent large policy updates. 
 More specifically, our implementation of the PPO uses a generalized advantage estimation~\citep{schulman2015high} to estimate the advantage function.
-The agent interacts with the environment for $10^6$ episodes, and the policy and value networks are updated every $64$ episodes and evaluated every $1000$ episodes.
+The agent interacts with the environment for $10^5$ episodes, and the policy and value networks are evaluated every $1000$ episodes.
 The performance of the agent is evaluated based on the average reward over an independent test set of $10^4$ episodes, and the results are compared with the benchmark hedging strategy, delta hedging.
 
 \begin{figure}
@@ -475,7 +474,7 @@ The performance of the agent is evaluated based on the average reward over an in
     \label{fig3:ppo_hedging}
 \end{figure}
 
-Figure~\ref{fig3:ppo_hedging} shows the performance of the PPO algorithm for hedging GMMB contracts on a geometric Brownian motion (GBM) asset model.
+Figure~\ref{fig3:ppo_hedging} shows the performance of the PPO algorithm for hedging GMMB contracts on a GBM asset model.
 The figure shows the distribution of the hedging errors incurred by the agent over the $10^4$ test episodes.
 The hedging errors are calculated as the difference between the actual cash flow incurred by the agent due to rebalancing and the expected cash flow based on the optimal hedging policy.
 The results show that the PPO algorithm is able to learn an optimal hedging policy that minimizes the hedging errors, and it surpasses the benchmark delta hedging strategy in terms of hedging performance.
