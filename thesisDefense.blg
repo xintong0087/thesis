@@ -1,52 +1,51 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesisDefense.aux
-Reallocating 'name_of_file' (item size: 1) to 8 items.
 The style file: apalike.bst
-Reallocating 'name_of_file' (item size: 1) to 6 items.
-Reallocating 'name_of_file' (item size: 1) to 6 items.
-Reallocating 'name_of_file' (item size: 1) to 6 items.
 Database file #1: refP1.bib
 Database file #2: refP2.bib
 Database file #3: refP3.bib
-You've used 123 entries,
+Database file #4: refOther.bib
+Warning--can't use both volume and number fields in bishop2006pattern
+You've used 134 entries,
             1935 wiz_defined-function locations,
-            1151 strings with 25494 characters,
-and the built_in function-call counts, 51099 in all, are:
-= -- 5028
-> -- 2296
-< -- 82
-+ -- 811
-- -- 779
-* -- 4408
-:= -- 8923
-add.period$ -- 390
-call.type$ -- 123
-change.case$ -- 996
-chr.to.int$ -- 121
-cite$ -- 123
-duplicate$ -- 1854
-empty$ -- 3403
-format.name$ -- 972
-if$ -- 9902
+            1203 strings with 26714 characters,
+and the built_in function-call counts, 54749 in all, are:
+= -- 5388
+> -- 2402
+< -- 95
++ -- 843
+- -- 811
+* -- 4681
+:= -- 9568
+add.period$ -- 423
+call.type$ -- 134
+change.case$ -- 1063
+chr.to.int$ -- 132
+cite$ -- 135
+duplicate$ -- 2014
+empty$ -- 3677
+format.name$ -- 1021
+if$ -- 10619
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 120
-newline$ -- 627
-num.names$ -- 371
-pop$ -- 843
+missing$ -- 135
+newline$ -- 682
+num.names$ -- 404
+pop$ -- 905
 preamble$ -- 1
-purify$ -- 998
+purify$ -- 1069
 quote$ -- 0
-skip$ -- 1420
+skip$ -- 1551
 stack$ -- 0
-substring$ -- 3488
-swap$ -- 244
-text.length$ -- 22
+substring$ -- 3721
+swap$ -- 267
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 726
-warning$ -- 0
-while$ -- 415
+type$ -- 784
+warning$ -- 1
+while$ -- 446
 width$ -- 0
-write$ -- 1610
+write$ -- 1749
+(There was 1 warning)

@@ -1,63 +1,74 @@
 \BOOKMARK [0][-]{section*.2}{List of Tables}{}% 1
 \BOOKMARK [0][-]{section*.4}{List of Figures}{}% 2
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
-\BOOKMARK [0][-]{chapter.2}{Nested Simulation Procedures in Financial Engineering: A Selected Review}{}% 4
-\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.2}{Problem Formulation}{chapter.2}% 6
-\BOOKMARK [2][-]{subsection.2.2.1}{The Standard Nested Simulation Procedure}{section.2.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.2}{Multi-level Monte Carlo}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.3}{Supervised Learning Models}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.4}{Likelihood Ratio Method}{section.2.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.5}{Problem Statement}{section.2.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Asymptotic Analysis}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.3.1}{Connections between Convergence in MSE and Absolute Error}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.2}{Asymptotic Analysis for the Standard Nested Simulation Procedure}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.3}{Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{section.2.3}% 15
-\BOOKMARK [1][-]{section.2.4}{Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.4.1}{Standard Assumptions}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.2}{Assumptions on Joint Density}{section.2.4}% 18
-\BOOKMARK [2][-]{subsection.2.4.3}{Assumptions for the Multi-level Monte Carlo Procedure}{section.2.4}% 19
-\BOOKMARK [2][-]{subsection.2.4.4}{Assumptions for the Likelihood Ratio-Based Procedure}{section.2.4}% 20
-\BOOKMARK [2][-]{subsection.2.4.5}{Assumptions for the Kernel-Based Procedure}{section.2.4}% 21
-\BOOKMARK [2][-]{subsection.2.4.6}{Assumptions for the KRR-Based Procedure}{section.2.4}% 22
-\BOOKMARK [1][-]{section.2.5}{Finite-Sample Experiments}{chapter.2}% 23
-\BOOKMARK [2][-]{subsection.2.5.1}{Sensitivity to the Asset Dimension}{section.2.5}% 24
-\BOOKMARK [2][-]{subsection.2.5.2}{Empirical Convergence of Parametric Regression Procedures}{section.2.5}% 25
-\BOOKMARK [2][-]{subsection.2.5.3}{Empirical Convergence of Kernel Smoothing-Based Procedures}{section.2.5}% 26
-\BOOKMARK [2][-]{subsection.2.5.4}{Sensitivity to the Option Types and Risk Measures}{section.2.5}% 27
-\BOOKMARK [2][-]{subsection.2.5.5}{Sensitivity to level for VaR and CVaR}{section.2.5}% 28
-\BOOKMARK [2][-]{subsection.2.5.6}{Sensitivity to the Asset Model}{section.2.5}% 29
-\BOOKMARK [2][-]{subsection.2.5.7}{Empirical Convergence of Multi-level Monte Carlo}{section.2.5}% 30
-\BOOKMARK [1][-]{section.2.6}{Computational Complexity}{chapter.2}% 31
-\BOOKMARK [1][-]{section.2.7}{Conclusion}{chapter.2}% 32
-\BOOKMARK [0][-]{chapter.3}{Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{}% 33
-\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 34
-\BOOKMARK [1][-]{section.3.2}{Problem Formulation}{chapter.3}% 35
-\BOOKMARK [2][-]{subsection.3.2.1}{Tail Risk Measures: VaR and CVaR}{section.3.2}% 36
-\BOOKMARK [2][-]{subsection.3.2.2}{Simulation Model for Variable Annuity Payouts}{section.3.2}% 37
-\BOOKMARK [2][-]{subsection.3.2.3}{Dynamic Hedging for Variable Annuities}{section.3.2}% 38
-\BOOKMARK [1][-]{section.3.3}{Two-Stage Nested Simulation with Metamodels}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.4}{Single-Stage Nested Simulation with Neural Network Metamodels}{chapter.3}% 40
-\BOOKMARK [1][-]{section.3.5}{Numerical Results}{chapter.3}% 41
-\BOOKMARK [2][-]{subsection.3.5.1}{Two-Stage Procedure}{section.3.5}% 42
-\BOOKMARK [2][-]{subsection.3.5.2}{Noise Tolerance of Deep Neural Network Metamodels}{section.3.5}% 43
-\BOOKMARK [2][-]{subsection.3.5.3}{Single-Stage Procedure}{section.3.5}% 44
-\BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 45
-\BOOKMARK [0][-]{chapter.4}{Model-Free Deep Hedging of Variable Annuities}{}% 46
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.2}{Markov Decision Process}{chapter.4}% 48
-\BOOKMARK [2][-]{subsection.4.2.1}{Hedging Environment of Variable Annuities}{section.4.2}% 49
-\BOOKMARK [2][-]{subsection.4.2.2}{State Space}{section.4.2}% 50
-\BOOKMARK [2][-]{subsection.4.2.3}{Action Space}{section.4.2}% 51
-\BOOKMARK [2][-]{subsection.4.2.4}{Policy}{section.4.2}% 52
-\BOOKMARK [2][-]{subsection.4.2.5}{Transition Probabilities}{section.4.2}% 53
-\BOOKMARK [2][-]{subsection.4.2.6}{Reward and Discount Factor}{section.4.2}% 54
-\BOOKMARK [2][-]{subsection.4.2.7}{Value Function and Advantage Function}{section.4.2}% 55
-\BOOKMARK [1][-]{section.4.3}{Model-Based and Model-Free RL}{chapter.4}% 56
-\BOOKMARK [2][-]{subsection.4.3.1}{Model-Based RL: From AlphaZero to Deep Hedging}{section.4.3}% 57
-\BOOKMARK [2][-]{subsection.4.3.2}{Model-Free RL for Hedging}{section.4.3}% 58
-\BOOKMARK [1][-]{section.4.4}{Hedging VAs with a PPO Agent}{chapter.4}% 59
-\BOOKMARK [2][-]{subsection.4.4.1}{Accounting for Non-Markovian Dynamics}{section.4.4}% 60
-\BOOKMARK [1][-]{section.4.5}{Numerical Experiments}{chapter.4}% 61
-\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 62
-\BOOKMARK [0][-]{section*.51}{References}{}% 63
+\BOOKMARK [1][-]{section.1.1}{Metamodeling for Monte Carlo Simulation Scheme}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Machine Learning for Risk Management Applications}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{Supervised Learning Models}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.2}{Regression Models}{section.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.2.3}{Neural Network Architectures}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.4}{Reinforcement Learning}{section.1.2}% 9
+\BOOKMARK [0][-]{chapter.2}{Nested Simulation Procedures in Financial Engineering: A Selected Review}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.2}{Problem Formulation}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{The Standard Nested Simulation Procedure}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.2}{Multi-level Monte Carlo}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.3}{Supervised Learning Metamodels}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.4}{Likelihood Ratio Method}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.5}{Problem Statement}{section.2.2}% 17
+\BOOKMARK [1][-]{section.2.3}{Asymptotic Analysis}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{Connections between Convergence in MSE and Absolute Error}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{Asymptotic Analysis for the Standard Nested Simulation Procedure}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.3}{Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{section.2.3}% 21
+\BOOKMARK [1][-]{section.2.4}{Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{chapter.2}% 22
+\BOOKMARK [2][-]{subsection.2.4.1}{Standard Assumptions}{section.2.4}% 23
+\BOOKMARK [2][-]{subsection.2.4.2}{Assumptions on Joint Density}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.3}{Assumptions for the MLMC Procedure}{section.2.4}% 25
+\BOOKMARK [2][-]{subsection.2.4.4}{Assumptions for the Likelihood Ratio-Based Procedure}{section.2.4}% 26
+\BOOKMARK [2][-]{subsection.2.4.5}{Assumptions for the Kernel-Based Procedure}{section.2.4}% 27
+\BOOKMARK [2][-]{subsection.2.4.6}{Assumptions for the KRR-Based Procedure}{section.2.4}% 28
+\BOOKMARK [1][-]{section.2.5}{Finite-Sample Experiments}{chapter.2}% 29
+\BOOKMARK [2][-]{subsection.2.5.1}{Sensitivity to the Asset Dimension}{section.2.5}% 30
+\BOOKMARK [2][-]{subsection.2.5.2}{Empirical Convergence of Parametric Regression Procedures}{section.2.5}% 31
+\BOOKMARK [2][-]{subsection.2.5.3}{Empirical Convergence of Kernel Smoothing-Based Procedures}{section.2.5}% 32
+\BOOKMARK [2][-]{subsection.2.5.4}{Sensitivity to the Option Types and Risk Measures}{section.2.5}% 33
+\BOOKMARK [2][-]{subsection.2.5.5}{Sensitivity to level for VaR and CVaR}{section.2.5}% 34
+\BOOKMARK [2][-]{subsection.2.5.6}{Sensitivity to the Asset Model}{section.2.5}% 35
+\BOOKMARK [2][-]{subsection.2.5.7}{Sensitivity to the regression basis}{section.2.5}% 36
+\BOOKMARK [2][-]{subsection.2.5.8}{Empirical Convergence of MLMC}{section.2.5}% 37
+\BOOKMARK [1][-]{section.2.6}{Computational Complexity}{chapter.2}% 38
+\BOOKMARK [1][-]{section.2.7}{Conclusion}{chapter.2}% 39
+\BOOKMARK [0][-]{chapter.3}{Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{}% 40
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 41
+\BOOKMARK [1][-]{section.3.2}{Problem Formulation}{chapter.3}% 42
+\BOOKMARK [2][-]{subsection.3.2.1}{Tail Risk Measures: VaR and CVaR}{section.3.2}% 43
+\BOOKMARK [2][-]{subsection.3.2.2}{Simulation Model for Variable Annuity Payouts}{section.3.2}% 44
+\BOOKMARK [2][-]{subsection.3.2.3}{Dynamic Hedging for Variable Annuities}{section.3.2}% 45
+\BOOKMARK [1][-]{section.3.3}{Two-Stage Nested Simulation with Metamodels}{chapter.3}% 46
+\BOOKMARK [1][-]{section.3.4}{Single-Stage Nested Simulation with Neural Network Metamodels}{chapter.3}% 47
+\BOOKMARK [1][-]{section.3.5}{Numerical Results}{chapter.3}% 48
+\BOOKMARK [2][-]{subsection.3.5.1}{Two-Stage Procedure}{section.3.5}% 49
+\BOOKMARK [2][-]{subsection.3.5.2}{Noise Tolerance of Deep Neural Network Metamodels}{section.3.5}% 50
+\BOOKMARK [2][-]{subsection.3.5.3}{Single-Stage Procedure}{section.3.5}% 51
+\BOOKMARK [1][-]{section.3.6}{Conclusion}{chapter.3}% 52
+\BOOKMARK [0][-]{chapter.4}{Model-Free Deep Hedging of Variable Annuities}{}% 53
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 54
+\BOOKMARK [1][-]{section.4.2}{Markov Decision Process for Hedging VAs}{chapter.4}% 55
+\BOOKMARK [2][-]{subsection.4.2.1}{Hedging Environment of Variable Annuities}{section.4.2}% 56
+\BOOKMARK [2][-]{subsection.4.2.2}{State Space}{section.4.2}% 57
+\BOOKMARK [2][-]{subsection.4.2.3}{Action Space}{section.4.2}% 58
+\BOOKMARK [2][-]{subsection.4.2.4}{Policy}{section.4.2}% 59
+\BOOKMARK [2][-]{subsection.4.2.5}{Transition Probabilities}{section.4.2}% 60
+\BOOKMARK [2][-]{subsection.4.2.6}{Reward and Discount Factor}{section.4.2}% 61
+\BOOKMARK [2][-]{subsection.4.2.7}{Value Function and Advantage Function}{section.4.2}% 62
+\BOOKMARK [1][-]{section.4.3}{Exising RL Algorithms and Their Limitations}{chapter.4}% 63
+\BOOKMARK [2][-]{subsection.4.3.1}{Model-Based RL: From AlphaZero to Deep Hedging}{section.4.3}% 64
+\BOOKMARK [2][-]{subsection.4.3.2}{Model-Free RL for Hedging}{section.4.3}% 65
+\BOOKMARK [1][-]{section.4.4}{Hedging VAs with a PPO Agent}{chapter.4}% 66
+\BOOKMARK [2][-]{subsection.4.4.1}{Accounting for Non-Markovian Dynamics}{section.4.4}% 67
+\BOOKMARK [2][-]{subsection.4.4.2}{Reward Shaping}{section.4.4}% 68
+\BOOKMARK [2][-]{subsection.4.4.3}{Policy Transfer}{section.4.4}% 69
+\BOOKMARK [2][-]{subsection.4.4.4}{Evaluation Metrics}{section.4.4}% 70
+\BOOKMARK [1][-]{section.4.5}{Numerical Experiments}{chapter.4}% 71
+\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 72
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 73
+\BOOKMARK [0][-]{section*.53}{References}{}% 74

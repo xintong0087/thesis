@@ -1,40 +1,46 @@
-\chapter{Model-Free Deep Hedging of Variable Annuities}
+\chapter{Model-Free Deep Hedging of Variable Annuities} \label{chap:project3}
 
 \section{Introduction}
 
-Reinforcement Learning (RL) is a branch of machine learning that focuses on training algorithms, known as agents, to make a sequence of decisions. 
-The agent learns to achieve a goal in an uncertain, potentially complex environment by trial and error, using feedback from its own actions and experiences. 
-Unlike supervised learning, where training data is labeled with the correct answers, in RL, an agent is provided with rewards or punishments as signals for its actions.
+In the evolving landscape of financial markets, insurance products such as variable annuities (VAs) have gained significant interest due to their ability to provide both investment growth and guaranteed benefits. 
+Managing the risks associated with these products, especially in volatile market conditions, is a complex task that demands sophisticated financial modeling techniques. 
+Reinforcement Learning (RL) has emerged as a powerful tool for addressing such complexities. With the recent advancement in deep learning, deep neural network (DNN) architectures have been successfully applied to RL problems, leading to the development of deep reinforcement learning (DRL) algorithms. 
+These algorithms have demonstrated remarkable success decision-making tasks that must be optimized over time. 
+In the context of managing VAs, DRL has shown promise in optimizing hedging strategies where long-term financial and policyholder decisions interact dynamically with changing market conditions.
 
-The core of RL revolves around the concept of the agent interacting with its environment over time, aiming to maximize the cumulative reward. 
-This process involves observing the state of the environment, selecting and performing actions, and receiving rewards or penalties in response to those actions. 
-The agent's objective is to learn a mapping from states to actions that maximizes this cumulative reward, which is often referred to as a policy. 
-One of the fundamental frameworks for modeling RL problems is the Markov Decision Process (MDP). 
-An MDP provides a mathematical formulation of the decision-making process, characterized by states, actions, rewards, and transition probabilities. 
-Solving an MDP involves finding a policy that maximizes some function of the expected rewards, typically the expected cumulative reward over time.
+Reinforcement learning is a branch of machine learning in which an agent learns to make sequential decisions by interacting with its environment. 
+Through trial and error, the agent receives feedback in the form of rewards or penalties, allowing it to learn an optimal policy for achieving long-term goals. 
+In financial and actuarial contexts, RL has been applied to portfolio optimization, asset allocation, and risk management. 
+In a dynamic hedging problem, the agent is referred to as the decision-maker that tries to minimize financial risks over time horizon by adjusting the hedging portfolio based on the current environment, which is the current state of the financial markets and actuarial assumptions.
+By intergrating deep neural network, DRL extends this framework by enabling the agent to handle high-dimensional and complex environments. 
+DRL has shown particular promise in finance because of its ability to process vast amounts of financial data and discover intricate patterns in market dynamics.
+Despite their success, DRL faces practical limitations when applied to real-world financial markets.
+Its most significant drawback is the requirement for extensive data and computational resources.
+Training a DRL agent from scratch requires a large dataset along with considerable computational time for exploration and learning.
+This is especially problematic for variable annuities, which are long-term insurance products that are sensitive to market fluctuations and underlying actuarial assumptions.
+Given that financial markets are highly dynamic, frequent retraining to account for new market regimes becomes necessary, which can lead to prohibitively high costs and computational inefficiency.
+Moreover, using historical data leads to overfitting to the past. 
+An overfitting model can lead to suboptimal hedging strategies that perform poorly in changing market conditions.
 
-RL algorithms can be broadly categorized into two types: model-based RL and model-free RL. 
-Model-based RL utilize a model of the environment to simulate the outcomes of actions, enabling planning and decision-making with fewer interactions with the environment. 
-The biggest drawback of model-based RL is model bias. 
-In practice, the ground-true model is usually not available.
-By using a model, an RL agent can exploit the model bias, which leads to suboptimal performance in the real environment.
-Conversely, model-free RL learn directly from interactions with the environment.
-Without relying on a model, model-free RL algorithms are more straightforward implement and tune.
-
-A compelling application of RL is dynamic hedging, where the complexity and uncertainty of financial markets make traditional static models inadequate.
-RL's adaptability and learning capabilities offer a promising solution to dynamically adjust hedging strategies in response to market movements and assumptions changes.
-In particular, model-free RL has the potential to enhance risk management practices by developing robust strategies that can adapt in real-time.
-Some popular RL algorithms include Proximal Policy Optimization (PPO), Deep Q-Networks (DQN), and Deep Deterministic Policy Gradient (DDPG).
-
-In this paper, we propose a model-free RL algorithm to improve the risk management of variable annuities (VAs).
-VAs are popular insurance products that add investment features to an insurance contract.
-Hedging VAs is particularly challenging due to multiple sources of risk.
-Our model-free RL approach aims to learn a hedging policy without directly accessing models of the underlying risk factors.
-By interacting with an enviornment, the hedging policy can effectively manage the risks of VAs in a changing market environment.
+Transfer learning (TL) offers a compelling solution to the challenges posed by existing DRL approaches. 
+The core idea of TL is to leverage knowledge from previously solved tasks and apply that knowledge to new but related tasks.
+In the context of financial modeling, this means that instead of training an RL agent from scratch every time underlying assumptions change, the model can utilize the knowledge gained from past market environments to accelerate the learning process under the new environment.
+TL in financial markets is particularly advantageous for addressing the data scarcity problem. 
+By transferring existing knowledge from similar environments, TL improves model performance in situations where historical data is limited or noisy. 
+This allows models using TL to be both more accurate and computationally efficient. 
+Additionally, TL enhances the robustness of models by allowing continuous learning. 
+Instead of retraining a deep RL model from scratch when market conditions shift, TL enables the reuse of pre-trained models, facilitating faster adaptation to new environments while avoiding overfitting to past conditions.
+In the risk management of variable annuities, transfer learning enables quicker adaptation to changing financial and actuarial assumptions by reusing information obtained from another set of related assumptions, such as the management of similar financial instruments or different market regimes. 
+A DRL agent equipped with transfer learning can adjust its strategies in response to new market data, making the model more adaptive and responsive without the need for costly retraining.
+More specifically, a DRL agent trained to manage variable annuities for a GMMB contract can apply its learned strategies to a GMWB contract with the same financial assumptions. 
+A DRL agent trained for a VA product on a Black-Scholes asset model can transfer its knowledge to the training of a similar product on a stochastic volatility model.
+This approach significantly reduces the computational costs associated with the training of new VA products with different assumptions and improves the generalization of the model to unseen market conditions.
+By integrating transfer learning with existing DRL frameworks, we can eliminate the inefficiencies of training models from scratch, provide faster adaptability to new market conditions, and enhance the scalability and computational efficiency of financial models. 
+This approach offers a more robust and practical solution for managing variable annuities in dynamic and volatile financial markets.
 
 The rest of the paper is organized as follows: 
 
-\section{Markov Decision Process}
+\section{Markov Decision Process for Hedging VAs}
 
 An MDP is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$, where:
 
@@ -171,7 +177,6 @@ The GMMB loss consists of an additional payoff at maturity $T$, thus its term re
     F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}(\Delta_{t-1}) + (G_T - F_{T^+})^+      & t = T
     \end{cases}
 \end{equation}
-It is worth noting that learning to hedge GMWB is easier for an RL agent due to the absense of reward at maturity (long-term feedback).
 
 \subsection{Value Function and Advantage Function}
 
@@ -200,7 +205,7 @@ Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A
 
 The advantage function quantifies the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
 
-\section{Model-Based and Model-Free RL}
+\section{Exising RL Algorithms and Their Limitations}
 
 \subsection{Model-Based RL: From AlphaZero to Deep Hedging}
 Deep reinforcement learning first attacted attentions when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
@@ -435,6 +440,58 @@ Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the st
 
 The recurrent PPO algorithm is similar to the standard PPO algorithm, but it includes an LSTM component to capture the temporal dependencies in the data.
 However, the sequantial nature of the LSTM is not suitable for parallel computation, which slows down the training process.
+
+In the context of deep hedging, various research has been conducted to improve the hedging strategies on real-world data by leveraging knowledge from simulated data.
+Most of the research uses the offline-online learning approach, where the hedging strategies are first trained with simulation data, but updated in real-time based on new market information and continuous learning to adapt to changing market dynamics.
+The most relevant paper to our study is~\cite{xiao2021optimal}, which use policy gradient algorithms to train hedging strategies for European options with simulation data from Heston model and then updated in real-time hedging S\&P 500 index options.
+To the best of our knowledge, no research has been conducted to improve the hedging strategies with the state-of-the-art transfer learning techniques.
+This section introduces some transfer learning techniques that are relevant to our task of hedging VAs.
+
+\subsection{Reward Shaping}
+
+In the context of hedging VAs using deep reinforcement learning and transfer learning, reward shaping becomes a crucial technique. 
+It involves modifying the reward function in the target domain to incorporate additional guidance, which often leads to more efficient learning and better performance.
+This technique can be particularly useful for managing the complex risks associated with VAs, as it can guide the learning process towards strategies that are more effective in hedging these products.
+
+One way to implement reward shaping in this context is by introducing auxiliary rewards that reflect the performance of hedging strategies learned from the source domains.
+Reward shaping learns an auxiliary reward function $\mathcal{R}_s: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \rightarrow \mathbb{R}$ from the source domains.
+The auxiliary reward function is then used to shape the reward function in the target domain, $\mathcal{R}'_t = \mathcal{R}_t + \mathcal{R}_s$, by incorporating the insights gained from the source domains.
+
+Some popular reward shaping techniques include potential-based reward shaping~\citep{ng1999policy}, potential based state-action advice~\citep{wiewiora2003principled}, dynamic value function advice~\citep{harutyunyan2015expressing}.
+
+\subsection{Policy Transfer}
+
+The most straightforward approach to transfer learning is to directly transfer the policy learned from the source domains to the target domain via policy distillation.
+Policy distillation is a technique that transfers the knowledge from a teacher policy to a student policy by training the student policy to mimic the teacher policy up to a certain extent.
+The teacher policy is learned from the source domains, and the student policy learns the hedging strategies in the target domain while guided by the teacher policy.
+In the Distral algorithm~\citep{teh2017distral}, the student policy maximizes a multi-task objective:
+$\max_{\phi} \sum_{i=1}^K \mathcal{J}(\pi_\phi, \pi_{E_i})$, where
+
+\begin{equation}
+    \mathcal{J}(\pi_\phi, \pi_{E_i}) = \sum_{t=0}^\infty \mathbb{E}_{s_t \sim \mu_0^t, a_t \sim \pi_\phi} \left[ \gamma^t R_{t+1} + \frac{\alpha}{\beta} \log \pi_{\phi}(a_t|s_t) - \frac{1}{\beta}log \pi_{E_i}(a_t|s_t) \right],
+\end{equation}
+
+where a set of $K$ teacher policies $\pi_{E_i}$ are learned from the source domains, and the student policy $\pi_\phi$ is learned on the target domain. $\alpha$ and $\beta$ are hyperparameters that control the trade-off between mimicking the teacher policies and exploring the target domain.
+
+\subsection{Evaluation Metrics}
+
+The metrics discussed for evaluating transfer learning approaches focus on two key aspects: mastery and generalization. 
+Mastery assesses the agent's final performance level in the target domain, indicating how effectively it has learned a specific task from previous knowledge. 
+Some common metrics for evaluating mastery include:
+
+\begin{itemize}
+    \item \textbf{Asymptotic performance:} the final reward of the agent in the target domain.
+    \item \textbf{Transfer ratio:} the ratio of the agent's performance in the target domain with and without transfer learning.
+\end{itemize}
+
+Generalization, on the other hand, refers to the agent's ability to quickly adapt its learned knowledge to the target domain.
+
+\begin{itemize}
+    \item \textbf{Jumpstart performance:} the initial reward of the agent in the target domain.
+    \item \textbf{Accumulated reward:} the total area under the reward curve over time in the target domain.
+    \item \textbf{Time to threshold:} the time it takes for the agent to reach a certain performance threshold in the target domain.
+    \item \textbf{Performance with fixed epochs:} the agent's performance in the target domain after a fixed number of epochs.
+\end{itemize}
 
 \section{Numerical Experiments}
 

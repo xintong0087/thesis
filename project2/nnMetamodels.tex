@@ -1,6 +1,6 @@
 %======================================================================
 \chapter{Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}
-\label{ch2}
+\label{chap:project2}
 %======================================================================
 
 
@@ -85,27 +85,20 @@ For readers who are interested in the examination of a neural network metamodel,
 
 \subsection{Tail Risk Measures: VaR and CVaR}
 Measuring and monitoring risks, particularly tail risks, are important risk management tasks for financial institutions like banks and insurance companies.
-Two most popular tail risk measures are Value-at-Risk (VaR) and Conditional Value-at-Risk (CVaR)~\citep{rockafellar2002conditional}. Other names of CVaR include Conditional Tail Expectation (CTE), Tail Value-at-Risk (TailVaR), and Expected Shortfall (ES).
+Two most popular tail risk measures are VaR and CVaR~\citep{hardy2022quantitative, rockafellar2002conditional}. 
 
 Consider a loss random variable $L$ whose losses and gains lie in the right and left tails, respectively, of its distribution.
-For a given confidence level $\alpha\in [0,1]$, the $\alpha$-VaR is defined as the $\alpha$-quantile of $L$:
-$
-    \VaR_\alpha = q_\alpha = \inf \left\{ q: \Pr(L\leq q) \geq \alpha \right\}.
-$
-The $\alpha$-CVaR of $L$ is defined as
-$
-    \CVaR_\alpha =\frac{1}{1-\alpha} \int_{v=\alpha}^{1} q_v dv.
-$
+For a given confidence level $\alpha\in [0,1]$, the $\alpha$-VaR and $\alpha$-CVaR are defined in Equation~\eqref{eq1:var} and Equation~\eqref{eq1:cvar}, respectively.
 Tail risk measures like VaR and CVaR are widely used for setting regulatory and economic capital, which is the amount of capital a financial institution holds to cover its risk.
 For example, European insurers set regulatory capital at $99.5\%$-VaR according to Solvency II~\cite{eiopa2014underlying}.
 In Canada, the regulatory capital requirement for VAs is set based on CVaRs as prescribed in~\cite{osfi2017life}.
 
 Let $L_1,L_2,\ldots,L_M$ be $M$ independent and identically distributed (i.i.d.) simulated losses of $L$ and let $L_{(1)}\leq L_{(2)}\leq \ldots\leq L_{(M)}$ be the corresponding ordered losses.
 For a given confidence level $\alpha$ (assume that $\alpha M$ is an integer for simplicity), $\alpha$-VaR can be estimated by the sample quantile $\widehat{\VaR}_\alpha = L_{(\alpha M)}$. Also, $\alpha$-CVaR can be estimated by
-\begin{equation*}
-    \widehat{\CVaR}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}L_{(i)} = \frac{1}{(1-\alpha)M} \sum_{i \in \tail_{(1-\alpha )M}}L_{i},
-\end{equation*}
-where we define a \textit{true tail scenario set} of size $k$ as $\tail_{k} = \{i: L_i > L_{(M-k)}\}$.
+\begin{equation} \label{eq2:cvar-hat}
+    \widehat{\CVaR}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}L_{(i)} = \frac{1}{(1-\alpha)M} \sum_{i \in \tail_{(1-\alpha )M}}L_{i}.
+\end{equation}
+Equation \eqref{eq2:cvar-hat} is the same as \eqref{eq1:cvar-hat} except we define a \textit{true tail scenario set} of size $k$ as $\tail_{k} = \{i: L_i > L_{(M-k)}\}$.
 In this study, the loss random variable of interest is the hedging error for VA.
 
 \subsection{Simulation Model for Variable Annuity Payouts}\label{subsec:VApayout}
@@ -439,15 +432,34 @@ The last three columns in Table~\ref{tab:gmwb_arch} display the average squared 
 The half lengths of their 95\% confidence interval of these quantities are also reported in parentheses.
 We first observe that the two regression metamodels' errors are larger than those of three deep neural network models.
 This is because model capacities of the regression metamodels are too low to learn the complex dynamic hedging simulation model.
-There are also differences among the three deep neural neetwork models.
+All neural network metamodels have high model capcities comparing with the number of data points in the training set, i.e., $90\!,\!000$.
+This is not a huge concern for the deep neural networks.
+In neural network literature, the number of trainable parameters is often much larger than the number of data points in the training set.
+AlexNet~\citep{krizhevsky2012imagenet}, a well-known convolutional neural network, has 60 million parameters and is trained on the ImageNet dataset with 1.2 million images.
+Other examples include generative pre-trained transformer models like BERT~\citep{devlin2018bert} and GPT-3~\citep{brown2020language}, which have billions of parameters and are trained on large-scale text corpora.
+The reason for not overfitting is still an open question in deep learning research.
+One possible explanation is that the optimization surface of deep neural networks is highly non-convex and has many local minima.
+As a result, given a good initialization, the optimization algorithm is likely to find a solution that generalizes well to unseen data.
+
+There are also differences among the three deep neural network models due to having different architectures.
 The FNN is a generic neural network, its test error is larger than the training error, which is a sign of over-fitting and poor generalization.
 In contrast, RNN and LSTM networks have recurrent strucutures and are designed to capture temporal relationship in the high-dimensional feature.
 As a result, they have lower training errors, i.e., they fit the data better, and have lower testing error, i.e., they generalize better.
 Notably, the true errors for the deep neural network metamodels are lower than the test errors.
+This is a sign of the metamodels' ability to learn the true feature-label relationship with noisy training labels. 
+Section~\ref{subsec2:noiseTolerance} investigates this phenomenon in more details.
+
 Comparing the two metamodels with recurrent structures, A LSTM network overcomes two key drawbacks of a crude RNN.
 \begin{enumerate}
-    \item It avoids the vanishing gradient problem during training, which makes the LSTM easier to than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem\footnote{A well-trained RNN stops early at around 300 training epochs, while an ill-trained RNN uses up all 1000 training epochs.}. As a result, the half length of the 95\% confidence interval of the RNN's training error is much larger than all other metamodels. The last row of Table~\ref{tab:gmwb_arch} shows the average squared errors of the good RNN metamodels that are successfully trained. Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN, but the half lengths of their 95\% confidence intervals are larger than those of the FNN. This suggests that the RNN is more sensitive to noise in stochastic gradient descent than the FNN.
-    \item A LSTM introduces three gates that regulate the flow of information. These gates decide what information should be kept or discarded. This makes a LSTM more capcable of learning long-term dependencies. Since the feature in our dynamic hedging problem is a 240-dimensional time series, a LSTM is more suitable than a crude RNN.
+    \item It avoids the vanishing gradient problem during training, which makes the LSTM easier to than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem\footnote{A well-trained RNN stops early at around 300 training epochs, while an ill-trained RNN uses up all 1000 training epochs.}. 
+    As a result, the half length of the 95\% confidence interval of the RNN's training error is much larger than all other metamodels. The last row of Table~\ref{tab:gmwb_arch} shows the average squared errors of the good RNN metamodels that are successfully trained. 
+    Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN, but the half lengths of their 95\% confidence intervals are larger than those of the FNN. 
+    This suggests that the RNN is more sensitive to noise in stochastic gradient descent than the FNN.
+    \item A LSTM introduces three gates that regulate the flow of information. 
+    These gates decide what information should be kept or discarded. This makes a LSTM more capcable of learning long-term dependencies. 
+    Since the feature in our dynamic hedging problem is a 240-dimensional time series, a LSTM is more suitable than a crude RNN.
+    The network architecture serves as a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data, and it significantly impact the metamodel's performance.
+    It is important to choose a suitable architecture with a pre-set capacity that is large enough to learn the true feature-label relationship.
 \end{enumerate}
 
 
@@ -486,7 +498,7 @@ Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between 
     \label{fig2:QQ_REG}
 \end{figure}
 
-Compared with the MSE table in Table~\ref{tab:gmwb_arch} that summarizes the overall fit, QQ plots offer a close look at the metamodels' performance on different parts of the loss distribution.
+Comparing with the MSE table in Table~\ref{tab:gmwb_arch} that summarizes the overall fit, QQ plots offer a closer look at the metamodels' performance on different parts of the loss distribution.
 Figure~\ref{fig2:QQ_REG} show that the regression metamodels' predictions are far from the true losses, especially on the tails.
 Between the two regression metamodels, the QPR metamodel has a slightly better fit for larger losses.
 Nevertheless, both regression metamodels have poor fits to the true data, and their fit on the tail is particularly undesirable.
@@ -586,7 +598,7 @@ As the percentage of correctly identified tails approaches 100\%, the two-stage 
 This is because the two-stage procedure's CVaR estimates are based on the standard procedure's estimates on the predicted tail scenarios, and the standard procedure's estimates themselves are also noisy.
 
 
-\subsection{Noise Tolerance of Deep Neural Network Metamodels}
+\subsection{Noise Tolerance of Deep Neural Network Metamodels} \label{subsec2:noiseTolerance}
 
 For financial and actuarial applications, regulators and practitioners are often concerned about the robustness of deep neural network models to noise in training labels, which hinders the adoption of these models in practice.
 Since the true relationship is unknown in real-world applications, most deep learning literature illustrates the impact of noise by artificially injecting noise into real-world datasets, which is already noisy before the injection.
@@ -600,6 +612,12 @@ We study the impact of noisy data on two LSTM metamodels with different model ca
 The two LSTM metamodels has the same number of layers, but their numbers of hidden units in each layer are different.
 More specfically, the high-capacity LSTM metamodel has $128$ and $16$ hidden units in the first and second LSTM layers, respectively, while the low-capacity LSTM metamodel has $32$ and $4$.
 
+The maximum number of data points in the training dataset is set to $M = 100\!,000$.
+The training dataset is split into training and test sets with a 90\%-10\% ratio.
+The true labels are generated by running the standard nested simulation procedure with $N=100\!,000$ inner replications for each of the $100\!,000$ outer scenarios.
+The reason for using a maximum of $100\!,000$ data points is precisely due to the computational cost of running the standard nested simulation procedure.
+For consistency, the LSTM metamodels are trained with the same architecture and training settings as in the previous experiments.
+
 \begin{table}[ht!]
     \small
     \centering
@@ -609,32 +627,41 @@ More specfically, the high-capacity LSTM metamodel has $128$ and $16$ hidden uni
         \midrule
         LSTM                & $N=100$                & $0.075 (\pm0.004)$        & $0.079(\pm0.005)$     & $0.063 (\pm0.004)$ \\ 
         High-capacity LSTM  & $N=100$                & $0.068 (\pm0.004)$        & $0.102(\pm0.006)$     & $0.060 (\pm0.004)$ \\
+        Difference          & $N=100$                & $-0.007$                  & $0.023$               & $-0.003$ \\
+        \hline
         LSTM                & $N=10$                 & $0.195 (\pm0.001)$        & $0.193(\pm0.001)$     & $0.070 (\pm0.001)$ \\
         High-capacity LSTM  & $N=10$                 & $0.157 (\pm0.002)$        & $0.199(\pm0.002)$     & $0.065 (\pm0.001)$ \\
+        Difference          & $N=10$                 & $-0.038$                  & $0.006$               & $-0.005$ \\
+        \hline
         LSTM                & $N=1$                  & $1.366 (\pm0.006)$        & $0.781(\pm0.005)$     & $0.129 (\pm0.002)$ \\
         High-capacityLSTM   & $N=1$                  & $1.354 (\pm0.006)$        & $0.795(\pm0.005)$     & $0.149 (\pm0.002)$ \\
+        Difference          & $N=1$                  & $-0.012$                  & $0.014$               & \textcolor{red}{$0.020$} \\
         \bottomrule
     \end{tabular}
     \caption{MSEs of LSTM metamodels.}
     \label{tab:lstm_arch}
 \end{table}
 
-Table~\ref{tab:lstm_arch} shows the average squared errors and the half widths of their 95\% confidence intervals between the metamodel predictions and the labels in the training dataset and the true dataset.
+The first two rows of Table~\ref{tab:lstm_arch} shows the average squared errors and the half widths of their 95\% confidence intervals between the metamodel predictions and the labels in the training dataset and the true dataset.
 The test errors are included as a practical measure of the metamodels' generalization ability.
 For this particular experiment, we are more interested in the true errors, which measure the metamodels' ability to learn the true feature-label relationship from the low-noise, medium-noise, and high-noise datasets.
 We first observe that all the true errors are lower than the training errors, indicating that the LSTM metamodels generalize well to predicting the true losses.
 Both LSTM metamodels are able to learn the true feature-label relationship from the low-noise and medium-noise datasets.
-However, when the noise level is high, the high-capacity LSTM metamodel has extremely high training error and true error.
-It also has wide confidence intervals, which is an indication that the high-capacity LSTM metamodel is starting to overfit to the noise in the training labels.
+However, when the noise level is high, both LSTM metamodels have high true error.
+The diffences in the errors between the LSTM metamodels are also reported in the last rows of Table~\ref{tab:lstm_arch}.
+A positive difference indicates that the high-capacity LSTM has higher errors than the LSTM.
+We observe that both LSTM metamodels have similar errors on the low-noise and medium-noise datasets.
+However, when the noise level is high, the high-capacity LSTM has higher errors than the regular LSTM.
+This is because the high-capacity LSTM has more trainable parameters and is more prone to over-fitting to the noise in the training labels.
 In contrast, the LSTM metamodel is more robust to label noise and is able to learn the true feature-label relationship better from the high-noise dataset.
-In practice, since the true relationship is unknown, the true error is not available.
+In practice, since the true relationship is unknown, the true error is not readily available.
 The test error approximates the true error and is directly observable.
-The test errors of the LSTM metamodels are consistent with their true errors, which suggests that generalization ability of a metamodel can indeed be inferred from its test error.
+The difference in test errors of the LSTM metamodels are inconsistent with the differences in true errors.
+Therefore, test errors are not reliable indicators of the metamodels' noise tolerance.
+For practical applications that utilize nerual networks as metamodels, we recommend not simulating the test scenarios.
+Instead, we recommend simulating the true contract losses on a few tail and non-tail training scenarios to evaluate the metamodels' noise tolerance.
 
-Another way to read Table~\ref{tab:lstm_arch} is to compare the errors of two metamodels for the same noise level.
-Comparing the LSTM with the high-capacity LSTM on each noise level, we observe that the high-capacity LSTM has lower training errors and true errors than the LSTM on both the low-noise and medium-noise datasets.
-However, when the noise level is high, the high-capacity LSTM has lower training errors but higher true errors than the LSTM.
-In our numerical example, only the highest level of noise moves one towards choosing the LSTM over the high-capacity LSTM.
+In summary, our numerical experiments demonstrate that both LSTM metamodels are capable of learning the true inner simulation model from noisy training labels.
 In most cases, a high-capacity metamodel is better.
 Nevertheless, in extreme circumstances when the noise level is too high, using a high capacity metamodel leads to severe overfitting and poor generalization.
 Hence, domain knowledge about the right architecture for the task and knowledge about the noise level in the training labels are beneficial for choosing the right metamodel.
@@ -646,8 +673,8 @@ Hence, domain knowledge about the right architecture for the task and knowledge 
     \label{fig2:QQ_All}
 \end{figure}
 
-With more details, the QQ-plots depicted in Figure~\ref{fig2:QQ_All} illustrates the fit of the two LSTM metamodels when different noise levels are present in the training labels.
-They are arranged in a 2-by-3 grid, where the two rows correspond to the two LSTM metamodels, and the three columns correspond to the three noise levels.
+In more details, the QQ-plots depicted in Figure~\ref{fig2:QQ_All} illustrates the fit of the two LSTM metamodels when different noise levels are present in the training labels.
+They are arranged in a 2-by-3 grid, where the two rows correspond to the two LSTM metamodels with different model capacities, and the three columns correspond to the increasing noise levels.
 The Pearson correlation coefficient between the true losses and the predicted losses is labeled in each subplot.
 The sparsity of the plot increases as we move from left to right, indicating that the noise level in the training labels increases.
 There are two key findings.
@@ -660,23 +687,23 @@ There are two key findings.
 \end{enumerate}
 
 To further test the sensitivity of a LSTM metamodel and provide a more comprehensive picture of the noise tolerance of deep neural network models, we conduct a sensitivity analysis on the noise tolerance of the regular LSTM metamodel by varying the numbers of outer scenarios ($M$) and inner replications ($N$) used to generate the training data.
-The number of outer scenarios corresponds to the number of feature-label pairs (i.e., data size) of the training dataset, and the number of inner replications controls the noise level in the training labels.
+The number of outer scenarios corresponds to the number of data points in the training dataset, and the number of inner replications controls the noise level in the training labels.
 
 \begin{table}[ht!]
     \small
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=1\!,\!000$ & $N=100$       & $N=10$        & $N=1$ \\
+                            & $N=1$ & $N=10$  & $N=100$ & $N=1\!,\!000$\\
         \midrule
-        $M = 100$         & $0.158$ & $0.167$ & $0.229$ & $1.139$ \\
-        $M = 1\!,\!000$   & $0.127$ & $0.123$ & $0.173$ & $0.559$ \\
-        $M = 10\!,\!000$  & $0.097$ & $0.099$ & $0.115$ & $0.283$ \\
-        $M = 100\!,\!000$ & $0.063$ & $0.063$ & $0.068$ & $0.126$ \\
+        $M = 100$           & $1.139$ & $0.229$ & $0.167$ & $0.158$ \\
+        $M = 1\!,\!000$     & $0.559$ & $0.173$ & $0.123$ & $0.127$ \\
+        $M = 10\!,\!000$    & $0.283$ & $0.115$ & $0.099$ & $0.097$ \\
+        $M = 100\!,\!000$   & $0.126$ & $0.068$ & $0.063$ & $0.063$ \\
         \bottomrule
     \end{tabular}
     \caption{MSE between regular LSTM predicted losses and true losses.}
-    \label{tab:lstm_sens}
+    \label{tab2:lstm_sens}
 \end{table}
 
 \begin{table}[ht!]
@@ -684,75 +711,79 @@ The number of outer scenarios corresponds to the number of feature-label pairs (
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=1\!,\!000$ & $N=100$       & $N=10$        & $N=1$ \\
+                          & $N=1$ & $N=10$  & $N=100$ & $N=1\!,\!000$\\
         \midrule
-        $M = 100$         & $0.087$ & $0.131$ & $0.408$ & $0.764$ \\
-        $M = 1\!,\!000$   & $0.087$ & $0.156$ & $0.367$ & $0.878$ \\
-        $M = 10\!,\!000$  & $0.063$ & $0.064$ & $0.147$ & $0.351$ \\
-        $M = 100\!,\!000$ & $0.038$ & $0.060$ & $0.065$ & $0.149$ \\
+        $M = 100$           & $0.764$ & $0.408$ & $0.131$ & $0.087$ \\
+        $M = 1\!,\!000$     & $0.878$ & $0.367$ & $0.156$ & $0.087$ \\
+        $M = 10\!,\!000$    & $0.351$ & $0.147$ & $0.064$ & $0.063$ \\
+        $M = 100\!,\!000$   & $0.149$ & $0.065$ & $0.060$ & $0.038$ \\
         \bottomrule
     \end{tabular}
     \caption{MSE between high-capacity LSTM predicted losses and true losses.}
-    \label{tab:hicaplstm_sens}
+    \label{tab2:hicaplstm_sens}
 \end{table}
 
-Table~\ref{tab:lstm_sens} and~\ref{tab:hicaplstm_sens} show the average squared errors between the LSTM predictions and the true losses for various combinations of $M$ and $N$.
-The last rows of Table~\ref{tab:lstm_sens} and Table~\ref{tab:hicaplstm_sens} show the performance of the regular and high capacity LSTM metamodels trained with $M=100\!,000$ training labels with different noise levels.
+
+Table~\ref{tab2:lstm_sens} and~\ref{tab2:hicaplstm_sens} show the average squared errors between the LSTM predictions and the true losses for increasing $M$ and $N$.
+The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} show the performance of the regular and high capacity LSTM metamodels trained with $M=100\!,000$ training labels with different noise levels.
 We observe that an increasing $N$ reduces the MSE, but the reduction is not significant for a regular LSTM when $N$ is larger than $10$.
 For the high-capacity LSTM, the MSE is significantly reduced when $N$ is increased from $1$ to $100$, but the reduction is not significant when $N$ is increased from $100$ to $1\!,000$.
-Another way to interpret the results in Table~\ref{tab:lstm_sens} is to compare the MSEs for the same budget of $\Gamma = M \times N$. 
+Another way to interpret the results in Table~\ref{tab2:lstm_sens} is to compare the MSEs for the same budget of $\Gamma = M \times N$. 
 Entries on the same diagonal represents the same simulation budget.
 For most budgets, the MSEs are also the lowest when $N = 10$.
-The results in Table~\ref{tab:lstm_sens} suggest that the performance of the LSTM metamodel is more sensitive to the number of outer scenarios than the number of inner replications.
+The results in Table~\ref{tab2:lstm_sens} suggest that the performance of the LSTM metamodel is more sensitive to the number of outer scenarios than the number of inner replications.
 Treating the neural network as an advanced regression metamodel, we find this pheonomenon to be consistent with the results in~\cite{broadie2015risk}, where the authors show that the performance of a regression-based nested simulation procedure is more affected by the number of outer scenarios.
+The last row in Table~\ref{tab2:lstm_sens} and ~\ref{tab2:hicaplstm_sens} show that the high-capacity LSTM metamodel is relatively insensitive to the number of inner replications.
+To make the most efficient use of a fixed simulation budget, the number of inner replication should be set constant around $N=10$ while increasing the number of outer scenarios to the maximum.
 
-To further investigate the LSTM metamodels' sensitivity to data quantity and quality, we report the Spearman rank correlation coefficients Table~\ref{tab:lstm_corr}, which measure the ability to rank the scenarios by their true losses.
+To further investigate the LSTM metamodels' sensitivity to data quantity and quality ($M$ and $N$, respectively), we report the Spearman rank correlation coefficients Table~\ref{tab2:lstm_corr}, which measure the ability to rank the scenarios by their true losses.
 It is an appropriate measure of the metamodel's performance in the two-stage procedure, where the metamodel is used to identify the predicted tail scenario set, on which extensive simulations are run in stage 2 to estimate the $95\%$-CVaR.
 The Pearson correlation coefficients are also included in the parentheses to illustrate the linear correlation between the predicted losses and the true losses.
 They measure the metamodel's overall prediction accuracy.
 The p-values of all quantities are less than $10^{-5}$, indicating that the correlations are statistically significant.
 
+
 \begin{table}[ht!]
     \small
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=1\!,\!000$ & $N=100$       & $N=10$        & $N=1$ \\
+                          & $N=1$        & $N=10$        & $N=100$       & $N=1\!,\!000$ \\
         \midrule
-        $M = 100$         & 0.937 (0.941) & 0.896 (0.903) & 0.875 (0.915) & 0.638 (0.881) \\
-        $M = 1\!,\!000$   & 0.922 (0.927) & 0.886 (0.891) & 0.899 (0.908) & 0.722 (0.768) \\
-        $M = 10\!,\!000$  & 0.947 (0.948) & 0.908 (0.905) & 0.937 (0.900) & 0.845 (0.630) \\
-        $M = 100\!,\!000$ & 0.965 (0.966) & 0.927 (0.922) & 0.963 (0.909) & 0.935 (0.640) \\
+        $M = 100$         & 0.638 (0.881) & 0.875 (0.915) & 0.896 (0.903) & 0.937 (0.941) \\
+        $M = 1\!,\!000$   & 0.722 (0.768) & 0.899 (0.908) & 0.886 (0.891) & 0.922 (0.927) \\
+        $M = 10\!,\!000$  & 0.845 (0.630) & 0.937 (0.900) & 0.908 (0.905) & 0.947 (0.948) \\
+        $M = 100\!,\!000$ & 0.935 (0.640) & 0.963 (0.909) & 0.927 (0.922) & 0.965 (0.966) \\
         \bottomrule
     \end{tabular}
-    \caption{Spearman (and Pearson) correlation coefficients between regular LSTM predicted losses and true losses.}
-    \label{tab:lstm_corr}
+    \caption{Spearman (and Pearson) correlation coefficients between high-capacity LSTM predicted losses and true losses.}
+    \label{tab2:lstm_corr}
 \end{table}
 
-Consistent with the results in Table~\ref{tab:lstm_sens}, the Pearson and Spearman correlation of the LSTM metamodel predictions with the true losses is sensitive to the number of outer scenarios, especially at higher noise levels.
-Notably, the Spearman correlation coefficients are not significantly different from the Pearson correlation coefficients for any $N$ larger than $10$.
-In our numerical experiments, the regular LSTM metamodel is trained on $M = 100\!,000$ samples from the low noise training dataset ($N=100$), the total simulation budget is $\Gamma = 10\!,000\!,000$.
-The corresponding Spearman correlation coefficient is 0.927, which is very close to the Pearson correlation coefficient of 0.922.
+Consistent with the results in Table~\ref{tab2:lstm_sens}, the Spearman correlation of the LSTM metamodel predictions with the true losses is insensitive to the number of inner replications, especially when $M$ is large.
+The Pearson correlation coefficients are significantly lower for $N=1$ than the other $N$ values.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{./project2/figures/cor_heatmap.png}
+    \caption{Difference between Spearman and Pearson correlation coefficients for high-capacity LSTM metamodel.}
+    \label{fig2:cor-heatmap}
+\end{figure}
+
+Figure~\ref{fig2:cor-heatmap} shows the difference between the Spearman and Pearson correlation coefficients for the high-capacity LSTM metamodel.
+The heatmap is generated by subtracting the Pearson correlation coefficients from the Spearman correlation.
+We observe that Spearman correlation coefficients are not significantly different from the Pearson correlation coefficients for any $N$ larger than $10$. 
 This is a strong evidence that the LSTM metamodel is not only able to effectively rank the scenarios by their true losses, but also able to make accurate loss predictions.
 Instead of using the LSTM metamodel only for ranking in a two-stage procedure, LSTM's ability to cut through a moderate level of noise in training labels encourages us to use its predictions to estimate the CVaR directly. 
 
-% We proceed to examine the impact of noise on the LSTM metamodels' performance in predicting the true tail scenarios.
-% The effect of training label noise is more pronounced for the high-capacity LSTM than for the regular LSTM.
-% For both LSTM metamodels, the Spearman correlation coefficients are not significantly different from the Pearson correlation coefficients, which is significantly different from the two-stage procedure in~\cite{dang2020efficient}.
-% This difference is due to the fact that the two-stage procedure in~\cite{dang2020efficient} uses a simplified asset model (i.e., a Black Scholes model) as a proxy simulation model for the regime-switching model. 
-% The two models are significantly different, but the ranking of the scenarios by their losses is similar.
-% For our two-stage procedure, the only difference between the simulation models in Stage 1 and Stage 2 is the number of inner replications.
-% The ability for the LSTM metamodels to cut through the noise in training labels and learn the true feature-label relationship offers more accurate loss estimates (i.e., high Pearson correlations), which leads to more accurate rankings (i.e., high Spearman correlations).
-
 \subsection{Single-Stage Procedure}
 
-The accuracy and robustness of the LSTM metamodels motivate us to propose a single-stage procedure that uses the metamodel predictions to estimate the CVaR directly.
+The accuracy and robustness of the LSTM metamodels motivate us to propose a single-stage procedure that uses the metamodel predictions to estimate the CVaR directly. 
 Instead of relying on the standard nested simulation procedure in Stage 2, the single-stage procedure is more efficient and extends to estimating other risk measures that require knowledge of the entire loss distribution.
 In this section, we compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $95\%$-CVaR of the hedging losses for GMWB.
 % , and we also examine the single-stage procedure's performance in estimating the standard deviation of the hedging losses. 
 In our numerical experiments, the results for the single-stage procedure is obtained with the same metamodels as in the two-stage procedure.
-The only difference from Section~\ref{subsec:twoStageProcedure} is that the metamodels predictions are used to estimate the risk measures directly.
-
+The only difference from Section~\ref{subsec:twoStageProcedure} is that the metamodel predictions are used to estimate the risk measures directly.
 
 \begin{figure}[ht!]
     \centering
@@ -842,6 +873,7 @@ We propose two nested simulation procedures that use deep neural network metamod
 For estimating tail risk measures, our two-stage procedure is designed to address regulatory concerns by avoiding the direct use of metamodel predictions but instead use them to identify the potential tail scenarios.
 An extensive inner simulation is performed to achieve a high level of accuracy on the predicted tail scenarios.
 However, the safety margin in the two-stage procedure is a user's choice and is not easy to determine before running extensive numerical experiments.
+
 Our single-stage procedure uses the metamodel predictions to estimate the risk measure directly.
 It is more efficient and can be extended to estimate risk measures that require knowledge of the entire loss distribution.
 Our numerical experiments demonstrate that the proposed single-stage procedure with deep neural network metamodels result in further computational savings over our two-stage procedure. 
@@ -853,3 +885,9 @@ From a practical standpoint, the choice of a suitable deep neural network archit
 We find that a LSTM metamodel is the most suitable for our dynamic hedging simulation model with time series features, but the optimal network architecture may vary for different simulation models.
 Exploring deep neural network metamodels in other complex risk management tasks presents a promising avenue for research, especially as these tasks often involve complex, high-dimensional scenarios where traditional methods are insufficient. 
 The versatility of neural networks could unlock new insights across a broad spectrum of financial and actuarial applications.
+
+In this chapter, we have demonstrated the potential of deep neural network metamodels in nested simulation procedures for delta hedging of variable annuity contracts and have shown that they can be used to estimate risk measures with high accuracy and efficiency.
+We have assumed a zero transaction cost model for our monthly rebalancing.
+In practice, transaction costs can be significant and can affect the hedging strategy.
+In the next chapter, we will extend our study to include transaction costs in the hedging strategy and investigate the impact of transaction costs on the hedging performance and the risk measures of the hedging error.
+We will also explore the use of deep neural network models as reinforcement learning agents to optimize the hedging strategy by directly interacting with the financial market and maximize the hedging performance.

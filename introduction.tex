@@ -3,17 +3,126 @@
 %======================================================================
 
 Quantitative risk management is a key component of modern financial systems, ensuring the stability and resilience of markets, institutions, and portfolios against an array of risks. 
-For financial products like option portfolios and variable annuity contracts, traditional risk assessment methods often fall short in accurately capturing the complex dynamics of the underlying risk factors.
+For financial products like option portfolios and variable annuity (VA) contracts, traditional risk assessment methods often fall short in accurately capturing the complex dynamics of the underlying risk factors.
+VA contracts are a popular type of complex insurance product that is linked to the performance of underlying assets, providing a guaranteed minimum income benefit to the policyholder.
 This is where advanced Monte Carlo simulation techniques, particularly nested simulation procedures, become indispensable.
 In contrast to finite-difference methods, a Monte Carlo simulation scheme is more flexible and can be easily adapted to model tail risk with a rule-based design.
+~\cite{glasserman2004monte} provide a comprehensive overview of nested simulation methods in financial engineering and risk management applications.
 In this thesis, we focus on building and analyzing nested simulation procedures for risk management applications of financial derivatives and insurance products.
 Nested simulation, also known as nested stochastic modeling and stochastic-on-stochastic modeling, becomes necessary when stochastic simulation of a parameter of interest is contingent on another quantity to be determined stochastically.
 In the context of financial engineering, nested simulation is used to model the tail risk of a contract whose payoff depends on a set of underlying risk factors.
 For example, estimating the value of an exotic option at a risk horizon requires simulation given a realization of the underlying assets upto that horizon.
-A standard nested simulation procedure consists of two levels of simulation: the outer level simulates the underlying risk factors, while the inner level estimates the value of interest with the inner sample mean from another level of Monte Carlo simulation.
+A standard nested simulation procedure consists of two levels of simulation: the outer-level simulation generates the underlying risk factors, while the inner-level simulation estimates the value of interest with the inner sample mean from another level of Monte Carlo simulation.
 The nested structure allows for accurate estimation given sufficient computational resources, but it also introduces additional complexity in the simulation design and implementation.
-% ~\cite{gordy2010nested} investigate the standard nested simulation method for estimating tail risk measures of financial portfolios and provide an optimal resource allocation strategy for nested simulation.
+Furthermore, in real-world applications, the computational burden of nested simulation can be prohibitive due to its nested structure.
+The number of inner simulations required to achieve a desired level of accuracy for each outer scenario can be prohibitively large.
+Metamodeling techniques that approximate the inner simulation model can be used to reduce the computational burden of nested simulation.
+Metamodels are statistical models that approximate the output of a complex simulation model as a function of its input parameters.
+In this thesis, we focus on metamodels of the inner simulation models in nested simulation procedures for risk management applications of financial derivatives and VA contracts.
+Two interesting problems that requires nested simulation are considered in this thesis: (1) estimating the risk of a portfolio of financial options and (2) dynamic hedging of VA contracts with a delta hedging strategy.
+The risk management of VAs is a challenging problem due to the complex interactions between the policyholder's behavior, the financial market dynamics, and the insurer's risk management strategies.
+% Moreover, the risk management of VAs is further complicated by transaction costs, which often makes delta hedging strategies insufficient. 
+% This thesis discusses a particular extension of using deep reinforcement learning to dynamically hedge VA contracts with transaction costs.
+
+This thesis consists of four chapters. Chapter \ref{chap:project1} summarizes theoretical convergence results of several state-of-the-art single-period nested simulation procedures under the same analytical framework. Numerical experiments are conducted to test their empirical convergence behavior under finite budget sizes.
+Chapter \ref{chap:project2} proposes the use of neural network models as proxies for a two-stage multi-period nested simulation procedure on VA contracts. 
+In our numerical experiment, the best neural network proxy surpasses the state-of-the-art proxy model in tail identification, and it leads to substantial computational savings. 
+Chapter \ref{chap:project3} conducts sensitivity testing on the neural network proxy. We argue that for estimating tail risk measures of VA contact losses, the inner simulation can be replaced entirely by a suitable proxy model. 
+Eliminating the inner simulation can lead to more substantial computational savings without affecting estimation quality. 
+In the case of requiring extensive inner simulations for regulatory purposes, effective budget allocations can help achieve higher estimator quality with the same computational budget.
+Chapter \ref{chap:conclusion} concludes the thesis and discusses potential future research directions.
+
+\section{Metamodeling for Monte Carlo Simulation Scheme}
+
+\section{Machine Learning for Risk Management Applications}
+
+Machine learning (ML) algorithms are essential tools for identifying complex patterns and relationships in data. 
+In particular, they are well-suited for handling non-linearities and large-scale data structures, which are challenging for traditional statistical methods. 
+In the context of risk management, ML algorithms have been widely used for predicting financial time series, estimating risk measures, and optimizing trading strategies.
+ML algorithms can be broadly categorized into supervised learning, unsupervised learning, and reinforcement learning.
+This section focuses on three widely used supervised learning models and two reinforcement learning algorithms that are relevant to risk management applications.
+
+\subsection{Supervised Learning Models}
+
+Supervised learning is a fundamental approach in machine learning where the algorithm learns a mapping from inputs to outputs based on example input-output pairs \cite{galton1886regression}. 
+In this paradigm, a model is trained on a labeled dataset, which means that each training example is associated with an output label or value. 
+The goal is to learn a general rule that maps inputs (also known as features) to outputs (also known as target), enabling the model to make accurate predictions on new, unseen data.
+
+\begin{itemize} 
+    \item \textbf{Classification}: The output variable is categorical, and the task is to assign inputs to one of several predefined categories. 
+    Common use in finance and actuarial applications are fraud detection and credit scoring.
+    \item \textbf{Regression}: The output variable is continuous, and the task is to predict a real-valued number. 
+    Examples in actuarial applications include predicting claim amounts, reserve estimates, and asset prices.
+\end{itemize}
+
+This thesis focuses on regression models for risk management applications, where the goal is to predict a continuous target variable based on one or more input features.
+Given a dataset of $n$ observations $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$, where $x_i \in \mathbb{R}^d$ is the $d$-dimensional input feature vector and $y_i \in \mathbb{R}$ is the target variable, a supervised learning algorithm aims to learn a function $f: \mathbb{R}^d \rightarrow \mathbb{R}$ that best predicts the target variable $y$ given the input features $x$.
+
+Linear regression, kernel regression, neural network algorithms all fall under the supervised learning category and are widely used in risk management applications.
+Nevertheless, all supervised learning models can be evaluated on a similar set of metrics.
+The learning process involves minimizing a loss function $l(f(x),y)$ over the training data, which quantifies the difference between the predicted outputs and the true outputs. 
+A common loss function for regression problems is the mean squared error (MSE):
+
+\begin{equation}
+    \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (f(x_i) - y_i)^2.
+\end{equation}
+
+In most risk management applications, a critical task of users of supervised learning models is to design a suitable loss function that aligns with the objectives of the problem.
+Another important consideration is the choice of a suitable supervised learning algorithm.
+The choice may vary based on the complexity of the relationship, the interpretability of the model, and the computational resources available.
+In the following sections, we discuss three widely used supervised learning models in risk management applications: traditional regression and two neural network architectures.
+
+\subsection{Regression Models}
+
+Regression models are the most common supervised learning algorithms used in risk management applications.
+A regression model predicts a continuous target variable based on one or more input features.
+Linear regression is a simple and interpretable model that attempts to predict a target variable as a linear combination of input features. 
+It assumes a linear relationship between the dependent variable and one or more independent variables. 
+This method has been thoroughly explored in statistical literature, with \citet{bishop2006pattern} providing an extensive treatment of regression techniques in the broader context of machine learning.
+It is known as parametric regression because it assumes a specific functional form for the input-output relationship with a finite set of parameters~\citep{seber2012linear}.
+General form of a parametric regression model is given by:
+\begin{equation}
+    y = \beta_0 + \sum_{j=1}^{p} \beta_j \phi_j(x) + \epsilon,
+\end{equation}
+where $\epsilon$ is the error term, $p$ is the number of features, $\beta_0, \beta_1, \ldots, \beta_p$ are the trainable regression coefficients, and $\phi_j(x)$ are basis functions that transfrom the input $x$ to allow for non-linear modeling.
+Basis functions can be any functions of $x$ that are chosen to capture the underlying structure of the data.
+Common choices include polynomial basis functions: $\phi_j(x) = x^j$ and Laguerre basis functions: $\phi_j(x) = e^{-x/2} L_j(x)$, where $L_j(x)$ are the Laguerre polynomials that are solutions to the Laguerre differential equation~\citep{szeg1939orthogonal}.
+The training of parametric regression refers to the process of estimating the regression coefficients $\beta_0, \beta_1, \ldots, \beta_p$ that minimize the loss function.
+For a MSE loss, the optimal regression coefficients can be obtained by solving the normal equations.
+Parametric regression is a powerful tool for modeling linear relationships where the basis functions are known from expert knowledge for explicit feature engineering techniques~\citep{hastie2009elements}.
+These techniques utilize predefined functional forms to model the relationship between independent variables and the dependent variable. 
+However, when data exhibits complex, non-linear relationships, linear models fall short. 
+While these methods are straightforward and interpretable, they impose strong assumptions about the underlying data structure.
+Often, expert knowledge is required to select the appropriate basis functions, which can limit the flexibility of the model.
+Extensions like polynomial regression and generalized linear models (GLMs) have been introduced to capture non-linearity, though these models can still be limited in capturing highly complex patterns. 
+To overcome these limitations, non-parametric methods such as kernel regression \citep{hastie2009elements} are often employed. 
+Kernel regression estimates the function $f(x)$ by averaging the target variable over a local neighborhood of the input $x$.
+The kernel regression with the Nadaraya-Watson estimator is given by:
+\begin{equation}
+    \hat{f}(x) = \frac{\sum_{i=1}^{n} K\left(\frac{x-x_i}{h}\right) y_i}{\sum_{i=1}^{n} K\left(\frac{x-x_i}{h}\right)},
+\end{equation}
+where $K(\cdot)$ is the kernel function, which assigns weights to the data points based on their distance to the input $x$, and $h$ is the bandwidth parameter that controls the smoothness of the estimated function.
+The objective is to estimate the function $f(x)$ directly from the data without imposing a specific form, hence, when the true relationship between variables is complex or unknown.
+However, they come with several drawbacks that limit their effectiveness, especially in high-dimensional settings or when dealing with large datasets. 
+One of the most significant drawbacks of non-parametric regression is the \textbf{curse of dimensionality} \cite{bellman1966dynamic}. 
+As the number of features increases, the volume of the input space grows exponentially, making the data sparse and leading to overfitting.
+In addition, the computational cost of non-parametric methods often grows rapidly with the number of dimensions, making them impractical for high-dimensional data. 
+These limitations have motivated the adoption of neural networks, which can address many of the challenges associated with non-parametric approaches.
+
+\subsection{Neural Network Architectures}
+
+The progression from traditional regression methods to neural network architectures has been driven by the need to model increasingly complex and high-dimensional data.
+The limitations of parametric and non-parametric regression models in capturing complex patterns have led to the rise of neural networks as a powerful tool for learning non-linear relationships in data.
+Neural networks have emerged as powerful tools capable of overcoming many limitations of traditional regression methods. 
+They can learn complex, non-linear relationships in data without the need for explicit feature engineering.
+The most crude form of a neural network is the feedforward neural network, which consists of an input layer, one or more hidden layers, and an output layer.
 
 
+
+
+
+\subsection{Reinforcement Learning}
+Reinforcement learning (RL) is a machine learning technique that learns a policy by interacting with an environment and receiving feedback in the form of rewards.
+In a dynamic heding problem, the policy is a trading strategy that minimizes the risk of the hedged portfolio, the environment contains the financial market dynamics and the contract terms, and the rewards are the negative hedging errors or a risk measure of the hedging portfolio.
 
 

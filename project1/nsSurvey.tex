@@ -1,5 +1,5 @@
 %======================================================================
-\chapter{Nested Simulation Procedures in Financial Engineering: A Selected Review}
+\chapter{Nested Simulation Procedures in Financial Engineering: A Selected Review} \label{chap:project1}
 %======================================================================
 
 
@@ -13,16 +13,16 @@ For each outer scenario, an inner level simulation model generates scenario-wise
 The nested simulation procedure is computationally expensive due to its nested structure. 
 Given a fixed computational budget, the nested simulation procedure has to make a trade-off between the number of outer scenarios and the number of inner replications.
 ~\cite{gordy2010nested} are the first to analyze and propose the optimal budget allocation of a standard nested simulation procedure. 
-The term \textit{standard} refers to using a standard Monte Carlo estimator, the sample mean of the inner replication to estimate a scenario-wise portfolio loss for an outer scenario.
-~\cite{gordy2010nested} investigate the optimal budget allocation for a standard nested simulation procedure with respect to the mean squared error (MSE) of the estimated risk measure.
+The term \textit{standard} refers to using a standard MC estimator, the sample mean of the inner replication to estimate a scenario-wise portfolio loss for an outer scenario.
+~\cite{gordy2010nested} investigate the optimal budget allocation for a standard nested simulation procedure with respect to the MSE of the estimated risk measure.
 
 The standard nested simulation procedure is computationally expensive with a somewhat wasteful use of the simulation budget, as only the inner replications from the same outer scenario are used in estimating the scenario-wise portfolio loss for that outer scenario. 
 Subsequent research efforts have been made to improve the efficiency of nested simulation procedures by using the inner replications from other outer scenarios. 
 This is referred to as pooling. 
-Different methods pool in different ways, either by a trained proxy model or by pre-defined likelihood ratio weights.
-~\cite{broadie2015risk} propose a regression-based nested simulation procedure, which uses a trained regression proxy model to estimate the scenario-wise portfolio loss for an outer scenario by pooling the inner replications from all outer scenarios.
+Different methods pool in different ways, either by a trained metamodel or by pre-defined likelihood ratio weights.
+~\cite{broadie2015risk} propose a regression-based nested simulation procedure, which uses a trained regression metamodel to estimate the scenario-wise portfolio loss for an outer scenario by pooling the inner replications from all outer scenarios.
 For risk measures in certain forms,~\cite{broadie2015risk} show that it is optimal to allocate all simulation budget to the outer level simulation, and the inner replication should be kept to a minimum of $1$.
-Similarly,~\cite{hong2017kernel},~\cite{feng2020optimal}, and~\cite{zhang2022sample} use a kernel smoothing model, a likelihood ratio model, and a kernel ridge regression model as proxies to pool the inner replications from all outer scenarios.
+Similarly,~\cite{hong2017kernel},~\cite{feng2020optimal}, and~\cite{zhang2022sample} use a kernel smoothing model, a likelihood ratio model, and a kernel ridge regression (KRR) model as metamodels to pool the inner replications from all outer scenarios.
 In simulation studies, this approach of using a model of a simulation model is known as metamodeling, and the models of a simulation model are also referred to as metamodels~\citep{barton1998simulation}.
 Another line of research is the multi-level Monte Carlo (MLMC) method analyzed in~\cite{giles2019multilevel}, which is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest.
 
@@ -30,14 +30,19 @@ This paper presents a survey study of some popular nested simulation procedures.
 Many procedures are proposed in the literature, but they are not directly comparable due to different error metrics, different assumptions, and different numerical examples.
 Within a common analytical framework, we first summarize and compare their asymptotic rate of convergence.
 Their asymptotic convergence results are closely examined for their assumptions that guarantee the convergence.
-Furthermore, our study finds that different studies propose different examples in their numerical experiments, which introduces unfair advantages for certain simulation procedures over others. 
+Furthermore, the existing literature chooses different performance metrics to evaluate the asymptotic convergence of nested simulation procedures.
+In this chapter, we discuss the asymptotic convergence of nested simulation procedures in terms of the MSE of the estimator, and we provide a comprehensive comparison of their convergence rates and critical assumptions.
+We also discuss the connection between the MSE and the absolute error of the estimator in the context of nested simulation procedures.
+
+In terms of finite-sample performance, this chapter shows that different studies propose different examples in their numerical experiments, which introduces unfair advantages for certain simulation procedures over others. 
 A fair comparison among popular methods is therefore urgently needed in the literature. 
 Our numerical experiment is the first of its kind to subject back all the aforementioned simulation procedures to a complete and unbiased comparison. 
 Extensive numerical experiments are conducted to show, in practical examples, how well the finite-sample performance of a method matches its theoretical convergence behavior. 
 With our numerical examples, we compare the nested simulation procedures for different payoff complexity, problem dimensions, and risk measures. 
+This chapter also provides a discussion on the computational complexity of different nested simulation procedures, including additional computational costs for training metamodels and pooling inner replications.
 
 The rest of the paper is organized as follows.
-Section~\ref{sec1:problem-formulation} introduces the nested simulation procedure and the standard Monte Carlo estimator.
+Section~\ref{sec1:problem-formulation} introduces the nested simulation procedure and the standard MC estimator.
 Section~\ref{sec1:asymptotic-convergence} provides new theoretical results on the convergence of existing nested simulation procedures.
 Section~\ref{sec1:convergence-orders} summarizes the asymptotic convergence orders and the critical assumptions of nested simulation procedures in the literature.
 Section~\ref{sec1:numerical-experiments} presents the numerical experiments and the comparisons of different nested simulation procedures with respect to different risk measures, problem dimensions, and payoff complexities.
@@ -58,13 +63,13 @@ $$ L(X) = \mathbb{E}\left[ Y|X=x \right]\vert_{x=X} $$
 Some common risk measures are in the nested expectation form, in which 
 $$\rho(L) = \mathbb{E}\left[ h(L) \right]$$
 
-where $h: \mathbb{R} \rightarrow \mathbb{R}$ is a known function. 
+where $h: \mathbb{R} \rightarrow \mathbb{R}$ is a known nonlinear function. 
 Common forms of $h$ includes smooth functions, Lipschitz continuous functions, and indicator functions.
 The nested expectation form is a general form that covers many risk measures of interest in financial engineering by varying the function $h$.
 
 \begin{definition} \label{def1:smooth}
     A function $h: \mathbb{R} \rightarrow \mathbb{R}$ is smooth if it is continuously differentiable up to the $n$-th order for some $n \in \mathbb{N}$, 
-    and its $n$-th and $(n-m)$-th derivatives are bounded for some $m \in \mathbb{N}$ and $m < n$.
+    and its $n$-th and $m$-th derivatives are bounded for some $m \in \mathbb{N}$ and $m < n$.
 \end{definition}
 
 A quadratic tracking error with a benchmark $b$ falls into this category, in which $h(t) = (t - b)^2$.
@@ -77,8 +82,8 @@ Table~\ref{tab1:smoothness} summarizes the smoothness assumption of $h$ for diff
     \toprule
     \textbf{Nested Simulation Procedures} & $n$ & $m$ \\
     \midrule
-    Regression & $2$ & $0$ \\
-    Kernel smoothing & $3$ & $1$ \\
+    Regression & $2$ & $2$ \\
+    Kernel smoothing & $3$ & $2$ \\
     Kernel ridge regression & $2$ & $1$ \\
     Likelihood ratio & $2$ & $1$ \\
     \bottomrule
@@ -102,22 +107,24 @@ A mean excess loss over a threshold $u$ is defined by setting $h(t) = \max\{t - 
 
 The probability of a large loss over a threshold $u$ is obtained by setting $h(t) = \mathbb{I}_{\{t \geq u\}}$.
 
-Other risk measures of interest that are not in the nested expectation form are the value at risk (VaR) and the conditional value at risk(CVaR). 
+Other risk measures of interest that are not in the nested expectation form are the value at risk (VaR) and the conditional value at risk(CVaR)~\citep{hardy2022quantitative}. 
 The $\alpha$-VaR of $L$ is defined as
-$$
+\begin{equation} \label{eq1:var}
     \mbox{VaR}_\alpha(L) = q_\alpha = \inf \left\{ q: \Pr(L\leq q) \geq \alpha \right\}.
-$$
+\end{equation}
+    
 The $\alpha$-CVaR of $L$ is defined as
-$$
+\begin{equation} \label{eq1:cvar}
     \mbox{CVaR}_\alpha(L) =\frac{1}{1-\alpha} \int_{\alpha}^{1} q_v dv. 
-$$
+\end{equation}
+Other names of CVaR include Conditional Tail Expectation (CTE), Tail Value-at-Risk (TailVaR), and Expected Shortfall (ES).
 
 \subsection{The Standard Nested Simulation Procedure}
 
 The standard nested simulation procedure first simulates $M$ independent and identically distributed (iid) outer scenarios $X_1, \dots, X_M$ from $F_X$, the distribution of $X$.
 For each $X_i$, again simulate $Y_{ij}$, $j = 1, \dots, N$ from $F_{Y|X_i}$, the conditional distribution of $Y$ given $X_i$. Given scenario $i$, the $Y_{ij}$ are conditionally iid. Let $\Gamma = M \cdot N$ denote the total simulation budget, $f_X(x)$ denote the density of $X$, and $\mathbf{X} = (X_1, \dots, X_M)$ denote the vector of outer scenarios.
 
-The standard nested simulation procedure estimates $L_i = L(X_i)$ with a standard Monte Carlo estimator 
+The standard nested simulation procedure estimates $L_i = L(X_i)$ with a standard MC estimator 
 
 $$\hat{L}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
 
@@ -130,7 +137,9 @@ The standard nested simulation estimators for different forms of $\rho$ are as f
     \item   Value at risk (VaR):
             $$\hat{\rho}_{M, N} = \hat{L}_{(\lceil \alpha M \rceil)}$$
     \item   CVaR:
-            $$\hat{\rho}_{M, N} = \hat{L}_{(\lceil \alpha M \rceil)} + \frac{1}{(1-\alpha) M} \sum_{i=1}^M \max \{\hat{L}_{N, i} - \hat{L}_{(\lceil \alpha M \rceil)}, 0 \}$$
+            \begin{equation} \label{eq1:cvar-hat}
+                \hat{\rho}_{M, N} = \hat{L}_{(\lceil \alpha M \rceil)} + \frac{1}{(1-\alpha) M} \sum_{i=1}^M \max \{\hat{L}_{N, i} - \hat{L}_{(\lceil \alpha M \rceil)}, 0 \}
+            \end{equation}
 \end{enumerate}
 
 ~\cite{gordy2010nested} analyze the optimal budget allocation of the standard nested simulation procedure with respect to the MSE of the estimator $\hat{\rho}_{M, N}$ for hockey-stick $h$, indicator $h$, and VaR.
@@ -138,9 +147,9 @@ The standard nested simulation estimators for different forms of $\rho$ are as f
 
 \subsection{Multi-level Monte Carlo}
 
-The multi-level Monte Carlo (MLMC) method is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest, and it uses the difference between the approximations to reduce the variance of the estimator.
-The MLMC method is particularly useful when the quantity of interest is expensive to evaluate, and the standard Monte Carlo estimator has a high variance.
-The MLMC method estimates $\rho$ with a multi-level Monte Carlo estimator:
+The MLMC method is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest, and it uses the difference between the approximations to reduce the variance of the estimator.
+The MLMC method is particularly useful when the quantity of interest is expensive to evaluate, and the standard MC estimator has a high variance.
+The MLMC method estimates $\rho$ with a MLMC estimator:
 
 \begin{equation*}
     \hat{\rho}^{\text{MLMC}}_\Gamma = \sum_{\upsilon=0}^{\Upsilon} \left( \frac{1}{M_{\upsilon}} \sum_{i=1}^{M_{\upsilon}} h(\hat{L}_{N_{\upsilon}}(X_{i, \upsilon})) - \frac{1}{M_{\upsilon-1}} \sum_{i=1}^{M_{\upsilon-1}} h(\hat{L}_{N_{\upsilon-1}}(X_{i, \upsilon-1})) \right), ~~~ X_{i, \upsilon} \sim F_X,
@@ -150,17 +159,26 @@ where $\hat{L}_{N_{-1}}(\cdot) = 0$, $\Upsilon$ is the number of levels, $M_{\up
 Applying the analysis of~\cite{giles2015multilevel} in a nested simulation context,~\cite{giles2019multilevel} show that the MLMC method can achieve a similar level of accuracy as the standard nested simulation procedure with a lower total computational budget.
 The simulation budget $\Gamma$ is the sum of the computational budget at each level, that is, $\Gamma = \sum_{\upsilon=0}^{\Upsilon} M_{\upsilon} \cdot N_{\upsilon}$.
 
-\subsection{Supervised Learning Models}
+\subsection{Supervised Learning Metamodels}
 
-Supervised learning-based nested simulation procedures treat the estimation of $L(\cdot)$ as a supervised learning problem. 
-In supervised learning, $L(\cdot)$ can be approximated by $\hat{L}^{\text{SL}}_{M, N}(\cdot)$, which is based on a chosen function family and observations from the standard nested simulation procedure.
+Supervised learning-based nested simulation procedures treat the inner simulation model $L(\cdot)$ as a black-box function, and they approximate $L(\cdot)$ with supervised learning metamodels.
+In this metamodeling approach, $L(\cdot)$ can be approximated by $\hat{L}^{\text{SL}}_{M, N}(\cdot)$, which is based on a chosen function family and observations from the standard nested simulation procedure.
 Consider the observation pairs $(X_i, \hat{L}_{N, i})$ for $i \in \{1, \dots, M\}$ as training data, we can use supervised learning to approximate $L_i$ by $\hat{L}_{M, N}^{\text{SL}}(X_i)$ and to pool the inner replications from all outer scenarios.
 More specifically, $\hat{L}^{\text{SL}}_{M, N}(\cdot)$ denotes the supervised learning model trained on $(X_i, \hat{L}_{N, i})$ for $i \in \{1, \dots, M\}$, which is the simulation output of the standard nested simulation procedure with $M$ outer scenarios and $N$ inner replications. 
-Using the $M$ \textit{training} samples, a nested Monte Carlo estimator of $\rho$ is given by
+To evaluate the convergence of the supervised learning-based nested simulation procedure, we consider the convergence behavior of the supervised learning model $h(\hat{L}^{\text{SL}}_{M, N}(\cdot))$ to the true risk measure $\rho = h(L(\cdot))$.
+More specifically, we want to study the quantity
+\begin{equation} \label{eq1:sl-E}
+    \mathbb{E} \left[ h(\hat{L}^{\text{SL}}_{M, N}(X))   \right] - \rho; ~~~ X \sim F_X.
+\end{equation}
+
+However, studying the expectation in Equation~\ref{eq1:sl-E} is unrealistic, as in practice the risk measure $\rho$ is estimated with a finite number of samples.
+Using the $M$ \textit{training} samples, a supervised learning-based nested MC estimator of $\rho$ is given by
 
 \begin{enumerate}
     \item   Nested expectation form:
-            $$\hat{\rho}^{\text{SL}, \text{Train}}_{M, N} = \frac{1}{M} \sum_{i=1}^M h(\hat{L}^{\text{SL}}_{M, N}(X_i)); ~~~ X_i \sim F_X$$
+            \begin{equation} \label{eq1:sl-train}
+                \hat{\rho}^{\text{SL}, \text{Train}}_{M, N} = \frac{1}{M} \sum_{i=1}^M h(\hat{L}^{\text{SL}}_{M, N}(X_i)); ~~~ X_i \sim F_X
+            \end{equation}
     \item   VaR:
             $$\hat{\rho}^{\text{SL}, \text{Train}}_{M, N} = \hat{L}^{\text{SL}}_{(\lceil \alpha M \rceil)}$$
     \item   CVaR:
@@ -168,13 +186,15 @@ Using the $M$ \textit{training} samples, a nested Monte Carlo estimator of $\rho
 \end{enumerate}
 where $\hat{L}_{(\lceil \alpha M \rceil)}$ is the $\lceil \alpha M \rceil$-th order statistic of $\hat{L}^{\text{SL}}_{M, N}(X_1), \dots, \hat{L}_{M, N}(X_M)$.
 
-After a supervised learning model is trained, it can be used to make predictions for all $X \in \mathcal{X}$.
-Instead of using the same training samples to estimate the risk measure, we can use predictions of a new set of $M'$ \textit{test} samples of $X$, namely $\tilde{\mathbf{X}} = \tilde{X}_1, \dots, \tilde{X}_{M'}$.
+After a supervised learning metamodel is trained, it can be used to make predictions for all $X \in \mathcal{X}$.
+Instead of using the same training samples to estimate the risk measure, we can use metamodel predictions for a new set of $M'$ \textit{test} samples of $X$, namely $\tilde{\mathbf{X}} = \tilde{X}_1, \dots, \tilde{X}_{M'}$.
 The resulting supervised learning-based estimator of $\rho^{\text{SL}, \text{Test}}$ is given by
 
 \begin{enumerate}
     \item   Nested expectation form:
-            $$\hat{\rho}^{\text{SL}, \text{Test}}_{M, N, M'} = \frac{1}{M'} \sum_{i=1}^{M'} h(\hat{L}^{\text{SL}}_{M, N}(\tilde{X}_i)); ~~~ \tilde{X}_i \sim F_X.$$
+            \begin{equation} \label{eq1:sl-test}
+            \hat{\rho}^{\text{SL}, \text{Test}}_{M, N, M'} = \frac{1}{M'} \sum_{i=1}^{M'} h(\hat{L}^{\text{SL}}_{M, N}(\tilde{X}_i)); ~~~ \tilde{X}_i \sim F_X.
+            \end{equation}
     \item   VaR:
             $$\hat{\rho}^{\text{SL}, \text{Test}}_{M, N, M'} = \hat{L}^{\text{SL}}_{(\lceil \alpha M' \rceil)}.$$
     \item   CVaR:
@@ -194,19 +214,32 @@ We are interested in minimizing the MSE of the supervised learning-based nested 
     & \text{subject to} & M \cdot N = \Gamma 
 \end{align}
 
-Existing literature on nested simulation procedures has proposed different methods to approximate the true function $L(\cdot)$ with supervised learning models. 
-Methods that include theoretical convergence results are regression~\citep{broadie2015risk}, kernel smoothing~\citep{hong2017kernel}, and kernel ridge regression~\citep{wang2022smooth}.
+For the more complex metamodels, the convergence analysis of their MSEs is more challenging.
+More specifically, the KRR-based nested simulation~\citep{wang2022smooth} provides a convergence analysis in terms of absolute error (AE).
+\begin{align} \label{eq1:ae}
+    & \min_{M, N}  & \text{AE}(\hat{\rho}^{\text{SL}}_{M, N}) = \mathbb{E} \left[ \left| \hat{\rho}^{\text{KRR}}_{M, N} - \rho \right| \right] \nonumber \\
+    & \text{subject to} & M \cdot N = \Gamma 
+\end{align}
+
+The absolute error is a less stringent error metric than the MSE. 
+Section~\ref{sec1:connection-mse-absolute-error} discusses the connection between the MSE and the absolute error of the estimator in the context of nested simulation procedures.
+
+Existing literature on nested simulation procedures has proposed different metamodels to approximate the true function $L(\cdot)$ with supervised learning models. 
+In this study, we focus on the metamodeling approaches that include theoretical convergence results.
+Methods that include theoretical convergence results are regression~\citep{broadie2015risk}, kernel smoothing~\citep{hong2017kernel}, and KRR~\citep{wang2022smooth}.
 Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$, $\hat{L}^{\text{KS}}_{M, N}(\cdot)$, and $\hat{L}^{\text{KRR}}_{M, N}(\cdot)$, respectively.
 
 \begin{itemize}
     \item   Regression:
-            $$\hat{L}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta},$$
-            where $\Phi$ is a chosen basis, and $\hat{\beta}$ is estimated from the training samples.
+            $$\hat{L}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta}^{\text{REG}},$$
+            where $\Phi$ is a chosen basis, and $\hat{\beta}^{\text{REG}}$ is estimated from the training samples.
+            In~\cite{broadie2015risk}, the convergence analysis is performed on the expection Equation~\ref{eq1:sl-E} and for smooth and Lipschitz continuous $h$. 
+            Connections between the expectation and the MSE are discussed in the Appendix.
     \item   Kernel smoothing:
             $$\hat{L}^{\text{KS}}_{M, N}(X) = \frac{\sum_{i=1}^M \hat{L}_{N, i} K_w(X - X_i)}{\sum_{i=1}^M K_w(X - X_i)}, $$
             where $K_w$ is the kernel function with bandwidth $w$.
-
-            In~\cite{hong2017kernel}, the k-nearest neighbor (KNN) method is also implemented as a kernel smoothing method, but the convergence analysis is not provided.
+            ~\cite{nadaraya1964estimating} and ~\cite{watson1964smooth} originally proposed this kernel smoothing method for nonparametric regression, and it is widely known in the literature as Nadaraya-Watson kernel regression.
+            ~\cite{hong2017kernel} provides convergence analysis for metamodel predictions of the training samples (Equation~\ref{eq1:sl-train}), and the convergence analysis is provided for smooth, hockey-stick, and indicator $h$. 
 
     \item   kNN~\citep{mack1981local}:
             \begin{equation*}
@@ -219,23 +252,26 @@ Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$
                 K(u) &= 0 ~~~ ~\text{for}~ \|u\| \geq 1,
             \end{align*}
             where $\|\cdot\|$ is the Euclidean norm, and  $k$ is the number of nearest neighbors to consider.
+            The k-nearest neighbor (KNN) method is implemented as a metamodel for numerical experiments in~\cite{hong2017kernel}, but the convergence analysis is not provided.
 
-    \item   Kernel ridge regression:
+    \item   KRR:
             $$\hat{L}^{\text{KRR}}_{M, N}(X) = \argmin_{g \in \mathcal{N}_{\Psi}(\Omega)} \left( \frac{1}{M} \sum_{i=1}^M (\hat{L}_{N, i} - L_i)^2 + \lambda \|L\|_{\mathcal{N}_{\Psi}(\Omega)}^2\right),$$
             where $\mathcal{N}_{\Psi}(\Omega)$ is the reproducing kernel Hilbert space (RKHS) with kernel $\Psi$ defined domain $\Omega$, and $\lambda$ is the regularization parameter as in ridge regression. 
             More specifically, $\Phi$ is a Mat\'ern kernel with smoothness parameter $\nu$ and length scale parameter $\upsilon$.
+            ~\cite{wang2022smooth} provides convergence analysis for the absolute error (Equation~\ref{eq1:ae}), and the convergence analysis is provided for smooth, Lipschitz continuous, and indicator $h$, VaR, and CVaR.
 \end{itemize}
 
-These supervised learning models approximates the inner simulation model $L(\cdot)$ with a function $\hat{L}^{\text{SL}}_{M, N}(\cdot)$, and they are used to pool the inner replications from all outer scenarios to estimate the risk measure $\rho$.
-In simulation literature, using models to approximate simulation is often referred to as the metamodeling approach, or it is referred to as a proxy model in the financial engineering literature.
-Supervised learning models are broadly classified into regression and classification models depending on whether the traget variable $L$ is continuous or discrete.
+These supervised learning metamodels approximate the inner simulation model $L(\cdot)$ with functions in the form of $\hat{L}^{\text{SL}}_{M, N}(\cdot)$, and the metamodels are used to pool the inner replications from all outer scenarios to estimate the risk measure $\rho$.
+In simulation literature, using models to approximate simulation is often referred to as the metamodeling approach, or it is referred to as a metamodel in the financial engineering literature.
+Supervised learning models are broadly classified into regression and classification models depending on whether the traget variable is continuous or discrete.
 In our context, the target variable $L$ is continuous, and the supervised learning models refer to regression models.
 Regression models can be further categorized into parametric and non-parametric regression.
 Among our interested supervised learning models, regression is a parametric regression model, while kernel smoothing and kernel ridge regression are non-parametric regression model.
+Their asymptotic convergence results are summarized in Table~\ref{tab1:asymConv-mse}, and Section~\ref{sec1:regression-convergence} and Section~\ref{sec1:kernel-smoothing-convergence} compare their finite-sample performance with numerical experiments.
 
 \subsection{Likelihood Ratio Method}
 
-Instead of using a supervised learning model as a proxy,~\cite{zhang2022sample} uses the likelihood ratio weights to pool the inner replications from all outer scenarios.
+Instead of using a supervised learning model as a metamodel,~\cite{zhang2022sample} uses the likelihood ratio weights to pool the inner replications from all outer scenarios.
 Here, we restrict our attention to problems in the nested expectation form whose outer scenarios characterize the stochasticity of the inner simulation model. 
 Specifically,
 $$ Y = Y(H, X), $$
@@ -249,6 +285,7 @@ Suppose that one can generate random variable H from some sampling
 distribution $f_H$. Then, the likelihood ratio estimator of $\rho$ is given by
 $$\hat{\rho}^{\text{LR}}_{M,N} = \frac{1}{M} \sum_{i=1}^M h(\hat{L}^{\text{LR}}_{N, i}), $$ where the inner replications are pooled by the likelihood ratio weights with
 $$\hat{L}^{\text{LR}}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y(H_j, X_i) \frac{f_{H|X}(H_{j}|X_i)}{f_H(H_{ij})}, \;\;\; H_j \sim f_H, \;\;\; i=1, \dots, M.$$
+In Section~\ref{sec1:sensitivity-option-type}, we implement the likelihood ratio method and share its fast convergence in finite-sample experiments despite the costly computation of the likelihood ratio weights (Section~\ref{sec1:computational-complexity}).
 
 \subsection{Problem Statement}
 
@@ -272,9 +309,9 @@ In this section, we summarize the existing asymptotic convergence results of the
     \hline
     \textbf{Estimator for} $L$ & \textbf{Smooth} $h$ & \textbf{Lipschitz}(\textbf{hockey-stick} $h$) & \textbf{Indicator} $h$ & \textbf{VaR} & \textbf{CVaR} \\
     \hline
-    Standard Monte Carlo & $\star$ & $\star$($\checkmark$) & $\checkmark$ & $\checkmark$ & $\times$ \\
+    Standard MC & $\star$ & $\star$($\checkmark$) & $\checkmark$ & $\checkmark$ & $\times$ \\
     \hline
-    Multi-level Monte Carlo & $\times$ & $\times$($\times$) & $\checkmark$ & $\times$ & $\times$ \\
+    Multi-level MC & $\times$ & $\times$($\times$) & $\checkmark$ & $\times$ & $\times$ \\
     \hline
     Regression & $\checkmark$ & $\checkmark$($\checkmark$) & $\times$ & $\times$ & $\times$ \\
     \hline
@@ -439,7 +476,7 @@ Assumption~\ref{as1:sns} is a standard assumption in the literature~\citep{hong2
 \end{assumption}
 
 For simplicity, we abbreviate $\hat{L}_N(X)$ as $\hat{L}_N$, $\bar{Z}_N(X)$ as $\bar{Z}_N$, and $\bar{Z}_{N, i}$ as $\bar{Z}_{N, i}$.
-Let $\rho_M = \frac{1}{M} \sum_{i=1}^M h(L_i)$ be the nested Monte Carlo estimator with the true function $g$.
+Let $\rho_M = \frac{1}{M} \sum_{i=1}^M h(L_i)$ be the nested MC estimator with the true function $g$.
 The MSE of the standard nested simulation procedure can be decomposed into two ways.
 
 \begin{align} \label{eq1:mse-sns}
@@ -515,7 +552,7 @@ It remains to analyze the second term $S_2$, where Assumption \ref{as1:sns-noise
     & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \bar{Z}_{N, i}^4 + \frac{1}{2M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_N^2(X_i) \bar{Z}_N^2(X_j) \right] \nonumber \\
     & \leq  C_2^2 \left(\frac{ C_{\nu, 2} M}{2M^2N^2} + \frac{C_{\nu,1}^2M(M-1)}{2M^2N^2}\right) = \mathcal{O}(N^{-2})
 \end{align}
-where the second inequality is due to Assumption~\ref{as1:sns-smooth}, and the last inequality follows from Assumption~\ref{as1:sns-noise-var} and the fact that $\hat{L}_N$ is a standard Monte Carlo estimator of $L$.
+where the second inequality is due to Assumption~\ref{as1:sns-smooth}, and the last inequality follows from Assumption~\ref{as1:sns-noise-var} and the fact that $\hat{L}_N$ is a standard MC estimator of $L$.
 Combining Equation~\ref{eq1:mse-sns},~\ref{eq1:taylor-sns},~\ref{eq1:s1-sns}, and~\ref{eq1:s2-sns}, we have
 
 \begin{equation} \label{eq1:mse-sns-smooth}
@@ -558,7 +595,7 @@ It remains to analyze the variance term in Equation~\ref{eq1:mse-sns2}.
     \text{Var}(\hat{\rho}_{M, N}) = \frac{1}{M} \text{Var}(h(\hat{L}_N)) = \mathcal{O}(M^{-1})
 \end{equation}
 
-Equation~\ref{eq1:var-sns-smooth} directly follows from Assumption~\ref{as1:sns} and the fact that $\hat{L}_N$ is a standard Monte Carlo estimator of $L$.
+Equation~\ref{eq1:var-sns-smooth} directly follows from Assumption~\ref{as1:sns} and the fact that $\hat{L}_N$ is a standard MC estimator of $L$.
 Combining Equation~\ref{eq1:bias-sns-smooth-Taylor1},~\ref{eq1:bias-sns-smooth-Taylor2}, and~\ref{eq1:var-sns-smooth}, we are able to show the convergence order of the standard nested simulation procedure for a smooth function $h$ without the cross term as in Equation~\ref{eq1:s1-sns}.
 
 \begin{theorem} \label{thm1:sns-smooth}
@@ -649,7 +686,7 @@ Nevertheless, the numerical results are derived based on a kNN-based nested simu
 In this section, we attempt to fill in the holes in the analysis of~\cite{hong2017kernel} by providing the asymptotic convergence of a kNN-based nested simulation procedure for smooth $h$ in the nested expectation form.
 Surprisingly, the asymptotic convergence rate of the kNN-based nested simulation procedure is noticeably different from the result obtained in~\cite{hong2017kernel}.
 
-A kNN regression is a non-parametric method that estimates the conditional expectation of $Y$ given $X$ by averaging the $Y$ values of the $k$ nearest neighbors of $X$.
+A kNN regression can be used as a non-parametric metamodel that estimates the conditional expectation of $Y$ given $X$ by averaging the $Y$ values of the $k$ nearest neighbors of $X$.
 Without loss of generality, we assume that $\{(X_i, \bar{Y}_{n, i}), i = 1, \dots, M\}$ are independent and identically distributed (i.i.d.) observations of $(X, Y)$ from the standard nested simulation procedure with an inner simulation budget of $n$, where $X_i$ is the $i^{\text{th}}$ of the outer scenario $X \in \Omega \subset \mathbb{R}^d$, and $\bar{Y}_{n, i}$ is the estimate of $Y|X_i$ with an inner simulation budget of $n$.
 Let $f_{XY}(x, y)$ be the joint density of random vector $(X, Y)$, and $f_X(x) = \int f_{XY}(x, y) dy$ be the marginal density of $X$.
 Let $k$ be a sequence of positive integers $k = k(M)$ such that 
@@ -747,7 +784,7 @@ The results are summarized in~\ref{tab1:asymConv-order}, where the orders of con
     \hline
     \textbf{Estimator for} $L$ & \textbf{Smooth} $h$ & \textbf{Lipschitz} / \textbf{hockey-stick} $h$ & \textbf{Indicator} $h$ & \textbf{VaR} & \textbf{CVaR} \\
     \hline
-    Standard Monte Carlo & $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-1/2})$ / $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-2/3})$ & $\times$ \\
+    Standard MC & $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-1/2})$ / $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-2/3})$ & $\mathcal{O}(\Gamma^{-2/3})$ & $\times$ \\
     \hline
     Multi-level MC & $\times$ & $\times$ / $\times$ & $\mathcal{O}(\Gamma^{-1}|\log(\Gamma)|
     )$ & $\times$ & $\times$ \\
@@ -800,14 +837,14 @@ However, Assumption~\ref{as1:sns-joint-density-bound} is hard to be verified in 
 Since~\cite{broadie2015risk} only analyze the nested expectation case with smooth and Lipschitz continuous function $h$, the regression-based nested simulation procedure does not require Assumption~\ref{as1:sns-joint-density} and~\ref{as1:sns-joint-density-bound} for the convergence analysis.
 In our analysis of the standard nested simulation procedure for smooth $h$ in the nested expectation form, we make additional assumptions on the fourth moment of the inner simulation noise, i.e., Assumption~\ref{as1:sns-smooth}, so the second-order term in the Taylor expansion can be bounded. 
 
-\subsection{Assumptions for the Multi-level Monte Carlo Procedure}
-In addition to Assumption~\ref{as1:sns-joint-density-bound}, the multi-level Monte Carlo procedure requires assumptions on the random variable $Q:= \frac{|\mathbb{E} \left[ Y | X \right]|}{\text{Var}[Y|X]}$.
+\subsection{Assumptions for the MLMC Procedure}
+In addition to Assumption~\ref{as1:sns-joint-density-bound}, the MLMC procedure requires assumptions on the random variable $Q:= \frac{|\mathbb{E} \left[ Y | X \right]|}{\text{Var}[Y|X]}$.
 
 \begin{assumption} \label{as1:mlmc-q}
     $f_Q$, the density of $Q$ exists, and there exist positive constants $q_0$ such that $f_Q(q) \leq q_0$ for all $q \in [0, q_0]$.
 \end{assumption}
 
-Assumption~\ref{as1:mlmc-q} ensures that the conditional expectation of $Y$ given $X$ is not concentrated around zero, as ~\cite{giles2019multilevel} show the asymptotic convergence of the multi-level Monte Carlo procedure only when $\rho$ is in the nested expectation form with $h$ being an indicator function, i.e., $h(x) = \mathbb{I}_{\{x \geq 0\}}$.
+Assumption~\ref{as1:mlmc-q} ensures that the conditional expectation of $Y$ given $X$ is not concentrated around zero, as ~\cite{giles2019multilevel} show the asymptotic convergence of the MLMC procedure only when $\rho$ is in the nested expectation form with $h$ being an indicator function, i.e., $h(x) = \mathbb{I}_{\{x \geq 0\}}$.
 
 \subsection{Assumptions for the Likelihood Ratio-Based Procedure}
 In addition to Assumption~\ref{as1:sns-joint-density-bound}, the likelihood ratio-based nested simulation procedure requires assumptions on the marginal density of $H$, the random variable that characterizes the stochasticity of the inner simulation model.
@@ -837,7 +874,7 @@ Regularity conditions on $f_X(x)$, the density of $X$, and the conditional secon
 \end{assumption}
 
 Further assumptions are made on the kernel function $K_w$ and the bandwidth $w$ to ensure the convergence of the kernel smoothing estimator $\hat{L}^{\text{KS}}_{M, N}(X)$.
-% A similar set of assumptions is made in~\cite{jennen1988unifying} for the convergence analysis of a kernel smoothing estimator with kernel functions of higher orders.
+A similar set of assumptions is made in~\cite{jennen1988unifying} for the convergence analysis of a kernel smoothing estimator with kernel functions of higher orders.
 
 \subsection{Assumptions for the KRR-Based Procedure}
 For the KRR-based nested simulation procedure, the convergence is guaranteed only when $\bar{Z}_N(X)$ is the sum of $N$ i.i.d. zero-mean sub-Gaussian random variables.
@@ -850,18 +887,18 @@ In addition, the following assumptions are made on $\Omega$, the domain of the o
 \end{assumption}
 
 Assumption~\ref{as1:krr-domain} rules out the possibility of the outer scenario $X$ being a normal random variable, which is a common assumption in the literature.
-Furthermore, the convergence analysis of the KRR-based nested simulation procedure is shown in terms of the absolute error rather than the standard metric of MSE, which is due to the complexity of the KRR method itself.
+Furthermore, the convergence analysis of the KRR-based nested simulation procedure is shown in terms of the absolute error rather than the standard metric of MSE, which is due to the complexity of the KRR metatmodel.
 
 \section{Finite-Sample Experiments} \label{sec1:numerical-experiments}
 The theoretical framework has allowed the comparison of the asymptotic convergence behavior for different nested simulation procedures.
 However, a simulation budget in practice is almost always finite.
 In this section, we conduct a series of numerical experiments to compare the empirical convergence of the nested simulation procedures for different risk measures, option types, and asset dimensions.
 Numerical experiments are conducted on portfolios that consist of options on $d$ underlying assets, whose dynamics follow a multidimensional geometric Brownian motion with $0.3$ pairwise correlation.
-6 nested simulation procedures are considered, namely the standard nested simulation procedure, the multi-level Monte Carlo procedure, the regression-based, kernel smoothing-based, likelihood ratio-based, and kernel ridge regression-based nested simulation procedures.
+6 nested simulation procedures are considered, namely the standard nested simulation procedure, the MLMC procedure, the regression-based, kernel smoothing-based, likelihood ratio-based, and kernel ridge regression-based nested simulation procedures.
 For the standard nested simulation procedure, the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap} is implemented to estimate the optimal values of outer and inner simulation budgets.
-For the regression proxy, the Laguerre polynomials up to degree $3$ are used as the basis functions.
-The kNN proxy is implemented for the kernel smoothing-based procedure, and a cross-validation with grid search is used to find the optimal number of neighbors.
-The KRR proxy is implemented with a Mat\'ern kernel, and the smoothness, the length scale, and the regularization hyperparameters are found by a cross-validation with Bayesian search~\citep{frazier2018bayesian}.
+For the regression metamodel, the Laguerre polynomials up to degree $3$ are used as the basis functions.
+The kNN metamodel is implemented for the kernel smoothing-based procedure, and a cross-validation with grid search is used to find the optimal number of neighbors.
+The KRR metamodel is implemented with a Mat\'ern kernel, and the smoothness, the length scale, and the regularization hyperparameters are found by a cross-validation with Bayesian search~\citep{frazier2018bayesian}.
 The procedures are compared for 5 types of risk measures, namely a quadratic tracking error, a mean excess loss over threshold $u$, a probability of a large loss over threshold $u$, th VaR, and the CVaR, where the threshold $u$ is set to be the 90\% VaR.
 The procedures are compared for different portfolios.
 \begin{itemize}
@@ -895,7 +932,7 @@ The second number in the legend is the corresponding asymptotic rate of converge
 The slope of the fitted line can be regarded as the empirical rate of convergence of the corresponding procedure.
 By comparing the empirical rates of convergence with the asymptotic rates, we can observe that the empirical rates of convergence of the standard, the kernel smoothing-based, the regression-based, the likelihood ratio-based, and the KRR-based procedures all closely match their asymptotic rates.
 Due to the computational complexity of the likelihood ratio-based and the KRR-based procedures, their MSEs are not reported for $\Gamma$ larger than $16,000$ and $64,000$, respectively.
-Due to the difficulty of fixing $\Gamma$ for the multi-level Monte Carlo procedure, the empirical rate of convergence of the multi-level Monte Carlo procedure is not reported here, but a detailed analysis of the empirical convergence of the multi-level Monte Carlo procedure is provided in Section~\ref{sec1:empirical-mlmc}.
+Due to the difficulty of fixing $\Gamma$ for the MLMC procedure, the empirical rate of convergence of the MLMC procedure is not reported here, but a detailed analysis of the empirical convergence of the MLMC procedure is provided in Section~\ref{sec1:empirical-mlmc}.
 In the following sections, we examine the empirical convergence of the nested simulation procedures in a similar manner as in Figure~\ref{fig1:compareAll}.
 With a more detailed analysis of different risk measures, option types, and asset dimensions, we aim to provide a comprehensive understanding of the convergence behavior of the nested simulation procedures in practice.
 
@@ -924,12 +961,12 @@ The empirical rates of convergence of the regression-based procedure is higher t
 
 \subsection{Empirical Convergence of Parametric Regression Procedures} \label{sec1:regression-convergence}
 
-For both the regression-based and the kernel smoothing-based procedures, the reason for the higher empirical rates can be explained by having poor proxy estimators for smaller simulation budgets.
-For lower simulation budgets, the proxy estimators of the true inner simulation are poor, and the MSEs of the regression-based and kernel smoothing-based procedures are dominated by the model error of the proxy estimators.
+For both the regression-based and the kernel smoothing-based procedures, the reason for the higher empirical rates can be explained by having poor metamodels for smaller simulation budgets.
+For lower simulation budgets, the trained metamodels of the true inner simulation are poor, and the MSEs of the regression-based and kernel smoothing-based procedures are dominated by the model error of the metamodels.
 In other words, they have not reached their asymptotic regimes yet.
 Due to computation constraints, we are not able to conduct experiments for kernel smoothing-based nested simulation procedures for higher budget levels, but we are able to conduct additional experiments for the regression-based nested simulation procedure.
 In our previous numerical experiments, the empirical rate of convergence of the regression procedure is observed to be much larger than its asymptotic rate of convergence.
-For dimensions larger than 10, the MSE of the regression procedure decreases quickly in the beginning, and it stabilizes after a certain budget level.
+For dimensions larger than $10$, the MSE of the regression procedure decreases quickly in the beginning, and it stabilizes after a certain budget level.
 In~\ref{fig1:reg_lb} illustrates the empirical convergence of the regression-based procedure in more detail at higher simulation budgets, where the asymptotic level of convergence is reached for $d = 20$.
 
 \begin{figure}[ht]
@@ -939,22 +976,24 @@ In~\ref{fig1:reg_lb} illustrates the empirical convergence of the regression-bas
     \label{fig1:reg_lb} 
 \end{figure}
 
-The left part of Figure \ref{fig1:reg_lb} contains the MSEs of the regression procedure for budget sizes that are smaller than $10,000$. 
-Slopes of the fitted lines on the left correspond to the empirical rate of convergence of the regression procedure for budget levels between $1,000$ and $10,000$.
+The left part of Figure \ref{fig1:reg_lb} contains the MSEs of the regression procedure for budget sizes that are smaller than $10^3$. 
+Slopes of the fitted lines on the left correspond to the empirical rate of convergence of the regression procedure for budget levels between $10^3$ and $10^4$.
 To investigate the convergence behavior for higher budget levels, we conduct additional experiments for the European call option with dimension $20$. 
 The additional experiments are summarized on the right of Figure \ref{fig1:reg_lb}.
-After reaching a certain budget level, i.e., $\Gamma = 1,000,000$, the empirical rate of convergence for the regression-based nested simulation procedure approaches its asymptotic rate. 
-For nested simulation procedures whose proxy models are biased, the proxy estimators of the true inner simulation are poor, especially for smaller budget sizes. 
-We are able to clearly observe this phenomenon for the regression proxy, and it can be explained by dividing the MSE into proxy bias and simulation variance.
-For small budget sizes, the improvement of the bias of the regression proxy dominates the improvement of simulation variance. 
-Performing poorly for extremely low simulation budgets, the regression proxy improves significantly. 
-As the simulation budget gets higher, the improvement of the regression proxy becomes negligible compared with that of the simulation variance. 
-The regression proxy ceases to improve after reaching a certain level ($\Gamma = 100\!,\!000$ in our case), and the improvement of simulation variance dominates.
+After reaching a certain budget level, i.e., $\Gamma = 10^6$, the empirical rate of convergence for the regression-based nested simulation procedure approaches its asymptotic rate. 
+For nested simulation procedures with biased metamodeling, the metamodel estimates of the true inner simulation are poor, especially for smaller budget sizes. 
+We are able to clearly observe this phenomenon for the regression metamodel, and it can be explained by dividing the MSE into metamodeling bias and simulation variance.
+For small budget sizes, the improvement in the bias of the regression metamodel dominates the improvement in simulation variance. 
+Performing poorly for extremely low simulation budgets, the regression metamodel improves significantly as the simulation budget increases.
+As the simulation budget gets higher, the improvement of the regression bias becomes negligible compared with that of the simulation variance. 
+The regression metamodel ceases to improve after reaching a certain level ($\Gamma = 10^6$ in our case), and the improvement of simulation variance dominates.
+Due to high computational costs, we are not able to conduct experiments for higher budget levels, but we expect the MSE of the regression-based nested simulation procedure to stabilize after $\Gamma = 10^6$, and the empirical rate of convergence to approach its asymptotic rate.
 
 \subsection{Empirical Convergence of Kernel Smoothing-Based Procedures} \label{sec1:kernel-smoothing-convergence}
 
-The kernel smoothing proxy is a nonparametric regression procedure.
+Kernel smoothing is a nonparametric regression metamodel.
 According to the theoretical analysis in Section~\ref{sec1:asymptotic-convergence}, the asymptotic rate of convergence of the kernel smoothing-based nested simulation procedure is highly dependent on the dimension of the asset.
+In this section, we use a kNN metamodel for the kernel smoothing-based nested simulation procedure, and we examine its empirical convergence for different asset dimensions.
 
 \begin{figure}[ht!]
     \centering
@@ -974,11 +1013,11 @@ For geometric Asian options, the empirical rates of convergence are even lower t
 Due to the computational cost of the kernel smoothing-based nested simulation procedure, we are not able to conduct experiments for higher budget levels.
 However, we are able to conduct additional experiments to examine the effects of cross-validation on the empirical convergence of the kernel smoothing-based procedure.
 Another phenomenon that is observed in Figure~\ref{fig1:kernel_d} is that the empirical rate of convergence of the kernel smoothing-based procedure does not decrease monotonically as the simulation budget increases.
-This is likely due to the fact that the kernel smoothing-based procedure, as a nonparametric regression procedure, is highly dependent on the cross-validation of the proxy hyperparameters.
-For the kernel smoothing-based procedure, the kNN proxy is implemented. 
-Hence, the proxy hyperparameter is the number of nearest neighbors $k$.
+This is likely due to the fact that the kernel smoothing-based procedure, as a nonparametric regression procedure, is highly dependent on the cross-validation of the hyperparameters of the metamodel.
+For the kernel smoothing-based procedure, the kNN metamodel is implemented. 
+Hence, the hyperparameter of interest is the number of nearest neighbors $k$.
 In our numerical experiment, cross-validation is conducted once to select the optimal value of $k$ for each simulation budget, and the selected value of $k$ is fixed for all $1,000$ replications.
-Therefore, a poor selection of the optimal value of $k$ can lead to a poor proxy estimator, and the MSE of the kernel smoothing-based procedure will be dominated by the model error of the proxy estimator.
+Therefore, a suboptimal selection of the optimal value of $k$ can lead to a poor metamodel estimate, and the MSE of the kRR-based procedure will be dominated by the model error of the metamodel.
 
 \begin{figure}[ht!]
     \centering
@@ -990,8 +1029,9 @@ Therefore, a poor selection of the optimal value of $k$ can lead to a poor proxy
 
 In Figure~\ref{fig1:kernel_cv}, the empirical convergence of the kernel smoothing-based nested simulation procedure for the probability of large loss is illustrated for different values of $k$ with $\Gamma = 100,000$.
 The observation is that the value of optimal $k$ estimated by cross-validation is highly variable across different replications.
-For the two replications where $k = 80$ is selected as the optimal value of $k$, the estimated risk measures for the kernel smoothing-based procedure are $0.1187$ and $0.1189$, which are significantly higher than the estimated risk measures for the other replications and far from the true risk measure of $0.1$.
-This observation suggests that the empirical convergence of the kernel smoothing-based nested simulation procedure is highly dependent on the cross-validation of the proxy hyperparameters.
+For $d = 2$, the optimal value of $k$ is estimated to be between $120$ to $220$ for most replications, and the estimated risk measures are close to the true risk measure of $0.1$.
+For the two replications where $k = 80$ is estimated as the optimal value of $k$, the resulting estimates of risk measures are $0.1187$ and $0.1189$, which are significantly higher than the estimated risk measures for the other replications and far from the true risk measure of $0.1$.
+This observation suggests that the empirical convergence of the kernel smoothing-based nested simulation procedure is highly dependent on the cross-validation of the hyperparameters of the metamodel.
 
 \subsection{Sensitivity to the Option Types and Risk Measures} \label{sec1:sensitivity-option-type}
 
@@ -1053,7 +1093,7 @@ In this section, we examine the empirical convergence of the regression-based ne
 \end{figure}
 
 In Figure~\ref{fig1:sens_level}, the empirical convergence of the regression-based nested simulation procedure for different levels of VaR and CVaR is illustrated for up-and-out barrier call options.
-The empirical rates of convergence of the regression-based nested simulation procedure are independent of the level of VaR and CVaR.
+The empirical rates of convergence of the regression-based nested simulation procedure are not sensitive to the level of VaR and CVaR.
 
 \subsection{Sensitivity to the Asset Model} \label{sec1:sensitivity-assetModel}
 
@@ -1069,12 +1109,30 @@ To examine the sensitivity of the empirical convergence behavior to the asset mo
 \end{figure}
 
 In Figure~\ref{fig1:sens_model}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-CVaR are illustrated for different asset models, i.e., a geometric Brownian motion and a Heston model.
-The empirical rates of convergence of the regression-based nested simulation procedure are observed to be independent of the asset model.
+The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the asset model.
 
-\subsection{Empirical Convergence of Multi-level Monte Carlo} \label{sec1:empirical-mlmc}
+\subsection{Sensitivity to the regression basis} \label{sec1:sensitivity-basis}
 
-The multi-level Monte Carlo procedure is a variance reduction technique that is designed to reduce the computational cost of nested simulation procedures.
-The theoretical analysis in~\cite{giles2019multilevel} shows that the multi-level Monte Carlo procedure has a faster empirical rate of convergence than the standard nested simulation procedure when the risk measure of interest is the probability of a large loss over a threshold $u$, i.e., the nested expectation case with $h$ being an indicator function.
+In our previous numerical experiments, the regression-based nested simulation procedure is implemented with Laguerre polynomials up to degree $3$ as the basis functions.
+To examine the sensitivity of the empirical convergence behavior to the regression basis, we consider different basis functions, i.e., regular polynomial regression up to degree $3$.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=0.48\textwidth]{./project1/figures/figure13a.png}
+    \includegraphics[width=0.48\textwidth]{./project1/figures/figure13b.png}
+    \caption{Empirical convergence of regression-based nested simulation procedures for different regression bases}
+    \label{fig1:sens_basis}
+\end{figure}
+
+In Figure~\ref{fig1:sens_basis}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-CVaR are illustrated for different regression bases, i.e., Laguerre polynomials and regular polynomials up to degree $3$.
+The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the chosen regression basis.
+In summary, the empirical convergence behavior of the regression-based nested simulation procedure is stable across different risk measures, option types, asset dimensions, levels of VaR and CVaR, asset models, and regression bases.
+With a limited total budget, the regression-based nested simulation procedure is the most robust and stable among all nested simulation procedures. 
+
+\subsection{Empirical Convergence of MLMC} \label{sec1:empirical-mlmc}
+
+The MLMC procedure is a variance reduction technique that is designed to reduce the computational cost of nested simulation procedures.
+The theoretical analysis in~\cite{giles2019multilevel} shows that the MLMC procedure has a faster empirical rate of convergence than the standard nested simulation procedure when the risk measure of interest is the probability of a large loss over a threshold $u$, i.e., the nested expectation case with $h$ being an indicator function.
 
 \begin{table}[ht]
     \centering
@@ -1090,20 +1148,19 @@ The theoretical analysis in~\cite{giles2019multilevel} shows that the multi-leve
     5 & 0.0750 & 0.0694 & 0.0750 & 640000   & 0.0366    \\
     \bottomrule
     \end{tabular}
-    \caption{MSEs of the multi-level Monte Carlo procedure for different levels}
+    \caption{MSEs of the MLMC procedure for different levels}
     \label{tab1:mlmc-mse}
 \end{table}
 
-Instead of using a figure, we provide a summary of the empirical convergence results of the multi-level Monte Carlo procedure with a decomposition table of the MSEs in Table~\ref{tab1:mlmc-mse}.
-The MSEs of the multi-level Monte Carlo procedure are decomposed into the bias and the variance of the estimator.
+Instead of using a figure, we provide a summary of the empirical convergence results of the MLMC procedure with a decomposition table of the MSEs in Table~\ref{tab1:mlmc-mse}.
+The MSEs of the MLMC procedure are decomposed into the bias and the variance of the estimator.
 The MSEs of the standard nested simulation procedure with a similar total simulation budget are also provided for comparison.
-Since the multi-level Monte Carlo procedure is designed with a fixed number of outer simulation paths, the benefit of the multi-level Monte Carlo procedure is minimal when the total simulation budget is large.
-More specifically, when $\Gamma$ is large, the standard nested simulation procedure with a bootstrap-based budget allocation strategy benefits from having a larger number of outer simulation paths, and the MSE of the standard nested simulation procedure is lower than that of the multi-level Monte Carlo procedure with a fixed number of outer simulation paths.
-
+Since the MLMC procedure is designed with a fixed number of outer simulation paths, the benefit of the MLMC procedure is minimal when the total simulation budget is large.
+More specifically, when $\Gamma$ is large, the standard nested simulation procedure with a bootstrap-based budget allocation strategy benefits from having a larger number of outer simulation paths, and the MSE of the standard nested simulation procedure is lower than that of the MLMC procedure with a fixed number of outer simulation paths.
 
 \section{Computational Complexity} \label{sec1:computational-complexity}
-Compared to the standard procedure, proxy-based nested simulation procedures often have faster empirical rates of convergence.
-The faster convergence benefits from the pooling of inner samples through the proxy models. 
+Compared to the standard procedure, metamodel-based nested simulation procedures often have faster empirical rates of convergence.
+Their faster convergence benefits from the pooling of inner samples through the metamodels. 
 However, pooling itself comes with computational costs, which are usually ignored in most numerical comparisons. 
 This section summarizes the algorithmic complexity and illustrate the computational time of different nested simulation procedures.
 The findings can provide some further guidance on the choice of a proper nested simulation procedure given a nested estimation problem.
@@ -1128,10 +1185,10 @@ Define basic operations to be basic mathematical operators, that is, arithmetic 
 
 Table~\ref{tab1:complexity} shows the algorithmic complexity of the nested simulation procedures.
 For a $d$-dimensional nested estimation problem, the simulation cost for all procedures is $\mathcal{O}(dMN)$.
-The simulation cost is omitted from Table~\ref{tab1:complexity}, as all methods are given the same simulation budget.
+The simulation cost is omitted from Table~\ref{tab1:complexity}, as all procedures are given the same simulation budget.
 Given $M$ outer samples and the corresponding $M$ inner sample averages, the algorithmic complexity of the additional operations does not involve $N$ thus can be written in terms of $M$ only.
-The training cost includes the cost of fitting the proxy model and the cost of cross-validation for nonparametric regression proxies.
-For the standard procedure, the training cost is $0$ due to the absence of proxy models. 
+The training cost includes the cost of fitting the metamodel and the cost of cross-validation for nonparametric regression metamodels.
+For the standard procedure, the training cost is $0$ due to the absence of a metamodel. 
 Its prediction cost $\mathcal{O}(M)$ comes from the evaluation of the function $h$ for $M$ samples.
 For the regression-based procedure, a linear regression model is fitted with $p$ predictors.
 In practice, $p$ is usually much smaller than $M$ and does not grow with the simulation budget $\Gamma$.
@@ -1140,25 +1197,25 @@ Estimating the coefficients of the regression model involves multiplying the des
 For a review in the complexity of matrix inversion, see~\cite{stothers2010complexity}.
 The matrix inversion has complexity $\mathcal{O}(p^3)$ using Gauss-Jordan elimination, but in practice, the complexity can be reduced to $\mathcal{O}(p^{2.807})$ by~\cite{strassen1969gaussian} and $\mathcal{O}(p^{2.376})$ by~\cite{coppersmith1987matrix}.
 The prediction cost of the regression-based procedure is $\mathcal{O}(pM)$, which comes from the multiplication of the design matrix by the estimated coefficients.
-For the kernel smoothing-based procedure, the kNN proxy is implemented.
+For the kernel smoothing-based procedure, the kNN metamodel is implemented.
 In practice, the K-D tree algorithm~\citep{bentley1975multidimensional} is often implemented for efficient nearest neighbor search.
 During training, a tree is constructed to store the distance, which has complexity $\mathcal{O}(M\log(M))$.
 The prediction cost of the kernel smoothing-based procedure is $\mathcal{O}(kM\log(M))$, which comes from a query of the K-D tree for $k$ nearest neighbors for $M$ samples.
 Conversely, An inefficient algorithm calculates the distance matrix during training and a block sort algorithm to find the $k$ nearest neighbors, which results in a complexity of $\mathcal{O}(M^2)$ and $\mathcal{O}(M^2\log(M))$, respectively.
 A practical implementation of block sort is provided in~\cite{kim2008ratio}.
-Hence, an efficient implementation of the kNN proxy is crucial for the kernel smoothing-based procedure.
+Hence, an efficient implementation of the kNN metamodel is crucial for the kernel smoothing-based procedure.
 For the likelihood ratio-based procedure, the training cost is $0$ as no training is required.
 The prediction cost of the likelihood ratio-based procedure is $\mathcal{O}(M^2)$, which comes from the calculation of the likelihood weights for $M$ samples.
 For the KRR-based procedure, the main training cost comes from inverting an $M \times M$ kernel matrix~\citep{scholkopf2002learning}, which has complexity $\mathcal{O}(M^3)$ using Gauss-Jordan elimination.
 Similar to the regression-based procedure, this complexity can be reduced to $\mathcal{O}(M^{2.376})$.
 The prediction cost of the KRR-based procedure is $\mathcal{O}(M^2)$, which comes from the multiplication of the kernel matrix by the estimated coefficients.
-Among the proxy-based procedures, regression is the most efficient as $p$ is usually much smaller than $M$. 
-Kernel smoothing and KRR are kernel-based proxies, and they are more expensive due to distance calculation and cross-validation of hyperparameters. 
-The kNN proxy has only 1 hyperparameter $k$, while the KRR proxy requires 3 hyperparameters, namely the smoothness hyperparameter $\nu$, scale hyperparameter $\upsilon$, and the regularization hyperparameter $\lambda$.
+Among the metamodel-based procedures, regression is the most efficient as $p$ is usually much smaller than $M$. 
+Kernel smoothing and KRR are kernel-based metamodels, and they are more computaional expensive due to distance calculations and cross-validations of hyperparameters. 
+The kNN metamodel has only 1 hyperparameter $k$, while the KRR metamodel requires 3 hyperparameters, namely the smoothness hyperparameter $\nu$, scale hyperparameter $\upsilon$, and the regularization hyperparameter $\lambda$.
 Calculating the likelihood ratio weights is inevitable for the likelihood ratio-based procedure. 
 While a k-fold cross-validation is used to estimate the hyperparameter for kNN, the KRR requires Bayesian optimization~\citep{shahriari2015taking} to estimate the hyperparameters due to having a high-dimensional search space.
 The likelihood ratio-based procedure requires no training, but the cost of calculating the likelihood weights is $\mathcal{O}(M^2)$.
-Comparing the algorithmic complexity of the nested simulation procedures, the regression-based procedure is the most efficient among the proxy-based procedures.
+Comparing the algorithmic complexity of the nested simulation procedures, the regression-based procedure is the most efficient among the metamodel-based procedures.
 For a fixed $p$, the total additional cost of a regression-based procedure is $\mathcal{O}(M)$, which is the same as the standard procedure's.
 
 
@@ -1175,7 +1232,7 @@ In Figure~\ref{fig1:tcc}, the total computational time of different nested simul
 The $x$-axis shows the total simulation budget $\Gamma$, and the $y$-axis is the total computational time for 1 replication of the numerical experiment, in seconds.
 All procedures are implemented on a machine with an AMD Ryzen 9 7900X processor with 32GB of RAM.
 8 cores are used for parallel computing, and the total computational time is the sum of the simulation time, the training time, and the prediction time.
-The regression and kernel smoothing-based procedures are the most efficient among the proxy-based procedures.
+The regression and kernel smoothing-based procedures are the most efficient among the metamodel-based procedures.
 Since the regression-based procedure has a higher empirical rate of convergence, it is preferred over the kNN.
 The likelihood ratio-based and KRR-based procedures are the most computationally expensive among all procedures.
 They are demanding in terms of memory.
@@ -1194,9 +1251,9 @@ To separate the total computational time into different attributes, we provide a
 Figure~\ref{fig1:c_model} illustrates the computational time of implementing different nested simulation procedures for the portfolio of geometric Asian options with $d = 10$, excluding the simulation time.
 The simulation time is omitted as it is the same for all procedures.
 The remainder can be decomposed into two parts: hyperparameter tuning and model implementation.
-The hyperparameter tuning cost is the cost of estimating the optimal hyperparameters for the proxy models, and the model implementation cost is the cost of fitting the proxy models and generating predictions from the trained proxies.
+The hyperparameter tuning cost is the cost of estimating the optimal hyperparameters for the metamodels, and the model implementation cost is the cost of fitting the metamodels and generating predictions from the trained metamodels.
 For each procedure, each point in Figure~\ref{fig1:c_model} represents the average computational time for a given simulation budget $\Gamma$.
-A regression model is fitted to each model respectively, and its slope is reported as the growth rate of the computational time with respect to $\Gamma$.
+A regression model is fitted to each model respectively, and its slope can be viewed as the growth rate of the computational time with respect to $\Gamma$.
 The total computational time of the standard procedure is mostly attributed to finding the optimal $M$ and $N$ using the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap}.
 This cost does not grow with the simulation budget $\Gamma$, as its slope is close to $0$.
 The regression-based procedure does not require hyperparameter tuning, and its total computational time is mainly attributed to the model implementation.
@@ -1209,14 +1266,14 @@ The empirical cost of the KRR-based procedure does not resemble its algorithmic 
 The efficient implementation of KRR is an active area of research, and the computational cost of KRR can be reduced by using a low-rank approximation of the kernel matrix, e.g., the Nystr\"om method~\citep{nystrom1930praktische}.
 Our observation for KRR implementation time is in line with the findings in~\cite{scikit-learn}, where the cost of KRR is reported quickly increasing with the number of samples.
 The likelihood ratio-based procedure requires no hyperparameter tuning, and its total computational time is mainly attributed to the likelihood weight calculation, which is $\mathcal{O}(M^2)$. 
-In summary, for a large simulation budget, the regression-based procedure is the most efficient among all proxy-based procedures in terms of computational time.
+In summary, for a large simulation budget, the regression-based procedure is the most efficient among all metamodel-based procedures in terms of computational time.
 
 \section{Conclusion} \label{sec1:conclusion}
 In the task of estimating risk measures for portfolios of complex financial derivatives, nested simulation procedures are commonly required but often computationally expensive. 
-Tremendous efforts have been made to improve the efficiency of nested simulation procedures by approximating the inner simulation model with a proxy model. 
-In this study, we review the literature on nested simulation procedures in financial engineering and establish fair comparisons of different proxy models using the same set of numerical examples. 
-Asymptotic properties of estimators for different nested simulation procedures are influenced by their corresponding proxy models.
-To show an asymptotic convergence result, a more complex proxy model requires a more stringent set of assumptions on the distribution of the outer scenario and the inner simulation noise.
+Tremendous efforts have been made to improve the efficiency of nested simulation procedures by approximating the inner simulation model with a metamodels. 
+In this study, we review the literature on nested simulation procedures in financial engineering and establish fair comparisons of different metamodels using the same set of numerical examples. 
+Asymptotic properties of estimators for different nested simulation procedures are influenced by their corresponding metamodels.
+To show an asymptotic convergence result, a more complex metamodels requires a more stringent set of assumptions on the distribution of the outer scenario and the inner simulation noise.
 With extensive numerical experiments, we have found the finite-sample performance of a procedure can deviate from its theory. 
 In theory, supervised learning-based nested simulation procedures often provide higher rates of convergence, but they come at the computational expense of model training and generating predictions from the trained models. 
 The likelihood ratio-based procedure requires no training, but it is computationally expensive to compute and store the likelihood weights.
@@ -1231,4 +1288,4 @@ However, we have only examined the performance for option portfolios in this stu
 For payoff functions with high complexity or high dimensionality, the regression-based procedure may not be the best choice.
 In practice, a variable annuity contract is often high-dimensional in time with a complex payoff structure, and it is a challenging problem for nested simulation procedures.
 In such cases, a neural network-based procedure may be more suitable, as it is a data-driven algorithm that finds a suitable set of basis functions automatically.
-In Chapter~\ref{ch2}, we will examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for variable annuities.
+In Chapter~\ref{chap:project2}, we will examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for variable annuities.

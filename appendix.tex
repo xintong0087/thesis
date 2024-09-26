@@ -1,0 +1,21 @@
+\chapter*{Appendix} \label{chap:appendix}
+
+\section*{Connection between the convergence in distribution and MSE} \label{sec:appendix1}
+
+In this section, we provide a proof of the connection between the convergence in distribution and the convergence of the MSE of the estimator.
+In~\cite{broadie2015risk}, the authors show that asymptotically, the regression-based nested simulation estimator converges in distribution to the true value $\rho$.
+
+\begin{equation}
+    \sqrt{M}\cdot \left( \mathbb{E}\left[h(\hat{L}_{M,N}^{\text{REG}}(X; \hat{\beta})) - h\left( g(X) \right) \right] - \mathcal{B}_{\mathcal{M}, M} \right) \overset{\mathcal{D}}{\to} \mathcal{N} \left( 0, C_{\mathcal{M}, h} \left( 1+ \frac{C_{\Phi}}{N} \right) \right)
+\end{equation}
+
+where $\mathcal{B}_{\mathcal{M}, M}$ is the model bias term. $C_{\mathcal{M}, h}$ and $C_{\Phi}$ are constants that do not depend on $M$ or $N$.
+Assume constant model error, the regression-based nested simulation estimator is asymptotically normal with decaying variance as $M$ and $N$ increase.
+
+The mean squared error (MSE) of the estimator is given by
+
+\begin{equation}
+    \text{MSE} = \mathbb{E}\left[ \left( h(\hat{L}_{M,N}^{\text{REG}}(X; \hat{\beta})) - h\left( g(X) \right) \right)^2 \right] = \mathcal{O}(M^{-1})
+\end{equation}
+
+In this section, we want to show that the convergence in distribution in~\cite{broadie2015risk} implies the convergence of the MSE in the order of $\mathcal{O}(M^{-1})$.
