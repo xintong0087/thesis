@@ -7,45 +7,45 @@ Database file #2: refP2.bib
 Database file #3: refP3.bib
 Database file #4: refOther.bib
 Warning--can't use both volume and number fields in bishop2006pattern
-You've used 134 entries,
+You've used 154 entries,
             1935 wiz_defined-function locations,
-            1203 strings with 26714 characters,
-and the built_in function-call counts, 54749 in all, are:
-= -- 5388
-> -- 2402
-< -- 95
-+ -- 843
-- -- 811
-* -- 4681
-:= -- 9568
-add.period$ -- 423
-call.type$ -- 134
-change.case$ -- 1063
-chr.to.int$ -- 132
-cite$ -- 135
-duplicate$ -- 2014
-empty$ -- 3677
-format.name$ -- 1021
-if$ -- 10619
+            1298 strings with 30027 characters,
+and the built_in function-call counts, 62853 in all, are:
+= -- 6181
+> -- 2743
+< -- 106
++ -- 961
+- -- 925
+* -- 5367
+:= -- 10975
+add.period$ -- 486
+call.type$ -- 154
+change.case$ -- 1217
+chr.to.int$ -- 152
+cite$ -- 155
+duplicate$ -- 2323
+empty$ -- 4242
+format.name$ -- 1163
+if$ -- 12205
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 135
-newline$ -- 682
-num.names$ -- 404
-pop$ -- 905
+missing$ -- 158
+newline$ -- 783
+num.names$ -- 464
+pop$ -- 1048
 preamble$ -- 1
-purify$ -- 1069
+purify$ -- 1226
 quote$ -- 0
-skip$ -- 1551
+skip$ -- 1782
 stack$ -- 0
-substring$ -- 3721
-swap$ -- 267
-text.length$ -- 25
+substring$ -- 4278
+swap$ -- 308
+text.length$ -- 28
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 784
+type$ -- 898
 warning$ -- 1
-while$ -- 446
+while$ -- 512
 width$ -- 0
-write$ -- 1749
+write$ -- 2008
 (There was 1 warning)

@@ -30,6 +30,21 @@ Bellman, R. (1966).
 \newblock Dynamic programming.
 \newblock {\em science}, 153(3731):34--37.
 
+\bibitem[Bengio, 2012]{bengio2012deep}
+Bengio, Y. (2012).
+\newblock Deep learning of representations for unsupervised and transfer learning.
+\newblock In {\em Proceedings of ICML workshop on unsupervised and transfer learning}, pages 17--36. JMLR Workshop and Conference Proceedings.
+
+\bibitem[Bengio et~al., 2013]{bengio2013representation}
+Bengio, Y., Courville, A., and Vincent, P. (2013).
+\newblock Representation learning: A review and new perspectives.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence}, 35(8):1798--1828.
+
+\bibitem[Bengio et~al., 1994]{bengio1994learning}
+Bengio, Y., Simard, P., and Frasconi, P. (1994).
+\newblock Learning long-term dependencies with gradient descent is difficult.
+\newblock {\em IEEE transactions on neural networks}, 5(2):157--166.
+
 \bibitem[Bentley, 1975]{bentley1975multidimensional}
 Bentley, J.~L. (1975).
 \newblock Multidimensional binary search trees used for associative searching.
@@ -111,6 +126,11 @@ Chung, J., Gulcehre, C., Cho, K., and Bengio, Y. (2014).
 \newblock {\em arXiv preprint arXiv:1412.3555}.
 \newblock \url{https://arxiv.org/abs/1412.3555}. Accessed 7$^{\textrm{th}}$ Sep 2023.
 
+\bibitem[Cont, 2001]{cont2001empirical}
+Cont, R. (2001).
+\newblock Empirical properties of asset returns: stylized facts and statistical issues.
+\newblock {\em Quantitative finance}, 1(2):223.
+
 \bibitem[Coppersmith and Winograd, 1987]{coppersmith1987matrix}
 Coppersmith, D. and Winograd, S. (1987).
 \newblock Matrix multiplication via arithmetic progressions.
@@ -151,6 +171,11 @@ Du, J., Jin, M., Kolm, P.~N., Ritter, G., Wang, Y., and Zhang, B. (2020).
 EIOPA (2014).
 \newblock The underlying assumptions in the standard formula for the solvency capital requirement calculation.
 \newblock Technical report, The European Insurance and Occupational Pensions Authority.
+
+\bibitem[Elman, 1990]{elman1990finding}
+Elman, J.~L. (1990).
+\newblock Finding structure in time.
+\newblock {\em Cognitive science}, 14(2):179--211.
 
 \bibitem[Engstrom et~al., 2020]{engstrom2020implementation}
 Engstrom, L., Ilyas, A., Santurkar, S., Tsipras, D., Janoos, F., Rudolph, L., and Madry, A. (2020).
@@ -212,6 +237,11 @@ Gatheral, J., Jaisson, T., and Rosenbaum, M. (2022).
 \newblock Volatility is rough.
 \newblock In {\em Commodities}, pages 659--690. Chapman and Hall/CRC.
 
+\bibitem[Gers et~al., 2000]{gers2000learning}
+Gers, F.~A., Schmidhuber, J., and Cummins, F. (2000).
+\newblock Learning to forget: Continual prediction with lstm.
+\newblock {\em Neural computation}, 12(10):2451--2471.
+
 \bibitem[Giles, 2015]{giles2015multilevel}
 Giles, M.~B. (2015).
 \newblock Multilevel monte carlo methods.
@@ -231,6 +261,12 @@ Giurca, A. and Borovkova, S. (2021).
 Glasserman, P. (2004).
 \newblock {\em Monte Carlo methods in financial engineering}, volume~53.
 \newblock Springer.
+
+\bibitem[Goodfellow et~al., 2016]{goodfellow2016}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016).
+\newblock {\em Deep Learning}.
+\newblock MIT Press.
+\newblock \url{http://www.deeplearningbook.org}.
 
 \bibitem[Goodfellow et~al., 2014]{goodfellow2014explaining}
 Goodfellow, I.~J., Shlens, J., and Szegedy, C. (2014).
@@ -289,6 +325,11 @@ Hastie, T., Tibshirani, R., and Friedman, J.~H. (2009).
 \newblock {\em The Elements of Statistical Learning: Data Mining, Inference, and Prediction}, volume~2.
 \newblock Springer.
 
+\bibitem[He et~al., 2016]{he2016deep}
+He, K., Zhang, X., Ren, S., and Sun, J. (2016).
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 770--778.
+
 \bibitem[Hochreiter and Schmidhuber, 1997]{hochreiter1997long}
 Hochreiter, S. and Schmidhuber, J. (1997).
 \newblock Long short-term memory.
@@ -304,10 +345,20 @@ Hong, J.~L., Juneja, S., and Liu, G. (2017).
 \newblock Kernel smoothing for nested estimation with application to portfolio risk measurement.
 \newblock {\em Operations Research}, 65(3):657--673.
 
+\bibitem[Hornik et~al., 1989]{hornik1989multilayer}
+Hornik, K., Stinchcombe, M., and White, H. (1989).
+\newblock Multilayer feedforward networks are universal approximators.
+\newblock {\em Neural networks}, 2(5):359--366.
+
 \bibitem[Horvath et~al., 2021]{horvath2021deep}
 Horvath, B., Teichmann, J., and {\v{Z}}uri{\v{c}}, {\v{Z}}. (2021).
 \newblock Deep hedging under rough volatility.
 \newblock {\em Risks}, 9(7):138.
+
+\bibitem[Hull and Basu, 2016]{hull2016options}
+Hull, J.~C. and Basu, S. (2016).
+\newblock {\em Options, futures, and other derivatives}.
+\newblock Pearson Education India.
 
 \bibitem[Imaki et~al., 2021]{imaki2021no}
 Imaki, S., Imajo, K., Ito, K., Minami, K., and Nakagawa, K. (2021).
@@ -329,6 +380,11 @@ Jiang, L., Huang, D., Liu, M., and Yang, W. (2020).
 \newblock Beyond synthetic noise: Deep learning on controlled noisy labels.
 \newblock In {\em International conference on machine learning}, pages 4804--4815. PMLR.
 
+\bibitem[Jin et~al., 2020]{jin2020deep}
+Jin, Z.~L., Liu, Y., and Durlofsky, L.~J. (2020).
+\newblock Deep-learning-based surrogate model for reservoir simulation with time-varying well controls.
+\newblock {\em Journal of Petroleum Science and Engineering}, 192:107273.
+
 \bibitem[Kim and Kutzner, 2008]{kim2008ratio}
 Kim, P.-S. and Kutzner, A. (2008).
 \newblock Ratio based stable in-place merging.
@@ -339,6 +395,11 @@ Kingma, D.~P. and Ba, J. (2014).
 \newblock Adam: A method for stochastic optimization.
 \newblock {\em arXiv preprint arXiv:1412.6980}.
 \newblock \url{https://arxiv.org/pdf/1412.6980.pdf}. Accessed 7$^{\textrm{th}}$ Sep 2023.
+
+\bibitem[Kleijnen, 2018]{kleijnen2018design}
+Kleijnen, J.~P. (2018).
+\newblock {\em Design and analysis of simulation experiments}.
+\newblock Springer.
 
 \bibitem[Kolm and Ritter, 2019]{kolm2019dynamic}
 Kolm, P.~N. and Ritter, G. (2019).
@@ -410,6 +471,11 @@ Mack, Y.-P. (1981).
 \newblock Local properties of k-nn regression estimates.
 \newblock {\em SIAM Journal on Algebraic Discrete Methods}, 2(3):311--323.
 
+\bibitem[Malmsten and Ter{\"a}svirta, 2010]{malmsten2010stylized}
+Malmsten, H. and Ter{\"a}svirta, T. (2010).
+\newblock Stylized facts of financial time series and three popular models of volatility.
+\newblock {\em European Journal of pure and applied mathematics}, 3(3):443--477.
+
 \bibitem[Marshall et~al., 2010]{marshall2010valuation}
 Marshall, C., Hardy, M., and Saunders, D. (2010).
 \newblock Valuation of a guaranteed minimum income benefit.
@@ -477,6 +543,11 @@ OSFI (2017).
 \newblock Life insurance capital adequacy test.
 \newblock Technical report, Office of the Superintendent of Financial Institutes Canada.
 
+\bibitem[Pan and Yang, 2009]{pan2009survey}
+Pan, S.~J. and Yang, Q. (2009).
+\newblock A survey on transfer learning.
+\newblock {\em IEEE Transactions on knowledge and data engineering}, 22(10):1345--1359.
+
 \bibitem[Paszke et~al., 2019]{paszke2019pytorch}
 Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L., et~al. (2019).
 \newblock Pytorch: An imperative style, high-performance deep learning library.
@@ -513,6 +584,11 @@ Rockafellar, R.~T. and Uryasev, S. (2002).
 \newblock Conditional value-at-risk for general loss distributions.
 \newblock {\em Journal of Banking \& Finance}, 26(7):1443--1471.
 
+\bibitem[Rosen et~al., 2012]{rosen2012metamodeling}
+Rosen, S.~L., Saunders, C.~P., and Guharay, S.~K. (2012).
+\newblock Metamodeling of simulations consisting of time series inputs and outputs.
+\newblock In {\em Proceedings of the 2012 Winter Simulation Conference (WSC)}, pages 1--12. IEEE.
+
 \bibitem[Rosenblatt, 1958]{rosenblatt1958perceptron}
 Rosenblatt, F. (1958).
 \newblock The perceptron: A probabilistic model for information storage and organization in the brain.
@@ -527,6 +603,11 @@ Ruf, J. and Wang, W. (2022).
 Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1985).
 \newblock Learning internal representations by error propagation.
 \newblock Technical report, California University San Diego La Jolla Institute for Cognitive Science.
+
+\bibitem[Rusu et~al., 2015]{rusu2015policy}
+Rusu, A.~A., Colmenarejo, S.~G., Gulcehre, C., Desjardins, G., Kirkpatrick, J., Pascanu, R., Mnih, V., Kavukcuoglu, K., and Hadsell, R. (2015).
+\newblock Policy distillation.
+\newblock {\em arXiv preprint arXiv:1511.06295}.
 
 \bibitem[Salle and Y{\i}ld{\i}zo{\u{g}}lu, 2014]{salle2014efficient}
 Salle, I. and Y{\i}ld{\i}zo{\u{g}}lu, M. (2014).
@@ -568,6 +649,11 @@ Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche, 
 \newblock Mastering the game of go with deep neural networks and tree search.
 \newblock {\em Nature}, 529(7587):484--489.
 
+\bibitem[Simonyan and Zisserman, 2014]{simonyan2014very}
+Simonyan, K. and Zisserman, A. (2014).
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em arXiv preprint arXiv:1409.1556}.
+
 \bibitem[Srivastava et~al., 2014]{srivastava2014dropout}
 Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and Salakhutdinov, R. (2014).
 \newblock Dropout: A simple way to prevent neural networks from overfitting.
@@ -593,6 +679,11 @@ Sutton, R.~S. and Barto, A.~G. (2018).
 \newblock {\em Reinforcement learning: An introduction}.
 \newblock MIT press.
 
+\bibitem[Sutton et~al., 1999]{sutton1999policy}
+Sutton, R.~S., McAllester, D., Singh, S., and Mansour, Y. (1999).
+\newblock Policy gradient methods for reinforcement learning with function approximation.
+\newblock {\em Advances in neural information processing systems}, 12.
+
 \bibitem[Szeg, 1939]{szeg1939orthogonal}
 Szeg, G. (1939).
 \newblock {\em Orthogonal polynomials}, volume~23.
@@ -603,6 +694,11 @@ Szegedy, C., Zaremba, W., Sutskever, I., Bruna, J., Erhan, D., Goodfellow, I., a
 \newblock Intriguing properties of neural networks.
 \newblock {\em arXiv preprint arXiv:1312.6199}.
 \newblock \url{https://arxiv.org/abs/1312.6199}. Accessed 1$^{\textrm{st}}$ Jan 2024.
+
+\bibitem[Tang et~al., 2020]{tang2020deep}
+Tang, M., Liu, Y., and Durlofsky, L.~J. (2020).
+\newblock A deep-learning-based surrogate model for data assimilation in dynamic subsurface flow problems.
+\newblock {\em Journal of Computational Physics}, 413:109456.
 
 \bibitem[Teh et~al., 2017]{teh2017distral}
 Teh, Y., Bapst, V., Czarnecki, W.~M., Quan, J., Kirkpatrick, J., Hadsell, R., Heess, N., and Pascanu, R. (2017).
@@ -663,6 +759,11 @@ Xu, X. (2020).
 Yang, L., Bankman, D., Moons, B., Verhelst, M., and Murmann, B. (2018).
 \newblock Bit error tolerance of a cifar-10 binarized convolutional neural network processor.
 \newblock In {\em 2018 IEEE International Symposium on Circuits and Systems (ISCAS)}, pages 1--5. Institute of Electrical and Electronics Engineers.
+
+\bibitem[Yosinski et~al., 2014]{yosinski2014transferable}
+Yosinski, J., Clune, J., Bengio, Y., and Lipson, H. (2014).
+\newblock How transferable are features in deep neural networks?
+\newblock {\em Advances in neural information processing systems}, 27.
 
 \bibitem[Zhang et~al., 2018]{zhang2018decoupling}
 Zhang, A., Satija, H., and Pineau, J. (2018).
