@@ -60,7 +60,6 @@
 \citation{bengio1994learning}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3.4}Long Short-Term Memory Networks}{10}{subsection.1.3.4}\protected@file@percent }
 \citation{hochreiter1997long}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.5}Transfer Learning}{12}{subsection.1.3.5}\protected@file@percent }
 \citation{gordy2010nested}
 \citation{gordy2010nested}
 \citation{broadie2015risk}
@@ -301,4 +300,373 @@
 \citation{glasserman2004monte}
 \newlabel{eq2:delta}{{3.2}{66}{Simulation Model for Variable Annuity Payouts}{equation.3.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Dynamic Hedging for Variable Annuities}{67}{subsection.3.2.3}\protected@file@percent }
-\newlabel{subsec:dynamicHedge}{{3.2.3}{67}{Dynamic Hedging for V
+\newlabel{subsec:dynamicHedge}{{3.2.3}{67}{Dynamic Hedging for Variable Annuities}{subsection.3.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{67}{figure.caption.29}\protected@file@percent }
+\newlabel{fig2:illustration}{{3.1}{67}{Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario}{figure.caption.29}{}}
+\newlabel{eq2:hedgingerror}{{3.3}{68}{Dynamic Hedging for Variable Annuities}{equation.3.2.3}{}}
+\newlabel{eq2:lossrv}{{3.4}{68}{Dynamic Hedging for Variable Annuities}{equation.3.2.4}{}}
+\citation{dang2020efficient}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Standard Nested Simulation Procedure for Estimating CVaR for GMWB Hedging Losses}}{69}{algorithm.1}\protected@file@percent }
+\newlabel{alg2:standardProcedure}{{1}{69}{Standard Nested Simulation Procedure for Estimating CVaR for GMWB Hedging Losses}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Two-Stage Nested Simulation with Metamodels}{69}{section.3.3}\protected@file@percent }
+\newlabel{sec2:metamodel2Stage}{{3.3}{69}{Two-Stage Nested Simulation with Metamodels}{section.3.3}{}}
+\citation{dang2020efficient}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Two-Stage Metamodeling Nested Simulation Procedure for Estimating CVaR}}{70}{algorithm.2}\protected@file@percent }
+\newlabel{alg2:twoStageProcedure}{{2}{70}{Two-Stage Metamodeling Nested Simulation Procedure for Estimating CVaR}{algorithm.2}{}}
+\citation{dang2020efficient}
+\citation{dang2020efficient}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Single-Stage Nested Simulation with Neural Network Metamodels}{72}{section.3.4}\protected@file@percent }
+\newlabel{sec2:metamodel1Stage}{{3.4}{72}{Single-Stage Nested Simulation with Neural Network Metamodels}{section.3.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Single-Stage Metamodeling Nested Simulation Procedure for Estimating CVaR}}{72}{algorithm.3}\protected@file@percent }
+\newlabel{alg2:oneStageProcedure}{{3}{72}{Single-Stage Metamodeling Nested Simulation Procedure for Estimating CVaR}{algorithm.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Numerical Results}{72}{section.3.5}\protected@file@percent }
+\newlabel{sec2:numerical}{{3.5}{72}{Numerical Results}{section.3.5}{}}
+\citation{kingma2014adam}
+\citation{krizhevsky2012imagenet}
+\citation{devlin2018bert}
+\citation{brown2020language}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{74}{table.caption.30}\protected@file@percent }
+\newlabel{tab:gmwb_arch}{{3.1}{74}{Architectures and MSEs of metamodels for GMWB inner simulation model}{table.caption.30}{}}
+\newlabel{subfig2:badRNN}{{3.2b}{76}{A bad RNN metamodel}{figure.caption.31}{}}
+\newlabel{sub@subfig2:badRNN}{{b}{76}{A bad RNN metamodel}{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{76}{figure.caption.31}\protected@file@percent }
+\newlabel{fig2:QQ_RNN}{{3.2}{76}{QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel}{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{77}{figure.caption.32}\protected@file@percent }
+\newlabel{fig2:QQ_REG}{{3.3}{77}{QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels}{figure.caption.32}{}}
+\citation{dang2020efficient}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{78}{figure.caption.33}\protected@file@percent }
+\newlabel{fig2:QQ_NN}{{3.4}{78}{QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Two-Stage Procedure}{78}{subsection.3.5.1}\protected@file@percent }
+\newlabel{subsec:twoStageProcedure}{{3.5.1}{78}{Two-Stage Procedure}{subsection.3.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{79}{figure.caption.34}\protected@file@percent }
+\newlabel{fig2:tailMatches}{{3.5}{79}{Percentage of correctly identified true tail scenarios by different metamodels}{figure.caption.34}{}}
+\newlabel{subfig2:AllSafetyMargin}{{3.6a}{80}{Safety margin 0\% - 15\%}{figure.caption.35}{}}
+\newlabel{sub@subfig2:AllSafetyMargin}{{a}{80}{Safety margin 0\% - 15\%}{figure.caption.35}{}}
+\newlabel{subfig2:ZoomedSafetyMargin}{{3.6b}{80}{Safety margin 7.5\% - 15\%}{figure.caption.35}{}}
+\newlabel{sub@subfig2:ZoomedSafetyMargin}{{b}{80}{Safety margin 7.5\% - 15\%}{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{80}{figure.caption.35}\protected@file@percent }
+\newlabel{fig2:CVaR95}{{3.6}{80}{Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of Deep Neural Network Metamodels}{81}{subsection.3.5.2}\protected@file@percent }
+\newlabel{subsec2:noiseTolerance}{{3.5.2}{81}{Noise Tolerance of Deep Neural Network Metamodels}{subsection.3.5.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces MSEs of LSTM metamodels.}}{82}{table.caption.36}\protected@file@percent }
+\newlabel{tab:lstm_arch}{{3.2}{82}{MSEs of LSTM metamodels}{table.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{83}{figure.caption.37}\protected@file@percent }
+\newlabel{fig2:QQ_All}{{3.7}{83}{QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels}{figure.caption.37}{}}
+\citation{broadie2015risk}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{84}{table.caption.38}\protected@file@percent }
+\newlabel{tab2:lstm_sens}{{3.3}{84}{MSE between regular LSTM predicted losses and true losses}{table.caption.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{84}{table.caption.39}\protected@file@percent }
+\newlabel{tab2:hicaplstm_sens}{{3.4}{84}{MSE between high-capacity LSTM predicted losses and true losses}{table.caption.39}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between high-capacity LSTM predicted losses and true losses.}}{85}{table.caption.40}\protected@file@percent }
+\newlabel{tab2:lstm_corr}{{3.5}{85}{Spearman (and Pearson) correlation coefficients between high-capacity LSTM predicted losses and true losses}{table.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlation coefficients for high-capacity LSTM metamodel.}}{86}{figure.caption.41}\protected@file@percent }
+\newlabel{fig2:cor-heatmap}{{3.8}{86}{Difference between Spearman and Pearson correlation coefficients for high-capacity LSTM metamodel}{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Single-Stage Procedure}{86}{subsection.3.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{87}{figure.caption.42}\protected@file@percent }
+\newlabel{fig2:CVaRsingleStage}{{3.9}{87}{CVaR estimates of the single-stage procedure with metamodels}{figure.caption.42}{}}
+\newlabel{subfig2:convLoCap}{{3.10a}{88}{regular LSTM}{figure.caption.43}{}}
+\newlabel{sub@subfig2:convLoCap}{{a}{88}{regular LSTM}{figure.caption.43}{}}
+\newlabel{subfig2:convHiCap}{{3.10b}{88}{high-capacity LSTM}{figure.caption.43}{}}
+\newlabel{sub@subfig2:convHiCap}{{b}{88}{high-capacity LSTM}{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{88}{figure.caption.43}\protected@file@percent }
+\newlabel{fig2:gammaConvergence}{{3.10}{88}{Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels}{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{89}{figure.caption.44}\protected@file@percent }
+\newlabel{fig2:mnConvergence}{{3.11}{89}{Empirical convergence of the single-stage procedure with a LSTM metamodel}{figure.caption.44}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Conclusion}{90}{section.3.6}\protected@file@percent }
+\newlabel{sec2:conclusion}{{3.6}{90}{Conclusion}{section.3.6}{}}
+\citation{cont2001empirical}
+\citation{pan2009survey}
+\citation{yosinski2014transferable}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Transfer Learning for Rapid Adaptation of Deep Neural Network Metamodels in Dynamic Hedging of Variable Annuities}{92}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chap:project3}{{4}{92}{Transfer Learning for Rapid Adaptation of Deep Neural Network Metamodels in Dynamic Hedging of Variable Annuities}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{92}{section.4.1}\protected@file@percent }
+\citation{pan2009survey}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Transfer Learning in Metamodeling}{93}{section.4.2}\protected@file@percent }
+\newlabel{sec3:background}{{4.2}{93}{Transfer Learning in Metamodeling}{section.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Fine-tuning}{95}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Layer Freezing}{96}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Multi-task Learning}{96}{subsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Rapid Adaptation of LSTM Metamodels}{96}{section.4.3}\protected@file@percent }
+\newlabel{sec3:transfer_learning}{{4.3}{96}{Rapid Adaptation of LSTM Metamodels}{section.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Numerical Experiments}{96}{section.4.4}\protected@file@percent }
+\newlabel{sec3:experiments}{{4.4}{96}{Numerical Experiments}{section.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{96}{section.4.5}\protected@file@percent }
+\newlabel{sec3:conclusion}{{4.5}{96}{Conclusion}{section.4.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{97}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chap:conclusion}{{5}{97}{Conclusion}{chapter.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Future Work: Deep Hedging Variable Annuities with Transfer Learning}{99}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chap:futureWork}{{6}{99}{Future Work: Deep Hedging Variable Annuities with Transfer Learning}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Markov Decision Process for Hedging VAs}{101}{section.6.1}\protected@file@percent }
+\newlabel{sec:MDP}{{6.1}{101}{Markov Decision Process for Hedging VAs}{section.6.1}{}}
+\citation{naic2021}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Hedging Environment of Variable Annuities}{102}{subsection.6.1.1}\protected@file@percent }
+\newlabel{subsec:VASimulation}{{6.1.1}{102}{Hedging Environment of Variable Annuities}{subsection.6.1.1}{}}
+\newlabel{eq3:lapse}{{6.1}{102}{Hedging Environment of Variable Annuities}{equation.6.1.1}{}}
+\newlabel{eq3:subaccount}{{6.2}{102}{Hedging Environment of Variable Annuities}{equation.6.1.2}{}}
+\citation{garleanu2013dynamic}
+\newlabel{eq3:guarantee}{{6.3}{103}{Hedging Environment of Variable Annuities}{equation.6.1.3}{}}
+\newlabel{eq3:withdrawal}{{6.4}{103}{Hedging Environment of Variable Annuities}{equation.6.1.4}{}}
+\newlabel{eq3:lossGMMB}{{6.6}{103}{Hedging Environment of Variable Annuities}{equation.6.1.6}{}}
+\newlabel{eq3:lossGMWB}{{6.7}{104}{Hedging Environment of Variable Annuities}{equation.6.1.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}State Space}{104}{subsection.6.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Action Space}{104}{subsection.6.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.4}Policy}{104}{subsection.6.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.5}Transition Probabilities}{105}{subsection.6.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.6}Reward and Discount Factor}{105}{subsection.6.1.6}\protected@file@percent }
+\newlabel{eq3:rewardGMWB}{{6.9}{105}{Reward and Discount Factor}{equation.6.1.9}{}}
+\newlabel{eq3:rewardGMMB}{{6.10}{105}{Reward and Discount Factor}{equation.6.1.10}{}}
+\citation{silver2016mastering}
+\citation{silver2016mastering}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.7}Value Function and Advantage Function}{106}{subsection.6.1.7}\protected@file@percent }
+\newlabel{eq3:V_pi}{{6.11}{106}{Value Function and Advantage Function}{equation.6.1.11}{}}
+\newlabel{eq3:Q_pi}{{6.12}{106}{Value Function and Advantage Function}{equation.6.1.12}{}}
+\newlabel{eq3:A_pi}{{6.13}{106}{Value Function and Advantage Function}{equation.6.1.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Exising RL Algorithms and Their Limitations}{106}{section.6.2}\protected@file@percent }
+\newlabel{sec:RLAlgorithms}{{6.2}{106}{Exising RL Algorithms and Their Limitations}{section.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Model-Based RL: From AlphaZero to Deep Hedging}{106}{subsection.6.2.1}\protected@file@percent }
+\citation{sutton2018reinforcement}
+\citation{buehler2019deep}
+\citation{xu2020variable}
+\citation{carbonneau2021deep}
+\citation{buehler2019deep}
+\citation{imaki2021no}
+\citation{gatheral2022volatility}
+\citation{horvath2021deep}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Model-Free RL for Hedging}{108}{subsection.6.2.2}\protected@file@percent }
+\citation{hasbrouck1991measuring}
+\citation{mnih2015human}
+\citation{lin1992self}
+\citation{kolm2019dynamic}
+\citation{lillicrap2015continuous}
+\citation{xu2022delta}
+\citation{sutton1999policy}
+\citation{buehler2019deep}
+\citation{schulman2015trust}
+\citation{schulman2017proximal}
+\citation{du2020deep}
+\citation{chong2023pseudo}
+\newlabel{alg:REINFORCE}{{\caption@xref {alg:REINFORCE}{ on input line 298}}{110}{Model-Free RL for Hedging}{subsection.6.2.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Vanilla Policy Gradient (REINFORCE)}}{110}{algorithm.4}\protected@file@percent }
+\citation{schulman2015high}
+\citation{schulman2015trust}
+\citation{engstrom2020implementation}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Hedging VAs with a PPO Agent}{111}{section.6.3}\protected@file@percent }
+\newlabel{sec:PPO}{{6.3}{111}{Hedging VAs with a PPO Agent}{section.6.3}{}}
+\citation{ni2021recurrent}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces PPO for Hedging Variable Annuities}}{112}{algorithm.5}\protected@file@percent }
+\newlabel{alg3:ppoHedging}{{5}{112}{PPO for Hedging Variable Annuities}{algorithm.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Accounting for Non-Markovian Dynamics}{112}{subsection.6.3.1}\protected@file@percent }
+\newlabel{eq3:stateRNN}{{6.17}{112}{Accounting for Non-Markovian Dynamics}{equation.6.3.17}{}}
+\citation{xiao2021optimal}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Recurrent PPO with LSTM for Hedging Variable Annuities}}{113}{algorithm.6}\protected@file@percent }
+\newlabel{alg3:ppoHedging-rnn}{{6}{113}{Recurrent PPO with LSTM for Hedging Variable Annuities}{algorithm.6}{}}
+\newlabel{subfig3:architecturePPO}{{6.1a}{114}{regular PPO}{figure.caption.45}{}}
+\newlabel{sub@subfig3:architecturePPO}{{a}{114}{regular PPO}{figure.caption.45}{}}
+\newlabel{subfig3:architectureLSTMPPO}{{6.1b}{114}{Recurrent PPO with LSTM}{figure.caption.45}{}}
+\newlabel{sub@subfig3:architectureLSTMPPO}{{b}{114}{Recurrent PPO with LSTM}{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{114}{figure.caption.45}\protected@file@percent }
+\newlabel{fig3:architecturePPO}{{6.1}{114}{PPO Network Architectures}{figure.caption.45}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Transfer Learning for Hedging VAs}{114}{section.6.4}\protected@file@percent }
+\newlabel{sec:TransferLearning}{{6.4}{114}{Transfer Learning for Hedging VAs}{section.6.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Reward Shaping}{114}{subsection.6.4.1}\protected@file@percent }
+\citation{ng1999policy}
+\citation{wiewiora2003principled}
+\citation{harutyunyan2015expressing}
+\citation{teh2017distral}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Policy Transfer}{115}{subsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{115}{subsection.6.4.3}\protected@file@percent }
+\citation{brockman2016openai}
+\citation{paszke2019pytorch}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Numerical Experiments}{116}{section.6.5}\protected@file@percent }
+\newlabel{sec:Experiments}{{6.5}{116}{Numerical Experiments}{section.6.5}{}}
+\citation{engstrom2020implementation}
+\citation{schulman2017proximal}
+\citation{schulman2015high}
+\citation{buehler2019deep}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{117}{table.caption.46}\protected@file@percent }
+\newlabel{tab3:hyperparameters}{{6.1}{117}{PPO Hyperparameters and GMMB Contract Specifications}{table.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{118}{figure.caption.47}\protected@file@percent }
+\newlabel{fig3:dh-transfers}{{6.2}{118}{Hedging performance of deep hedging with transfer learning}{figure.caption.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{118}{figure.caption.48}\protected@file@percent }
+\newlabel{fig3:ppo_dh}{{6.3}{118}{Hedging performance of recurrent PPO and deep hedging}{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{119}{figure.caption.49}\protected@file@percent }
+\newlabel{fig3:ppo_result}{{6.4}{119}{Hedging performance of standard PPO and recurrent PPO}{figure.caption.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{119}{figure.caption.50}\protected@file@percent }
+\newlabel{fig3:ppo_cost}{{6.5}{119}{Hedging performance of recurrent PPO and delta hedging with different transaction costs}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{120}{figure.caption.51}\protected@file@percent }
+\newlabel{fig3:ppo_anchor}{{6.6}{120}{Hedging performance of recurrent PPO with or without anchor}{figure.caption.51}{}}
+\citation{rusu2015policy}
+\citation{bengio2012deep}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{121}{figure.caption.52}\protected@file@percent }
+\newlabel{fig3:ppo_GMWB}{{6.7}{121}{Hedging performance of recurrent PPO with GMWB}{figure.caption.52}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Future Directions}{121}{section.6.6}\protected@file@percent }
+\newlabel{sec:FutureDirections}{{6.6}{121}{Future Directions}{section.6.6}{}}
+\bibstyle{apalike}
+\bibdata{refP1,refP2,refP3,refOther}
+\bibcite{andreas2017modular}{{1}{2017}{{Andreas et~al.}}{{}}}
+\bibcite{artzner1999coherent}{{2}{1999}{{Artzner et~al.}}{{}}}
+\bibcite{barton1998simulation}{{3}{1998}{{Barton}}{{}}}
+\bibcite{bauer2008universal}{{4}{2008}{{Bauer et~al.}}{{}}}
+\bibcite{bauer2012calculation}{{5}{2012}{{Bauer et~al.}}{{}}}
+\bibcite{bellman1966dynamic}{{6}{1966}{{Bellman}}{{}}}
+\bibcite{bengio2012deep}{{7}{2012}{{Bengio}}{{}}}
+\bibcite{bengio2013representation}{{8}{2013}{{Bengio et~al.}}{{}}}
+\bibcite{bengio1994learning}{{9}{1994}{{Bengio et~al.}}{{}}}
+\bibcite{bentley1975multidimensional}{{10}{1975}{{Bentley}}{{}}}
+\@writefile{toc}{\contentsline {chapter}{\textbf  {References}}{123}{section*.53}\protected@file@percent }
+\bibcite{bishop2006pattern}{{11}{2006}{{Bishop and Nasrabadi}}{{}}}
+\bibcite{boyle2003guaranteed}{{12}{2003}{{Boyle and Hardy}}{{}}}
+\bibcite{boyle1997reserving}{{13}{1997}{{Boyle and Hardy}}{{}}}
+\bibcite{boyle1977equilibrium}{{14}{1977}{{Boyle and Schwartz}}{{}}}
+\bibcite{broadie2015risk}{{15}{2015}{{Broadie et~al.}}{{}}}
+\bibcite{brockman2016openai}{{16}{2016}{{Brockman et~al.}}{{}}}
+\bibcite{brown2020language}{{17}{2020}{{Brown}}{{}}}
+\bibcite{buehler2019deep}{{18}{2019}{{Buehler et~al.}}{{}}}
+\bibcite{carbonneau2021deep}{{19}{2021}{{Carbonneau}}{{}}}
+\bibcite{carlini2017towards}{{20}{2017}{{Carlini and Wagner}}{{}}}
+\bibcite{caruana2000overfitting}{{21}{2000}{{Caruana et~al.}}{{}}}
+\bibcite{cathcart2015calculating}{{22}{2015}{{Cathcart et~al.}}{{}}}
+\bibcite{chen2020note}{{23}{2020}{{Chen et~al.}}{{}}}
+\bibcite{chong2023pseudo}{{24}{2023}{{Chong et~al.}}{{}}}
+\bibcite{chung2014empirical}{{25}{2014}{{Chung et~al.}}{{}}}
+\bibcite{cont2001empirical}{{26}{2001}{{Cont}}{{}}}
+\bibcite{coppersmith1987matrix}{{27}{1987}{{Coppersmith and Winograd}}{{}}}
+\bibcite{dang2021efficient}{{28}{2021}{{Dang}}{{}}}
+\bibcite{dang2020efficient}{{29}{2020}{{Dang et~al.}}{{}}}
+\bibcite{dang2022dynamic}{{30}{2022}{{Dang et~al.}}{{}}}
+\bibcite{dang2023two}{{31}{2023}{{Dang et~al.}}{{}}}
+\bibcite{devlin2018bert}{{32}{2018}{{Devlin}}{{}}}
+\bibcite{du2020deep}{{33}{2020}{{Du et~al.}}{{}}}
+\bibcite{eiopa2014underlying}{{34}{2014}{{EIOPA}}{{}}}
+\bibcite{elman1990finding}{{35}{1990}{{Elman}}{{}}}
+\bibcite{engstrom2020implementation}{{36}{2020}{{Engstrom et~al.}}{{}}}
+\bibcite{feng2020optimal}{{37}{2020}{{Feng and Song}}{{}}}
+\bibcite{feng2016nested}{{38}{2016}{{Feng et~al.}}{{}}}
+\bibcite{feng2022variable}{{39}{2022}{{Feng et~al.}}{{}}}
+\bibcite{feng2017analytical}{{40}{2017}{{Feng and Jing}}{{}}}
+\bibcite{fonseca2003simulation}{{41}{2003}{{Fonseca et~al.}}{{}}}
+\bibcite{frazier2018bayesian}{{42}{2018}{{Frazier}}{{}}}
+\bibcite{galton1886regression}{{43}{1886}{{Galton}}{{}}}
+\bibcite{gan2013application}{{44}{2013}{{Gan}}{{}}}
+\bibcite{gan2015valuation}{{45}{2015}{{Gan and Lin}}{{}}}
+\bibcite{garleanu2013dynamic}{{46}{2013}{{G{\^a}rleanu and Pedersen}}{{}}}
+\bibcite{gatheral2022volatility}{{47}{2022}{{Gatheral et~al.}}{{}}}
+\bibcite{gers2000learning}{{48}{2000}{{Gers et~al.}}{{}}}
+\bibcite{giles2015multilevel}{{49}{2015}{{Giles}}{{}}}
+\bibcite{giles2019multilevel}{{50}{2019}{{Giles and Haji-Ali}}{{}}}
+\bibcite{giurca2021delta}{{51}{2021}{{Giurca and Borovkova}}{{}}}
+\bibcite{glasserman2004monte}{{52}{2004}{{Glasserman}}{{}}}
+\bibcite{goodfellow2016}{{53}{2016}{{Goodfellow et~al.}}{{}}}
+\bibcite{goodfellow2014explaining}{{54}{2014}{{Goodfellow et~al.}}{{}}}
+\bibcite{gordy2010nested}{{55}{2010}{{Gordy and Juneja}}{{}}}
+\bibcite{bauer2015least}{{56}{2015}{{Ha and Bauer}}{{}}}
+\bibcite{hardle1990applied}{{57}{1990}{{H{\"a}rdle}}{{}}}
+\bibcite{hardy2001regime}{{58}{2001}{{Hardy}}{{}}}
+\bibcite{hardy2003investment}{{59}{2003}{{Hardy}}{{}}}
+\bibcite{hardy2006introduction}{{60}{2006}{{Hardy}}{{}}}
+\bibcite{hardy2022quantitative}{{61}{2022}{{Hardy and Saunders}}{{}}}
+\bibcite{harutyunyan2015expressing}{{62}{2015}{{Harutyunyan et~al.}}{{}}}
+\bibcite{hasbrouck1991measuring}{{63}{1991}{{Hasbrouck}}{{}}}
+\bibcite{hastie2009elements}{{64}{2009}{{Hastie et~al.}}{{}}}
+\bibcite{he2016deep}{{65}{2016}{{He et~al.}}{{}}}
+\bibcite{hochreiter1997long}{{66}{1997}{{Hochreiter and Schmidhuber}}{{}}}
+\bibcite{hong2014monte}{{67}{2014}{{Hong et~al.}}{{}}}
+\bibcite{hong2017kernel}{{68}{2017}{{Hong et~al.}}{{}}}
+\bibcite{hornik1989multilayer}{{69}{1989}{{Hornik et~al.}}{{}}}
+\bibcite{horvath2021deep}{{70}{2021}{{Horvath et~al.}}{{}}}
+\bibcite{hull2016options}{{71}{2016}{{Hull and Basu}}{{}}}
+\bibcite{imaki2021no}{{72}{2021}{{Imaki et~al.}}{{}}}
+\bibcite{jabbar2015methods}{{73}{2015}{{Jabbar and Khan}}{{}}}
+\bibcite{jennen1988unifying}{{74}{1988}{{Jennen-Steinmetz and Gasser}}{{}}}
+\bibcite{jiang2020beyond}{{75}{2020}{{Jiang et~al.}}{{}}}
+\bibcite{jin2020deep}{{76}{2020}{{Jin et~al.}}{{}}}
+\bibcite{kim2008ratio}{{77}{2008}{{Kim and Kutzner}}{{}}}
+\bibcite{kingma2014adam}{{78}{2014}{{Kingma and Ba}}{{}}}
+\bibcite{kleijnen2018design}{{79}{2018}{{Kleijnen}}{{}}}
+\bibcite{kolm2019dynamic}{{80}{2019}{{Kolm and Ritter}}{{}}}
+\bibcite{krizhevsky2012imagenet}{{81}{2012}{{Krizhevsky et~al.}}{{}}}
+\bibcite{krizhevsky2017imagenet}{{82}{2017}{{Krizhevsky et~al.}}{{}}}
+\bibcite{lecun2015deep}{{83}{2015}{{LeCun et~al.}}{{}}}
+\bibcite{lecun1998gradient}{{84}{1998}{{LeCun et~al.}}{{}}}
+\bibcite{lieu2022adaptive}{{85}{2022}{{Lieu et~al.}}{{}}}
+\bibcite{lillicrap2015continuous}{{86}{2015}{{Lillicrap et~al.}}{{}}}
+\bibcite{lin1992self}{{87}{1992}{{Lin}}{{}}}
+\bibcite{lin2020efficient}{{88}{2020a}{{Lin and Yang}}{{}}}
+\bibcite{lin2020fast}{{89}{2020b}{{Lin and Yang}}{{}}}
+\bibcite{liu2010stochastic}{{90}{2010}{{Liu and Staum}}{{}}}
+\bibcite{longstaff2001valuing}{{91}{2001}{{Longstaff and Schwartz}}{{}}}
+\bibcite{luo2016understanding}{{92}{2016}{{Luo et~al.}}{{}}}
+\bibcite{mack1981local}{{93}{1981}{{Mack}}{{}}}
+\bibcite{malmsten2010stylized}{{94}{2010}{{Malmsten and Ter{\"a}svirta}}{{}}}
+\bibcite{marshall2010valuation}{{95}{2010}{{Marshall et~al.}}{{}}}
+\bibcite{marukame2016error}{{96}{2016}{{Marukame et~al.}}{{}}}
+\bibcite{mcculloch1943logical}{{97}{1943}{{McCulloch and Pitts}}{{}}}
+\bibcite{mnih2015human}{{98}{2015}{{Mnih et~al.}}{{}}}
+\bibcite{moerland2023model}{{99}{2023}{{Moerland et~al.}}{{}}}
+\bibcite{nadaraya1964estimating}{{100}{1964}{{Nadaraya}}{{}}}
+\bibcite{naic2021}{{101}{2021}{{NAIC}}{{}}}
+\bibcite{neelakantan2015adding}{{102}{2015}{{Neelakantan et~al.}}{{}}}
+\bibcite{ng1999policy}{{103}{1999}{{Ng et~al.}}{{}}}
+\bibcite{ni2021recurrent}{{104}{2021}{{Ni et~al.}}{{}}}
+\bibcite{nystrom1930praktische}{{105}{1930}{{Nystr{\"o}m}}{{}}}
+\bibcite{chatgpt}{{106}{2023}{{OpenAI}}{{}}}
+\bibcite{osfi2017life}{{107}{2017}{{OSFI}}{{}}}
+\bibcite{pan2009survey}{{108}{2009}{{Pan and Yang}}{{}}}
+\bibcite{paszke2019pytorch}{{109}{2019}{{Paszke et~al.}}{{}}}
+\bibcite{scikit-learn}{{110}{2011}{{Pedregosa et~al.}}{{}}}
+\bibcite{peng2020empirical}{{111}{2020}{{Peng and Nagata}}{{}}}
+\bibcite{piscopo2011valuation}{{112}{2011}{{Piscopo and Haberman}}{{}}}
+\bibcite{poole2014analyzing}{{113}{2014}{{Poole et~al.}}{{}}}
+\bibcite{stable-baselines3}{{114}{2021}{{Raffin et~al.}}{{}}}
+\bibcite{rockafellar2002conditional}{{115}{2002}{{Rockafellar and Uryasev}}{{}}}
+\bibcite{rosen2012metamodeling}{{116}{2012}{{Rosen et~al.}}{{}}}
+\bibcite{rosenblatt1958perceptron}{{117}{1958}{{Rosenblatt}}{{}}}
+\bibcite{ruf2022hedging}{{118}{2022}{{Ruf and Wang}}{{}}}
+\bibcite{rumelhart1985learning}{{119}{1985}{{Rumelhart et~al.}}{{}}}
+\bibcite{rusu2015policy}{{120}{2015}{{Rusu et~al.}}{{}}}
+\bibcite{salle2014efficient}{{121}{2014}{{Salle and Y{\i }ld{\i }zo{\u {g}}lu}}{{}}}
+\bibcite{scholkopf2002learning}{{122}{2002}{{Sch{\"o}lkopf and Smola}}{{}}}
+\bibcite{schulman2015trust}{{123}{2015a}{{Schulman et~al.}}{{}}}
+\bibcite{schulman2015high}{{124}{2015b}{{Schulman et~al.}}{{}}}
+\bibcite{schulman2017proximal}{{125}{2017}{{Schulman et~al.}}{{}}}
+\bibcite{seber2012linear}{{126}{2012}{{Seber and Lee}}{{}}}
+\bibcite{shahriari2015taking}{{127}{2015}{{Shahriari et~al.}}{{}}}
+\bibcite{silver2016mastering}{{128}{2016}{{Silver et~al.}}{{}}}
+\bibcite{simonyan2014very}{{129}{2014}{{Simonyan and Zisserman}}{{}}}
+\bibcite{srivastava2014dropout}{{130}{2014}{{Srivastava et~al.}}{{}}}
+\bibcite{stothers2010complexity}{{131}{2010}{{Stothers}}{{}}}
+\bibcite{strassen1969gaussian}{{132}{1969}{{Strassen}}{{}}}
+\bibcite{sutskever2014sequence}{{133}{2014}{{Sutskever et~al.}}{{}}}
+\bibcite{sutton2018reinforcement}{{134}{2018}{{Sutton and Barto}}{{}}}
+\bibcite{sutton1999policy}{{135}{1999}{{Sutton et~al.}}{{}}}
+\bibcite{szeg1939orthogonal}{{136}{1939}{{Szeg}}{{}}}
+\bibcite{szegedy2013intriguing}{{137}{2013}{{Szegedy et~al.}}{{}}}
+\bibcite{tang2020deep}{{138}{2020}{{Tang et~al.}}{{}}}
+\bibcite{teh2017distral}{{139}{2017}{{Teh et~al.}}{{}}}
+\bibcite{geneva2013variable}{{140}{2013}{{The Geneva Association}}{{}}}
+\bibcite{torres2017fault}{{141}{2017}{{Torres-Huitzil and Girau}}{{}}}
+\bibcite{wang2022smooth}{{142}{2022}{{Wang et~al.}}{{}}}
+\bibcite{watson1964smooth}{{143}{1964}{{Watson}}{{}}}
+\bibcite{wiewiora2003principled}{{144}{2003}{{Wiewiora et~al.}}{{}}}
+\bibcite{williams1989learning}{{145}{1989}{{Williams and Zipser}}{{}}}
+\bibcite{wirch1999synthesis}{{146}{1999}{{Wirch and Hardy}}{{}}}
+\bibcite{xiao2021optimal}{{147}{2021}{{Xiao et~al.}}{{}}}
+\bibcite{xu2022delta}{{148}{2022}{{Xu and Dai}}{{}}}
+\bibcite{xu2020variable}{{149}{2020}{{Xu}}{{}}}
+\bibcite{yang2018bit}{{150}{2018}{{Yang et~al.}}{{}}}
+\bibcite{yosinski2014transferable}{{151}{2014}{{Yosinski et~al.}}{{}}}
+\bibcite{zhang2018decoupling}{{152}{2018}{{Zhang et~al.}}{{}}}
+\bibcite{zhang2022sample}{{153}{2022}{{Zhang et~al.}}{{}}}
+\bibcite{zhang2021bootstrap}{{154}{2021}{{Zhang et~al.}}{{}}}
+\citation{*}
+\citation{broadie2015risk}
+\citation{broadie2015risk}
+\newlabel{chap:appendix}{{6.6}{136}{Appendix}{chapter*.55}{}}
+\newlabel{sec:appendix1}{{6.6}{136}{Connection between the convergence in distribution and MSE}{section*.56}{}}
+\gdef \@abspage@last{149}
