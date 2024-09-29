@@ -100,6 +100,11 @@ Carlini, N. and Wagner, D. (2017).
 \newblock Towards evaluating the robustness of neural networks.
 \newblock In {\em 2017 ieee symposium on security and privacy (sp)}, pages 39--57. Ieee.
 
+\bibitem[Caruana, 1997]{caruana1997multitask}
+Caruana, R. (1997).
+\newblock Multitask learning.
+\newblock {\em Machine learning}, 28:41--75.
+
 \bibitem[Caruana et~al., 2000]{caruana2000overfitting}
 Caruana, R., Lawrence, S., and Giles, C. (2000).
 \newblock Overfitting in neural nets: Backpropagation, conjugate gradient, and early stopping.

@@ -196,7 +196,7 @@ Each layer consists of multiple neurons, which apply a non-linear activation fun
 \end{equation}
 
 where $\theta = (\theta^{(1)}, \theta^{(2)}, \ldots, \theta^{(k)})$ are the trainable parameters of the neural network, $f^{(i)}$ is the $i$-th layer of the neural network, $x$ is the input feature vector, $f^{(1)}(x;\theta^{(1)}) = x$, $f^{(k)}$ is the output layer, $k$ is the number of layers, and $f^{(i)}$ is the output of the $i$-th layer.
-To move from layer $i-1$ to layer $i$,
+To move from a lower layer to a higher layer, i.e., from layer $i-1$ to layer $i$,
 
 \begin{equation} \label{eq:neural}
     f^{(i)}(z;\theta^{(i)}) = a^{(i)}(\beta_0^{(i)} + \sum_{j=1}^{p_i} \beta_j^{(i)} z),

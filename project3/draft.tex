@@ -84,22 +84,194 @@ These techniques can be categorized based on how they leverage pre-trained metam
 Fine-tuning is a commonly used TL technique that uses the \textbf{same neural network architecture} for both the source and target tasks.
 We first train the source LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$, capturing temporal dependencies and patterns relevant to the source task. 
 For the target task, we initialize $\theta_{\text{Ta}} = \theta_{\text{So}}$ and proceed to fine-tune the entire network on $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate. 
-This algorithm assumes that the learned sequential representations are beneficial for the target task.
+
+\begin{algorithm}[ht!]
+\caption{Fine-tuning Metamodel for a Target Task}
+\begin{algorithmic}[1] \label{alg3:fineTuning}
+    \STATE \textbf{Input:} source dataset $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$ , target dataset $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$, learning rate $\alpha_{\text{So}}$ and smaller learning rate $\alpha_{\text{Ta}}$.
+    
+    \STATE Train a LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
+    \begin{equation}
+        \theta_{\text{So}} = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2
+    \end{equation}
+
+    \STATE Initialize the target metamodel parameters $\theta_{\text{Ta}}$ using the pre-trained metamodel parameters:
+    \[
+    \theta_{\text{Ta}} \gets \theta_{\text{So}}
+    \]
+    
+    \STATE Fine-tune the entire LSTM model $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ on the target dataset $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate $\alpha_{\text{Ta}}$:
+    \begin{equation}
+        \theta_{\text{Ta}} = \min_{\theta} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta) - L_{\text{Ta}}^{(i)} \right)^2
+    \end{equation}
+    
+    \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ for the target task
+\end{algorithmic}
+\end{algorithm}
+
+Algorithm~\ref{alg3:fineTuning} assumes that the learned sequential representations are beneficial for the target task.
 Only minor adjustments are needed to adapt the metamodel to the new task, and the training process is accelerated by the pre-trained parameters.
+Fine-tuning is particularly useful when the nested simulation procedures for the two VA contracts are closely related.
+Only minor adjustments are needed to adapt the LSTM metamodel to the new domain.
 
 \subsection{Layer Freezing}
 
-In layer freezing, we partition the model parameters into frozen layers $\theta_1$ and trainable layers $\theta_2$, such that $\theta = [\theta_1; \theta_2]$. 
-% This approach leverages the general feature representations captured by the frozen layers, adapting only the task-specific layers to the target domain~\citep{howard2018universal}.
+In a layer freezing approach, we partition the model parameters into frozen parameters $\theta_0$ and trainable parameters $\theta_1$, such that $\theta = [\theta_0, \theta_1]$. 
+Typically, $\theta_0$ are parameters of the lower layers, and $\theta_1$ are parameters of the higher layers that include the output layer.
+The intuition behind layer freezing is that the lower layers capture general features that are transferable across tasks, while the higher layers are more task-specific.
 
-
+\begin{algorithm}[ht!]
+    \caption{Layer Freezing for Metamodel Transfer}
+    \begin{algorithmic}[1] \label{alg3:layerFreezing}
+        \STATE \textbf{Input:} source dataset $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$, target dataset $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$, learning rates $\alpha_{\text{So}}$ and $\alpha_{\text{Ta}}$, frozen parameters $\theta_0$, trainable parameters $\theta_1$.
+        
+        \STATE Train LSTM model $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
+        \begin{equation}
+            \theta_{\text{So}} = [\theta_0, \theta_1] = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2
+        \end{equation}
+        
+        \STATE Initialize the target model parameters $\theta_{\text{Ta}} = [\theta_0, \theta_1]$ using the pre-trained source model parameters $\theta_{\text{So}}$:
+        \[
+        \theta_{\text{Ta}} \gets \theta_{\text{So}} = [\theta_0, \theta_1]
+        \]
+        
+        \STATE Freeze the parameters of the shared layers $\theta_0$:
+        
+        \STATE Fine-tune the trainable higher layers $\theta_1$ on the target dataset $\mathcal{D}_{\text{Ta}}$ using Algorithm~\ref{alg3:fineTuning}:
+        \begin{equation}
+            \theta_{\text{Ta}} = \min_{\theta_1} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; [\theta_0, \theta_1]) - L_{\text{Ta}}^{(i)} \right)^2
+        \end{equation}
+        
+        \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; [\theta_0, \theta_1])$ for the target task
+    \end{algorithmic}
+    \end{algorithm}
 
 \subsection{Multi-task Learning}
 
-\section{Rapid Adaptation of LSTM Metamodels} \label{sec3:transfer_learning}
+Multi-task learning~\citep{caruana1997multitask} refers to a machine learning paradigm where a single model is trained simultaneously on multiple related tasks.
+Shared representations are learned across tasks, which can improve learning efficiency and predictive performance on each individual task with limited data.
+In contrast to fine-tuning and layer freezing, multi-task learning aims to leverage learned knowledge from multiple tasks, and all tasks are trained simultaneously.
 
+Let $\{\mathcal{T}_k\}_{k=1}^K$ represent a set of $K$ related tasks, each corresponding to a metamodeling task for a different standard nested simulation procedure.
+For each task $\mathcal{T}_k$, we have a dataset $\mathcal{D}_k = { (X_k^{(i)}, L_k^{(i)}) }{i=1}^{M_k}$, where $M_k$ is the number of training samples for task $k$.
+$X_k^{(i)}$ and $L_k^{(i)}$ are the features and contract loss labels for task $k$, respectively.
+
+For our metamodeling implementation in Chapter~\ref{chap:project2}, we consider a multi-task learning framework where the LSTM layers are shared across multiple tasks, and each task has its own fully connected layer for prediction.
+The network parameters are divided into shared parameters $\theta_0$ (LSTM layers) and task-specific parameters $\theta_k$ (fully connected layers for task $k$). 
+As opposed to layer freezing, all parameters are trainable.
+The objective function for multi-task learning is the sum of the loss functions of all tasks:
+
+\begin{equation} 
+    \min_{\theta_0, \theta_1, \dots, \theta_K} = \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_1, \dots, \theta_K) - L_k^{(i)} \right)^2,
+\end{equation}
+
+where MSE loss function is used as the error metric, and $f_i(\cdot; \theta_0, \theta_1, \dots, \theta_K)$ is the output of the network for task $k$.
+In essence, multi-task learning uses a multi-head architecture, where each task has its own output head, but the shared LSTM layers learn a common representation across tasks.
+Transfer occurs through the shared LSTM layers $\theta_0$. 
+These layers learn representations of temporal patterns and dependencies common to all tasks, effectively \textbf{pooling} information from multiple simulation schemes. 
+The task-specific fully connected layers $[\theta_1, \dots, \theta_K]$ allow each task to capture unique characteristics not shared with other tasks.
+
+
+\begin{algorithm}
+    \caption{Multi-task Learning Framework for LSTM Metamodels}
+    \begin{algorithmic}[1] \label{alg3:multiTaskLearning}
+        \STATE \textbf{Input:} learning rate $\alpha$, set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$ with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$, task-specific parameters $\theta_k$ for each task $k$, and shared parameters $\theta_0$.
+    
+        \STATE Train the multi-head LSTM metamodel on all $K$ tasks simultaneously:
+        \begin{equation}
+            \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2
+        \end{equation}
+    
+        \STATE Update both the shared parameters $\theta_0$ and task-specific parameters $\{\theta_k\}_{k=1}^K$ simultaneously using backpropagation and gradient descent with learning rate $\alpha$.
+        
+        \STATE \textbf{Output:} Trained multi-task LSTM metamodel $f(\cdot; \theta_0, \{\theta_k\}_{k=1}^K)$ for all $K$ tasks
+    \end{algorithmic}
+\end{algorithm}
+
+Algorithm~\ref{alg3:multiTaskLearning} outlines the multi-task learning framework for LSTM metamodels for nested simulation procedures.
+In Chapter~\ref{chap:project1} and Chapter~\ref{chap:project2}, we demonstrate that pooling using a metamodel can improve the computation efficiency and estimator accuracy in nested simulation procedures.
+Here, pooling happens at a higher level, where information from multiple metamodels are shared to improve the learning performance on individual tasks.
+
+Choosing appropriate simulation schemes is crucial for the success of multi-task learning. The tasks should be related to ensure that the shared layers can capture common features beneficial across tasks. 
+Criteria for selecting simulation schemes include:
+
+\begin{itemize} 
+    \item   \textbf{Similarity in contract specifications:} 
+            simulations involving VA contracts with similar features are likely to share underlying risk factors and policyholder behaviors. 
+    \item   \textbf{Similarity in underlying assets:} 
+            datasets simulated under different but related asset models can provide diverse information that enrich the shared representations.
+            Datasets simulated under extreme market conditions can help the shared layers learn to hedge against tail risks.
+    \item   \textbf{Temporal Dynamics:} 
+            VA contracts with comparable maturity and rebalance frequency can help the shared layers learn temporal dependencies consistent across tasks. 
+\end{itemize}
+
+Suppose we aim to develop an LSTM metamodel for a GMWB contract under a stochastic volatility asset model, but we have limited data for this simulation scheme. 
+For multi-task learning, we can select related nested simulation simulation procedures with relatively abundant data, such as:
+
+\begin{itemize} 
+    \item GMMB contracts under stochastic volatility models. 
+    \item GMWB contracts under the Black-Scholes model. 
+    \item GMWB contracts under stochastic volatility models with different parameters.
+\end{itemize}
+
+These tasks share similarities in contract features and market dynamics, enabling the shared LSTM layers to learn relevant temporal patterns applicable to the target task.
+Furthermore, if a new but similar task is introduced, fine-tuning, layer freezing, and multi-task learning can be combined to leverage the pre-trained model effectively.
+More specfically, the shared layers can be frozen, and the task-specific layers for a similar task in the training set can be fine-tuned on the new task.
+This shared knowledge helps the model generalize better on a target task, as the LSTM layers have been exposed to a wider variety of patterns and dynamics.
+
+\subsection{Rapid Adaptation of LSTM Metamodels} \label{sec3:transfer_learning}
+
+In this section, we propose a transfer learning framework for rapid adaptation of LSTM metamodels in dynamic hedging of VAs.
+The goal is to leverage the knowledge acquired during training on a large dataset of VA simulations to improve the learning performance on a smaller dataset of new VA contracts.
+
+
+\begin{algorithm}
+    \caption{Transfer Learning Framework for LSTM Metamodels: Combining Fine-tuning, Layer Freezing, and Multi-task Learning}
+    \begin{algorithmic}[1] \label{alg3:combined}
+        \STATE \textbf{Input:} Set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$, with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$ for each task $k$, target dataset $\mathcal{D}_{\text{Ta}}$, learning rate $\alpha_{\text{So}}$ and $\alpha_{\text{Ta}}$, shared parameters $\theta_0$, task-specific parameters $\theta_k$ for each task $k$.
+        
+        \STATE \textbf{Multi-task learning:} define shared LSTM layers $\theta_0$ and task-specific fully connected layers $\theta_k$ for each task $k$. The LSTM layers are shared across all tasks $\{\mathcal{T}_k\}_{k=1}^K$.
+        
+        \STATE Train the multi-task LSTM metamodel on all $K$ tasks simultaneously:
+        \begin{equation}
+            \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2
+        \end{equation}
+        
+        \STATE \textbf{Layer freezing:} once the multi-task metamodel is trained, freeze the parameters of the shared LSTM layers $\theta_0$.
+        
+        \STATE \textbf{Fine-tuning:}  based on task similarity, initialize the target task model parameters $\theta_{\text{Ta}}$ using parameters $\theta_k$ from task $k$.
+        \[
+        \theta_{\text{Ta}} \gets \theta_k 
+        \]
+        
+        \STATE Fine-tune only $\theta_{\text{Ta}}$ on the new target dataset $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate $\alpha_{\text{Ta}}$:
+        \begin{equation}
+            \min_{\theta_{\text{Ta}}} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta_0, \theta_{\text{Ta}}) - L_{\text{Ta}}^{(i)} \right)^2
+        \end{equation}
+        
+        \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_0, \theta_{\text{Ta}})$ for the new VA contracts in the target task.
+    \end{algorithmic}
+    \end{algorithm}
+
+Algorithm~\ref{alg3:combined} combines the strengths of Multi-task learning, layer freezing, and fine-tuning to accelerate the training of LSTM metamodels. 
+
+\begin{itemize}
+    \item \textbf{Multi-task learning} allows the shared LSTM layers to pool information across related tasks, learning generalizable representations of temporal dependencies.
+    \item \textbf{Layer freezing} ensures that shared features learned from source tasks are retained when adapting to a new task, reducing the risk of overfitting to the target simulation data.
+    \item \textbf{Fine-tuning} enables the task-specific layers to adapt quickly to the new task with minimal simulation cost, leveraging the pre-trained shared layers.
+\end{itemize}
+    
+The combination of these techniques aims to significantly reduce the computational cost of training LSTM metamodels for a new but related VA contract.
 
 \section{Numerical Experiments} \label{sec3:experiments}
 
+In this section, we evaluate the performance of the transfer learning framework for rapid adaptation of LSTM metamodels in dynamic hedging of VAs.
+The low noise dataset generated by the standard nested simulation procedure in Section~\ref{sec2:numerical} is used to train the source LSTM metamodels.
+We consider two target tasks: one with the same contract but different underlying asset model and another with different contracts but the same asset model.
+
 \section{Conclusion} \label{sec3:conclusion}
+
+Multi-task learning offers a robust framework for transferring knowledge across related simulation schemes in LSTM metamodeling for nested simulations. 
+By sharing representations through the LSTM layers, the model can learn more generalizable features, enhancing performance on tasks with limited data. 
+Careful selection of simulation schemes and thoughtful design of the network architecture are essential to maximize the benefits of MTL while mitigating potential challenges.
 
