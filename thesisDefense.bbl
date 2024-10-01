@@ -1,5 +1,10 @@
 \begin{thebibliography}{}
 
+\bibitem[Ahmed et~al., 2016]{ahmed2016survey}
+Ahmed, M., Mahmood, A.~N., and Hu, J. (2016).
+\newblock A survey of network anomaly detection techniques.
+\newblock {\em Journal of Network and Computer Applications}, 60:19--31.
+
 \bibitem[Andreas et~al., 2017]{andreas2017modular}
 Andreas, J., Klein, D., and Levine, S. (2017).
 \newblock Modular multitask reinforcement learning with policy sketches.
@@ -119,6 +124,11 @@ Cathcart, M.~J., Lok, H.~Y., McNeil, A.~J., and Morrison, S. (2015).
 Chen, P., Lezmi, E., Roncalli, T., and Xu, J. (2020).
 \newblock A note on portfolio optimization with quadratic transaction costs.
 \newblock {\em arXiv preprint arXiv:2001.01612}.
+
+\bibitem[Cheng et~al., 2019]{cheng2019fast}
+Cheng, X., Luo, W., Gan, G., and Li, G. (2019).
+\newblock Fast valuation of large portfolios of variable annuities via transfer learning.
+\newblock In {\em PRICAI 2019: Trends in Artificial Intelligence: 16th Pacific Rim International Conference on Artificial Intelligence, Cuvu, Yanuca Island, Fiji, August 26-30, 2019, Proceedings, Part III 16}, pages 716--728. Springer.
 
 \bibitem[Chong et~al., 2023]{chong2023pseudo}
 Chong, W.~F., Cui, H., and Li, Y. (2023).
@@ -380,6 +390,11 @@ Jennen-Steinmetz, C. and Gasser, T. (1988).
 \newblock A unifying approach to nonparametric regression estimation.
 \newblock {\em Journal of the American Statistical Association}, 83(404):1084--1089.
 
+\bibitem[Jeong and Kim, 2019]{jeong2019improving}
+Jeong, G. and Kim, H.~Y. (2019).
+\newblock Improving financial trading decisions using deep q-learning: Predicting the number of shares, action strategies, and transfer learning.
+\newblock {\em Expert Systems with Applications}, 117:125--138.
+
 \bibitem[Jiang et~al., 2020]{jiang2020beyond}
 Jiang, L., Huang, D., Liu, M., and Yang, W. (2020).
 \newblock Beyond synthetic noise: Deep learning on controlled noisy labels.
@@ -420,6 +435,11 @@ Krizhevsky, A., Sutskever, I., and Hinton, G.~E. (2012).
 Krizhevsky, A., Sutskever, I., and Hinton, G.~E. (2017).
 \newblock Imagenet classification with deep convolutional neural networks.
 \newblock {\em Communications of the ACM}, 60(6):84--90.
+
+\bibitem[Lebichot et~al., 2021]{lebichot2021transfer}
+Lebichot, B., Verhelst, T., Le~Borgne, Y.-A., He-Guelton, L., Oble, F., and Bontempi, G. (2021).
+\newblock Transfer learning strategies for credit card fraud detection.
+\newblock {\em IEEE access}, 9:114754--114766.
 
 \bibitem[LeCun et~al., 2015]{lecun2015deep}
 LeCun, Y., Bengio, Y., and Hinton, G.~E. (2015).
@@ -759,6 +779,11 @@ Xu, W. and Dai, B. (2022).
 Xu, X. (2020).
 \newblock {\em Variable annuity guaranteed benefits: An integrated study of financial modelling, actuarial valuation and deep learning}.
 \newblock PhD thesis, UNSW Sydney.
+
+\bibitem[Yan et~al., 2024]{yan2024comprehensive}
+Yan, P., Abdulkadir, A., Luley, P.-P., Rosenthal, M., Schatte, G.~A., Grewe, B.~F., and Stadelmann, T. (2024).
+\newblock A comprehensive survey of deep transfer learning for anomaly detection in industrial time series: Methods, applications, and directions.
+\newblock {\em IEEE Access}.
 
 \bibitem[Yang et~al., 2018]{yang2018bit}
 Yang, L., Bankman, D., Moons, B., Verhelst, M., and Murmann, B. (2018).

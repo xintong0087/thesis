@@ -30,11 +30,28 @@ Section~\ref{sec3:transfer_learning} introduces the transfer learning framework 
 Section~\ref{sec3:experiments} presents the experimental setup and results, comparing the performance of transfer learning with training from scratch.
 Finally, Section~\ref{sec3:conclusion} concludes the chapter and discusses future research directions.
 
-\section{Transfer Learning in Metamodeling} \label{sec3:background}
+\section{Transfer Learning in Financial Metamodeling} \label{sec3:background}
 
 Transfer learning (TL) is a machine learning paradigm where knowledge acquired from a source task is utilized to improve learning performance on a related target task.
-We refer readers to \cite{pan2009survey} for a comprehensive survey of TL techniques and applications.
-In the context of DNNs metamodeling-based simulation procedures for hedging VAs, TL involves pre-training a neural network where the simulation budget is abundant and then fine-tuning it on a smaller dataset of new contracts or market conditions.
+One of the primary applications of TL in finance is asset price prediction. 
+Traditional models, such as autoregressive integrated moving average (ARIMA) and generalized autoregressive conditional heteroskedasticity (GARCH), have been widely used in time series modeling.
+However, these models often struggle to capture the complex patterns and nonlinear relationships in financial data.
+DNNs like RNN and LSTM networks have demonstrated significant improvements in modeling temporal dependencies. 
+However, training these models from scratch requires extensive data, which may not always be available for specific assets or under certain market conditions.
+TL offers a solution to this problem by leveraging knowledge from related assets or tasks to improve the learning performance of DNNs on the target task.
+In algorithmic trading,~\cite{jeong2019improving} used TL to enhance the performance of a reinforcement learning agent by preventing overfitting from insufficient market data.
+TL techniques have also been applied in building fraud detection systems. 
+Financial fraud often exhibits subtle and evolving patterns, making it challenging to develop robust detection models.
+By transferring previous knowledge from detected fraud cases, models can adapt to detect new fraud schemes more effectively~\citep{lebichot2021transfer}.
+\cite{yan2024comprehensive} conduct a comprehensive survey study of current TL techniques in financial applications, and they find almost all applications of TL only employ parameter transfer, where the pre-trained model is fine-tuned on the target task.
+Our multi-task learning framework in Section~\ref{sec3:transfer_learning} extends beyond parameter transfer to shared representation learning across multiple tasks.
+
+Regarding nested simulation of VAs,~\cite{cheng2019fast} is the most relevant study to our work, where they proposed a TL framework for fast valuation of large portfolios of VAs.
+Instead of using stochastic kriging~\citep{gan2015valuation}, they employed a pre-trained DNN to select the best representative scenarios from a large portfolio of VAs.
+In our work, we focus on the application of TL to accelerate the training of LSTM metamodels for nested simulation in dynamic hedging of VAs.
+The fine-tuned LSTM metamodels can be readily adapted to the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2} to predict the contract losses under different market scenarios.
+
+In our context of DNNs metamodeling-based simulation procedures for hedging VAs, TL involves pre-training a neural network where the simulation budget is abundant and then fine-tuning it on a smaller dataset of new contracts or market conditions.
 Written on the same underlying asset, different VA contracts may share common features or exhibit similar patterns, especially temporal dependencies in the underlying financial time series.
 Similarly, two VAs with the same features but based on different underlying assets may have some shared characteristics that can be leveraged to improve the learning performance of the metamodel.
 By transferring knowledge from a pre-trained model to a new but related task, TL can significantly reduce the computational cost of training the metamodel on the target task.
@@ -324,7 +341,7 @@ The learning history of the LSTM metamodels is shown for the target task of meta
 The source task is GMMB contracts on RS-GBM with no lapse, and the target task is the same simulation scheme but with static lapse.
 Figure~\ref{subfig3-1:extensive} demonstrates the performance of the LSTM metamodel trained extensively on the target task using $M_{\text{TA}} = 50,\!000$ samples, which serves as the benchmark for this study. 
 The metamodel achieves a low validation error due to the availability of a large dataset.
-In contrast, Figure~\ref{subfig3-1:without} presents the results of training without TL, where $M_{\text{So}} = 50,\!000$, and $M_{\text{TA}} = 2,\!000$.
+In contrast, Figure~\ref{subfig3-1:without} presents the results of training without TL, where $M_{\text{So}} = 50,\!000$, and $M_{\text{TA}} = 2,\!000$ samples.
 This approach leads to highly unstable training dynamics, with substantial fluctuations in the validation error.
 Learning without transfer leads poor generalization and extreme overfitting. 
 Often, the training data is limited for a new VA contract, and such instability is particularly problematic for quick adaptation of LSTM metamodels.
@@ -427,7 +444,7 @@ Figure~\ref{fig3:figure4} illustrates the learning curves of the LSTM metamodels
 
 Figure~\ref{subfig3-4:extensive} presents the performance of an extensively trained LSTM metamodel on the target task using 50,000 samples, serving as a benchmark of best metamodel performance. 
 The extensively trained metamodel achieves a low validation error and demonstrates stable convergence due to having enough training samples. 
-In contrast, Figure~\ref{subfig3-4:without} shows the results of training the metamodel on the target task without TL, using only 2,000 samples. The limited data leads to unstable training dynamics, with significant fluctuations in the validation error, indicating poor generalization and a tendency to overfit.
+In contrast, Figure~\ref{subfig3-4:without} shows the results of training the metamodel on the target task without TL, using only $M_{\text{TA}} = 2,\!000$ samples. The limited data leads to unstable training dynamics, with significant fluctuations in the validation error, indicating poor generalization and a tendency to overfit.
 
 When applying fine-tuning from the GMMB source task, as depicted in Figure~\ref{subfig3-4:fineTuning}, the metamodel exhibits improved performance compared to training without TL. 
 Fine-tuning results in a lower validation error and more stable convergence. 
@@ -446,11 +463,31 @@ While layer freezing can be advantageous when the source and target tasks are cl
 In such circumstances, fine-tuning provides a better approach by allowing the metamodel to leverage transferable knowledge while adapting to the new task's specific requirements. 
 Fine-tuning enables both the LSTM and fully connected layers to update their weights, capturing the complex dynamics of the GMWB contracts more effectively.
 
-These results highlight the importance of selecting appropriate TL strategies based on the similarity between the source and target tasks. 
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{lllll}
+    \toprule
+    \textbf{Source} & \textbf{Extensive} & \textbf{Fine-tuning} & \textbf{Layer Freezing} & \textbf{Without TL} \\
+    \midrule
+    No Lapse & N/A & 0.4894 & 0.3361 & N/A \\
+    Static Lapse & N/A & 0.0794 & 0.0763 & N/A \\
+    Dynamic Lapse & 0.0587 &  N/A &  N/A & 0.2950 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Comparison of different TL methods across various source tasks.}
+    \label{tab3:transfer_learning_results}
+\end{table}
+
+Table~\ref{tab3:transfer_learning_results} summarizes the MSEs of the LSTM metamodels trained using different TL methods across various source tasks.
+The last row shows the performance of training without TL on the target task.
+The results demonstrate the effectiveness of fine-tuning and layer freezing in transferring knowledge from different source tasks to the target task, and it is consistent with the observations from the learning curves.
+These numerical results highlight the importance of selecting appropriate TL strategies based on the similarity between the source and target tasks. 
 Even when the source and target contracts are substantially different, TL via fine-tuning can still offer performance improvements over training from scratch. 
 The ability to transfer general feature representations underscores the value of TL in dynamic hedging of VAs. 
 It enables more efficient training of metamodels and reduces computational burden for hedging new VA products. 
-Therefore, it is still worthwhile to transfer information from GMMB contracts when developing metamodels for more complex VA contracts given limited simulation data.
+Therefore, it is still worthwhile to transfer information from GMMB contracts when developing metamodels for more complex VA contracts with limited simulation data.
+
+\subsection{Multi-task Learning}
 
 \section{Conclusion} \label{sec3:conclusion}
 
