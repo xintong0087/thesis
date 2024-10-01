@@ -478,7 +478,8 @@ Fine-tuning enables both the LSTM and fully connected layers to update their wei
     \label{tab3:transfer_learning_results}
 \end{table}
 
-Table~\ref{tab3:transfer_learning_results} summarizes the MSEs of the LSTM metamodels trained using different TL methods across various source tasks.
+Table~\ref{tab3:transfer_learning_results} summarizes the true MSEs of the LSTM metamodels trained using different TL methods across various source tasks.
+The calculations are based on the metamodel predictions and the approximate true contract losses with $100,\!000$ inner replications.
 The last row shows the performance of training without TL on the target task.
 The results demonstrate the effectiveness of fine-tuning and layer freezing in transferring knowledge from different source tasks to the target task, and it is consistent with the observations from the learning curves.
 These numerical results highlight the importance of selecting appropriate TL strategies based on the similarity between the source and target tasks. 
