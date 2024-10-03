@@ -194,8 +194,8 @@ The task-specific fully connected layers $[\theta_1, \dots, \theta_K]$ allow eac
     \begin{algorithmic}[1] \label{alg3:multiTaskLearning}
         \STATE \textbf{Input:} learning rate $\alpha$, set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$ with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$, task-specific parameters $\theta_k$ for each task $k$, and shared parameters $\theta_0$.
     
-        \STATE Train the multi-head LSTM metamodel on all $K$ tasks simultaneously:
-        \begin{equation}
+        \STATE Train the multi-head LSTM metamodel on all $K$ tasks simultaneously by minimizing the multi-task loss function:
+        \begin{equation} \label{eq3:multiTaskLoss}
             \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2
         \end{equation}
     
@@ -208,6 +208,7 @@ The task-specific fully connected layers $[\theta_1, \dots, \theta_K]$ allow eac
 Algorithm~\ref{alg3:multiTaskLearning} outlines the multi-task learning framework for LSTM metamodels for nested simulation procedures.
 In Chapter~\ref{chap:project1} and Chapter~\ref{chap:project2}, we demonstrate that pooling using a metamodel can improve the computation efficiency and estimator accuracy in nested simulation procedures.
 Here, pooling happens at a higher level, where information from multiple metamodels are shared to improve the learning performance on individual tasks.
+The multi-task loss function encourages the shared LSTM layers to learn generalizable representations of temporal dependencies that are beneficial across all tasks.
 
 Choosing appropriate simulation schemes is crucial for the success of multi-task learning. The tasks should be related to ensure that the shared layers can capture common features beneficial across tasks. 
 Criteria for selecting simulation schemes include:
@@ -489,6 +490,59 @@ It enables more efficient training of metamodels and reduces computational burde
 Therefore, it is still worthwhile to transfer information from GMMB contracts when developing metamodels for more complex VA contracts with limited simulation data.
 
 \subsection{Multi-task Learning}
+
+Multi-task learning enables the LSTM metamodels to learn shared representations across related VA contracts.
+In this section, we examine the performance of multitask learning applied to two types of VAs, GMMB and GMWB with dynamic lapse rates.
+The simulation datasets contrain $2,\!000$ samples for each contract type, and the LSTM metamodels are trained using multi-task learning. 
+The metamodels are simultaneously trained to minimize the multi-task MSE loss function in Equation~\ref{eq3:multiTaskLoss}.
+We use individual task training as a baseline for comparison, where the LSTM metamodels are trained separately on the GMMB and GMWB contracts.
+The objective is to assess how multitask learning can improve the training efficiency and performance of both products compared to individual task training.
+
+% Below is a digram of the multi-task learning framework from mtl.pdf (tikz)
+\begin{figure}[ht!]
+    \includegraphics[width=\textwidth]{./project3/tikz/mtl.pdf}
+    \caption{Multi-task Learning Framework for VA Contracts}
+    \label{fig3:mtl}
+\end{figure}
+
+Figure~\ref{fig3:mtl} illustrates our multi-task learning framework for GMMB and GMWB contracts with dynamic lapse rates.
+The outer simulation paths for both contracts are the same, which are generated from the same nested simulation procedure with $100$ inner replications.
+The LSTM metamodels are trained simultaneously on both contracts.
+The LSTM layers are shared, and each contract has its own separate fully connected layers for contract loss predictions.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/figure5a.png}
+        \caption{Multi-task training history} 
+        \label{subfig3-5:multiTask}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/figure5b.png}
+        \caption{Task performance with multitask training}
+        \label{subfig3-5:fineTuning}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/figure5c.png}
+        \caption{GMMB individual task training} 
+    \label{subfig3-5:gmmb_individual}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/figure5d.png}
+        \caption{GMWB individual task training}
+        \label{subfig3-5:gmwb_individual}
+    \end{subfigure}
+    \caption{Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}
+    \label{fig3:figure5}
+\end{figure}
+
+Figure~\ref{fig3:figure5} comopares the learning curves for the training of GMMB and GMWB, with and without multitask learning.
+The comparison between multitask learning (Figure~\ref{subfig3-5:multiTask} and~\ref{subfig3-5:fineTuning}) and individual task training ((Figure~\ref{subfig3-5:gmmb_individual} and~\ref{subfig3-5:gmwb_individual})) demonstrates the benefit of multi-task learning for both products. 
+In the case of GMMB, multitask learning allows the model to achieve faster convergence while reducing overfitting.
+For GMWB, the multi-task learning framework helps to stablize the training process.
+The shared LSTM layers in the multitask model are able to capture common temporal patterns and dynamics, which benefits both GMMB and GMWB when training samples is scarce.
+Similar to pooling in Chapter~\ref{chap:project1} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
+ 
 
 \section{Conclusion} \label{sec3:conclusion}
 
