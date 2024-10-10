@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  10 OCT 2024 17:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  10 OCT 2024 22:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -735,15 +735,15 @@ runsystem(makeindex -s thesisDefense.ist -t thesisDefense.symbols-glg -o thesisD
 \glo@main@file=\write5
 \openout5 = `thesisDefense.glo'.
 
-Package glossaries Info: Writing glossary file thesisDefense.glo on input line 260.
+Package glossaries Info: Writing glossary file thesisDefense.glo on input line 275.
 \glo@abbreviations@file=\write6
 \openout6 = `thesisDefense.glo-abr'.
 
-Package glossaries Info: Writing glossary file thesisDefense.glo-abr on input line 260.
+Package glossaries Info: Writing glossary file thesisDefense.glo-abr on input line 275.
 \glo@symbols@file=\write7
 \openout7 = `thesisDefense.symbols-glo'.
 
-Package glossaries Info: Writing glossary file thesisDefense.symbols-glo on input line 260.
+Package glossaries Info: Writing glossary file thesisDefense.symbols-glo on input line 275.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count368
@@ -751,24 +751,24 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 ) (./thesisDefense.aux)
 \openout1 = `thesisDefense.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 264.
-LaTeX Font Info:    ... okay on input line 264.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 279.
+LaTeX Font Info:    ... okay on input line 279.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count369
@@ -796,7 +796,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 264.
+Package hyperref Info: Link coloring ON on input line 279.
  (./thesisDefense.out) (./thesisDefense.out)
 \@outlinefile=\write8
 \openout8 = `thesisDefense.out'.
@@ -1320,15 +1320,15 @@ Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
 (rerunfilecheck)             Checksum: D4B4CB67D3F44948CE8B550F8E31EB0B;7273.
  ) 
 Here is how much of TeX's memory you used:
- 32928 strings out of 474116
- 624669 string characters out of 5743682
- 1947187 words of memory out of 5000000
- 54043 multiletter control sequences out of 15000+600000
+ 33432 strings out of 474116
+ 632051 string characters out of 5743682
+ 1948187 words of memory out of 5000000
+ 54547 multiletter control sequences out of 15000+600000
  576156 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  109i,19n,107p,2397b,780s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on thesisDefense.pdf (167 pages, 2840735 bytes).
+Output written on thesisDefense.pdf (167 pages, 2840665 bytes).
 PDF statistics:
  2924 PDF objects out of 2984 (max. 8388607)
  2510 compressed objects within 26 object streams

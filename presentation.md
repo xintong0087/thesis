@@ -660,10 +660,6 @@ This project explores transfer learning (TL) to develop adaptable, efficient met
 
 ---
 
-### Multi-task Learning of GMMB with Different Lapse Features
-
----
-
 ### Multi-task Learning of GMMB and GMWB
 
 ![width:750px](./fig4-6.png)

@@ -1,20 +1,19 @@
 \chapter{Conclusion} \label{chap:conclusion}
 
-In this thesis, we have discussed the use of nested simulation procedures for risk management applications of financial derivatives and insurance products.
-We have shown that the nested simulation framework can be used to efficiently estimate the risk measures of complex financial products, such as variable annuities, by combining machine learning-based metamodels with nested simulations.
-
 In this thesis, we have explored the application of nested simulation procedures in the risk management of financial derivatives and insurance products, with a particular focus on variable annuity contracts featuring Guaranteed Minimum Maturity Benefits and Guaranteed Minimum Withdrawal Benefits. 
 Recognizing the computational challenges inherent in the standard nested simulation procedure, especially when estimating tail risk measures for complex financial products, we proposed an innovative approach that integrates machine learning-based metamodels into the nested simulation framework.
+We have shown that the nested simulation framework can be used to efficiently estimate the risk measures of complex financial products, such as variable annuities, by combining machine learning-based metamodels with nested simulations.
 
 Our primary contribution lies in the development and implementation of long short-term memory networks as metamodels for the inner simulations within the nested simulation procedure. 
-By employing LSTMs, we effectively approximated the contract losses associated with dynamic hedging strategies under various market scenarios. This approach significantly reduced computational complexity while maintaining high levels of accuracy in risk estimation. 
+By employing LSTMs, we effectively approximated the contract losses associated with dynamic hedging strategies under various market scenarios. 
+This approach significantly reduced computational complexity while maintaining high levels of accuracy in risk estimation. 
 The LSTM metamodels captured the temporal dependencies and nonlinear relationships present in financial time series data, enabling efficient estimation of tail risk measures.
 
 Through extensive numerical experiments and sensitivity analysis, we demonstrated that our LSTM-based nested simulation procedure provides accurate and computationally efficient estimates of the tail risk associated with VA contracts. 
 The results showed that the metamodels could effectively replace the computationally intensive inner simulations, reducing the overall runtime without compromising the precision of risk assessments.
 This efficiency gain is particularly valuable for insurers and financial institutions that require timely and accurate risk evaluations to meet regulatory requirements and make informed risk management decisions.
 
-Additionally, we investigated the adaptability of our approach to changing market conditions and different VA contract features. 
+Additionally, we investigated the feasibility of our approach to changing market conditions and different VA contract features. 
 By incorporating transfer learning techniques, we enabled rapid adaptation of the LSTM metamodels to new contracts and evolving market dynamics. 
 This aspect of our research highlights the potential for machine learning models to not only improve computational efficiency but also enhance the flexibility and responsiveness of risk management practices in the face of market volatility.
 
