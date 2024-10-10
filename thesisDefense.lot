@@ -12,7 +12,9 @@
 \contentsline {table}{\numberline {3.4}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{84}{table.caption.39}%
 \contentsline {table}{\numberline {3.5}{\ignorespaces Spearman (and Pearson) correlation coefficients between high-capacity LSTM predicted losses and true losses.}}{85}{table.caption.40}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of different TL methods across various source tasks.}}{108}{table.caption.49}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces VA Contracts for Transfer Learning Experiments}}{102}{table.caption.45}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different TL methods on GMMB contracts}}{107}{table.caption.49}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of different TL methods on GMWB contracts}}{109}{table.caption.51}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{131}{table.caption.53}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{134}{table.caption.55}%

@@ -295,9 +295,9 @@ A popular actor-critic algorithm is the Deep Deterministic Policy Gradient (DDPG
 
 A policy gradient method uses policy gradient theorem to update the policy by performing gradient ascent with respect to the policy parameters.
 
-\begin{algorithm}[H] \label{alg:REINFORCE}
+\begin{algorithm}[H] 
     \caption{Vanilla Policy Gradient (REINFORCE)}
-    \begin{algorithmic}[1]
+    \begin{algorithmic}[1] \label{alg:REINFORCE}
     \STATE \textbf{Initialize} policy parameters $\theta$ arbitrarily.
     \STATE  \textbf{For} {iteration $k=0, 1,2,\ldots$} \textbf{do}
         \STATE \quad  Collect a set of $\mathcal{D}_k$ by sampling from the enviornment with policy $\pi_\theta$.
