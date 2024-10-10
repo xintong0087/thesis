@@ -605,7 +605,7 @@ where the first inequality follows from Cauchy-Schwarz inequality, the second eq
     \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-1})
 \end{equation}
 Setting $M = \mathcal{O}(\Gamma^{1/2})$ and $N = \mathcal{O}(\Gamma^{1/2})$, we provide a looser bound than the one obtained for hockey-stick $h$.
-This bound can be strengthened by using the bias-variance decomposition in Equation~\ref{eq1:mse-sns2}.
+Using the bias-variance decomposition in Equation~\ref{eq1:mse-sns2}, 
 
 \begin{align} \label{eq1:bias-sns-lip}
     \text{Bias}(\hat{\rho}_{M, N})
@@ -615,14 +615,13 @@ This bound can be strengthened by using the bias-variance decomposition in Equat
     & \leq \mathbb{E} \left[ |h\left( \hat{L}_N \right) - h\left( L \right) | \right] \nonumber \\
     & \leq K \mathbb{E} \left[ |\hat{L}_N - L| \right] \nonumber \\
     & = K \mathbb{E} \left[ |\bar{Z}_N| \right] \nonumber \\
-    & \leq K \sqrt{\mathbb{E} \left[ \left( \bar{Z}_N \right)^2 \right]} = \mathcal{O}(N^{-1})
+    & \leq K \sqrt{\mathbb{E} \left[ \left( \bar{Z}_N \right)^2 \right]} = \mathcal{O}(N^{-1/2})
 \end{align}
 
 The variance term in Equation~\ref{eq1:mse-sns2} for Lipschitz continuous $h$ is identical to the one in Equation~\ref{eq1:var-sns-smooth}.
-Hence, the convergence order of the standard nested simulation procedure for Lipschitz continuous $h$ is the same as the one for smooth $h$.
 
 \begin{equation}
-    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-2})
+    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-1})
 \end{equation}
 
 Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we provide the same rate of convergence as obtained for other risk measures in~\cite{gordy2010nested}.
@@ -630,14 +629,14 @@ Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we 
 \begin{theorem}
     Let $h$ be a Lipschitz continuous function. 
     MSE of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
-    $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-2/3}).$$
+    $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-1/2}).$$
 \end{theorem}
 
 Immediately from Theorem~\ref{thm1:convergence-mse-prob}, the convergence in MSE automatically implies the convergence in probabilistic order.
 
 \begin{corollary}
     Let $h$ be a Lipschitz continuous function. The absolute error of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/3}$, that is,
-    $$\left| \hat{\rho}_{M, N} - \rho \right| = \mathcal{O}_\mathbb{P}(\Gamma^{-1/3}).$$
+    $$\left| \hat{\rho}_{M, N} - \rho \right| = \mathcal{O}_\mathbb{P}(\Gamma^{-1/4}).$$
 \end{corollary}
 
 \subsection{Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}
