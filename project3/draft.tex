@@ -227,9 +227,9 @@ Suppose we aim to develop an LSTM metamodel for a GMWB contract under a stochast
 For multi-task learning, we can select related nested simulation simulation procedures with relatively abundant data, such as:
 
 \begin{itemize} 
-    \item GMMB contracts under stochastic volatility models. 
-    \item GMWB contracts under the Black-Scholes model. 
-    \item GMWB contracts under stochastic volatility models with different parameters.
+    \item GMMB contracts under a stochastic volatility asset model. 
+    \item GMWB contracts under a Black-Scholes asset model. 
+    \item GMWB contracts under a stochastic volatility model with different simulation parameters.
 \end{itemize}
 
 These tasks share similarities in contract features and market dynamics, enabling the shared LSTM layers to learn relevant temporal patterns applicable to the target task.
