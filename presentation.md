@@ -557,7 +557,7 @@ This project explores transfer learning (TL) to develop adaptable, efficient met
 
 ---
 
-## Experiment Setup
+### Experiment Setup
 
 ### Data Generating Process
 - Low noise dataset from standard nested simulation procedure
@@ -618,6 +618,14 @@ This project explores transfer learning (TL) to develop adaptable, efficient met
 - Fine-tuning outperforms layer freezing for dissimilar tasks
 - Both TL methods better than training from scratch
 - Extensive training still superior with abundant data
+
+### Tail Scenario and CVaR Predictions
+
+![width:750px](./fig4-5.png)
+
+- Consistent finding with training history and MSE table
+- Fine-tuning outperforms layer freezing
+- Highlights the importance of task similarity in TL
 
 ---
 

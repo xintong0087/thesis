@@ -62,7 +62,7 @@
 \contentsline {subsection}{\numberline {4.3.1}Learning Lapse Features}{103}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with Dynamic Lapse}{105}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{108}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{110}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{111}{subsection.4.3.4}%
 \contentsline {section}{\numberline {4.4}Conclusion}{112}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Conclusion}{114}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Future Work: Deep Hedging Variable Annuities with Transfer Learning}{116}{chapter.6}%
@@ -85,4 +85,4 @@
 \contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{132}{subsection.6.4.3}%
 \contentsline {section}{\numberline {6.5}Numerical Experiments}{133}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Future Directions}{138}{section.6.6}%
-\contentsline {chapter}{\textbf {References}}{140}{section*.62}%
+\contentsline {chapter}{\textbf {References}}{140}{section*.63}%

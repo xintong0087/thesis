@@ -540,6 +540,30 @@ This is particularly beneficial when developing metamodels for complex VA contra
 For instance, transferring information from GMMB contracts can still be valuable when modeling GMWB contracts.
 Both contracts share some common contract features and temporal patterns, which allows a pre-trained LSTM metamodel to capture generalizable features that provide a solid foundation for the target task.
 
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/figure4_1.png}
+        \caption{Tail scenarios identification} 
+        \label{subfig3-4-1:tail}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./project3/figures/figure4_2.png}
+        \caption{$95\%$-CVaR prediction}
+        \label{subfig3-4-2:CVaR}
+    \end{subfigure}
+    \caption{TL performance on RS-GBM GMWB with dynamic lapse}
+    \label{fig3:figure4-1}
+\end{figure}
+
+Figure~\ref{fig3:figure4-1} illustrates the performance of the two-stage procedure with TL for GMWB contracts with dynamic lapse in predicting the tail scenarios and the $95\%$-CVaR.
+The graph provides a visual representation of how different TL approaches compare to training from scratch and the standard nested simulation procedure.
+Fine-tuning consistently outperforms both layer freezing and training from scratch across different simulation budgets, particularly in predicting tail scenarios and estimating the 95\%-CVaR. 
+This finding is consistent with the training history and MSEs in Figure~\ref{fig3:figure4} and Table~\ref{tab3:transfer_learning_results_gmwb}, respectively.
+It's important to note that while these results are promising, they also highlight the complexity of modeling GMWB contracts with dynamic lapse. 
+The fact that fine-tuning outperforms layer freezing suggests that there are significant differences in the tail behavior of GMMB and GMWB contracts, particularly when dynamic lapse is considered. 
+This underscores the need for careful model selection and validation when applying TL techniques to different VA products.
+
 \subsection{Multi-task Learning}
 
 Multi-task learning enables the LSTM metamodels to learn shared representations across related VA contracts.
@@ -549,7 +573,6 @@ In our experiments, Algorithm~\ref{alg3:multiTaskLearning} is used to train the 
 We use individual task training as a baseline for comparison, where the LSTM metamodels are trained separately on the GMMB and GMWB contracts.
 The objective is to assess how multitask learning can improve the training efficiency and performance of both products compared to individual task training.
 
-% Below is a digram of the multi-task learning framework from mtl.pdf (tikz)
 \begin{figure}[ht!]
     \includegraphics[width=\textwidth]{./project3/tikz/mtl.pdf}
     \caption{Multi-task Learning Framework for VA Contracts}
@@ -592,10 +615,7 @@ The comparison between multitask learning (Figure~\ref{subfig3-5:multiTask} and~
 In the case of GMMB, multitask learning allows the model to achieve faster convergence while reducing overfitting.
 For GMWB, the multi-task learning framework helps to stablize the training process.
 The shared LSTM layers in the multitask model are able to capture common temporal patterns and dynamics, which benefits both GMMB and GMWB when training samples is scarce.
-Similar to pooling in Chapter~\ref{chap:project1} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
- 
-
-
+Similar to pooling in Chapter~\ref{chap:project1} and~\ref{chap:project2} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
 
 % \begin{figure}[ht!]
 %     \centering
@@ -612,8 +632,8 @@ Similar to pooling in Chapter~\ref{chap:project1} but on a higher level, multi-t
 %     \label{fig3:figure6}
 % \end{figure}
 
-Even when data is abundant, multi-task learning can improve the training efficiency and predictive performance of LSTM metamodels for nested simulations.
-The shared LSTM layers learn generalizable features that are beneficial across different VA contracts.
+% Even when data is abundant, multi-task learning can improve the training efficiency and predictive performance of LSTM metamodels for nested simulations.
+% The shared LSTM layers learn generalizable features that are beneficial across different VA contracts.
 % Figure~\ref{fig3:figure6} demonstrates the performance of multi-task learning on GMMB and GMWB contracts with dynamic lapse rates.
 
 \section{Conclusion} \label{sec3:conclusion}
@@ -637,5 +657,5 @@ It is adaptable to various VA contracts and asset models, and it is a versatile 
 
 The integration of transfer learning into LSTM metamodeling represents a significant advancement in robust risk management associated with variable annuity contracts.
 By effectively leveraging existing knowledge, financial institutions can maintain accurate and responsive risk management practices in a rapidly changing market environment. 
-The methodologies presented in this chapter not only contribute to the field of actuarial science but also open the door for broader applications of transfer learning in financial modeling and risk assessment.
+The methodologies presented in this chapter attempt to make a significant contribution to the broader applications of transfer learning in financial modeling and risk assessment.
 
