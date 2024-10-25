@@ -375,21 +375,21 @@ The withdrawal rate for GMWB is $0.375\%$ per month.
 % To make our examples more realistic, the VAs are also subject to dynamic lapse as specified in Section~4.3 of~\cite{dang2020efficient}.
 The risk-free rate is 0.2\% per period and the underlying asset $S_t$ is modeled by a regime-switching geometric Brownian motion with parameters specified in Table~2 of~\cite{dang2020efficient}.
 
-To compare the numerical performances of different simulation procedures, we create a benchmark dataset with a large-scale nested simulation: We first simulate $M=100\!,\!000$ outer scenarios, i.e., $240$-periods stock paths $\bS^{(1)},\ldots,\bS^{(M)}$ under $\mathbb{P}$ and used these outer scenarios in all further experiments.
+To compare the numerical performances of different simulation procedures, we create a benchmark dataset with a large-scale nested simulation: We first simulate $M=\num{100000}$ outer scenarios, i.e., $240$-periods stock paths $\bS^{(1)},\ldots,\bS^{(M)}$ under $\mathbb{P}$ and used these outer scenarios in all further experiments.
 Note that the 5\% tail scenario set includes $5\!,\!000$ scenarios.
-As the hedging losses for these scenarios cannot be calculated analytically, we run inner simulations with a large number of replications, $N=100\!,\!000$, conditional on each of the $M$ scenarios.
+As the hedging losses for these scenarios cannot be calculated analytically, we run inner simulations with a large number of replications, $N=\num{100000}$, conditional on each of the $M$ scenarios.
 We denote these losses by $L_1,\ldots,L_M$ and will refer to them as \textit{true losses}.
 We also use these true losses to estimate $\widehat{\CVaR}_{95\%}$ and denote the corresponding \textit{true tail scenario set} by $\tail_{5000}$.
 Lastly, we refer to the set of feature-label pairs $\{(\bS^{(i)}, L_i): i=1,\ldots,M\}$ as a \textit{true dataset}.
 Note that the feature vector $\bS$ is a 240-dimension stock path.
 
-We compare our two-stage procedure to a standard nested simulation procedure that runs $N=1\!,\!000$ inner replications for each of the $M=100\!,\!000$ outer scenarios.
-In Stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=100\!,\!000$ outer scenarios.
+We compare our two-stage procedure to a standard nested simulation procedure that runs $N=\num{1000}$ inner replications for each of the $M=\num{100000}$ outer scenarios.
+In Stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=\num{100000}$ outer scenarios.
 So, Stage 1's simulation budget is $10\%$ of the standard procedure's.
 The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
 Specifically, following the convention in machine learning research, we split this dataset into three parts: The training, validation, and test sets have $90\!,\!000$, $5\!,\!000$, and $5\!,\!000$ data points (90\%, 5\%, and 5\% of the dataset), respectively.
 At the end of Stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
-In Stage 2, $N=1\!,\!000$ inner replications are run for all predicted tail scenarios.
+In Stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
 Stage 2's simulation budget is $\frac{m}{M}$ of the standard procedure's.
 In short, the two-stage procedure uses $15\% - 30\%$ of the standard procedure's budget for a safety margin between $0\% - 15\%$.
 
@@ -413,7 +413,7 @@ In machine-learning terminologies, the three deep neural network models have muc
     \toprule
     \textbf{Model} & \textbf{\makecell{Layer size}} & \textbf{\makecell{Capacity}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
     \midrule
-    MLR & N/A & $241$ & $0.707 (\pm 0.000)$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
+    MLR & N/A & $241$ & $0.707 (\pm 3.6 \times 10^{-4})$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
     QPR & N/A & $481$ & $0.544 (\pm 0.000)$ & $0.636 (\pm 0.001)$ & $0.531 (\pm 0.000)$ \\
     FNN & $240, 128, 16$ & $35\!,\!009$ & $0.118 (\pm 0.001)$ & $0.247 (\pm 0.002)$ & $0.113 (\pm 0.001)$ \\
     RNN & $(240, 32), (240, 4), 32$ & $32\!,\!021$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
@@ -612,10 +612,10 @@ We study the impact of noisy data on two LSTM metamodels with different model ca
 The two LSTM metamodels has the same number of layers, but their numbers of hidden units in each layer are different.
 More specfically, the high-capacity LSTM metamodel has $128$ and $16$ hidden units in the first and second LSTM layers, respectively, while the low-capacity LSTM metamodel has $32$ and $4$.
 
-The maximum number of data points in the training dataset is set to $M = 100\!,000$.
+The maximum number of data points in the training dataset is set to $M = \num{100000}$.
 The training dataset is split into training and test sets with a 90\%-10\% ratio.
-The true labels are generated by running the standard nested simulation procedure with $N=100\!,000$ inner replications for each of the $100\!,000$ outer scenarios.
-The reason for using a maximum of $100\!,000$ data points is precisely due to the computational cost of running the standard nested simulation procedure.
+The true labels are generated by running the standard nested simulation procedure with $N=\num{100000}$ inner replications for each of the $\num{100000}$ outer scenarios.
+The reason for using a maximum of $\num{100000}$ data points is precisely due to the computational cost of running the standard nested simulation procedure.
 For consistency, the LSTM metamodels are trained with the same architecture and training settings as in the previous experiments.
 
 \begin{table}[ht!]
@@ -634,7 +634,7 @@ For consistency, the LSTM metamodels are trained with the same architecture and 
         Difference          & $N=10$                 & $-0.038$                  & $0.006$               & $-0.005$ \\
         \hline
         LSTM                & $N=1$                  & $1.366 (\pm0.006)$        & $0.781(\pm0.005)$     & $0.129 (\pm0.002)$ \\
-        High-capacityLSTM   & $N=1$                  & $1.354 (\pm0.006)$        & $0.795(\pm0.005)$     & $0.149 (\pm0.002)$ \\
+        High-capacity LSTM  & $N=1$                  & $1.354 (\pm0.006)$        & $0.795(\pm0.005)$     & $0.149 (\pm0.002)$ \\
         Difference          & $N=1$                  & $-0.012$                  & $0.014$               & \textcolor{red}{$0.020$} \\
         \bottomrule
     \end{tabular}
@@ -694,12 +694,12 @@ The number of outer scenarios corresponds to the number of data points in the tr
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                            & $N=1$ & $N=10$  & $N=100$ & $N=1\!,\!000$\\
+                            & $N=1$ & $N=10$  & $N=100$ & $N=\num{1000}$\\
         \midrule
         $M = 100$           & $1.139$ & $0.229$ & $0.167$ & $0.158$ \\
-        $M = 1\!,\!000$     & $0.559$ & $0.173$ & $0.123$ & $0.127$ \\
-        $M = 10\!,\!000$    & $0.283$ & $0.115$ & $0.099$ & $0.097$ \\
-        $M = 100\!,\!000$   & $0.126$ & $0.068$ & $0.063$ & $0.063$ \\
+        $M = \num{1000}$     & $0.559$ & $0.173$ & $0.123$ & $0.127$ \\
+        $M = \num{10000}$    & $0.283$ & $0.115$ & $0.099$ & $0.097$ \\
+        $M = \num{100000}$   & $0.126$ & $0.068$ & $0.063$ & $0.063$ \\
         \bottomrule
     \end{tabular}
     \caption{MSE between regular LSTM predicted losses and true losses.}
@@ -711,12 +711,12 @@ The number of outer scenarios corresponds to the number of data points in the tr
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=1$ & $N=10$  & $N=100$ & $N=1\!,\!000$\\
+                          & $N=1$ & $N=10$  & $N=100$ & $N=\num{1000}$\\
         \midrule
         $M = 100$           & $0.764$ & $0.408$ & $0.131$ & $0.087$ \\
-        $M = 1\!,\!000$     & $0.878$ & $0.367$ & $0.156$ & $0.087$ \\
-        $M = 10\!,\!000$    & $0.351$ & $0.147$ & $0.064$ & $0.063$ \\
-        $M = 100\!,\!000$   & $0.149$ & $0.065$ & $0.060$ & $0.038$ \\
+        $M = \num{1000}$     & $0.878$ & $0.367$ & $0.156$ & $0.087$ \\
+        $M = \num{10000}$    & $0.351$ & $0.147$ & $0.064$ & $0.063$ \\
+        $M = \num{100000}$   & $0.149$ & $0.065$ & $0.060$ & $0.038$ \\
         \bottomrule
     \end{tabular}
     \caption{MSE between high-capacity LSTM predicted losses and true losses.}
@@ -725,9 +725,9 @@ The number of outer scenarios corresponds to the number of data points in the tr
 
 
 Table~\ref{tab2:lstm_sens} and~\ref{tab2:hicaplstm_sens} show the average squared errors between the LSTM predictions and the true losses for increasing $M$ and $N$.
-The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} show the performance of the regular and high capacity LSTM metamodels trained with $M=100\!,000$ training labels with different noise levels.
+The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} show the performance of the regular and high capacity LSTM metamodels trained with $M=\num{100000}$ training labels with different noise levels.
 We observe that an increasing $N$ reduces the MSE, but the reduction is not significant for a regular LSTM when $N$ is larger than $10$.
-For the high-capacity LSTM, the MSE is significantly reduced when $N$ is increased from $1$ to $100$, but the reduction is not significant when $N$ is increased from $100$ to $1\!,000$.
+For the high-capacity LSTM, the MSE is significantly reduced when $N$ is increased from $1$ to $100$, but the reduction is not significant when $N$ is increased from $100$ to $\num{1000}$.
 Another way to interpret the results in Table~\ref{tab2:lstm_sens} is to compare the MSEs for the same budget of $\Gamma = M \times N$. 
 Entries on the same diagonal represents the same simulation budget.
 For most budgets, the MSEs are also the lowest when $N = 10$.
@@ -748,12 +748,12 @@ The p-values of all quantities are less than $10^{-5}$, indicating that the corr
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=1$        & $N=10$        & $N=100$       & $N=1\!,\!000$ \\
+                          & $N=1$        & $N=10$        & $N=100$       & $N=\num{1000}$ \\
         \midrule
         $M = 100$         & 0.638 (0.881) & 0.875 (0.915) & 0.896 (0.903) & 0.937 (0.941) \\
-        $M = 1\!,\!000$   & 0.722 (0.768) & 0.899 (0.908) & 0.886 (0.891) & 0.922 (0.927) \\
-        $M = 10\!,\!000$  & 0.845 (0.630) & 0.937 (0.900) & 0.908 (0.905) & 0.947 (0.948) \\
-        $M = 100\!,\!000$ & 0.935 (0.640) & 0.963 (0.909) & 0.927 (0.922) & 0.965 (0.966) \\
+        $M = \num{1000}$   & 0.722 (0.768) & 0.899 (0.908) & 0.886 (0.891) & 0.922 (0.927) \\
+        $M = \num{10000}$  & 0.845 (0.630) & 0.937 (0.900) & 0.908 (0.905) & 0.947 (0.948) \\
+        $M = \num{100000}$ & 0.935 (0.640) & 0.963 (0.909) & 0.927 (0.922) & 0.965 (0.966) \\
         \bottomrule
     \end{tabular}
     \caption{Spearman (and Pearson) correlation coefficients between high-capacity LSTM predicted losses and true losses.}
@@ -841,7 +841,7 @@ To further investigate the single-stage procedure's performance, we conduct a co
 Figure~\ref{fig2:gammaConvergence} shows the log-log plots of the relative root mean square errors (RRMSE) between the LSTM metamodel CVaR predictions and the true CVaR against the total simulation budget $\Gamma$.
 For each budget $\Gamma$, the metamodels are trained for different combinations of $M$ and $N$, and the metamodel with the best RRMSE is plotted.
 While numerical results suggests that the CVaR estimator of the single-stage procedure with LSTM metamodels may have better accuracy than the two-stage procedure and the standard procedure when the number of outer scenarios is further increased, we found it difficult to compare their performance due to insufficient computational resources.
-For $\Gamma \leq 100\!,000$, the number of outer scenarios is fixed at $M = 100\!,000$, and only the number of inner replications is varied.
+For $\Gamma \leq \num{100000}$, the number of outer scenarios is fixed at $M = \num{100000}$, and only the number of inner replications is varied.
 Instead, we try to analyze the effect of the number of outer scenarios and the number of inner replications separately by fixing one and varying the other.
 
 \begin{figure}[ht!]
@@ -852,12 +852,13 @@ Instead, we try to analyze the effect of the number of outer scenarios and the n
 \end{figure}
 
 Figure~\ref{fig2:mnConvergence} shows the log-log plots of the RRMSE between the LSTM metamodel CVaR predictions and the true CVaR against the simulation budget.
-The left figure shows the empirical convergence of the RRMSE for increasing inner replications with a fixed number of outer scenarios ($M=100\!,\!000$), and the right figure shows the empirical convergence of the RRMSE for increasing outer scenarios with a fixed number of inner replications ($N=10$).
-Due to computational constraints, we are not able to run the two-stage procedure and the standard procedure with more outer scenarios or more inner replications, therefore the comparison between the single-stage procedure is only available up to $M = 100\!,000$ and $N = 1\!,000$.
+The left figure shows the empirical convergence of the RRMSE for increasing inner replications with a fixed number of outer scenarios ($M=\num{100000}$), and the right figure shows the empirical convergence of the RRMSE for increasing outer scenarios with a fixed number of inner replications ($N=10$).
+Due to computational constraints, we are not able to run the two-stage procedure and the standard procedure with more outer scenarios or more inner replications, therefore the comparison between the single-stage procedure is only available up to $M = \num{100000}$ and $N = \num{1000}$.
 We observe that the RRMSE decreases as the simulation budget increases, and the rate of convergence is higher when the quantity of the data increases.
 For an LSTM metamodel, increasing the data quality of the training labels has diminishing returns, which is consistent with the results in Figure~\ref{fig2:mnConvergence}.
 For an increasing number of inner replications with fixed number of outer scenarios, the RRMSE cease to decrease after reaching $N = 100$. 
 More specfically, when the quality of the training labels is fixed at $N = 10$, the CVaR estimator of single-stage procedure with a LSTM metamodel converge roughly in the order of $\mathcal{O}(M^{\frac{2}{3}})$.
+This observation resonates with the convergence rate of a regression-based nested simulation procedure in~\cite{broadie2015risk}.
 Hence, in practice, we suggest to run the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.
 
 \section{Conclusion} \label{sec2:conclusion}
