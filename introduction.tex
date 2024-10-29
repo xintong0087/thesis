@@ -25,11 +25,12 @@ The risk management of VAs is a challenging problem due to the complex interacti
 % This thesis discusses a particular extension of using deep reinforcement learning to dynamically hedge VA contracts with transaction costs.
 
 This thesis consists of four chapters. Chapter \ref{chap:project1} summarizes theoretical convergence results of several state-of-the-art single-period nested simulation procedures under the same analytical framework. Numerical experiments are conducted to test their empirical convergence behavior under finite budget sizes.
-Chapter \ref{chap:project2} proposes the use of neural network models as proxies for a two-stage multi-period nested simulation procedure on VA contracts. 
-In our numerical experiment, the best neural network proxy surpasses the state-of-the-art proxy model in tail identification, and it leads to substantial computational savings. 
-Chapter \ref{chap:project3} conducts sensitivity testing on the neural network proxy. We argue that for estimating tail risk measures of VA contact losses, the inner simulation can be replaced entirely by a suitable proxy model. 
+Chapter~\ref{chap:project2} proposes the use of neural network models as proxies for a two-stage multi-period nested simulation procedure on VA contracts. 
+In our numerical experiment, the best neural network metamodel surpasses the state-of-the-art proxy models in tail identification, and it leads to substantial computational savings. 
+Chapter~\ref{chap:project2} also conducts sensitivity testing on the neural network metamodel. We argue that for estimating tail risk measures of VA contact losses, the inner simulation can be replaced entirely by a suitable metamodel. 
 Eliminating the inner simulation can lead to more substantial computational savings without affecting estimation quality. 
 In the case of requiring extensive inner simulations for regulatory purposes, effective budget allocations can help achieve higher estimator quality with the same computational budget.
+Chapter~\ref{chap:project3} uses transfer learning techniques for quick adaptation of the neural network metamodel to new VA contracts with different contract specifications.
 Chapter \ref{chap:conclusion} concludes the thesis and discusses potential future research directions.
 
 \section{Managing Risk of Variable Annuity with Nested Simulation}
