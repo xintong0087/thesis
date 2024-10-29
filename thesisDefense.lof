@@ -1,45 +1,45 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Neural Network Architectures}}{8}{figure.caption.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with $d=1$}}{44}{figure.caption.14}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with different asset dimensions}}{45}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$}}{47}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Empirical convergence of kernel smoothing procedure for different values of $d$}}{48}{figure.caption.17}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =100,000$}}{49}{figure.caption.18}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{50}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff}}{50}{figure.caption.20}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$}}{51}{figure.caption.21}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{51}{figure.caption.22}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different asset models}}{52}{figure.caption.23}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different regression bases}}{53}{figure.caption.24}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Total computational cost for different procedures with $d=10$}}{56}{figure.caption.27}%
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time}}{57}{figure.caption.28}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with $d=1$}}{45}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on Portfolio 1 with different asset dimensions}}{46}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$}}{48}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Empirical convergence of kernel smoothing procedure for different values of $d$}}{49}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =100,000$}}{50}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{51}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff}}{51}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$}}{52}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{52}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different asset models}}{53}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different regression bases}}{54}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Total computational cost for different procedures with $d=10$}}{57}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time}}{58}{figure.caption.28}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{67}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{76}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{77}{figure.caption.32}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{78}{figure.caption.33}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{79}{figure.caption.34}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{80}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{83}{figure.caption.37}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlation coefficients for high-capacity LSTM metamodel.}}{86}{figure.caption.41}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{87}{figure.caption.42}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{88}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{89}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{68}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{77}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{78}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{79}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{80}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{81}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{84}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlation coefficients for high-capacity LSTM metamodel.}}{87}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{88}{figure.caption.42}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{89}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{90}{figure.caption.44}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{104}{figure.caption.46}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{105}{figure.caption.47}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{106}{figure.caption.48}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{108}{figure.caption.50}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{110}{figure.caption.52}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{111}{figure.caption.53}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{112}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{105}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{106}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{107}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{109}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{111}{figure.caption.52}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{112}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{113}{figure.caption.54}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{131}{figure.caption.55}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{135}{figure.caption.57}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{135}{figure.caption.58}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{136}{figure.caption.59}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{136}{figure.caption.60}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{137}{figure.caption.61}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{138}{figure.caption.62}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{132}{figure.caption.55}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{136}{figure.caption.57}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{136}{figure.caption.58}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{137}{figure.caption.59}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{137}{figure.caption.60}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{138}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{139}{figure.caption.62}%

@@ -6,83 +6,84 @@
 \contentsline {section}{\numberline {1.3}Machine Learning for Risk Management Applications}{5}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Supervised Learning Models}{5}{subsection.1.3.1}%
 \contentsline {subsection}{\numberline {1.3.2}Parametric Regression Models}{6}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Neural Network Architectures}{8}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}Long Short-Term Memory Networks}{10}{subsection.1.3.4}%
-\contentsline {chapter}{\numberline {2}Nested Simulation Procedures in Financial Engineering: A Selected Review}{13}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introduction}{13}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Problem Formulation}{15}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}The Standard Nested Simulation Procedure}{17}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Multi-level Monte Carlo}{18}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Supervised Learning Metamodels}{18}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Likelihood Ratio Method}{22}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Problem Statement}{23}{subsection.2.2.5}%
-\contentsline {section}{\numberline {2.3}Asymptotic Analysis}{23}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Connections between Convergence in MSE and Absolute Error}{25}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Asymptotic Analysis for the Standard Nested Simulation Procedure}{27}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{35}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{39}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Standard Assumptions}{39}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Assumptions on Joint Density}{39}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Assumptions for the MLMC Procedure}{40}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Assumptions for the Likelihood Ratio-Based Procedure}{41}{subsection.2.4.4}%
-\contentsline {subsection}{\numberline {2.4.5}Assumptions for the Kernel-Based Procedure}{41}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Assumptions for the KRR-Based Procedure}{42}{subsection.2.4.6}%
-\contentsline {section}{\numberline {2.5}Finite-Sample Experiments}{42}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Sensitivity to the Asset Dimension}{45}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Empirical Convergence of Parametric Regression Procedures}{46}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Empirical Convergence of Kernel Smoothing-Based Procedures}{47}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{49}{subsection.2.5.4}%
-\contentsline {subsection}{\numberline {2.5.5}Sensitivity to level for VaR and CVaR}{51}{subsection.2.5.5}%
-\contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{52}{subsection.2.5.6}%
-\contentsline {subsection}{\numberline {2.5.7}Sensitivity to the regression basis}{52}{subsection.2.5.7}%
-\contentsline {subsection}{\numberline {2.5.8}Empirical Convergence of MLMC}{53}{subsection.2.5.8}%
-\contentsline {section}{\numberline {2.6}Computational Complexity}{54}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Conclusion}{58}{section.2.7}%
-\contentsline {chapter}{\numberline {3}Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{60}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{60}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Problem Formulation}{63}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tail Risk Measures: VaR and CVaR}{64}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Simulation Model for Variable Annuity Payouts}{64}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Dynamic Hedging for Variable Annuities}{67}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Two-Stage Nested Simulation with Metamodels}{69}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Single-Stage Nested Simulation with Neural Network Metamodels}{72}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Numerical Results}{72}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Two-Stage Procedure}{78}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of Deep Neural Network Metamodels}{81}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Single-Stage Procedure}{86}{subsection.3.5.3}%
-\contentsline {section}{\numberline {3.6}Conclusion}{90}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Transfer Learning for Rapid Adaptation of Deep Neural Network Metamodels in Dynamic Hedging of Variable Annuities}{92}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introduction}{92}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Transfer Learning in Financial Metamodeling}{93}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Fine-tuning}{96}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Layer Freezing}{97}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Multi-task Learning}{97}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Rapid Adaptation of LSTM Metamodels}{100}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}Numerical Experiments}{102}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Learning Lapse Features}{103}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with Dynamic Lapse}{105}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{108}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{111}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Conclusion}{112}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Conclusion}{114}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Future Work: Deep Hedging Variable Annuities with Transfer Learning}{116}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Markov Decision Process for Hedging VAs}{118}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Hedging Environment of Variable Annuities}{119}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}State Space}{121}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Action Space}{121}{subsection.6.1.3}%
-\contentsline {subsection}{\numberline {6.1.4}Policy}{121}{subsection.6.1.4}%
-\contentsline {subsection}{\numberline {6.1.5}Transition Probabilities}{122}{subsection.6.1.5}%
-\contentsline {subsection}{\numberline {6.1.6}Reward and Discount Factor}{122}{subsection.6.1.6}%
-\contentsline {subsection}{\numberline {6.1.7}Value Function and Advantage Function}{123}{subsection.6.1.7}%
-\contentsline {section}{\numberline {6.2}Exising RL Algorithms and Their Limitations}{123}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Model-Based RL: From AlphaZero to Deep Hedging}{123}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Model-Free RL for Hedging}{125}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Hedging VAs with a PPO Agent}{128}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Accounting for Non-Markovian Dynamics}{129}{subsection.6.3.1}%
-\contentsline {section}{\numberline {6.4}Transfer Learning for Hedging VAs}{131}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Reward Shaping}{131}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Policy Transfer}{132}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{132}{subsection.6.4.3}%
-\contentsline {section}{\numberline {6.5}Numerical Experiments}{133}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Future Directions}{138}{section.6.6}%
-\contentsline {chapter}{\textbf {References}}{140}{section*.63}%
+\contentsline {subsection}{\numberline {1.3.3}Feedforward Neural Networks}{8}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Training and Evaluation of Neural Networks}{10}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Long Short-Term Memory Networks}{11}{subsection.1.3.5}%
+\contentsline {chapter}{\numberline {2}Nested Simulation Procedures in Financial Engineering: A Selected Review}{14}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{14}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Problem Formulation}{16}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}The Standard Nested Simulation Procedure}{18}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Multi-level Monte Carlo}{19}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Supervised Learning Metamodels}{19}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Likelihood Ratio Method}{23}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Problem Statement}{24}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}Asymptotic Analysis}{24}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Connections between Convergence in MSE and Absolute Error}{26}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Asymptotic Analysis for the Standard Nested Simulation Procedure}{28}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{36}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{40}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Standard Assumptions}{40}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Assumptions on Joint Density}{40}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Assumptions for the MLMC Procedure}{41}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Assumptions for the Likelihood Ratio-Based Procedure}{42}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Assumptions for the Kernel-Based Procedure}{42}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Assumptions for the KRR-Based Procedure}{43}{subsection.2.4.6}%
+\contentsline {section}{\numberline {2.5}Finite-Sample Experiments}{43}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Sensitivity to the Asset Dimension}{46}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Empirical Convergence of Parametric Regression Procedures}{47}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Empirical Convergence of Kernel Smoothing-Based Procedures}{48}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{50}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Sensitivity to level for VaR and CVaR}{52}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{53}{subsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.5.7}Sensitivity to the regression basis}{53}{subsection.2.5.7}%
+\contentsline {subsection}{\numberline {2.5.8}Empirical Convergence of MLMC}{54}{subsection.2.5.8}%
+\contentsline {section}{\numberline {2.6}Computational Complexity}{55}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Conclusion}{59}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{61}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{61}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Problem Formulation}{64}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tail Risk Measures: VaR and CVaR}{65}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Simulation Model for Variable Annuity Payouts}{65}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Dynamic Hedging for Variable Annuities}{68}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Two-Stage Nested Simulation with Metamodels}{70}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Single-Stage Nested Simulation with Neural Network Metamodels}{73}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Numerical Results}{73}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Two-Stage Procedure}{79}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of Deep Neural Network Metamodels}{82}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Single-Stage Procedure}{87}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Conclusion}{91}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Transfer Learning for Rapid Adaptation of Deep Neural Network Metamodels in Dynamic Hedging of Variable Annuities}{93}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{93}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Transfer Learning in Financial Metamodeling}{94}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Fine-tuning}{97}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Layer Freezing}{98}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Multi-task Learning}{98}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Rapid Adaptation of LSTM Metamodels}{101}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Numerical Experiments}{103}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Learning Lapse Features}{104}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with Dynamic Lapse}{106}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{109}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{112}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Conclusion}{113}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Conclusion}{115}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Future Work: Deep Hedging Variable Annuities with Transfer Learning}{117}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Markov Decision Process for Hedging VAs}{119}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Hedging Environment of Variable Annuities}{120}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}State Space}{122}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Action Space}{122}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Policy}{122}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Transition Probabilities}{123}{subsection.6.1.5}%
+\contentsline {subsection}{\numberline {6.1.6}Reward and Discount Factor}{123}{subsection.6.1.6}%
+\contentsline {subsection}{\numberline {6.1.7}Value Function and Advantage Function}{124}{subsection.6.1.7}%
+\contentsline {section}{\numberline {6.2}Exising RL Algorithms and Their Limitations}{124}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Model-Based RL: From AlphaZero to Deep Hedging}{124}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Model-Free RL for Hedging}{126}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Hedging VAs with a PPO Agent}{129}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Accounting for Non-Markovian Dynamics}{130}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}Transfer Learning for Hedging VAs}{132}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Reward Shaping}{132}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Policy Transfer}{133}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{133}{subsection.6.4.3}%
+\contentsline {section}{\numberline {6.5}Numerical Experiments}{134}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Future Directions}{139}{section.6.6}%
+\contentsline {chapter}{\textbf {References}}{141}{section*.63}%

@@ -277,11 +277,16 @@ Glasserman, P. (2004).
 \newblock {\em Monte Carlo methods in financial engineering}, volume~53.
 \newblock Springer.
 
-\bibitem[Goodfellow et~al., 2016]{goodfellow2016}
-Goodfellow, I., Bengio, Y., and Courville, A. (2016).
+\bibitem[Goodfellow et~al., 2016a]{goodfellow2016}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016a).
 \newblock {\em Deep Learning}.
 \newblock MIT Press.
 \newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem[Goodfellow et~al., 2016b]{bengio2016}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016b).
+\newblock {\em Deep Learning}.
+\newblock MIT Press.
 
 \bibitem[Goodfellow et~al., 2014]{goodfellow2014explaining}
 Goodfellow, I.~J., Shlens, J., and Szegedy, C. (2014).
@@ -537,6 +542,11 @@ NAIC (2021).
 \newblock National Association of Insurance Commissioners, Washington, DC, jan. 1 edition.
 \newblock \url{https://content.naic.org}.
 
+\bibitem[Nair and Hinton, 2010]{nair2010rectified}
+Nair, V. and Hinton, G.~E. (2010).
+\newblock Rectified linear units improve restricted boltzmann machines.
+\newblock In {\em Proceedings of the 27th international conference on machine learning (ICML-10)}, pages 807--814.
+
 \bibitem[Neelakantan et~al., 2015]{neelakantan2015adding}
 Neelakantan, A., Vilnis, L., Le, Q.~V., Sutskever, I., Kaiser, L., Kurach, K., and Martens, J. (2015).
 \newblock Adding gradient noise improves learning for very deep networks.
@@ -598,6 +608,11 @@ Poole, B., Sohl-Dickstein, J., and Ganguli, S. (2014).
 \newblock Analyzing noise in autoencoders and deep networks.
 \newblock {\em arXiv preprint arXiv:1406.1831}.
 \newblock \url{https://arxiv.org/abs/1406.1831}. Accessed 1$^{\textrm{st}}$ Jan 2024.
+
+\bibitem[Prechelt, 2002]{prechelt2002early}
+Prechelt, L. (2002).
+\newblock Early stopping-but when?
+\newblock In {\em Neural Networks: Tricks of the trade}, pages 55--69. Springer.
 
 \bibitem[Raffin et~al., 2021]{stable-baselines3}
 Raffin, A., Hill, A., Gleave, A., Kanervisto, A., Ernestus, M., and Dormann, N. (2021).
