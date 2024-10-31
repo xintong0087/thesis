@@ -429,12 +429,12 @@ INPUT ./project3/tikz/lstm.pdf
 INPUT ./project3/tikz/lstm.pdf
 INPUT ./project3/tikz/lstm.pdf
 INPUT ./project3/tikz/lstm.pdf
+INPUT ./project1/nsSurvey.tex
+INPUT ./project1/nsSurvey.tex
+INPUT ./project1/nsSurvey.tex
+INPUT ./project1/nsSurvey.tex
+INPUT ./project1/nsSurvey.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
-INPUT ./project1/nsSurvey.tex
-INPUT ./project1/nsSurvey.tex
-INPUT ./project1/nsSurvey.tex
-INPUT ./project1/nsSurvey.tex
-INPUT ./project1/nsSurvey.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm

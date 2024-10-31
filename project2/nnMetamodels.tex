@@ -6,13 +6,13 @@
 
 \section{Introduction}
 
-Deep neural networks~\citep{hastie2009elements,lecun2015deep} have attracted attentions of researchers and practitioners due to their success in solving real-world machine learning tasks such as AlphaGo~\citep{silver2016mastering} and ChatGPT~\citep{chatgpt}.
+Deep neural networks (DNNs) have attracted attentions of researchers and practitioners due to their success~\citep{hastie2009elements,lecun2015deep} in solving real-world machine learning tasks such as AlphaGo~\citep{silver2016mastering} and ChatGPT~\citep{chatgpt}.
 Since the first artificial neural network model~\citep{mcculloch1943logical} and the first algorithm for training a perceptron~\citep{rosenblatt1958perceptron}, especially after the introduction of backpropagation~\citep{rumelhart1985learning} and the growth of high-performance computing, the field of artificial neural network and deep learning in general has grown rapidly.
-Two specialized neural network architectures that are relevant to our study are recurrent neural networks (RNNs)~\citep{williams1989learning,sutskever2014sequence} and long-short-term memory (LSTM)~\citep{hochreiter1997long,chung2014empirical}, as we need to train metamodels\footnote{In the field of actuarial science, a metamodel is commonly referred to as a proxy model.} that take sequential observations as input.
-Despite their success, deep neural network models are often criticized for their lack of transparency and interpretability, which hinders their adoption in financial and actuarial applications.
-Enormous research efforts are spent to test and improve the robustness of deep neural network models with carefully designed noise injection methods.
+Two specialized neural network architectures that are relevant to our study are recurrent neural networks (RNNs)~\citep{williams1989learning,sutskever2014sequence} and long-short-term memory (LSTM)~\citep{hochreiter1997long,chung2014empirical}, as In the field of actuarial science, a metamodel is commonly referred to as a proxy model.
+Despite their success, DNN models are often criticized for their lack of transparency and interpretability, which hinders their adoption in financial and actuarial applications.
+Enormous research efforts are spent to test and improve the robustness of DNN models with carefully designed noise injection methods.
 ~\cite{poole2014analyzing} show that injecting synthetic noise before and after hidden unit activations during training improves the performance of autoencoders.
-~\cite{neelakantan2015adding} improve learning for deep neural networks by injecting synthetic noise to the gradients during backpropagations.
+~\cite{neelakantan2015adding} improve learning for DNNs by injecting synthetic noise to the gradients during backpropagations.
 A branch of research has been devoted to understanding the resilience of neural network models to noise in training labels.
 For example,~\cite{luo2016understanding} show that adding synthetic label noise to the convolutional neural network (CNN) can improve its ability to capture global features. 
 ~\cite{srivastava2014dropout} quantify the error tolerance by injecting synthetic label noise with a custom Boltzmann machine hardware.
@@ -21,41 +21,45 @@ For example,~\cite{luo2016understanding} show that adding synthetic label noise 
 Instead of using synthetic noise, ~\cite{jiang2020beyond} inject real-world label noise and examine noise tolerance of neural networks with controlled noise levels.
 The aforementioned studies use real-world data, as is typically the case for many neural network studies, where noise is already present in the training labels before any noise injection.
 Users of real-world data have little control over the noise level of the original training labels and usually examine the effect of noisy data by injecting noise, but it is unclear whether a neural network model trained on noisy data actually learns the real, i.e., noiseless, feature-label relationship.
-Due to their lack of transparency and interpretability, the adoption of deep neural networks in financial and actuarial applications has been received by regulators with some skepticism.
+Due to their lack of transparency and interpretability, the adoption of DNNs in financial and actuarial applications has been received by regulators with some skepticism.
 
 The contributions of our study are two-fold:
 \begin{enumerate}
-    \item We study what deep neural networks learn from noisy data by training them using simulated data based on well-designed simulation experiments.
+    \item We study what DNNs learn from noisy data by training them using simulated data based on well-designed simulation experiments.
     This is a novel way to study the effect of noisy data and error tolerance of neural network models as one can \textit{reduce noise} in the data by increasing the number of replications in a simulation model.
     This new way of studying neural network models can provide more direct evidence on their transparency and interpretability.  
-    \item We propose two generic nested simulation procedures that uses deep neural networks as metamodels to improve its efficiency while maintaining transparency. 
+    \item We propose two generic nested simulation procedures that uses DNNs as metamodels to improve its efficiency while maintaining transparency. 
     In essence, a pilot stage simulation is used to generate a large number of noisy data, which are then used to train a metamodel.
-    Depending on the application, a trained metamodel can serve two purposes: (1) to identify a set of tail scenarios, and (2) to estimate risk measures directly.
+    Depending on the application, a trained metamodel can serve two purposes: 
+    \begin{itemize}
+        \item to identify a set of tail scenarios, and 
+        \item to estimate risk measures directly.
+    \end{itemize}
     The first procedure uses a metamodel to identify a set of potential tail scenarios on which computations are performed in the second stage, while the second procedure uses metamodel predictions to estimate risk measures directly.
-    Our numerical results show that deep neural network metamodels can identify the tail scenarios accurately and so the proposed procedures can estimate tail risk measures with similar accuracy while, at the same time, using less simulation budget.
+    Our numerical results show that DNN metamodels can identify the tail scenarios accurately and so the proposed procedures can estimate tail risk measures with similar accuracy while, at the same time, using less simulation budget.
 \end{enumerate}
 
-
-We are curious about fundamental questions like ``What do deep neural networks learn from noisy data?'' and ``How well do neural networks learn from noisy data?''.
+We are curious about fundamental questions like ``What do DNNs learn from noisy data?'' and ``How well do neural networks learn from noisy data?''.
 Data-driven answers to these questions prevail in the existing literature.
-In supervised learning, deep neural networks are believed to learn from the given data about the feature-label relationship to predict new labels for unseen features.
+In supervised learning, DNNs are believed to learn from the given data about the feature-label relationship to predict new labels for unseen features.
 Cross validation using to assess a subset, i.e., the validation set, of the original data, is a common way to access the quality of learning.
 Generalization error on the test labels is another popular assessment metric.
 But the test set is also a subset of the original data.
 In this study, we revisit these questions in a simulation context and propose an alternative approach to answer them.
-Instead of relying solely on real-data (splitting it into multiple subsets), we propose using stochastic simulation outputs as training labels for deep neural network models.
-By controlling the simulation design parameters, such as the number of independent replications, we can control the quality (and also the quantity) of the training labels fed into the neural networks.
+Instead of relying solely on real-data (splitting it into multiple subsets), we propose using stochastic simulation outputs as training labels for DNNs.
+By controlling the simulation design parameters, such as the number of independent replications, we can control the quality and also the quantity of the training labels fed into the neural networks.
 In such a controlled environment, we obtain more clear-cut answers to the above fundamental questions.
 
-In nested simulation, a simulation model is used to generate a large number of outer scenarios, and each scenario is then used as an input to another simulation model.
-Borrowing terminologies from machine learning research, we can view a set of simulated outer scenarios and the estimated hedging errors for those scenarios as the \textit{features} and (noisy) \textit{labels}.
+In nested simulation, a simulation model is used to generate a large number of outer scenarios, and each scenario is then used as an input to another simulation model, referred to as the inner simulation model.
+Borrowing terminologies from machine learning research, we can view a set of simulated outer scenarios and the estimated hedging errors for those scenarios as the \textit{features} and noisy \textit{labels}.
+The noise level of the labels can be controlled by the number of inner replications in the inner simulation model.
 One can train supervised learning models using these simulated features and labels.
 They are then used to replace the time-consuming inner simulations by the trained model.
-We refer to the trained supervised learning models as \textit{metamodels} of the inner simulation, which is also known as the \textit{surrogate models}.
+We refer to the trained supervised learning models as \textit{metamodels} of the inner simulation, which is also known as the \textit{surrogate models} in simulation literature.
 Metamodeling is a popular approach to reduce the computational burden of simulation-based applications by replacing the time-consuming simulation with a metamodel.
 The metamodel is trained using a set of simulated data, and it is used to predict the simulation output for new inputs.
-The study of metamodeling is an active research area in the simulation literature, and using deep neural networks as metamodels is a relatively new development.
-~\cite{fonseca2003simulation} provide general guidelines for simulation metamodeling with neural networks,~\cite{lieu2022adaptive} use deep neural networks as metamodels of a simulation model for structural reliability analysis, and~\cite{salle2014efficient} show that neural network metamodels help achieve higher prediction accuracy that other metamodels in approximating agent-based simulation models.
+The study of metamodeling is an active research area in the simulation literature, and using DNNs as metamodels is a relatively new development.
+~\cite{fonseca2003simulation} provide general guidelines for simulation metamodeling with neural networks,~\cite{lieu2022adaptive} use DNNs as metamodels of a simulation model for structural reliability analysis, and~\cite{salle2014efficient} show that neural network metamodels help achieve higher prediction accuracy that other metamodels in approximating agent-based simulation models.
 A popular metamodel in nested simulation procedures is stochastic kriging.
 ~\cite{liu2010stochastic} use stochastic kriging as a metamodel of Monte Carlo simulations to estimate the Conditional Value-at-Risk (CVaR) of a portfolio of derivative securities, and~\cite{gan2015valuation} use stochastic kriging for an efficient valuation of large portfolios of variable annuity (VA) contracts.
 Other studies, such as ~\cite{broadie2015risk},~\cite{hong2017kernel}, and~\cite{zhang2022sample} use regression, kernel smoothing, and the likelihood ratio method, respectively.
@@ -66,21 +70,26 @@ Our study has three key distinctions over the existing ones:
     \item  for estimating tail risk measures, our metamodel is only used for tail scenario identification but is \textit{not} used in the estimation of the tail risk measures.
     This is a feature designed particularly to convince regulators that the losses used in estimating the risk measure are based on a transparent inner simulation model rather than on some black-box metamodels, and
     \item  using simulation models as data generators, we can decrease the noise level and get arbitrarily close to the true labels by increasing the number of replications in the simulation model.
-    This design allows a systematic study of the effect of noisy training labels on the performance of neural network models in predicting the noiseless labels.
+    This design allows a systematic study of the effect of noisy training labels on the performance of DNN models in predicting the noiseless labels.
 \end{enumerate}
 
-The rest of this article is organized as follows: 
-% Section~\ref{sec2:problem-formulation} presents the problem settings for tail risk measures and dynamic hedging of VAs. 
-% Section~\ref{sec2:metamodel2Stage} proposes an efficient two-stage nested simulation procedure that uses deep neural networks as metamodels to help reduce simulation budget by only performing computations on identified tail scenarios. 
-% Section~\ref{sec2:metamodel1Stage} proposes a one-stage nested simulation procedure that estimates risk measures directly with metamodel predictions.
-% Section~\ref{sec2:numerical} demonstrates the efficiency of deep learning proxies and examines error tolerance of two LSTM metamodels with different numbers of trainable parameters. 
-% Practical suggestions are provided for the choice of suitable metamodels and simulation settings. 
+In this chapter, DNN metamodels and DNN models are used almost interchangeably despite one distinction.
+\begin{itemize}
+    \item The discussion of \textit{DNN metamodels} focus more on the aspect of \textit{estimating} the inner simulation.
+    \item Tthe discussion of \textit{DNN models} focus more on \textit{studying the DNN} using simulation data.
+\end{itemize}
 
+The rest of this chapter is organized as follows: 
+Section~\ref{sec2:problem-formulation} presents the problem settings for tail risk measures and dynamic hedging of VAs. 
+Section~\ref{sec2:metamodel2Stage} proposes an efficient two-stage nested simulation procedure that uses DNNs as metamodels to help reduce simulation budget by only performing computations on identified tail scenarios. 
+Section~\ref{sec2:metamodel1Stage} proposes a one-stage nested simulation procedure that estimates risk measures directly with metamodel predictions.
+Section~\ref{sec2:numerical} demonstrates the efficiency of DNN metamodels and examines error tolerance of two LSTM metamodels with different numbers of trainable parameters. 
+Practical suggestions are provided for the choice of suitable metamodels and simulation settings. 
 
 \section{Problem Formulation} \label{sec2:problem-formulation}
 
 In this section we present notations, problem settings, and a simulation model for risk estimation for hedging errors of variable annuities.
-A main goal of the section is to showcase the complexity of the simulation model, which we use as a data generator to train deep neural network metamodels (Section~\ref{sec2:metamodel2Stage} and Section~\ref{sec2:metamodel1Stage}).
+A main goal of the section is to showcase the complexity of the simulation model, which we use as a data generator to train DNN metamodels (Section~\ref{sec2:metamodel2Stage} and Section~\ref{sec2:metamodel1Stage}).
 For readers who are interested in the examination of a neural network metamodel, it is sufficient to understand that our simulation model generates data with 240 features and 1 real-value label and our metamodels are generally applicable to any simulation model that generates data with similar characteristics.
 
 \subsection{Tail Risk Measures: VaR and CVaR}
@@ -270,7 +279,7 @@ We make four observations:
 
 \section{Two-Stage Nested Simulation with Metamodels} \label{sec2:metamodel2Stage}
 
-Based on the three observations above and inspired by~\cite{dang2020efficient}, we propose a two-stage nested simulation procedure which uses a deep neural network metamodel to identify potential tail scenarios.
+Based on the three observations above and inspired by~\cite{dang2020efficient}, we propose a two-stage nested simulation procedure which uses a DNN metamodel to identify potential tail scenarios.
 We present our proposed procedure as a competitor to the standard procedure with $M$ outer scenarios and $N$ inner replications for each outer scenario, as described in Section~\ref{subsec:dynamicHedge}.
 We propose a two-stage procedure with a neural network metamodel that aims to produce a CVaR estimate that's as accurate as that of the standard procedure, but uses fewer computations as than latter.
 
@@ -329,7 +338,7 @@ In other words, each predicted tail scenario receives $\frac{99\% \Gamma}{5\% M}
 This budget concentration is expected to improve the estimation accuracy of the two-stage procedure compared to a standard procedure with the same budget. 
 If the metamodel is accurate in predicting true tail scenarios, then the two-stage procedure is expected to achieve higher accuracy than the standard procedure with the same budget.
 However, we believe that the goal of designing an efficient simulation procedure is to solve practical problems faster, so a target-accuracy design is more suitable, which refers to obtaining a similar level of accuracy as the standard procedure but with much less simulation budget.
-One other reason for this fixed-accuracy design is to investigate whether deep neural network metamodels trained with much noisier labels can identify true tail scenarios with similar accuracy as the standard procedure.
+One other reason for this fixed-accuracy design is to investigate whether DNN metamodels trained with much noisier labels can identify true tail scenarios with similar accuracy as the standard procedure.
 The size of the predicted tail scenario set in Stage 1, $m$, is an important experiment design parameter that affects the correct identification of true tail scenarios and ultimately affects the estimation accuracy for CVaR.
 Clearly, there is a lower bound $m \geq (1-\alpha)M$ because the $\alpha$-CVaR is estimated by the average of $(1-\alpha)M$ largest losses at the end of Stage 2.
 For ease of reference, we call the additional percentage of predicted tail scenarios above this lower bound, i.e., $\epsilon = \frac{m - (1-\alpha)M}{M}$, as a \textit{safety margin}.
@@ -372,11 +381,47 @@ we consider estimating the $95\%$ CVaR of the hedging loss of a GMWB contract, w
 The VA contracts have a 20-year maturity and are delta-hedged with monthly rebalancing, i.e., $T=240$ rebalancing periods.
 The gross and net management fees are $\eta_g = 0.2\%$ and $\eta_n=0.1\%$, respectively.
 The withdrawal rate for GMWB is $0.375\%$ per month.
-% To make our examples more realistic, the VAs are also subject to dynamic lapse as specified in Section~4.3 of~\cite{dang2020efficient}.
-The risk-free rate is 0.2\% per period and the underlying asset $S_t$ is modeled by a regime-switching geometric Brownian motion with parameters specified in Table~2 of~\cite{dang2020efficient}.
+To make our examples more realistic, the VAs are also subject to a dynamic lapse model with the following key features:
+\begin{enumerate}
+    \item When a policyholder lapses, both the fund value ($F$) and guarantee value ($G$) are reduced proportionally.
+    \item The monthly lapse rate from time $t$ to $t + 1$, denoted as ${}_{\frac{1}{12}}q^l_{x+\frac{t}{12}}$, is given by:
+    \begin{equation}
+        {}_{\frac{1}{12}}q^l_{x+\frac{t}{12}} = \min\left\{1, \max\left\{0.5, 1 - 1.25 \times \left(\frac{G_t}{F_t} - 1.1\right)\right\} \times {}_{\frac{1}{12}}q^{base}_{x+\frac{t}{12}}\right\}
+    \end{equation}
+    where ${}_{\frac{1}{12}}q^{base}_{x+\frac{t}{12}}$ is the base monthly mortality rate for a policyholder aged $x + \frac{t}{12}$ at month $t$.
+    where the base monthly lapse rate is defined as:
+    \begin{equation}
+        {}_{\frac{1}{12}}q^{base}_{x+\frac{t}{12}} = 
+        \begin{cases}
+            0.00417 & \text{if } t < 84 \\
+            0.00833 & \text{if } t \geq 84
+        \end{cases}
+    \end{equation}
+\end{enumerate}
+
+The risk-free rate is 0.2\% per period and the underlying asset $S_t$ is modeled by a regime-switching geometric Brownian motion with parameters specified in Table~\ref{tab:regime_params}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Parameter}  & \textbf{Monthly Value} \\
+        \midrule
+        Risk-free rate & 0.002 \\
+        Mean return for regime 1  & 0.0085 \\
+        Mean return for regime 2   & -0.0200 \\
+        Standard deviation for regime 1  & 0.035 \\
+        Standard deviation for regime 2  & 0.080 \\
+        Transition probability from regime 1  & 0.04 \\
+        Transition probability from regime 2  & 0.20 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Real-world parameters for the regime-switching model (monthly rates)}
+    \label{tab:regime_params}
+\end{table}
 
 To compare the numerical performances of different simulation procedures, we create a benchmark dataset with a large-scale nested simulation: We first simulate $M=\num{100000}$ outer scenarios, i.e., $240$-periods stock paths $\bS^{(1)},\ldots,\bS^{(M)}$ under $\mathbb{P}$ and used these outer scenarios in all further experiments.
-Note that the 5\% tail scenario set includes $5\!,\!000$ scenarios.
+Note that the 5\% tail scenario set includes $\num{5000}$ scenarios.
 As the hedging losses for these scenarios cannot be calculated analytically, we run inner simulations with a large number of replications, $N=\num{100000}$, conditional on each of the $M$ scenarios.
 We denote these losses by $L_1,\ldots,L_M$ and will refer to them as \textit{true losses}.
 We also use these true losses to estimate $\widehat{\CVaR}_{95\%}$ and denote the corresponding \textit{true tail scenario set} by $\tail_{5000}$.
@@ -387,7 +432,7 @@ We compare our two-stage procedure to a standard nested simulation procedure tha
 In Stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=\num{100000}$ outer scenarios.
 So, Stage 1's simulation budget is $10\%$ of the standard procedure's.
 The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
-Specifically, following the convention in machine learning research, we split this dataset into three parts: The training, validation, and test sets have $90\!,\!000$, $5\!,\!000$, and $5\!,\!000$ data points (90\%, 5\%, and 5\% of the dataset), respectively.
+Specifically, following the convention in machine learning research, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ data points (90\%, 5\%, and 5\% of the dataset), respectively.
 At the end of Stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
 In Stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
 Stage 2's simulation budget is $\frac{m}{M}$ of the standard procedure's.
@@ -403,8 +448,8 @@ RNN and LSTM are trained with a dropout rate of 10\%.
 The architectures and training settings are typical choices in the deep learning literature.
 The training labels are normalized to have zero mean and unit standard deviation.
 The architectures and the numbers of trainable parameters are shown in the first two columns of Table~\ref{tab:gmwb_arch}.
-We see that the three deep neural network metamodels' have orders of magnitudes more trainable parameters than the two regression models.
-In machine-learning terminologies, the three deep neural network models have much higher \textit{model capacities}.
+We see that the three DNN metamodels' have orders of magnitudes more trainable parameters than the two regression models.
+In machine-learning terminologies, the three DNN models have much higher \textit{model capacities}.
 
 \begin{table}[ht!]
     \centering
@@ -415,10 +460,10 @@ In machine-learning terminologies, the three deep neural network models have muc
     \midrule
     MLR & N/A & $241$ & $0.707 (\pm 3.6 \times 10^{-4})$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
     QPR & N/A & $481$ & $0.544 (\pm 0.000)$ & $0.636 (\pm 0.001)$ & $0.531 (\pm 0.000)$ \\
-    FNN & $240, 128, 16$ & $35\!,\!009$ & $0.118 (\pm 0.001)$ & $0.247 (\pm 0.002)$ & $0.113 (\pm 0.001)$ \\
-    RNN & $(240, 32), (240, 4), 32$ & $32\!,\!021$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
-    LSTM & $(240, 32), (240, 4), 32$ & $35\!,\!729$ & $0.075 (\pm 0.004)$ & $0.079 (\pm 0.005)$ & $0.063 (\pm 0.004)$ \\
-    RNN$^*$\footnotemark & $(240, 32), (240, 4), 32$ & $32\!,\!021$ & $0.109 (\pm 0.005)$ & $0.128 (\pm 0.005)$ & $0.109 (\pm 0.005)$ \\
+    FNN & $240, 128, 16$ & $\num{35009}$ & $0.118 (\pm 0.001)$ & $0.247 (\pm 0.002)$ & $0.113 (\pm 0.001)$ \\
+    RNN & $(240, 32), (240, 4), 32$ & $\num{32021}$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
+    LSTM & $(240, 32), (240, 4), 32$ & $\num{35729}$ & $0.075 (\pm 0.004)$ & $0.079 (\pm 0.005)$ & $0.063 (\pm 0.004)$ \\
+    RNN$^*$\footnotemark & $(240, 32), (240, 4), 32$ & $\num{32021}$ & $0.109 (\pm 0.005)$ & $0.128 (\pm 0.005)$ & $0.109 (\pm 0.005)$ \\
     \bottomrule
     \end{tabular}
     \caption{Architectures and MSEs of metamodels for GMWB inner simulation model.}
@@ -430,22 +475,22 @@ In machine-learning terminologies, the three deep neural network models have muc
 For each metamodel, 50 independent macro replications are run\footnote{Each macro replication includes simulating a noisy dataset, separating it into training and test data, fitting a metamodel, and making predictions}.
 The last three columns in Table~\ref{tab:gmwb_arch} display the average squared errors between the predicted losses and the losses (labels) in different datasets.
 The half lengths of their 95\% confidence interval of these quantities are also reported in parentheses.
-We first observe that the two regression metamodels' errors are larger than those of three deep neural network models.
+We first observe that the two regression metamodels' errors are larger than those of three DNN models.
 This is because model capacities of the regression metamodels are too low to learn the complex dynamic hedging simulation model.
-All neural network metamodels have high model capcities comparing with the number of data points in the training set, i.e., $90\!,\!000$.
-This is not a huge concern for the deep neural networks.
+All neural network metamodels have high model capcities comparing with the number of data points in the training set, i.e., $\num{90000}$.
+This is not a huge concern for the DNNs.
 In neural network literature, the number of trainable parameters is often much larger than the number of data points in the training set.
 AlexNet~\citep{krizhevsky2012imagenet}, a well-known convolutional neural network, has 60 million parameters and is trained on the ImageNet dataset with 1.2 million images.
 Other examples include generative pre-trained transformer models like BERT~\citep{devlin2018bert} and GPT-3~\citep{brown2020language}, which have billions of parameters and are trained on large-scale text corpora.
 The reason for not overfitting is still an open question in deep learning research.
-One possible explanation is that the optimization surface of deep neural networks is highly non-convex and has many local minima.
+One possible explanation is that the optimization surface of DNNs is highly non-convex and has many local minima.
 As a result, given a good initialization, the optimization algorithm is likely to find a solution that generalizes well to unseen data.
 
-There are also differences among the three deep neural network models due to having different architectures.
+There are also differences among the three DNN models due to having different architectures.
 The FNN is a generic neural network, its test error is larger than the training error, which is a sign of over-fitting and poor generalization.
 In contrast, RNN and LSTM networks have recurrent strucutures and are designed to capture temporal relationship in the high-dimensional feature.
 As a result, they have lower training errors, i.e., they fit the data better, and have lower testing error, i.e., they generalize better.
-Notably, the true errors for the deep neural network metamodels are lower than the test errors.
+Notably, the true errors for the DNN metamodels are lower than the test errors.
 This is a sign of the metamodels' ability to learn the true feature-label relationship with noisy training labels. 
 Section~\ref{subsec2:noiseTolerance} investigates this phenomenon in more details.
 
@@ -481,7 +526,7 @@ Comparing the two metamodels with recurrent structures, A LSTM network overcomes
 Recall that all three data sets are generated from the same simulation model, but the true data set is less noisy than the training and test data.
 Part of the training error is due to simulation noise, and this noise is lower in the true error.
 We observe that the two regression metamodels not only generalize to the test data poorly but also generalize to the true data poorly.
-In contrast, the deep neural network metamodels generalize better to the true data than to the test data.
+In contrast, the DNN metamodels generalize better to the true data than to the test data.
 Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between the \textbf{true} labels and the predicted losses for the regression metamodels and the neural network metamodels, respectively.
 
 \begin{figure}[ht!]
@@ -528,11 +573,11 @@ We observe that the LSTM metamodels' QQ-plots closely follow that 45-degree line
 Again, these metamodels are trained on noisy data, so the good fit to the true data should not be taken for granted.
 This implies that these models indeed learn the true feature-label relationship in the dynamic hedging simulation model (i.e., true loss labels) even though they are trained on noisy observations (e.g., training labels) of the model.
 
-From a unique analytical standpoint, our numerical study offers a methodical exploration into the robustness of deep neural network models against noise in training labels. 
+From a unique analytical standpoint, our numerical study offers a methodical exploration into the robustness of DNN models against noise in training labels. 
 By employing the standard nested simulation procedure in Algorithm~\ref{alg2:standardProcedure} as a data generator, we gain the ability to manipulate the noise level through adjusting the number of inner replications while keeping the same simulation procedure.
 As a result, this approach provides a controlled environment to examine the impact of label noise on neural network model.
 It allows us to generate our true dataset that approximates the true hedging losses with a high degree of precision, and, as a result, it enables us to explore the crucial question of whether deep learning models are capable of learning the true feature-label relationship from noisy training labels.
-Our numerical results in Table~\ref{tab:gmwb_arch} and the QQ plots provide direct evidence that deep neural network models are indeed able to cut through the noise in the training labels and learn the true feature-label relationship.
+Our numerical results in Table~\ref{tab:gmwb_arch} and the QQ plots provide direct evidence that DNN models are indeed able to cut through the noise in the training labels and learn the true feature-label relationship.
 The LSTM metamodels' ability to learn the true feature-label relationship is crucial for the two-stage procedure to identify true tail scenarios and produce accurate CVaR estimates.
 
 \subsection{Two-Stage Procedure} \label{subsec:twoStageProcedure}
@@ -598,9 +643,9 @@ As the percentage of correctly identified tails approaches 100\%, the two-stage 
 This is because the two-stage procedure's CVaR estimates are based on the standard procedure's estimates on the predicted tail scenarios, and the standard procedure's estimates themselves are also noisy.
 
 
-\subsection{Noise Tolerance of Deep Neural Network Metamodels} \label{subsec2:noiseTolerance}
+\subsection{Noise Tolerance of DNN Metamodels} \label{subsec2:noiseTolerance}
 
-For financial and actuarial applications, regulators and practitioners are often concerned about the robustness of deep neural network models to noise in training labels, which hinders the adoption of these models in practice.
+For financial and actuarial applications, regulators and practitioners are often concerned about the robustness of DNN models to noise in training labels, which hinders the adoption of these models in practice.
 Since the true relationship is unknown in real-world applications, most deep learning literature illustrates the impact of noise by artificially injecting noise into real-world datasets, which is already noisy before the injection.
 In our numerical experiments, we are able to use Monte Carlo simulation generate a true dataset that approximates the true hedging losses with a high degree of precision, and, as a result, we are able to explore the crucial question of whether deep learning models are capable of learning the true feature-label relationship from noisy training labels.
 In this section, we treat the standard nested simulation procedure as a data generator and examine the noise tolerance of LSTM metamodels by varying the numbers of outer scenarios ($M$) and inner replications ($N$) used to generate the training data.
@@ -686,7 +731,7 @@ There are two key findings.
     In contrast, the regular LSTM is more robust to label noise.
 \end{enumerate}
 
-To further test the sensitivity of a LSTM metamodel and provide a more comprehensive picture of the noise tolerance of deep neural network models, we conduct a sensitivity analysis on the noise tolerance of the regular LSTM metamodel by varying the numbers of outer scenarios ($M$) and inner replications ($N$) used to generate the training data.
+To further test the sensitivity of a LSTM metamodel and provide a more comprehensive picture of the noise tolerance of DNN models, we conduct a sensitivity analysis on the noise tolerance of the regular LSTM metamodel by varying the numbers of outer scenarios ($M$) and inner replications ($N$) used to generate the training data.
 The number of outer scenarios corresponds to the number of data points in the training dataset, and the number of inner replications controls the noise level in the training labels.
 
 \begin{table}[ht!]
@@ -862,33 +907,33 @@ This observation resonates with the convergence rate of a regression-based neste
 Hence, in practice, we suggest to run the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.
 
 \section{Conclusion} \label{sec2:conclusion}
-The proposed nested simulation procedures with deep neural network metamodels result in substantial computational savings in estimating CVaR of the hedging loss of a VA contract from accurately predicting the hedging losses and identifying the tail scenarios.
+The proposed nested simulation procedures with DNN metamodels result in substantial computational savings in estimating CVaR of the hedging loss of a VA contract from accurately predicting the hedging losses and identifying the tail scenarios.
 When new outer scenarios are generated, a trained LSTM metamodel can distinguish between tail and non-tail scenarios and make accurate predictions without the need to run new inner simulations.
-Our novel experiment design allows us to examine the impact of label noise on deep neural network models.
-We find that a deep neural network with a suitable architecture is able to cut through the noise in training labels and learn the true complex dynamic hedging model.
+Our novel experiment design allows us to examine the impact of label noise on DNN models.
+We find that a DNN with a suitable architecture is able to cut through the noise in training labels and learn the true complex dynamic hedging model.
 By showcasing the resilience of these models, our study aims to influence regulatory bodies towards recognizing the value and applicability of deep learning metamodels in financial risk management, and it provides informed suggestions and guidance for the incorporation and oversight of advanced deep learning metamodel in Monte Carlo Simulation in financial applications.
 Our findings are particularly insightful in this context.
 In our numerical experiments, a LSTM metamodel is resilient to a high level of noise in training labels and is able to make accurate predictions. 
-This is a promising evidence that deep neural network metamodels can be used to improve the efficiency of Monte Carlo simulation for quantitative risk management tasks that require a computational-expensive simulation procedure.
-We propose two nested simulation procedures that use deep neural network metamodels to estimate risk measures of the hedging loss of a VA contract.
+This is a promising evidence that DNN metamodels can be used to improve the efficiency of Monte Carlo simulation for quantitative risk management tasks that require a computational-expensive simulation procedure.
+We propose two nested simulation procedures that use DNN metamodels to estimate risk measures of the hedging loss of a VA contract.
 For estimating tail risk measures, our two-stage procedure is designed to address regulatory concerns by avoiding the direct use of metamodel predictions but instead use them to identify the potential tail scenarios.
 An extensive inner simulation is performed to achieve a high level of accuracy on the predicted tail scenarios.
 However, the safety margin in the two-stage procedure is a user's choice and is not easy to determine before running extensive numerical experiments.
 
 Our single-stage procedure uses the metamodel predictions to estimate the risk measure directly.
 It is more efficient and can be extended to estimate risk measures that require knowledge of the entire loss distribution.
-Our numerical experiments demonstrate that the proposed single-stage procedure with deep neural network metamodels result in further computational savings over our two-stage procedure. 
-Furthermore, our numerical results provide evidences for adopting deep neural network metamodels in Monte Carlo simulation for risk management tasks.
-Through our systematic study of the noise tolerance of deep neural network metamodels, we address regulatory concerns by showing that a LSTM metamodel is resilient to a high level of noise in training labels and is able to make accurate predictions.
-A possible future research direction is to apply deep neural network metamodels in other financial risk management tasks that requires complex nested simulation with high-dimensional outer scenarios.
+Our numerical experiments demonstrate that the proposed single-stage procedure with DNN metamodels result in further computational savings over our two-stage procedure. 
+Furthermore, our numerical results provide evidences for adopting DNN metamodels in Monte Carlo simulation for risk management tasks.
+Through our systematic study of the noise tolerance of DNN metamodels, we address regulatory concerns by showing that a LSTM metamodel is resilient to a high level of noise in training labels and is able to make accurate predictions.
+A possible future research direction is to apply DNN metamodels in other financial risk management tasks that requires complex nested simulation with high-dimensional outer scenarios.
 Another future research direction is to investigate the impact of label noise on other deep learning models, such as convolutional neural networks and transformer models, and to compare their performance with LSTM metamodels in nested simulation procedures. 
-From a practical standpoint, the choice of a suitable deep neural network architecture is crucial for the success of a deep learning metamodel in nested simulation procedures.
+From a practical standpoint, the choice of a suitable DNN architecture is crucial for the success of a deep learning metamodel in nested simulation procedures.
 We find that a LSTM metamodel is the most suitable for our dynamic hedging simulation model with time series features, but the optimal network architecture may vary for different simulation models.
-Exploring deep neural network metamodels in other complex risk management tasks presents a promising avenue for research, especially as these tasks often involve complex, high-dimensional scenarios where traditional methods are insufficient. 
+Exploring DNN metamodels in other complex risk management tasks presents a promising avenue for research, especially as these tasks often involve complex, high-dimensional scenarios where traditional methods are insufficient. 
 The versatility of neural networks could unlock new insights across a broad spectrum of financial and actuarial applications.
 
-In this chapter, we have demonstrated the potential of deep neural network metamodels in nested simulation procedures for delta hedging of variable annuity contracts and have shown that they can be used to estimate risk measures with high accuracy and efficiency.
+In this chapter, we have demonstrated the potential of DNN metamodels in nested simulation procedures for delta hedging of variable annuity contracts and have shown that they can be used to estimate risk measures with high accuracy and efficiency.
 We have assumed a zero transaction cost model for our monthly rebalancing.
 In practice, transaction costs can be significant and can affect the hedging strategy.
 In the next chapter, we will extend our study to include transaction costs in the hedging strategy and investigate the impact of transaction costs on the hedging performance and the risk measures of the hedging error.
-We will also explore the use of deep neural network models as reinforcement learning agents to optimize the hedging strategy by directly interacting with the financial market and maximize the hedging performance.
+We will also explore the use of DNN models as reinforcement learning agents to optimize the hedging strategy by directly interacting with the financial market and maximize the hedging performance.

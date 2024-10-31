@@ -517,21 +517,22 @@ Freezing the LSTM layers or the fully connected layer hinders the metamodel's ab
 
 \begin{table}[ht!]
     \centering
-    \begin{tabular}{lrr}
+    \begin{tabular}{lrrr}
         \toprule
-        \textbf{Model} & \textbf{Training MSE} & \textbf{True MSE} \\
+        \textbf{Model} & \textbf{Training Samples} & \textbf{Training MSE} & \textbf{True MSE} \\
         \midrule
-        Without TL & 0.3588 & 0.4188 \\
-        Fine Tuning & 0.1690 & 0.1780 \\
-        Layer Freezing & 0.1828 & 0.2295 \\
-        Extensive Training & 0.0853 & 0.0726 \\
+        Without TL & 2,000 & 0.3588 & 0.4188 \\
+        Fine Tuning & 2,000 & 0.1690 & 0.1780 \\
+        Layer Freezing & 2,000 & 0.1828 & 0.2295 \\
+        Extensive Training & 50,000 & 0.0853 & 0.0726 \\
         \bottomrule
     \end{tabular}
-    \caption{Comparison of different TL methods on GMWB contracts}
+    \caption{Comparison of different TL methods to GMWB contracts}
     \label{tab3:transfer_learning_results_gmwb}
 \end{table}
 
 Table~\ref{tab3:transfer_learning_results_gmwb} summarizes the true MSEs of the LSTM metamodels on the GMWB contracts.
+The TL methods are compared to training from scratch.
 The suboptimal performance of layer freezing in this context indicates that the difference between the source and target tasks is too substantial for this method to be effective. 
 While layer freezing can be advantageous when the source and target tasks are closely related, it may hinder performance when the tasks diverge significantly.
 In such circumstances, fine-tuning provides a better approach by allowing the metamodel to leverage transferable knowledge while adapting to the new task's specific requirements. 

@@ -26,12 +26,12 @@ Similarly,~\cite{hong2017kernel},~\cite{feng2020optimal}, and~\cite{zhang2022sam
 In simulation studies, this approach of using a model of a simulation model is known as metamodeling, and the models of a simulation model are also referred to as metamodels~\citep{barton1998simulation}.
 Another line of research is the multi-level Monte Carlo (MLMC) method analyzed in~\cite{giles2019multilevel}, which is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest.
 
-This paper presents a survey study of some popular nested simulation procedures. 
+This paper presents a survey study of some popular nested simulation procedures with both asymptotic convergence analysis and numerical experiments.
 Many procedures are proposed in the literature, but they are not directly comparable due to different error metrics, different assumptions, and different numerical examples.
 Within a common analytical framework, we first summarize and compare their asymptotic rate of convergence.
 Their asymptotic convergence results are closely examined for their assumptions that guarantee the convergence.
 Furthermore, the existing literature chooses different performance metrics to evaluate the asymptotic convergence of nested simulation procedures.
-In this chapter, we discuss the asymptotic convergence of nested simulation procedures in terms of the MSE of the estimator, and we provide a comprehensive comparison of their convergence rates and critical assumptions.
+In this chapter, we discuss the asymptotic convergence of the nested simulation procedures in terms of the MSE of the estimator, and we provide a comprehensive comparison of their convergence rates and critical assumptions.
 We also discuss the connection between the MSE and the absolute error of the estimator in the context of nested simulation procedures.
 
 In terms of finite-sample performance, this chapter shows that different studies propose different examples in their numerical experiments, which introduces unfair advantages for certain simulation procedures over others. 
@@ -221,8 +221,8 @@ More specifically, the KRR-based nested simulation~\citep{wang2022smooth} provid
     & \text{subject to} & M \cdot N = \Gamma 
 \end{align}
 
-The absolute error is a less stringent error metric than the MSE. 
-Section~\ref{sec1:connection-mse-absolute-error} discusses the connection between the MSE and the absolute error of the estimator in the context of nested simulation procedures.
+AE is a less stringent error metric than the MSE. 
+Section~\ref{sec1:connection-mse-absolute-error} discusses the connection between the MSE and the AE of the estimator in the context of nested simulation procedures.
 
 Existing literature on nested simulation procedures has proposed different metamodels to approximate the true function $L(\cdot)$ with supervised learning models. 
 In this study, we focus on the metamodeling approaches that include theoretical convergence results.
@@ -258,7 +258,7 @@ Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$
             $$\hat{L}^{\text{KRR}}_{M, N}(X) = \argmin_{g \in \mathcal{N}_{\Psi}(\Omega)} \left( \frac{1}{M} \sum_{i=1}^M (\hat{L}_{N, i} - L_i)^2 + \lambda \|L\|_{\mathcal{N}_{\Psi}(\Omega)}^2\right),$$
             where $\mathcal{N}_{\Psi}(\Omega)$ is the reproducing kernel Hilbert space (RKHS) with kernel $\Psi$ defined domain $\Omega$, and $\lambda$ is the regularization parameter as in ridge regression. 
             More specifically, $\Phi$ is a Mat\'ern kernel with smoothness parameter $\nu$ and length scale parameter $\upsilon$.
-            ~\cite{wang2022smooth} provides convergence analysis for the absolute error (Equation~\ref{eq1:ae}), and the convergence analysis is provided for smooth, Lipschitz continuous, and indicator $h$, VaR, and CVaR.
+            ~\cite{wang2022smooth} provides convergence analysis for the AE (Equation~\ref{eq1:ae}), and the convergence analysis is provided for smooth, Lipschitz continuous, and indicator $h$, VaR, and CVaR.
 \end{itemize}
 
 These supervised learning metamodels approximate the inner simulation model $L(\cdot)$ with functions in the form of $\hat{L}^{\text{SL}}_{M, N}(\cdot)$, and the metamodels are used to pool the inner replications from all outer scenarios to estimate the risk measure $\rho$.
@@ -341,21 +341,21 @@ The Lipschitz continuous family includes the hockey-stick function as a special 
 ~\cite{hong2017kernel} and~\cite{zhang2022sample} provide the asymptotic convergence results with the nested expectation form for the kernel smoothing-based procedure and likelihood ratio-based nested simulation procedure, respectively.
 The convergence results for a Lipschitz continuous $h$ cannot be directly inferred from the analysis for a hockey-stick function.
 
-While most of the literature focuses on the MSE of the estimator of $\rho$,~\cite{wang2022smooth} analyze the asymptotic convergence of the estimator of $\rho$ in terms of the absolute error.
-Let $\hat{\rho}$ be the estimator of $\rho$. Its absolute error about $\rho$ is defined as
+While most of the literature focuses on the MSE of the estimator of $\rho$,~\cite{wang2022smooth} analyze the asymptotic convergence of the estimator of $\rho$ in terms of AE.
+Let $\hat{\rho}$ be the estimator of $\rho$. Its AE about $\rho$ is defined as
 
 $$
-\mbox{Absolute Error}\left(\hat{\rho}\right) = \left| \hat{\rho} - \rho \right|.
+\mbox{AE}\left(\hat{\rho}\right) = \left| \hat{\rho} - \rho \right|.
 $$
 
-In~\cite{wang2022smooth}, the authors of the KRR-based nested simulation procedures claim to have bridged the gap between the cubic and square root convergence rates of nested simulation procedures. However, they analyze convergence in probabilistic order, and it is only applicable in terms of the absolute error. 
-Instead of showing the convergence of the KRR-based estimator in terms of MSE as in~\cite{gordy2010nested}, we show the connections between the convergence in MSE and the convergence in probabilistic order for absolute error.
-Our findings in Section~\ref{sec1:connection-mse-absolute-error} show that the analysis of ~\cite{wang2022smooth} indeed bridges the gap, but only in terms of convergence in probabilistic order for the absolute error.
+In~\cite{wang2022smooth}, the authors of the KRR-based nested simulation procedures claim to have bridged the gap between the cubic and square root convergence rates of nested simulation procedures. However, they analyze convergence in probabilistic order, and it is only applicable in terms of AE. 
+Instead of showing the convergence of the KRR-based estimator in terms of MSE as in~\cite{gordy2010nested}, we show the connections between the convergence in MSE and the convergence in probabilistic order for AE.
+Our findings in Section~\ref{sec1:connection-mse-absolute-error} show that the analysis of ~\cite{wang2022smooth} indeed bridges the gap, but only in terms of convergence in probabilistic order for AE.
 
-\subsection{Connections between Convergence in MSE and Absolute Error} \label{sec1:connection-mse-absolute-error}
+\subsection{Connections between Convergence in MSE and AE} \label{sec1:connection-mse-absolute-error}
 
-This section establishes the connections between the convergence in MSE and the convergence in probabilistic order for absolute error in the context of nested simulation procedures.
-In order to show the connections between the convergence in MSE and the convergence in probabilistic order for absolute error, we first need to state the definition for a sequence of random variables to converge in those two forms.
+This section establishes the connections between the convergence in MSE and the convergence in probabilistic order for AE in the context of nested simulation procedures.
+In order to show the connections between the convergence in MSE and the convergence in probabilistic order for AE, we first need to state the definition for a sequence of random variables to converge in those two forms.
 
 \begin{definition}
     Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$. 
@@ -425,7 +425,7 @@ $$
 \end{theorem}
 
 To the best of our knowledge, Theorem~\ref{thm1:convergence-mse-prob} has not been explicitly stated in the literature.
-It is the first result that shows the connections between the convergence in MSE and the convergence in probabilistic order for absolute error in the context of nested simulation.
+It is the first result that shows the connections between the convergence in MSE and the convergence in probabilistic order for AE in the context of nested simulation.
 Theorem~\ref{thm1:convergence-mse-prob} is a general result that can be applied to any nested simulation procedure that converges in MSE to $\rho$ in order $\xi$.
 If the estimator converges in MSE to $\rho$ in order $\xi$, then it converges in probabilistic order to $\rho$ in order $\frac{\xi}{2}$.
 
@@ -454,7 +454,7 @@ If the random variable $\hat{\rho}_{\Gamma}$ admits a density function $f$, then
 Hence, $\hat{\rho}_{\Gamma}$ converges in MSE to $\rho$ in order $2\xi$ if and only if both integrals converge in order higher than $2\xi$. 
 The above argument shows that the convergence in probabilistic order does not necessarily imply the convergence in MSE.
 Hence, the converse of Theorem~\ref{thm1:convergence-mse-prob} is not necessarily true, and the convergence in probabilistic order is a weaker form of convergence than the convergence in MSE.
-The immediate implication is that the results in~\cite{wang2022smooth}, which show the convergence in probabilistic order for the absolute error, is not necessarily equivalent to the convergence in MSE.
+The immediate implication is that the results in~\cite{wang2022smooth}, which show the convergence in probabilistic order for the AE, is not necessarily equivalent to the convergence in MSE.
 
 \subsection{Asymptotic Analysis for the Standard Nested Simulation Procedure}
 In~\cite{gordy2010nested}, the authors analyze the asymptotic convergence of the standard nested simulation procedure in terms of MSE. 
@@ -613,7 +613,7 @@ As stated in Theorem~\ref{thm1:convergence-mse-prob}, the convergence in MSE aut
 
 \begin{corollary}
     Let $h$ be a smooth function. 
-    The absolute error of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/3}$, that is,
+    The AE of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/3}$, that is,
     $$\left| \hat{\rho}_{M, N} - \rho \right| = \mathcal{O}_\mathbb{P}(\Gamma^{-1/3}).$$
 \end{corollary}
 
@@ -672,7 +672,7 @@ Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we 
 Immediately from Theorem~\ref{thm1:convergence-mse-prob}, the convergence in MSE automatically implies the convergence in probabilistic order.
 
 \begin{corollary}
-    Let $h$ be a Lipschitz continuous function. The absolute error of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/3}$, that is,
+    Let $h$ be a Lipschitz continuous function. AE of the standard nested simulation procedure converges in probabilistic order $\Gamma^{-1/3}$, that is,
     $$\left| \hat{\rho}_{M, N} - \rho \right| = \mathcal{O}_\mathbb{P}(\Gamma^{-1/4}).$$
 \end{corollary}
 
@@ -886,7 +886,7 @@ In addition, the following assumptions are made on $\Omega$, the domain of the o
 \end{assumption}
 
 Assumption~\ref{as1:krr-domain} rules out the possibility of the outer scenario $X$ being a normal random variable, which is a common assumption in the literature.
-Furthermore, the convergence analysis of the KRR-based nested simulation procedure is shown in terms of the absolute error rather than the standard metric of MSE, which is due to the complexity of the KRR metatmodel.
+Furthermore, the convergence analysis of the KRR-based nested simulation procedure is shown in terms of AE rather than in MSE, which is due to the complexity of the KRR metatmodel.
 
 \section{Finite-Sample Experiments} \label{sec1:numerical-experiments}
 The theoretical framework has allowed the comparison of the asymptotic convergence behavior for different nested simulation procedures.

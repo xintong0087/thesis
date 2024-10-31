@@ -2,35 +2,46 @@
 \chapter{Introduction}
 %======================================================================
 
-Quantitative risk management is a key component of modern financial systems, ensuring the stability and resilience of markets, institutions, and portfolios against an array of risks. 
+Quantitative risk management is a key component of modern financial systems.
+Successful risk management practice ensures the stability and resilience against a variety of risks.
 For financial products like option portfolios and variable annuity (VA) contracts, traditional risk assessment methods often fall short in accurately capturing the complex dynamics of the underlying risk factors.
-VA contracts are a popular type of complex insurance product that is linked to the performance of underlying assets, providing a guaranteed minimum income benefit to the policyholder.
-This is where advanced Monte Carlo simulation techniques, particularly nested simulation procedures, become indispensable.
+VA contracts are a popular type of complex insurance product that is linked to the performance of underlying assets.
+It provides a guaranteed minimum income benefit to the policyholder regardless of the performance of the underlying assets.
+Advanced Monte Carlo simulation techniques, particularly nested simulation procedures, become indispensable for risk assessment of such products.
 In contrast to finite-difference methods, a Monte Carlo simulation scheme is more flexible and can be easily adapted to model tail risk with a rule-based design.
-~\cite{glasserman2004monte} provide a comprehensive overview of nested simulation methods in financial engineering and risk management applications.
+~\cite{glasserman2004monte} provide a comprehensive overview of Monte Carlo simulation methods in financial engineering and risk management applications.
 In this thesis, we focus on building and analyzing nested simulation procedures for risk management applications of financial derivatives and insurance products.
 Nested simulation, also known as nested stochastic modeling and stochastic-on-stochastic modeling, becomes necessary when stochastic simulation of a parameter of interest is contingent on another quantity to be determined stochastically.
 In the context of financial engineering, nested simulation is used to model the tail risk of a contract whose payoff depends on a set of underlying risk factors.
 For example, estimating the value of an exotic option at a risk horizon requires simulation given a realization of the underlying assets upto that horizon.
 A standard nested simulation procedure consists of two levels of simulation: the outer-level simulation generates the underlying risk factors, while the inner-level simulation estimates the value of interest with the inner sample mean from another level of Monte Carlo simulation.
-The nested structure allows for accurate estimation given sufficient computational resources, but it also introduces additional complexity in the simulation design and implementation.
-Furthermore, in real-world applications, the computational burden of nested simulation can be prohibitive due to its nested structure.
-The number of inner simulations required to achieve a desired level of accuracy for each outer scenario can be prohibitively large.
+This nested structure allows for accurate estimation given sufficient computational resources, but it also introduces additional complexity in the simulation design and implementation.
+Furthermore, in real-world applications, the computational burden of nested simulation can be prohibitive.
+The number of inner simulations required to achieve a desired level of accuracy for each outer scenario can be infeasibly large.
 Metamodeling techniques that approximate the inner simulation model can be used to reduce the computational burden of nested simulation.
 Metamodels are statistical models that approximate the output of a complex simulation model as a function of its input parameters.
 In this thesis, we focus on metamodels of the inner simulation models in nested simulation procedures for risk management applications of financial derivatives and VA contracts.
-Two interesting problems that requires nested simulation are considered in this thesis: (1) estimating the risk of a portfolio of financial options and (2) dynamic hedging of VA contracts with a delta hedging strategy.
+Two interesting problems that requires nested simulation are considered in this thesis:  
+\begin{itemize}
+    \item estimating the risk of a portfolio of financial options and 
+    \item dynamic hedging of VA contracts with a delta hedging strategy.
+\end{itemize}
 The risk management of VAs is a challenging problem due to the complex interactions between the policyholder's behavior, the financial market dynamics, and the insurer's risk management strategies.
-% Moreover, the risk management of VAs is further complicated by transaction costs, which often makes delta hedging strategies insufficient. 
-% This thesis discusses a particular extension of using deep reinforcement learning to dynamically hedge VA contracts with transaction costs.
-
-This thesis consists of four chapters. Chapter \ref{chap:project1} summarizes theoretical convergence results of several state-of-the-art single-period nested simulation procedures under the same analytical framework. Numerical experiments are conducted to test their empirical convergence behavior under finite budget sizes.
-Chapter~\ref{chap:project2} proposes the use of neural network models as proxies for a two-stage multi-period nested simulation procedure on VA contracts. 
-In our numerical experiment, the best neural network metamodel surpasses the state-of-the-art proxy models in tail identification, and it leads to substantial computational savings. 
-Chapter~\ref{chap:project2} also conducts sensitivity testing on the neural network metamodel. We argue that for estimating tail risk measures of VA contact losses, the inner simulation can be replaced entirely by a suitable metamodel. 
+We focus mainly on the estimation of tail risk measures of VA contract losses using metamodel-based nested simulation procedures.
+This thesis consists of four chapters. 
+Chapter \ref{chap:project1} summarizes theoretical convergence results of several state-of-the-art single-period nested simulation procedures under the same analytical framework. 
+Numerical experiments are conducted to test their empirical convergence behavior under finite budget sizes.
+Chapter~\ref{chap:project2} proposes the use of neural network models as metamodels for a two-stage multi-period nested simulation procedure on VA contracts. 
+In our numerical experiment, the best neural network metamodel surpasses the state-of-the-art metamodels in tail identification, and it leads to substantial computational savings. 
+Chapter~\ref{chap:project2} also conducts sensitivity testing on the neural network metamodel. 
+We argue that for estimating tail risk measures of VA contact losses, the inner simulation can be replaced entirely by a suitable metamodel. 
 Eliminating the inner simulation can lead to more substantial computational savings without affecting estimation quality. 
 In the case of requiring extensive inner simulations for regulatory purposes, effective budget allocations can help achieve higher estimator quality with the same computational budget.
-Chapter~\ref{chap:project3} uses transfer learning techniques for quick adaptation of the neural network metamodel to new VA contracts with different contract specifications.
+In practice, underlying assumptions of the simulation model are subject to change, and new VA contracts are issued with different contract specifications.
+Simulation budgets are often scarce for new conditions.
+Chapter~\ref{chap:project3} uses transfer learning techniques for quick adaptation of the neural network metamodel to new market conditions and new VA contracts.
+Our numerical experiments shows that an intelligent use of transfer learning can lead to significantly better metamodels than those trained from scratch.
+Chapter~\ref{chap:futureWork} discusses the application of deep reinforcement learning in the dynamic hedging of VA contracts.
 Chapter \ref{chap:conclusion} concludes the thesis and discusses potential future research directions.
 
 \section{Managing Risk of Variable Annuity with Nested Simulation}
@@ -48,8 +59,9 @@ Effective management of these risks is crucial for insurers to maintain solvency
 One of the primary risk management strategies employed by insurers to mitigate the financial risks associated with VAs is dynamic hedging. 
 Dynamic hedging involves frequently adjusting a portfolio of financial instruments to offset changes in the value of the guarantees due to market movements~\citep{hull2016options}. 
 This strategy aims to neutralize the sensitivity of the insurer's liability to market fluctuations by constructing a hedging portfolio that replicates the cash flows of the guarantees.
-However, dynamic hedging introduces complexity in estimating the insurer's overall risk exposure, especially concerning extreme market events or tail risks.
-Estimating tail risk in the context of dynamic hedging of VAs is challenging, as it requires the stochastic modeling of the financial market and the accurate loss estimation of the hedging portfolio under various market scenarios.
+However, dynamic hedging introduces complexity in estimating the insurer's overall risk exposure.
+One of such examples is the estimation of tail risk measures of a VA contract.
+It requires the stochastic modeling of the financial market and the accurate loss estimation of the hedging portfolio under different market scenarios.
 Nested simulation has emerged as a robust method for estimating risk measures in such complex settings~\citep{gordy2010nested}.
 In nested simulation, an outer simulation generates a set of market scenarios over the contract horizon, while an inner simulation estimates the contract loss in each scenario.
 By combining the results of the inner simulations across the outer scenarios, nested simulation provides an accurate estimate of the tail risk of the VA contract.
@@ -71,18 +83,19 @@ Metamodeling addresses this challenge by constructing an approximate model (meta
 The metamodel serves as a predictive model that maps input variables to output responses. 
 Learning from a set of simulation runs, the metamodel can generalize and predict outputs for new inputs without running the full simulation.
 Metamodeling is particularly useful when the simulation model is computationally expensive. 
-By replacing the simulation model with a metamodel, the computational cost of evaluating the model can be significantly reduced, enabling faster analysis and decision-making.
+By replacing the simulation model with a metamodel, the computational cost of evaluating the model can be significantly reduced. 
+This allows for faster convergence of simulation-based estimators.
 
 The process of metamodeling generally involves:
 
 \begin{enumerate} 
     \item \textbf{Design of Experiments}: Selecting input combinations to run the original simulation and collect data. 
-    \item \textbf{Building the Metamodel}: Using the collected data to train a surrogate model that approximates the simulation. 
+    \item \textbf{Building the Metamodel}: Using the collected data to train a metamodel that approximates the simulation model. 
     \item \textbf{Validation}: Assessing the metamodel's accuracy and generalization capability.
     \item \textbf{Application}: Using the metamodel to predict simulation outputs for new input combinations.
 \end{enumerate}
 
-The development of advanced machine learning algorithms, particularly deep learning techniques, has significantly enhanced metamodeling approaches for Monte Carlo simulations, especially in high-dimensional and complex problem settings.
+The development of advanced machine learning models and deep learning techniques has significantly enhanced metamodeling approaches for Monte Carlo simulations, especially in high-dimensional and complex problem settings.
 Example use cases for machine learning include~\cite{jin2020deep}, ~\cite{tang2020deep}, and~\cite{rosen2012metamodeling}.
 These methods offer powerful tools for capturing intricate patterns and nonlinear relationships that traditional metamodeling techniques might struggle to model effectively.
 In the following sections, we discuss machine learning algorithms in the context of metamodeling for Monte Carlo simulations and their applications in risk management.
@@ -105,33 +118,34 @@ The goal is to learn a general rule that maps inputs (also known as features) to
     \item \textbf{Classification}: The output variable is categorical, and the task is to assign inputs to one of several predefined categories. 
     Common use in finance and actuarial applications are fraud detection and credit scoring.
     \item \textbf{Regression}: The output variable is continuous, and the task is to predict a real-valued number. 
-    Examples in actuarial applications include predicting claim amounts, reserve estimates, and asset prices.
+    Examples in actuarial applications include predicting claim amounts, reserve estimates, asset pricing, and estimating tail risk measures of loss distributions.
 \end{itemize}
 
 This thesis focuses on regression models for risk management applications, where the goal is to predict a continuous target variable based on one or more input features.
-Given a dataset of $n$ observations $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$, where $x_i \in \mathbb{R}^d$ is the $d$-dimensional input feature vector and $y_i \in \mathbb{R}$ is the target variable, a supervised learning algorithm aims to learn a function $f(;\theta): \mathbb{R}^d \rightarrow \mathbb{R}$ that best predicts the target variable $y$ given the input features $x$ with a set of function parameters $\theta$.
+Given a dataset of $n$ observations $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$, where $x_i \in \mathbb{R}^d$ is the $d$-dimensional input feature vector, and $y_i \in \mathbb{R}$ is the target variable, a supervised learning algorithm aims to learn a function $f(;\theta): \mathbb{R}^d \rightarrow \mathbb{R}$ that best predicts the target variable $y$ given the input features $x$ with a set of function parameters $\theta$.
 
-Linear regression, kernel regression, neural network algorithms all fall under the supervised learning category and are widely used in risk management applications.
-Nevertheless, all supervised learning models can be evaluated on a similar set of metrics.
-The learning process involves minimizing a loss function $l(f(x; \theta),y)$ over the training data, which quantifies the difference between the predicted outputs and the true outputs. 
+Linear regression, kernel regression, and neural networks all fall under the supervised learning category and are widely used in risk management applications.
+Despite the differences in their functional forms, all supervised learning models can be evaluated on a similar set of metrics.
+The learning process is referred to as training, which involves minimizing a loss function $l(f(x; \theta),y)$ over the training data, which quantifies the difference between the predicted labels and the training labels.
 A common loss function for regression problems is the mean squared error (MSE):
 
-\begin{equation}
+\begin{equation} \label{eq:mse}
     \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (f(x_i;\theta) - y_i)^2.
 \end{equation}
 
 In most risk management applications, a critical task of users of supervised learning models is to design a suitable loss function that aligns with the objectives of the problem.
 Another important consideration is the choice of a suitable supervised learning algorithm.
 The choice may vary based on the complexity of the relationship, the interpretability of the model, and the computational resources available.
-In the following sections, we discuss three widely used supervised learning models in risk management applications: traditional regression and two neural network architectures.
+In the following sections, we discuss four widely used supervised learning techniques in risk management applications: parametric regression, kernel regression, and two neural network architectures.
 
 \subsection{Parametric Regression Models}
 
 Regression models are the most common supervised learning algorithms used in risk management applications.
 A regression model predicts a continuous target variable based on one or more input features.
 Linear regression is a simple and interpretable model that attempts to predict a target variable as a linear combination of input features. 
-It assumes a linear relationship between the dependent variable and one or more independent variables. 
-This method has been thoroughly explored in statistical literature, with \citet{bishop2006pattern} providing an extensive treatment of regression techniques in the broader context of machine learning.
+It assumes a linear relationship between the target output and one or more input features. 
+This method has been thoroughly explored in statistical literature. 
+\citet{bishop2006pattern} provide an extensive treatment of regression techniques in the broader context of machine learning.
 It is known as parametric regression because it assumes a specific functional form for the input-output relationship with a finite set of parameters~\citep{seber2012linear}.
 General form of a parametric regression model is given by:
 \begin{equation} \label{eq:regression}
@@ -147,29 +161,32 @@ These techniques utilize predefined functional forms to model the relationship b
 However, when data exhibits complex, non-linear relationships, linear models fall short. 
 While these methods are straightforward and interpretable, they impose strong assumptions about the underlying data structure.
 Often, expert knowledge is required to select the appropriate basis functions, which can limit the flexibility of the model.
-Extensions like polynomial regression and generalized linear models (GLMs) have been introduced to capture non-linearity, though these models can still be limited in capturing highly complex patterns. 
-To overcome these limitations, non-parametric methods such as kernel regression \citep{hastie2009elements} are often employed. 
-Kernel regression estimates the relationship by averaging the target variable over a local neighborhood of the input $x$.
+Extensions like polynomial regression and generalized linear models (GLMs) have been introduced to capture non-linearity.
+Nevertheless, these models can still be limited in capturing highly complex patterns. 
+
+\subsection{Non-Parametric Regression Models}
+To overcome some limitations of parametric regression, non-parametric methods such as kernel regression~\citep{hastie2009elements} are often employed. 
+Kernel regression estimates the relationship by averaging the values of the target variable over a local neighborhood of the input $x$.
 The kernel regression with the Nadaraya-Watson estimator is given by:
 \begin{equation}
     f(x; \theta) = \frac{\sum_{i=1}^{n} K\left(\frac{x-x_i}{h}\right) y_i}{\sum_{i=1}^{n} K\left(\frac{x-x_i}{h}\right)},
 \end{equation}
 where $K(\cdot)$ is the kernel function, which assigns weights to the data points based on their distance to the input $x$, and $h$ is the bandwidth parameter that controls the smoothness of the estimated function.
-The objective is to estimate the feature-label relationship directly from the data without imposing a specific form, hence, when the true relationship between variables is complex or unknown.
-However, they come with several drawbacks that limit their effectiveness, especially in high-dimensional settings or when dealing with large datasets. 
+The objective is to estimate the feature-label relationship directly from the data without imposing a specific form.
+However, they come with several drawbacks that limit their effectiveness, especially in high-dimensional settings or for large datasets. 
 One of the most significant drawbacks of non-parametric regression is the curse of dimensionality \cite{bellman1966dynamic}. 
-As the number of features increases, the volume of the input space grows exponentially, making the data sparse and leading to overfitting.
-In addition, the computational cost of non-parametric methods, including cross validation and distance calculation, often grows rapidly with the number of dimensions.
-It makes them impractical for modeling high-dimensional large-scale datasets. 
-These limitations have motivated the adoption of neural networks, which can address many of the challenges associated with non-parametric approaches.
+As the number of features increases, the volume of the input space grows exponentially.
+Data points become sparse and the model may overfit to noise in the data.
+In addition, the computational cost associated with non-parametric methods often grows rapidly with the number of dimensions.
+Cross validation and distance calculation are two computationally expensive operations that are often required for non-parametric regression.
+These drawbacks make non-parametric regression impractical for modeling high-dimensional large-scale datasets. 
 
 \subsection{Feedforward Neural Networks}
 
-The progression from traditional regression methods to neural network architectures has been driven by the need to model increasingly complex and high-dimensional data.
-The limitations of parametric and non-parametric regression models in capturing complex patterns have led to the rise of neural networks as a powerful tool for learning non-linear relationships in data.
+The progression from traditional parametric and non-parametric regression methods to neural network architectures has been driven by the need to model increasingly complex and high-dimensional data.
 Neural networks have emerged as powerful tools capable of overcoming many limitations of traditional regression methods. 
 They can learn complex, non-linear relationships in data without the need for explicit feature engineering.
-The most crude form of a neural network is the feedforward neural network (FFN), which consists of an input layer, one or more hidden layers, and an output layer~\citep{goodfellow2016}.
+The most crude form of a neural network is the feedforward neural network (FNN), which consists of an input layer, one or more hidden layers, and an output layer~\citep{goodfellow2016}.
 
 \begin{figure}[ht!]
     \centering
@@ -212,16 +229,17 @@ The choice of activation function also plays a crucial role in the training of n
 While sigmoid and hyperbolic tangent functions were popular in early neural networks, ReLU has become the default activation function for deep networks due to its ability to mitigate the vanishing gradient problem and promote sparse activations~\citep{lecun2015deep}.
 
 The key advantage of feedforward neural networks (FNNs) lies in their ability to perform automatic feature engineering without direct human intervention. 
-Unlike traditional machine learning models that require manual selection and transformation of input features, neural networks learn to extract and compose features through their hidden layers during the training process. 
+Unlike traditional machine learning models that require manual selection and transformation of input features, neural networks learn to extract and compose features through their hidden layers during the training. 
 Each hidden layer in the network captures higher-level abstractions of the input data by transforming the outputs of the previous layer through nonlinear activation functions~\citep{lecun2015deep}.
-Each layer builds upon the representations learned by the previous layer, enabling the network to capture multiple levels of abstraction. This characteristic is crucial for modeling complex datasets with intricate patterns and relationships~\citep{bengio2013representation}.
+Each layer builds upon the representations learned by the previous layer, enabling the network to capture multiple levels of abstraction. 
+This characteristic is crucial for modeling complex datasets with intricate patterns and relationships~\citep{bengio2013representation}.
 
 The last layer of the neural network, known as the output layer, typically performs a linear transformation of the features extracted by the preceding hidden layers. 
-With $a^{k}(z) = z$, the last layer is same as a linear regression with its inputs as transformed, high-level features learned by the hidden layers.
-By viewing the output layer as performing linear regression on the features learned by the network, we can draw parallels between neural networks and traditional regression models. 
+With $a^{k}(z) = z$, the last layer is equivalent to a linear regression with its inputs as transformed, high-level features learned by the hidden layers.
+We can draw parallels between neural networks and traditional regression models. 
 The main difference is that, in neural networks, the input features to the regression model are learned automatically rather than being manually specified.
 
-The most famous theorem in neural network theory is the universal approximation theorem~\citep{hornik1989multilayer}.
+The most well-known theorem in neural network theory is the universal approximation theorem~\citep{hornik1989multilayer}.
 It states that given appropriate activation functions $a$, a feedforward neural network with a single hidden layer containing a finite number of neurons can approximate any continuous function on a compact subset of $\mathbb{R}^n$ to arbitrary accuracy. 
 Despite this theoretical guarantee for single-layer neural networks, in practice, deep neural networks (DNN) with multiple hidden layers have been shown to be more effective at capturing complex patterns and relationships in data~\citep{lecun2015deep}.
 Examples include AlexNet~\citep{krizhevsky2012imagenet}, VGG~\citep{simonyan2014very}, and ResNet~\citep{he2016deep}, which have achieved state-of-the-art performance on image classification tasks.
@@ -230,7 +248,7 @@ In this thesis, we focus on the application of deep neural networks, specificall
 \subsection{Training and Evaluation of Neural Networks}
 
 The training of neural networks involves adjusting the trainable parameters of the network to minimize the loss function.
-The loss function is typically the mean squared error (MSE) between the predicted outputs and the true outputs.
+The loss function is typically the MSE between the predicted labels and the training labels.
 The training process aims to find the optimal parameters that minimize the loss function.
 The most common approach is to use gradient descent methods with backpropagation, which is an efficient method for computing the gradients of the loss function with respect to the trainable parameters.
 Backpropagation computes the gradients by propagating the error derivatives backward through the network layers.
@@ -245,10 +263,13 @@ To address these issues, various adaptive learning rate methods have been propos
 The most popular approach is Adam, which adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
 
 Another common technique to improve the training of neural networks is regularization to prevent overfitting.
-One effective regularization method is \textit{dropout}, which randomly sets a fraction of neurons to zero during each training iteration~\citep{srivastava2014dropout}.
+One effective regularization method is dropout, which randomly sets a fraction of neurons to zero during each training iteration~\citep{srivastava2014dropout}.
 This prevents neurons from co-adapting too much, encourages redundancy, and leads to a more robust model that generalizes better to unseen data.
-\textit{Early stopping} is another yet regularization method that involves monitoring the model's performance on a validation set and stopping training when the performance no longer improves~\citep{prechelt2002early}.
-This helps prevent overfitting by halting training before the model begins to overfit to noise in the data.
+Early stopping is another regularization method that is relevant to our study.
+It involves monitoring the model's performance on a validation set and stopping training when the performance no longer improves~\citep{prechelt2002early}.
+This helps prevent overfitting by stopping training before the model begins to overfit to noise in the data.
+
+In simulation studies, the noise in the data can be controlled by the sample size.
 
 \subsection{Long Short-Term Memory Networks}
 
