@@ -1210,7 +1210,7 @@ The theoretical analysis in~\cite{giles2019multilevel} shows that the MLMC proce
     \label{tab1:mlmc-mse}
 \end{table}
 
-Instead of using a figure, we provide a summary of the empirical convergence results of the MLMC procedure with a decomposition table of the MSEs in Table~\ref{tab1:mlmc-mse}.
+We provide a summary of the empirical convergence results of the MLMC procedure with a decomposition table of the MSEs in Table~\ref{tab1:mlmc-mse}.
 The MSEs of the MLMC procedure are decomposed into the bias and the variance of the estimator.
 The MSEs of the standard nested simulation procedure with a similar total simulation budget are also provided for comparison.
 Since the MLMC procedure is designed with a fixed number of outer simulation paths, the benefit of the MLMC procedure is minimal when the total simulation budget is large.
@@ -1246,28 +1246,44 @@ For a $d$-dimensional nested estimation problem, the simulation cost for all pro
 The simulation cost is omitted from Table~\ref{tab1:complexity}, as all procedures are given the same simulation budget.
 Given $M$ outer samples and the corresponding $M$ inner sample averages, the algorithmic complexity of the additional operations does not involve $N$ thus can be written in terms of $M$ only.
 The training cost includes the cost of fitting the metamodel and the cost of cross-validation for nonparametric regression metamodels.
-For the standard procedure, the training cost is $0$ due to the absence of a metamodel. 
-Its prediction cost $\mathcal{O}(M)$ comes from the evaluation of the function $h$ for $M$ samples.
+
+For the standard procedure, 
+\begin{itemize}
+    \item the training cost is $0$ due to the absence of a metamodel. 
+    \item Its prediction cost $\mathcal{O}(M)$ comes from the evaluation of the function $h$ for $M$ samples.
+\end{itemize}
 For the regression-based procedure, a linear regression model is fitted with $p$ predictors.
-In practice, $p$ is usually much smaller than $M$ and does not grow with the simulation budget $\Gamma$.
-However, it is dependent on the complexity of the payoff function.
-Estimating the coefficients of the regression model involves multiplying the design matrix by its transpose and inverting the resulting matrix, which has complexity $\mathcal{O}(p^2M)$ and $\mathcal{O}(p^3)$, respectively.
-For a review in the complexity of matrix inversion, see~\cite{stothers2010complexity}.
-The matrix inversion has complexity $\mathcal{O}(p^3)$ using Gauss-Jordan elimination, but in practice, the complexity can be reduced to $\mathcal{O}(p^{2.807})$ by~\cite{strassen1969gaussian} and $\mathcal{O}(p^{2.376})$ by~\cite{coppersmith1987matrix}.
-The prediction cost of the regression-based procedure is $\mathcal{O}(pM)$, which comes from the multiplication of the design matrix by the estimated coefficients.
-For the kernel smoothing-based procedure, the kNN metamodel is implemented.
+\begin{itemize}
+    \item The training cost is $\mathcal{O}(p^2M) + \mathcal{O}(p^3)$.
+          Estimating the coefficients of the regression model involves multiplying the design matrix by its transpose and inverting the resulting matrix, which has complexity $\mathcal{O}(p^2M)$ and $\mathcal{O}(p^3)$, respectively.
+          For a review in the complexity of matrix inversion, see~\cite{stothers2010complexity}.
+          The matrix inversion has complexity $\mathcal{O}(p^3)$ using Gauss-Jordan elimination, but in practice, the complexity can be reduced to $\mathcal{O}(p^{2.807})$ by~\cite{strassen1969gaussian} and $\mathcal{O}(p^{2.376})$ by~\cite{coppersmith1987matrix}.
+          In practice, $p$ is usually much smaller than $M$ and does not grow with the simulation budget $\Gamma$.
+          $p$ is fixed by the basis function, which is selected based on the complexity of the payoff function.
+    \item The prediction cost of the regression-based procedure is $\mathcal{O}(pM)$, which comes from the multiplication of the design matrix by the estimated coefficients.
+\end{itemize}
+For the kernel smoothing-based procedure, the kNN metamodel is implemented. 
 In practice, the K-D tree algorithm~\citep{bentley1975multidimensional} is often implemented for efficient nearest neighbor search.
-During training, a tree is constructed to store the distance, which has complexity $\mathcal{O}(M\log(M))$.
-The prediction cost of the kernel smoothing-based procedure is $\mathcal{O}(kM\log(M))$, which comes from a query of the K-D tree for $k$ nearest neighbors for $M$ samples.
-Conversely, An inefficient algorithm calculates the distance matrix during training and a block sort algorithm to find the $k$ nearest neighbors, which results in a complexity of $\mathcal{O}(M^2)$ and $\mathcal{O}(M^2\log(M))$, respectively.
-A practical implementation of block sort is provided in~\cite{kim2008ratio}.
-Hence, an efficient implementation of the kNN metamodel is crucial for the kernel smoothing-based procedure.
-For the likelihood ratio-based procedure, the training cost is $0$ as no training is required.
-The prediction cost of the likelihood ratio-based procedure is $\mathcal{O}(M^2)$, which comes from the calculation of the likelihood weights for $M$ samples.
-For the KRR-based procedure, the main training cost comes from inverting an $M \times M$ kernel matrix~\citep{scholkopf2002learning}, which has complexity $\mathcal{O}(M^3)$ using Gauss-Jordan elimination.
-Similar to the regression-based procedure, this complexity can be reduced to $\mathcal{O}(M^{2.376})$.
-The prediction cost of the KRR-based procedure is $\mathcal{O}(M^2)$, which comes from the multiplication of the kernel matrix by the estimated coefficients.
-Among the metamodel-based procedures, regression is the most efficient as $p$ is usually much smaller than $M$. 
+\begin{itemize}
+    \item During training, a tree is constructed to store the distance, which has complexity $\mathcal{O}(M\log(M))$.
+    \item The prediction cost of the kernel smoothing-based procedure is $\mathcal{O}(kM\log(M))$, which comes from a query of the K-D tree for $k$ nearest neighbors for $M$ samples.
+    Conversely, An inefficient algorithm calculates the distance matrix during training and a block sort algorithm to find the $k$ nearest neighbors, which results in a complexity of $\mathcal{O}(M^2)$ and $\mathcal{O}(M^2\log(M))$, respectively.
+    A practical implementation of block sort is provided in~\cite{kim2008ratio}.
+    Hence, an efficient implementation of the kNN metamodel is crucial for the kernel smoothing-based procedure.
+\end{itemize}
+For the likelihood ratio-based procedure, 
+\begin{itemize}
+    \item the training cost is $0$ as no training is required.
+    \item The prediction cost of the likelihood ratio-based procedure is $\mathcal{O}(M^2)$, which comes from the calculation of the likelihood weights for $M$ samples.
+\end{itemize}
+For the KRR-based procedure, 
+\begin{itemize}
+    \item the main training cost comes from inverting an $M \times M$ kernel matrix~\citep{scholkopf2002learning}, which has complexity $\mathcal{O}(M^3)$ using Gauss-Jordan elimination.
+          Similar to the regression-based procedure, this complexity can be reduced to $\mathcal{O}(M^{2.376})$.
+    \item The prediction cost of the KRR-based procedure is $\mathcal{O}(M^2)$, which comes from the multiplication of the kernel matrix by the estimated coefficients.
+\end{itemize}
+Among the metamodel-based procedures, parametric regression is the most efficient.
+In regression, the number of features is usually much less than the number of data points, i.e., $p<M$. 
 Kernel smoothing and KRR are kernel-based metamodels, and they are more computaional expensive due to distance calculations and cross-validations of hyperparameters. 
 The kNN metamodel has only 1 hyperparameter $k$, while the KRR metamodel requires 3 hyperparameters, namely the smoothness hyperparameter $\nu$, scale hyperparameter $\upsilon$, and the regularization hyperparameter $\lambda$.
 Calculating the likelihood ratio weights is inevitable for the likelihood ratio-based procedure. 
@@ -1275,7 +1291,6 @@ While a k-fold cross-validation is used to estimate the hyperparameter for kNN, 
 The likelihood ratio-based procedure requires no training, but the cost of calculating the likelihood weights is $\mathcal{O}(M^2)$.
 Comparing the algorithmic complexity of the nested simulation procedures, the regression-based procedure is the most efficient among the metamodel-based procedures.
 For a fixed $p$, the total additional cost of a regression-based procedure is $\mathcal{O}(M)$, which is the same as the standard procedure's.
-
 
 \begin{figure}[ht!]
     \centering
