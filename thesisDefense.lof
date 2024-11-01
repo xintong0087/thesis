@@ -7,12 +7,12 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =\num {100000}$}}{50}{figure.caption.17}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$}}{51}{figure.caption.18}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different regression bases}}{53}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{53}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{54}{figure.caption.20}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff}}{54}{figure.caption.21}%
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$}}{55}{figure.caption.22}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{55}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{56}{figure.caption.23}%
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different asset models}}{56}{figure.caption.24}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Total computational cost for different procedures with $d=10$}}{59}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Total computational cost for different procedures with $d=10$}}{60}{figure.caption.27}%
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time}}{60}{figure.caption.28}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{71}{figure.caption.29}%

@@ -911,11 +911,14 @@ The theoretical framework has allowed the comparison of the asymptotic convergen
 However, a simulation budget in practice is almost always finite.
 In this section, we conduct a series of numerical experiments to compare the empirical convergence of the nested simulation procedures for different risk measures, option types, and asset dimensions.
 Numerical experiments are conducted on portfolios that consist of options on $d$ underlying assets, whose dynamics follow a multidimensional geometric Brownian motion with $0.3$ pairwise correlation.
-6 nested simulation procedures are considered, namely the standard nested simulation procedure, the MLMC procedure, the regression-based, kernel smoothing-based, likelihood ratio-based, and kernel ridge regression-based nested simulation procedures.
+
+A total of 6 nested simulation procedures are considered, namely the standard nested simulation procedure, the MLMC procedure, the regression-based, kernel smoothing-based, likelihood ratio-based, and kernel ridge regression-based nested simulation procedures.
 For the standard nested simulation procedure, the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap} is implemented to estimate the optimal values of outer and inner simulation budgets.
 For the regression metamodel, the Laguerre polynomials up to degree $3$ are used as the default basis functions.
 The kNN metamodel is implemented for the kernel smoothing-based procedure, and a cross-validation with grid search is used to find the optimal number of neighbors.
 The KRR metamodel is implemented with a Mat\'ern kernel, and the smoothness, the length scale, and the regularization hyperparameters are found by a cross-validation with Bayesian search~\citep{frazier2018bayesian}.
+Due to budget constraints, the hyperparameters of the nonparametric regression metamodel are tuned and used across all macro replications of the same experiment.
+
 The procedures are compared for 5 types of risk measures:
 \begin{itemize}
     \item a quadratic tracking error,
@@ -1039,6 +1042,7 @@ For $d = 2$, the optimal value of $k$ is estimated to be between $120$ to $220$ 
 For the two replications where $k = 80$ is estimated as the optimal value of $k$, the resulting estimates of risk measures are $0.1187$ and $0.1189$, which are significantly higher than the estimated risk measures for the other replications and far from the true risk measure of $0.1$.
 This observation suggests that the empirical convergence of the kernel smoothing-based nested simulation procedure is highly sensitive to the cross-validation of the hyperparameters of the metamodel.
 A KRR-based nested simulation procedure suffers from the same problem. 
+The fluctuation in Figure~\ref{fig1:kernel_d} is likely due to poor cross-validation of the hyperparameters of the metamodel.
 
 \subsection{Empirical Convergence of Parametric Regression Procedures} \label{sec1:regression-convergence}
 
@@ -1100,8 +1104,8 @@ The empirical rates of convergence of the regression-based nested simulation pro
 
 \subsection{Sensitivity to the Option Types and Risk Measures} \label{sec1:sensitivity-option-type}
 
-In our previous numerical experiments, we have examined the empirical convergence behavior of the nested simulation procedures for European call options, which is the most basic option type.
-To examine the sensitivity of the empirical convergence behavior to the option type, we consider path-dependent options, namely geometric Asian options and barrier options.
+In our previous numerical experiments, we have examined the empirical convergence behavior of the nested simulation procedures for European call options, which only depends on the asset price at maturity.
+To examine the sensitivity of the empirical convergence behavior to the option type, we consider path-dependent options, i.e., geometric Asian options and barrier options.
 
 \begin{figure}[ht!] 
     \centering
@@ -1113,7 +1117,8 @@ To examine the sensitivity of the empirical convergence behavior to the option t
 
 In Figure~\ref{fig1:1x03}, the empirical convergence of the nested simulation procedures for the quadratic tracking errors of Portfolio 1 and Portfolio 4 is illustrated for $d = 20$.
 The empirical rates of standard, likelihood ratio-based, and KRR-based nested simulation procedures closely ensemble their asymptotic rates for path-dependent options.
-The empirical rate of convergence of the regression-based and kernel smoothing-based procedures is much higher than their asymptotic rates for barrier options, with reasons explained in Section~\ref{sec1:regression-convergence}.
+The empirical rate of convergence of the regression-based and kernel smoothing-based procedures is much higher than their asymptotic rates for barrier options. 
+The reasons are explained in Section~\ref{sec1:regression-convergence} and Section~\ref{sec1:kernel-smoothing-convergence}.
 
 \begin{figure}[ht!] 
     \centering
@@ -1123,11 +1128,12 @@ The empirical rate of convergence of the regression-based and kernel smoothing-b
     \label{fig1:5503} 
 \end{figure}
 
-In~\cite{broadie2015risk}, the authors propose a numerical example where the payoff has a W-shape with respect to the underlying asset price.
+In~\cite{broadie2015risk}, the authors propose a numerical example where the payoff has a W-shape with respect to the asset price at maturity.
 We have incorporated this example as Portfolio 5.
 In Figure~\ref{fig1:5503}, the empirical convergence of the nested simulation procedures for quadratic tracking error and mean excess loss on Portfolio 5 is illustrated for $d = 1$.
 For all procedures, we observe a similar convergence behavior as in other path-dependent options.
-The MSEs of the kernel smoothing-based and KRR-based procedures do not decrease monotonically as the simulation budget increases, as observed and analyzed in Section~\ref{sec1:kernel-smoothing-convergence}.
+The MSEs of the kernel smoothing-based and KRR-based procedures do not decrease monotonically as the simulation budget increases.
+This fluctuating behavior is observed and analyzed in Section~\ref{sec1:kernel-smoothing-convergence}.
 
 \begin{figure}[ht!] 
     \centering
@@ -1141,13 +1147,15 @@ Figure~\ref{fig1:110x} illustrates similar observations for sensitivity to diffe
 A change in the risk measure of interest does not affect the empirical convergence behavior of all nested simulation procedures.
 From the empirical convergence results, we observe that the empirical rates of convergence of the regression-based nested simulation procedure are the highest among all nested simulation procedures for all risk measures and option types.
 Furthermore, the regression-based procedure is stable across different payoff structures and risk measures. 
-Its MSEs decrease quickly in the beginning, and after reaching a certain budget level, the rate of decrease stabilizes to match its asymptotic rate of convergence.
+Its MSEs decrease quickly in the beginning, and after reaching a certain level of $\Gamma$, the rate of decrease stabilizes to match its asymptotic rate of convergence.
+Parametric regression is the most attractive metamodel for nested simulation procedures due to its fast empirical convergence behavior, stability across different payoff structures and risk measures, and ease of implementation.
+The following sections focus on the regression-based nested simulation procedure for the rest of the numerical experiments.
 
 \subsection{Sensitivity to level for VaR and CVaR} \label{sec1:sensitivity-level}
 
 The level of VaR and CVaR is a critical factor that determines the complexity of the risk measure estimation.
-In our previous numerical experiments, the level of VaR and CVaR is set to be the 90\% quantile of the distribution of the inner simulation noise.
-In this section, we examine the empirical convergence of the regression-based nested simulation procedures for different levels of VaR and CVaR, i.e., $80\%$, $90\%$, $95\%$, $99\%$, and $99.6\%$.
+In our previous numerical experiments, the level of VaR and CVaR is set to be the $90\%$ quantile of the distribution of the inner simulation noise.
+In this section, we examine the empirical convergence of the regression-based nested simulation procedures for other levels of VaR and CVaR, i.e., $80\%$, $95\%$, $99\%$, and $99.6\%$.
 
 \begin{figure}[ht!] 
     \centering
