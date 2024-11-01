@@ -438,11 +438,11 @@ In the case of learning dynamic lapse features, freezing the LSTM layers is not 
     \centering
     \begin{tabular}{lllll}
     \toprule
-    \textbf{Source} & \textbf{Extensive} & \textbf{Fine-tuning} & \textbf{Layer Freezing} & \textbf{Without TL} \\
+    \textbf{Lapse Type} & \textbf{Extensive} & \textbf{Fine-tuning} & \textbf{Layer Freezing} & \textbf{Without TL} \\
     \midrule
-    No Lapse GMMB & N/A & 0.4894 & 0.3361 & N/A \\
-    Static Lapse GMMB & N/A & 0.0794 & 0.0763 & N/A \\
-    Dynamic Lapse GMMB & 0.0587 &  N/A &  N/A & 0.2950 \\
+    No Lapse & N/A & 0.4894 & 0.3361 & N/A \\
+    Static Lapse & N/A & 0.0794 & 0.0763 & N/A \\
+    Dynamic Lapse & 0.0587 &  N/A &  N/A & 0.2950 \\
     \bottomrule
     \end{tabular}
     \caption{Comparison of different TL methods on GMMB contracts}

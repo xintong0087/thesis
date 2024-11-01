@@ -3,19 +3,19 @@
 \contentsline {table}{\numberline {2.1}{\ignorespaces Smoothness assumption of $h$ for different nested simulation procedures}}{17}{table.caption.9}%
 \contentsline {table}{\numberline {2.2}{\ignorespaces Existing asymptotic convergence results of nested simulation procedures for MSE}}{25}{table.caption.10}%
 \contentsline {table}{\numberline {2.3}{\ignorespaces Asymptotic rate of convergence of nested simulation procedures in MSE}}{41}{table.caption.13}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the MLMC procedure for different levels}}{56}{table.caption.25}%
-\contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{57}{table.caption.26}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the MLMC procedure for different levels}}{57}{table.caption.25}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{58}{table.caption.26}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{76}{table.caption.30}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{78}{table.caption.31}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{85}{table.caption.37}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{88}{table.caption.39}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{88}{table.caption.40}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Spearman (and Pearson) correlation coefficients between high-capacity LSTM predicted losses and true losses.}}{89}{table.caption.41}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{77}{table.caption.30}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{79}{table.caption.31}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{86}{table.caption.37}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{89}{table.caption.39}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{89}{table.caption.40}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Spearman (Pearson) correlation coefficients of high-capacity LSTM predictions.}}{90}{table.caption.41}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces VA Contracts for Transfer Learning Experiments}}{106}{table.caption.46}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different TL methods on GMMB contracts}}{111}{table.caption.50}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of different TL methods to GMWB contracts}}{113}{table.caption.52}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces VA Contracts for Transfer Learning Experiments}}{107}{table.caption.46}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different TL methods on GMMB contracts}}{112}{table.caption.50}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of different TL methods to GMWB contracts}}{114}{table.caption.52}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{138}{table.caption.57}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{139}{table.caption.57}%

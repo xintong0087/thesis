@@ -229,8 +229,8 @@ Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$
 
 \begin{itemize}
     \item   Regression:
-            $$\hat{L}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta}^{\text{REG}},$$
-            where $\Phi$ is a chosen basis, and $\hat{\beta}^{\text{REG}}$ is estimated from the training samples.
+            $$\hat{L}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta},$$
+            where $\Phi$ is a chosen basis, and $\hat{\beta}$ is estimated from the training samples.
             In~\cite{broadie2015risk}, the convergence analysis is performed on the expection Equation~\ref{eq1:sl-E} and for smooth and Lipschitz continuous $h$. 
             Connections between the expectation and the MSE are discussed in the Appendix.
     \item   Kernel smoothing:
@@ -954,24 +954,26 @@ We start by examining the empirical convergence results for the most basic case,
 In Figure~\ref{fig1:compareAll}, the MSEs of the nested simulation procedures are plotted against the total simulation budget $\Gamma$ in a log-log scale, where each point represents the average MSE of the corresponding estimator over \num{1000} macro replications of the same experiment.
 Due to the difficulty of fixing $\Gamma$ for the MLMC procedure, the empirical rate of convergence of the MLMC procedure is not reported here, but a detailed analysis of the empirical convergence of the MLMC procedure is provided in Section~\ref{sec1:empirical-mlmc}.
 
-The MSEs of the nested simulation procedures are fitted with a regression line, and the slope of the fitted line is reported as the empirical rate of convergence of the corresponding procedure.
-The second number in the legend is the asymptotic rate of convergence obtained from the theoretical analysis.
-By comparing the empirical rates of convergence with the asymptotic rates, we can observe that the empirical rates of all procedures closely match their asymptotic rates.
+A regression line is fitted to the MSEs of each nested simulation procedure against the simulation budget $\Gamma$ in a log-log scale, and the slope of the fitted line is reported.
+The slopes of the fitted lines can be interpreted as the empirical rates of convergence.
+Alongside in the parentheses are the asymptotic rates of convergence obtained by the theoretical analysis in Section~\ref{sec1:asymptotic-convergence}.
+By comparing the empirical rates of convergence with the asymptotic rates, we can observe how well the empirical rates of convergence match their asymptotic rates.
+In the case illustrated in Figure~\ref{fig1:compareAll}, the empirical rates of all procedures closely match their asymptotic rates.
 
-Except for the standard nested simulation procedure, the empirical rates of convergence of the other procedures are close to $\Gamma^{-1}$.
-Pooling of inner simulation samples across different outer scenarios is the key reason for their higher empirical rates of convergence.
+Except for the standard nested simulation procedure, the empirical rates of convergence of the other procedures are close to $\Gamma^{-1}$, i.e., all of them achieve similar finite-sample performance that is better than the standard procedure.
+Pooling of inner simulation samples across different outer scenarios is the key reason behind their higher empirical rates of convergence.
 However, pooling also introduces additional computational cost that is not reflected in the simulation budget $\Gamma$.
 Due to the computational complexity of the likelihood ratio-based and the KRR-based procedures, their MSEs are not reported for $\Gamma$ larger than $\num{16000}$ and $\num{64000}$, respectively.
 Detailed discussion of the additional computational cost of pooling is provided in Section~\ref{sec1:computational-complexity}.
 
 In the following sections, we examine the empirical convergence of the nested simulation procedures in a similar manner as in Figure~\ref{fig1:compareAll}.
-With a more detailed analysis of different risk measures, option types, and asset dimensions, we aim to provide a comprehensive understanding of the convergence behavior of the nested simulation procedures in practice.
+With a more detailed analysis of different risk measures, option types, and asset dimensions, we aim to provide a comprehensive understanding and comparison of the convergence behavior of the nested simulation procedures in practice.
 
 \subsection{Sensitivity to the Asset Dimension} \label{sec1:sensitivity-dimension}
 In portfolio risk management, the asset dimension is a critical factor that determines the complexity of the portfolio and the computational cost of the risk measure estimation.
 The theoretical analyses in Section~\ref{sec1:convergence-orders} suggest that the asymptotic rate of convergence of the nested simulation procedures, except for the kernel smoothing-based procedure, is independent from the asset dimension.
 However, in practice, their empirical convergence behavior could be different.
-In this section, we examine the sensitivity of the empirical convergence of the nested simulation procedures to the asset dimension.
+In this section, we examine the sensitivity to the asset dimension of the empirical convergence of the nested simulation procedures.
 
 \begin{figure}[ht!]
     \centering
@@ -983,47 +985,20 @@ In this section, we examine the sensitivity of the empirical convergence of the 
 
 In Figure~\ref{fig1:assetDimension}, the empirical convergence of the nested simulation procedures for a quadratic tracking error on Portfolio 1 is illustrated for different asset dimensions, i.e., $d = 2$ and $d = 20$.
 The empirical rates of convergence of the standard, the KRR-based, and the likelihood ratio-based procedures closely match their asymptotic rates for both asset dimensions, and they are insensitive to an increase in the asset dimension.
-On the other hand, the empirical rates of convergence of the kernel smoothing-based and regression-based procedures are higher than their asymptotic rates for both asset dimensions.
-They are sensitive to the asset dimension but in different ways.
-The empirical rate of convergence of the kernel smoothing-based procedure decreases as the asset dimension increases.
-This phenomenon is consistent with the theoretical analysis in Section~\ref{sec1:asymptotic-convergence}, where the asymptotic rate of convergence of the kernel smoothing-based procedure is shown to be sensitive to the asset dimension.
-However, the empirical rate is still higher than its asymptotic rate for $d = 2$ and $d = 20$.
-The empirical rates of convergence of the regression-based procedure is higher than its asymptotic rates for both asset dimensions, and the empirical rate is higher for $d = 20$ than for $d = 2$.
-
-\subsection{Empirical Convergence of Parametric Regression Procedures} \label{sec1:regression-convergence}
-
-For both the regression-based and the kernel smoothing-based procedures, the reason for the higher empirical rates can be explained by having poor metamodels for smaller simulation budgets.
-For lower simulation budgets, the trained metamodels of the true inner simulation are poor, and the MSEs of the regression-based and kernel smoothing-based procedures are dominated by the model error of the metamodels.
-In other words, they have not reached their asymptotic regimes yet.
-Due to computation constraints, we are not able to conduct experiments for kernel smoothing-based nested simulation procedures for higher budget levels, but we are able to conduct additional experiments for the regression-based nested simulation procedure.
-In our previous numerical experiments, the empirical rate of convergence of the regression procedure is observed to be much larger than its asymptotic rate of convergence.
-For dimensions larger than $10$, the MSE of the regression procedure decreases quickly in the beginning, and it stabilizes after a certain budget level.
-In~\ref{fig1:reg_lb} illustrates the empirical convergence of the regression-based procedure in more detail at higher simulation budgets, where the asymptotic level of convergence is reached for $d = 20$.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.7\textwidth]{./project1/figures/figure3.png}
-    \caption{Empirical convergence of regression procedure for European call options and $d=20$}
-    \label{fig1:reg_lb} 
-\end{figure}
-
-The left part of Figure \ref{fig1:reg_lb} contains the MSEs of the regression procedure for budget sizes that are smaller than $10^3$. 
-Slopes of the fitted lines on the left correspond to the empirical rate of convergence of the regression procedure for budget levels between $10^3$ and $10^4$.
-To investigate the convergence behavior for higher budget levels, we conduct additional experiments for the European call option with dimension $20$. 
-The additional experiments are summarized on the right of Figure \ref{fig1:reg_lb}.
-After reaching a certain budget level, i.e., $\Gamma = 10^6$, the empirical rate of convergence for the regression-based nested simulation procedure approaches its asymptotic rate. 
-For nested simulation procedures with biased metamodeling, the metamodel estimates of the true inner simulation are poor, especially for smaller budget sizes. 
-We are able to clearly observe this phenomenon for the regression metamodel, and it can be explained by dividing the MSE into metamodeling bias and simulation variance.
-For small budget sizes, the improvement in the bias of the regression metamodel dominates the improvement in simulation variance. 
-Performing poorly for extremely low simulation budgets, the regression metamodel improves significantly as the simulation budget increases.
-As the simulation budget gets higher, the improvement of the regression bias becomes negligible compared with that of the simulation variance. 
-The regression metamodel ceases to improve after reaching a certain level ($\Gamma = 10^6$ in our case), and the improvement of simulation variance dominates.
-Due to high computational costs, we are not able to conduct experiments for higher budget levels, but we expect the MSE of the regression-based nested simulation procedure to stabilize after $\Gamma = 10^6$, and the empirical rate of convergence to approach its asymptotic rate.
+Conversely, both the kernel smoothing-based and regression-based procedures are greatly affected by the asset dimension.
+Their sensitivities to the asset dimension differ in finite-sample experiments:
+\begin{itemize}    
+    \item For the kernel smoothing-based procedure, the empirical rate of convergence decreases as the asset dimension increases. 
+    This observation aligns with the theoretical analysis in Section~\ref{sec1:asymptotic-convergence}, which demonstrates that the asymptotic rate of convergence of the kernel smoothing-based procedure is sensitive to the asset dimension.
+    Nevertheless, even for $d = 2$ and $d = 20$, the empirical rate remains higher than its asymptotic rate.
+    \item For the regression-based procedure, the asymptotic rate is not affected by the asset dimension, but the empirical rates of convergence are higher than the asymptotic rates for both asset dimensions, and the empirical rate is higher for $d = 20$ than for $d = 2$.
+\end{itemize}
+In the following sections, we provide detailed explanations for the discrepancy between their empirical rates of convergence and their asymptotic rates.
 
 \subsection{Empirical Convergence of Kernel Smoothing-Based Procedures} \label{sec1:kernel-smoothing-convergence}
 
 Kernel smoothing is a nonparametric regression metamodel.
-According to the theoretical analysis in Section~\ref{sec1:asymptotic-convergence}, the asymptotic rate of convergence of the kernel smoothing-based nested simulation procedure is highly dependent on the dimension of the asset.
+According to the theoretical analysis in Section~\ref{sec1:asymptotic-convergence}, the asymptotic rate of convergence of the kernel smoothing-based nested simulation procedure is highly dependent on the asset dimension $d$.
 In this section, we use a kNN metamodel for the kernel smoothing-based nested simulation procedure, and we examine its empirical convergence for different asset dimensions.
 
 \begin{figure}[ht!]
@@ -1062,7 +1037,66 @@ In Figure~\ref{fig1:kernel_cv}, the empirical convergence of the kernel smoothin
 The observation is that the value of optimal $k$ estimated by cross-validation is highly variable across different replications.
 For $d = 2$, the optimal value of $k$ is estimated to be between $120$ to $220$ for most replications, and the estimated risk measures are close to the true risk measure of $0.1$.
 For the two replications where $k = 80$ is estimated as the optimal value of $k$, the resulting estimates of risk measures are $0.1187$ and $0.1189$, which are significantly higher than the estimated risk measures for the other replications and far from the true risk measure of $0.1$.
-This observation suggests that the empirical convergence of the kernel smoothing-based nested simulation procedure is highly dependent on the cross-validation of the hyperparameters of the metamodel.
+This observation suggests that the empirical convergence of the kernel smoothing-based nested simulation procedure is highly sensitive to the cross-validation of the hyperparameters of the metamodel.
+A KRR-based nested simulation procedure suffers from the same problem. 
+
+\subsection{Empirical Convergence of Parametric Regression Procedures} \label{sec1:regression-convergence}
+
+For both the regression-based and kernel smoothing-based procedures, the observed higher empirical rates of convergence can be explained by the poor performance of their metamodels at low simulation budgets. 
+When simulation budgets are low, the metamodels trained to approximate the true inner simulation are inadequate.
+The MSEs for these procedures are dominated by the model errors of the metamodels.
+In other words, they have not yet reached their asymptotic convergence regimes.
+
+Due to computation constraints, we are not able to conduct experiments for kernel smoothing-based nested simulation procedures for higher budget levels, but we are able to conduct additional experiments for the regression-based nested simulation procedure.
+In our previous numerical experiments, the empirical rate of convergence of the regression procedure is observed to be much larger than its asymptotic rate of convergence.
+For dimensions larger than $10$, the MSE of the regression procedure decreases quickly in the beginning, and its rate of decrease stabilizes after a certain budget level.
+In~\ref{fig1:reg_lb} illustrates the empirical convergence of the regression-based procedure in more detail at higher simulation budgets, where the asymptotic level of convergence is reached for $d = 20$.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./project1/figures/figure3.png}
+    \caption{Empirical convergence of regression procedure for European call options and $d=20$}
+    \label{fig1:reg_lb} 
+\end{figure}
+
+The left part of Figure \ref{fig1:reg_lb} contains the MSEs of the regression procedure for budget sizes that are smaller than $10^3$. 
+Slopes of the fitted lines on the left correspond to the empirical rate of convergence of the regression procedure for budget levels between $10^3$ and $10^4$.
+To investigate the convergence behavior for higher budget levels, we conduct additional experiments for the European call option with dimension $20$. 
+The additional experiments are summarized on the right side of Figure \ref{fig1:reg_lb}.
+After reaching a certain budget level, i.e., $\Gamma = 10^6$ in our case, the empirical rate of convergence for the regression-based nested simulation procedure approaches its asymptotic rate. 
+For nested simulation procedures with a biased metamodel, the metamodel estimates of the true inner simulation are poor, especially for smaller budget sizes. 
+We are able to clearly observe this phenomenon for the regression metamodel, and it can be explained by dividing the MSE into metamodeling bias and simulation variance.
+\begin{itemize}
+    \item For small budget sizes, the improvement in the bias of the regression metamodel dominates the improvement in simulation variance. 
+    Performing poorly for extremely low simulation budgets, the regression metamodel improves significantly as the simulation budget increases.
+    \item As the simulation budget gets higher, the improvement of the regression bias becomes negligible compared with that of the simulation variance. 
+    The regression metamodel ceases to improve after reaching a certain level ($\Gamma = 10^6$ in our case), and the improvement of simulation variance dominates.
+\end{itemize}
+Due to high computational costs, we are not able to conduct experiments for even higher budget levels, but we expect the MSE of the regression-based nested simulation procedure to stabilize after $\Gamma = 10^6$, and the empirical rate of convergence to approach its asymptotic rate.
+In the context of nested simulation procedures, a parametric regression metamodel has several advantages over a nonparametric regression metamodel.
+\begin{itemize}
+    \item Parametric regression achieves a good empirical convergence behavior for a moderate simulation budget.
+    \item Parametric regression is insensitive to changes in the asset dimension.
+    \item Parametric regression is easier to implement.
+    It does not require cross-validation to select the hyperparameters of the metamodel.
+\end{itemize}
+However, parametric regression suffers from the model misspecification risk.
+More specifically, selecting a wrong regression basis can lead to a poor metamodel estimate, where the MSE of the nested simulation procedure is dominated by the model error of the metamodel~\citep{broadie2015risk}.
+
+In our previous numerical experiments, the regression-based nested simulation procedure is implemented with Laguerre polynomials up to degree $3$ as the basis functions.
+It is a standard choice in the literature.
+To examine the sensitivity of the empirical convergence behavior to the regression basis, we consider different basis functions, i.e., regular polynomial regression up to degree $3$.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=0.48\textwidth]{./project1/figures/figure13a.png}
+    \includegraphics[width=0.48\textwidth]{./project1/figures/figure13b.png}
+    \caption{Empirical convergence of regression-based nested simulation procedures for different regression bases}
+    \label{fig1:sens_basis}
+\end{figure}
+
+In Figure~\ref{fig1:sens_basis}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-CVaR are illustrated for the two different regression bases.
+The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the chosen regression basis.
 
 \subsection{Sensitivity to the Option Types and Risk Measures} \label{sec1:sensitivity-option-type}
 
@@ -1142,22 +1176,7 @@ To examine the sensitivity of the empirical convergence behavior to the asset mo
 In Figure~\ref{fig1:sens_model}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-CVaR are illustrated for different asset models, i.e., a geometric Brownian motion and a Heston model.
 The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the asset model.
 
-\subsection{Sensitivity to the regression basis} \label{sec1:sensitivity-basis}
-
-In our previous numerical experiments, the regression-based nested simulation procedure is implemented with Laguerre polynomials up to degree $3$ as the basis functions.
-To examine the sensitivity of the empirical convergence behavior to the regression basis, we consider different basis functions, i.e., regular polynomial regression up to degree $3$.
-
-\begin{figure}[ht!] 
-    \centering
-    \includegraphics[width=0.48\textwidth]{./project1/figures/figure13a.png}
-    \includegraphics[width=0.48\textwidth]{./project1/figures/figure13b.png}
-    \caption{Empirical convergence of regression-based nested simulation procedures for different regression bases}
-    \label{fig1:sens_basis}
-\end{figure}
-
-In Figure~\ref{fig1:sens_basis}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-CVaR are illustrated for different regression bases, i.e., Laguerre polynomials and regular polynomials up to degree $3$.
-The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the chosen regression basis.
-In summary, the empirical convergence behavior of the regression-based nested simulation procedure is stable across different risk measures, option types, asset dimensions, levels of VaR and CVaR, asset models, and regression bases.
+In summary, we find the empirical convergence behavior of the regression-based nested simulation procedure to be stable across different risk measures, option types, asset dimensions, levels of VaR and CVaR, asset models, and regression bases.
 With a limited total budget, the regression-based nested simulation procedure is the most robust and stable among all nested simulation procedures. 
 
 \subsection{Empirical Convergence of MLMC} \label{sec1:empirical-mlmc}
