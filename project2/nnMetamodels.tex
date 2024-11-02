@@ -451,7 +451,7 @@ The reason for not overfitting is still an open question in deep learning resear
 One possible explanation is that the optimization surface of DNNs is highly non-convex and has many local minima.
 As a result, given a good initialization, the optimization algorithm is likely to find a solution that generalizes well to unseen data.
 
-There are also differences among the three DNN models due to having different architectures.
+There are significant differences among the three DNN models due to having different architectures.
 The FNN is a generic neural network, its test error is larger than the training error, which is a sign of over-fitting and poor generalization.
 In contrast, RNN and LSTM networks have recurrent strucutures and are designed to capture temporal relationship in the high-dimensional feature.
 As a result, they have lower training errors, i.e., they fit the data better, and have lower testing error, i.e., they generalize better.
