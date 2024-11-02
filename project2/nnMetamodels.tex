@@ -247,14 +247,15 @@ For GMWB, a standard nested simulation procedure to estimate the $\alpha$-CVaR o
 \end{algorithmic}
 \end{algorithm}
 
-We refer to the collection of experiments needed conditional on one scenario $\bS^{(i)}$ to estimate $L_i$, that is, all upward arrows in Figure~\ref{fig2:illustration}, as one inner simulation experiment.
+We refer to the collection of experiments needed conditional on one scenario $\bS^{(i)}$ to estimate $L_i$, that is, all upward arrows in Figure~\ref{fig2:illustration}, as one inner simulation.
 We make four observations:
 \begin{itemize}
-    \item   each inner simulation is time-consuming, as it includes $T$ simulation experiments, one at each time $t=0,\ldots,T-1$,
-    \item   after running inner simulations for $M$ scenarios, we obtain simulated data, that is, feature-label pairs, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$; the feature vector $\bS$ is $T$ dimensional,
-    \item   $\Lhat_i^{MC}$ is a standard Monte Carlo estimator of the true loss for scenario $\bS^{(i)}$. It is an unbiased estimator and its variance is inversely proportional to the number of inner replications $N$. 
+    \item   Each inner simulation is time-consuming, as it includes $T$ simulation experiments: one at each time $t=0,\ldots,T-1$,
+    \item   After running inner simulations for $M$ scenarios, we obtain simulated dataas feature-label pairs, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$; the feature vector $\bS$ is $T$ dimensional.
+    \item   $\Lhat_i^{MC}$ is a standard Monte Carlo estimator of the true loss for scenario $\bS^{(i)}$. 
+    It is an unbiased estimator and its variance is inversely proportional to the number of inner replications $N$. 
     As $N$ approaches infinity, $\Lhat_i^{MC}$ converges to the true loss $L_i$, and
-    \item   most importantly, when estimating tail risk measures such as $\alpha$-CVaR, only a small number of estimated losses, that is, those associated with the set of tail scenarios $\widehat{\tail}_{k}$ are used in the estimator.
+    \item   Most importantly, when estimating tail risk measures such as $\alpha$-CVaR, only a small number of estimated losses, that is, those associated with the set of tail scenarios $\widehat{\tail}_{k}$ are used in the estimator.
 \end{itemize}
 
 \section{Two-Stage Nested Simulation with Metamodels} \label{sec2:metamodel2Stage}
@@ -262,31 +263,6 @@ We make four observations:
 Based on the three observations above and inspired by~\cite{dang2020efficient}, we propose a two-stage nested simulation procedure which uses a DNN metamodel to identify potential tail scenarios.
 We present our proposed procedure as a competitor to the standard procedure with $M$ outer scenarios and $N$ inner replications for each outer scenario, as described in Section~\ref{subsec:dynamicHedge}.
 We propose a two-stage procedure with a neural network metamodel that aims to produce a CVaR estimate that's as accurate as that of the standard procedure, but uses fewer computations as than latter.
-
-% \begin{itemize}
-%     \item[I.] \textbf{Train a neural network metamodel using simulation data.}
-%     \begin{itemize}[leftmargin=0pt]
-%         \item Use a fraction of the total simulation budget to run Steps 1, 2, and 3 in the standard procedure with the same number of outer scenarios, $M$, but a much smaller number of inner replications, i.e., $N'\ll N$, in each scenario.
-%         Then obtain $M$ simulated samples, i.e., feature-label pairs, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$.
-%         Note that $N'$ may be 10 times or even 100 times smaller than $N$, so the loss estimates $\Lhat_i$ are expected to have larger variance, i.e., more noisy, than the standard procedure's loss estimates.
-    
-%         \item Use the simulated data, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$ to train a neural network.
-%         We refer to the trained model as a \textit{metamodel} as denote it by $\Lhat^{PD}(\bS)$.
-%         Denote the predicted losses for the outer scenarios by $\Lhat^{PD}_i = \Lhat^{PD}(\bS^{(i)})$, $i=1,\ldots,M$.
-    
-%         \item Sort the predicted losses $\Lhat^{PD}_{(1)}\leq \Lhat^{PD}_{(2)} \leq \cdots\leq \Lhat^{PD}_{(M)}$ to identify a \textit{predicted tail scenario set} associated with the largest predicted losses, i.e., $\widehat{\tail}_{m}^{PD}:=\{i: \Lhat^{PD}_i > \Lhat^{PD}_{(M-m)}\}$.
-%         The number of predicted tail scenarios, $m$, is a user's choice and will be discussed later.
-%     \end{itemize}
-%         \item[II.] \textbf{Concentrate simulation on predicted tail scenarios.}
-%         \begin{itemize}[leftmargin=0pt]
-        
-%         \item Run Steps 2 and 3 of the standard procedure with the same number of inner replications, $N$, but only on the predicted tail scenarios, i.e., scenarios associated with $\widehat{\tail}_{m}^{PD}$.
-%         Denote the standard procedure's estimated losses and sorted losses by $\Lhat^{ML}_i$ and $\Lhat^{ML}_{(i)}$, respectively, $i=1,\ldots,m$.
-        
-%         \item Estimate the $\alpha$-CVaR of $L$ by $\widehat{\CVaR}^{ML}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}\Lhat_{(i)}^{ML} = \frac{1}{(1-\alpha)M} \sum_{i \in \widehat{\tail}_{(1-\alpha )M}^{ML}}\Lhat_{i}^{ML}$
-%         where $\widehat{\tail}_{k}^{ML}$ denotes a \textit{predicted tail scenario set} associated with the largest $k$ estimated losses.
-%     \end{itemize}
-%     \end{itemize}
 
 \begin{algorithm}
 \caption{Two-Stage Metamodeling Nested Simulation Procedure for Estimating CVaR}
@@ -309,14 +285,14 @@ We propose a two-stage procedure with a neural network metamodel that aims to pr
 
 Similar to~\cite{dang2020efficient}, the proposed two-stage procedure in Algorithm ~\ref{alg2:twoStageProcedure} uses the metamodel predictions to identify the predicted tail scenario set in Stage 1.
 However, different from their fixed-budget simulation design, we attempt to achieve a target accuracy.
-Specifically, in Stage 2 we propose using a standard procedure with the same number of inner replications, $N$, as a competing simulation procedure (or a benchmark).
-There are two different experiment designs for nested simulation procedures: fixed-budget design and fixed-accuracy design.
+Specifically, in Stage 2 we propose using a standard procedure with the same number of inner replications, $N$, as a benchmark procedure.
+There are two different types of experiment designs for nested simulation procedures: fixed-budget design and fixed-accuracy design.
 In a fixed-budget design, the simulation budget is fixed and the goal is to achieve the highest accuracy possible within the budget.
 Let $\Gamma = MN$ be the simulation budget for the standard procedure, where each scenario receives $\frac{\Gamma}{M}$ inner replications.
 In the proposed two-stage procedure, suppose Stage 2 uses 1\% of the simulation budget, $\alpha = 95\%$, and $m=(1-\alpha)M$, then $99\%$ of the simulation budget is concentrated on $5\% M$ predicted tail scenarios in Stage 2.
 In other words, each predicted tail scenario receives $\frac{99\% \Gamma}{5\% M}$ inner replications, almost 20 times more than that in the standard procedure.
 This budget concentration is expected to improve the estimation accuracy of the two-stage procedure compared to a standard procedure with the same budget. 
-If the metamodel is accurate in predicting true tail scenarios, then the two-stage procedure is expected to achieve higher accuracy than the standard procedure with the same budget.
+If the metamodel is accurate in predicting true tail scenarios, the two-stage procedure is expected to achieve higher accuracy than the standard procedure with the same budget.
 However, we believe that the goal of designing an efficient simulation procedure is to solve practical problems faster, so a target-accuracy design is more suitable, which refers to obtaining a similar level of accuracy as the standard procedure but with much less simulation budget.
 One other reason for this fixed-accuracy design is to investigate whether DNN metamodels trained with much noisier labels can identify true tail scenarios with similar accuracy as the standard procedure.
 The size of the predicted tail scenario set in Stage 1, $m$, is an important experiment design parameter that affects the correct identification of true tail scenarios and ultimately affects the estimation accuracy for CVaR.
@@ -346,16 +322,24 @@ This observation motivates us to propose a single-stage procedure that uses the 
 \end{algorithm}
 
 The single-stage procedure has three major advantages over the two-stage procedure:
-(1) the single-stage procedure is expected to be more efficient than the two-stage procedure because it does not require the running the standard procedure in Stage 2, 
-(2) the safety margin $\epsilon$ is not needed in the single-stage procedure, and
-(3) most importantly, the single-stage procedure is not limited to just estimating tail risk measures and can be extended to provide a broader assessment of risk. 
-It can be naturally adapted to estimate risk measures that require the knowing of the entire loss distribution, such as the standard deviation or the squared tracking error.
-In our numerical experiments, we will compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $\alpha$-CVaR of the hedging losses for GMWB, and we will also examine the single-stage procedure's performance in estimating the standard deviation of the hedging losses.
+\begin{enumerate}
+    \item The single-stage procedure is expected to be more efficient than the two-stage procedure because it does not require the running the standard procedure in Stage 2.
+    \item The safety margin $\epsilon$ is not needed in the single-stage procedure.
+    The safety margin is difficult to determine because it depends on the metamodel's accuracy in identifying true tail scenarios.
+    The single-stage procedure does not need a safety margin because it directly estimates the risk measure using the predicted losses.
+    \item Most importantly, the single-stage procedure is not limited to just estimating tail risk measures and can be extended to provide a broader assessment of risk. 
+    It can be naturally adapted to estimate risk measures that require the knowing of the entire loss distribution, such as the standard deviation or the squared tracking error.
+    In our numerical experiments, we will compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $\alpha$-CVaR for a larger range of $\alpha$.
+\end{enumerate}
 
 
 \section{Numerical Results} \label{sec2:numerical}
 
-We conduct a series of simulation experiments to (1) demonstrate the efficiency of the proposed metamodeling procedures and (2) examine the error tolerance to noisy training data in deep learning models.
+We conduct a series of simulation experiments to 
+\begin{enumerate}
+    \item demonstrate the efficiency of the proposed metamodeling procedures, and
+    \item examine the error tolerance to noisy training data in deep learning models.
+\end{enumerate}
 The problem settings in our experiments are identical to those in~\cite{dang2020efficient}:
 we consider estimating the $95\%$ CVaR of the hedging loss of a GMWB contract, which is one of the most complex VA contracts in the market.
 The VA contracts have a 20-year maturity and are delta-hedged with monthly rebalancing, i.e., $T=240$ rebalancing periods.
@@ -452,7 +436,8 @@ In machine-learning terminologies, the three DNN models have much higher \textit
 
 \footnotetext{Results of the well-trained RNN, where the ones suffers from the vanishing gradient issue are removed from the averages.}
 
-For each metamodel, 50 independent macro replications are run\footnote{Each macro replication includes simulating a noisy dataset, separating it into training and test data, fitting a metamodel, and making predictions}.
+For each metamodel, 50 independent macro replications are run.
+Each macro replication involves simulating a noisy dataset, separating it into training and test data, fitting a metamodel, and making predictions.
 The last three columns in Table~\ref{tab:gmwb_arch} display the average squared errors between the predicted losses and the losses (labels) in different datasets.
 The half lengths of their 95\% confidence interval of these quantities are also reported in parentheses.
 We first observe that the two regression metamodels' errors are larger than those of three DNN models.

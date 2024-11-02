@@ -17,9 +17,9 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{72}{figure.caption.29}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{82}{figure.caption.32}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{82}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{83}{figure.caption.33}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{83}{figure.caption.34}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{84}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{85}{figure.caption.35}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{86}{figure.caption.36}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{89}{figure.caption.38}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlations for high-capacity LSTM metamodel.}}{92}{figure.caption.42}%

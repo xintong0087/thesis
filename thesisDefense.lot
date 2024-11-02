@@ -6,9 +6,9 @@
 \contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the MLMC procedure for different levels}}{57}{table.caption.25}%
 \contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{58}{table.caption.26}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{78}{table.caption.30}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{79}{table.caption.30}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{80}{table.caption.31}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{87}{table.caption.37}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{88}{table.caption.37}%
 \contentsline {table}{\numberline {3.4}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{90}{table.caption.39}%
 \contentsline {table}{\numberline {3.5}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{90}{table.caption.40}%
 \contentsline {table}{\numberline {3.6}{\ignorespaces Spearman (Pearson) correlation coefficients of high-capacity LSTM predictions.}}{91}{table.caption.41}%
