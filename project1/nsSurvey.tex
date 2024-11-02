@@ -1328,21 +1328,24 @@ The remaining computations can be decomposed into two parts: hyperparameter tuni
 The hyperparameter tuning cost is the cost of estimating the optimal hyperparameters for the metamodels, and the model implementation cost is the cost of fitting the metamodels and generating predictions from the trained metamodels.
 For each procedure, each point in Figure~\ref{fig1:c_model} represents the average computational time for a given simulation budget $\Gamma$.
 A regression model is fitted to each model respectively, and its slope can be viewed as the growth rate of the computational time with respect to $\Gamma$.
-The total computational time of the standard procedure is mostly attributed to finding the optimal $M$ and $N$ using the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap}.
-This cost does not grow with the simulation budget $\Gamma$, as its slope is close to $0$.
-The regression-based procedure does not require hyperparameter tuning, and its total computational time is mainly attributed to the model implementation.
-The slope of the regression line is close to $1$, resembling the its algorithmic complexity in Table~\ref{tab1:complexity}.
-The kernel smoothing-based and KRR-based procedure requires cross-validation to estimate the optimal hyperparameters.
-In our implementaion of kNN, the cross-validation is conducted using a grid search with a search space whose cardinality does not grow with the simulation budget $\Gamma$.
-However, the cross-validation cost of the kernel smoothing-based procedure grows with the simulation budget $\Gamma$ as more samples are involved.
-The KRR-based procedure requires Bayesian optimization to estimate the optimal hyperparameters, and the cardinality of the search space grows with the simulation budget $\Gamma$.
-The empirical cost of the KRR-based procedure does not resemble its algorithmic complexity in Table~\ref{tab1:complexity}.
-The efficient implementation of KRR is an active area of research, and the computational cost of KRR can be reduced by using a low-rank approximation of the kernel matrix, e.g., the Nystr\"om method~\citep{nystrom1930praktische}.
-Our observation for KRR implementation time is in line with the findings in~\cite{scikit-learn}, where the cost of KRR is reported quickly increasing with the number of samples.
-The likelihood ratio-based procedure requires no hyperparameter tuning, and its total computational time is mainly attributed to the likelihood weight calculation, which is $\mathcal{O}(M^2)$. 
+\begin{itemize}
+    \item The total computational time of the standard procedure is mostly attributed to finding the optimal $M$ and $N$ using the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap}.
+    This cost does not grow with the simulation budget $\Gamma$, as its slope is close to $0$.
+    \item The regression-based procedure does not require hyperparameter tuning, and its total computational time is mainly attributed to the model implementation.
+    The slope of the regression line is close to $1$, resembling the its algorithmic complexity in Table~\ref{tab1:complexity}.
+    \item The kernel smoothing-based and KRR-based procedure requires cross-validation to estimate the optimal hyperparameters. 
+    In our implementaion of kNN, the cross-validation is conducted using a grid search with a search space whose cardinality does not grow with the simulation budget $\Gamma$.
+    However, the cross-validation cost of the kernel smoothing-based procedure grows with the simulation budget $\Gamma$ as more samples are involved.
+    The KRR-based procedure requires Bayesian optimization to estimate the optimal hyperparameters, and the cardinality of the search space also grows with the simulation budget $\Gamma$.
+    The empirical cost of the KRR-based procedure does not resemble its algorithmic complexity in Table~\ref{tab1:complexity}.
+    The efficient implementation of KRR is an active area of research, and the computational cost of KRR can be reduced by using a low-rank approximation of the kernel matrix, e.g., the Nystr\"om method~\citep{nystrom1930praktische}.
+    Our observation for KRR implementation time is in line with the findings in~\cite{scikit-learn}, where the cost of KRR is reported quickly increasing with the number of samples.
+    \item The likelihood ratio-based procedure requires no hyperparameter tuning, and its total computational time is mainly attributed to the likelihood weight calculation, which is $\mathcal{O}(M^2)$. 
+\end{itemize}
 In summary, for a large simulation budget, the regression-based procedure is the most efficient among all metamodel-based procedures in terms of computational time.
+For moderate simulation budgets, the regression-based procedure should be the preferred choice.
 
-\section{Conclusion} \label{sec1:conclusion}
+\section{Conclusion and Extensions} \label{sec1:conclusion}
 In the task of estimating risk measures for portfolios of complex financial derivatives, nested simulation procedures are commonly required but often computationally expensive. 
 Tremendous efforts have been made to improve the efficiency of nested simulation procedures by approximating the inner simulation model with a metamodels. 
 In this study, we review the literature on nested simulation procedures in financial engineering and establish fair comparisons of different metamodels using the same set of numerical examples. 
@@ -1359,7 +1362,7 @@ For kernel-based procedures, the computational cost is heavily dependent on the 
 For a nested estimation problem with a given computational budget, we suggest the use of the regression-based simulation procedure when the budget size is moderate. 
 It is efficient to implement, and it exhibits fast empirical convergence in estimating risk measures for option portfolios. 
 However, we have only examined the performance for option portfolios in this study, where finding a suitable set of basis functions for regression is relatively easy.
-For payoff functions with high complexity or high dimensionality, the regression-based procedure may not be the best choice.
 In practice, a variable annuity contract is often high-dimensional in time with a complex payoff structure, and it is a challenging problem for nested simulation procedures.
+The time dependence in the feature space leads to multi-collinearity, and the regression-based procedure may not be the best choice.
 In such cases, a neural network-based procedure may be more suitable, as it is a data-driven algorithm that finds a suitable set of basis functions automatically.
-In Chapter~\ref{chap:project2}, we will examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for variable annuities.
+In Chapter~\ref{chap:project2}, we examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for variable annuities.

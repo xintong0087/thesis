@@ -42,11 +42,11 @@ The contributions of our study are two-fold:
 We are curious about fundamental questions like ``What do DNNs learn from noisy data?'' and ``How well do neural networks learn from noisy data?''.
 Data-driven answers to these questions prevail in the existing literature.
 In supervised learning, DNNs are believed to learn from the given data about the feature-label relationship to predict new labels for unseen features.
-Cross validation using to assess a subset, i.e., the validation set, of the original data, is a common way to access the quality of learning.
+Cross-validation using to assess a subset, i.e., the validation set, of the original data, is a common way to access the quality of learning.
 Generalization error on the test labels is another popular assessment metric.
-But the test set is also a subset of the original data.
+However, the test set is also a subset of the original data.
 In this study, we revisit these questions in a simulation context and propose an alternative approach to answer them.
-Instead of relying solely on real-data (splitting it into multiple subsets), we propose using stochastic simulation outputs as training labels for DNNs.
+Instead of relying solely on real-data and splitting it into multiple subsets, we propose using stochastic simulation outputs as training labels for DNNs.
 By controlling the simulation design parameters, such as the number of independent replications, we can control the quality and also the quantity of the training labels fed into the neural networks.
 In such a controlled environment, we obtain more clear-cut answers to the above fundamental questions.
 
@@ -61,7 +61,7 @@ The metamodel is trained using a set of simulated data, and it is used to predic
 The study of metamodeling is an active research area in the simulation literature, and using DNNs as metamodels is a relatively new development.
 ~\cite{fonseca2003simulation} provide general guidelines for simulation metamodeling with neural networks,~\cite{lieu2022adaptive} use DNNs as metamodels of a simulation model for structural reliability analysis, and~\cite{salle2014efficient} show that neural network metamodels help achieve higher prediction accuracy that other metamodels in approximating agent-based simulation models.
 A popular metamodel in nested simulation procedures is stochastic kriging.
-~\cite{liu2010stochastic} use stochastic kriging as a metamodel of Monte Carlo simulations to estimate the Conditional Value-at-Risk (CVaR) of a portfolio of derivative securities, and~\cite{gan2015valuation} use stochastic kriging for an efficient valuation of large portfolios of variable annuity (VA) contracts.
+~\cite{liu2010stochastic} use stochastic kriging as a metamodel of Monte Carlo simulations to estimate the CVaR of a portfolio of derivative securities, and~\cite{gan2015valuation} use stochastic kriging for an efficient valuation of large portfolios of variable annuity (VA) contracts.
 Other studies, such as ~\cite{broadie2015risk},~\cite{hong2017kernel}, and~\cite{zhang2022sample} use regression, kernel smoothing, and the likelihood ratio method, respectively.
 Our study has three key distinctions over the existing ones:
 \begin{enumerate}
@@ -88,7 +88,7 @@ Practical suggestions are provided for the choice of suitable metamodels and sim
 
 \section{Problem Formulation} \label{sec2:problem-formulation}
 
-In this section we present notations, problem settings, and a simulation model for risk estimation for hedging errors of variable annuities.
+In this section we present notations, problem settings, and a simulation model for risk estimation for hedging errors of VAs.
 A main goal of the section is to showcase the complexity of the simulation model, which we use as a data generator to train DNN metamodels (Section~\ref{sec2:metamodel2Stage} and Section~\ref{sec2:metamodel1Stage}).
 For readers who are interested in the examination of a neural network metamodel, it is sufficient to understand that our simulation model generates data with 240 features and 1 real-value label and our metamodels are generally applicable to any simulation model that generates data with similar characteristics.
 
@@ -112,7 +112,7 @@ In this study, the loss random variable of interest is the hedging error for VA.
 
 \subsection{Simulation Model for Variable Annuity Payouts}\label{subsec:VApayout}
 
-Variable annuity contracts offer different types of guarantees.
+VA contracts offer different types of guarantees.
 Generally speaking, a portion of the VA premium is invested in a sub-account whose return is linked to some stock indices.
 
 Two relevant types of guarantees in our studies are:
@@ -130,7 +130,7 @@ We refer readers to~\cite{dang2021efficient} for detailed modeling of insurer li
 
 Consider a generic VA contract with maturity $T>0$ periods, e.g., $T=240$ months.
 Denote the policyholder's (random) time of death by $\tau>0$.
-Then the contract expires at $T'=\min\{T,\tau\}$, i.e., the earlier of the contract maturity and the death of the policyholder.
+The contract expires at $T'=\min\{T,\tau\}$, i.e., the earlier of the contract maturity and the death of the policyholder.
 Let $S_t$, $F_t$, and $G_t$ be the indexed stock price, the subaccount value and the guarantee value, respectively, at time $t=1,2,\ldots,T$.
 Evolution of the subaccount value and the guarantee value of a VA contract affect the contract payout.
 Note that the policyholder's (random) time of death also affects the timing of the benefit payout for certain types of VA such as GMDB, but this is not considered in our study for simplicity.
@@ -232,26 +232,6 @@ At each time~$t=1,\ldots,T-1$ of a given outer scenario $\bS^{(i)}$, inner sampl
 Also, $V_0^{(i)}$, $i=1,\ldots,M$ are estimated under $\mathbb{Q}$ via inner simulations at time $0$.
 Recall from Section~\ref{subsec:VApayout} that the stock's sample path, regardless of inner or outer simulation or a combination of both, determines the evolution of the triplet $(S_t,F_t,G_t)$.
 For GMWB, a standard nested simulation procedure to estimate the $\alpha$-CVaR of $L$ is described in Algorithm~\ref{alg2:standardProcedure}.
-
-% For example, for GMWB, a standard nested simulation procedure to estimate the $\alpha$-CVaR of $L$ is as follows:
-% \begin{enumerate}
-%     \item For $i=1,\ldots,M$, simulate outer scenarios $\bS^{(i)} = (S_{1}^{(i)},\ldots,S_{T}^{(i)})$ under the real-world measure $\mathbb{P}$.
-%     Figure~\ref{fig2:illustration} illustrates the inner simulation experiments needed for an outer scenario.
-    
-%     \item For $t=0$, simulate time-$0$ inner paths $\bStilde_{0}^{(j)} = (\Stilde_{1}^{(j)},\Stilde_{2}^{(j)},\ldots,\Stilde_{T}^{(j)})$, $j=1,\ldots,N$ under $\mathbb{Q}$ {and} then estimate $V_0$ by $\Vhat_0 = \sum_{s=1}^{T} e^{-r(T-s)} [(I_s - F_s)^+- \eta_n F_s]$ and estimate $\Deltahat_0 = \Delta_0(\Stilde_{1}^{(j)},\ldots,\Stilde_{T}^{(j)} | S_0)$ based on~\eqref{eq2:delta}.
-%     Note that $S_0$ is known, so these inner paths do not depend on any outer scenario.
-%     The same $\Vhat_0$ and $\Deltahat_0$ are used in all scenarios.
-    
-%     \item Given each scenario $\bS^{(i)}$, the following inner simulation is needed to estimate the corresponding loss $\Lhat_i$ for that scenario.
-%     \begin{enumerate}
-%         \item At each time~$t=1,\ldots,T-1$, simulate inner paths $\bStilde_{t}^{(ij)} = (\Stilde_{t+1}^{(ij)},\ldots,\Stilde_{T}^{(ij)})$, $j=1,\ldots,N$ under $\mathbb{Q}$ {and} then estimate $\Delta_t$ by $\Deltahat_t^{(i)} = \Delta_t(\Stilde_{t+1}^{(ij)},\ldots,\Stilde_{T}^{(ij)} | \bm{S}_t^{(i)})$ based on~\eqref{eq2:delta}.
-
-%         \item Use scenarios $\bS^{(i)}$ and $\Vhat_0$ and $\Deltahat_t^{(i)}$ to calculate losses $\Lhat_i^{MC}$, $t=0,\ldots,T-1$, based on~\eqref{eq2:lossrv}. Then sort them as $\Lhat^{MC}_{(1)}\leq \Lhat^{MC}_{(2)} \leq \cdots\leq \Lhat^{MC}_{(M)}$.
-%     \end{enumerate}
-
-%     \item Estimate $\alpha$-CVaR of $L$ by $\widehat{\CVaR}^{MC}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}\Lhat_{(i)}^{MC} = \frac{1}{(1-\alpha)M} \sum_{i \in \widehat{\tail}_{(1-\alpha )M}^{MC}}\Lhat_{i}^{MC}$
-%     where $\widehat{\tail}_{k}^{MC}$ denotes a \textit{Monte Carlo tail scenario set} associated with the largest $k$ estimated losses.
-% \end{enumerate}
 
 \begin{algorithm} 
 \caption{Standard Nested Simulation Procedure for Estimating CVaR for GMWB Hedging Losses}
