@@ -1300,15 +1300,16 @@ For a fixed $p$, the total additional cost of a regression-based procedure is $\
     \label{fig1:tcc}
 \end{figure}
 
-In our finite-sample experiments, we have observed that the actual computational cost to be significantly different from the theoretical complexity, as not only the order of complexity but also the constant factors can affect the computational cost.
-In Figure~\ref{fig1:tcc}, the total computational time of different nested simulation procedures for European call options and geometric Asian options with $d = 10$ is illustrated in a log-log scale.
+The cost associated with pooling makes a significant impact on the overall computaional complexity of a metamodel-based nested simulation procedure.
+In our finite-sample experiments, we have indeed observed that the actual computational cost to deviate significantly from the simulation cost.
+In Figure~\ref{fig1:tcc}, the total actual computational time of different nested simulation procedures for European call options and geometric Asian options with $d = 10$ is illustrated in a log-log scale.
 The $x$-axis shows the total simulation budget $\Gamma$, and the $y$-axis is the total computational time for 1 replication of the numerical experiment, in seconds.
 All procedures are implemented on a machine with an AMD Ryzen 9 7900X processor with 32GB of RAM.
 8 cores are used for parallel computing, and the total computational time is the sum of the simulation time, the training time, and the prediction time.
 The regression and kernel smoothing-based procedures are the most efficient among the metamodel-based procedures.
 Since the regression-based procedure has a higher empirical rate of convergence, it is preferred over the kNN.
 The likelihood ratio-based and KRR-based procedures are the most computationally expensive among all procedures.
-They are demanding in terms of memory.
+They are also demanding in terms of memory.
 For budgets larger than $10^5$, the likelihood ratio-based procedure becomes impractical as storage of the likelihood weights becomes a bottleneck.
 The KRR-based procedure suffers from both cross-validation and inverting a kernel matrix of size $M \times M$.
 To separate the total computational time into different attributes, we provide a detailed analysis of the total computational time in the remainder of this section.
@@ -1321,9 +1322,9 @@ To separate the total computational time into different attributes, we provide a
     \label{fig1:c_model}
 \end{figure}
 
-Figure~\ref{fig1:c_model} illustrates the computational time of implementing different nested simulation procedures for the portfolio of geometric Asian options with $d = 10$, excluding the simulation time.
+Figure~\ref{fig1:c_model} illustrates the computational time of implementing different nested simulation procedures for the portfolio of geometric Asian options with $d = 10$.
 The simulation time is omitted as it is the same for all procedures.
-The remainder can be decomposed into two parts: hyperparameter tuning and model implementation.
+The remaining computations can be decomposed into two parts: hyperparameter tuning and model implementation.
 The hyperparameter tuning cost is the cost of estimating the optimal hyperparameters for the metamodels, and the model implementation cost is the cost of fitting the metamodels and generating predictions from the trained metamodels.
 For each procedure, each point in Figure~\ref{fig1:c_model} represents the average computational time for a given simulation budget $\Gamma$.
 A regression model is fitted to each model respectively, and its slope can be viewed as the growth rate of the computational time with respect to $\Gamma$.

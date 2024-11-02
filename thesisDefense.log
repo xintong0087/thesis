@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  2 NOV 2024 07:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  2 NOV 2024 08:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1045,12 +1045,12 @@ Package pdftex.def Info: ./project1/figures/figure11b.png  used on input line 12
 <./project1/figures/figure12a.png, id=1504, 578.16pt x 325.215pt>
 File: ./project1/figures/figure12a.png Graphic file (type png)
 <use ./project1/figures/figure12a.png>
-Package pdftex.def Info: ./project1/figures/figure12a.png  used on input line 1318.
+Package pdftex.def Info: ./project1/figures/figure12a.png  used on input line 1319.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
 <./project1/figures/figure12b.png, id=1505, 578.16pt x 325.215pt>
 File: ./project1/figures/figure12b.png Graphic file (type png)
 <use ./project1/figures/figure12b.png>
-Package pdftex.def Info: ./project1/figures/figure12b.png  used on input line 1319.
+Package pdftex.def Info: ./project1/figures/figure12b.png  used on input line 1320.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
  [61 <./project1/figures/figure12a.png> <./project1/figures/figure12b.png>]) (./project2/nnMetamodels.tex [62] [63]
 Chapter 3.
@@ -1354,13 +1354,13 @@ Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
 Here is how much of TeX's memory you used:
  37179 strings out of 474116
  749934 string characters out of 5743682
- 1948187 words of memory out of 5000000
+ 1949187 words of memory out of 5000000
  58266 multiletter control sequences out of 15000+600000
  576156 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  109i,19n,107p,2397b,1215s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on thesisDefense.pdf (174 pages, 2934598 bytes).
+Output written on thesisDefense.pdf (174 pages, 2934590 bytes).
 PDF statistics:
  3006 PDF objects out of 3580 (max. 8388607)
  2581 compressed objects within 26 object streams
