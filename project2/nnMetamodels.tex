@@ -8,7 +8,7 @@
 
 Deep neural networks (DNNs) have attracted attentions of researchers and practitioners due to their success~\citep{hastie2009elements,lecun2015deep} in solving real-world machine learning tasks such as AlphaGo~\citep{silver2016mastering} and ChatGPT~\citep{chatgpt}.
 Since the first artificial neural network model~\citep{mcculloch1943logical} and the first algorithm for training a perceptron~\citep{rosenblatt1958perceptron}, especially after the introduction of backpropagation~\citep{rumelhart1985learning} and the growth of high-performance computing, the field of artificial neural network and deep learning in general has grown rapidly.
-Two specialized neural network architectures that are relevant to our study are recurrent neural networks (RNNs)~\citep{williams1989learning,sutskever2014sequence} and long-short-term memory (LSTM)~\citep{hochreiter1997long,chung2014empirical}, as In the field of actuarial science, a metamodel is commonly referred to as a proxy model.
+Two specialized neural network architectures that are relevant to our study are RNN~\citep{williams1989learning,sutskever2014sequence} and LSTM~\citep{hochreiter1997long,chung2014empirical}, as In the field of actuarial science, a metamodel is commonly referred to as a proxy model.
 Despite their success, DNN models are often criticized for their lack of transparency and interpretability, which hinders their adoption in financial and actuarial applications.
 Enormous research efforts are spent to test and improve the robustness of DNN models with carefully designed noise injection methods.
 ~\cite{poole2014analyzing} show that injecting synthetic noise before and after hidden unit activations during training improves the performance of autoencoders.
@@ -401,10 +401,10 @@ In Stage 2, $N=\num{1000}$ inner replications are run for all predicted tail sce
 Stage 2's simulation budget is $\frac{m}{M}$ of the standard procedure's.
 In short, the two-stage procedure uses $15\% - 30\%$ of the standard procedure's budget for a safety margin between $0\% - 15\%$.
 
-Five metamodels are considered in this experiment: multiple linear regression (MLR), quadratic polynomial regression (QPR) without interaction terms, feed-forward neural network (FNN), recurrent neural network (RNN), and long short-term memory (LSTM) network.
+Five metamodels are considered in this experiment: multiple linear regression (MLR), quadratic polynomial regression (QPR) without interaction terms, FNN, RNN, and LSTM network.
 MLR and QPR are considered as extensions of regression metamodels in the nested simulation literature.
 FNN is a generic neural network while RNN and LSTM are specialized models to accommodate the sequential structure of our time-series features.
-A $\tanh$ activation function is used for RNN and LSTM layers, and a Rectified Linear Unit (ReLU) activation function is used for the fully-connected layers.
+A $\tanh$ activation function is used for RNN and LSTM layers, and a ReLU activation function is used for the fully-connected layers.
 All neural network metamodels are trained by the Adam optimizer~\citep{kingma2014adam} with an initial learning rate of $0.001$ and an exponential learning rate decay schedule.
 FNN is trained with a dropout rate of 20\%.
 RNN and LSTM are trained with a dropout rate of 10\%.
@@ -412,7 +412,7 @@ The architectures and training settings are typical choices in the deep learning
 The training labels are normalized to have zero mean and unit standard deviation.
 The architectures and the numbers of trainable parameters are shown in the first two columns of Table~\ref{tab:gmwb_arch}.
 We see that the three DNN metamodels' have orders of magnitudes more trainable parameters than the two regression models.
-In machine-learning terminologies, the three DNN models have much higher \textit{model capacities}.
+In machine learning terminologies, the three DNN models have much higher \textit{model capacities}.
 
 \begin{table}[ht!]
     \centering
@@ -421,8 +421,8 @@ In machine-learning terminologies, the three DNN models have much higher \textit
     \toprule
     \textbf{Model} & \textbf{\makecell{Layer size}} & \textbf{\makecell{Capacity}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
     \midrule
-    MLR & N/A & $241$ & $0.707 (\pm 3.6 \times 10^{-4})$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
-    QPR & N/A & $481$ & $0.544 (\pm 0.000)$ & $0.636 (\pm 0.001)$ & $0.531 (\pm 0.000)$ \\
+    MLR & $\num{241}$ & $\num{241}$ & $0.707 (\pm 3.6 \times 10^{-4})$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
+    QPR & $\num{481}$ & $\num{481}$ & $0.544 (\pm 0.000)$ & $0.636 (\pm 0.001)$ & $0.531 (\pm 0.000)$ \\
     FNN & $240, 128, 16$ & $\num{35009}$ & $0.118 (\pm 0.001)$ & $0.247 (\pm 0.002)$ & $0.113 (\pm 0.001)$ \\
     RNN & $(240, 32), (240, 4), 32$ & $\num{32021}$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
     LSTM & $(240, 32), (240, 4), 32$ & $\num{35729}$ & $0.075 (\pm 0.004)$ & $0.079 (\pm 0.005)$ & $0.063 (\pm 0.004)$ \\
@@ -433,9 +433,9 @@ In machine-learning terminologies, the three DNN models have much higher \textit
     \label{tab:gmwb_arch}
 \end{table}
 
-\footnotetext{Results of the well-trained RNN, where the ones suffers from the vanishing gradient issue are removed from the averages.}
+\footnotetext{Results of the well-trained RNN, where the ones suffers from the vanishing and exploding gradient issue are removed from the averages.}
 
-For each metamodel, 50 independent macro replications are run.
+For each metamodel, 100 independent macro replications are run.
 Each macro replication involves simulating a noisy dataset, separating it into training and test data, fitting a metamodel, and making predictions.
 The last three columns in Table~\ref{tab:gmwb_arch} display the average squared errors between the predicted losses and the losses (labels) in different datasets.
 The half lengths of their 95\% confidence interval of these quantities are also reported in parentheses.
@@ -565,7 +565,7 @@ In a two-stage procedure, metamodels' overall prediction errors measured by the 
 \end{figure}
 
 Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for different safety margins.
-Each quantity is averaged over 50 macro replications.
+Each quantity is averaged over 100 macro replications.
 The percentage of tail matches of the traditional regression metamodels are significantly lower than the ones of the neural networks.
 We see that a poor metamodel like the QPR identifies less than 40\% of the true tail scenario without any safety margin.
 In contrast, a well-suited metamodel like the LSTM identifies more than 75\% of the true tail scenarios without any safety margin and more than the QPR metamodel does with 15\% of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies 100\% of the true tail scenarios on with a 10\% safety margin for a GMAB contract.

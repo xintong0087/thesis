@@ -409,7 +409,11 @@ Figure~\ref{fig3:figure2} displays the learning curves of the LSTM metamodels fi
 We observe that the performance of the fine-tuned metamodel is highly dependent on the similarity between the source and target tasks.
 Fine-tuning from a source task with static lapse results in faster convergence and lower validation error.
 The metamodel trained on the GMMB with static lapse captures some features that are beneficial for the GMMB with dynamic lapse, which leads to a more stable training process.
-In Figure~\ref{subfig3-2:fromNolapse}, the metamodel needs to learn the effect of (1) whether lapse is present and (2) whether the lapse is dynamic.
+In Figure~\ref{subfig3-2:fromNolapse}, the metamodel needs to learn the effect of 
+\begin{itemize}
+    \item whether lapse is present and
+    \item whether the lapse is dynamic.
+\end{itemize}
 This learning process is more challenging.
 
 The observed improvement in transferability when fine-tuning from a static lapse source task highlights the importance of selecting appropriate source tasks in TL. 
