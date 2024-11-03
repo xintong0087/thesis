@@ -367,8 +367,8 @@ The simulation data for the target task is generated with the same nested simula
 Figure~\ref{subfig3-1:extensive} demonstrates the performance of the LSTM metamodel trained extensively only on the target task using $M_{\text{TA}} = 50,\!000$ samples, which serves as a benchmark for this study. 
 The metamodel achieves a low validation MSE due to the availability of a large dataset.
 In contrast, Figure~\ref{subfig3-1:without} presents the results of training directly on the target task without pre-training on the source task.
-With $M_{\text{TA}} = 2,\!000$ samples, the LSTM metamodel struggles to learn the temporal dependencies and patterns in the target task.
-It leads to highly unstable training dynamics, with substantial fluctuations in the validation MSE.
+With only $M_{\text{TA}} = 2,\!000$ samples, the LSTM metamodel struggles to learn the temporal dependencies and patterns in the target task.
+It leads to highly unstable training dynamics with substantial fluctuations in the validation MSE.
 Learning without knowledge transfer leads poor generalization and extreme overfitting. 
 Often, the training data is limited for a new VA contract, and such instability is particularly problematic for quick adaptation of LSTM metamodels.
 TL techniques like fine-tuning and layer freezing can help mitigate these challenges.

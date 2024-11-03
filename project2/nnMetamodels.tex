@@ -289,7 +289,7 @@ Specifically, in Stage 2 we propose using a standard procedure with the same num
 There are two different types of experiment designs for nested simulation procedures: fixed-budget design and fixed-accuracy design.
 In a fixed-budget design, the simulation budget is fixed and the goal is to achieve the highest accuracy possible within the budget.
 Let $\Gamma = MN$ be the simulation budget for the standard procedure, where each scenario receives $\frac{\Gamma}{M}$ inner replications.
-In the proposed two-stage procedure, suppose Stage 2 uses 1\% of the simulation budget, $\alpha = 95\%$, and $m=(1-\alpha)M$, then $99\%$ of the simulation budget is concentrated on $5\% M$ predicted tail scenarios in Stage 2.
+In the proposed two-stage procedure, suppose Stage 2 uses $1\%$ of the simulation budget, $\alpha = 95\%$, and $m=(1-\alpha)M$, then $99\%$ of the simulation budget is concentrated on $5\% M$ predicted tail scenarios in Stage 2.
 In other words, each predicted tail scenario receives $\frac{99\% \Gamma}{5\% M}$ inner replications, almost 20 times more than that in the standard procedure.
 This budget concentration is expected to improve the estimation accuracy of the two-stage procedure compared to a standard procedure with the same budget. 
 If the metamodel is accurate in predicting true tail scenarios, the two-stage procedure is expected to achieve higher accuracy than the standard procedure with the same budget.
@@ -331,7 +331,6 @@ The single-stage procedure has three major advantages over the two-stage procedu
     It can be naturally adapted to estimate risk measures that require the knowing of the entire loss distribution, such as the standard deviation or the squared tracking error.
     In our numerical experiments, we will compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $\alpha$-CVaR for a larger range of $\alpha$.
 \end{enumerate}
-
 
 \section{Numerical Results} \label{sec2:numerical}
 
@@ -565,10 +564,11 @@ In a two-stage procedure, metamodels' overall prediction errors measured by the 
     \label{fig2:tailMatches}
 \end{figure}
 
-Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios\footnote{Each quantity is averaged over 50 macro replications.}  by different metamodels for different safety margins.
+Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for different safety margins.
+Each quantity is averaged over 50 macro replications.
 The percentage of tail matches of the traditional regression metamodels are significantly lower than the ones of the neural networks.
 We see that a poor metamodel like the QPR identifies less than 40\% of the true tail scenario without any safety margin.
-In contrast, a good metamodel like the LSTM identifies more than 75\% of the true tail scenarios without any safety margin and more than the QPR metamodel does with 15\% of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies 100\% of the true tail scenarios on with a 10\% safety margin for a GMAB contract.
+In contrast, a well-suited metamodel like the LSTM identifies more than 75\% of the true tail scenarios without any safety margin and more than the QPR metamodel does with 15\% of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies 100\% of the true tail scenarios on with a 10\% safety margin for a GMAB contract.
 The GMAB contract is simpler than the GMWB contract, and the true tail scenarios are easier to identify. 
 For a GMAB, our LSTM metamodel identifies 100\% of the true tail scenarios with a 2.5\% safety margin}.
 The RNN metamodel suffers from the vanishing gradient problem during training. 
