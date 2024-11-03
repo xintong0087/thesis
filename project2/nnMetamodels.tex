@@ -454,10 +454,10 @@ As a result, given a good initialization, the optimization algorithm is likely t
 There are significant differences among the three DNN models due to having different architectures.
 The FNN is a generic neural network, its test error is larger than the training error, which is a sign of over-fitting and poor generalization.
 In contrast, RNN and LSTM networks have recurrent strucutures and are designed to capture temporal relationship in the high-dimensional feature.
-As a result, they have lower training errors, i.e., they fit the data better, and have lower testing error, i.e., they generalize better.
-Notably, the true errors for the DNN metamodels are lower than the test errors.
+As a result, they have lower training errors, i.e., they fit the data better, and have lower test errors, i.e., they generalize better.
+Notably, the true errors for the DNN metamodels are lower than the training errors.
 This is a sign of the metamodels' ability to learn the true feature-label relationship with noisy training labels. 
-Section~\ref{subsec2:noiseTolerance} investigates this phenomenon in more details.
+Section~\ref{subsec2:noiseTolerance} investigates this phenomenon in greater details.
 
 Comparing the two metamodels with recurrent structures, A LSTM network overcomes two key drawbacks of a crude RNN.
 \begin{enumerate}
