@@ -64,7 +64,7 @@
 \contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with Dynamic Lapse}{111}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{114}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{117}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Conclusion}{118}{section.4.4}%
+\contentsline {section}{\numberline {4.4}Conclusion}{119}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Conclusion}{120}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Future Work: Deep Hedging Variable Annuities with Transfer Learning}{122}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Markov Decision Process for Hedging VAs}{124}{section.6.1}%

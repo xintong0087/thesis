@@ -461,7 +461,7 @@ Section~\ref{subsec2:noiseTolerance} investigates this phenomenon in greater det
 
 Comparing the two metamodels with recurrent structures, A LSTM network overcomes two key drawbacks of a crude RNN.
 \begin{enumerate}
-    \item It avoids the vanishing gradient problem during training, which makes the LSTM easier to than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem\footnote{A well-trained RNN stops early at around 300 training epochs, while an ill-trained RNN uses up all 1000 training epochs.}. 
+    \item It avoids the vanishing gradient problem during training, which makes the LSTM easier to than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem. 
     As a result, the half length of the 95\% confidence interval of the RNN's training error is much larger than all other metamodels. The last row of Table~\ref{tab:gmwb_arch} shows the average squared errors of the good RNN metamodels that are successfully trained. 
     Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN, but the half lengths of their 95\% confidence intervals are larger than those of the FNN. 
     This suggests that the RNN is more sensitive to noise in stochastic gradient descent than the FNN.

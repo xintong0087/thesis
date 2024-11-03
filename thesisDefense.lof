@@ -17,7 +17,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{72}{figure.caption.29}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{82}{figure.caption.32}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{83}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{82}{figure.caption.33}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{83}{figure.caption.34}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{85}{figure.caption.35}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Average 95\%-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{86}{figure.caption.36}%
@@ -30,7 +30,7 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{110}{figure.caption.47}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{111}{figure.caption.48}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{112}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{114}{figure.caption.51}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{115}{figure.caption.51}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{116}{figure.caption.53}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{117}{figure.caption.54}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{118}{figure.caption.55}%

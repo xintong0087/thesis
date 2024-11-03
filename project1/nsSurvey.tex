@@ -912,7 +912,7 @@ However, a simulation budget in practice is almost always finite.
 In this section, we conduct a series of numerical experiments to compare the empirical convergence of the nested simulation procedures for different risk measures, option types, and asset dimensions.
 Numerical experiments are conducted on portfolios that consist of options on $d$ underlying assets, whose dynamics follow a multidimensional geometric Brownian motion with $0.3$ pairwise correlation.
 
-A total of 6 nested simulation procedures are considered, namely the standard nested simulation procedure, the MLMC procedure, the regression-based, kernel smoothing-based, likelihood ratio-based, and kernel ridge regression-based nested simulation procedures.
+A total of 5 nested simulation procedures are considered, namely the standard nested simulation procedure, the regression-based, kernel smoothing-based, likelihood ratio-based, and kernel ridge regression-based nested simulation procedures.
 For the standard nested simulation procedure, the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap} is implemented to estimate the optimal values of outer and inner simulation budgets.
 For the regression metamodel, the Laguerre polynomials up to degree $3$ are used as the default basis functions.
 The kNN metamodel is implemented for the kernel smoothing-based procedure, and a cross-validation with grid search is used to find the optimal number of neighbors.
@@ -942,8 +942,8 @@ The procedures are compared for different portfolios consisting of different typ
     The portfolio longs 2 down-and-out barrier put options and shorts 1 barrier down-and-out put option. 
 \end{itemize}
 Except for portfolio 5, 5 different asset dimensions are considered, i.e., $d = 1, 2, 5, 10, 20$.
-525 experimental settings that arise from an exhaustive combination of the above simulation procedures, risk measures, portfolios, and asset dimensions are generated.
-For each of the scenarios, the estimation of the risk measure is repeated \num{1000} times to obtain the empirical MSE of the corresponding estimator under a range of simulation budgets.
+525 experiment settings that arise from an exhaustive combination of the above simulation procedures, risk measures, portfolios, and asset dimensions are generated.
+For each experiment setting, the estimation of the risk measure is repeated \num{1000} times to obtain the empirical MSE of the corresponding estimator under a range of simulation budgets.
 The total simulation budget $\Gamma$ ranges from $\num{10000}$ to $\num{10240000}$ in a geometric progression with a common ratio of $2$.
 The empirical convergence results of each estimator are measured and recorded to illustrate their empirical behavior under different risk measures, option types, and asset dimensions.
 We start by examining the empirical convergence results for the most basic case, i.e., the quadratic tracking error risk measure for European call options on Portfolio 1 with $d = 1$.
