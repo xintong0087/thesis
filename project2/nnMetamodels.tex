@@ -82,7 +82,7 @@ In this chapter, DNN metamodels and DNN models are used almost interchangeably d
 The rest of this chapter is organized as follows: 
 Section~\ref{sec2:problem-formulation} presents the problem settings for tail risk measures and dynamic hedging of VAs. 
 Section~\ref{sec2:metamodel2Stage} proposes an efficient two-stage nested simulation procedure that uses DNNs as metamodels to help reduce simulation budget by only performing computations on identified tail scenarios. 
-Section~\ref{sec2:metamodel1Stage} proposes a one-stage nested simulation procedure that estimates risk measures directly with metamodel predictions.
+Section~\ref{sec2:metamodel1Stage} proposes a single-stage nested simulation procedure that estimates risk measures directly with metamodel predictions.
 Section~\ref{sec2:numerical} demonstrates the efficiency of DNN metamodels and examines error tolerance of two LSTM metamodels with different numbers of trainable parameters. 
 Practical suggestions are provided for the choice of suitable metamodels and simulation settings. 
 
@@ -283,26 +283,26 @@ We propose a two-stage procedure with a neural network metamodel that aims to pr
 \end{algorithmic}
 \end{algorithm}
 
-Similar to~\cite{dang2020efficient}, the proposed two-stage procedure in Algorithm ~\ref{alg2:twoStageProcedure} uses the metamodel predictions to identify the predicted tail scenario set in Stage 1.
+Similar to~\cite{dang2020efficient}, the proposed two-stage procedure in Algorithm ~\ref{alg2:twoStageProcedure} uses the metamodel predictions to identify the predicted tail scenario set in stage 1.
 However, different from their fixed-budget simulation design, we attempt to achieve a target accuracy.
-Specifically, in Stage 2 we propose using a standard procedure with the same number of inner replications, $N$, as a benchmark procedure.
+Specifically, in stage 2 we propose using a standard procedure with the same number of inner replications, $N$, as a benchmark procedure.
 There are two different types of experiment designs for nested simulation procedures: fixed-budget design and fixed-accuracy design.
 In a fixed-budget design, the simulation budget is fixed and the goal is to achieve the highest accuracy possible within the budget.
 Let $\Gamma = MN$ be the simulation budget for the standard procedure, where each scenario receives $\frac{\Gamma}{M}$ inner replications.
-In the proposed two-stage procedure, suppose Stage 2 uses $1\%$ of the simulation budget, $\alpha = 95\%$, and $m=(1-\alpha)M$, then $99\%$ of the simulation budget is concentrated on $5\% M$ predicted tail scenarios in Stage 2.
+In the proposed two-stage procedure, suppose stage 2 uses $1\%$ of the simulation budget, $\alpha = 95\%$, and $m=(1-\alpha)M$, then $99\%$ of the simulation budget is concentrated on $5\% M$ predicted tail scenarios in stage 2.
 In other words, each predicted tail scenario receives $\frac{99\% \Gamma}{5\% M}$ inner replications, almost 20 times more than that in the standard procedure.
 This budget concentration is expected to improve the estimation accuracy of the two-stage procedure compared to a standard procedure with the same budget. 
 If the metamodel is accurate in predicting true tail scenarios, the two-stage procedure is expected to achieve higher accuracy than the standard procedure with the same budget.
 However, we believe that the goal of designing an efficient simulation procedure is to solve practical problems faster, so a target-accuracy design is more suitable, which refers to obtaining a similar level of accuracy as the standard procedure but with much less simulation budget.
 One other reason for this fixed-accuracy design is to investigate whether DNN metamodels trained with much noisier labels can identify true tail scenarios with similar accuracy as the standard procedure.
-The size of the predicted tail scenario set in Stage 1, $m$, is an important experiment design parameter that affects the correct identification of true tail scenarios and ultimately affects the estimation accuracy for CVaR.
-Clearly, there is a lower bound $m \geq (1-\alpha)M$ because the $\alpha$-CVaR is estimated by the average of $(1-\alpha)M$ largest losses at the end of Stage 2.
+The size of the predicted tail scenario set in stage 1, $m$, is an important experiment design parameter that affects the correct identification of true tail scenarios and ultimately affects the estimation accuracy for CVaR.
+Clearly, there is a lower bound $m \geq (1-\alpha)M$ because the $\alpha$-CVaR is estimated by the average of $(1-\alpha)M$ largest losses at the end of stage 2.
 For ease of reference, we call the additional percentage of predicted tail scenarios above this lower bound, i.e., $\epsilon = \frac{m - (1-\alpha)M}{M}$, as a \textit{safety margin}.
-On one hand, large $\epsilon$ is not desirable because it increases computations in Stage 2.
-On the other hand, $\epsilon$ should be set reasonably large so more true tail scenarios are included in the the predicted tail scenario set $\widehat{\tail}_{m}^{PD}$ and are ultimately included in $\widehat{\tail}_{(1-\alpha )M}$ at the end of Stage 2.
+On one hand, large $\epsilon$ is not desirable because it increases computations in stage 2.
+On the other hand, $\epsilon$ should be set reasonably large so more true tail scenarios are included in the the predicted tail scenario set $\widehat{\tail}_{m}^{PD}$ and are ultimately included in $\widehat{\tail}_{(1-\alpha )M}$ at the end of stage 2.
 The selection of $m$ is highly dependent on the choice of the metamodel.
-Due to the simulation errors and approximation error in the metamodel in Stage 1, we do not expect perfect match between the true tail scenario set $\tail_{k}$ and the predicted tail scenario set $\widehat{\tail}_{k}^{PD}$ for any size $k$.
-This means that we should not set $m$ at its lower bound: Some safety margin $\epsilon M$ should be added to the predicted tail scenario set, i.e., $m = (1-\alpha )M + \epsilon M$, to increase the likelihood that $\tail_{k} \subseteq \widehat{\tail}_{m}^{PD}$ and that the true tail scenarios are included in estimating $\alpha$-CVaR at the end of Stage 2.
+Due to the simulation errors and approximation error in the metamodel in stage 1, we do not expect perfect match between the true tail scenario set $\tail_{k}$ and the predicted tail scenario set $\widehat{\tail}_{k}^{PD}$ for any size $k$.
+This means that we should not set $m$ at its lower bound: Some safety margin $\epsilon M$ should be added to the predicted tail scenario set, i.e., $m = (1-\alpha )M + \epsilon M$, to increase the likelihood that $\tail_{k} \subseteq \widehat{\tail}_{m}^{PD}$ and that the true tail scenarios are included in estimating $\alpha$-CVaR at the end of stage 2.
 The choice of safety margin $\epsilon$ is not trivial, and it should be set based on the metamodel's accuracy in identifying true tail scenarios.
 In the numerical experiments, we examine the relationship between the safety margin and the correct identification of true tail scenarios for different metamodels.
 
@@ -323,7 +323,7 @@ This observation motivates us to propose a single-stage procedure that uses the 
 
 The single-stage procedure has three major advantages over the two-stage procedure:
 \begin{enumerate}
-    \item The single-stage procedure is expected to be more efficient than the two-stage procedure because it does not require the running the standard procedure in Stage 2.
+    \item The single-stage procedure is expected to be more efficient than the two-stage procedure because it does not require the running the standard procedure in stage 2.
     \item The safety margin $\epsilon$ is not needed in the single-stage procedure.
     The safety margin is difficult to determine because it depends on the metamodel's accuracy in identifying true tail scenarios.
     The single-stage procedure does not need a safety margin because it directly estimates the risk measure using the predicted losses.
@@ -393,11 +393,11 @@ Note that the feature vector $\bS$ is a 240-dimension stock path.
 
 We compare our two-stage procedure to a standard nested simulation procedure that runs $N=\num{1000}$ inner replications for each of the $M=\num{100000}$ outer scenarios.
 In Stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=\num{100000}$ outer scenarios.
-So, Stage 1's simulation budget is $10\%$ of the standard procedure's.
+So, stage 1's simulation budget is $10\%$ of the standard procedure's.
 The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
 Specifically, following the convention in machine learning research, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ data points (90\%, 5\%, and 5\% of the dataset), respectively.
-At the end of Stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
-In Stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
+At the end of stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
+In stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
 Stage 2's simulation budget is $\frac{m}{M}$ of the standard procedure's.
 In short, the two-stage procedure uses $15\% - 30\%$ of the standard procedure's budget for a safety margin between $0\% - 15\%$.
 
@@ -472,7 +472,7 @@ Comparing the two metamodels with recurrent structures, A LSTM network overcomes
     Since the feature in our dynamic hedging problem is a 240-dimensional time series, a LSTM is more suitable than a crude RNN.
 \end{enumerate}
 In summary, the network architecture serves as a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data, and it significantly impact the metamodel's performance.
-It is important to choose a suitable architecture with a pre-set capacity that is large enough to learn the true feature-label relationship.
+It is important to choose a \textit{suitable} architecture with a pre-set capacity that is large enough to learn the true feature-label relationship.
 
 \begin{figure}[ht!]
     \centering
@@ -489,7 +489,7 @@ It is important to choose a suitable architecture with a pre-set capacity that i
     \label{fig2:QQ_RNN}
 \end{figure}
 
-Recall that all three data sets are generated from the same simulation model, but the true labels are less noisy than the training and test labels.
+Recall that all three datasets are generated from the same simulation model, but the true labels contain much less simulation noise than the training and test labels.
 Part of the training error is due to simulation noise, and this noise is lower in the true error.
 We observe that the two regression metamodels not only generalize to the test labels poorly but also generalize to the true labels poorly.
 In contrast, the DNN metamodels generalize better to the true labels than to the test labels.
@@ -516,12 +516,12 @@ Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between 
 Comparing with the MSE table in Table~\ref{tab:gmwb_arch} that summarizes the overall fit, QQ plots offer a closer look at the metamodels' performance on different parts of the loss distribution.
 Figure~\ref{fig2:QQ_REG} show that the regression metamodels' predictions are far from the true losses, especially on the tails.
 Between the two regression metamodels, the QPR metamodel has a slightly better fit for larger losses.
-Nevertheless, both regression metamodels have poor fits to the true data, and their fit on the tail is particularly undesirable.
+Nevertheless, the predictions of both regression metamodels are far from the true labels, and their fit on the tail is particularly undesirable.
 The poor fit on the tail hinders the regression metamodels' ability to identify true tail scenarios and ultimately leads to poor CVaR estimates.
 Adding the quadratic terms, our QPR metamodel is considered as a natural extension of the MLR.
 Attempts to further improve the regression metamodels by adding interaction terms or higher-order terms do not improve the fit.
-With 240 features, feature engineering (i.e, variable selection) for regression metamodels is not a trivial task and is highly dependent on the simulation model. 
-As a result, the attempts to improve the traditional regression metamodels are not successful.
+With 240 features, feature engineering (i.e., variable selection) for regression metamodels is not a trivial task and is highly dependent on the simulation procedure. 
+As a result, our attempts to improve the traditional regression metamodels are not successful.
 The regression metamodels are not flexible enough to capture the complex feature-label relationship in the dynamic hedging simulation model.
 
 \begin{figure}[ht!]
@@ -546,14 +546,14 @@ This implies that these models indeed learn the true feature-label relationship 
 
 From a unique analytical standpoint, our numerical study offers a methodical exploration into the robustness of DNN models against noise in training labels. 
 By employing the standard nested simulation procedure in Algorithm~\ref{alg2:standardProcedure} as a data generator, we gain the ability to manipulate the noise level through adjusting the number of inner replications while keeping the same simulation procedure.
-As a result, this approach provides a controlled environment to examine the impact of label noise on neural network model.
+This approach provides a controlled environment to examine the impact of label noise on neural network models.
 It allows us to generate our true dataset that approximates the true hedging losses with a high degree of precision, and, as a result, it enables us to explore the crucial question of whether deep learning models are capable of learning the true feature-label relationship from noisy training labels.
 Our numerical results in Table~\ref{tab:gmwb_arch} and the QQ plots provide direct evidence that DNN models are indeed able to cut through the noise in the training labels and learn the true feature-label relationship.
 The LSTM metamodels' ability to learn the true feature-label relationship is crucial for the two-stage procedure to identify true tail scenarios and produce accurate CVaR estimates.
 
 \subsection{Two-Stage Procedure} \label{subsec:twoStageProcedure}
 
-In our proposed two-stage procedure, the metamodel is used to identify the predicted tail scenario set, on which the standard nested simulation procedure is run in Stage 2 to estimate the $95\%$-CVaR.
+In our proposed two-stage procedure, the metamodel is used to identify the predicted tail scenario set, on which the standard nested simulation procedure is run in stage 2 to estimate the $95\%$-CVaR.
 An accurate identification of the true tail scenarios is crucial.
 In a two-stage procedure, metamodels' overall prediction errors measured by the MSEs in Table~\ref{tab:gmwb_arch} are not the determining factor, but their ability to effectively rank the scenarios by their \textbf{true} losses is most critical in producing accurate CVaR estimates.
 
@@ -571,13 +571,13 @@ In a two-stage procedure, metamodels' overall prediction errors measured by the 
     \label{fig2:tailMatches}
 \end{figure}
 
-Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for different safety margins.
-Each quantity is averaged over 100 macro replications.
-The percentage of tail matches of the traditional regression metamodels are significantly lower than the ones of the neural networks.
+Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for increasing safety margins.
+Each quantity is averaged over $100$ macro replications.
+For a fixed safety margin, the percentage of tail matches of the traditional regression metamodels are significantly lower than the ones of the neural networks.
 We see that a poor metamodel like the QPR identifies less than 40\% of the true tail scenario without any safety margin.
-In contrast, a well-suited metamodel like the LSTM identifies more than 75\% of the true tail scenarios without any safety margin and more than the QPR metamodel does with 15\% of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies 100\% of the true tail scenarios on with a 10\% safety margin for a GMAB contract.
+In contrast, a well-suited metamodel like the LSTM identifies more than 75\% of the true tail scenarios without any safety margin and more than the QPR metamodel does with 15\% of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies 100\% of the true tail scenarios on with a $10\%$ safety margin for a GMAB contract.
 The GMAB contract is simpler than the GMWB contract, and the true tail scenarios are easier to identify. 
-For a GMAB, our LSTM metamodel identifies 100\% of the true tail scenarios with a 2.5\% safety margin}.
+For a GMAB, our LSTM metamodel identifies $100\%$ of the true tail scenarios with a $2.5\%$ safety margin}.
 The RNN metamodel suffers from the vanishing gradient problem during training. 
 For some macro replications (as shown in Figure~\ref{subfig2:badRNN}), the RNN metamodels' predictions are far from the true losses, especially on the tails.
 The FNN metamodel has a better fit than the regression metamodels, but it does not have the same level of accuracy as the LSTM metamodel, which is a specialized network to capture the sequential structure of our time-series features.
@@ -604,16 +604,15 @@ This indicates that the LSTM metamodel should be able to reach the same level of
 \end{figure}
 
 Lastly, we return to our original goal of estimating the 95\%-CVaR of the dynamic hedging error.
-Figure~\ref{fig2:CVaR95} shows the 95\%-CVaR estimates for all five metamodels with different safety margins, averaged over 50 macro replications.
+Figure~\ref{fig2:CVaR95} shows the 95\%-CVaR estimates for all five metamodels with different safety margins, averaged over 100 macro replications.
 Figure~\ref{subfig2:ZoomedSafetyMargin} is a zoomed version of Figure~\ref{subfig2:AllSafetyMargin}.
 Because the safety margin only affects the two-stage procedure, the true 95\%-CVaR and the one estimated by the standard procedure are horizontal (solid and dotted, respectively) lines in Figure~\ref{fig2:CVaR95}.
 We observe that, with reasonable safety margins, the two-stage procedures with a LSTM metamodel consistently produce estimates that are as accurate as the standard procedure's estimate.
 The amount of computational savings is substantial.
 The LSTM is particularly superior to other metamodels as it accurately identifies the true tail scenarios and produces highly accurate CVaR estimates with small safety margins.
 By concentrating the simulation budget on the predicted tail scenarios, the two-stage procedure with the LSTM metamodel is able to achieve a similar accuracy as the standard procedure with a much smaller simulation budget.
-As the percentage of correctly identified tails approaches 100\%, the two-stage procedure's CVaR estimates does not converge to the true value but to the standard procedure's estimate.
+As the percentage of correctly identified tails approaches $100\%$, the two-stage procedure's CVaR estimates does not converge to the true CVaR but to the standard procedure's estimate.
 This is because the two-stage procedure's CVaR estimates are based on the standard procedure's estimates on the predicted tail scenarios, and the standard procedure's estimates themselves are also noisy.
-
 
 \subsection{Noise Tolerance of DNN Metamodels} \label{subsec2:noiseTolerance}
 
@@ -696,14 +695,14 @@ The Pearson correlation coefficient between the true losses and the predicted lo
 The sparsity of the plot increases as we move from left to right, indicating that the noise level in the training labels increases.
 There are two key findings.
 \begin{enumerate}
-    \item   Compared to that of the regular LSTM, the metamodel predictions of high-capacity LSTM align more closely with the true losses when trained on the low-noise dataset.
+    \item   When trained on the low-noise dataset, the metamodel predictions of high-capacity LSTM align more closely with the true labels than the regular LSTM.
     This is expected because the high-capacity LSTM has more trainable parameters and is able to learn more complex relationships better when the noise level is low.
     \item   When the noise level is medium or high, the high-capacity LSTM is more affected than the regular LSTM.
     This is because the high-capacity LSTM has more trainable parameters and is more prone to over-fitting to the noise in the training labels.
     In contrast, the regular LSTM is more robust to label noise.
 \end{enumerate}
 
-To further test the sensitivity of a LSTM metamodel and provide a more comprehensive picture of the noise tolerance of DNN models, we conduct a sensitivity analysis on the noise tolerance of the regular LSTM metamodel by varying the numbers of outer scenarios ($M$) and inner replications ($N$) used to generate the training data.
+To further test the sensitivity of a LSTM metamodel and provide a more comprehensive view of the noise tolerance of DNN models, we conduct a sensitivity analysis on the noise tolerance of the regular LSTM metamodel by varying the numbers of outer scenarios ($M$) and inner replications ($N$) used to generate the training dataset.
 The number of outer scenarios corresponds to the number of data points in the training dataset, and the number of inner replications controls the noise level in the training labels.
 
 \begin{table}[ht!]
@@ -711,9 +710,9 @@ The number of outer scenarios corresponds to the number of data points in the tr
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                            & $N=1$ & $N=10$  & $N=100$ & $N=\num{1000}$\\
+                            & $N=\num{1}$ & $N=\num{10}$  & $N=\num{100}$ & $N=\num{1000}$\\
         \midrule
-        $M = 100$           & $1.139$ & $0.229$ & $0.167$ & $0.158$ \\
+        $M = \num{100}$      & $1.139$ & $0.229$ & $0.167$ & $0.158$ \\
         $M = \num{1000}$     & $0.559$ & $0.173$ & $0.123$ & $0.127$ \\
         $M = \num{10000}$    & $0.283$ & $0.115$ & $0.099$ & $0.097$ \\
         $M = \num{100000}$   & $0.126$ & $0.068$ & $0.063$ & $0.063$ \\
@@ -728,9 +727,9 @@ The number of outer scenarios corresponds to the number of data points in the tr
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=1$ & $N=10$  & $N=100$ & $N=\num{1000}$\\
+                          & $N=\num{1}$ & $N=\num{10}$  & $N=\num{100}$ & $N=\num{1000}$\\
         \midrule
-        $M = 100$           & $0.764$ & $0.408$ & $0.131$ & $0.087$ \\
+        $M = \num{100}$      & $0.764$ & $0.408$ & $0.131$ & $0.087$ \\
         $M = \num{1000}$     & $0.878$ & $0.367$ & $0.156$ & $0.087$ \\
         $M = \num{10000}$    & $0.351$ & $0.147$ & $0.064$ & $0.063$ \\
         $M = \num{100000}$   & $0.149$ & $0.065$ & $0.060$ & $0.038$ \\
@@ -743,8 +742,8 @@ The number of outer scenarios corresponds to the number of data points in the tr
 
 Table~\ref{tab2:lstm_sens} and~\ref{tab2:hicaplstm_sens} show the average squared errors between the LSTM predictions and the true losses for increasing $M$ and $N$.
 The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} show the performance of the regular and high capacity LSTM metamodels trained with $M=\num{100000}$ training labels with different noise levels.
-We observe that an increasing $N$ reduces the MSE, but the reduction is not significant for a regular LSTM when $N$ is larger than $10$.
-For the high-capacity LSTM, the MSE is significantly reduced when $N$ is increased from $1$ to $100$, but the reduction is not significant when $N$ is increased from $100$ to $\num{1000}$.
+We observe that an increasing $N$ reduces the MSE, but the reduction is not significant for a regular LSTM when $N$ is larger than $\num{10}$.
+For the high-capacity LSTM, the MSE is significantly reduced when $N$ is increased from $\num{1}$ to $\num{100}$, but the reduction is not significant when $N$ is increased from $\num{100}$ to $\num{1000}$.
 Another way to interpret the results in Table~\ref{tab2:lstm_sens} is to compare the MSEs for the same budget of $\Gamma = M \times N$. 
 Entries on the same diagonal represents the same simulation budget.
 For most budgets, the MSEs are also the lowest when $N = 10$.
@@ -796,7 +795,7 @@ Instead of using the LSTM metamodel only for ranking in a two-stage procedure, L
 \subsection{Single-Stage Procedure}
 
 The accuracy and robustness of the LSTM metamodels motivate us to propose a single-stage procedure that uses the metamodel predictions to estimate the CVaR directly. 
-Instead of relying on the standard nested simulation procedure in Stage 2, the single-stage procedure is more efficient and extends to estimating other risk measures that require knowledge of the entire loss distribution.
+Instead of relying on the standard nested simulation procedure in stage 2, the single-stage procedure is more efficient and extends to estimating other risk measures that require knowledge of the entire loss distribution.
 In this section, we compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $95\%$-CVaR of the hedging losses for GMWB.
 % , and we also examine the single-stage procedure's performance in estimating the standard deviation of the hedging losses. 
 In our numerical experiments, the results for the single-stage procedure is obtained with the same metamodels as in the two-stage procedure.
@@ -817,7 +816,7 @@ The only difference from Section~\ref{subsec:twoStageProcedure} is that the meta
 \end{figure}
 
 Figure~\ref{fig2:CVaRsingleStage} shows the boxplots of the 95\%-CVaR estimates of the single-stage procedure with different metamodels and compares them to the two-stage procedure and the standard procedure.
-The two-stage procedure uses the same simulation budget as the single-stage procedure in Stage 1 with extra budget for extensive inner simulation on the predicted tail scenarios in Stage 2.
+The two-stage procedure uses the same simulation budget as the single-stage procedure in stage 1 with extra budget for extensive inner simulation on the predicted tail scenarios in stage 2.
 The metamodel with the best performance in the two-stage procedure is chosen, and the safety margin is set to 0\%.
 The standard procedure shown in Figure~\ref{fig2:CVaRsingleStage} uses the noisy loss labels in the training dataset to estimate the CVaR directly, which uses the same simulation budget as the single-stage procedure.
 We observe that the single-stage procedures with the LSTM metamodels consistently produce CVaR estimates that are closer to the true value than the standard procedure's estimate, especially when the noise level is high in the training labels.
@@ -832,8 +831,8 @@ However, results in Figure~\ref{fig2:CVaRsingleStage} suggest that the FNN metam
 A single-stage procedure with a high-capcity LSTM metamodel is particularly superior to the two-stage procedure, as it is able to achieve a similar accuracy as the standard procedure with a much smaller simulation budget.
 Note that the single-stage procedure does not require a safety margin.
 By avoiding the calibration of the safety margin, it is more straight-forward to implement and is more efficient than the two-stage procedure.
-For a two-stage procedure with a 0\% safety margin, the extra computational cost is from the extensive inner simulation in Stage 2.
-On 4 20-core Intel Xeon Gold 6230 processors, Stage 2 of the two-stage procedure takes 30 minutes to run with parallel processing, while the 95\% confidence interval of training time of the high-capacity LSTM metamodel is $(19.64 \pm 0.94)$ minutes on a Nvidia RTX 3060 Ti GPU.
+For a two-stage procedure with a 0\% safety margin, the extra computational cost is from the extensive inner simulation in stage 2.
+On 4 20-core Intel Xeon Gold 6230 processors, stage 2 of the two-stage procedure takes 30 minutes to run with parallel processing, while the 95\% confidence interval of training time of the high-capacity LSTM metamodel is $(19.64 \pm 0.94)$ minutes on a Nvidia RTX 3060 Ti GPU.
 While the accuracy of the two-stage procedure is highly dependent on the safety margin, increasing the safety margin introduces extra computational cost.
 Therefore, while achieving a higher accuracy in estimating the CVaR, the single-stage procedure requires only $60\%$ computation time of the two-stage procedure.
 
