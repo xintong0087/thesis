@@ -406,12 +406,12 @@ MLR and QPR are considered as extensions of regression metamodels in the nested 
 FNN is a generic neural network while RNN and LSTM are specialized models to accommodate the sequential structure of our time-series features.
 A $\tanh$ activation function is used for RNN and LSTM layers, and a ReLU activation function is used for the fully-connected layers.
 All neural network metamodels are trained by the Adam optimizer~\citep{kingma2014adam} with an initial learning rate of $0.001$ and an exponential learning rate decay schedule.
-FNN is trained with a dropout rate of 20\%.
-RNN and LSTM are trained with a dropout rate of 10\%.
+FNN is trained with a dropout rate of $20\%$.
+RNN and LSTM are trained with a dropout rate of $10\%$.
 The architectures and training settings are typical choices in the deep learning literature.
 The training labels are normalized to have zero mean and unit standard deviation.
-The architectures and the numbers of trainable parameters are shown in the first two columns of Table~\ref{tab:gmwb_arch}.
-We see that the three DNN metamodels' have orders of magnitudes more trainable parameters than the two regression models.
+The architectures and the numbers of trainable parameters are recorded in the first two columns of Table~\ref{tab:gmwb_arch}.
+We observe that the three DNN metamodels have orders of magnitudes more trainable parameters than the two traditional regression metamodels.
 In machine learning terminologies, the three DNN models have much higher \textit{model capacities}.
 
 \begin{table}[ht!]
@@ -435,23 +435,25 @@ In machine learning terminologies, the three DNN models have much higher \textit
 
 \footnotetext{Results of the well-trained RNN, where the ones suffers from the vanishing and exploding gradient issue are removed from the averages.}
 
-For each metamodel, 100 independent macro replications are run.
-Each macro replication involves simulating a noisy dataset, separating it into training and test data, fitting a metamodel, and making predictions.
+For each metamodel, \num{100} independent macro replications are run.
+Each macro replication involves simulating a noisy dataset, randomly separating it into training and test data, fitting a metamodel, and making predictions.
 The last three columns in Table~\ref{tab:gmwb_arch} display the average squared errors between the predicted losses and the losses (labels) in different datasets.
-The half lengths of their 95\% confidence interval of these quantities are also reported in parentheses.
+Training error, test error, and true error are the average squared errors between the predicted losses and the training labels, test labels, and true labels, respectively.
+The half lengths of their 95\% confidence intervals are also reported (in parentheses).
 We first observe that the two regression metamodels' errors are larger than those of three DNN models.
-This is because model capacities of the regression metamodels are too low to learn the complex dynamic hedging simulation model.
+This is because model capacities of the regression metamodels are too low to learn the training dataset.
+Succesful learning of the training dataset is a necessary condition for a metamodel to learn the dynamic hedging simulation model.
 All neural network metamodels have high model capcities comparing with the number of data points in the training set, i.e., $\num{90000}$.
 This is not a huge concern for the DNNs.
 In neural network literature, the number of trainable parameters is often much larger than the number of data points in the training set.
-AlexNet~\citep{krizhevsky2012imagenet}, a well-known convolutional neural network, has 60 million parameters and is trained on the ImageNet dataset with 1.2 million images.
-Other examples include generative pre-trained transformer models like BERT~\citep{devlin2018bert} and GPT-3~\citep{brown2020language}, which have billions of parameters and are trained on large-scale text corpora.
+AlexNet~\citep{krizhevsky2012imagenet}, a well-known convolutional neural network, has $60$ million trained parameters and is trained on the ImageNet dataset with only $1.2$ million sample images.
+Other examples include generative pre-trained transformer models like BERT~\citep{devlin2018bert} and GPT-3~\citep{brown2020language}, which have billions of trainable parameters and are trained on large-scale text corpora.
 The reason for not overfitting is still an open question in deep learning research.
-One possible explanation is that the optimization surface of DNNs is highly non-convex and has many local minima.
-As a result, given a good initialization, the optimization algorithm is likely to find a solution that generalizes well to unseen data.
+One of the explanations in the literature is that the optimization surface of DNNs is highly non-convex and has many local minima.
+Given a good initialization, the optimization algorithm is likely to find a solution that generalizes well to unseen data.
 
-There are significant differences among the three DNN models due to having different architectures.
-The FNN is a generic neural network, its test error is larger than the training error, which is a sign of over-fitting and poor generalization.
+There are significant differences among the three DNN models due to having different neural network architectures.
+The FNN is a generic neural network, its test error is much greater than the training error, which is a sign of over-fitting and poor generalization.
 In contrast, RNN and LSTM networks have recurrent strucutures and are designed to capture temporal relationship in the high-dimensional feature.
 As a result, they have lower training errors, i.e., they fit the data better, and have lower test errors, i.e., they generalize better.
 Notably, the true errors for the DNN metamodels are lower than the training errors.
@@ -465,12 +467,12 @@ Comparing the two metamodels with recurrent structures, A LSTM network overcomes
     Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN, but the half lengths of their 95\% confidence intervals are larger than those of the FNN. 
     This suggests that the RNN is more sensitive to noise in stochastic gradient descent than the FNN.
     \item A LSTM introduces three gates that regulate the flow of information. 
-    These gates decide what information should be kept or discarded. This makes a LSTM more capcable of learning long-term dependencies. 
+    These gates decide what information should be kept or discarded. 
+    This makes a LSTM more capcable of learning long-term dependencies. 
     Since the feature in our dynamic hedging problem is a 240-dimensional time series, a LSTM is more suitable than a crude RNN.
-    The network architecture serves as a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data, and it significantly impact the metamodel's performance.
-    It is important to choose a suitable architecture with a pre-set capacity that is large enough to learn the true feature-label relationship.
 \end{enumerate}
-
+In summary, the network architecture serves as a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data, and it significantly impact the metamodel's performance.
+It is important to choose a suitable architecture with a pre-set capacity that is large enough to learn the true feature-label relationship.
 
 \begin{figure}[ht!]
     \centering
@@ -487,10 +489,14 @@ Comparing the two metamodels with recurrent structures, A LSTM network overcomes
     \label{fig2:QQ_RNN}
 \end{figure}
 
-Recall that all three data sets are generated from the same simulation model, but the true data set is less noisy than the training and test data.
+Recall that all three data sets are generated from the same simulation model, but the true labels are less noisy than the training and test labels.
 Part of the training error is due to simulation noise, and this noise is lower in the true error.
-We observe that the two regression metamodels not only generalize to the test data poorly but also generalize to the true data poorly.
-In contrast, the DNN metamodels generalize better to the true data than to the test data.
+We observe that the two regression metamodels not only generalize to the test labels poorly but also generalize to the true labels poorly.
+In contrast, the DNN metamodels generalize better to the true labels than to the test labels.
+The test labels contain more simulation noise than the true labels.
+This is a sign of the regression metamodels' inability to learn the true feature-label relationship rather than merely over-fitting to the simulation noise.
+In practical applications, the true labels are not available.
+However, analyzing the quality of fit on the true labels in a simulation environment offers a unique opportunity to understand the metamodels' true ability of learning.
 Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between the \textbf{true} labels and the predicted losses for the regression metamodels and the neural network metamodels, respectively.
 
 \begin{figure}[ht!]
@@ -514,8 +520,9 @@ Nevertheless, both regression metamodels have poor fits to the true data, and th
 The poor fit on the tail hinders the regression metamodels' ability to identify true tail scenarios and ultimately leads to poor CVaR estimates.
 Adding the quadratic terms, our QPR metamodel is considered as a natural extension of the MLR.
 Attempts to further improve the regression metamodels by adding interaction terms or higher-order terms do not improve the fit.
-Having 240 features, feature engineering for regression metamodels is not a trivial task and is highly dependent on the simulation model. 
-As a result, the regression metamodels are not flexible enough to capture the complex feature-label relationship in the dynamic hedging simulation model.
+With 240 features, feature engineering (i.e, variable selection) for regression metamodels is not a trivial task and is highly dependent on the simulation model. 
+As a result, the attempts to improve the traditional regression metamodels are not successful.
+The regression metamodels are not flexible enough to capture the complex feature-label relationship in the dynamic hedging simulation model.
 
 \begin{figure}[ht!]
     \centering

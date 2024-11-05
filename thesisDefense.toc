@@ -49,7 +49,7 @@
 \contentsline {section}{\numberline {3.4}Single-Stage Nested Simulation with Neural Network Metamodels}{76}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Numerical Results}{77}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Two-Stage Procedure}{84}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of DNN Metamodels}{86}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.2}Noise Tolerance of DNN Metamodels}{87}{subsection.3.5.2}%
 \contentsline {subsection}{\numberline {3.5.3}Single-Stage Procedure}{92}{subsection.3.5.3}%
 \contentsline {section}{\numberline {3.6}Conclusion}{96}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Transfer Learning for Rapid Adaptation of Deep Neural Network Metamodels in Dynamic Hedging of Variable Annuities}{98}{chapter.4}%

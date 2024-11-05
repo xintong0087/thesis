@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  3 NOV 2024 14:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  5 NOV 2024 10:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1069,96 +1069,98 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 <./project2/figures/qqPlots/rnnGood.png, id=1843, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/rnnGood.png Graphic file (type png)
 <use ./project2/figures/qqPlots/rnnGood.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/rnnGood.png  used on input line 478.
+Package pdftex.def Info: ./project2/figures/qqPlots/rnnGood.png  used on input line 480.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
 <./project2/figures/qqPlots/rnnBad.png, id=1844, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/rnnBad.png Graphic file (type png)
 <use ./project2/figures/qqPlots/rnnBad.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/rnnBad.png  used on input line 482.
+Package pdftex.def Info: ./project2/figures/qqPlots/rnnBad.png  used on input line 484.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/qqPlots/mlrLN.png, id=1847, 462.528pt x 346.896pt>
+ [81]
+<./project2/figures/qqPlots/mlrLN.png, id=1853, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/mlrLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/mlrLN.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/mlrLN.png  used on input line 499.
+Package pdftex.def Info: ./project2/figures/qqPlots/mlrLN.png  used on input line 505.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/qqPlots/qprLN.png, id=1848, 462.528pt x 346.896pt>
+<./project2/figures/qqPlots/qprLN.png, id=1854, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/qprLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/qprLN.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/qprLN.png  used on input line 503.
+Package pdftex.def Info: ./project2/figures/qqPlots/qprLN.png  used on input line 509.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [81] [82 <./project2/figures/qqPlots/rnnGood.png> <./project2/figures/qqPlots/rnnBad.png> <./project2/figures/qqPlots/mlrLN.png> <./project2/figures/qqPlots/qprLN.png>]
-<./project2/figures/qqPlots/fnnLN.png, id=1865, 462.528pt x 346.896pt>
+ [82 <./project2/figures/qqPlots/rnnGood.png> <./project2/figures/qqPlots/rnnBad.png>]
+<./project2/figures/qqPlots/fnnLN.png, id=1863, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/fnnLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/fnnLN.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/fnnLN.png  used on input line 523.
+Package pdftex.def Info: ./project2/figures/qqPlots/fnnLN.png  used on input line 530.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/qqPlots/lstmLoCapLN.png, id=1866, 462.528pt x 346.896pt>
+<./project2/figures/qqPlots/lstmLoCapLN.png, id=1864, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/lstmLoCapLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/lstmLoCapLN.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/lstmLoCapLN.png  used on input line 527.
+Package pdftex.def Info: ./project2/figures/qqPlots/lstmLoCapLN.png  used on input line 534.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [83 <./project2/figures/qqPlots/fnnLN.png> <./project2/figures/qqPlots/lstmLoCapLN.png>]
-<./project2/figures/tailMatches/regLN.png, id=1878, 462.528pt x 346.896pt>
+ [83 <./project2/figures/qqPlots/mlrLN.png> <./project2/figures/qqPlots/qprLN.png>]
+<./project2/figures/tailMatches/regLN.png, id=1876, 462.528pt x 346.896pt>
 File: ./project2/figures/tailMatches/regLN.png Graphic file (type png)
 <use ./project2/figures/tailMatches/regLN.png>
-Package pdftex.def Info: ./project2/figures/tailMatches/regLN.png  used on input line 556.
+Package pdftex.def Info: ./project2/figures/tailMatches/regLN.png  used on input line 563.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/tailMatches/nnLN.png, id=1879, 462.528pt x 346.896pt>
+<./project2/figures/tailMatches/nnLN.png, id=1877, 462.528pt x 346.896pt>
 File: ./project2/figures/tailMatches/nnLN.png Graphic file (type png)
 <use ./project2/figures/tailMatches/nnLN.png>
-Package pdftex.def Info: ./project2/figures/tailMatches/nnLN.png  used on input line 560.
+Package pdftex.def Info: ./project2/figures/tailMatches/nnLN.png  used on input line 567.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [84]
-<./project2/figures/CVaR/allLN.png, id=1890, 462.528pt x 346.896pt>
+ [84 <./project2/figures/qqPlots/fnnLN.png> <./project2/figures/qqPlots/lstmLoCapLN.png>]
+<./project2/figures/CVaR/allLN.png, id=1889, 462.528pt x 346.896pt>
 File: ./project2/figures/CVaR/allLN.png Graphic file (type png)
 <use ./project2/figures/CVaR/allLN.png>
-Package pdftex.def Info: ./project2/figures/CVaR/allLN.png  used on input line 586.
+Package pdftex.def Info: ./project2/figures/CVaR/allLN.png  used on input line 593.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/CVaR/zoomedLN.png, id=1891, 462.528pt x 346.896pt>
+<./project2/figures/CVaR/zoomedLN.png, id=1890, 462.528pt x 346.896pt>
 File: ./project2/figures/CVaR/zoomedLN.png Graphic file (type png)
 <use ./project2/figures/CVaR/zoomedLN.png>
-Package pdftex.def Info: ./project2/figures/CVaR/zoomedLN.png  used on input line 591.
+Package pdftex.def Info: ./project2/figures/CVaR/zoomedLN.png  used on input line 598.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [85 <./project2/figures/tailMatches/regLN.png> <./project2/figures/tailMatches/nnLN.png>] [86 <./project2/figures/CVaR/allLN.png> <./project2/figures/CVaR/zoomedLN.png>] [87]
-<./project2/figures/qqPlots/lstmAll.png, id=1915, 867.24pt x 578.16pt>
+ [85 <./project2/figures/tailMatches/regLN.png> <./project2/figures/tailMatches/nnLN.png>] [86 <./project2/figures/CVaR/allLN.png> <./project2/figures/CVaR/zoomedLN.png>] [87] [88]
+<./project2/figures/qqPlots/lstmAll.png, id=1919, 867.24pt x 578.16pt>
 File: ./project2/figures/qqPlots/lstmAll.png Graphic file (type png)
 <use ./project2/figures/qqPlots/lstmAll.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/lstmAll.png  used on input line 681.
+Package pdftex.def Info: ./project2/figures/qqPlots/lstmAll.png  used on input line 688.
 (pdftex.def)             Requested size: 460.72124pt x 307.14674pt.
- [88] [89 <./project2/figures/qqPlots/lstmAll.png>] [90]
+ [89 <./project2/figures/qqPlots/lstmAll.png>] [90]
 <./project2/figures/cor_heatmap.png, id=1945, 578.16pt x 433.62pt>
 File: ./project2/figures/cor_heatmap.png Graphic file (type png)
 <use ./project2/figures/cor_heatmap.png>
-Package pdftex.def Info: ./project2/figures/cor_heatmap.png  used on input line 778.
+Package pdftex.def Info: ./project2/figures/cor_heatmap.png  used on input line 785.
 (pdftex.def)             Requested size: 276.43555pt x 207.3214pt.
- [91]
-<./project2/figures/singleStage/CVaRmediumNoise.png, id=1952, 578.16pt x 433.62pt>
+ [91] [92 <./project2/figures/cor_heatmap.png>]
+<./project2/figures/singleStage/CVaRmediumNoise.png, id=1957, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRmediumNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRmediumNoise.png>
-Package pdftex.def Info: ./project2/figures/singleStage/CVaRmediumNoise.png  used on input line 801.
+Package pdftex.def Info: ./project2/figures/singleStage/CVaRmediumNoise.png  used on input line 808.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project2/figures/singleStage/CVaRhighNoise.png, id=1953, 578.16pt x 433.62pt>
+<./project2/figures/singleStage/CVaRhighNoise.png, id=1958, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRhighNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRhighNoise.png>
-Package pdftex.def Info: ./project2/figures/singleStage/CVaRhighNoise.png  used on input line 805.
+Package pdftex.def Info: ./project2/figures/singleStage/CVaRhighNoise.png  used on input line 812.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [92 <./project2/figures/cor_heatmap.png>] [93 <./project2/figures/singleStage/CVaRmediumNoise.png> <./project2/figures/singleStage/CVaRhighNoise.png>]
+ [93 <./project2/figures/singleStage/CVaRmediumNoise.png> <./project2/figures/singleStage/CVaRhighNoise.png>]
 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=1968, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png>
-Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 836.
+Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 843.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
 <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=1969, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>
-Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 841.
+Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 848.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=1971, 867.24pt x 361.35pt>
+ [94 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png> <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>]
+<./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=1977, 867.24pt x 361.35pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>
-Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 859.
+Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 866.
 (pdftex.def)             Requested size: 460.72124pt x 191.96672pt.
- [94 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png> <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>] [95 <./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [96]) (./project3/draft.tex [97]
+ [95 <./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [96]) (./project3/draft.tex [97]
 Chapter 4.
 [98
 
@@ -1360,7 +1362,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  109i,19n,107p,2397b,1215s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on thesisDefense.pdf (174 pages, 2933920 bytes).
+Output written on thesisDefense.pdf (174 pages, 2934594 bytes).
 PDF statistics:
  3003 PDF objects out of 3580 (max. 8388607)
  2578 compressed objects within 26 object streams
