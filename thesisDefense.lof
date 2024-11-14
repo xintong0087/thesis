@@ -16,30 +16,30 @@
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time}}{62}{figure.caption.28}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of multi-period nested simulation that estimates the P\&L for one outer scenario.}}{73}{figure.caption.29}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{83}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces QQ-plots between true labels (x-axis) and predicted losses (y-axis) for the RNN metamodel.}}{84}{figure.caption.32}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for regression metamodels.}}{84}{figure.caption.33}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{85}{figure.caption.34}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{86}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Average $95\%$-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{87}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{87}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Average $95\%$-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.}}{88}{figure.caption.36}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{91}{figure.caption.38}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlations for high-capacity LSTM metamodel.}}{93}{figure.caption.42}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{94}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{96}{figure.caption.44}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{96}{figure.caption.45}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlations for high-capacity LSTM metamodel.}}{94}{figure.caption.42}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{95}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{97}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{98}{figure.caption.45}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{112}{figure.caption.47}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{113}{figure.caption.48}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{114}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{117}{figure.caption.51}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{118}{figure.caption.53}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{119}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{120}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{113}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{114}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{115}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{118}{figure.caption.51}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{119}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{120}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{121}{figure.caption.55}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{139}{figure.caption.56}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{143}{figure.caption.58}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{143}{figure.caption.59}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{144}{figure.caption.60}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{144}{figure.caption.61}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{145}{figure.caption.62}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{146}{figure.caption.63}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{140}{figure.caption.56}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{144}{figure.caption.58}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{144}{figure.caption.59}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{145}{figure.caption.60}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{145}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{146}{figure.caption.62}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{147}{figure.caption.63}%

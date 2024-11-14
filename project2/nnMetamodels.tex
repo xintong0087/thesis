@@ -392,53 +392,52 @@ We also use these true losses to estimate $\widehat{\CVaR}_{95\%}$ and denote th
 Lastly, we refer to the set of feature-label pairs $\{(\bS^{(i)}, L_i): i=1,\ldots,M\}$ as a \textit{true dataset}.
 Note that the feature vector $\bS$ is a 240-dimension stock path.
 
-We compare our two-stage procedure to a benchmark standard nested simulation procedure that runs $N=\num{1000}$ inner replications for each of the $M=\num{100000}$ outer scenarios.
-In stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=\num{100000}$ outer scenarios.
-So, stage 1's simulation budget is $10\%$ of the standard procedure's.
-The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
-Specifically, following the convention in machine learning literature, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ data points ($90\%$, $5\%$, and $5\%$ of the dataset), respectively.
-At the end of stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
-In stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
-This is the same number of replications as the benchmark standard procedure.
-Stage 2's simulation budget is $\frac{m}{M}$ of the benchmark standard procedure's.
-In short, the two-stage procedure uses $15\% - 30\%$ of the benchmark procedure's budget for a safety margin between $0\% - 15\%$.
+In our experiments, the standard nested simulation procedure is mainly used in three ways.
+\begin{enumerate}
+    \item   The true losses and the true $95\%$-CVaR are estimated using a standard nested simulation procedure that runs $N=\num{100000}$ inner replications for each of the $M=\num{100000}$ outer scenarios.
+    \item   A benchmark estimator of the $95\%$-CVaR is generated using $N=\num{1000}$ for each of the $M=\num{100000}$ outer scenarios.
+    \item   The training data for our metamodels is generated using $N=\num{100}$ for $M=\num{100000}$.
+    The value of $M$ and $N$ are subject to change in our other numerical experiments.
+\end{enumerate}
 
 Five metamodels are considered in this experiment: multiple linear regression (MLR), quadratic polynomial regression (QPR) without interaction terms, FNN, RNN, and LSTM network.
 MLR and QPR are two common metamodels in the simulation literature, and their implemention is straightfoward in our simulation setting.
 FNN is a generic neural network while RNN and LSTM are specialized models to accommodate the sequential structure of our time-series features.
 A $\tanh$ activation function is used for RNN and LSTM layers, and a ReLU activation function is used for the fully-connected layers.
 All neural network metamodels are trained by the Adam optimizer~\citep{kingma2014adam} with an initial learning rate of $0.001$ and an exponential learning rate decay schedule.
-FNN is trained with a dropout rate of $20\%$.
-RNN and LSTM are trained with a dropout rate of $10\%$.
+All DNN metamodels are trained with a dropout rate of $10\%$.
 The architectures and training settings are typical choices in the deep learning literature.
 The training labels are normalized to have zero mean and unit standard deviation.
 The architectures and the numbers of trainable parameters are recorded in the first two columns of Table~\ref{tab:gmwb_arch}.
 We observe that the three DNN metamodels have orders of magnitudes more trainable parameters than the two traditional regression metamodels.
-In machine learning terminologies, the three DNN models have much higher \textit{model capacities}.
-From another point of view, MLR and QPR are two neural networks with no hidden layers. 
-For a traditional regression model, the numbers of neurons in its input layer equals to the cardinality of its regression bases.
-Treating regression metamodels as shallow neural networks allows for direct comparisons with DNNs.
+In machine learning terminologies, the three DNN metamodels have much higher \textit{model capacities}.
+From a neural network of view, MLR and QPR are two neural networks with no hidden layers. 
+For a traditional regression metamodel, the numbers of neurons in its input layer equals to the cardinality of its regression bases.
+Treating a regression as a shallow neural network allows for direct comparisons with DNNs.
 
+% Fill this table with new results
 \begin{table}[ht!]
     \centering
     \footnotesize
-    \begin{tabular}{lccccc}
+    \begin{tabular}{lcccc}
     \toprule
-    \textbf{Model} & \textbf{\makecell{Layer size}} & \textbf{\makecell{Capacity}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
+    \textbf{Metamodel} & \textbf{\makecell{Capacity}} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
     \midrule
-    MLR & $\num{240}$ & $\num{241}$ & $0.707 (\pm 3.6 \times 10^{-4})$ & $0.877 (\pm 0.001)$ & $0.694 (\pm 0.000)$ \\
-    QPR & $\num{480}$ & $\num{481}$ & $0.544 (\pm 0.000)$ & $0.636 (\pm 0.001)$ & $0.531 (\pm 0.000)$ \\
-    FNN & $240, 128, 16$ & $\num{35009}$ & $0.118 (\pm 0.001)$ & $0.247 (\pm 0.002)$ & $0.113 (\pm 0.001)$ \\
-    RNN & $(240, 32), (240, 4), 32$ & $\num{32021}$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
-    LSTM & $(240, 32), (240, 4), 32$ & $\num{35729}$ & $0.075 (\pm 0.004)$ & $0.079 (\pm 0.005)$ & $0.063 (\pm 0.004)$ \\
-    RNN$^*$\footnotemark & $(240, 32), (240, 4), 32$ & $\num{32021}$ & $0.109 (\pm 0.005)$ & $0.128 (\pm 0.005)$ & $0.109 (\pm 0.005)$ \\
+    MLR & $\num{241}$ & $0.706 (\pm 8.34\times 10^{-4})$ & $0.713 (\pm 2.67 \times 10^{-2})$ & $0.706 (\pm 3.44 \times 10^{-4})$ \\
+    QPR & $\num{481}$ & $0.543 (\pm 8.27\times 10^{-4})$ & $0.554 (\pm 2.32 \times 10^{-2})$ & $0.544 (\pm 4.12\times 10^{-4})$ \\
+    FNN & $\num{35009}$ & $0.129 (\pm 5.95\times 10^{-3})$ & $0.240 (\pm 9.82 \times 10^{-3})$ & $0.132 (\pm 5.82\times 10^{-3})$ \\
+    RNN & $\num{32021}$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
+    LSTM & $\num{35729}$ & $0.075 (\pm 0.004)$ & $0.079 (\pm 0.005)$ & $0.063 (\pm 0.004)$ \\
+    RNN$^*$\footnotemark & $\num{32021}$ & $0.109 (\pm 0.005)$ & $0.128 (\pm 0.005)$ & $0.109 (\pm 0.005)$ \\
     \bottomrule
     \end{tabular}
     \caption{Architectures and MSEs of metamodels for GMWB inner simulation model.}
     \label{tab:gmwb_arch}
 \end{table}
 
-\footnotetext{This row summarizes the results of the well-trained RNN, where the ones suffers from the vanishing and exploding gradient issue are removed from the averages.}
+\footnotetext{This row summarizes the results of the well-trained RNN, where the ones suffers from the vanishing gradient issue are removed from the averages.}
+
+\textcolor{red}{Need to collect the result for RNN and LSTM}
 
 For each metamodel, \num{100} independent macro replications are run.
 Each macro replication involves simulating a noisy dataset, randomly separating it into training and test data, fitting a metamodel, and making predictions.
@@ -457,8 +456,12 @@ Other examples include generative pre-trained transformer models like BERT~\cite
 The reason for not over-fitting when the number of trainable parameters is much larger than the number of training samples is still an open question in deep learning research.
 One of the explanations in the literature is that the optimization surface of DNNs is highly non-convex and has many local minima.
 Given a good initialization, the optimization algorithm is likely to find a solution that generalizes well to unseen data.
+Another explanation is that most existing DNN models have specific architectures that make them less prone to over-fitting.
+For example, a convolutional neural network (CNN) is specifically designed to capture the spatial structure in image data.
+Unlike a FNN, not all neurons are connected to all neurons in the previous layer.
+This architecture serves as prior knowledge and a form of regularization that make CNNs less prone to over-fitting.
 
-There are significant differences among the three DNN models due to having different neural network architectures.
+In our experiments, there are significant differences among the three DNN models due to having different neural network architectures.
 Their model capacities are intentionally set to be similar to each other for a fair comparison.
 The FNN is a generic neural network, its test error is much greater than the training error, which is a sign of over-fitting and poor generalization.
 In contrast, RNN and LSTM networks have recurrent strucutures and are designed to capture temporal relationship in the high-dimensional feature.
@@ -474,22 +477,27 @@ Comparing the two metamodels with recurrent structures, A LSTM network overcomes
     Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN, but the half lengths of their $95\%$ confidence bands are larger than those of the FNN. 
     This suggests that the RNN is more sensitive to noise in stochastic gradient descent than the FNN.
     \item A LSTM introduces three gates that regulate the flow of information. 
-    These gates decide what information should be kept or discarded. 
-    This makes a LSTM network more capcable of learning long-term dependencies. 
+    These gates decide what information should be kept or discarded.
+    For detailed discussion on the LSTM network, please refer to Section~\ref{subsec:LSTM}.
+    This gating mechanism makes a LSTM network more capable of learning long-term dependencies. 
     Since the feature in our dynamic hedging problem is a 240-dimensional time series, a LSTM network is more suitable than a crude RNN.
 \end{enumerate}
-In summary, the network depth ensures successful learning of the training dataset, and the network architecture serves as a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data.
+In summary, the network depth ensures successful learning of the training dataset, and the network architecture serves as 
+\begin{enumerate}
+    \item regularization that prevents over-fitting, and 
+    \item a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data.
+\end{enumerate}
 They are both crucial for the metamodels' performance.
 It is important to choose a \textit{suitable} architecture with a pre-set capacity that is large enough to learn the training dataset and generalize to the true feature-label relationship.
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\textwidth]{./project2/figures/qqPlots/rnnGood.png}
+        \includegraphics[width=\textwidth]{./project2/figures/2a_QQ_good_training.png}
         \caption{A good RNN metamodel}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
-        \includegraphics[width=\textwidth]{./project2/figures/qqPlots/rnnBad.png}
+        \includegraphics[width=\textwidth]{./project2/figures/2b_QQ_bad_training.png}
         \caption{A bad RNN metamodel}
         \label{subfig2:badRNN}
     \end{subfigure}
@@ -507,7 +515,7 @@ The test labels contain more simulation noise than the true labels.
 This is a sign of the regression metamodels' inability to learn the true feature-label relationship rather than merely over-fitting to the simulation noise in the training labels.
 In practical applications, the true labels are not available.
 However, analyzing the quality of fit on the true labels in a simulation environment offers a unique opportunity to understand the metamodels' true ability of learning.
-Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between the \textbf{true} labels and the predicted losses for the regression metamodels and the neural network metamodels, respectively.
+Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between the \textbf{true} loss labels and the predicted losses for the regression metamodels and the neural network metamodels, respectively.
 
 \begin{figure}[ht!]
     \centering
@@ -524,7 +532,7 @@ Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between 
 \end{figure}
 
 Comparing with the MSE table in Table~\ref{tab:gmwb_arch} that summarizes the overall fit, QQ plots offer a closer look at the metamodels' performance on different parts of the loss distribution.
-Figure~\ref{fig2:QQ_REG} show that the regression metamodels' predictions are far from the true losses, especially on the tails.
+Figure~\ref{fig2:QQ_REG} show the regression metamodel predictions and the loss labels in the true dataset.
 Between the two regression metamodels, the QPR metamodel has a slightly better fit for larger losses.
 Nevertheless, the predictions of both regression metamodels are far from the true labels, and their fit on the tail is particularly undesirable.
 The poor fit on the tail hinders the regression metamodels' ability to identify true tail scenarios and ultimately leads to poor CVaR estimates.
@@ -551,7 +559,7 @@ The regression metamodels are not flexible enough to capture the complex feature
 
 In Figure~\ref{fig2:QQ_NN}, we illustrate the fit of the neural network metamodels.
 The FNN has a better fit than the regression metamodels, but it still has a poor fit on the tails.
-We observe that the LSTM metamodels' QQ-plots closely follow that 45-degree line.
+We observe that the LSTM metamodels' QQ-plots closely follow the $45$-degree line.
 Again, these metamodels are trained on noisy data, so the good fit to the true data should not be taken for granted.
 This implies that these models indeed learn the true feature-label relationship in the dynamic hedging simulation model (i.e., true loss labels) even though they are trained on noisy observations (e.g., training labels) of the model.
 
@@ -561,8 +569,23 @@ This approach provides a controlled environment to examine the impact of label n
 It allows us to generate our true dataset that approximates the true hedging losses with a high degree of precision, and, as a result, it enables us to explore the crucial question of whether deep learning models are capable of learning the true feature-label relationship from noisy training labels.
 Our numerical results in Table~\ref{tab:gmwb_arch} and the QQ plots provide direct evidence that DNN models are indeed able to cut through the noise in the training labels and learn the true feature-label relationship.
 The LSTM metamodels' ability to learn the true feature-label relationship is crucial for the two-stage procedure to identify true tail scenarios and produce accurate CVaR estimates.
+Section~\ref{subsec2:noiseTolerance} discusses LSTM metamodels in more details regarding their sensitivity to data quality and quantity.
+We aim to provide numerical evidence and provide insights on the DNN metamodels' noise tolerance.
 
 \subsection{Two-Stage Procedure} \label{subsec:twoStageProcedure}
+
+We compare our two-stage procedure to a benchmark standard nested simulation procedure that runs $N=\num{1000}$ inner replications for each of the $M=\num{100000}$ outer scenarios.
+In stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=\num{100000}$ outer scenarios.
+So, stage 1's simulation budget is $10\%$ of the standard procedure's.
+The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
+Specifically, following the convention in machine learning literature, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ samples ($90\%$, $5\%$, and $5\%$ of the dataset), respectively.
+At the end of stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
+In stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
+This is the same number of replications as the benchmark standard procedure.
+Stage 2's simulation budget is $\frac{m}{M}$ of the benchmark standard procedure's.
+In short, the two-stage procedure uses $15\% - 30\%$ of the benchmark procedure's budget for a safety margin between $0\% - 15\%$.
+Analyzing the two stages separately, the simulation budget for stage 1 is $10\%$ of the benchmark procedure's.
+Stage 2 uses $5\%$ to $20\%$ of the simulation budget of the benchmark procedure for a safety margin between $0\% - 15\%$.
 
 In our proposed two-stage procedure, the metamodel is used to identify the predicted tail scenario set, on which the standard nested simulation procedure is run in stage 2 to estimate the $95\%$-CVaR.
 An accurate identification of the true tail scenarios is crucial.
@@ -582,11 +605,13 @@ In a two-stage procedure, metamodels' overall prediction errors measured by the 
     \label{fig2:tailMatches}
 \end{figure}
 
+\textcolor{red}{Need to separate the bad RNN from the good RNN for Figure~\ref{fig2:tailMatches}.}
+
 Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for increasing safety margins.
 Each quantity is averaged over $100$ macro replications.
 For a fixed safety margin, the percentage of tail matches of the traditional regression metamodels are significantly lower than the ones of the neural networks.
-We see that a poor metamodel like the QPR identifies less than 40\% of the true tail scenario without any safety margin.
-In contrast, a well-suited metamodel like the LSTM identifies more than 75\% of the true tail scenarios without any safety margin and more than the QPR metamodel does with $15\%$ of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies $100\%$ of the true tail scenarios on with a $10\%$ safety margin for a GMAB contract.
+We see that a poor metamodel like the QPR identifies less than $40\%$ of the true tail scenario without any safety margin.
+In contrast, a well-suited metamodel like the LSTM identifies more than $75\%$ of the true tail scenarios without any safety margin and more than the QPR metamodel does with $15\%$ of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies $100\%$ of the true tail scenarios on with a $10\%$ safety margin for a GMAB contract.
 The GMAB contract is simpler than the GMWB contract, and the true tail scenarios are easier to identify. 
 For a GMAB, our LSTM metamodel identifies $100\%$ of the true tail scenarios with a $2.5\%$ safety margin}.
 The RNN metamodel suffers from the vanishing gradient problem during training. 
@@ -595,25 +620,26 @@ The FNN metamodel has a better fit than the regression metamodels, but it does n
 For comparison, the horizontal dotted line shows the percentage of correctly identified true tails for the standard nested simulation procedure.
 A good metamodel should be able to identify a similar percentage of true tail scenarios as the standard procedure does with a reasonable safety margin.
 Otherwise, the two-stage procedure will offer no computational advantage in simulation budget over the standard procedure.
-The LSTM metamodel can reaches similar percentage with a 5\% safety margin.
-This indicates that the LSTM metamodel should be able to reach the same level of accuracy as the standard procedure with only 20\% of the simulation budget.
+The LSTM metamodel can reaches similar percentage with a $5\%$ safety margin.
+This indicates that the LSTM metamodel should be able to reach the same level of accuracy as the standard procedure with only $20\%$ of the simulation budget.
 
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project2/figures/CVaR/allLN.png}
-        \caption{Safety margin 0\% - 15\%.}
+        \caption{Safety margin $0\%$ - $15\%$.}
         \label{subfig2:AllSafetyMargin}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project2/figures/CVaR/zoomedLN.png}
-        \caption{Safety margin 7.5\% - 15\%.}
+        \caption{Safety margin $7.5\%$ - $15\%$.}
         \label{subfig2:ZoomedSafetyMargin}
     \end{subfigure}
     \caption{Average $95\%$-CVaR estimates by different procedures. Right figure is a zoomed-in version of left figure.} 
     \label{fig2:CVaR95}
 \end{figure}
 
+\textcolor{red}{Need to separate the bad RNN from the good RNN for Figure~\ref{fig2:CVaR95}.}
 Lastly, we return to our original goal of estimating the $95\%$-CVaR of the dynamic hedging error.
 Figure~\ref{fig2:CVaR95} shows the $95\%$-CVaR estimates for all five metamodels with different safety margins, averaged over $100$ macro replications.
 Figure~\ref{subfig2:ZoomedSafetyMargin} is a zoomed version of Figure~\ref{subfig2:AllSafetyMargin}.
@@ -670,7 +696,7 @@ For consistency, the LSTM metamodels are trained with the same architecture and 
 \end{table}
 
 The first two rows of Table~\ref{tab:lstm_arch} shows the average squared errors and the half widths of their $95\%$ confidence intervals between the metamodel predictions and the labels in the training dataset and the true dataset.
-The test errors are included as a practical measure of the metamodels' generalization ability.
+The test errors are included as a practical measure of the metamodels' generalization ability to unseen noisy samples.
 For this particular experiment, we are more interested in the true errors, which measure the metamodels' ability to learn the true feature-label relationship from the low-noise, medium-noise, and high-noise datasets.
 We first observe that all the true errors are lower than the training errors, indicating that the LSTM metamodels generalize well to predicting the true losses.
 Both LSTM metamodels are able to learn the true feature-label relationship from the low-noise and medium-noise datasets.
@@ -750,7 +776,6 @@ The number of outer scenarios corresponds to the number of data points in the tr
     \label{tab2:hicaplstm_sens}
 \end{table}
 
-
 Table~\ref{tab2:lstm_sens} and~\ref{tab2:hicaplstm_sens} show the average squared errors between the LSTM predictions and the true losses for increasing $M$ and $N$.
 The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} show the performance of the regular and high capacity LSTM metamodels trained with $M=\num{100000}$ training labels with different noise levels.
 We observe that an increasing $N$ reduces the MSE, but the reduction is not significant for a regular LSTM when $N$ is larger than $\num{10}$.
@@ -767,7 +792,9 @@ To further investigate the LSTM metamodels' sensitivity to data quantity and qua
 It is an appropriate measure of the metamodel's performance in the two-stage procedure, where the metamodel is used to identify the predicted tail scenario set, on which extensive simulations are run in stage 2 to estimate the $95\%$-CVaR.
 The Pearson correlation coefficients are also included in the parentheses to illustrate the linear correlation between the predicted losses and the true losses.
 They measure the metamodel's overall prediction accuracy.
-
+Our previous numerical experiments illustrated in Figure~\ref{fig2:tailMatches} have shown that the LSTM metamodel predictions have high \textit{Spearman} correlation with the true labels for the combination $M=\num{100000}$ and $N=\num{100}$.
+We intend to examine if LSTM predictions also have high \textit{Pearson} correlation with the true labels.
+A high \textit{Pearson} correlation suggests the possibility of using LSTM predictions to estimate risk measures directly.
 
 \begin{table}[ht!]
     \small
@@ -786,7 +813,14 @@ They measure the metamodel's overall prediction accuracy.
     \label{tab2:lstm_corr}
 \end{table}
 
-Consistent with the results in Table~\ref{tab2:lstm_sens}, the Spearman correlation of the LSTM metamodel predictions with the true losses is insensitive to the number of inner replications, especially when $M$ is large.
+Consistent with our previous numerical experiments, the Spearman correlations of a high-capacity LSTM is high for a moderate simulation budget. 
+For $M= \num{100000}$, the Spearman correlation is insensitive to $N$.
+This finding supports further budget savings for our two-stage procedure.
+In stage 1, we can lower $N$ from $\num{100}$ to $\num{10}$ without compromising on tail scenario preditions. 
+Table
+
+For an entry of Table~\ref{tab2:lstm_corr}, the total simulation budget $\Gamma = M N$. 
+Entries on the same off-diagonal all have the same $\Gamma$.
 The Pearson correlation coefficients are significantly lower for $N=\num{1}$ than the other $N$ values.
 
 \begin{figure}
@@ -800,7 +834,7 @@ Figure~\ref{fig2:cor-heatmap} shows the difference between the Spearman and Pear
 The heatmap is generated by subtracting the Pearson correlation coefficients from the Spearman correlation.
 We observe that Spearman correlation coefficients are not significantly different from the Pearson correlation coefficients for any $N$ larger than $\num{10}$. 
 This is a strong evidence that the LSTM metamodel is not only able to effectively rank the scenarios by their true losses, but also able to make accurate loss predictions.
-Instead of using the LSTM metamodel only for ranking in a two-stage procedure, LSTM's ability to cut through a moderate level of noise in training labels encourages us to use its predictions to estimate the CVaR directly. 
+Instead of using the LSTM metamodel only for classifying tail scenarios in a two-stage procedure, LSTM's ability to cut through a moderate level of noise in training labels encourages us to use its predictions to estimate the CVaR directly. 
 
 \subsection{Single-Stage Procedure}
 
@@ -824,6 +858,8 @@ The only difference from Section~\ref{subsec:twoStageProcedure} is that the meta
     \caption{CVaR estimates of the single-stage procedure with metamodels.}
     \label{fig2:CVaRsingleStage}
 \end{figure}
+
+\textcolor{red}{The $N=1$ plot is not valid}
 
 Figure~\ref{fig2:CVaRsingleStage} shows the boxplots of the 95\%-CVaR estimates of the single-stage procedure with different metamodels and compares them to the two-stage procedure and the standard procedure.
 The two-stage procedure uses the same simulation budget as the single-stage procedure in stage 1 with extra budget for extensive inner simulation on the predicted tail scenarios in stage 2.
