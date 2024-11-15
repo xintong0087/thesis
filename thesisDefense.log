@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  13 NOV 2024 17:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  14 NOV 2024 21:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1101,63 +1101,63 @@ Package pdftex.def Info: ./project2/figures/qqPlots/lstmLoCapLN.png  used on inp
 <./project2/figures/tailMatches/regLN.png, id=1903, 462.528pt x 346.896pt>
 File: ./project2/figures/tailMatches/regLN.png Graphic file (type png)
 <use ./project2/figures/tailMatches/regLN.png>
-Package pdftex.def Info: ./project2/figures/tailMatches/regLN.png  used on input line 597.
+Package pdftex.def Info: ./project2/figures/tailMatches/regLN.png  used on input line 598.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
 <./project2/figures/tailMatches/nnLN.png, id=1904, 462.528pt x 346.896pt>
 File: ./project2/figures/tailMatches/nnLN.png Graphic file (type png)
 <use ./project2/figures/tailMatches/nnLN.png>
-Package pdftex.def Info: ./project2/figures/tailMatches/nnLN.png  used on input line 601.
+Package pdftex.def Info: ./project2/figures/tailMatches/nnLN.png  used on input line 602.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
  [87 <./project2/figures/tailMatches/regLN.png> <./project2/figures/tailMatches/nnLN.png>]
 <./project2/figures/CVaR/allLN.png, id=1919, 462.528pt x 346.896pt>
 File: ./project2/figures/CVaR/allLN.png Graphic file (type png)
 <use ./project2/figures/CVaR/allLN.png>
-Package pdftex.def Info: ./project2/figures/CVaR/allLN.png  used on input line 629.
+Package pdftex.def Info: ./project2/figures/CVaR/allLN.png  used on input line 630.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
 <./project2/figures/CVaR/zoomedLN.png, id=1920, 462.528pt x 346.896pt>
 File: ./project2/figures/CVaR/zoomedLN.png Graphic file (type png)
 <use ./project2/figures/CVaR/zoomedLN.png>
-Package pdftex.def Info: ./project2/figures/CVaR/zoomedLN.png  used on input line 634.
+Package pdftex.def Info: ./project2/figures/CVaR/zoomedLN.png  used on input line 635.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
  [88 <./project2/figures/CVaR/allLN.png> <./project2/figures/CVaR/zoomedLN.png>] [89] [90]
 <./project2/figures/qqPlots/lstmAll.png, id=1943, 867.24pt x 578.16pt>
 File: ./project2/figures/qqPlots/lstmAll.png Graphic file (type png)
 <use ./project2/figures/qqPlots/lstmAll.png>
-Package pdftex.def Info: ./project2/figures/qqPlots/lstmAll.png  used on input line 724.
+Package pdftex.def Info: ./project2/figures/qqPlots/lstmAll.png  used on input line 725.
 (pdftex.def)             Requested size: 460.72124pt x 307.14674pt.
  [91 <./project2/figures/qqPlots/lstmAll.png>] [92] [93]
 <./project2/figures/cor_heatmap.png, id=1973, 578.16pt x 433.62pt>
 File: ./project2/figures/cor_heatmap.png Graphic file (type png)
 <use ./project2/figures/cor_heatmap.png>
-Package pdftex.def Info: ./project2/figures/cor_heatmap.png  used on input line 828.
+Package pdftex.def Info: ./project2/figures/cor_heatmap.png  used on input line 829.
 (pdftex.def)             Requested size: 276.43555pt x 207.3214pt.
  [94 <./project2/figures/cor_heatmap.png>]
 <./project2/figures/singleStage/CVaRmediumNoise.png, id=1981, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRmediumNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRmediumNoise.png>
-Package pdftex.def Info: ./project2/figures/singleStage/CVaRmediumNoise.png  used on input line 851.
+Package pdftex.def Info: ./project2/figures/singleStage/CVaRmediumNoise.png  used on input line 852.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
 <./project2/figures/singleStage/CVaRhighNoise.png, id=1982, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRhighNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRhighNoise.png>
-Package pdftex.def Info: ./project2/figures/singleStage/CVaRhighNoise.png  used on input line 855.
+Package pdftex.def Info: ./project2/figures/singleStage/CVaRhighNoise.png  used on input line 856.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
  [95 <./project2/figures/singleStage/CVaRmediumNoise.png> <./project2/figures/singleStage/CVaRhighNoise.png>]
 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=1993, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png>
-Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 888.
+Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 889.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
 <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=1994, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>
-Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 893.
+Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 894.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
  [96]
 <./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=2000, 867.24pt x 361.35pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>
-Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 911.
+Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 912.
 (pdftex.def)             Requested size: 460.72124pt x 191.96672pt.
  [97 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png> <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>] [98 <./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [99]) (./project3/draft.tex [100]
 Chapter 4.
@@ -1361,7 +1361,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  109i,19n,107p,2397b,1215s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on thesisDefense.pdf (177 pages, 2950618 bytes).
+Output written on thesisDefense.pdf (177 pages, 2950744 bytes).
 PDF statistics:
  3033 PDF objects out of 3580 (max. 8388607)
  2604 compressed objects within 27 object streams

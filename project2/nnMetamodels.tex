@@ -579,7 +579,7 @@ In stage 1 of the proposed procedure, we first run inner simulations with $N'=10
 So, stage 1's simulation budget is $10\%$ of the standard procedure's.
 The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
 Specifically, following the convention in machine learning literature, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ samples ($90\%$, $5\%$, and $5\%$ of the dataset), respectively.
-At the end of stage 1, $m$ predicted tail scenarios, are identified by the trained metamodels.
+At the end of stage 1, $m$ predicted tail scenarios are identified by the trained metamodels.
 In stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
 This is the same number of replications as the benchmark standard procedure.
 Stage 2's simulation budget is $\frac{m}{M}$ of the benchmark standard procedure's.
@@ -589,7 +589,8 @@ Stage 2 uses $5\%$ to $20\%$ of the simulation budget of the benchmark procedure
 
 In our proposed two-stage procedure, the metamodel is used to identify the predicted tail scenario set, on which the standard nested simulation procedure is run in stage 2 to estimate the $95\%$-CVaR.
 An accurate identification of the true tail scenarios is crucial.
-In a two-stage procedure, metamodels' overall prediction errors measured by the MSEs in Table~\ref{tab:gmwb_arch} are not the determining factor, but their ability to effectively rank the scenarios by their \textbf{true} losses is most critical in producing accurate CVaR estimates.
+In a two-stage procedure, metamodels' overall prediction errors measured by the MSEs in Table~\ref{tab:gmwb_arch} are not the determining factor, but their ability to effectively rank the scenarios by their \textbf{true} losses is most critical in producing accurate CVaR estimates. 
+A metamodel that uses less safety margin to rank can save simulation budget in stage 2.
 
 \begin{figure}[ht!]
     \centering
@@ -610,7 +611,7 @@ In a two-stage procedure, metamodels' overall prediction errors measured by the 
 Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for increasing safety margins.
 Each quantity is averaged over $100$ macro replications.
 For a fixed safety margin, the percentage of tail matches of the traditional regression metamodels are significantly lower than the ones of the neural networks.
-We see that a poor metamodel like the QPR identifies less than $40\%$ of the true tail scenario without any safety margin.
+We observe that a poor metamodel like the QPR identifies less than $40\%$ of the true tail scenario without any safety margin.
 In contrast, a well-suited metamodel like the LSTM identifies more than $75\%$ of the true tail scenarios without any safety margin and more than the QPR metamodel does with $15\%$ of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies $100\%$ of the true tail scenarios on with a $10\%$ safety margin for a GMAB contract.
 The GMAB contract is simpler than the GMWB contract, and the true tail scenarios are easier to identify. 
 For a GMAB, our LSTM metamodel identifies $100\%$ of the true tail scenarios with a $2.5\%$ safety margin}.
