@@ -426,9 +426,9 @@ Treating a regression as a shallow neural network allows for direct comparisons 
     MLR & $\num{241}$ & $0.706 (\pm 8.34\times 10^{-4})$ & $0.713 (\pm 2.67 \times 10^{-2})$ & $0.706 (\pm 3.44 \times 10^{-4})$ \\
     QPR & $\num{481}$ & $0.543 (\pm 8.27\times 10^{-4})$ & $0.554 (\pm 2.32 \times 10^{-2})$ & $0.544 (\pm 4.12\times 10^{-4})$ \\
     FNN & $\num{35009}$ & $0.129 (\pm 5.95\times 10^{-3})$ & $0.240 (\pm 9.82 \times 10^{-3})$ & $0.132 (\pm 5.82\times 10^{-3})$ \\
-    RNN & $\num{32021}$ & $0.132 (\pm 0.008)$ & $0.137 (\pm 0.008)$ & $0.119 (\pm 0.008)$ \\
-    LSTM & $\num{35729}$ & $0.075 (\pm 0.004)$ & $0.079 (\pm 0.005)$ & $0.063 (\pm 0.004)$ \\
-    RNN$^*$\footnotemark & $\num{32021}$ & $0.109 (\pm 0.005)$ & $0.128 (\pm 0.005)$ & $0.109 (\pm 0.005)$ \\
+    RNN & $\num{32021}$ & $0.132 (\pm 7.53\times 10^{-3})$ & $0.137 (\pm 7.62\times 10^{-3})$ & $0.119 (\pm 7.51\times 10^{-3})$ \\
+    LSTM & $\num{35729}$ & $0.075 (\pm 4.48\times 10^{-3})$  & $0.079 (\pm 5.35\times 10^{-3})$ & $0.063 (\pm 4.43\times 10^{-3})$ \\
+    RNN$^*$\footnotemark & $\num{32021}$ & $0.109 (\pm 5.20\times 10^{-3})$  & $0.128 (\pm 5.22\times 10^{-3})$  & $0.109 (\pm 5.20\times 10^{-3})$ \\
     \bottomrule
     \end{tabular}
     \caption{Architectures and MSEs of metamodels for GMWB inner simulation model.}
@@ -436,8 +436,6 @@ Treating a regression as a shallow neural network allows for direct comparisons 
 \end{table}
 
 \footnotetext{This row summarizes the results of the well-trained RNN, where the ones suffers from the vanishing gradient issue are removed from the averages.}
-
-\textcolor{red}{Need to collect the result for RNN and LSTM}
 
 For each metamodel, \num{100} independent macro replications are run.
 Each macro replication involves simulating a noisy dataset, randomly separating it into training and test data, fitting a metamodel, and making predictions.
@@ -590,7 +588,7 @@ Stage 2 uses $5\%$ to $20\%$ of the simulation budget of the benchmark procedure
 In our proposed two-stage procedure, the metamodel is used to identify the predicted tail scenario set, on which the standard nested simulation procedure is run in stage 2 to estimate the $95\%$-CVaR.
 An accurate identification of the true tail scenarios is crucial.
 In a two-stage procedure, metamodels' overall prediction errors measured by the MSEs in Table~\ref{tab:gmwb_arch} are not the determining factor, but their ability to effectively rank the scenarios by their \textbf{true} losses is most critical in producing accurate CVaR estimates. 
-A metamodel that uses less safety margin to rank can save simulation budget in stage 2.
+A metamodel that uses less safety margin to rank can save more simulation budget in stage 2.
 
 \begin{figure}[ht!]
     \centering
@@ -605,8 +603,6 @@ A metamodel that uses less safety margin to rank can save simulation budget in s
     \caption{Percentage of correctly identified true tail scenarios by different metamodels.}
     \label{fig2:tailMatches}
 \end{figure}
-
-\textcolor{red}{Need to separate the bad RNN from the good RNN for Figure~\ref{fig2:tailMatches}.}
 
 Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identified true tail scenarios by different metamodels for increasing safety margins.
 Each quantity is averaged over $100$ macro replications.
@@ -640,7 +636,6 @@ This indicates that the LSTM metamodel should be able to reach the same level of
     \label{fig2:CVaR95}
 \end{figure}
 
-\textcolor{red}{Need to separate the bad RNN from the good RNN for Figure~\ref{fig2:CVaR95}.}
 Lastly, we return to our original goal of estimating the $95\%$-CVaR of the dynamic hedging error.
 Figure~\ref{fig2:CVaR95} shows the $95\%$-CVaR estimates for all five metamodels with different safety margins, averaged over $100$ macro replications.
 Figure~\ref{subfig2:ZoomedSafetyMargin} is a zoomed version of Figure~\ref{subfig2:AllSafetyMargin}.
@@ -677,19 +672,19 @@ For consistency, the LSTM metamodels are trained with the same architecture and 
     \centering
     \begin{tabular}{lccccc}
         \toprule
-        \textbf{Model}      & \textbf{Noise level}   & \textbf{Training error}   & \textbf{Test error}   & \textbf{True error}\\
+        \textbf{Model}      & \textbf{$N$}   & \textbf{Training error}   & \textbf{Test error}   & \textbf{True error}\\
         \midrule
-        LSTM                & $N=100$                & $0.075 (\pm0.004)$        & $0.079(\pm0.005)$     & $0.063 (\pm0.004)$ \\ 
-        High-capacity LSTM  & $N=100$                & $0.068 (\pm0.004)$        & $0.102(\pm0.006)$     & $0.060 (\pm0.004)$ \\
-        Difference          & $N=100$                & $-0.007$                  & $0.023$               & $-0.003$ \\
+        LSTM                & $100$                & $0.075 (\pm4.5\times 10^{-3})$        & $0.079(\pm5.4\times 10^{-3})$     & $0.063 (\pm4.4\times 10^{-3})$ \\ 
+        High-capacity LSTM  & $100$                & $0.068 (\pm3.6\times 10^{-3})$        & $0.102(\pm6.1\times 10^{-2})$     & $0.060 (\pm3.6\times 10^{-3})$ \\
+        Difference          & $100$                & $-0.007$                  & $0.023$               & $-0.003$ \\
         \hline
-        LSTM                & $N=10$                 & $0.195 (\pm0.001)$        & $0.193(\pm0.001)$     & $0.070 (\pm0.001)$ \\
-        High-capacity LSTM  & $N=10$                 & $0.157 (\pm0.002)$        & $0.199(\pm0.002)$     & $0.065 (\pm0.001)$ \\
-        Difference          & $N=10$                 & $-0.038$                  & $0.006$               & $-0.005$ \\
+        LSTM                & $10$                 & $0.195 (\pm1.1\times 10^{-3})$        & $0.193(\pm1.7\times 10^{-3})$     & $0.070 (\pm9.1\times 10^{-4})$ \\
+        High-capacity LSTM  & $10$                 & $0.157 (\pm2.0\times 10^{-3})$        & $0.199(\pm1.9\times 10^{-3})$     & $0.065 (\pm1.9\times 10^{-3})$ \\
+        Difference          & $10$                 & $-0.038$                  & $0.006$               & $-0.005$ \\
         \hline
-        LSTM                & $N=1$                  & $1.366 (\pm0.006)$        & $0.781(\pm0.005)$     & $0.129 (\pm0.002)$ \\
-        High-capacity LSTM  & $N=1$                  & $1.354 (\pm0.006)$        & $0.795(\pm0.005)$     & $0.149 (\pm0.002)$ \\
-        Difference          & $N=1$                  & $-0.012$                  & $0.014$               & \textcolor{red}{$0.020$} \\
+        LSTM                & $1$                  & $1.366 (\pm8.6\times 10^{-3})$        & $0.781(\pm6.0\times 10^{-3})$     & $0.129 (\pm5.0\times 10^{-3})$ \\
+        High-capacity LSTM  & $1$                  & $1.354 (\pm2.7\times 10^{-2})$        & $0.795(\pm8.3\times10^{-2})$     & $0.149 (\pm2.7\times 10^{-2})$ \\
+        Difference          & $1$                  & $-0.012$                  & $0.014$               & \textcolor{red}{$0.020$} \\
         \bottomrule
     \end{tabular}
     \caption{MSEs of LSTM metamodels.}
@@ -697,6 +692,7 @@ For consistency, the LSTM metamodels are trained with the same architecture and 
 \end{table}
 
 The first two rows of Table~\ref{tab:lstm_arch} shows the average squared errors and the half widths of their $95\%$ confidence intervals between the metamodel predictions and the labels in the training dataset and the true dataset.
+$N$ indicates the noise level in the training labels, i.e., a simulation dataset with fewer inner replications has a higher noise level.
 The test errors are included as a practical measure of the metamodels' generalization ability to unseen noisy samples.
 For this particular experiment, we are more interested in the true errors, which measure the metamodels' ability to learn the true feature-label relationship from the low-noise, medium-noise, and high-noise datasets.
 We first observe that all the true errors are lower than the training errors, indicating that the LSTM metamodels generalize well to predicting the true losses.
@@ -859,8 +855,6 @@ The only difference from Section~\ref{subsec:twoStageProcedure} is that the meta
     \caption{CVaR estimates of the single-stage procedure with metamodels.}
     \label{fig2:CVaRsingleStage}
 \end{figure}
-
-\textcolor{red}{The $N=1$ plot is not valid}
 
 Figure~\ref{fig2:CVaRsingleStage} shows the boxplots of the 95\%-CVaR estimates of the single-stage procedure with different metamodels and compares them to the two-stage procedure and the standard procedure.
 The two-stage procedure uses the same simulation budget as the single-stage procedure in stage 1 with extra budget for extensive inner simulation on the predicted tail scenarios in stage 2.
