@@ -245,40 +245,6 @@ Despite this theoretical guarantee for single-layer neural networks, in practice
 Examples include AlexNet~\citep{krizhevsky2012imagenet}, VGG~\citep{simonyan2014very}, and ResNet~\citep{he2016deep}, which have achieved state-of-the-art performance on image classification tasks.
 In this thesis, we focus on the application of deep neural networks, specifically long short-term memory (LSTM) networks, as metamodels for nested simulation procedures in risk management applications.
 
-\subsection{Training and Evaluation of Neural Networks}
-
-The training of neural networks involves adjusting the trainable parameters of the network to minimize the loss function, which quantifies the error between the predictions and labels.
-The training process aims to find the optimal parameters that minimize this error.
-The most common approach is to use gradient descent methods with backpropagation, which is an efficient method for computing the gradients of the loss function with respect to the trainable parameters.
-Backpropagation computes the gradients by propagating the error derivatives backward through the network layers.
-This process allows the network to adjust the parameters in the direction of minimizing the loss function.
-The training process is typically performed over a number of epochs, where each epoch is one complete pass through the training dataset.
-
-However, the training of neural networks is non-convex, and the optimization problem is challenging.
-Stochastic gradient descent (SGD) is a popular optimization algorithm for training neural networks.
-It updates the parameters using a single or a small batch of training examples at a time, which makes it much faster than the crude gradient descent.
-However, SGD may oscillate and converge slowly, especially in non-convex problems~\citep{bengio2016}.
-To address these issues, various adaptive learning rate methods have been proposed.
-The most popular approach is Adam, which is a SGD algorithm that adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
-
-Another common technique to improve the training of neural networks is regularization to prevent overfitting.
-One effective regularization method is dropout, which randomly sets a fraction of neurons to zero during each training iteration~\citep{srivastava2014dropout}.
-This prevents neurons from co-adapting too much, encourages redundancy, and leads to a more robust model that generalizes better to unseen data.
-Early stopping is another regularization method that is relevant to our study.
-It involves monitoring the model's performance on a validation set and stopping training when the performance no longer improves~\citep{prechelt2002early}.
-This helps prevent over-fitting by stopping training before the model begins to fit to noise in the data.
-
-Evaluation of the performance of a neural network is challenging due to the absence of analytical tools.
-Existing machine learning literature addresses this challenge by splitting the data into three parts: training set, validation set, and test set.
-The training set is used to train the model, the validation set is used to tune the model hyper-parameters, and the test set is used to evaluate how well the model generalizes to unseen data.
-The test set is not used during training and is only used for evaluation.
-
-Under-fitting occurs when the training error is high, which means that the neural network fails to capture the underlying patterns in the training data.
-Over-fitting occurs when the neural network fits to noise in the training data and cannot generalize to unseen data.
-In machine learning literature, over-fitting is often quantified as the gap between the training error and the test error~\citep{bishop2006pattern}.
-During training, as the test dataset is not used, this quantity is estimated using the validation set.
-If the validation error is high compared to the training error, the model is likely over-fitting to the training data.
-
 \subsection{Long Short-Term Memory Networks} \label{subsec:LSTM}
 
 Building upon the capabilities of FNNs, we recognize that while FNNs are successful at capturing complex, nonlinear relationships through automatic feature learning, they are inherently limited when it comes to modeling sequential data or time-dependent patterns. 
@@ -330,3 +296,73 @@ By effectively modeling complex, non-linear relationships and temporal dependenc
 This thesis aims to explore the application and noise tolerance of LSTM networks in metamodeling for nested simulation procedures in risk management.
 We investigate the performance of LSTM networks in approximating the inner simulation model in a two-stage nested simulation procedure for index-linked insurance contracts.
 By leveraging the memory and sequential modeling capabilities of LSTMs, we aim to improve the accuracy and efficiency of nested simulation procedures for risk management applications.
+
+\subsection{Training and Evaluation of Neural Networks in a Simulation Environment}
+
+The training of neural networks involves adjusting the trainable parameters of the network to minimize the loss function, which quantifies the error between the predictions and labels.
+The training process aims to find the optimal parameters that minimize this error.
+The most common approach is to use gradient descent methods with backpropagation, which is an efficient method for computing the gradients of the loss function with respect to the trainable parameters.
+Backpropagation computes the gradients by propagating the error derivatives backward through the network layers.
+This process allows the network to adjust the parameters in the direction of minimizing the loss function.
+The training process is typically performed over a number of epochs, where each epoch is one complete pass through the training dataset.
+
+However, the training of neural networks is non-convex, and the optimization problem is challenging.
+Stochastic gradient descent (SGD) is a popular optimization algorithm for training neural networks.
+It updates the parameters using a single or a small batch of training examples at a time, which makes it much faster than the crude gradient descent.
+However, SGD may oscillate and converge slowly, especially in non-convex problems~\citep{bengio2016}.
+To address these issues, various adaptive learning rate methods have been proposed.
+The most popular approach is Adam, which is a SGD algorithm that adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
+
+Another common technique to improve the training of neural networks is regularization to prevent overfitting.
+One effective regularization method is dropout, which randomly sets a fraction of neurons to zero during each training iteration~\citep{srivastava2014dropout}.
+This prevents neurons from co-adapting too much, encourages redundancy, and leads to a more robust model that generalizes better to unseen data.
+Early stopping is another regularization method that is relevant to our study.
+It involves monitoring the model's performance on a validation set and stopping training when the performance no longer improves~\citep{prechelt2002early}.
+This helps prevent over-fitting by stopping training before the model begins to fit to noise in the data.
+
+Evaluation of the performance of a neural network is challenging due to the absence of analytical tools.
+Existing machine learning literature addresses this challenge by splitting the data into three parts: training set, validation set, and test set.
+The training set is used to train the model, the validation set is used to tune the model hyper-parameters, and the test set is used to evaluate how well the model generalizes to unseen data.
+The test set is not used during training and is only used for evaluation.
+
+Under-fitting occurs when the training error is high, which means that the neural network fails to capture the underlying patterns in the training data.
+Over-fitting occurs when the neural network fits to noise in the training data and cannot generalize to unseen data.
+In machine learning literature, over-fitting is often quantified as the gap between the training error and the test error~\citep{bishop2006pattern}.
+During training, as the test dataset is not used, this quantity is estimated using the validation set.
+If the validation error is high compared to the training error, the model is likely over-fitting to the training data.
+
+In practice, the ultimate performance of a neural network is often evalutated based on error metrics on the test dataset and how it compares with the training error. 
+The test error is often thought to be a reliable indicator of the model's generalization capability for most machine learning applications.
+However, real-world datasets often contain noise.
+As the test dataset is separated from the training dataset, it is often contaminated with noise.
+Therefore, the test error may not be robust for evaluating the generalization capability of a neural network.
+In this thesis, we aim to evaluate the generalization capability of neural networks in a simulation environment.
+For a simulation model, we can generate a large number of datasets with different levels of noise.
+The noise level can be controlled by the design parameters of the simulation model, e.g., the number of replications.
+Instead of relying on the noisy test labels, we can generate a less noisy test labels using a higher number of replications, or even the true simulation model.
+In the rest of this thesis, we will use ``test dataset'' or ``test labels'' to refer to the noisy test dataset, and ``true dataset'', ``true labels'', or ``true relationship'' to refer to dataset generated from the true simulation model.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=0.8\textwidth]{./project2/figures/datasets.png}
+    \caption{Different Levels of Noise}
+    \label{fig:datasets}
+\end{figure}
+
+Figure~\ref{fig:datasets} shows datasets with different levels of noise in a typical machine learning setting.
+The left panel illustrates the common practice of using a test dataset that is separate from the training dataset that is contaminated with noise.
+The right panel shows an alternative approach of using \textit{true labels} generated from the true relationship.
+In a simulation context, the true relationship, which is the simulation model that generates the data, is visible to the user.
+Even if the true relationship is unknown, we can approximate it using a large number of replications and use it as the true labels.
+Comparing the errors of a neural network on the true labels can reveal its true generalization capability and robustness.
+Chapter~\ref{chap:project2} provides a detailed study of the generalization capability of LSTM networks in a simulation environment for risk management of VA contracts.
+Viewing the simulation environment as a data-generating process allows us to systematically study and evaluate the performance of neural networks within a controlled setting.
+This approach provides insights into their applicability in real-world risk management applications.
+
+In the subsequent chapters, we dive deeper into these topics.
+Chapter~\ref{chap:project1} provides a comprehensive analysis of the convergence properties of existing nested simulation procedures and their practical implications.
+Chapter~\ref{chap:project2} focuses on the development and evaluation of neural network metamodels, particularly LSTM networks, for enhancing the efficiency of nested simulations in risk management of VA contracts.
+We also examine the robustness and generalization capabilities of these models in the presence of simulation noise.
+Chapter~\ref{chap:project3} explores the use of transfer learning techniques to adapt neural network metamodels to new market conditions and contract specifications.
+Our approach enables rapid deployment in changing environments.
+Finally, Chapter~\ref{chap:conclusion} summarizes the key findings of the thesis and discusses future research directions that involve the robost use of neural networks in quantitative risk management applications.

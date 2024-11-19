@@ -613,11 +613,12 @@ The GMAB contract is simpler than the GMWB contract, and the true tail scenarios
 For a GMAB, our LSTM metamodel identifies $100\%$ of the true tail scenarios with a $2.5\%$ safety margin}.
 The RNN metamodel suffers from the vanishing gradient problem during training. 
 For some macro replications (as shown in Figure~\ref{subfig2:badRNN}), the RNN metamodels' predictions are far from the true losses, especially on the tails.
+Seperating the good training macro replications from the bad ones, the results reconcile with the findings in Table~\ref{tab:gmwb_arch}.
 The FNN metamodel has a better fit than the regression metamodels, but it does not have the same level of accuracy as the LSTM metamodel, which is a specialized network to capture the sequential structure of our time-series features.
 For comparison, the horizontal dotted line shows the percentage of correctly identified true tails for the standard nested simulation procedure.
 A good metamodel should be able to identify a similar percentage of true tail scenarios as the standard procedure does with a reasonable safety margin.
 Otherwise, the two-stage procedure will offer no computational advantage in simulation budget over the standard procedure.
-The LSTM metamodel can reaches similar percentage with a $5\%$ safety margin.
+The LSTM metamodel can reach similar percentage with a $5\%$ safety margin.
 This indicates that the LSTM metamodel should be able to reach the same level of accuracy as the standard procedure with only $20\%$ of the simulation budget.
 
 \begin{figure}[ht!]
@@ -639,7 +640,7 @@ This indicates that the LSTM metamodel should be able to reach the same level of
 Lastly, we return to our original goal of estimating the $95\%$-CVaR of the dynamic hedging error.
 Figure~\ref{fig2:CVaR95} shows the $95\%$-CVaR estimates for all five metamodels with different safety margins, averaged over $100$ macro replications.
 Figure~\ref{subfig2:ZoomedSafetyMargin} is a zoomed version of Figure~\ref{subfig2:AllSafetyMargin}.
-Because the safety margin only affects the two-stage procedure, the true 95\%-CVaR and the one estimated by the standard procedure are horizontal (solid and dotted, respectively) lines in Figure~\ref{fig2:CVaR95}.
+Because the safety margin only affects the two-stage procedure, the true 95\%-CVaR and the one estimated by the standard procedure are horizontal (solid and dotted, respectively) lines in Figure~\ref{fig2:CVaR95}. 
 We observe that, with reasonable safety margins, the two-stage procedures with a LSTM metamodel consistently produce estimates that are as accurate as the standard procedure's estimate.
 The amount of computational savings is substantial.
 The LSTM is particularly superior to other metamodels as it accurately identifies the true tail scenarios and produces highly accurate CVaR estimates with small safety margins.
@@ -798,9 +799,9 @@ A high \textit{Pearson} correlation suggests the possibility of using LSTM predi
     \centering
     \begin{tabular}{lccccc}
         \toprule
-                          & $N=\num{1}$        & $N=\num{10}$        & $N=\num{100}$       & $N=\num{1000}$ \\
+                           & $N=\num{1}$   & $N=\num{10}$  & $N=\num{100}$ & $N=\num{1000}$ \\
         \midrule
-        $M = \num{100}$         & 0.638 (0.881) & 0.875 (0.915) & 0.896 (0.903) & 0.937 (0.941) \\
+        $M = \num{100}$    & 0.638 (0.881) & 0.875 (0.915) & 0.896 (0.903) & 0.937 (0.941) \\
         $M = \num{1000}$   & 0.722 (0.768) & 0.899 (0.908) & 0.886 (0.891) & 0.922 (0.927) \\
         $M = \num{10000}$  & 0.845 (0.630) & 0.937 (0.900) & 0.908 (0.905) & 0.947 (0.948) \\
         $M = \num{100000}$ & 0.935 (0.640) & 0.963 (0.909) & 0.927 (0.922) & 0.965 (0.966) \\
