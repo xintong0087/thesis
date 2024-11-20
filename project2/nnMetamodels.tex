@@ -938,7 +938,7 @@ Our single-stage procedure uses the metamodel predictions to estimate the risk m
 It is more efficient and can be extended to estimate risk measures that require knowledge of the entire loss distribution.
 Our numerical experiments demonstrate that the proposed single-stage procedure with DNN metamodels result in further computational savings over our two-stage procedure. 
 Furthermore, our numerical results provide evidences for adopting DNN metamodels in Monte Carlo simulation for risk management tasks.
-Through our systematic empirical study of the noise tolerance of DNN metamodels, we address regulatory concerns by showing that a LSTM metamodel is resilient to a high level of noise in training labels and is able to make accurate predictions.
+Through our systematic empirical study of the noise tolerance of DNN metamodels, we address regulatory concerns by showing that a LSTM metamodel with moderate model capacity is resilient to a high level of noise in training labels and is able to make accurate predictions.
 A possible future research direction is to apply DNN metamodels in other financial risk management tasks that requires complex nested simulation with high-dimensional outer scenarios.
 Another future research direction is to investigate the impact of label noise on other deep learning models, such as convolutional neural networks and transformer models, and to compare their performance with LSTM metamodels in nested simulation procedures. 
 From a practical standpoint, the choice of a suitable DNN architecture is crucial for the success of a deep learning metamodel in nested simulation procedures.
