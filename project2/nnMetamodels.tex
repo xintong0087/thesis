@@ -330,7 +330,6 @@ The single-stage procedure has three major advantages over the two-stage procedu
     \item Most importantly, the single-stage procedure is not limited to just estimating tail risk measures and can be extended to provide a broader assessment of risk. 
     It can be naturally adapted to estimate risk measures that require the knowing of the entire loss distribution, such as the standard deviation or the squared tracking error.
     Even for CVaR, the two-stage procedure become less attactive for an increased level.
-    In our numerical experiments, we will compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $\alpha$-CVaR for a lower $\alpha$.
 \end{enumerate}
 
 \section{Numerical Results} \label{sec2:numerical}
@@ -673,19 +672,19 @@ For consistency, the LSTM metamodels are trained with the same architecture and 
     \centering
     \begin{tabular}{lccccc}
         \toprule
-        \textbf{Model}      & \textbf{$N$}   & \textbf{Training error}   & \textbf{Test error}   & \textbf{True error}\\
+        \textbf{Model}      & \textbf{$N$}         & \textbf{Training error}                & \textbf{Test error}               & \textbf{True error}\\
         \midrule
-        LSTM                & $100$                & $0.075 (\pm4.5\times 10^{-3})$        & $0.079(\pm5.4\times 10^{-3})$     & $0.063 (\pm4.4\times 10^{-3})$ \\ 
-        High-capacity LSTM  & $100$                & $0.068 (\pm3.6\times 10^{-3})$        & $0.102(\pm6.1\times 10^{-2})$     & $0.060 (\pm3.6\times 10^{-3})$ \\
-        Difference          & $100$                & $-0.007$                  & $0.023$               & $-0.003$ \\
+        LSTM                & $100$                & $0.075 (\pm4.5\times 10^{-3})$         & $0.079(\pm5.4\times 10^{-3})$     & $0.063 (\pm4.4\times 10^{-3})$ \\ 
+        High-capacity LSTM  & $100$                & $0.068 (\pm3.6\times 10^{-3})$         & $0.102(\pm6.1\times 10^{-2})$     & $0.060 (\pm3.6\times 10^{-3})$ \\
+        Average Difference  & $100$                & $-0.007$                               & $0.023$                           & $-0.003$ \\
         \hline
-        LSTM                & $10$                 & $0.195 (\pm1.1\times 10^{-3})$        & $0.193(\pm1.7\times 10^{-3})$     & $0.070 (\pm9.1\times 10^{-4})$ \\
-        High-capacity LSTM  & $10$                 & $0.157 (\pm2.0\times 10^{-3})$        & $0.199(\pm1.9\times 10^{-3})$     & $0.065 (\pm1.9\times 10^{-3})$ \\
-        Difference          & $10$                 & $-0.038$                  & $0.006$               & $-0.005$ \\
+        LSTM                & $10$                 & $0.195 (\pm1.1\times 10^{-3})$         & $0.193(\pm1.7\times 10^{-3})$     & $0.070 (\pm9.1\times 10^{-4})$ \\
+        High-capacity LSTM  & $10$                 & $0.157 (\pm2.0\times 10^{-3})$         & $0.199(\pm1.9\times 10^{-3})$     & $0.065 (\pm1.9\times 10^{-3})$ \\
+        Average Difference  & $10$                 & $-0.038$                               & $0.006$                           & $-0.005$ \\
         \hline
-        LSTM                & $1$                  & $1.366 (\pm8.6\times 10^{-3})$        & $0.781(\pm6.0\times 10^{-3})$     & $0.129 (\pm5.0\times 10^{-3})$ \\
-        High-capacity LSTM  & $1$                  & $1.354 (\pm2.7\times 10^{-2})$        & $0.795(\pm8.3\times10^{-2})$     & $0.149 (\pm2.7\times 10^{-2})$ \\
-        Difference          & $1$                  & $-0.012$                  & $0.014$               & \textcolor{red}{$0.020$} \\
+        LSTM                & $1$                  & $1.366 (\pm8.6\times 10^{-3})$         & $0.781(\pm6.0\times 10^{-3})$     & $0.129 (\pm5.0\times 10^{-3})$ \\
+        High-capacity LSTM  & $1$                  & $1.354 (\pm2.7\times 10^{-2})$         & $0.795(\pm8.3\times10^{-2})$      & $0.149 (\pm2.7\times 10^{-2})$ \\
+        Average Difference  & $1$                  & $-0.012$                               & $0.014$                           & \textcolor{red}{$0.020$} \\
         \bottomrule
     \end{tabular}
     \caption{MSEs of LSTM metamodels.}
@@ -836,7 +835,7 @@ Instead of using the LSTM metamodel only for classifying tail scenarios in a two
 \subsection{Single-Stage Procedure}
 
 The accuracy and robustness of the LSTM metamodels motivate us to propose a single-stage procedure that uses the metamodel predictions to estimate the CVaR directly. 
-Instead of relying on the standard nested simulation procedure in stage 2, the single-stage procedure is more efficient and extends to estimating other risk measures that require knowledge of the entire loss distribution.
+Instead of relying on the standard nested simulation procedure in stage 2, the single-stage procedure can be even more efficient.
 In this section, we compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $95\%$-CVaR of the hedging losses for GMWB.
 In our numerical experiments, the results for the single-stage procedure is obtained with the same metamodels as in the two-stage procedure.
 The only difference from Section~\ref{subsec:twoStageProcedure} is that the metamodel predictions are used to estimate the risk measures directly.
@@ -919,6 +918,7 @@ For an increasing number of inner replications with fixed number of outer scenar
 More specfically, when the quality of the training labels is fixed at $N = \num{10}$, the CVaR estimator of single-stage procedure with a LSTM metamodel converge roughly in the order of $\mathcal{O}(M^{\frac{2}{3}})$.
 This observation resonates with the convergence rate of a regression-based nested simulation procedure in~\cite{broadie2015risk}.
 Hence, in practice, we suggest to run the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.
+
 
 \section{Conclusion} \label{sec2:conclusion}
 The proposed nested simulation procedures with DNN metamodels result in substantial computational savings in estimating CVaR of the hedging loss of a VA contract from accurately predicting the hedging losses and identifying the tail scenarios.

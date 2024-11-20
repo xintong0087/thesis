@@ -26,7 +26,7 @@
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlations for high-capacity LSTM metamodel.}}{95}{figure.caption.43}%
 \contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{96}{figure.caption.44}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{98}{figure.caption.45}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{99}{figure.caption.46}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{98}{figure.caption.46}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{114}{figure.caption.48}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{115}{figure.caption.49}%
