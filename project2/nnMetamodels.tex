@@ -710,7 +710,7 @@ The test error approximates the true error and is directly observable.
 The difference in test errors of the LSTM metamodels are inconsistent with the differences in true errors.
 Therefore, test errors are not reliable indicators of the metamodels' noise tolerance.
 For practical applications that utilize nerual networks as metamodels, we recommend not simulating the test scenarios.
-Instead, we recommend simulating the true contract losses on a few tail and non-tail training scenarios to evaluate the metamodels' noise tolerance.
+Instead, we recommend simulating the true contract losses on a subset of training scenarios to evaluate the metamodels' generalization ability.
 
 In summary, our numerical experiments demonstrate that both LSTM metamodels are capable of learning the true inner simulation model from noisy training labels.
 In most cases, a high-capacity metamodel is better.
@@ -750,7 +750,7 @@ The number of outer scenarios corresponds to the number of data points in the tr
         $M = \num{100}$      & $1.139$ & $0.229$ & $0.167$ & $0.158$ \\
         $M = \num{1000}$     & $0.559$ & $0.173$ & $0.123$ & $0.127$ \\
         $M = \num{10000}$    & $0.283$ & $0.115$ & $0.099$ & $0.097$ \\
-        $M = \num{100000}$   & $0.126$ & $0.068$ & $0.063$ & $0.063$ \\
+        $M = \num{100000}$   & $0.129$ & $0.070$ & $0.063$ & $0.063$ \\
         \bottomrule
     \end{tabular}
     \caption{MSE between regular LSTM predicted losses and true losses.}
@@ -779,7 +779,7 @@ The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} 
 We observe that an increasing $N$ reduces the MSE, but the reduction is not significant for a regular LSTM when $N$ is larger than $\num{10}$.
 For the high-capacity LSTM, the MSE is significantly reduced when $N$ is increased from $\num{1}$ to $\num{100}$, but the reduction is not significant when $N$ is increased from $\num{100}$ to $\num{1000}$.
 Another way to interpret the results in Table~\ref{tab2:lstm_sens} is to compare the MSEs for the same budget of $\Gamma = M \times N$. 
-Entries on the same diagonal represents the same simulation budget.
+Table entries on the same off-diagonal have the same simulation budget $\Gamma$.
 For most budgets, the MSEs are also the lowest when $N = 10$.
 The results in Table~\ref{tab2:lstm_sens} suggest that the performance of the LSTM metamodel is more sensitive to the number of outer scenarios than the number of inner replications.
 Treating the neural network as an advanced regression metamodel, we find this pheonomenon to be consistent with the results in~\cite{broadie2015risk}, where the authors show that the performance of a regression-based nested simulation procedure is more affected by the number of outer scenarios.
@@ -812,10 +812,9 @@ A high \textit{Pearson} correlation suggests the possibility of using LSTM predi
 \end{table}
 
 Consistent with our previous numerical experiments, the Spearman correlations of a high-capacity LSTM is high for a moderate simulation budget. 
-For $M= \num{100000}$, the Spearman correlation is insensitive to $N$.
+For $M= \num{100000}$, the Spearman correlation is relativelyinsensitive to $N$.
 This finding supports further budget savings for our two-stage procedure.
-In stage 1, we can lower $N$ from $\num{100}$ to $\num{10}$ without compromising on tail scenario preditions. 
-Table
+In stage 1, we can lower $N$ from $\num{100}$ to $\num{10}$ almost without compromising on tail scenario preditions. 
 
 For an entry of Table~\ref{tab2:lstm_corr}, the total simulation budget $\Gamma = M N$. 
 Entries on the same off-diagonal all have the same $\Gamma$.
@@ -839,7 +838,6 @@ Instead of using the LSTM metamodel only for classifying tail scenarios in a two
 The accuracy and robustness of the LSTM metamodels motivate us to propose a single-stage procedure that uses the metamodel predictions to estimate the CVaR directly. 
 Instead of relying on the standard nested simulation procedure in stage 2, the single-stage procedure is more efficient and extends to estimating other risk measures that require knowledge of the entire loss distribution.
 In this section, we compare the single-stage procedure to the two-stage procedure and the standard procedure in estimating the $95\%$-CVaR of the hedging losses for GMWB.
-% , and we also examine the single-stage procedure's performance in estimating the standard deviation of the hedging losses. 
 In our numerical experiments, the results for the single-stage procedure is obtained with the same metamodels as in the two-stage procedure.
 The only difference from Section~\ref{subsec:twoStageProcedure} is that the metamodel predictions are used to estimate the risk measures directly.
 
@@ -859,22 +857,25 @@ The only difference from Section~\ref{subsec:twoStageProcedure} is that the meta
 
 Figure~\ref{fig2:CVaRsingleStage} shows the boxplots of the 95\%-CVaR estimates of the single-stage procedure with different metamodels and compares them to the two-stage procedure and the standard procedure.
 The two-stage procedure uses the same simulation budget as the single-stage procedure in stage 1 with extra budget for extensive inner simulation on the predicted tail scenarios in stage 2.
-The metamodel with the best performance in the two-stage procedure is chosen, and the safety margin is set to $0\%$.
+The metamodel with the best performance in the two-stage procedure is selected, and the safety margin is set to $0\%$.
 The standard procedure shown in Figure~\ref{fig2:CVaRsingleStage} uses the noisy loss labels in the training dataset to estimate the CVaR directly, which uses the same simulation budget as the single-stage procedure.
-We observe that the single-stage procedures with the LSTM metamodels consistently produce CVaR estimates that are closer to the true value than the standard procedure's estimate, especially when the noise level is high in the training labels.
-It is another strong evidence that the LSTM metamodel is able to cut through the noise in the noisy training labels and make accurate loss predictions that lead to accurate CVaR estimates.
+We observe that the single-stage procedures with the regular LSTM metamodel consistently produce CVaR estimates that are closer to the true value than the standard procedure's estimate.
+This finding is especially impressive when the noise level in the training labels is high.
+It is another strong evidence that a well-selected LSTM metamodel is able to cut through the noise in the noisy training labels and make accurate loss predictions that lead to accurate CVaR estimates.
 The difference in performance among the metamodels is more pronounced in the single-stage procedure than in the two-stage procedure.
-Trained using low noise and medium noise labels, high-capacity LSTM metamodel consistently produces CVaR estimates that are closer to the true value than the regular LSTM, while the other metamodels produce even worse estimates.
+Trained using medium noise labels, high-capacity LSTM metamodel consistently produces CVaR estimates that are closer to the true value than the regular LSTM, while the other metamodels produce even worse estimates.
+However, with high noise training labels, the high-capacity LSTM suffers from severe overfitting. 
+This is also evident in Table~\ref{tab:lstm_arch}.
 Since we are using the metamodel predictions to estimate the CVaR directly without any safety margin, the metamodel's overall prediction accuracy becomes more important.
 In other words, the single-stage procedure is more sensitive to the metamodel's ability to make accurate loss predictions than the two-stage procedure.
 Previously, a generic FNN metamodel performs well in the two-stage procedure. 
 However, results in Figure~\ref{fig2:CVaRsingleStage} suggest that the FNN metamodel should not be used in the single-stage procedure.
 
-A single-stage procedure with a high-capcity LSTM metamodel is particularly superior to the two-stage procedure, as it is able to achieve a similar accuracy as the standard procedure with a much smaller simulation budget.
+A single-stage procedure with a regular LSTM metamodel is particularly superior to the two-stage procedure, as it is able to achieve a higher accuracy as the standard procedure with a much smaller simulation budget.
 Note that the single-stage procedure does not require a safety margin.
 By avoiding the calibration of the safety margin, it is more straight-forward to implement and is more efficient than the two-stage procedure.
 For a two-stage procedure with a $0\%$ safety margin, the extra computational cost is from the extensive inner simulation in stage 2.
-On $4$ $20$-core Intel Xeon Gold $\num{6230}$ processors, stage 2 of the two-stage procedure takes $30$ minutes to run with parallel processing, while the $95\%$ confidence interval of training time of the high-capacity LSTM metamodel is $(19.64 \pm 0.94)$ minutes on a Nvidia RTX $\num{3060}$ Ti GPU.
+On $4$ $20$-core Intel Xeon Gold $\num{6230}$ processors, stage 2 of the two-stage procedure takes $30$ minutes to run with parallel processing, while the $95\%$ confidence band of training time of the high-capacity LSTM metamodel is $(19.64 \pm 0.94)$ minutes on a Nvidia RTX $\num{3060}$ Ti GPU.
 While the accuracy of the two-stage procedure is highly dependent on the safety margin, increasing the safety margin introduces extra computational cost.
 Therefore, while achieving a higher accuracy in estimating the CVaR, the single-stage procedure requires only $60\%$ computation time of the two-stage procedure.
 
