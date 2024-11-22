@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.16)  20 NOV 2024 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.12) (preloaded format=pdflatex 2024.1.16)  23 NOV 2024 10:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1173,206 +1173,87 @@ Chapter 4.
 [102
 
 
-] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112]
-<./project3/figures/figure1a.png, id=2154, 578.16pt x 433.62pt>
-File: ./project3/figures/figure1a.png Graphic file (type png)
-<use ./project3/figures/figure1a.png>
-Package pdftex.def Info: ./project3/figures/figure1a.png  used on input line 339.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure1b.png, id=2155, 578.16pt x 433.62pt>
-File: ./project3/figures/figure1b.png Graphic file (type png)
-<use ./project3/figures/figure1b.png>
-Package pdftex.def Info: ./project3/figures/figure1b.png  used on input line 344.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure1c.png, id=2156, 578.16pt x 433.62pt>
-File: ./project3/figures/figure1c.png Graphic file (type png)
-<use ./project3/figures/figure1c.png>
-Package pdftex.def Info: ./project3/figures/figure1c.png  used on input line 349.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure1d.png, id=2157, 578.16pt x 433.62pt>
-File: ./project3/figures/figure1d.png Graphic file (type png)
-<use ./project3/figures/figure1d.png>
-Package pdftex.def Info: ./project3/figures/figure1d.png  used on input line 354.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [113] [114 <./project3/figures/figure1a.png> <./project3/figures/figure1b.png> <./project3/figures/figure1c.png> <./project3/figures/figure1d.png>]
-<./project3/figures/figure2a.png, id=2177, 578.16pt x 433.62pt>
-File: ./project3/figures/figure2a.png Graphic file (type png)
-<use ./project3/figures/figure2a.png>
-Package pdftex.def Info: ./project3/figures/figure2a.png  used on input line 393.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure2b.png, id=2178, 578.16pt x 433.62pt>
-File: ./project3/figures/figure2b.png Graphic file (type png)
-<use ./project3/figures/figure2b.png>
-Package pdftex.def Info: ./project3/figures/figure2b.png  used on input line 398.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [115 <./project3/figures/figure2a.png> <./project3/figures/figure2b.png>]
-<./project3/figures/figure3a.png, id=2187, 578.16pt x 433.62pt>
-File: ./project3/figures/figure3a.png Graphic file (type png)
-<use ./project3/figures/figure3a.png>
-Package pdftex.def Info: ./project3/figures/figure3a.png  used on input line 425.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure3b.png, id=2188, 578.16pt x 433.62pt>
-File: ./project3/figures/figure3b.png Graphic file (type png)
-<use ./project3/figures/figure3b.png>
-Package pdftex.def Info: ./project3/figures/figure3b.png  used on input line 430.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [116 <./project3/figures/figure3a.png> <./project3/figures/figure3b.png>] [117]
-<./project3/figures/figure4a.png, id=2202, 578.16pt x 433.62pt>
-File: ./project3/figures/figure4a.png Graphic file (type png)
-<use ./project3/figures/figure4a.png>
-Package pdftex.def Info: ./project3/figures/figure4a.png  used on input line 487.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4b.png, id=2203, 578.16pt x 433.62pt>
-File: ./project3/figures/figure4b.png Graphic file (type png)
-<use ./project3/figures/figure4b.png>
-Package pdftex.def Info: ./project3/figures/figure4b.png  used on input line 492.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4c.png, id=2204, 578.16pt x 433.62pt>
-File: ./project3/figures/figure4c.png Graphic file (type png)
-<use ./project3/figures/figure4c.png>
-Package pdftex.def Info: ./project3/figures/figure4c.png  used on input line 497.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4d.png, id=2205, 578.16pt x 433.62pt>
-File: ./project3/figures/figure4d.png Graphic file (type png)
-<use ./project3/figures/figure4d.png>
-Package pdftex.def Info: ./project3/figures/figure4d.png  used on input line 502.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [118] [119 <./project3/figures/figure4a.png> <./project3/figures/figure4b.png> <./project3/figures/figure4c.png> <./project3/figures/figure4d.png>]
-<./project3/figures/figure4_1.png, id=2224, 578.16pt x 433.62pt>
-File: ./project3/figures/figure4_1.png Graphic file (type png)
-<use ./project3/figures/figure4_1.png>
-Package pdftex.def Info: ./project3/figures/figure4_1.png  used on input line 558.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4_2.png, id=2225, 578.16pt x 433.62pt>
-File: ./project3/figures/figure4_2.png Graphic file (type png)
-<use ./project3/figures/figure4_2.png>
-Package pdftex.def Info: ./project3/figures/figure4_2.png  used on input line 563.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [120 <./project3/figures/figure4_1.png> <./project3/figures/figure4_2.png>]
-<./project3/tikz/mtl.pdf, id=2237, 630.61696pt x 94.3776pt>
-File: ./project3/tikz/mtl.pdf Graphic file (type pdf)
-<use ./project3/tikz/mtl.pdf>
-Package pdftex.def Info: ./project3/tikz/mtl.pdf  used on input line 589.
-(pdftex.def)             Requested size: 460.72124pt x 68.95265pt.
-<./project3/figures/figure5a.png, id=2239, 578.16pt x 433.62pt>
-File: ./project3/figures/figure5a.png Graphic file (type png)
-<use ./project3/figures/figure5a.png>
-Package pdftex.def Info: ./project3/figures/figure5a.png  used on input line 602.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure5b.png, id=2240, 578.16pt x 433.62pt>
-File: ./project3/figures/figure5b.png Graphic file (type png)
-<use ./project3/figures/figure5b.png>
-Package pdftex.def Info: ./project3/figures/figure5b.png  used on input line 607.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure5c.png, id=2241, 578.16pt x 433.62pt>
-File: ./project3/figures/figure5c.png Graphic file (type png)
-<use ./project3/figures/figure5c.png>
-Package pdftex.def Info: ./project3/figures/figure5c.png  used on input line 612.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure5d.png, id=2242, 578.16pt x 433.62pt>
-File: ./project3/figures/figure5d.png Graphic file (type png)
-<use ./project3/figures/figure5d.png>
-Package pdftex.def Info: ./project3/figures/figure5d.png  used on input line 617.
-(pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [121 <./project3/tikz/mtl.pdf>] [122 <./project3/figures/figure5a.png> <./project3/figures/figure5b.png> <./project3/figures/figure5c.png> <./project3/figures/figure5d.png>]) (conclusion.tex [123]
-Chapter 5.
-[124
+] [103] [104]
+
+project3/draft.tex:75: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item
+                 less training time is required to fine-tune the pre-trained...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
-]) (futureWork/rlHedging.tex [125]
-Chapter 6.
-[126
+project3/draft.tex:75: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item   l
+                  ess training time is required to fine-tune the pre-trained...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
-] [127] [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-<./futureWork/tikz/ppo_diagram.pdf, id=2474, 341.91438pt x 301.87178pt>
-File: ./futureWork/tikz/ppo_diagram.pdf Graphic file (type pdf)
-<use ./futureWork/tikz/ppo_diagram.pdf>
-Package pdftex.def Info: ./futureWork/tikz/ppo_diagram.pdf  used on input line 413.
-(pdftex.def)             Requested size: 207.32315pt x 183.04523pt.
-<./futureWork/tikz/recurrentppo_diagram.pdf, id=2475, 285.00879pt x 257.36351pt>
-File: ./futureWork/tikz/recurrentppo_diagram.pdf Graphic file (type pdf)
-<use ./futureWork/tikz/recurrentppo_diagram.pdf>
-Package pdftex.def Info: ./futureWork/tikz/recurrentppo_diagram.pdf  used on input line 419.
-(pdftex.def)             Requested size: 207.32315pt x 187.21797pt.
- [140] [141 <./futureWork/tikz/ppo_diagram.pdf> <./futureWork/tikz/recurrentppo_diagram.pdf>] [142]
-<./futureWork/figures/CVaR_histories.png, id=2558, 722.7pt x 361.35pt>
-File: ./futureWork/figures/CVaR_histories.png Graphic file (type png)
-<use ./futureWork/figures/CVaR_histories.png>
-Package pdftex.def Info: ./futureWork/figures/CVaR_histories.png  used on input line 511.
-(pdftex.def)             Requested size: 414.6463pt x 207.32251pt.
- [143]
-<./futureWork/figures/PPO_DH.png, id=2573, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPO_DH.png Graphic file (type png)
-<use ./futureWork/figures/PPO_DH.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_DH.png  used on input line 534.
-(pdftex.def)             Requested size: 230.36061pt x 138.21207pt.
-<./futureWork/figures/PPOs_GBM.png, id=2576, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPOs_GBM.png Graphic file (type png)
-<use ./futureWork/figures/PPOs_GBM.png>
-Package pdftex.def Info: ./futureWork/figures/PPOs_GBM.png  used on input line 545.
-(pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
-<./futureWork/figures/PPOs_GBMRS.png, id=2577, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPOs_GBMRS.png Graphic file (type png)
-<use ./futureWork/figures/PPOs_GBMRS.png>
-Package pdftex.def Info: ./futureWork/figures/PPOs_GBMRS.png  used on input line 550.
-(pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
- [144]
-<./futureWork/figures/PPO_cost_001.png, id=2583, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPO_cost_001.png Graphic file (type png)
-<use ./futureWork/figures/PPO_cost_001.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_cost_001.png  used on input line 566.
-(pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
-<./futureWork/figures/PPO_cost_02.png, id=2584, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPO_cost_02.png Graphic file (type png)
-<use ./futureWork/figures/PPO_cost_02.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_cost_02.png  used on input line 571.
-(pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
- [145 <./futureWork/figures/CVaR_histories.png> <./futureWork/figures/PPO_DH.png>]
-<./futureWork/figures/PPO_anchor.png, id=2592, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPO_anchor.png Graphic file (type png)
-<use ./futureWork/figures/PPO_anchor.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_anchor.png  used on input line 586.
-(pdftex.def)             Requested size: 460.72124pt x 276.43074pt.
- [146 <./futureWork/figures/PPOs_GBM.png> <./futureWork/figures/PPOs_GBMRS.png> <./futureWork/figures/PPO_cost_001.png> <./futureWork/figures/PPO_cost_02.png>]
-<./futureWork/figures/PPO_GMWB.png, id=2602, 722.7pt x 433.62pt>
-File: ./futureWork/figures/PPO_GMWB.png Graphic file (type png)
-<use ./futureWork/figures/PPO_GMWB.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_GMWB.png  used on input line 598.
-(pdftex.def)             Requested size: 460.72124pt x 276.43074pt.
- [147 <./futureWork/figures/PPO_anchor.png>] [148 <./futureWork/figures/PPO_GMWB.png>]) [149] (thesisDefense.bbl [150
+project3/draft.tex:75: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item   l
+                  ess training time is required to fine-tune the pre-trained...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
+project3/draft.tex:75: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75     \item   l
+                  ess training time is required to fine-tune the pre-trained...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
-]
-Underfull \hbox (badness 1406) in paragraph at lines 97--100
-[]\OT1/cmr/m/n/12 Brown, T. B. (2020).  Lan-guage mod-els are few-shot learn-ers.  \OT1/cmr/m/it/12 arXiv preprint
+Underfull \hbox (badness 10000) detected at line 75
+[][]
  []
 
-[151] [152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162]) (appendix.tex [163]) [164
+
+project3/draft.tex:76: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76     \item
+                 fewer data points are needed to achieve a good LSTM metamod...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+project3/draft.tex:76: Missing $ inserted.
+<inserted text> 
+                $
+l.76     \item   f
+                  ewer data points are needed to achieve a good LSTM metamod...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+project3/draft.tex:76: Display math should end with $$.
+<to be read again> 
+                   \tex_par:D 
+l.76     \item   f
+                  ewer data points are needed to achieve a good LSTM metamod...
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
 
 
-] (thesisDefense.aux)
- ***********
-LaTeX2e <2023-11-01>
-L3 programming layer <2024-01-04>
- ***********
-Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
-(rerunfilecheck)             Checksum: 13A7C4D09F3B4413A773D8A3A33D4467;7391.
- ) 
-Here is how much of TeX's memory you used:
- 37278 strings out of 474485
- 756212 string characters out of 5745150
- 1948528 words of memory out of 5000000
- 58271 multiletter control sequences out of 15000+600000
- 576156 words of font info for 101 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 109i,19n,107p,2398b,1215s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\XT\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\XT\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesisDefense.pdf (178 pages, 3311857 bytes).
-PDF statistics:
- 3021 PDF objects out of 3580 (max. 8388607)
- 704 named destinations out of 1000 (max. 500000)
- 1095 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+project3/draft.tex:76: LaTeX Error: Lonely \item--perhaps 

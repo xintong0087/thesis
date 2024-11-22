@@ -67,6 +67,19 @@ Bishop, C.~M. and Nasrabadi, N.~M. (2006).
 \newblock {\em Pattern recognition and machine learning}, volume~4.
 \newblock Springer.
 
+\bibitem[Bollerslev, 1990]{bollerslev1990modelling}
+Bollerslev, T. (1990).
+\newblock Modelling the coherence in short-run nominal exchange rates: a
+  multivariate generalized arch model.
+\newblock {\em The review of economics and statistics}, pages 498--505.
+
+\bibitem[Box and Pierce, 1970]{box1970distribution}
+Box, G.~E. and Pierce, D.~A. (1970).
+\newblock Distribution of residual autocorrelations in
+  autoregressive-integrated moving average time series models.
+\newblock {\em Journal of the American statistical Association},
+  65(332):1509--1526.
+
 \bibitem[Boyle and Hardy, 2003]{boyle2003guaranteed}
 Boyle, P. and Hardy, M. (2003).
 \newblock Guaranteed annuity options.
@@ -220,6 +233,12 @@ Elman, J.~L. (1990).
 \newblock Finding structure in time.
 \newblock {\em Cognitive science}, 14(2):179--211.
 
+\bibitem[Embrechts et~al., 2013]{embrechts2013modelling}
+Embrechts, P., Kl{\"u}ppelberg, C., and Mikosch, T. (2013).
+\newblock {\em Modelling extremal events: for insurance and finance},
+  volume~33.
+\newblock Springer Science \& Business Media.
+
 \bibitem[Engstrom et~al., 2020]{engstrom2020implementation}
 Engstrom, L., Ilyas, A., Santurkar, S., Tsipras, D., Janoos, F., Rudolph, L.,
   and Madry, A. (2020).
@@ -346,6 +365,13 @@ Ha, H. and Bauer, D. (2015).
 \newblock
   \url{https://danielbaueracademic.files.wordpress.com/2013/11/bauerha\_2015.pdf}.
   Accessed 7$^{\textrm{th}}$ Sep 2023.
+
+\bibitem[Hamilton, 1989]{hamilton1989new}
+Hamilton, J.~D. (1989).
+\newblock A new approach to the economic analysis of nonstationary time series
+  and the business cycle.
+\newblock {\em Econometrica: Journal of the econometric society}, pages
+  357--384.
 
 \bibitem[H{\"a}rdle, 1990]{hardle1990applied}
 H{\"a}rdle, W. (1990).
