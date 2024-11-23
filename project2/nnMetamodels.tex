@@ -262,15 +262,23 @@ We make four observations:
 
 Based on the three observations above and inspired by~\cite{dang2020efficient}, we propose a two-stage nested simulation procedure which uses a DNN metamodel to identify potential tail scenarios.
 We present our proposed procedure as a competitor to the standard procedure with $M$ outer scenarios and $N$ inner replications for each outer scenario, as described in Section~\ref{subsec:dynamicHedge}.
-We propose a two-stage procedure with a neural network metamodel that aims to produce a CVaR estimate that's as accurate as that of the standard procedure, but uses fewer computations as than latter.
+We propose a two-stage procedure with a supervised learning metamodel that aims to produce a CVaR estimate that's as accurate as that of the standard procedure, but requires fewer computations than the latter.
 
 \begin{algorithm}
 \caption{Two-Stage Metamodeling Nested Simulation Procedure for Estimating CVaR}
 \begin{algorithmic}[1] \label{alg2:twoStageProcedure}
     \STATE \textbf{Train a neural network metamodel using simulation data:}
     \begin{enumerate} [label=\alph*., itemsep=0pt, parsep=0pt, topsep=0pt]
-        \item Use a fraction of the total simulation budget to run Steps 1, 2, and 3 in the standard procedure, i.e., Algorithm~\ref{alg2:standardProcedure}, with the same number of outer scenarios, $M$, but a much smaller number of inner replications, $N' \ll N$, in each scenario. Obtain $M$ simulated samples (feature-label pairs), $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$. Note that $N'$ may be much smaller than $N$, so $\Lhat_i$ are expected to have larger variance.
-        \item Use the simulated data, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$ to train a neural network. Refer to the trained model as a metamodel and denote it by $\Lhat^{PD}(\bS)$. Denote the predicted losses for the outer scenarios by $\Lhat^{PD}_i = \Lhat^{PD}(\bS^{(i)})$, $i=1,\ldots,M$.
+        \item Use a fraction of the total simulation budget to run Steps 1, 2, and 3 in the standard procedure, i.e., Algorithm~\ref{alg2:standardProcedure}, with the same number of outer scenarios, $M$, but a much smaller number of inner replications, $N' \ll N$, in each scenario. 
+        Obtain $M$ simulated samples (feature-label pairs), $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$. 
+        Note that $N'$ may be much smaller than $N$, so $\Lhat_i$ are expected to have larger variance.
+        \item Use the simulated data, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$ to train a supervised learning model. 
+        It is standard practice in supervised learning research to transform the stock prices $\bS^{(i)}$ to log returns $\mathbf{X}^{(i)}$,
+        $$
+        \mathbf{X}^{(i)} = \left(\ln\left(\frac{S_{1}^{(i)}}{S_{0}^{(i)}}\right), \ln\left(\frac{S_{2}^{(i)}}{S_{1}^{(i)}}\right), \ldots, \ln\left(\frac{S_{T}^{(i)}}{S_{T-1}^{(i)}}\right)\right),
+        $$
+        and use $\mathbf{X}^{(i)}$ as features instead of the stock prices $\bS^{(i)}$.
+        Refer to the trained model as a metamodel and denote it by $\Lhat^{PD}(\mathbf{X})$. Denote the predicted losses for the outer scenarios by $\Lhat^{PD}_i = \Lhat^{PD}(\mathbf{X}^{(i)})$, $i=1,\ldots,M$.
         \item Sort the predicted losses $\Lhat^{PD}_{(1)}\leq \Lhat^{PD}_{(2)} \leq \cdots\leq \Lhat^{PD}_{(M)}$ to identify a predicted tail scenario set, $\widehat{\tail}_{m}^{PD}$, associated with the largest predicted losses. The number of predicted tail scenarios, $m$, is a user's choice.
     \end{enumerate}
     \STATE \textbf{Concentrate simulation on predicted tail scenarios:}

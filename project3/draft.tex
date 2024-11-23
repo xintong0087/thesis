@@ -71,10 +71,10 @@ Given a new of VA contract, the above process needs to be repeated to adapt the 
 For a DNN with a large number of parameters, retraining the LSTM network from scratch can be computationally expensive.
 TL offers an alternative approach to keep the previous knowledge as a foundation, thus accelerates the adaptation of the LSTM metamodel to new conditions.
 Computational savings come in two forms: 
-\begin{equation*}
+\begin{enumerate}
     \item   less training time is required to fine-tune the pre-trained model on the new dataset, and
     \item   fewer data points are needed to achieve a good LSTM metamodel, which is particularly beneficial when the standard nested simulation procedure is costly.
-\end{equation*}
+\end{enumerate}
 
 In supervised learning, a \textbf{domain} $\mathcal{D}$ comprises a feature space $\mathcal{X}$ and a marginal probability distribution $F$. Correspondingly, a \textbf{task} $\mathcal{T}$ consists of a label space $\mathcal{Y}$ and a predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$ that maps input features to output labels.
 
