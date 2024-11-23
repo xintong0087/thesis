@@ -273,10 +273,10 @@ We propose a two-stage procedure with a supervised learning metamodel that aims 
         Obtain $M$ simulated samples (feature-label pairs), $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$. 
         Note that $N'$ may be much smaller than $N$, so $\Lhat_i$ are expected to have larger variance.
         \item Use the simulated data, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$ to train a supervised learning model. 
-        It is standard practice in supervised learning research to transform the stock prices $\bS^{(i)}$ to log returns $\mathbf{X}^{(i)}$,
-        $$
-        \mathbf{X}^{(i)} = \left(\ln\left(\frac{S_{1}^{(i)}}{S_{0}^{(i)}}\right), \ln\left(\frac{S_{2}^{(i)}}{S_{1}^{(i)}}\right), \ldots, \ln\left(\frac{S_{T}^{(i)}}{S_{T-1}^{(i)}}\right)\right),
-        $$
+        It is standard practice in supervised learning research to transform the stock prices $\bS^{(i)}$ to returns $\mathbf{X}^{(i)}$,
+        \begin{equation} \label{eq2:return}
+        \mathbf{X}^{(i)} = \left(\frac{S_1^{(i)} - S_0}{S_0}, \frac{S_2^{(i)} - S_1^{(i)}}{S_1^{(i)}}, \ldots, \frac{S_T^{(i)} - S_{T-1}^{(i)}}{S_{T-1}^{(i)}}\right)
+        \end{equation}
         and use $\mathbf{X}^{(i)}$ as features instead of the stock prices $\bS^{(i)}$.
         Refer to the trained model as a metamodel and denote it by $\Lhat^{PD}(\mathbf{X})$. Denote the predicted losses for the outer scenarios by $\Lhat^{PD}_i = \Lhat^{PD}(\mathbf{X}^{(i)})$, $i=1,\ldots,M$.
         \item Sort the predicted losses $\Lhat^{PD}_{(1)}\leq \Lhat^{PD}_{(2)} \leq \cdots\leq \Lhat^{PD}_{(M)}$ to identify a predicted tail scenario set, $\widehat{\tail}_{m}^{PD}$, associated with the largest predicted losses. The number of predicted tail scenarios, $m$, is a user's choice.
