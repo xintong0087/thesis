@@ -28,13 +28,13 @@
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{98}{figure.caption.45}%
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{98}{figure.caption.46}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{114}{figure.caption.48}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{115}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{116}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{115}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{116}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{117}{figure.caption.50}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{119}{figure.caption.52}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{120}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{121}{figure.caption.55}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{122}{figure.caption.56}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{121}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{122}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{123}{figure.caption.56}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{142}{figure.caption.57}%

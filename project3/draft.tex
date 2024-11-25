@@ -23,12 +23,13 @@ In the context of DNNs, TL involves leveraging the knowledge acquired during tra
 This approach can significantly reduce training time and computational resources while enhancing model generalization.
 Instead of starting from scratch, a new DNN metamodel can be built on top of the pre-trained model and fine-tuned on the new data, allowing it to adapt quickly to changing market conditions and new VA contracts.
 
-In this chapter, we explore the application of TL to the dynamic hedging of VAs using RNN and LSTM metamodels.
-We propose a novel TL framework that accelerates the training of DNN metamodels for nested simulation procecedures in dynamic hedging.
-This setting is particularly relevant for hedging problems, as insurance companies often underwrite new contracts under changing market conditions and actuarial assumptions.
-Fast adaptation of metamodels is necessarily for metamodel-based nested simulation procedures.
+In this chapter, we explore the application of TL to the dynamic hedging of VAs using LSTM metamodels.
+We propose a novel TL framework that accelerates the training of DNN metamodels for nested simulation procedures in dynamic hedging.
+This setting is particularly relevant for dynamic hedging problems, as insurance companies often underwrite new contracts under changing market conditions and actuarial assumptions.
+Fast adaptation of metamodels is necessary for metamodel-based nested simulation procedures.
 Our approach involves pre-training an LSTM network on a large dataset of VA simulations and then fine-tuning it on a smaller dataset of new VA contracts.
 We evaluate the performance of the TL framework on a real-world dataset of VA contracts and compare it with training a LSTM metamodel from scratch.
+More importantly, we show the strengths and weaknesses of different TL techniques for rapid adaptation of LSTM metamodels.
 
 The rest of this chapter is organized as follows.
 Section~\ref{sec3:background} provides an overview of the dynamic hedging problem for VAs and the use of LSTM networks as metamodels in a nested simulation procedure.
@@ -40,14 +41,15 @@ Finally, Section~\ref{sec3:conclusion} concludes the chapter and discusses futur
 
 TL is a machine learning paradigm where knowledge acquired from a source task is utilized to improve learning performance on a related target task.
 One of the primary applications of TL in finance is asset price prediction. 
-Traditional models, such as autoregressive integrated moving average (ARIMA) and generalized autoregressive conditional heteroskedasticity (GARCH), have been widely used in time series modeling.
+Traditional models, such as geometric Brownian motion (GBM), autoregressive integrated moving average (ARIMA) and generalized autoregressive conditional heteroskedasticity (GARCH), have been widely used in time series modeling.
 ARIMA models~\citep{box1970distribution} combine autoregression, differencing, and moving average components to capture linear relationships in time series data.
 GARCH models~\citep{bollerslev1990modelling}, extend ARCH models to better capture volatility clustering, which is a key stylized fact of financial time series~\citep{cont2001empirical}.
 However, these models often struggle to capture complex dynamics, e.g., regime changes~\citep{hamilton1989new} and extreme market events~\citep{embrechts2013modelling} that are prevalent in financial markets.
-In Chapter~\ref{chap:project2}, our numerical experiment uses a regime-switching geometric Brownian motion as the underlying asset model.
-We have shown DNNs like RNN and LSTM networks have demonstrated significant improvements in modeling temporal dependencies. 
-However, training these models from scratch requires extensive data, which may not always be available for specific assets or under certain market conditions.
-TL offers a solution to this problem by leveraging knowledge from related assets or tasks to improve the learning performance of DNNs on the target task.
+In Chapter~\ref{chap:project2}, our numerical experiment uses a regime-switching geometric Brownian motion (RS-GBM) as the underlying asset model.
+For estimating tail risk measures, a metamodel-based nested simulation procedure is proposed to approximate the inner simulation.
+We have shown DNN metamodels like RNN and LSTM networks have demonstrated significant improvements in modeling temporal dependencies, and they save a substantial amount of simulation budget.
+However, training these models from scratch requires extensive simulation data, which may not always be available for specific assets or under certain market conditions.
+TL offers a solution to this problem by leveraging knowledge from related assets or tasks to improve the learning performance of DNN metamodels on the target task.
 In algorithmic trading,~\cite{jeong2019improving} used TL to enhance the performance of a reinforcement learning agent by preventing overfitting from insufficient market data.
 TL techniques have also been applied in building fraud detection systems. 
 Financial fraud often exhibits subtle and evolving patterns, making it challenging to develop robust detection models.
@@ -58,24 +60,27 @@ Our multi-task learning framework in Section~\ref{sec3:transfer_learning} extend
 Regarding nested simulation of VAs,~\cite{cheng2019fast} is the most relevant study to our work, where they proposed a TL framework for fast valuation of large portfolios of VAs.
 Instead of using stochastic kriging~\citep{gan2015valuation}, they employed a pre-trained DNN to select the best representative scenarios from a large portfolio of VAs.
 In our work, we focus on the application of TL to accelerate the training of LSTM metamodels for nested simulation in dynamic hedging of VAs.
-The fine-tuned LSTM metamodels can be readily adapted to the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2} to predict the contract losses under different market scenarios.
+The fine-tuned LSTM metamodels can be readily adapted to the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2} to predict the contract losses under different scenarios.
 
-In our context of DNNs metamodeling-based simulation procedures for hedging VAs, TL involves pre-training a neural network where the simulation budget is abundant and then fine-tuning it on a smaller dataset of new contracts or market conditions.
+In our context of DNNs metamodeling-based simulation procedures for hedging VAs, TL involves pre-training a DNN metamodel where the simulation budget is abundant and then fine-tuning it on a smaller dataset of new contracts or market conditions.
 Written on the same underlying asset, different VA contracts may share common features or exhibit similar patterns, especially temporal dependencies and regime changes in the underlying financial time series.
 Similarly, two VAs with the same features but based on different underlying assets may have some shared characteristics that can be leveraged to improve the learning performance of the metamodel.
 By transferring knowledge from a pre-trained model to a new but related task, TL can significantly reduce the computational cost of training the metamodel on the target task.
 
-LSTM networks are well-suited for modeling sequential data due to their ability to capture long-term dependencies.
-For the application of VA risk management using metamodel-based nested simulation, LSTM networks approximate the inner simulation, i.e., the mapping from market scenarios to the scenario-wise contract losses.
+LSTM networks are well-suited for modeling sequential data due to their ability to capture long-term dependencies~\citep{hochreiter1997long}.
+For the application of VA risk management using metamodel-based nested simulation, LSTM networks approximate the inner simulation, i.e., the mapping from scenarios to the scenario-wise contract losses.
 In Chapter~\ref{chap:project2}, we treat metamodeling as a supervised learning problem and demonstrated that LSTM networks can effectively model this complex relationships with extensive training on a large dataset of VA simulations.
 The total computational cost originates from two sources: running the standard nested simulation procedure to generate the training data and training the LSTM network on the generate dataset.
-Given a new of VA contract, the above process needs to be repeated to adapt the LSTM metamodel to the new contract.
+Given a new VA contract, these steps need to be repeated to adapt the LSTM metamodel to new market conditions and contract features.
 For a DNN with a large number of parameters, retraining the LSTM network from scratch can be computationally expensive.
-TL offers an alternative approach to keep the previous knowledge as a foundation, thus accelerates the adaptation of the LSTM metamodel to new conditions.
+Generating a large training dataset using the standard nested simulation procedure is costly, and the computational burden can be prohibitive for certain assets or market conditions.
+TL offers an alternative approach that keeps the previous knowledge, i.e., the pre-trained model, as a foundation.
+Building on the pre-trained model, the LSTM network can be fine-tuned on a smaller dataset of new contracts or market conditions.
+This approach accelerates the adaptation of the LSTM metamodel to new conditions.
 Computational savings come in two forms: 
 \begin{enumerate}
-    \item   less training time is required to fine-tune the pre-trained model on the new dataset, and
-    \item   fewer data points are needed to achieve a good LSTM metamodel, which is particularly beneficial when the standard nested simulation procedure is costly.
+    \item   fine-tuning requires less training time than training LSTM metamodels from scratch, and
+    \item   fewer training data points are needed to achieve a good LSTM metamodel, which is particularly beneficial when the standard nested simulation procedure is costly.
 \end{enumerate}
 
 In supervised learning, a \textbf{domain} $\mathcal{D}$ comprises a feature space $\mathcal{X}$ and a marginal probability distribution $F$. Correspondingly, a \textbf{task} $\mathcal{T}$ consists of a label space $\mathcal{Y}$ and a predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$ that maps input features to output labels.
@@ -89,11 +94,12 @@ A typical TL framework for supervised learning consists of the following:
 \end{itemize}
 
 where $\mathcal{X}_{\text{So}}$ and $\mathcal{X}_{\text{Ta}}$ include input features derived from the outer simulation of two different VA contracts or market conditions, and $F_{\text{So}}$ and $F_{\text{Ta}}$ are the marginal probability distributions of the source and target domains, respectively.
+Hence, the source domain and task are related to one VA contract for a certain market condition, while the target domain and task are related to new VA contracts and market conditions for which we don't have the simulation budget to run the standard nested simulation procedure extensively.
 In our numerical experiments, the dataset is generated by running the standard nested simulation procedure in Algorithm~\ref{alg2:standardProcedure} for a large number of VA contracts.
-The input features $\mathbf{X}$ are the return vectors from Equation~\ref{eq2:return}, and the output labels $L$ are the contract losses at each time step.
+The input features $\mathbf{X}$ are the return vectors from Equation~\ref{eq2:return}, and the output labels $L$ are the contract losses for different outer scenarios.
 The stock price vector $\mathbf{S}$ is not crucial for the discussion of this chapter and is omitted since it can be immediately recovered from $\mathbf{X}$ and the initial stock price $S_0$.
-We keep the number of features to be $240$ for both source and target domains as in Section~\ref{sec2:numerical}.
-The predictive function $f_{\text{So}}$ and $f_{\text{Ta}}$ are trained to estimate outputs $L_{\text{So}}$ and $L_{\text{Ta}}$ such as contract losses in inner simulations under the source and target tasks, respectively.
+We keep the number of features to be $\num{240}$ for both source and target domains as in Section~\ref{sec2:numerical}.
+The predictive function $f_{\text{So}}$ and $f_{\text{Ta}}$ are trained to estimate outputs $L_{\text{So}}$ and $L_{\text{Ta}}$, i.e., approximating the inner simulations under the source and target tasks, respectively.
 TL seeks to improve the learning of the target predictive function $f_{\text{Ta}}(\cdot)$ in $\mathcal{D}_{\text{Ta}}$ by leveraging the previous training on $\mathcal{D}_{\text{So}}$ and $f_{\text{So}}(\cdot)$, particularly when $\mathcal{D}_{\text{So}} \neq \mathcal{D}_{\text{Ta}}$ or $\mathcal{T}_{\text{So}} \neq \mathcal{T}_{\text{Ta}}$.
 In Chapter~\ref{chap:project2}, $\mathcal{D}_{\text{So}} = \mathcal{D}_{\text{Ta}}$ and $\mathcal{T}_{\text{So}} = \mathcal{T}_{\text{Ta}}$.
 
@@ -102,7 +108,7 @@ For the source task, we have a dataset $\mathcal{D}_{\text{So}} = { (X_{\text{So
 $X_{\text{So}}^{(i)} \in \mathcal{X}_{\text{So}}$ and $L_{\text{So}}^{(i)} \in \mathcal{Y}_{\text{So}}$.
 The ultimate objective is to learn a metamodel $f_{\text{Ta}}$ that predicts the VA contract losses $L_{\text{So}}$ from the scenarios $X_{\text{Ta}}$ in the form of a financial time series.
 TL starts by training a metamodel $f_{\text{So}}$ on the source domain $\mathcal{D}_{\text{So}}$.
-$f_{\text{So}}$ is approximated by an LSTM network $f_{\text{So}}(\cdot ; \theta_{\text{So}})$, and the parameters of the LSTM network, $\theta_{\text{So}}$ are learned by minimizing a MSE loss function on the source domain.
+For both the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2}, $f_{\text{So}}$ is approximated by an LSTM network $f_{\text{So}}(\cdot ; \theta_{\text{So}})$, where the parameters of the LSTM network, $\theta_{\text{So}}$ are learned by minimizing a MSE loss function on the source domain.
 Then the pre-trained parameters $\theta_{\text{So}}$ to inform the learning of $f_{\text{Ta}}(\cdot ; \theta_{\text{Ta}})$ on the target domain $\mathcal{D}_{\text{Ta}}$.
 The training on the target domain should encourage similarity between $\theta_{\text{So}}$ and $\theta_{\text{Ta}}$ to facilitate the transfer of knowledge.
 
@@ -245,7 +251,8 @@ For multi-task learning, we can select related nested simulation simulation proc
     \item GMWB contracts under a stochastic volatility model with different simulation parameters.
 \end{itemize}
 
-These tasks share similarities in contract features and market dynamics, enabling the shared LSTM layers to learn relevant temporal patterns applicable to the target task.
+These tasks need to share similarities in contract features and market dynamics so that the shared LSTM layers can learn relevant temporal patterns applicable to the target task.
+Training a multi-task LSTM metamodel benefits from having more training data, and the shared layers can learn more generalizable representations of temporal dependencies.
 Furthermore, if a new but similar task is introduced, fine-tuning, layer freezing, and multi-task learning can be combined to leverage the pre-trained model effectively.
 More specfically, the shared layers can be frozen, and the task-specific layers for a similar task in the training set can be fine-tuned on the new task.
 This shared knowledge helps the model generalize better on a target task, as the LSTM layers have been exposed to a wider variety of patterns and dynamics.

@@ -59,11 +59,11 @@
 \contentsline {subsection}{\numberline {4.2.2}Layer Freezing}{107}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Multi-task Learning}{108}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Rapid Adaptation of LSTM Metamodels}{111}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}Numerical Experiments}{112}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Learning Lapse Features}{113}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with Dynamic Lapse}{115}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{118}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{121}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.3}Numerical Experiments}{113}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Learning Lapse Features}{114}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with Dynamic Lapse}{116}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{119}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{122}{subsection.4.3.4}%
 \contentsline {section}{\numberline {4.4}Conclusion}{123}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Conclusion}{125}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Future Work: Deep Hedging Variable Annuities with Transfer Learning}{127}{chapter.6}%
