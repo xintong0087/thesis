@@ -31,16 +31,16 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on RS-GBM GMMB with static lapse}}{115}{figure.caption.48}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}}{116}{figure.caption.49}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{117}{figure.caption.50}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{119}{figure.caption.52}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{120}{figure.caption.52}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{121}{figure.caption.54}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{122}{figure.caption.55}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{123}{figure.caption.56}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{142}{figure.caption.57}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{146}{figure.caption.59}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{146}{figure.caption.60}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{147}{figure.caption.61}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{147}{figure.caption.62}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{148}{figure.caption.63}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{149}{figure.caption.64}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces PPO Network Architectures}}{143}{figure.caption.57}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{147}{figure.caption.59}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent PPO and deep hedging}}{147}{figure.caption.60}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard PPO and recurrent PPO}}{148}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{148}{figure.caption.62}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{149}{figure.caption.63}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{150}{figure.caption.64}%

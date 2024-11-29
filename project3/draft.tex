@@ -229,8 +229,9 @@ In Chapter~\ref{chap:project1} and Chapter~\ref{chap:project2}, we demonstrate t
 Here, pooling happens at a higher level, where information from multiple metamodels are shared to improve the learning performance on individual tasks.
 The multi-task loss function encourages the shared LSTM layers to learn generalizable representations of temporal dependencies that are beneficial across all tasks.
 
-Choosing appropriate simulation schemes is crucial for the success of multi-task learning. The tasks should be related to ensure that the shared layers can capture common features beneficial across tasks. 
-Criteria for selecting simulation schemes include:
+Choosing appropriate simulation schemes is crucial for the success of multi-task learning. 
+The tasks should be related to ensure that the shared layers can capture common features beneficial across tasks. 
+Criteria for selecting tasks with similar simulation schemes include:
 
 \begin{itemize} 
     \item   \textbf{Similarity in contract specifications:} 
@@ -252,6 +253,10 @@ For multi-task learning, we can select related nested simulation simulation proc
 \end{itemize}
 
 These tasks need to share similarities in contract features and market dynamics so that the shared LSTM layers can learn relevant temporal patterns applicable to the target task.
+Otherwise, the shared layers may not be able to learn generalizable representations of temporal dependencies, and the multi-task learning framework may lead to negative transfer.
+Negative transfer refers to the phenomenon where the performance of the target task is worse than that of training directly on the target task without TL.
+It occurs when the tasks are not related or an improper TL technique is used.
+Positive transfer, on the other hand, refers to the phenomenon where the performance of the target task is better than that of training directly on the target task without TL.
 Training a multi-task LSTM metamodel benefits from having more training data, and the shared layers can learn more generalizable representations of temporal dependencies.
 Furthermore, if a new but similar task is introduced, fine-tuning, layer freezing, and multi-task learning can be combined to leverage the pre-trained model effectively.
 More specfically, the shared layers can be frozen, and the task-specific layers for a similar task in the training set can be fine-tuned on the new task.
@@ -392,15 +397,15 @@ TL techniques like fine-tuning and layer freezing can help mitigate these challe
 Figure~\ref{subfig3-1:fineTuning} shows the results of fine-tuning a pretrained metamodel on RS-GBM with no lapse.
 Fine-tuning offers a noticeable improvement over training without TL by reducing the instability in the validation MSE. 
 However, despite this improvement, fine-tuning may not fully mitigate the challenges of training with a small dataset.
-The fine-tuned metamodel struggles to achieve a low validation MSE.
+No negative trasfer is observed, but the fine-tuned metamodel struggles to achieve a low validation MSE.
 Lowering the learning rate does not help the fine-tuned metamodel converge, and the validation MSE remains high after increasing the number of training epochs.
 It indicates that fine-tuning may not be sufficient for limited training data.
 Figure~\ref{subfig3-1:layerFreezing} presents the performance of layer freezing on the same target task.
 Layer freezing offers a more stable training process compared to fine-tuning, with a lower validation error and reduced fluctuations during its training.
 The LSTM layers are critical for capturing general feature representations that are transferable across tasks, and freezing these layers helps prevent overfitting to the target task.
-In addition, the layer freezing approch tunes fewer neural network parameters than crude fine-tuning.
-It allows the transferred metamodelmodel to only focus on learning the lapse features without excessively adjusting the general temporal representations learned from the source task.
-This reduction in trainable parameters also accelerates the convergence process, and it leads to a more stable and efficient training on the target task.
+In addition, the layer freezing approach tunes fewer neural network parameters than crude fine-tuning.
+It allows the transferred metamodel to only focus on learning the lapse features without excessively adjusting the general temporal representations learned from the source task for the target task.
+This reduction in trainable parameters also accelerates the convergence, and it leads to a more stable and efficient training on the target task.
 
 \subsection{Transfer to VAs with Dynamic Lapse}
 
@@ -491,6 +496,7 @@ However, when the source task is less similar to the target task, the benefits o
 This suggests that the divergence between the source and target tasks can lead to negative transfer.
 These results highlight the importance of selecting source tasks that share significant similarities with the target task to maximize the effectiveness of TL. 
 When the source and target contracts are substantially different, the pre-trained metamodels may struggle to adapt to the new conditions, as they may not have learned features relevant to the target task.
+There is no negative transfer observed, but the knowledge transfer is limited.
 
 \subsection{Transfer Knowledge to other Contract Types}
 
@@ -538,6 +544,7 @@ Fine-tuning allows the metamodel to adjust all its neural network layers.
 It allows better adaptation to the complexities introduced by the GMWB contract.
 
 However, when employing layer freezing (Figure~\ref{subfig3-4:layerFreezing}), the metamodel's performance deteriorates.
+Negative transfer is observed.
 Freezing some layers trained on the GMMB contracts does not allow the metamodel to sufficiently adapt to the complexities of the GMWB contracts. 
 The GMWB contracts are inherently more complex than GMMB contracts due to the guaranteed withdrawal benefits at each time step, and the contract features are significantly different.
 The complexity introduce significant changes in the time series dynamics that the metamodel needs to capture.
@@ -592,6 +599,7 @@ This finding is consistent with the training history and MSEs in Figure~\ref{fig
 It's important to note that while these results are promising, they also highlight the complexity of modeling GMWB contracts with dynamic lapse. 
 The fact that fine-tuning outperforms layer freezing suggests that there are significant differences in the tail behavior of GMMB and GMWB contracts, particularly when dynamic lapse is considered. 
 This underscores the need for careful model selection and validation when applying TL techniques to different VA products.
+When the source and target tasks are substantially different, all layers need to be updated, thus freezing some layers may lead to negative transfer.
 
 \subsection{Multi-task Learning}
 
@@ -680,11 +688,12 @@ Conversely, when the source and target tasks diverged significantly, fine-tuning
 
 Multi-task learning offers a robust framework for transferring knowledge across related simulation schemes in LSTM metamodeling for nested simulations. 
 By sharing representations through the LSTM layers, the model can learn more generalizable features that are beneficial across different VA contracts. 
-The multi-task approach was particularly beneficial when training data for individual tasks was scarce, as it effectively pooled information across tasks to enhance learning efficiency and predictive performance.
+The multi-task approach is particularly beneficial when training data for individual tasks is scarce, as it effectively pools information across tasks to enhance learning efficiency and predictive performance.
+We have extended the idea of pooling in Chapter~\ref{chap:project1} and~\ref{chap:project2} to a higher level.
 Furthermore, a metamodel trained with multi-task learning can serve as a pre-trained model. 
 It is adaptable to various VA contracts and asset models, and it is a versatile tool for practical applications in dynamic hedging of VAs.
 
-The integration of transfer learning into LSTM metamodeling represents a significant advancement in robust risk management associated with variable annuity contracts.
+The integration of transfer learning in LSTM metamodeling represents a significant advancement in robust risk management associated with variable annuity contracts.
 By effectively leveraging existing knowledge, financial institutions can maintain accurate and responsive risk management practices in a rapidly changing market environment. 
 The methodologies presented in this chapter attempt to make a significant contribution to the broader applications of transfer learning in financial modeling and risk assessment.
 
