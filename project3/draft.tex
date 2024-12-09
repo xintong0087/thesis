@@ -433,10 +433,10 @@ Fine-tuning from a source task with static lapse results in faster convergence a
 The metamodel trained on the GMMB with static lapse captures some features that are beneficial for the GMMB with dynamic lapse, which leads to a more stable training process.
 In Figure~\ref{subfig3-2:fromNolapse}, the metamodel needs to learn the effect of 
 \begin{itemize}
-    \item whether lapse is present and
+    \item whether lapse is present, and
     \item whether the lapse is dynamic.
 \end{itemize}
-This learning process is more challenging.
+This makes learning more challenging.
 
 The observed improvement in transferability when fine-tuning from a static lapse source task highlights the importance of selecting appropriate source tasks in TL. 
 When the source task diverges significantly from the target task, the transferred metamodel may struggle to adapt to the new conditions given the limited amount of of training data.

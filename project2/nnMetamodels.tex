@@ -415,12 +415,22 @@ All neural network metamodels are trained by the Adam optimizer~\citep{kingma201
 All DNN metamodels are trained with a dropout rate of $10\%$.
 The architectures and training settings are typical choices in the deep learning literature.
 The training labels are normalized to have zero mean and unit standard deviation.
-The architectures and the numbers of trainable parameters are recorded in the first two columns of Table~\ref{tab:gmwb_arch}.
+The numbers of trainable parameters are recorded in the second column of Table~\ref{tab:gmwb_arch}.
 We observe that the three DNN metamodels have orders of magnitudes more trainable parameters than the two traditional regression metamodels.
 In machine learning terminologies, the three DNN metamodels have much higher \textit{model capacities}.
-From a neural network of view, MLR and QPR are two neural networks with no hidden layers. 
-For a traditional regression metamodel, the numbers of neurons in its input layer equals to the cardinality of its regression bases.
-Treating a regression as a shallow neural network allows for direct comparisons with DNNs.
+From a neural network of view, MLR and QPR are two neural networks with no hidden layer. 
+For a traditional regression metamodel, the numbers of neurons in its input layer equals to the cardinality of its regression basis.
+Treating a regression as a shallow neural network, i.e., a neural network with only an input layer and an output layer, allows for direct comparisons with DNNs.
+The capacity of a regression metamodel is the product of the number of neurons in its input layer and its output layer.
+Since our target variable is a scalar, the output layer has only one neuron.
+The capacity of a regression metamodel therefore equals to the size of its regression basis.
+On the other hand, the three DNN metamodels have several hidden layers and are much more complex than the two regression metamodels.
+Our FNN has two hidden layers before the output layer.
+Its last hidden layer serves as an automatic feature extraction layer that transforms the 240-dimension feature vector into a 32-dimension vector that can directly relate to the target variable.
+Our RNN and LSTM networks have three hidden layers.
+They contain similar numbers of neurons as the FNN but have deeper network structures.
+For the RNN, two of its hidden layers are recurrent layers that capture the temporal dependency in the feature, and the last hidden layer is a standard feedforward layer that transforms the previous hidden states into a 32-dimension vector for target prediction.
+Our LSTM has the same architecture as the RNN but with LSTM cells in place of the RNN cells.
 
 % Fill this table with new results
 \begin{table}[ht!]
@@ -475,12 +485,18 @@ Notably, the true errors for the DNN metamodels are lower than the training erro
 This is a sign of the metamodels' ability to learn the true feature-label relationship with noisy training labels. 
 Section~\ref{subsec2:noiseTolerance} investigates this phenomenon in greater details.
 
-Comparing the two metamodels with recurrent structures, A LSTM network overcomes two key drawbacks of a crude RNN.
+The intuition behind the RNN and LSTM metamodels is briefly mentioned in~\ref{subsec:LSTM}.
+To overcome the overfitting issue of the FNN, RNN learns a single function that operates across all time steps, and the time $t$ itself is not a variable in the RNN.
+The RNN cells in RNN and LSTM networks share parameters across time and serve as a form of regularization that prevents overfitting.
+However, the price that RNN pays for a reduced number of parameters is the difficulty in its optimization.
+Comparing the two metamodels with recurrent structures, a LSTM network overcomes two key drawbacks of a crude RNN.
 \begin{enumerate}
-    \item It avoids the vanishing gradient problem during training, which makes the LSTM network easier to than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem. 
-    As a result, the half length of the $95\%$ confidence band of the RNN's training error is much larger than all other metamodels. The last row of Table~\ref{tab:gmwb_arch} shows the average squared errors of the good RNN metamodels that are successfully trained. 
-    Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN, but the half lengths of their $95\%$ confidence bands are larger than those of the FNN. 
+    \item It avoids the vanishing gradient problem during training, which makes the LSTM network easier to train than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem. 
+    As a result, the half length of the $95\%$ confidence band of the RNN's training error is much larger than all other metamodels. 
+    The last row of Table~\ref{tab:gmwb_arch} shows the average squared errors of the good RNN metamodels that are successfully trained. 
+    Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN.
     This suggests that the RNN is more sensitive to noise in stochastic gradient descent than the FNN.
+    They can capture the temporal dependency but are more difficult to optimize.
     \item A LSTM introduces three gates that regulate the flow of information. 
     These gates decide what information should be kept or discarded.
     For detailed discussion on the LSTM network, please refer to Section~\ref{subsec:LSTM}.
