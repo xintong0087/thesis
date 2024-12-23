@@ -1,0 +1,21 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Smoothness assumption of $h$ for different nested simulation procedures}}{19}{table.caption.10}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Existing asymptotic convergence results of nested simulation procedures for MSE}}{27}{table.caption.11}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Asymptotic rate of convergence of nested simulation procedures in MSE}}{43}{table.caption.14}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the MLMC procedure for different levels}}{59}{table.caption.26}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{60}{table.caption.27}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{80}{table.caption.31}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and MSEs of metamodels for GMWB inner simulation model.}}{82}{table.caption.32}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{91}{table.caption.38}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{94}{table.caption.40}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{94}{table.caption.41}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Spearman (Pearson) correlation coefficients of high-capacity LSTM predictions.}}{95}{table.caption.42}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces VA Contracts for Transfer Learning Experiments}}{113}{table.caption.47}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different TL methods on GMMB contracts}}{118}{table.caption.51}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of different TL methods to GMWB contracts}}{121}{table.caption.53}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces PPO Hyperparameters and GMMB Contract Specifications}}{146}{table.caption.58}%

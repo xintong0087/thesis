@@ -567,6 +567,8 @@ Freezing the LSTM layers or the fully connected layer hinders the metamodel's ab
 \end{table}
 
 Table~\ref{tab3:transfer_learning_results_gmwb} summarizes the true MSEs of the LSTM metamodels on the GMWB contracts.
+Training MSE and true MSE are computed using the training labels and the true contract losses approximated with $\num{100000}$ inner replications, respectively.
+This is consistent with the terminology used in Chapter~\ref{chap:project2}.
 The TL methods are compared to training from scratch.
 The suboptimal performance of layer freezing in this context indicates that the difference between the source and target tasks is too substantial for this method to be effective. 
 While layer freezing can be advantageous when the source and target tasks are closely related, it may hinder performance when the tasks diverge significantly.
@@ -598,8 +600,10 @@ Fine-tuning consistently outperforms both layer freezing and training from scrat
 This finding is consistent with the training history and MSEs in Figure~\ref{fig3:figure4} and Table~\ref{tab3:transfer_learning_results_gmwb}, respectively.
 It's important to note that while these results are promising, they also highlight the complexity of modeling GMWB contracts with dynamic lapse. 
 The fact that fine-tuning outperforms layer freezing suggests that there are significant differences in the tail behavior of GMMB and GMWB contracts, particularly when dynamic lapse is considered. 
-This underscores the need for careful model selection and validation when applying TL techniques to different VA products.
-When the source and target tasks are substantially different, all layers need to be updated, thus freezing some layers may lead to negative transfer.
+These findings highlight the need for careful model selection and validation when applying TL techniques to different VA products.
+When the source and target tasks are substantially different, all layers need to be updated.
+Freezing some layers may lead to negative transfer.
+
 
 \subsection{Multi-task Learning}
 
@@ -653,6 +657,8 @@ In the case of GMMB, multitask learning allows the model to achieve faster conve
 For GMWB, the multi-task learning framework helps to stablize the training process.
 The shared LSTM layers in the multitask model are able to capture common temporal patterns and dynamics, which benefits both GMMB and GMWB when training samples is scarce.
 Similar to pooling in Chapter~\ref{chap:project1} and~\ref{chap:project2} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
+
+\subsection{}
 
 % \begin{figure}[ht!]
 %     \centering
