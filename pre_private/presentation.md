@@ -3,6 +3,29 @@ marp: true
 theme: default
 size: 16:9
 paginate: true
+style: |
+  section {
+    background: white;
+    font-family: 'Latin Modern Roman', serif;
+  }
+  h1 {
+    color: #002147;
+    border-bottom: 2px solid #002147;
+    padding-bottom: 8px;
+  }
+  h2, h3 {
+    color: #002147;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  /* Add KaTeX fonts */
+  @import 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css';
+  .katex { 
+    font: normal 1.21em KaTeX_Main, Times New Roman, serif;
+  }
 ---
 
 # Resilient Machine Learning Approaches for Fast Risk Evaluation and Management in Financial Portfolios and Variable Annuities
@@ -24,18 +47,40 @@ $$\rho(L) = \rho(L(X)), \;\;\; L(X) = \mathbb{E}\left[ Y|X=x \right]\vert_{x=X} 
 
 ---
 
+
+### Common Risk Measures
+
+- Smooth $h$, e.g., quadratic tracking error
+
+$$ \rho(L) = \mathbb{E} \left[ (L - b)^2 \right] $$
+
+- hockey-stick $h$: mean excess loss
+
+$$ \rho(L) = \mathbb{E} \left[ L \cdot \mathbb{1}_{\{L \geq u\}} \right] $$
+
+- indicator $h$: probability of large loss
+
+$$ \rho(L) = \mathbb{E} \left[ \mathbb{1}_{\{L \geq u\}} \right] $$
+
+- Value at Risk (VaR)
+
+- Conditional Value at Risk (CVaR)
+
+---
+
 ### Standard Nested Simulation
 
 $$\hat{L}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
 
 - Proposed by Gordy and Juneja (2010)
 - Uses standard MC estimator (sample mean of inner replications)
-- Optimal budget allocation between outer scenarios and inner replications
-- Computationally expensive and potentially wasteful
+- Finds optimal growth order of $M$ and $N$
+- Zhang et al. (2021) estimate the optimal $M$ and $N$ using a bootstrap method
+- Computationally expensive and potentially wasteful use of budget
 
 ---
 
-### Improved Nested Simulation Procedures
+### Other Nested Simulation Procedures
 
 1. Regression-based (Broadie et al., 2015)
 2. Kernel smoothing (Hong et al., 2017)
@@ -43,8 +88,9 @@ $$\hat{L}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
 4. Kernel ridge regression (Zhang et al., 2022)
 5. Multi-level Monte Carlo (Giles, 2019)
 
-Key idea: Pool inner replications from different outer scenarios
-
+Key ideas: 
+- Pool inner replications from different outer scenarios 
+- Use metamodeling techniques to approximate the inner simulation model
 ---
 
 ### Metamodeling Approach
@@ -135,7 +181,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Basic Comparison: European Call Options, d=1
 
-![width:700px](./project1/figures/figure1.png)
+![width:700px](../project1/figures/figure1.png)
 
 - Most procedures match their asymptotic convergence rates
 - Regression and kernel smoothing show higher empirical rates
@@ -144,7 +190,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Sensitivity to Asset Dimension
 
-![width:450px](./project1/figures/figure2a.png) ![width:450px](./project1/figures/figure2b.png)
+![width:450px](../project1/figures/figure2a.png) ![width:450px](../project1/figures/figure2b.png)
 
 - Standard, KRR, and likelihood ratio methods are dimension-independent
 - Kernel smoothing and regression show sensitivity to dimension
@@ -153,7 +199,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Regression-based Method: Detailed Analysis
 
-![width:700px](./project1/figures/figure3.png)
+![width:700px](../project1/figures/figure3.png)
 
 - Higher initial convergence rate
 - Stabilizes to match asymptotic rate at higher budgets
@@ -163,7 +209,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Sensitivity to Option Type
 
-![width:450px](./project1/figures/figure6a.png) ![width:450px](./project1/figures/figure6b.png)
+![width:450px](../project1/figures/figure6a.png) ![width:450px](../project1/figures/figure6b.png)
 
 - Similar convergence patterns across different option types
 - Regression and kernel smoothing show higher empirical rates for barrier options
@@ -172,7 +218,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Sensitivity to Risk Measure
 
-![width:450px](./project1/figures/figure8a.png) ![width:450px](./project1/figures/figure8b.png)
+![width:450px](../project1/figures/figure8a.png) ![width:450px](../project1/figures/figure8b.png)
 
 - Convergence behavior consistent across different risk measures
 - Regression-based method shows highest empirical convergence rates
@@ -181,7 +227,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Sensitivity to VaR/CVaR Level
 
-![width:450px](./project1/figures/figure9a.png) ![width:450px](./project1/figures/figure9b.png)
+![width:450px](../project1/figures/figure9a.png) ![width:450px](../project1/figures/figure9b.png)
 
 - Regression-based method not sensitive to VaR/CVaR level
 - Consistent performance across different levels
@@ -190,7 +236,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Sensitivity to Asset Model
 
-![width:450px](./project1/figures/figure10a.png) ![width:450px](./project1/figures/figure10b.png)
+![width:450px](../project1/figures/figure10a.png) ![width:450px](../project1/figures/figure10b.png)
 
 - Regression-based method insensitive to asset model (GBM vs. Heston)
 - Consistent performance across different models
@@ -208,7 +254,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Computational Complexity
 
-![width:450px](./project1/figures/figure11a.png) ![width:450px](./project1/figures/figure11b.png)
+![width:450px](../project1/figures/figure11a.png) ![width:450px](../project1/figures/figure11b.png)
 
 - Regression and kernel smoothing most efficient among metamodel-based procedures
 - Likelihood ratio and KRR most computationally expensive
@@ -217,7 +263,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Detailed Computational Cost Analysis
 
-![width:450px](./project1/figures/figure12a.png) ![width:450px](./project1/figures/figure12b.png)
+![width:450px](../project1/figures/figure12a.png) ![width:450px](../project1/figures/figure12b.png)
 
 - Standard method: constant cost for budget allocation
 - Regression: linear growth in computational time
@@ -360,7 +406,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### RNN vs LSTM Performance
 
-![width:450px](./project2/figures/qqPlots/rnnGood.png) ![width:450px](./project2/figures/qqPlots/rnnBad.png)
+![width:450px](../project2/figures/qqPlots/rnnGood.png) ![width:450px](../project2/figures/qqPlots/rnnBad.png)
 
 - LSTM overcomes vanishing gradient problem in RNN
 - LSTM better captures long-term dependencies in 240-dimensional time series
@@ -369,7 +415,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Regression vs Neural Network Metamodels
 
-![width:450px](./project2/figures/qqPlots/mlrLN.png) ![width:450px](./project2/figures/qqPlots/qprLN.png)
+![width:450px](../project2/figures/qqPlots/mlrLN.png) ![width:450px](../project2/figures/qqPlots/qprLN.png)
 
 - Regression metamodels (MLR, QPR) generalize poorly to true data
 - Neural network metamodels show better generalization
@@ -378,7 +424,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### LSTM Performance with Different Noise Levels
 
-![width:800px](./project2/figures/qqPlots/lstmAll.png)
+![width:800px](../project2/figures/qqPlots/lstmAll.png)
 
 - LSTM metamodels learn true relationship from low and medium-noise datasets
 - High-capacity LSTM prone to overfitting with high-noise data
@@ -387,7 +433,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### CVaR Estimates Comparison
 
-![width:700px](./project2/figures/singleStage/CVaRmediumNoise.png)
+![width:700px](../project2/figures/singleStage/CVaRmediumNoise.png)
 
 - LSTM metamodels consistently outperform standard procedure
 - High-capacity LSTM produces most accurate estimates
@@ -396,7 +442,7 @@ Interested in convergence order as $\Gamma \to \infty$
 
 ### Single-Stage Procedure Convergence Analysis
 
-![width:900px](./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png)
+![width:900px](../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png)
 
 - RRMSE decreases as simulation budget increases
 - Higher convergence rate with increased data quantity
