@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex pre"] 1735888844.06549 "pre.aux" "pre.bbl" "pre" 1735888981.89814 0
+["bibtex pre"] 1735940922.03403 "pre.aux" "pre.bbl" "pre" 1735940925.39474 0
   "../refP1.bib" 1731892690 6957 34f8eedc2ced27b9af3471be94ece923 ""
   "../refP2.bib" 1731671893 21698 510811777bf170e666a42672a0cf5f46 ""
   "../refP3.bib" 1732319384 15669 b7057b59e60711df4f13c728d9dfebdf ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/bibtex/bst/beebe/apa.bst" 954234833 23582 e3c8338eb1efb7432441aa8861285f53 ""
-  "pre.aux" 1735888980 7005 05c352831adaec4a0556179acc1bd563 "pdflatex"
+  "pre.aux" 1735940924 7261 a23aa5e7fd7aac1f14eaf08181258e1f "pdflatex"
   (generated)
   "pre.bbl"
   "pre.blg"
   (rewritten before read)
-["pdflatex"] 1735888978.89085 "c:/Users/XT/Documents/GitHub/thesis/pre_private/pre.tex" "pre.pdf" "pre" 1735888981.8986 0
+["pdflatex"] 1735940922.31311 "c:/Users/XT/Documents/GitHub/thesis/pre_private/pre.tex" "pre.pdf" "pre" 1735940925.39517 0
   "../project1/figures/figure1.png" 1712188463 62635 559cc3ba71702cb656c3c530ff9a906a ""
   "../project1/figures/figure10a.png" 1712188466 32158 b99e7a776115b6f287cddd111c3847c6 ""
   "../project1/figures/figure11b.png" 1712188466 55247 f495dc467da05302581db6d3ed3bfde7 ""
@@ -78,6 +78,7 @@
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1247596667 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1247596667 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
+  "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1247596666 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1247596666 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1247596667 24420 52dbb8e8aa0069a1b987309557f8d303 ""
@@ -302,13 +303,13 @@
   "C:/Users/XT/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "StyleFile.tex" 1735601219 7151 ba8e5cfdff509acbc1a13bac710f1c44 ""
   "UniversityOfWaterloo_logo_vert_rev_rgb.png" 1735601219 37485 679642015d718625c78d9811d015a8d2 ""
-  "c:/Users/XT/Documents/GitHub/thesis/pre_private/pre.tex" 1735888978 18610 8b603858f48e2b20e24c0b8a1dbf6dde ""
-  "pre.aux" 1735888980 7005 05c352831adaec4a0556179acc1bd563 "pdflatex"
-  "pre.bbl" 1735888844 1772 970a7b1139170a1f93b15f5f452df5ba "bibtex pre"
-  "pre.nav" 1735888980 4280 6516aefd83c05960bdc170d2653594ed "pdflatex"
-  "pre.out" 1735888980 1391 c294d443db52e626c6ddf68da08a78d9 "pdflatex"
-  "pre.tex" 1735888978 18610 8b603858f48e2b20e24c0b8a1dbf6dde ""
-  "pre.toc" 1735888980 394 c650872160cbaf05fdcbdef076811757 "pdflatex"
+  "c:/Users/XT/Documents/GitHub/thesis/pre_private/pre.tex" 1735940918 19377 2c2c9b2015ea750795d5e11c20c2f566 ""
+  "pre.aux" 1735940924 7261 a23aa5e7fd7aac1f14eaf08181258e1f "pdflatex"
+  "pre.bbl" 1735940922 1772 970a7b1139170a1f93b15f5f452df5ba "bibtex pre"
+  "pre.nav" 1735940924 4464 adbceef5ccccd748a095c4423b5b64f6 "pdflatex"
+  "pre.out" 1735940924 1391 c294d443db52e626c6ddf68da08a78d9 "pdflatex"
+  "pre.tex" 1735940918 19377 2c2c9b2015ea750795d5e11c20c2f566 ""
+  "pre.toc" 1735940924 394 c650872160cbaf05fdcbdef076811757 "pdflatex"
   (generated)
   "pre.aux"
   "pre.log"

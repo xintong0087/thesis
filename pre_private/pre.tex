@@ -537,15 +537,43 @@ And their empirical convergence stable across different:
 
 \end{frame}
 
-\begin{frame}{Nested Simulation for VAs}
+\begin{frame}{Nested Simulation for Risk Management of VAs}
 
     \begin{figure}[c]
         \includegraphics[width=\textwidth]{../project2/figures/sns.pdf}
         \caption{Illustration of nested simulation that estimates the P\&L for one outer scenario}
     \end{figure}
 
+
 \end{frame}
 
+\begin{frame}{Standard Nested Simulation for VAs}
+
+Standard nested simulation for VAs is similar to the one for options.
+
+\begin{itemize}
+    \item Generate $M$ outer scenarios
+    \item For each outer scenario,
+    \begin{itemize}
+        \item Perform $N$ inner simulations
+        \item Estimate hedging loss $L_i$ with $\hat{L}_i$
+    \end{itemize}
+    \item Use estimated losses to calculate tail risk measures (e.g., $95\%$-CVaR)
+\end{itemize}
+
+\vspace{10pt}
+
+\textbf{Main challenge:}
+\begin{itemize}
+    \item Computational budget is limited.
+    \item Accuracy of the estimation depends on both $M$ and $N$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Two-Stage LSTM-based Nested Simulation for VAs}
+
+\end{frame}
 
 \begin{frame}
     \frametitle{References}
