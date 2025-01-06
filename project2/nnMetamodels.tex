@@ -940,7 +940,7 @@ We observe that the RRMSE decreases as the simulation budget increases, and the 
 For an LSTM metamodel, increasing the data quality of the training labels has diminishing returns, which is consistent with the results in Figure~\ref{fig2:mnConvergence}.
 For an increasing number of inner replications with fixed number of outer scenarios, the RRMSE cease to decrease after reaching $N = \num{100}$. 
 More specfically, when the quality of the training labels is fixed at $N = \num{10}$, the CVaR estimator of single-stage procedure with a LSTM metamodel converge roughly in the order of $\mathcal{O}(M^{\frac{2}{3}})$.
-This observation resonates with the convergence rate of a regression-based nested simulation procedure in~\cite{broadie2015risk}.
+This observation resonates with the best possible convergence rate of a standard nested simulation procedure in~\cite{gordy2010nested}.
 Hence, in practice, we suggest to run the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.
 
 

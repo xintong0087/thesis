@@ -1,6 +1,6 @@
 \documentclass[9pt,handout]{beamer}
 
-\input{StyleFile.tex}
+\input{./StyleFile.tex}
 
 % \setbeameroption{show notes}
 % \setbeameroption{show notes on second screen=right}
@@ -41,13 +41,17 @@ University of Waterloo % Your institution for the title page
 \usepackage{bbm}
 \usepackage{xcolor}
 \usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{algorithmicx}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{bm}
 \usepackage{multirow}
 \usepackage{graphicx}
 
 \usepackage{tikz}
-\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes,arrows,positioning, calc, fit, decorations.pathreplacing}
+
+
 
 
 \newcommand{\E}{\mathbb{E}}
@@ -75,6 +79,18 @@ University of Waterloo % Your institution for the title page
 \newcommand{\LR}{\textnormal{LR}}
 \newcommand{\KRR}{\textnormal{KRR}}
 \newcommand{\skipv}{\vspace{8pt}}
+
+
+\definecolor{color10_2}{HTML}{1F77B4}
+\definecolor{color10_3}{HTML}{FF7F0E}
+\definecolor{color10_4}{HTML}{2CA02C}
+\definecolor{color10_5}{HTML}{D62728}
+\definecolor{color10_6}{HTML}{9467BD}
+\definecolor{color10_7}{HTML}{8C564B}
+\definecolor{color10_8}{HTML}{E377C2}
+\definecolor{color10_9}{HTML}{7F7F7F}
+\definecolor{color10_10}{HTML}{BCBD22}
+\definecolor{color10_11}{HTML}{17BECF}
 
 
 \newtheorem{assumption}{Assumption}
@@ -202,6 +218,7 @@ In this thesis, we focus on procedures that use \textbf{supervised learning meta
 There are \textbf{computational costs} associated with pooling inner replications.
 
 \end{frame}
+
 
 \begin{frame}{Problem Statement}
 
@@ -563,15 +580,545 @@ Standard nested simulation for VAs is similar to the one for options.
 
 \vspace{10pt}
 
-\textbf{Main challenge:}
+\textbf{Observations:}
 \begin{itemize}
-    \item Computational budget is limited.
-    \item Accuracy of the estimation depends on both $M$ and $N$.
+    \item computational budget is limited;
+    \item high-dimensional input space;
+    \item only a \textbf{small} portion of scenarios are relevant when estimating \textbf{tail} risk measures.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Two-Stage LSTM-based Nested Simulation for VAs}
+\begin{frame}{Metamodel-based Nested Simulation}
+
+    We use deep neural networks (DNNs) as metamodels 
+    \begin{itemize}
+        \item Use LSTMs for sequential data
+        \item \textbf{Challenge}: lack of transparency and interpretability
+    \end{itemize}
+
+    \vspace{20pt}
+
+    \textbf{Research Contributions:}
+    \vspace{6pt}
+    \begin{enumerate}
+        \item Propose two generic DNN-based nested simulation procedures
+        \begin{itemize}
+            \item   Accurate tail scenario identification
+            \item   Significant computational savings by \textbf{budget concentration}
+        \end{itemize}
+        \vspace{6pt}
+        \item Study noise tolerance of DNNs using simulated data
+        \begin{itemize}
+            \item \textbf{Control noise levels} by adjusting simulation parameters
+            \item Provide direct evidence on transparency and interpretability
+        \end{itemize}
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Two-Stage Metamodel-based Nested Simulation}
+
+\begin{algorithm}[H]
+    \caption{Two-Stage Metamodel-based Nested Simulation for VAs}
+
+\begin{algorithmic}[1]
+    \STATE{\textbf{Generate training data for metamodels:}}
+    \begin{itemize}
+        \item Use a fraction of the simulation budget to run the standard nested simulation procedure with $M$ outer scenarios and $N'$ inner replications.
+        \item Construct feature-label pairs $\{(X_i, Y_{ij}) : i=1, \ldots, M, j=1, \ldots, N'\}$
+    \end{itemize}
+    \STATE{\textbf{Train metamodels:}}
+    \begin{itemize}
+        \item Use the feature-label pairs to train a metamodel.
+        \item Use the trained metamodel to make predictions for $\{X_i: i=1, \ldots, M\}$.
+        \item Sort the predicted losses to identify a predicted tail scenario set that contains the $m$ largest predicted losses.
+    \end{itemize}
+    \STATE{\textbf{Concentrate simulation on predicted tail scenarios:}}
+    \begin{itemize}
+        \item Run the standard procedure on the predicted tail scenarios.
+        \item Estimate the $\alpha$-CVaR of $L$ using the estimated losses on the predicted tail scenarios.
+    \end{itemize}
+\end{algorithmic}
+\end{algorithm}
+
+\end{frame}
+
+
+\begin{frame}{Benefits of a Two-Stage Procedure}
+
+
+Simulation budget can be saved when:
+\begin{itemize}
+    \item the metamodel is accurate (a small $m$ includes most tail scenarios)
+    \item the metamodel can tolerate noise in training labels (a small $N'$)
+\end{itemize}
+
+\vspace{10pt}
+
+\textbf{Key findings:}
+\begin{itemize}
+    \item Substantial computational savings ($70\% - 85\%$ reduction)
+    \item Maintains accuracy comparable to standard procedure
+    \item DNN metamodels can distinguish between tail and non-tail scenarios effectively
+    \item Addresses regulatory concerns by using actual simulations for final estimates
+\end{itemize}
+
+\vspace{10pt}
+\textbf{Another finding:} 
+some DNN metamodels make \textbf{accurate loss predictions} for given scenarios.
+
+\end{frame}
+
+\begin{frame}{Single-Stage Metamodel-based Nested Simulation}
+
+\begin{algorithm}[H]
+\caption{Single-Stage Metamodel-based Nested Simulation for VAs}
+\begin{algorithmic}[1]
+    \STATE{\textbf{Generate training data for metamodels:}}
+    \begin{itemize}
+        \item Use the entire simulation budget to run the standard nested simulation procedure with $M$ outer scenarios and $N$ inner replications.
+        \item Construct feature-label pairs $\{(X_i, Y_{ij}) : i=1, \ldots, M, j=1, \ldots, N\}$
+    \end{itemize}
+    \STATE{\textbf{Train metamodels:}}
+    \begin{itemize}
+        \item Use the feature-label pairs to train a metamodel.
+        \item Use the trained metamodel to make predictions for $\{X_i: i=1, \ldots, M\}$.
+    \end{itemize}
+    \STATE{\textbf{Use metamodel predictions to estimate tail risk measures directly.}}
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Key advantages:}
+\begin{itemize}
+    \item more efficient than a two-stage procedure;
+    \item avoids specifying $m$;
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Experiment Setting}
+
+    We estimate the $95\%$-CVaR of the hedging loss for a GMWB contract with 20-year maturity.
+
+    \vspace{10pt}
+
+    \textbf{Specifications:}
+    \begin{itemize}
+        \item The underlying asset follows a regime-switching geometric Brownian motion;
+        \item The contract is delta-hedged monthly (240 periods);
+        \item The true $95\%$-CVaR is estimated using 100,000 outer scenarios and 100,000 inner replications.
+        \item The metamodel is trained using 90,000 outer scenarios and 100 inner replications.
+        \item Benchmark: standard nested simulation procedure with 100,000 outer scenarios and 1,000 inner replications.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Experiment Design}
+
+    \textbf{Research Questions:}
+    \begin{itemize}
+        \item What do DNNs learn from noisy data?
+        \item How well do DNNs learn from noisy data?
+    \end{itemize}
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{../project2/figures/datasets.png}
+    \end{figure}
+
+    \begin{itemize}
+        \item Our 90,000 training data is noisy, and the test data is also \textbf{noisy}.
+        \item Our evaluation is based on the true (\textbf{noiseless}) feature-label relationship\footnotemark.
+    \end{itemize}
+
+    \footnotetext{Made possible by novel simulation design.}
+
+\end{frame}
+
+\begin{frame}{Experiment Setting}
+
+    We consider the following metamodel architectures:
+
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}{lcc}
+            \toprule
+            \textbf{Metamodel} & \textbf{Abbreviation} & \textbf{Capacity} \\
+            \midrule
+            Multiple Linear Regression      & MLR       & 241 \\
+            Quadratic Polynomial Regression & QPR       & 481 \\
+            Feedforward Neural Network      & FNN       & 35,009 \\
+            Recurrent Neural Network        & RNN       & 32,021 \\
+            Long Short-Term Memory          & LSTM      & 35,729 \\
+            \bottomrule
+        \end{tabular}
+        \caption{Metamodel architectures for GMWB inner simulation model}
+        \label{tab:arch}
+    \end{table}
+
+    Capacity is defined as the number of parameters in the metamodel.
+    \begin{itemize}
+        \item   Higher capacity metamodels are more flexible and expressive.
+        \item   Lower capacity metamodels are less likely to overfit.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Traditional Regression Metamodels}
+
+    \begin{figure}[H]
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/mlrLN.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/qprLN.png}
+        \caption{QQ plots between true and predicted loss labels for MLR and QPR metamodels}
+    \end{figure}
+
+    \begin{itemize}
+        \item   MLR and QPR metamodels make \textbf{inaccurate} loss predictions.
+        \item   Feature engineering is hardly feasible for our 240-dimensional $X$.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Deep Neural Network Metamodels}
+
+    \begin{figure}[H]
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/fnnLN.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/lstmLoCapLN.png}
+        \caption{QQ plots between true and predicted loss labelsfor FNN and LSTM metamodels}
+    \end{figure}
+
+    \begin{itemize}
+        \item   DNN metamodels are more flexible.
+        \item   Time series features prefer a LSTM metamodel over FNN.
+        \item   Network architecture serves as prior knowledge that regularizes DNNs.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Metamodel Performance on Different Datasets}
+
+    \begin{table}[ht!]
+        \centering
+        \small
+        \begin{tabular}{lccc}
+        \toprule
+        \textbf{Metamodel} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
+        \midrule
+        MLR & $0.706 (\pm 8.34\times 10^{-4})$ & $0.713 (\pm 2.67 \times 10^{-2})$ & $0.706 (\pm 3.44 \times 10^{-4})$ \\
+        QPR & $0.543 (\pm 8.27\times 10^{-4})$ & $0.554 (\pm 2.32 \times 10^{-2})$ & $0.544 (\pm 4.12\times 10^{-4})$ \\
+        FNN & $0.129 (\pm 5.95\times 10^{-3})$ & $0.240 (\pm 9.82 \times 10^{-3})$ & $0.132 (\pm 5.82\times 10^{-3})$ \\
+        RNN & $0.132 (\pm 7.53\times 10^{-3})$ & $0.137 (\pm 7.62\times 10^{-3})$ & $0.119 (\pm 7.51\times 10^{-3})$ \\
+        LSTM & $0.075 (\pm 4.48\times 10^{-3})$ & $0.079 (\pm 5.35\times 10^{-3})$ & $0.063 (\pm 4.43\times 10^{-3})$ \\
+        RNN$^*$\footnotemark & $0.109 (\pm 5.20\times 10^{-3})$ & $0.128 (\pm 5.22\times 10^{-3})$ & $0.109 (\pm 5.20\times 10^{-3})$ \\
+        \bottomrule
+        \end{tabular}
+        \caption{MSEs of metamodels for GMWB inner simulation model.}
+        \label{tab:gmwb_arch}
+    \end{table}
+
+    \footnotetext{This row summarizes the results of the well-trained RNNs.}
+
+    \begin{itemize}
+        \item   DNN metamodels with suitable architectures \textbf{cut through the noise} in training labels.
+        \item   
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Issues with RNNs}
+
+    \begin{figure}[H]
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/rnnGood_training.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/rnnBad_training.png}
+        \caption{QQ plots between training and predicted loss labels for RNN metamodels}
+    \end{figure}
+
+    \begin{itemize}
+        \item   RNN metamodels suffers from \textbf{vanishing gradient problem}.
+        \item   Ease of training (reliability) is a critical factor when choosing a DNN metamodel.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Safety Margin}
+
+
+    Consider estimating the $95\%$ CVaR with 100,000 outer scenarios.
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=1]
+            % Make the height of the solid rectangle half.
+            \draw[line width=1pt, fill=gray, fill opacity=0.40] (0,0) rectangle (3,1); 
+            % Adjust node positions for the new height.
+            \node[above] at (1.5, 0.5) {5\% \textbf{true} tails}; 
+            \node[above] at (1.5, 0) {(5,000 scenarios)};
+            % Adjust the dashed lines for the new height.
+            \draw[dashed, line width=1pt] (3,0) -- (10,0); 
+            \node[above] at (6.5, 0.3) {non-tails};
+            \draw[dashed, line width=1pt] (3,1) -- (10,1); 
+            \node[above] at (9.5, 0.3) {...};
+        \end{tikzpicture}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=1]
+            % Make the height of the solid rectangle half.
+            \draw[line width=1pt, fill=gray, fill opacity=0.20] (0,0) rectangle (3,1);
+            % Adjust node positions for the new height.
+            \node[above] at (1.5, 0.5) {5\% \textbf{predicted} tails};
+            \node[above] at (1.5, 0) {(5,000 scenarios)};
+            % Adjust the dashed boxes for the new height.
+            \draw[dashed, line width=1pt, fill=gray, fill opacity=0.10] (3,0) rectangle (5,1);
+            \node[above] at (4, 0.5) {+2\% margin};
+            \node[above] at (4, 0) {(2,000 more)};
+            \draw[dashed, line width=1pt, fill=gray, fill opacity=0.10] (5,0) rectangle (7,1);
+            \node[above] at (6, 0.5) {+2\% margin};
+            \node[above] at (6, 0) {(2,000 more)};
+            % Adjust the dashed lines for the new height.
+            \draw[dashed, line width=1pt] (7,0) -- (10,0);
+            \draw[dashed, line width=1pt] (7,1) -- (10,1);
+            \node[above] at (9.5, 0.3) {...};
+        \end{tikzpicture}
+    \end{figure}
+    
+    \vspace{10pt}
+
+    Choosing a safety margin: a trade-off between accuracy and efficiency.
+    \begin{itemize}
+        \item   A lower margin: not enough tail identified.
+        \item   A higher margin: more accurate CVaR estimate, but more budget needed to perform extensive inner simulations.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Tail Scenario Identification}
+
+    \begin{figure}[H]
+        \includegraphics[width=0.48\textwidth]{../project2/figures/tailMatches/regLN.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/tailMatches/nnLN.png}
+        \caption{Tail scenario identification for regression and DNN metamodels}
+    \end{figure}
+
+    \begin{itemize}
+        \item Traditional regression metamodels are \textbf{unable} to accurately identify tail scenarios even with high safety margins.
+        \item LSTM metamodels surpasses the standard procedure with $5\%$ safety margin.
+    \end{itemize}
+        
+\end{frame}
+
+\begin{frame}{Estimating CVaR}
+    
+    \begin{figure}[H]
+        \includegraphics[width=0.48\textwidth]{../project2/figures/CVaR/allLN.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/CVaR/zoomedLN.png}
+        \caption{CVaR estimation for DNN metamodels}
+    \end{figure}
+
+    \begin{itemize}
+        \item Traditional regression metamodels are \textbf{unable} to accurately estimate CVaR even with high safety margins.
+        \item LSTM surpasses the standard procedure with a \textbf{5\% safety margin}.
+        \item With a 95\% safety margin, any two-stage procedure produce the same CVaR estimate as a standard procedure.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sensitivity Testing for DNNs}
+
+    In a simulation study, we have control over the \textbf{noise level in training labels} and the \textbf{number of training samples}.
+
+    \vspace{10pt}
+    
+    Controling the inner replications $N'$ varies the noise level in training labels.
+
+    \begin{itemize}
+        \item   \textbf{Low noise labels}: $N' = 100$
+        \item   \textbf{Medium noise labels}: $N' = 10$
+        \item   \textbf{High noise labels}: $N' = 1$
+    \end{itemize}
+
+    \vspace{10pt}
+
+    Controling the outer scenarios $M$ varies the number of training samples.
+
+    \begin{itemize}
+        \item $M \in \{10^2, 10^3, 10^4, 10^5\}$
+    \end{itemize}
+
+    \vspace{10pt}
+
+    2 LSTMs of \textbf{different capacities} are examined based on their MSEs.
+
+
+\end{frame}
+
+\begin{frame}{Noise Tolerance of DNNs}
+    
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model}      & \textbf{$N'$}         & \textbf{Training error}                & \textbf{Test error}               & \textbf{True error}\\
+            \midrule
+            LSTM                & $100$                & $0.075$         & $0.079$     & $0.063$ \\ 
+            High-capacity LSTM  & $100$                & $0.068$         & $0.102$     & $0.060$ \\
+            Average Difference  & $100$                & $-0.007$       & $0.023$     & $-0.003$ \\
+            \hline
+            LSTM                & $10$                 & $0.195$         & $0.193$     & $0.070$ \\
+            High-capacity LSTM  & $10$                 & $0.157$         & $0.199$     & $0.065$ \\
+            Average Difference  & $10$                 & $-0.038$       & $0.006$     & $-0.005$ \\
+            \hline
+            LSTM                & $1$                  & $1.366$         & $0.781$     & $0.129$ \\
+            High-capacity LSTM  & $1$                  & $1.354$         & $0.795$     & $0.149$ \\
+            Average Difference  & $1$                  & $-0.012$       & $0.014$     &\textcolor{color10_5}{$0.020$} \\
+            \bottomrule
+        \end{tabular}
+        \caption{MSEs of LSTM metamodels.}
+    \end{table}
+
+    \begin{itemize}
+        \item   Both LSTMs cut through the noise in training labels.
+        \item   Both LSTMs deteriorate dramatically on \textbf{high-noise} labels.
+        \item   High-capacity LSTM can tolerate \textbf{low} and \textbf{medium} label noise.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Noise Tolerance of DNNs}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=\textwidth]{../project2/figures/qqPlots/lstmAll.png}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Sensitivity of Regular LSTM}
+
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}{lccccc}
+            \toprule
+                           & $N'=1$   & $N'=10$  & $N'=100$ & $N'=1000$\\
+            \midrule
+            $M = 100$      & \textcolor{color10_2}{$1.139$} & \textcolor{color10_3}{$0.229$} & \textcolor{color10_4}{$0.167$} & \textcolor{color10_5}{$0.158$} \\
+            $M = 1000$     & \textcolor{color10_3}{$0.559$} & \textcolor{color10_4}{$0.173$} & \textcolor{color10_5}{$0.123$} & \textcolor{color10_6}{$0.127$} \\
+            $M = 10000$    & \textcolor{color10_4}{$0.283$} & \textcolor{color10_5}{$0.115$} & \textcolor{color10_6}{$0.099$} & \textcolor{color10_7}{$0.097$} \\
+            $M = 100000$   & \textcolor{color10_5}{$0.129$} & \textcolor{color10_6}{$0.070$} & \textcolor{color10_7}{$0.063$} & \textcolor{color10_8}{$0.063$} \\
+            \bottomrule
+        \end{tabular}
+        \caption{MSE between regular LSTM's predicted losses and true losses.}
+    \end{table}
+
+    \begin{itemize}
+        \item   Same color $\rightarrow$ same total simulation budget.
+        \item   $N = 10$ is a reasonable budget allocation for LSTM metamodels.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Sensitivity of High-capacity LSTM}
+
+    \begin{table}[ht!]
+        \centering
+        \begin{tabular}{lccccc}
+            \toprule
+            & $N'=1$ & $N'=10$  & $N'=100$ & $N'=1000$\\
+            \midrule
+            $M = 100$      & \textcolor{color10_2}{$0.764$} & \textcolor{color10_3}{$0.408$} & \textcolor{color10_4}{$0.131$} & \textcolor{color10_5}{$0.087$} \\
+            $M = 1000$     & \textcolor{color10_3}{$0.878$} & \textcolor{color10_4}{$0.367$} & \textcolor{color10_5}{$0.156$} & \textcolor{color10_6}{$0.087$} \\
+            $M = 10000$    & \textcolor{color10_4}{$0.351$} & \textcolor{color10_5}{$0.147$} & \textcolor{color10_6}{$0.064$} & \textcolor{color10_7}{$0.063$} \\
+            $M = 100000$   & \textcolor{color10_5}{$0.149$} & \textcolor{color10_6}{$0.065$} & \textcolor{color10_7}{$0.060$} & \textcolor{color10_8}{$0.038$} \\
+            \bottomrule
+        \end{tabular}
+        \caption{MSE between high-capacity LSTM's predicted losses and true losses.}
+    \end{table}
+
+    \begin{itemize}
+        \item   Same color $\rightarrow$ same total simulation budget.
+        \item   $N' = 10$ is a reasonable budget allocation for LSTM metamodels.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Single-Stage Procedure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.48\textwidth]{../project2/figures/singleStage/CVaRmediumNoise.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/singleStage/CVaRhighNoise.png}
+        \caption{CVaR estimates of single-stage procedures (left: $N' = 10$. right: $N' = 1$).}
+    \end{figure}
+
+    \begin{itemize}
+        \item   The single-stage procedure outperforms the two-stage procedure.
+        \item   The single-stage procedure is more efficient than the two-stage procedure.
+        \item   Setting $N' = 10$ is a reasonable budget allocation.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Convergence Analysis}
+
+    For each $\Gamma$, the best performing metamodel is used.
+
+    \begin{itemize}
+        \item   Maximum number of outer scenarios $M = 10^5$.
+    \end{itemize}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.48\textwidth]{../project2/figures/singleStage/MSEConvergence_lstmLoCap.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/singleStage/MSEConvergence_lstmHiCap.png}
+        \caption{Empirical convergence of CVaR for single-stage procedures with LSTM metamodels (left: regular LSTM. right: high-capacity LSTM).}
+    \end{figure}
+
+    \begin{itemize}
+        \item   Minimal effect of increasing $N'$ on CVaR estimation.
+        \item   Similar behavior as regression metamodels ($d=20$) in the previous section.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Convergence Analysis}
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=\textwidth]{../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png}
+        \caption{Empirical convergence of the single-stage procedure with a LSTM metamodel.} 
+    \end{figure}
+
+    \begin{itemize}
+        \item   Minimal effect of increasing $N'$ on CVaR estimation.
+        \item   For a given $\Gamma$, set $N'$ constant and allocate budget to outer simulations.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+
+    \textbf{Key Findings:}
+    \begin{itemize}
+        \item   LSTMs are \textbf{resilient} to moderate levels of noise in training labels.
+        \item   Deep neural networks can learn \textbf{true} complex dynamic hedging model.
+        \item   Two-stage procedure addresses regulatory concerns by avoiding direct use of metamodel predictions.
+        \item   Single-stage procedure is \textbf{efficient} and \textbf{versatile}.
+        \item   \textbf{Increasing outer scenarios} is more beneficial.
+        \item   High-capacity LSTM requires lower noise training labels.
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \textbf{Future Directions:}
+    \begin{itemize}
+        \item   Apply deep neural network metamodels to other risk management tasks.
+        \item   Investigate impact of label noise on other deep learning models 
+        \item   Explore optimal network architectures for different simulation models.
+    \end{itemize}
+    
+\end{frame}
+
+
+\section{Transfer Learning for Dynamic Hedging}
+\begin{frame}{Transfer Learning for Dynamic Hedging}
 
 \end{frame}
 

@@ -3,3 +3,4 @@
 \beamer@subsectionintoc {2}{1}{Theoretical Results}{9}{0}{2}
 \beamer@subsectionintoc {2}{2}{Finite-Sample Analysis}{12}{0}{2}
 \beamer@sectionintoc {3}{Using Deep Neural Network Metamodels for High-Dimensional Nested Simulation}{26}{0}{3}
+\beamer@sectionintoc {4}{Transfer Learning for Dynamic Hedging}{52}{0}{4}
