@@ -30,9 +30,9 @@ University of Waterloo % Your institution for the title page
 % use this so appendices' page numbers do not count
 \usepackage{appendixnumberbeamer}
 \usepackage{booktabs}
-\usepackage{subfigure}
 \usepackage[round]{natbib}
 \usepackage{mathtools}
+% \usepackage{subfigure}
 
 
 \usepackage{amsmath}
@@ -42,43 +42,14 @@ University of Waterloo % Your institution for the title page
 \usepackage{xcolor}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{bm}
-\usepackage{multirow}
 \usepackage{graphicx}
+\usepackage{bm}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning, calc, fit, decorations.pathreplacing}
 
 
-
-
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\I}{\mathbbm{1}}
-
-\newcommand{\fracM}{\frac{1}{M}}
-\newcommand{\fracMM}{\frac{1}{M^2}}
-\newcommand{\sumM}{\sum_{i=1}^M}
-
-\newcommand{\fracN}{\frac{1}{N}}
-\newcommand{\fracNN}{\frac{1}{N^2}}
-\newcommand{\sumN}{\sum_{j=1}^N}
-
-\newcommand{\rhoh}{\hat{\rho}}
-\newcommand{\Lh}{\hat{L}}
-\newcommand{\betah}{\hat{\beta}}
-
-\newcommand{\Bias}{\textnormal{Bias}}
-\newcommand{\Variance}{\textnormal{Variance}}
-
-\newcommand{\SNS}{\textnormal{SNS}}
-\newcommand{\REG}{\textnormal{REG}}
-\newcommand{\KS}{\textnormal{KS}}
-\newcommand{\LR}{\textnormal{LR}}
-\newcommand{\KRR}{\textnormal{KRR}}
-\newcommand{\skipv}{\vspace{8pt}}
 
 
 \definecolor{color10_2}{HTML}{1F77B4}
@@ -120,6 +91,7 @@ University of Waterloo % Your institution for the title page
 \end{frame}
 }
 \addtocounter{framenumber}{-2}
+
 
 \section{Introduction}
 
@@ -492,61 +464,14 @@ And their empirical convergence stable across different:
 
     Variable annuities (VAs) poses a challenge for nested simulation due to its \textbf{high-dimensional} and \textbf{complex payoff structure}.
 
+    \vspace{10pt}
+
     \begin{figure}[H]
-        \makebox[\textwidth][c]{
-            \subfigure{
-                \begin{tikzpicture}[scale=0.7]
-                \draw[-latex] (0,0)--(2,0);
-                \draw[-latex] (2.2,0)--(4,2) node[right]  {$\blacksquare$};
-                \draw[-latex] (2.2,0)--(4,0.5) node[right]  {$\blacksquare$};
-                \draw[-latex] (2.2,0)--(4,-2) node[right]  {$\blacksquare$};
-                \node at (1.2,-0.3) {$S_i$};
-                \node at (3.8,-0.7) {$\vdots$};
-                \node at (4.2,-0.7) {$\vdots$};
-                \draw [decorate,  decoration = {brace,    raise=1pt,    amplitude=5pt}] (4.5,2.2) --  (4.5,-2.2);
-                \node at (5.3,0) {$\hat L_i$};
-                \node at (2,-3.1) {1 Outer Path for Options};
-                \end{tikzpicture}}
-            \subfigure{
-                \begin{tikzpicture}[scale=0.6]
-                \draw[-latex] (0,0)--(10,0);
-                \draw[-latex] (0,0)--(-1,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (0,0)--(0,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (0,0)--(1,1.5) node[above] {$\blacksquare$};
-                \node at (0.5,1.2) {\small$\dots$};
-                \node at (0.5,1.85) {\small$\dots$};
-                
-                \draw[-latex] (3,0)--(2,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (3,0)--(3,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (3,0)--(4,1.5) node[above] {$\blacksquare$};
-                \node at (3.5,1.2) {\small$\dots$};
-                \node at (3.5,1.85) {\small$\dots$};
-                
-                \draw[-latex] (6,0)--(5,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (6,0)--(6,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (6,0)--(7,1.5) node[above] {$\blacksquare$};
-                \node at (6.5,1.2) {\small$\dots$};
-                \node at (6.5,1.85) {\small$\dots$};
-                
-                \draw[-latex] (9,0)--(8,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (9,0)--(9,1.5) node[above] {$\blacksquare$};
-                \draw[-latex] (9,0)--(10,1.5) node[above] {$\blacksquare$};
-                \node at (9.5,1.2) {\small$\dots$};
-                \node at (9.5,1.85) {\small$\dots$};
-                
-                \node at (7.5,0.7) {\Huge $\dots$};
-                
-                \draw [decorate,  decoration = {brace,    raise=1pt,    amplitude=5pt}] (-1,2) --  (1,2);
-                \draw [decorate,  decoration = {brace,    raise=1pt,    amplitude=5pt}] (2,2) --  (4,2);
-                \draw [decorate,  decoration = {brace,    raise=1pt,    amplitude=5pt}] (5,2) --  (7,2);
-                \draw [decorate,  decoration = {brace,    raise=1pt,    amplitude=5pt}] (8,2) --  (10,2);
-                \draw [decorate,  decoration = {brace,    raise=1pt,    amplitude=12pt}] (0,2.4) --  (9,2.4);
-                \node at (4.5,-0.5) {$S_i$};
-                \node at (4.5,3.5) {$\hat L_i$};
-                \node at (4.5,-1.3) {1 Outer Path for VAs};
-                \end{tikzpicture}
-                }}
+            \includegraphics[width=0.33\textwidth]{./tikz/illustration_spns.pdf}
+            \includegraphics[width=0.62\textwidth]{./tikz/illustration_mpns.pdf}
 	\end{figure}
+
+    \vspace{10pt}
 
     \begin{itemize}
         \item Need to reconstruct a metamodeling-based nested simulation procedure
@@ -692,7 +617,7 @@ some DNN metamodels make \textbf{accurate loss predictions} for given scenarios.
 \textbf{Key advantages:}
 \begin{itemize}
     \item more efficient than a two-stage procedure;
-    \item avoids specifying $m$;
+    \item avoids specifying $m$.
 \end{itemize}
 
 \end{frame}
@@ -879,10 +804,9 @@ some DNN metamodels make \textbf{accurate loss predictions} for given scenarios.
             \draw[dashed, line width=1pt] (7,1) -- (10,1);
             \node[above] at (9.5, 0.3) {...};
         \end{tikzpicture}
+        \caption{Illustration: a safety margin of $4\%$ ($m = 9000$)}
     \end{figure}
     
-    \vspace{10pt}
-
     Choosing a safety margin: a trade-off between accuracy and efficiency.
     \begin{itemize}
         \item   A lower margin: not enough tail identified.
@@ -1117,10 +1041,205 @@ some DNN metamodels make \textbf{accurate loss predictions} for given scenarios.
 \end{frame}
 
 
-\section{Transfer Learning for Dynamic Hedging}
-\begin{frame}{Transfer Learning for Dynamic Hedging}
+\section{Transfer Learning for Rapid Adaptation of DNN Metamodels}
+\begin{frame}{Transfer Learning for Rapid Adaptation of DNN Metamodels}
+
+    \textbf{Challenge:} Adapting deep neural network metamodels to changing conditions.
+    \begin{itemize}
+        \item   Retraining from scratch is computationally expensive.
+        \item   Efficient incorporation of new VA contract data.
+        \item   Balancing model accuracy and computational costs.
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \textbf{Solution:} Transfer learning (TL) to develop adaptable, efficient metamodels for VA dynamic hedging.
+
+    \begin{itemize}
+        \item   Pre-train deep neural network on contracts with abundant simulation data.
+        \item   Fine-tune on smaller dataset of new contracts/market conditions.
+        \item   Leverages shared features between VA contracts.
+        \item   Computational savings:
+            \begin{itemize}
+                \item   Reduced training time.
+                \item   Fewer data points needed for good performance.
+            \end{itemize}
+    \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}{Transfer Learning Framework}
+
+    \textbf{Key Components:}
+    \begin{itemize}
+        \item   \textbf{Domain} $\mathcal{D}$: feature space $\mathcal{X}$ + probability distribution $F$
+        \item   \textbf{Task} $\mathcal{T}$: label space $\mathcal{Y}$ + predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$
+    \end{itemize}
+
+    \vspace{10pt}
+    \textbf{Source vs. Target:}
+    \begin{itemize}
+        \item   \textbf{Source:} $\mathcal{D}_{\text{So}} = \{\mathcal{X}_{\text{So}}, F_{\text{So}}(X)\}$
+        \item   \textbf{Target:} $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(X)\}$
+    \end{itemize}
+
+    \vspace{10pt}
+    \textbf{Our Goal:}
+    \begin{itemize}
+        \item   \textbf{Input features} $X$: risk factors from outer simulation
+        \item   \textbf{Output labels} $L$: contract losses
+        \item   \textbf{Source and target}: from VAs with abundant simulation data to new VAs with limited data
+        \item   \textbf{Goal}: improve $f_{\text{Ta}}(\cdot)$ using knowledge from $\mathcal{D}_{\text{So}}$ and $f_{\text{So}}(\cdot)$
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Transfer Learning Techniques}
+
+    \textbf{Common Techniques:}
+    \begin{itemize}
+        \item   \textbf{Fine-tuning:} a model pre-trained on a source task is used as a starting point for a target task.
+        \item   \textbf{Layer freezing:} only part of the model is fine-tuned.
+        \item   \textbf{Multi-task learning:} perform training on multiple tasks simultaneously.
+    \end{itemize}
+
+    \vspace{10pt}
+
+    \textbf{Key considerations:}
+    \begin{itemize}
+        \item   Similarity between source and target tasks
+        \item   Appropriate learning rate
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Fine-tuning Algorithm for LSTM Metamodels in VA Hedging}
+
+    \begin{algorithm}[H]
+        \caption{Fine-tuning Algorithm for LSTM Metamodels in VA Hedging}
+        \begin{algorithmic}[1]
+            \STATE \textbf{Input:} $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$ , $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$, $\alpha_{\text{So}}$, and $\alpha_{\text{Ta}}$.
+            \STATE Train a LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
+            \begin{equation*}
+                \theta_{\text{So}} = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2
+            \end{equation*}
+            \STATE Initialize the target metamodel parameters $\theta_{\text{Ta}}$ using the pre-trained metamodel parameters:
+            \begin{equation*}
+                \theta_{\text{Ta}} \gets \theta_{\text{So}}
+            \end{equation*}
+            \STATE Fine-tune the entire LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ on the target dataset $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate $\alpha_{\text{Ta}}$:
+            \begin{equation*}
+                \theta_{\text{Ta}} = \min_{\theta} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta) - L_{\text{Ta}}^{(i)} \right)^2
+            \end{equation*}
+            \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ for the target task
+        \end{algorithmic}
+    \end{algorithm}
+
+\end{frame}
+
+\begin{frame}{Layer Freezing Algorithm for LSTM Metamodels in VA Hedging}
+
+    \begin{algorithm}[H]
+        \caption{Layer Freezing Algorithm for LSTM Metamodels in VA Hedging}
+        \begin{algorithmic}[1]
+            \STATE \textbf{Input:} $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$ , $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$, $\alpha_{\text{So}}$, and $\alpha_{\text{Ta}}$.
+            \STATE Train LSTM model $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$.
+            \STATE Initialize the target model parameters $\theta_{\text{Ta}} = [\theta_0, \theta_1]$ using the pre-trained source model parameters $\theta_{\text{So}}$:
+            \begin{equation*}
+                \theta_{\text{Ta}} \gets \theta_{\text{So}} = [\theta_0, \theta_1]
+            \end{equation*}
+            \STATE Freeze the parameters of the shared layers $\theta_0$ and fine-tune the trainable layers $\theta_1$ on the target dataset $\mathcal{D}_{\text{Ta}}$:
+            \begin{equation*}
+                \theta_{\text{Ta}} = \min_{\theta_1} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; [\theta_0, \theta_1]) - L_{\text{Ta}}^{(i)} \right)^2
+            \end{equation*}
+            \STATE \textbf{Output:} Adapted model $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ for the target task.
+        \end{algorithmic}
+    \end{algorithm}
+
+\end{frame}
+
+\begin{frame}{Multi-task Learning Algorithm for LSTM Metamodels in VA Hedging}
+
+    \begin{algorithm}[H]
+        \caption{Multi-task Learning Algorithm for LSTM Metamodels in VA Hedging}
+        \begin{algorithmic}[1] \label{alg3:multiTaskLearning}
+            \STATE \textbf{Input:} learning rate $\alpha$, set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$ with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$, task-specific parameters $\theta_k$ for each task $k$, and shared parameters $\theta_0$.
+        
+            \STATE Train the multi-head LSTM metamodel on all $K$ tasks simultaneously by minimizing the multi-task loss function:
+            \begin{equation} \label{eq3:multiTaskLoss}
+                \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2
+            \end{equation}
+        
+            \STATE Update both the shared parameters $\theta_0$ and task-specific parameters $\{\theta_k\}_{k=1}^K$ simultaneously using backpropagation and gradient descent with learning rate $\alpha$.
+            
+            \STATE \textbf{Output:} Trained multi-task metamodel $f(\cdot; \theta_0, \{\theta_k\}_{k=1}^K)$ for all $K$ tasks
+        \end{algorithmic}
+    \end{algorithm}
+
+\end{frame}
+
+\begin{frame}{Experiment Setup}
+
+    \begin{table}[ht!] 
+        \centering
+        \begin{tabular}{lcccc} 
+        \toprule
+        \textbf{Contract} & \textbf{Asset Model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
+        \midrule
+        GMMB & GBM & No lapse & 50000 & N/A \\
+        GMMB & RS-GBM & No lapse & 50000 & 2000 \\
+        GMMB & RS-GBM & Static lapse & 50000 & 2000 \\
+        GMMB & RS-GBM & Dynamic lapse & 50000 & 2000 \\
+        GMWB & RS-GBM & Dynamic lapse & N/A & 2000 \\
+        \bottomrule
+        \end{tabular}
+        \caption{VA Contracts for Transfer Learning Experiments}
+    \end{table}
+
+    We aim to examine the performance of TL techniques
+    \begin{itemize}
+        \item   learning the lapse features,
+        \item   learning the dynamic lapse, and 
+        \item   transferring to other contract types.
+    \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Learning Lapse Features}
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure1a.png}
+            \caption{Extensive Training on Target Task}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure1b.png}
+            \caption{Without TL}
+        \end{subfigure}
+        \caption{Direct training on RS-GBM GMMB with static lapse}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Learning Lapse Features}
+    \begin{figure}[ht!]
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure1c.png}
+            \caption{With Fine-tuning}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure1d.png}
+            \caption{With Layer Freezing}
+        \end{subfigure}
+        \caption{TL on RS-GBM GMMB with static lapse}
+    \end{figure}
+
+\end{frame}
+
+
 
 \begin{frame}
     \frametitle{References}

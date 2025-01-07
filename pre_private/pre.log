@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  6 JAN 2025 12:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.22)  7 JAN 2025 15:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -664,59 +664,40 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count348
 \@lastruleclass=\count349
 \@thisrulewidth=\dimen320
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/subfigure/subfigure.sty
-Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip65
-\subfigcapskip=\skip66
-\subfigcaptopadj=\dimen321
-\subfigbottomskip=\skip67
-\subfigcapmargin=\dimen322
-\subfiglabelskip=\skip68
-\c@subfigure=\count350
-\c@lofdepth=\count351
-\c@subtable=\count352
-\c@lotdepth=\count353
-
-****************************************
-* Local config file subfigure.cfg used *
-****************************************
-(/usr/local/texlive/2024/texmf-dist/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip69
-\subfig@bottom=\skip70
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip71
-\bibsep=\skip72
+\bibhang=\skip65
+\bibsep=\skip66
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count354
+\c@NAT@ctr=\count350
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count355
-\calc@Bcount=\count356
-\calc@Adimen=\dimen323
-\calc@Bdimen=\dimen324
-\calc@Askip=\skip73
-\calc@Bskip=\skip74
+\calc@Acount=\count351
+\calc@Bcount=\count352
+\calc@Adimen=\dimen321
+\calc@Bdimen=\dimen322
+\calc@Askip=\skip67
+\calc@Bskip=\skip68
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count357
-\calc@Cskip=\skip75
+\calc@Ccount=\count353
+\calc@Cskip=\skip69
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count358
-\l_MT_multwidth_dim=\dimen325
-\origjot=\skip76
-\l_MT_shortvdotswithinadjustabove_dim=\dimen326
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen327
-\l_MT_above_intertext_sep=\dimen328
-\l_MT_below_intertext_sep=\dimen329
-\l_MT_above_shortintertext_sep=\dimen330
-\l_MT_below_shortintertext_sep=\dimen331
+\g_MT_multlinerow_int=\count354
+\l_MT_multwidth_dim=\dimen323
+\origjot=\skip70
+\l_MT_shortvdotswithinadjustabove_dim=\dimen324
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen325
+\l_MT_above_intertext_sep=\dimen326
+\l_MT_below_intertext_sep=\dimen327
+\l_MT_above_shortintertext_sep=\dimen328
+\l_MT_below_shortintertext_sep=\dimen329
 \xmathstrut@box=\box101
-\xmathstrut@dim=\dimen332
+\xmathstrut@dim=\dimen330
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
 LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
@@ -727,7 +708,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count359
+\c@float@type=\count355
 \float@exts=\toks48
 \float@box=\box102
 \@float@everytoks=\toks49
@@ -736,46 +717,44 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks50
-\c@algorithm=\count360
+\c@algorithm=\count356
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count361
-\c@ALC@line=\count362
-\c@ALC@rem=\count363
-\c@ALC@depth=\count364
-\ALC@tlm=\skip77
-\algorithmicindent=\skip78
+\c@ALC@unique=\count357
+\c@ALC@line=\count358
+\c@ALC@rem=\count359
+\c@ALC@depth=\count360
+\ALC@tlm=\skip71
+\algorithmicindent=\skip72
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen333
-\captionmargin=\dimen334
-\caption@leftmargin=\dimen335
-\caption@rightmargin=\dimen336
-\caption@width=\dimen337
-\caption@indent=\dimen338
-\caption@parindent=\dimen339
-\caption@hangindent=\dimen340
+\caption@tempdima=\dimen331
+\captionmargin=\dimen332
+\caption@leftmargin=\dimen333
+\caption@rightmargin=\dimen334
+\caption@width=\dimen335
+\caption@indent=\dimen336
+\caption@parindent=\dimen337
+\caption@hangindent=\dimen338
 Package caption Info: beamer document class detected.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption-beamer.sto
 File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
 ))
-\c@caption@flags=\count365
-\c@continuedfloat=\count366
+\c@caption@flags=\count361
+\c@continuedfloat=\count362
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
-Package caption Info: subfigure package is loaded.
 )
-LaTeX Info: Redefining \subref on input line 189.
-Package subcaption Info: The counter `subfigure' was already defined by
-(subcaption)             an unknown document class or package on input line 238.
-Package subcaption Info: The counter `subtable' was already defined by
-(subcaption)             an unknown document class or package on input line 238.
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count363
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count364
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
@@ -785,12 +764,6 @@ Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
 Package bm Info: No bold for \U/msa/m/n, using \pmb.
 Package bm Info: No bold for \U/msb/m/n, using \pmb.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip79
-\multirow@cntb=\count367
-\multirow@dima=\skip80
-\bigstrutjot=\dimen341
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
@@ -798,44 +771,44 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen342
-\pgfdecoratedremainingdistance=\dimen343
-\pgfdecoratedinputsegmentcompleteddistance=\dimen344
-\pgfdecoratedinputsegmentremainingdistance=\dimen345
-\pgf@decorate@distancetomove=\dimen346
-\pgf@decorate@repeatstate=\count368
-\pgfdecorationsegmentamplitude=\dimen347
-\pgfdecorationsegmentlength=\dimen348
+\pgfdecoratedcompleteddistance=\dimen339
+\pgfdecoratedremainingdistance=\dimen340
+\pgfdecoratedinputsegmentcompleteddistance=\dimen341
+\pgfdecoratedinputsegmentremainingdistance=\dimen342
+\pgf@decorate@distancetomove=\dimen343
+\pgf@decorate@repeatstate=\count365
+\pgfdecorationsegmentamplitude=\dimen344
+\pgfdecorationsegmentlength=\dimen345
 )
 \tikz@lib@dec@box=\box104
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex))
-\c@assumption=\count369
-\c@proposition=\count370
+\c@assumption=\count366
+\c@proposition=\count367
  (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count371
+\l__color_backend_stack_int=\count368
 \l__pdf_internal_box=\box105
 ) (./pre.aux)
 \openout1 = `pre.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -873,16 +846,16 @@ LaTeX Font Info:    ... okay on input line 102.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count372
-\scratchdimen=\dimen349
+\scratchcounter=\count369
+\scratchdimen=\dimen346
 \scratchbox=\box106
-\nofMPsegments=\count373
-\nofMParguments=\count374
+\nofMPsegments=\count370
+\nofMParguments=\count371
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count375
-\MPscratchDim=\dimen350
-\MPnumerator=\count376
-\makeMPintoPDFobject=\count377
+\MPscratchCnt=\count372
+\MPscratchDim=\dimen347
+\MPnumerator=\count373
+\makeMPintoPDFobject=\count374
 \everyMPtoPDFconversion=\toks52
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -890,7 +863,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 102.
+Package hyperref Info: Link coloring OFF on input line 73.
  (./pre.out) (./pre.out)
 \@outlinefile=\write5
 \openout5 = `pre.out'.
@@ -911,34 +884,34 @@ Dictionary: translator-theorem-dictionary, Language: English
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (./pre.nav)
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 102--102
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 73--73
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 102
+Overfull \hbox (223.65135pt too wide) detected at line 73
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 109--109
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 80--80
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 109
+Overfull \hbox (223.65135pt too wide) detected at line 80
   [] [] [] [] [] []  
  []
 
 <./UniversityOfWaterloo_logo_vert_rev_rgb.png, id=53, 505.89pt x 328.5876pt>
 File: ./UniversityOfWaterloo_logo_vert_rev_rgb.png Graphic file (type png)
 <use ./UniversityOfWaterloo_logo_vert_rev_rgb.png>
-Package pdftex.def Info: ./UniversityOfWaterloo_logo_vert_rev_rgb.png  used on input line 109.
+Package pdftex.def Info: ./UniversityOfWaterloo_logo_vert_rev_rgb.png  used on input line 80.
 (pdftex.def)             Requested size: 122.91406pt x 79.83531pt.
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./UniversityOfWaterloo_logo_vert_rev_rgb.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 120--120
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 91--91
  [][][][]  
  []
 
@@ -950,24 +923,24 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [2
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 140--140
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 112--112
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 140
+Overfull \hbox (223.65135pt too wide) detected at line 112
   [] [] [] [] [] []  
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 140.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 112.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 140.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 112.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -979,20 +952,20 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [3
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 169--169
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 141--141
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 169
+Overfull \hbox (223.65135pt too wide) detected at line 141
   [] [] [] [] [] []  
  []
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 169.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 141.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1004,17 +977,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [4
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 184--184
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 156--156
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 184
+Overfull \hbox (223.65135pt too wide) detected at line 156
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1026,17 +999,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [5
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 204--204
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 176--176
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 204
+Overfull \hbox (223.65135pt too wide) detected at line 176
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1048,17 +1021,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [6
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 220--220
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 192--192
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 220
+Overfull \hbox (223.65135pt too wide) detected at line 192
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1070,17 +1043,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [7
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 234--234
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 206--206
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 234
+Overfull \hbox (223.65135pt too wide) detected at line 206
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1092,17 +1065,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 264--264
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 236--236
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 264
+Overfull \hbox (223.65135pt too wide) detected at line 236
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1114,17 +1087,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [9
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 284--284
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 256--256
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 284
+Overfull \hbox (223.65135pt too wide) detected at line 256
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1136,17 +1109,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [10
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 298--298
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 270--270
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 298
+Overfull \hbox (223.65135pt too wide) detected at line 270
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1158,17 +1131,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [11
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 322--322
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 294--294
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 322
+Overfull \hbox (223.65135pt too wide) detected at line 294
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1180,22 +1153,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [12
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 331--331
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 303--303
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 331
+Overfull \hbox (223.65135pt too wide) detected at line 303
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure1.png, id=298, 578.16pt x 325.215pt>
 File: ../project1/figures/figure1.png Graphic file (type png)
 <use ../project1/figures/figure1.png>
-Package pdftex.def Info: ../project1/figures/figure1.png  used on input line 331.
+Package pdftex.def Info: ../project1/figures/figure1.png  used on input line 303.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1207,22 +1180,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [13
 
  <../project1/figures/figure1.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 344--344
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 316--316
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 344
+Overfull \hbox (223.65135pt too wide) detected at line 316
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure2a.png, id=318, 578.16pt x 325.215pt>
 File: ../project1/figures/figure2a.png Graphic file (type png)
 <use ../project1/figures/figure2a.png>
-Package pdftex.def Info: ../project1/figures/figure2a.png  used on input line 344.
+Package pdftex.def Info: ../project1/figures/figure2a.png  used on input line 316.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1234,22 +1207,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [14
 
  <../project1/figures/figure2a.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 357--357
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 329--329
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 357
+Overfull \hbox (223.65135pt too wide) detected at line 329
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure2b.png, id=337, 578.16pt x 325.215pt>
 File: ../project1/figures/figure2b.png Graphic file (type png)
 <use ../project1/figures/figure2b.png>
-Package pdftex.def Info: ../project1/figures/figure2b.png  used on input line 357.
+Package pdftex.def Info: ../project1/figures/figure2b.png  used on input line 329.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1261,22 +1234,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [15
 
  <../project1/figures/figure2b.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 371--371
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 343--343
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 371
+Overfull \hbox (223.65135pt too wide) detected at line 343
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure3.png, id=356, 578.16pt x 325.215pt>
 File: ../project1/figures/figure3.png Graphic file (type png)
 <use ../project1/figures/figure3.png>
-Package pdftex.def Info: ../project1/figures/figure3.png  used on input line 371.
+Package pdftex.def Info: ../project1/figures/figure3.png  used on input line 343.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1288,22 +1261,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [16
 
  <../project1/figures/figure3.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 384--384
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 356--356
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 384
+Overfull \hbox (223.65135pt too wide) detected at line 356
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure6a.png, id=375, 578.16pt x 325.215pt>
 File: ../project1/figures/figure6a.png Graphic file (type png)
 <use ../project1/figures/figure6a.png>
-Package pdftex.def Info: ../project1/figures/figure6a.png  used on input line 384.
+Package pdftex.def Info: ../project1/figures/figure6a.png  used on input line 356.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1315,22 +1288,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [17
 
  <../project1/figures/figure6a.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 397--397
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 369--369
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 397
+Overfull \hbox (223.65135pt too wide) detected at line 369
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure8a.png, id=394, 578.16pt x 325.215pt>
 File: ../project1/figures/figure8a.png Graphic file (type png)
 <use ../project1/figures/figure8a.png>
-Package pdftex.def Info: ../project1/figures/figure8a.png  used on input line 397.
+Package pdftex.def Info: ../project1/figures/figure8a.png  used on input line 369.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1342,22 +1315,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [18
 
  <../project1/figures/figure8a.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 410--410
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 382--382
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 410
+Overfull \hbox (223.65135pt too wide) detected at line 382
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure9a.png, id=414, 578.16pt x 325.215pt>
 File: ../project1/figures/figure9a.png Graphic file (type png)
 <use ../project1/figures/figure9a.png>
-Package pdftex.def Info: ../project1/figures/figure9a.png  used on input line 410.
+Package pdftex.def Info: ../project1/figures/figure9a.png  used on input line 382.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1369,22 +1342,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [19
 
  <../project1/figures/figure9a.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 423--423
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 395--395
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 423
+Overfull \hbox (223.65135pt too wide) detected at line 395
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure10a.png, id=434, 578.16pt x 325.215pt>
 File: ../project1/figures/figure10a.png Graphic file (type png)
 <use ../project1/figures/figure10a.png>
-Package pdftex.def Info: ../project1/figures/figure10a.png  used on input line 423.
+Package pdftex.def Info: ../project1/figures/figure10a.png  used on input line 395.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1396,17 +1369,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [20
 
  <../project1/figures/figure10a.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 437--437
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 409--409
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 437
+Overfull \hbox (223.65135pt too wide) detected at line 409
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1418,22 +1391,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 446--446
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 418--418
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 446
+Overfull \hbox (223.65135pt too wide) detected at line 418
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure11b.png, id=470, 578.16pt x 325.215pt>
 File: ../project1/figures/figure11b.png Graphic file (type png)
 <use ../project1/figures/figure11b.png>
-Package pdftex.def Info: ../project1/figures/figure11b.png  used on input line 446.
+Package pdftex.def Info: ../project1/figures/figure11b.png  used on input line 418.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1445,22 +1418,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [22
 
  <../project1/figures/figure11b.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 455--455
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 427--427
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 455
+Overfull \hbox (223.65135pt too wide) detected at line 427
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure12a.png, id=489, 578.16pt x 325.215pt>
 File: ../project1/figures/figure12a.png Graphic file (type png)
 <use ../project1/figures/figure12a.png>
-Package pdftex.def Info: ../project1/figures/figure12a.png  used on input line 455.
+Package pdftex.def Info: ../project1/figures/figure12a.png  used on input line 427.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1472,22 +1445,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [23
 
  <../project1/figures/figure12a.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 464--464
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 436--436
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 464
+Overfull \hbox (223.65135pt too wide) detected at line 436
   [] [] [] [] [] []  
  []
 
 <../project1/figures/figure12b.png, id=508, 578.16pt x 325.215pt>
 File: ../project1/figures/figure12b.png Graphic file (type png)
 <use ../project1/figures/figure12b.png>
-Package pdftex.def Info: ../project1/figures/figure12b.png  used on input line 464.
+Package pdftex.def Info: ../project1/figures/figure12b.png  used on input line 436.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1499,17 +1472,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [24
 
  <../project1/figures/figure12b.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 487--487
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 459--459
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 487
+Overfull \hbox (223.65135pt too wide) detected at line 459
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1521,17 +1494,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [25
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 555--555
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 480--480
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 555
+Overfull \hbox (223.65135pt too wide) detected at line 480
   [] [] [] [] [] []  
  []
 
+<./tikz/illustration_spns.pdf, id=545, 161.30864pt x 159.59424pt>
+File: ./tikz/illustration_spns.pdf Graphic file (type pdf)
+<use ./tikz/illustration_spns.pdf>
+Package pdftex.def Info: ./tikz/illustration_spns.pdf  used on input line 480.
+(pdftex.def)             Requested size: 101.40622pt x 100.3306pt.
+<./tikz/illustration_mpns.pdf, id=546, 327.42424pt x 152.1976pt>
+File: ./tikz/illustration_mpns.pdf Graphic file (type pdf)
+<use ./tikz/illustration_mpns.pdf>
+Package pdftex.def Info: ./tikz/illustration_mpns.pdf  used on input line 480.
+(pdftex.def)             Requested size: 190.51822pt x 88.55798pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1542,23 +1525,23 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 
 [26
 
-]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 565--565
+ <./tikz/illustration_spns.pdf> <./tikz/illustration_mpns.pdf>]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 490--490
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 565
+Overfull \hbox (223.65135pt too wide) detected at line 490
   [] [] [] [] [] []  
  []
 
-<../project2/figures/sns.pdf, id=564, 481.51494pt x 207.27136pt>
+<../project2/figures/sns.pdf, id=618, 481.51494pt x 207.27136pt>
 File: ../project2/figures/sns.pdf Graphic file (type pdf)
 <use ../project2/figures/sns.pdf>
-Package pdftex.def Info: ../project2/figures/sns.pdf  used on input line 565.
+Package pdftex.def Info: ../project2/figures/sns.pdf  used on input line 490.
 (pdftex.def)             Requested size: 307.28987pt x 132.27684pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1570,17 +1553,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [27
 
  <../project2/figures/sns.pdf>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 590--590
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 515--515
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 590
+Overfull \hbox (223.65135pt too wide) detected at line 515
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1592,17 +1575,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [28
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 618--618
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 543--543
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 618
+Overfull \hbox (223.65135pt too wide) detected at line 543
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1614,17 +1597,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [29
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 645--645
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 570--570
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 645
+Overfull \hbox (223.65135pt too wide) detected at line 570
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1636,17 +1619,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [30
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 671--671
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 596--596
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 671
+Overfull \hbox (223.65135pt too wide) detected at line 596
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1658,17 +1641,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [31
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 698--698
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 623--623
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 698
+Overfull \hbox (223.65135pt too wide) detected at line 623
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1680,17 +1663,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [32
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 715--715
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 640--640
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 715
+Overfull \hbox (223.65135pt too wide) detected at line 640
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1702,22 +1685,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [33
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 736--736
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 661--661
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 736
+Overfull \hbox (223.65135pt too wide) detected at line 661
   [] [] [] [] [] []  
  []
 
-<../project2/figures/datasets.png, id=733, 867.24pt x 289.08pt>
+<../project2/figures/datasets.png, id=782, 867.24pt x 289.08pt>
 File: ../project2/figures/datasets.png Graphic file (type png)
 <use ../project2/figures/datasets.png>
-Package pdftex.def Info: ../project2/figures/datasets.png  used on input line 736.
+Package pdftex.def Info: ../project2/figures/datasets.png  used on input line 661.
 (pdftex.def)             Requested size: 307.28987pt x 102.42783pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1729,17 +1712,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [34
 
  <../project2/figures/datasets.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 765--765
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 690--690
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 765
+Overfull \hbox (223.65135pt too wide) detected at line 690
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1751,27 +1734,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [35
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 780--780
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 705--705
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 780
+Overfull \hbox (223.65135pt too wide) detected at line 705
   [] [] [] [] [] []  
  []
 
-<../project2/figures/qqPlots/mlrLN.png, id=771, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/mlrLN.png, id=819, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/mlrLN.png Graphic file (type png)
 <use ../project2/figures/qqPlots/mlrLN.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/mlrLN.png  used on input line 780.
+Package pdftex.def Info: ../project2/figures/qqPlots/mlrLN.png  used on input line 705.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/qqPlots/qprLN.png, id=772, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/qprLN.png, id=820, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/qprLN.png Graphic file (type png)
 <use ../project2/figures/qqPlots/qprLN.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/qprLN.png  used on input line 780.
+Package pdftex.def Info: ../project2/figures/qqPlots/qprLN.png  used on input line 705.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1783,27 +1766,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [36
 
  <../project2/figures/qqPlots/mlrLN.png> <../project2/figures/qqPlots/qprLN.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 796--796
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 721--721
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 796
+Overfull \hbox (223.65135pt too wide) detected at line 721
   [] [] [] [] [] []  
  []
 
-<../project2/figures/qqPlots/fnnLN.png, id=792, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/fnnLN.png, id=840, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/fnnLN.png Graphic file (type png)
 <use ../project2/figures/qqPlots/fnnLN.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/fnnLN.png  used on input line 796.
+Package pdftex.def Info: ../project2/figures/qqPlots/fnnLN.png  used on input line 721.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/qqPlots/lstmLoCapLN.png, id=793, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/lstmLoCapLN.png, id=841, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/lstmLoCapLN.png Graphic file (type png)
 <use ../project2/figures/qqPlots/lstmLoCapLN.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/lstmLoCapLN.png  used on input line 796.
+Package pdftex.def Info: ../project2/figures/qqPlots/lstmLoCapLN.png  used on input line 721.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1815,22 +1798,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [37
 
  <../project2/figures/qqPlots/fnnLN.png> <../project2/figures/qqPlots/lstmLoCapLN.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 826--826
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 751--751
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 826
+Overfull \hbox (223.65135pt too wide) detected at line 751
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (11.84073pt too wide) in paragraph at lines 826--826
+Overfull \hbox (11.84073pt too wide) in paragraph at lines 751--751
  [] 
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1842,27 +1825,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [38
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 841--841
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 766--766
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 841
+Overfull \hbox (223.65135pt too wide) detected at line 766
   [] [] [] [] [] []  
  []
 
-<../project2/figures/qqPlots/rnnGood_training.png, id=833, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/rnnGood_training.png, id=881, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/rnnGood_training.png Graphic file (type png)
 <use ../project2/figures/qqPlots/rnnGood_training.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/rnnGood_training.png  used on input line 841.
+Package pdftex.def Info: ../project2/figures/qqPlots/rnnGood_training.png  used on input line 766.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/qqPlots/rnnBad_training.png, id=834, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/rnnBad_training.png, id=882, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/rnnBad_training.png Graphic file (type png)
 <use ../project2/figures/qqPlots/rnnBad_training.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/rnnBad_training.png  used on input line 841.
+Package pdftex.def Info: ../project2/figures/qqPlots/rnnBad_training.png  used on input line 766.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1874,17 +1857,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [39
 
  <../project2/figures/qqPlots/rnnGood_training.png> <../project2/figures/qqPlots/rnnBad_training.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 892--892
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 816--816
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 892
+Overfull \hbox (223.65135pt too wide) detected at line 816
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1896,27 +1879,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [40
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 907--907
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 831--831
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 907
+Overfull \hbox (223.65135pt too wide) detected at line 831
   [] [] [] [] [] []  
  []
 
-<../project2/figures/tailMatches/regLN.png, id=871, 462.528pt x 346.896pt>
+<../project2/figures/tailMatches/regLN.png, id=919, 462.528pt x 346.896pt>
 File: ../project2/figures/tailMatches/regLN.png Graphic file (type png)
 <use ../project2/figures/tailMatches/regLN.png>
-Package pdftex.def Info: ../project2/figures/tailMatches/regLN.png  used on input line 907.
+Package pdftex.def Info: ../project2/figures/tailMatches/regLN.png  used on input line 831.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/tailMatches/nnLN.png, id=872, 462.528pt x 346.896pt>
+<../project2/figures/tailMatches/nnLN.png, id=920, 462.528pt x 346.896pt>
 File: ../project2/figures/tailMatches/nnLN.png Graphic file (type png)
 <use ../project2/figures/tailMatches/nnLN.png>
-Package pdftex.def Info: ../project2/figures/tailMatches/nnLN.png  used on input line 907.
+Package pdftex.def Info: ../project2/figures/tailMatches/nnLN.png  used on input line 831.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1928,27 +1911,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [41
 
  <../project2/figures/tailMatches/regLN.png> <../project2/figures/tailMatches/nnLN.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 923--923
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 847--847
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 923
+Overfull \hbox (223.65135pt too wide) detected at line 847
   [] [] [] [] [] []  
  []
 
-<../project2/figures/CVaR/allLN.png, id=892, 462.528pt x 346.896pt>
+<../project2/figures/CVaR/allLN.png, id=940, 462.528pt x 346.896pt>
 File: ../project2/figures/CVaR/allLN.png Graphic file (type png)
 <use ../project2/figures/CVaR/allLN.png>
-Package pdftex.def Info: ../project2/figures/CVaR/allLN.png  used on input line 923.
+Package pdftex.def Info: ../project2/figures/CVaR/allLN.png  used on input line 847.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/CVaR/zoomedLN.png, id=893, 462.528pt x 346.896pt>
+<../project2/figures/CVaR/zoomedLN.png, id=941, 462.528pt x 346.896pt>
 File: ../project2/figures/CVaR/zoomedLN.png Graphic file (type png)
 <use ../project2/figures/CVaR/zoomedLN.png>
-Package pdftex.def Info: ../project2/figures/CVaR/zoomedLN.png  used on input line 923.
+Package pdftex.def Info: ../project2/figures/CVaR/zoomedLN.png  used on input line 847.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1960,17 +1943,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [42
 
  <../project2/figures/CVaR/allLN.png> <../project2/figures/CVaR/zoomedLN.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 952--952
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 876--876
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 952
+Overfull \hbox (223.65135pt too wide) detected at line 876
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -1982,17 +1965,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [43
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 984--984
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 908--908
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 984
+Overfull \hbox (223.65135pt too wide) detected at line 908
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2004,22 +1987,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [44
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 993--993
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 917--917
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 993
+Overfull \hbox (223.65135pt too wide) detected at line 917
   [] [] [] [] [] []  
  []
 
-<../project2/figures/qqPlots/lstmAll.png, id=948, 867.24pt x 578.16pt>
+<../project2/figures/qqPlots/lstmAll.png, id=997, 867.24pt x 578.16pt>
 File: ../project2/figures/qqPlots/lstmAll.png Graphic file (type png)
 <use ../project2/figures/qqPlots/lstmAll.png>
-Package pdftex.def Info: ../project2/figures/qqPlots/lstmAll.png  used on input line 993.
+Package pdftex.def Info: ../project2/figures/qqPlots/lstmAll.png  used on input line 917.
 (pdftex.def)             Requested size: 307.28987pt x 204.85565pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2031,17 +2014,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [45
 
  <../project2/figures/qqPlots/lstmAll.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1017--1017
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 941--941
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1017
+Overfull \hbox (223.65135pt too wide) detected at line 941
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2053,17 +2036,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [46
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1041--1041
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 965--965
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1041
+Overfull \hbox (223.65135pt too wide) detected at line 965
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2075,27 +2058,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [47
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1058--1058
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 982--982
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1058
+Overfull \hbox (223.65135pt too wide) detected at line 982
   [] [] [] [] [] []  
  []
 
-<../project2/figures/singleStage/CVaRmediumNoise.png, id=1002, 578.16pt x 433.62pt>
+<../project2/figures/singleStage/CVaRmediumNoise.png, id=1050, 578.16pt x 433.62pt>
 File: ../project2/figures/singleStage/CVaRmediumNoise.png Graphic file (type png)
 <use ../project2/figures/singleStage/CVaRmediumNoise.png>
-Package pdftex.def Info: ../project2/figures/singleStage/CVaRmediumNoise.png  used on input line 1058.
+Package pdftex.def Info: ../project2/figures/singleStage/CVaRmediumNoise.png  used on input line 982.
 (pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
-<../project2/figures/singleStage/CVaRhighNoise.png, id=1003, 578.16pt x 433.62pt>
+<../project2/figures/singleStage/CVaRhighNoise.png, id=1051, 578.16pt x 433.62pt>
 File: ../project2/figures/singleStage/CVaRhighNoise.png Graphic file (type png)
 <use ../project2/figures/singleStage/CVaRhighNoise.png>
-Package pdftex.def Info: ../project2/figures/singleStage/CVaRhighNoise.png  used on input line 1058.
+Package pdftex.def Info: ../project2/figures/singleStage/CVaRhighNoise.png  used on input line 982.
 (pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2107,27 +2090,27 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [48
 
  <../project2/figures/singleStage/CVaRmediumNoise.png> <../project2/figures/singleStage/CVaRhighNoise.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1080--1080
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1004--1004
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1080
+Overfull \hbox (223.65135pt too wide) detected at line 1004
   [] [] [] [] [] []  
  []
 
-<../project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=1023, 462.528pt x 346.896pt>
+<../project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=1071, 462.528pt x 346.896pt>
 File: ../project2/figures/singleStage/MSEConvergence_lstmLoCap.png Graphic file (type png)
 <use ../project2/figures/singleStage/MSEConvergence_lstmLoCap.png>
-Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 1080.
+Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 1004.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=1024, 462.528pt x 346.896pt>
+<../project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=1072, 462.528pt x 346.896pt>
 File: ../project2/figures/singleStage/MSEConvergence_lstmHiCap.png Graphic file (type png)
 <use ../project2/figures/singleStage/MSEConvergence_lstmHiCap.png>
-Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 1080.
+Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 1004.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2139,22 +2122,22 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [49
 
  <../project2/figures/singleStage/MSEConvergence_lstmLoCap.png> <../project2/figures/singleStage/MSEConvergence_lstmHiCap.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1094--1094
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1018--1018
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1094
+Overfull \hbox (223.65135pt too wide) detected at line 1018
   [] [] [] [] [] []  
  []
 
-<../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=1045, 867.24pt x 361.35pt>
+<../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=1093, 867.24pt x 361.35pt>
 File: ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png Graphic file (type png)
 <use ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>
-Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 1094.
+Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 1018.
 (pdftex.def)             Requested size: 307.28987pt x 128.03477pt.
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2166,17 +2149,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [50
 
  <../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1117--1117
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1041--1041
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1117
+Overfull \hbox (223.65135pt too wide) detected at line 1041
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2188,17 +2171,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [51
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1123--1123
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1069--1069
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1123
+Overfull \hbox (223.65135pt too wide) detected at line 1069
   [] [] [] [] [] []  
  []
 
 
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2210,22 +2193,17 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
 [52
 
 ]
-Overfull \hbox (171.96246pt too wide) in paragraph at lines 1129--1129
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1096--1096
  [][][][]  
  []
 
 
-Overfull \hbox (174.17477pt too wide) detected at line 1129
+Overfull \hbox (223.65135pt too wide) detected at line 1096
   [] [] [] [] [] []  
  []
 
-(./pre.bbl
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 1.
-
-)
-Overfull \hbox (174.17477pt too wide) has occurred while \output is active
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
   [] [] [] [] [] []  
  []
 
@@ -2235,6 +2213,211 @@ Overfull \hbox (171.96246pt too wide) has occurred while \output is active
  []
 
 [53
+
+]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1115--1115
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1115
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[54
+
+]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1139--1139
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1139
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \vbox (3.03595pt too high) detected at line 1139
+ []
+
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[55
+
+]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1160--1160
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1160
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[56
+
+]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1180--1180
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1180
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[57
+
+]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1207--1207
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1207
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[58
+
+]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1224--1224
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1224
+  [] [] [] [] [] []  
+ []
+
+<../project3/figures/figure1a.png, id=1251, 578.16pt x 433.62pt>
+File: ../project3/figures/figure1a.png Graphic file (type png)
+<use ../project3/figures/figure1a.png>
+Package pdftex.def Info: ../project3/figures/figure1a.png  used on input line 1224.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+<../project3/figures/figure1b.png, id=1252, 578.16pt x 433.62pt>
+File: ../project3/figures/figure1b.png Graphic file (type png)
+<use ../project3/figures/figure1b.png>
+Package pdftex.def Info: ../project3/figures/figure1b.png  used on input line 1224.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[59
+
+ <../project3/figures/figure1a.png> <../project3/figures/figure1b.png>]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1240--1240
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1240
+  [] [] [] [] [] []  
+ []
+
+<../project3/figures/figure1c.png, id=1272, 578.16pt x 433.62pt>
+File: ../project3/figures/figure1c.png Graphic file (type png)
+<use ../project3/figures/figure1c.png>
+Package pdftex.def Info: ../project3/figures/figure1c.png  used on input line 1240.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+<../project3/figures/figure1d.png, id=1273, 578.16pt x 433.62pt>
+File: ../project3/figures/figure1d.png Graphic file (type png)
+<use ../project3/figures/figure1d.png>
+Package pdftex.def Info: ../project3/figures/figure1d.png  used on input line 1240.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[60
+
+ <../project3/figures/figure1c.png> <../project3/figures/figure1d.png>]
+Overfull \hbox (171.96246pt too wide) in paragraph at lines 1248--1248
+ [][][][]  
+ []
+
+
+Overfull \hbox (223.65135pt too wide) detected at line 1248
+  [] [] [] [] [] []  
+ []
+
+(./pre.bbl
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\translate ' on input line 1.
+
+)
+Overfull \hbox (223.65135pt too wide) has occurred while \output is active
+  [] [] [] [] [] []  
+ []
+
+
+Overfull \hbox (171.96246pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[61
 
 ]
 \tf@nav=\write6
@@ -2252,21 +2435,21 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `pre.out' has not changed.
-(rerunfilecheck)             Checksum: B2B396348DE778C4A7F7D45A0B97D5BA;1631.
+(rerunfilecheck)             Checksum: FF725CE1D8E317317AB9A6F5038D5318;1735.
  ) 
 Here is how much of TeX's memory you used:
- 31507 strings out of 474116
- 652328 string characters out of 5743682
- 1954187 words of memory out of 5000000
- 53086 multiletter control sequences out of 15000+600000
- 581663 words of font info for 125 fonts, out of 8000000 for 9000
+ 31293 strings out of 474116
+ 649557 string characters out of 5743682
+ 1945187 words of memory out of 5000000
+ 52875 multiletter control sequences out of 15000+600000
+ 574703 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,528b,1103s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/xli/Library/texlive/2024/texmf-var/fonts/pk/ljfour/public/bbm/bbm9.600pk></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on pre.pdf (53 pages, 1392194 bytes).
+Output written on pre.pdf (61 pages, 1537079 bytes).
 PDF statistics:
- 1254 PDF objects out of 1440 (max. 8388607)
- 745 compressed objects within 8 object streams
- 123 named destinations out of 1000 (max. 500000)
- 267 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1447 PDF objects out of 1728 (max. 8388607)
+ 863 compressed objects within 9 object streams
+ 141 named destinations out of 1000 (max. 500000)
+ 297 words of extra memory for PDF output out of 10000 (max. 10000000)
 
