@@ -333,6 +333,11 @@ Glasserman, P. (2004).
 \newblock {\em Monte Carlo methods in financial engineering}, volume~53.
 \newblock Springer.
 
+\bibitem[Golestaneh et~al., 2024]{golestaneh2024many}
+Golestaneh, P., Taheri, M., and Lederer, J. (2024).
+\newblock How many samples are needed to train a deep neural network?
+\newblock {\em arXiv preprint arXiv:2405.16696}.
+
 \bibitem[Goodfellow et~al., 2016a]{goodfellow2016}
 Goodfellow, I., Bengio, Y., and Courville, A. (2016a).
 \newblock {\em Deep Learning}.

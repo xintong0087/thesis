@@ -5,28 +5,37 @@
 In the evolving landscape of financial markets, insurance products such as VAs have gained significant interest due to their ability to provide both investment growth and guaranteed benefits. 
 Managing the risks associated with these products in volatile market conditions is a complex task that demands sophisticated financial modeling techniques like nested simulation.
 A standard nested simulation procedure involves running a large number of simulations to generate a dataset of scenario-wise contract losses with two levels of simulations.
-Practitioners can estimate tail risk measures using the realized losses obtained from these simulations.
+Practitioners can estimate tail risk measures using the realized losses for different risk scenarios obtained from these simulations.
 Nested simulation is extremely computationally expensive.
 To address the computational burden, metamodeling techniques have been proposed, where a surrogate model approximates the outcomes of a complex simulation procedure. 
 Traditional machine learning models often struggle to capture the intricate nonlinear relationships and temporal dependencies inherent in financial data.
-In particular, DNNs, and specifically LSTM networks, have been employed as metamodels to predict the outcomes of the inner simulations efficiently
-Chapter~\ref{chap:project2} introduces a nested simulation framework for dynamic hedging of VAs, where the inner simulation is approximated by an LSTM metamodel.
-It shows that crude RNN and LSTMs are well-suited as metamodels for Monte Carlo simulation of financial time series and can capture the long-term dependencies in the simulation dataset.
+In particular, DNNs, and specifically LSTM networks, have been employed as metamodels to predict the outcomes of the inner simulations efficiently.
+Chapter~\ref{chap:project2} introduces a metamodeling-based nested simulation framework for dynamic hedging of VAs that approximates the inner simulation by an LSTM metamodel.
+It shows that LSTMs, as a type of gated RNNs, are well-suited as metamodels for Monte Carlo simulation of financial time series and can capture the long-term dependencies in the simulation dataset.
+This property is crucial for the application of dynamic hedging of VAs.
 
 Despite the advantages of using DNN metamodels, computational challenges arise when market conditions change or new VA contracts with different features are introduced. 
 Retraining neural network metamodels from scratch in response to every change is computationally inefficient and time-consuming.
-The simulation budget is often limited, and the computational cost of retraining a suitable DNN metamodel is often much higher than fitting a traditional parametric regression.
-Moreover, financial markets are inherently dynamic with frequent shifts in volatility, interest rates, and other risk factors~\citep{cont2001empirical}.
+Practitioners with limited resources face several challenges:
+\begin{enumerate}
+    \item The simulation budget is limited, but DNN metamodels require extensive training data to learn the feature-label relationship~\citep{golestaneh2024many}. 
+    \item The computational cost of retraining a suitable DNN metamodel is often much higher than fitting a traditional parametric regression.
+    \item Financial markets are dynamic with frequent shifts in volatility, interest rates, and other risk factors~\citep{cont2001empirical}.
+\end{enumerate}
+
+Constraints on the simulation budget is the most critical challenge for dynamic hedging of VAs.
+Any method that involves nested simulation is computationally expensive, and the computational cost is often prohibitive for changing market conditions.
 Therefore, it is essential to develop methods that can rapidly adapt existing metamodels to new conditions without incurring the full computational cost of retraining and extensive addtional simulations.
 Transfer Learning (TL) offers a compelling solution to this problem by enabling the reuse of a pre-trained model on a new but related task~\citep{pan2009survey}.
 In the context of DNNs, TL involves leveraging the knowledge acquired during training on one dataset to improve learning performance on a different dataset~\citep{yosinski2014transferable}.
-This approach can significantly reduce training time and computational resources while enhancing model generalization.
-Instead of starting from scratch, a new DNN metamodel can be built on top of the pre-trained model and fine-tuned on the new data, allowing it to adapt quickly to changing market conditions and new VA contracts.
+This approach can significantly reduce the amount of training data needed, training time and computational resources while enhancing model generalization.
+Instead of starting from scratch, a new DNN metamodel can be built on top of a pre-trained metamodel and fine-tuned on new data.
+This allows the metamodel to adapt quickly to unseen conditions and new VA contracts.
 
 In this chapter, we explore the application of TL to the dynamic hedging of VAs using LSTM metamodels.
 We propose a novel TL framework that accelerates the training of DNN metamodels for nested simulation procedures in dynamic hedging.
 This setting is particularly relevant for dynamic hedging problems, as insurance companies often underwrite new contracts under changing market conditions and actuarial assumptions.
-Fast adaptation of metamodels is necessary for metamodel-based nested simulation procedures.
+This chapter proposes a TL framework that makes fast adaptation of metamodels possible.
 Our approach involves pre-training an LSTM network on a large dataset of VA simulations and then fine-tuning it on a smaller dataset of new VA contracts.
 We evaluate the performance of the TL framework on a real-world dataset of VA contracts and compare it with training a LSTM metamodel from scratch.
 More importantly, we show the strengths and weaknesses of different TL techniques for rapid adaptation of LSTM metamodels.
@@ -52,7 +61,7 @@ However, training these models from scratch requires extensive simulation data, 
 TL offers a solution to this problem by leveraging knowledge from related assets or tasks to improve the learning performance of DNN metamodels on the target task.
 In algorithmic trading,~\cite{jeong2019improving} used TL to enhance the performance of a reinforcement learning agent by preventing overfitting from insufficient market data.
 TL techniques have also been applied in building fraud detection systems. 
-Financial fraud often exhibits subtle and evolving patterns, making it challenging to develop robust detection models.
+Financial fraud often exhibits subtle and evolving patterns, and it is challenging to develop robust detection models.
 By transferring previous knowledge from detected fraud cases, models can adapt to detect new fraud schemes more effectively~\citep{lebichot2021transfer}.
 \cite{yan2024comprehensive} conduct a comprehensive survey study of current TL techniques in financial applications, and they find almost all applications of TL only employ parameter transfer, where the pre-trained model is fine-tuned on the target task.
 Our multi-task learning framework in Section~\ref{sec3:transfer_learning} extends beyond parameter transfer to shared representation learning across multiple tasks.
