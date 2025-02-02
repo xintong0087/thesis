@@ -427,6 +427,12 @@ He, K., Zhang, X., Ren, S., and Sun, J. (2016).
 \newblock In {\em Proceedings of the IEEE conference on computer vision and
   pattern recognition}, pages 770--778.
 
+\bibitem[Heston, 1993]{heston1993closed}
+Heston, S.~L. (1993).
+\newblock A closed-form solution for options with stochastic volatility with
+  applications to bond and currency options.
+\newblock {\em The review of financial studies}, 6(2):327--343.
+
 \bibitem[Hochreiter and Schmidhuber, 1997]{hochreiter1997long}
 Hochreiter, S. and Schmidhuber, J. (1997).
 \newblock Long short-term memory.

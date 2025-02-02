@@ -11,44 +11,46 @@ Database file #1: refP1.bib
 Database file #2: refP2.bib
 Database file #3: refP3.bib
 Database file #4: refOther.bib
-You've used 168 entries,
+Warning--I didn't find a database entry for "heston1993stochastic"
+You've used 169 entries,
             1935 wiz_defined-function locations,
-            1364 strings with 32607 characters,
-and the built_in function-call counts, 68963 in all, are:
-= -- 6798
-> -- 2976
-< -- 119
-+ -- 1046
-- -- 1003
-* -- 5845
-:= -- 11991
-add.period$ -- 530
-call.type$ -- 168
-change.case$ -- 1324
-chr.to.int$ -- 165
-cite$ -- 168
-duplicate$ -- 2572
-empty$ -- 4673
-format.name$ -- 1261
-if$ -- 13442
+            1371 strings with 32810 characters,
+and the built_in function-call counts, 69330 in all, are:
+= -- 6836
+> -- 2983
+< -- 120
++ -- 1050
+- -- 1005
+* -- 5876
+:= -- 12053
+add.period$ -- 533
+call.type$ -- 169
+change.case$ -- 1330
+chr.to.int$ -- 166
+cite$ -- 169
+duplicate$ -- 2586
+empty$ -- 4703
+format.name$ -- 1264
+if$ -- 13513
 int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 174
-newline$ -- 853
-num.names$ -- 506
-pop$ -- 1156
+missing$ -- 175
+newline$ -- 858
+num.names$ -- 509
+pop$ -- 1159
 preamble$ -- 1
-purify$ -- 1335
+purify$ -- 1341
 quote$ -- 0
-skip$ -- 1981
+skip$ -- 1992
 stack$ -- 0
-substring$ -- 4741
-swap$ -- 365
+substring$ -- 4780
+swap$ -- 366
 text.length$ -- 34
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 978
+type$ -- 984
 warning$ -- 0
-while$ -- 565
+while$ -- 569
 width$ -- 0
-write$ -- 2189
+write$ -- 2202
+(There was 1 warning)
