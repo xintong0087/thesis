@@ -2,20 +2,20 @@
 
 \section{Introduction}
 
-In the evolving landscape of financial markets, insurance products such as VAs have gained significant interest due to their ability to provide both investment growth and guaranteed benefits. 
-Managing the risks associated with these products in volatile market conditions is a complex task that demands sophisticated financial modeling techniques like nested simulation.
+In the evolving landscape of financial markets, insurance products such as VAs have gained a substantial amount of interest due to their ability to provide both investment growth and guaranteed benefits. 
+Managing risks associated with these products in volatile market conditions is a complex task that demands sophisticated financial modeling techniques such as nested simulation.
 A standard nested simulation procedure involves running a large number of simulations to generate a dataset of scenario-wise contract losses with two levels of simulations.
 Practitioners can estimate tail risk measures using the realized losses for different risk scenarios obtained from these simulations.
 Nested simulation is extremely computationally expensive.
 To address the computational burden, metamodeling techniques have been proposed, where a surrogate model approximates the outcomes of a complex simulation procedure. 
 Traditional machine learning models often struggle to capture the intricate nonlinear relationships and temporal dependencies inherent in financial data.
 In particular, DNNs, and specifically LSTM networks, have been employed as metamodels to predict the outcomes of the inner simulations efficiently.
-Chapter~\ref{chap:project2} introduces a metamodeling-based nested simulation framework for dynamic hedging of VAs that approximates the inner simulation by an LSTM metamodel.
-It shows that LSTMs, as a type of gated RNNs, are well-suited as metamodels for Monte Carlo simulation of financial time series and can capture the long-term dependencies in the simulation dataset.
+Chapter~\ref{chap:project2} introduced a metamodeling-based nested simulation framework for dynamic hedging of VAs that approximates the inner simulation by an LSTM metamodel.
+It shows that LSTMs, as a type of gated RNNs, were well-suited as metamodels for Monte Carlo simulation of financial time series and could capture the long-term dependencies in the simulation dataset.
 This property is crucial for the application of dynamic hedging of VAs.
 
 Despite the advantages of using DNN metamodels, computational challenges arise when market conditions change or new VA contracts with different features are introduced. 
-Retraining neural network metamodels from scratch in response to every change is computationally inefficient and time-consuming.
+Retraining neural network metamodels from the scratch in response to every change is computationally inefficient and time-consuming.
 Practitioners with limited resources face several challenges:
 \begin{enumerate}
     \item The simulation budget is limited, but DNN metamodels require extensive training data to learn the feature-label relationship~\citep{golestaneh2024many}. 
@@ -28,8 +28,8 @@ Any method that involves nested simulation is computationally expensive, and the
 Therefore, it is essential to develop methods that can rapidly adapt existing metamodels to new conditions without incurring the full computational cost of retraining and extensive addtional simulations.
 Transfer Learning (TL) offers a compelling solution to this problem by enabling the reuse of a pre-trained model on a new but related task~\citep{pan2009survey}.
 In the context of DNNs, TL involves leveraging the knowledge acquired during training on one dataset to improve learning performance on a different dataset~\citep{yosinski2014transferable}.
-This approach can significantly reduce the amount of training data needed, training time and computational resources while enhancing model generalization.
-Instead of starting from scratch, a new DNN metamodel can be built on top of a pre-trained metamodel and fine-tuned on new data.
+This approach can substantially reduce the amount of training data needed, training time and computational resources while enhancing model generalization.
+Instead of starting from the scratch, a new DNN metamodel can be built on top of a pre-trained metamodel and fine-tuned on new data.
 This allows the metamodel to adapt quickly to unseen conditions and new VA contracts.
 
 In this chapter, we explore the application of TL to the dynamic hedging of VAs using LSTM metamodels.
@@ -56,32 +56,33 @@ GARCH models~\citep{bollerslev1990modelling}, extend ARCH models to better captu
 However, these models often struggle to capture complex dynamics, e.g., regime changes~\citep{hamilton1989new} and extreme market events~\citep{embrechts2013modelling} that are prevalent in financial markets.
 In Chapter~\ref{chap:project2}, our numerical experiment uses a regime-switching geometric Brownian motion (RS-GBM) as the underlying asset model.
 For estimating tail risk measures, a metamodel-based nested simulation procedure is proposed to approximate the inner simulation.
-We have shown DNN metamodels like RNN and LSTM networks have demonstrated significant improvements in modeling temporal dependencies, and they save a substantial amount of simulation budget.
-However, training these models from scratch requires extensive simulation data, which may not always be available for specific assets or under certain market conditions.
+We have shown DNN metamodels like RNN and LSTM networks have demonstrated substantial improvements in modeling temporal dependencies, and they save a substantial amount of simulation budget.
+However, training these models from the scratch requires an extensive amount of simulation data, which may not always be available for specific assets or under certain market conditions.
+
 TL offers a solution to this problem by leveraging knowledge from related assets or tasks to improve the learning performance of DNN metamodels on the target task.
-In algorithmic trading,~\cite{jeong2019improving} used TL to enhance the performance of a reinforcement learning agent by preventing overfitting from insufficient market data.
+In algorithmic trading,~\cite{jeong2019improving} used TL to enhance the performance of a reinforcement learning agent by preventing overfitting from an insufficient amount of market data.
 TL techniques have also been applied in building fraud detection systems. 
 Financial fraud often exhibits subtle and evolving patterns, and it is challenging to develop robust detection models.
 By transferring previous knowledge from detected fraud cases, models can adapt to detect new fraud schemes more effectively~\citep{lebichot2021transfer}.
 \cite{yan2024comprehensive} conduct a comprehensive survey study of current TL techniques in financial applications, and they find almost all applications of TL only employ parameter transfer, where the pre-trained model is fine-tuned on the target task.
 Our multi-task learning framework in Section~\ref{sec3:transfer_learning} extends beyond parameter transfer to shared representation learning across multiple tasks.
 
-Regarding nested simulation of VAs,~\cite{cheng2019fast} is the most relevant study to our work, where they proposed a TL framework for fast valuation of large portfolios of VAs.
+Regarding a nested simulation of VAs,~\cite{cheng2019fast} is the most relevant study to our work, where they proposed a TL framework for fast valuation of large portfolios of VAs.
 Instead of using stochastic kriging~\citep{gan2015valuation}, they employed a pre-trained DNN to select the best representative scenarios from a large portfolio of VAs.
-In our work, we focus on the application of TL to accelerate the training of LSTM metamodels for nested simulation in dynamic hedging of VAs.
+In our work, we focus on the application of TL to accelerate the training of LSTM metamodels for a nested simulation in dynamic hedging of VAs.
 The fine-tuned LSTM metamodels can be readily adapted to the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2} to predict the contract losses under different scenarios.
 
 In our context of DNNs metamodeling-based simulation procedures for hedging VAs, TL involves pre-training a DNN metamodel where the simulation budget is abundant and then fine-tuning it on a smaller dataset of new contracts or market conditions.
 Written on the same underlying asset, different VA contracts may share common features or exhibit similar patterns, especially temporal dependencies and regime changes in the underlying financial time series.
 Similarly, two VAs with the same features but based on different underlying assets may have some shared characteristics that can be leveraged to improve the learning performance of the metamodel.
-By transferring knowledge from a pre-trained model to a new but related task, TL can significantly reduce the computational cost of training the metamodel on the target task.
+By transferring knowledge from a pre-trained model to a new but related task, TL can substantially reduce the computational cost of training the metamodel on the target task.
 
 LSTM networks are well-suited for modeling sequential data due to their ability to capture long-term dependencies~\citep{hochreiter1997long}.
 For the application of VA risk management using metamodel-based nested simulation, LSTM networks approximate the inner simulation, i.e., the mapping from scenarios to the scenario-wise contract losses.
-In Chapter~\ref{chap:project2}, we treat metamodeling as a supervised learning problem and demonstrated that LSTM networks can effectively model this complex relationships with extensive training on a large dataset of VA simulations.
+In Chapter~\ref{chap:project2}, we treat metamodeling as a supervised learning problem and demonstrated that LSTM networks could effectively model this complex relationships with extensive training on a large dataset of VA simulations.
 The total computational cost originates from two sources: running the standard nested simulation procedure to generate the training data and training the LSTM network on the generate dataset.
 Given a new VA contract, these steps need to be repeated to adapt the LSTM metamodel to new market conditions and contract features.
-For a DNN with a large number of parameters, retraining the LSTM network from scratch can be computationally expensive.
+For a DNN with a large number of parameters, retraining the LSTM network from the scratch can be computationally expensive.
 Generating a large training dataset using the standard nested simulation procedure is costly, and the computational burden can be prohibitive for certain assets or market conditions.
 TL offers an alternative approach that keeps the previous knowledge, i.e., the pre-trained model, as a foundation.
 Building on the pre-trained model, the LSTM network can be fine-tuned on a smaller dataset of new contracts or market conditions.
@@ -89,7 +90,7 @@ This approach accelerates the adaptation of the LSTM metamodel to new conditions
 Computational savings come in two forms: 
 \begin{enumerate}
     \item   fine-tuning requires less training time than training LSTM metamodels from scratch, and
-    \item   fewer training data points are needed to achieve a good LSTM metamodel, which is particularly beneficial when the standard nested simulation procedure is costly.
+    \item   fewer training data points are needed to achieve a good LSTM metamodel, which is particularly beneficial when the standard nested simulation procedure is costly to implement.
 \end{enumerate}
 
 In supervised learning, a \textbf{domain} $\mathcal{D}$ comprises a feature space $\mathcal{X}$ and a marginal probability distribution $F$. Correspondingly, a \textbf{task} $\mathcal{T}$ consists of a label space $\mathcal{Y}$ and a predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$ that maps input features to output labels.
@@ -101,7 +102,6 @@ A typical TL framework for supervised learning consists of the following:
     \item   \textbf{target domain}: $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(\cdot)\}$
     \item   \textbf{target task}: $\mathcal{T}_{\text{Ta}} = \{\mathcal{Y}_{\text{Ta}}, f_{\text{Ta}}(\cdot)\}$
 \end{itemize}
-
 where $\mathcal{X}_{\text{So}}$ and $\mathcal{X}_{\text{Ta}}$ include input features derived from the outer simulation of two different VA contracts or market conditions, and $F_{\text{So}}$ and $F_{\text{Ta}}$ are the marginal probability distributions of the source and target domains, respectively.
 Hence, the source domain and task are related to one VA contract for a certain market condition, while the target domain and task are related to new VA contracts and market conditions for which we don't have the simulation budget to run the standard nested simulation procedure extensively.
 In our numerical experiments, the dataset is generated by running the standard nested simulation procedure in Algorithm~\ref{alg2:standardProcedure} for a large number of VA contracts.
@@ -110,7 +110,7 @@ The stock price vector $\mathbf{S}$ is not crucial for the discussion of this ch
 We keep the number of features to be $\num{240}$ for both source and target domains as in Section~\ref{sec2:numerical}.
 The predictive function $f_{\text{So}}$ and $f_{\text{Ta}}$ are trained to estimate outputs $L_{\text{So}}$ and $L_{\text{Ta}}$, i.e., approximating the inner simulations under the source and target tasks, respectively.
 TL seeks to improve the learning of the target predictive function $f_{\text{Ta}}(\cdot)$ in $\mathcal{D}_{\text{Ta}}$ by leveraging the previous training on $\mathcal{D}_{\text{So}}$ and $f_{\text{So}}(\cdot)$, particularly when $\mathcal{D}_{\text{So}} \neq \mathcal{D}_{\text{Ta}}$ or $\mathcal{T}_{\text{So}} \neq \mathcal{T}_{\text{Ta}}$.
-In Chapter~\ref{chap:project2}, $\mathcal{D}_{\text{So}} = \mathcal{D}_{\text{Ta}}$ and $\mathcal{T}_{\text{So}} = \mathcal{T}_{\text{Ta}}$.
+In Chapter~\ref{chap:project2}, we have $\mathcal{D}_{\text{So}} = \mathcal{D}_{\text{Ta}}$ and $\mathcal{T}_{\text{So}} = \mathcal{T}_{\text{Ta}}$.
 
 In our TL setting, both the source and target tasks involve learning a mapping from the risk factors to the VA contract losses.
 For the source task, we have a dataset $\mathcal{D}_{\text{So}} = { (X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)}) }_{i=1}^{M_{\text{So}}}$, where $M_{\text{So}}$ is the number of training samples, i.e., the number of outer simulation paths used to generate the dataset with a standard nested simulation procedure.
@@ -128,7 +128,7 @@ These techniques can be categorized based on how they leverage pre-trained metam
 
 Fine-tuning is a commonly used TL technique that uses the \textbf{same neural network architecture} for both the source and target tasks.
 We first train the source LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$, capturing temporal dependencies and patterns relevant to the source task. 
-For the target task, we initialize $\theta_{\text{Ta}} = \theta_{\text{So}}$ and proceed to fine-tune the entire network on $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate. 
+For the target task, we initialize $\theta_{\text{Ta}} = \theta_{\text{So}}$ and proceed to fine-tune the entire network on $\mathcal{D}_{\text{Ta}}$ by using a smaller learning rate. 
 
 \begin{algorithm}[ht!]
 \caption{Fine-tuning Metamodel for a Target Task}
@@ -154,7 +154,7 @@ For the target task, we initialize $\theta_{\text{Ta}} = \theta_{\text{So}}$ and
 \end{algorithmic}
 \end{algorithm}
 
-Algorithm~\ref{alg3:fineTuning} assumes that the learned sequential representations are beneficial for the target task.
+Algorithm~\ref{alg3:fineTuning} assumes that learned sequential representations are beneficial for the target task.
 Only minor adjustments are needed to adapt the metamodel to the new task, and the training process is accelerated by the pre-trained parameters.
 Fine-tuning is particularly useful when the nested simulation procedures for the two VA contracts are closely related.
 Only minor adjustments are needed to adapt the LSTM metamodel to the new domain.
@@ -195,15 +195,17 @@ The intuition behind layer freezing is that the lower layers capture general fea
 
 Multi-task learning~\citep{caruana1997multitask} refers to a machine learning paradigm where a single model is trained simultaneously on multiple related tasks.
 Shared representations are learned across tasks, which can improve learning efficiency and predictive performance on each individual task with limited data.
-In contrast to fine-tuning and layer freezing, multi-task learning aims to leverage learned knowledge from multiple tasks, and all tasks are trained simultaneously.
+In contrast to fine-tuning and layer freezing, multi-task learning aims at leveraging learned knowledge from multiple tasks, and all tasks are trained simultaneously.
+
 
 Let $\{\mathcal{T}_k\}_{k=1}^K$ represent a set of $K$ related tasks, each corresponding to a metamodeling task for a different standard nested simulation procedure.
 For each task $\mathcal{T}_k$, we have a dataset $\mathcal{D}_k = { (X_k^{(i)}, L_k^{(i)}) }{i=1}^{M_k}$, where $M_k$ is the number of training samples for task $k$.
 $X_k^{(i)}$ and $L_k^{(i)}$ are the features and contract loss labels for task $k$, respectively.
 
-For our metamodeling implementation in Chapter~\ref{chap:project2}, we consider a multi-task learning framework where the LSTM layers are shared across multiple tasks, and each task has its own fully connected layer for prediction.
+For the implementation of our metamodeling studied in Chapter~\ref{chap:project2}, we consider a multi-task learning framework where the LSTM layers are shared across multiple tasks, and each task has its own fully connected layer for prediction.
 The network parameters are divided into shared parameters $\theta_0$ (LSTM layers) and task-specific parameters $\theta_k$ (fully connected layers for task $k$). 
 As opposed to layer freezing, all parameters are trainable.
+
 The objective function for multi-task learning is the sum of the loss functions of all tasks:
 
 \begin{equation} 
@@ -234,8 +236,8 @@ The task-specific fully connected layers $[\theta_1, \dots, \theta_K]$ allow eac
 \end{algorithm}
 
 Algorithm~\ref{alg3:multiTaskLearning} outlines the multi-task learning framework for LSTM metamodels for nested simulation procedures.
-In Chapter~\ref{chap:project1} and Chapter~\ref{chap:project2}, we demonstrate that pooling using a metamodel can improve the computation efficiency and estimator accuracy in nested simulation procedures.
-Here, pooling happens at a higher level, where information from multiple metamodels are shared to improve the learning performance on individual tasks.
+In Chapter~\ref{chap:project1} and Chapter~\ref{chap:project2}, we demonstrated that pooling using a metamodel could improve the computation efficiency and estimator accuracy in nested simulation procedures.
+Here, pooling happens at a higher level, where information from multiple metamodels is shared to improve the learning performance on individual tasks.
 The multi-task loss function encourages the shared LSTM layers to learn generalizable representations of temporal dependencies that are beneficial across all tasks.
 
 Choosing appropriate simulation schemes is crucial for the success of multi-task learning. 
@@ -252,8 +254,9 @@ Criteria for selecting tasks with similar simulation schemes include:
             VA contracts with comparable maturity and rebalance frequency can help the shared layers learn temporal dependencies consistent across tasks. 
 \end{itemize}
 
-Suppose we aim to develop an LSTM metamodel for a GMWB contract under a stochastic volatility asset model, but we have limited data for this simulation scheme. 
+Suppose that we aim at developing an LSTM metamodel for a GMWB contract under a stochastic volatility asset model, but we have limited data for this simulation scheme. 
 For multi-task learning, we can select related nested simulation simulation procedures with relatively abundant data, such as:
+
 
 \begin{itemize} 
     \item GMMB contracts under a stochastic volatility asset model. 
@@ -310,12 +313,13 @@ The goal is to leverage the knowledge acquired during training on a large datase
 Algorithm~\ref{alg3:combined} combines the strengths of Multi-task learning, layer freezing, and fine-tuning to accelerate the training of LSTM metamodels. 
 
 \begin{itemize}
-    \item \textbf{Multi-task learning} allows the shared LSTM layers to pool information across related tasks, learning generalizable representations of temporal dependencies.
-    \item \textbf{Layer freezing} ensures that shared features learned from source tasks are retained when adapting to a new task, reducing the risk of overfitting to the target simulation data.
-    \item \textbf{Fine-tuning} enables the task-specific layers to adapt quickly to the new task with minimal simulation cost, leveraging the pre-trained shared layers.
+    \item \textbf{Multi-task learning} allows the shared LSTM layers to pool information across related tasks, and it allows the metamodel to learn generalizable representations of temporal dependencies.
+    \item \textbf{Layer freezing} ensures that shared features learned from the source tasks are retained when adapting to a new task, reducing the risk of overfitting to the target simulation data.
+    \item \textbf{Fine-tuning} enables the task-specific layers to adapt quickly to the new task with a minimum amount of simulation cost, leveraging the pre-trained shared layers.
+
 \end{itemize}
     
-The combination of these techniques aims to significantly reduce the computational cost of training LSTM metamodels for a new but related VA contract.
+The combination of these techniques significantly reduces the computational cost of training LSTM metamodels for a new but related VA contract.
 
 \section{Numerical Experiments} \label{sec3:experiments}
 
@@ -352,15 +356,16 @@ Before transferred to the target task, a LSTM metamodel is trained on a source d
 \footnotetext{The GMMB contract on the GBM asset model is an exception, where scenario-wise contract losses can be computed analytically.}
 The pre-trained LSTM metamodel is then adapted to a target task that is different from the source task.
 The training dataset for the target task has $M_{\text{Ta}} = \num{2000}$ samples generated with $N_{\text{Ta}} = \num{100}$ inner replications.
-During the training on both the source and target tasks, $10\%$ of the data is split into a validation dataset to monitor the training process and prevent overfitting using early stopping.
-The complexity of the simulation schemes increases from the first task to the last task, and the LSTM metamodels need to adapt to the new conditions with limited training data on the target tasks.
+During the training on both the source and target tasks, $10\%$ of the data is split into a validation dataset to monitor the training process and prevent overfitting by using early stopping.
+The complexity of the simulation schemes increases from the first task to the last task, and the LSTM metamodels need to adapt to the new conditions with a limited amount of training data on the target tasks.
 
 All LSTM metamodels are evaluated based on their training history graphs for the target task, which plot training and validation MSE against the number of training epochs.
 The training history graphs visualize the learning curves of the LSTM metamodels, which provide insights into stability and convergence behavior the metamodels.
 We measure the generalization performance of the LSTM metamodels using the true MSE, which quantifies the accuracy of the LSTM metamodels in approximating the true inner simulation model of VA contracts.
 The true MSE is computed by comparing the metamodel predictions with the true contract losses, which are approximated by the standard nested simulation procedure with $\num{100000}$ inner replications.
 Hyperparameters and network architectures for the LSTM metamodels are kept the same as the LSTM metamodel in Section~\ref{sec2:numerical}. 
-Due to limited computational resources, macro replications are not feasible for the TL experiments.
+Due to a limited amount of computational resources, macro replications are not feasible for the TL experiments.
+
 
 \subsection{Learning Lapse Features}
 
@@ -393,22 +398,22 @@ Due to limited computational resources, macro replications are not feasible for 
 We first examine the performance of fine-tuning and layer freezing in adapting LSTM metamodels to new VA contracts with lapse features.
 Figure~\ref{fig3:figure1} compares the performance of LSTM metamodels on the target tasks with and without TL.
 Learning histories of the LSTM metamodels is shown for the target task of metamodeling GMMB contract losses on the RS-GBM asset model with static lapse.
-The source task is hedging a GMMB contract on RS-GBM with no lapse, and the target task is hedging the same GMMB contract but with static lapse.
+The source task is hedging a GMMB contract on RS-GBM with no lapse, and the target task is hedging the same GMMB contract but with a static lapse.
 The simulation data for the target task is generated with the same nested simulation simulation procedure as the source task, except for the lapse feature.
-Figure~\ref{subfig3-1:extensive} demonstrates the performance of the LSTM metamodel trained extensively only on the target task using $M_{\text{TA}} = 50,\!000$ samples, which serves as a benchmark for this study. 
+Figure~\ref{subfig3-1:extensive} demonstrates the performance of the LSTM metamodel trained extensively only on the target task by using $M_{\text{TA}} = 50,\!000$ samples, which serves as a benchmark for this study. 
 The metamodel achieves a low validation MSE due to the availability of a large dataset.
 In contrast, Figure~\ref{subfig3-1:without} presents the results of training directly on the target task without pre-training on the source task.
 With only $M_{\text{TA}} = 2,\!000$ samples, the LSTM metamodel struggles to learn the temporal dependencies and patterns in the target task.
-It leads to highly unstable training dynamics with substantial fluctuations in the validation MSE.
+It leads to highly unstable training dynamics with a substantial amount of fluctuations in the validation MSE.
 Learning without knowledge transfer leads poor generalization and extreme overfitting. 
-Often, the training data is limited for a new VA contract, and such instability is particularly problematic for quick adaptation of LSTM metamodels.
+Often, the training data is limited for a new VA contract, and such instability is particularly problematic for a quick adaptation of LSTM metamodels.
 TL techniques like fine-tuning and layer freezing can help mitigate these challenges.
 Figure~\ref{subfig3-1:fineTuning} shows the results of fine-tuning a pretrained metamodel on RS-GBM with no lapse.
 Fine-tuning offers a noticeable improvement over training without TL by reducing the instability in the validation MSE. 
 However, despite this improvement, fine-tuning may not fully mitigate the challenges of training with a small dataset.
 No negative trasfer is observed, but the fine-tuned metamodel struggles to achieve a low validation MSE.
 Lowering the learning rate does not help the fine-tuned metamodel converge, and the validation MSE remains high after increasing the number of training epochs.
-It indicates that fine-tuning may not be sufficient for limited training data.
+It indicates that fine-tuning may not be sufficient for a limited amount of training data.
 Figure~\ref{subfig3-1:layerFreezing} presents the performance of layer freezing on the same target task.
 Layer freezing offers a more stable training process compared to fine-tuning, with a lower validation error and reduced fluctuations during its training.
 The LSTM layers are critical for capturing general feature representations that are transferable across tasks, and freezing these layers helps prevent overfitting to the target task.
@@ -416,7 +421,7 @@ In addition, the layer freezing approach tunes fewer neural network parameters t
 It allows the transferred metamodel to only focus on learning the lapse features without excessively adjusting the general temporal representations learned from the source task for the target task.
 This reduction in trainable parameters also accelerates the convergence, and it leads to a more stable and efficient training on the target task.
 
-\subsection{Transfer to VAs with Dynamic Lapse}
+\subsection{Transfer to VAs with a Dynamic Lapse}
 
 \begin{figure}[ht!]
     \centering
@@ -430,17 +435,18 @@ This reduction in trainable parameters also accelerates the convergence, and it 
         \caption{Fine-tuning from Static Lapse}
         \label{subfig3-2:fromLapse}
     \end{subfigure}
-    \caption{Fine-tuned Metamodel performance on RS-GBM GMMB with dynamic lapse}
+    \caption{Fine-tuned Metamodel performance on RS-GBM GMMB with a dynamic lapse}
     \label{fig3:figure2}
 \end{figure}
 
-We further investigate the performance of fine-tuning on the target task of metamodeling GMMB contract losses on RS-GBM with dynamic lapse. 
-The source tasks used for pretraining are GMMB contracts on RS-GBM with no lapse and static lapse, respectively. 
+We further investigate the performance of fine-tuning on the target task of metamodeling GMMB contract losses on RS-GBM with a dynamic lapse. 
+The source tasks used for pretraining are GMMB contracts on RS-GBM with no lapse and a static lapse, respectively. 
 Figure~\ref{fig3:figure2} displays the learning curves of the LSTM metamodels fine-tuned from these two distinct source tasks.
 We observe that the performance of the fine-tuned metamodel is highly dependent on the similarity between the source and target tasks.
-Fine-tuning from a source task with static lapse results in faster convergence and lower validation error.
-The metamodel trained on the GMMB with static lapse captures some features that are beneficial for the GMMB with dynamic lapse, which leads to a more stable training process.
+Fine-tuning from a source task with a static lapse results in a faster convergence and a lower validation error.
+The metamodel trained on the GMMB with a static lapse captures some features that are beneficial for the GMMB with a dynamic lapse, which leads to a more stable training process.
 In Figure~\ref{subfig3-2:fromNolapse}, the metamodel needs to learn the effect of 
+
 \begin{itemize}
     \item whether lapse is present, and
     \item whether the lapse is dynamic.
@@ -448,7 +454,8 @@ In Figure~\ref{subfig3-2:fromNolapse}, the metamodel needs to learn the effect o
 This makes learning more challenging.
 
 The observed improvement in transferability when fine-tuning from a static lapse source task highlights the importance of selecting appropriate source tasks in TL. 
-When the source task diverges significantly from the target task, the transferred metamodel may struggle to adapt to the new conditions given the limited amount of of training data.
+When the source task diverges substantially from the target task, the transferred metamodel may struggle to adapt to the new conditions given the limited amount of training data.
+
 
 \begin{figure}[ht!]
     \centering
@@ -466,15 +473,15 @@ When the source task diverges significantly from the target task, the transferre
     \label{fig3:figure3}
 \end{figure}
 
-Figure~\ref{fig3:figure3} continues the investigation of layer freezing in the task of metamodeling GMMB contract losses on RS-GBM with dynamic lapse. 
-When transferring knowledge from the GMMB model with static lapse, the primary adaptation for the target task involves learning the impact of dynamic lapse.
+Figure~\ref{fig3:figure3} continues the investigation of layer freezing in the task of metamodeling GMMB contract losses on RS-GBM with the dynamic lapse. 
+When transferring knowledge from the GMMB model with the static lapse, the primary adaptation for the target task involves learning the impact of the dynamic lapse.
 Freezing the LSTM layers and fine-tuning only the fully connected layer results in a higher validation error, which suggests a tendency of overfitting.
-This indicates that the fully connected layer struggles to adapt to the changes in the temporal dynamics introduced by dynamic lapse, which can be viewed as another source of randomness in the time series.
+This indicates that the fully connected layer struggles to adapt to the changes in the temporal dynamics introduced by a dynamic lapse, which can be viewed as another source of randomness in the time series.
 In contrast, freezing the fully connected layer and fine-tuning the LSTM layers leads to a lower validation error and better generalization. 
-This can be attributed to the fact that the LSTM layers are responsible for capturing the temporal dependencies associated with dynamic lapse, and the fully connected layer predicts the contract losses based on these learned features.
+This can be attributed to the fact that the LSTM layers are responsible for capturing the temporal dependencies associated with the dynamic lapse, and the fully connected layer predicts the contract losses based on these learned features.
 
 This experiment emphasizes the importance of choosing which layers to freeze based on the nature of the source and target tasks. 
-In the case of learning dynamic lapse features, freezing the LSTM layers is not beneficial as they need to adapt to the new temporal patterns.
+In the case of learning the dynamic lapse features, freezing the LSTM layers is not beneficial as they need to adapt to the new temporal patterns.
 
 \begin{table}[ht!]
     \centering
@@ -493,12 +500,13 @@ In the case of learning dynamic lapse features, freezing the LSTM layers is not 
 
 Table~\ref{tab3:transfer_learning_results} summarizes the true MSEs of the LSTM metamodels trained using different TL methods across various source tasks.
 The calculations are based on the metamodel predictions and the true contract losses approximated with $\num{100000}$ inner replications.
-The first two rows show the performance of transferring knowledge from GMMB contracts with no lapse and static lapse to the target task of GMMB with dynamic lapse.
+The first two rows show the performance of transferring knowledge from GMMB contracts with no lapse and the static lapse to the target task of GMMB with the dynamic lapse.
 The last row shows the performance of training without TL on the target task.
 The results demonstrate the effectiveness of fine-tuning and layer freezing in transferring knowledge from a related source tasks to the target task. 
-When transferring from a source task with static lapse to a target task with dynamic lapse, the MSEs achieved are $0.0794$ for fine-tuning and $0.0763$ for layer freezing.
+When transferring from a source task with the static lapse to a target task with the dynamic lapse, the MSEs achieved are $0.0794$ for fine-tuning and $0.0763$ for layer freezing.
 The benchmark MSE of $0.0587$, obtained from extensive training on the GMMB dynamic lapse task with much more samples.
-While TL from static lapse GMMB do not reach this level of accuracy due to the limited data in the target task, they significantly outperform training without TL. 
+
+While TL from static lapse GMMB do not reach this level of accuracy due to the limited data in the target task, they substantially outperform training without TL. 
 This indicates that the models pre-trained on a static lapse setting are effective in capturing relevant features that are transferable to the dynamic lapse scenario.
 
 However, when the source task is less similar to the target task, the benefits of TL are less pronounced. The MSEs in this case are higher, with fine-tuning resulting in $0.4894$ and layer freezing achieving $0.3361$. 
@@ -510,8 +518,9 @@ There is no negative transfer observed, but the knowledge transfer is limited.
 \subsection{Transfer Knowledge to other Contract Types}
 
 When transferring knowledge from one VA contract type to another, the LSTM metamodel needs to adapt to different contract features and time series dynamics.
-We consider the task of metamodeling GMWB contract losses on RS-GBM asset model with dynamic lapse, with the source tasks being a GMMB contract on RS-GBM also with dynamic lapse.
+We consider the task of metamodeling GMWB contract losses on RS-GBM asset model with the dynamic lapse, with the source tasks being a GMMB contract on RS-GBM also with the dynamic lapse.
 Figure~\ref{fig3:figure4} illustrates the learning history of transferring pre-trained LSTM metamodels from the GMMB contracts to the GMWB contracts.
+
 
 \begin{figure}[ht!]
     \centering
@@ -543,21 +552,21 @@ Figure~\ref{subfig3-4:extensive} presents the performance of an extensively trai
 The extensively trained metamodel achieves a low validation error and demonstrates stable convergence due to having enough training samples. 
 In contrast, Figure~\ref{subfig3-4:without} shows the results of training the metamodel directly on the target task with $\num{2000}$ training samples. 
 Fewer training samples and no prior knowledge leads to unstable training dynamics. 
-The validation MSE fluctuates significantly.
+The validation MSE fluctuates substantially.
 
-When applying fine-tuning from the GMMB source task (Figure~\ref{subfig3-4:fineTuning}), the metamodel exhibits improved performance compared to training without TL. 
+When applying fine-tuning from the GMMB source task (Figure~\ref{subfig3-4:fineTuning}), the metamodel exhibits an improved performance compared to the training without TL. 
 Fine-tuning results in a lower validation error and more stable convergence.
-Despite the differences between GMMB and GMWB contracts, there is still valuable information that can be transferred. 
+Despite the differences between the GMMB and GMWB contracts, there is still valuable information that can be transferred. 
 Both the LSTM layers and the fully connected layers capture general temporal patterns and feature representations that are beneficial for the target task. 
 Fine-tuning allows the metamodel to adjust all its neural network layers. 
-It allows better adaptation to the complexities introduced by the GMWB contract.
+It allows a better adaptation to the complexities introduced by the GMWB contract.
 
 However, when employing layer freezing (Figure~\ref{subfig3-4:layerFreezing}), the metamodel's performance deteriorates.
 Negative transfer is observed.
 Freezing some layers trained on the GMMB contracts does not allow the metamodel to sufficiently adapt to the complexities of the GMWB contracts. 
-The GMWB contracts are inherently more complex than GMMB contracts due to the guaranteed withdrawal benefits at each time step, and the contract features are significantly different.
-The complexity introduce significant changes in the time series dynamics that the metamodel needs to capture.
-Freezing the LSTM layers or the fully connected layer hinders the metamodel's ability to learn these new patterns, and it leads to poor generalization and unstable error curves.
+The GMWB contracts are inherently more complex than GMMB contracts due to the guaranteed withdrawal benefits at each time step, and the contract features are substantially different.
+The complexity introduced by the GMWB contracts leads to significant changes in the time series dynamics that the metamodel needs to capture.
+Freezing the LSTM layers or the fully connected layer hinders the metamodel's ability to learn these new patterns, and it leads to a poor generalization and unstable error curves.
 
 \begin{table}[ht!]
     \centering
@@ -578,13 +587,13 @@ Freezing the LSTM layers or the fully connected layer hinders the metamodel's ab
 Table~\ref{tab3:transfer_learning_results_gmwb} summarizes the true MSEs of the LSTM metamodels on the GMWB contracts.
 Training MSE and true MSE are computed using the training labels and the true contract losses approximated with $\num{100000}$ inner replications, respectively.
 This is consistent with the terminology used in Chapter~\ref{chap:project2}.
-The TL methods are compared to training from scratch.
+The TL methods are compared to training from the scratch.
 The suboptimal performance of layer freezing in this context indicates that the difference between the source and target tasks is too substantial for this method to be effective. 
-While layer freezing can be advantageous when the source and target tasks are closely related, it may hinder performance when the tasks diverge significantly.
+While layer freezing can be advantageous when the source and target tasks are closely related, it may hinder performance when the tasks diverge substantially.
 In such circumstances, fine-tuning provides a better approach by allowing the metamodel to leverage transferable knowledge while adapting to the new task's specific requirements. 
-Fine-tuning enables both the LSTM and fully connected layers to update their weights, capturing the complex dynamics of the GMWB contracts more effectively.
-This is particularly beneficial when developing metamodels for complex VA contracts with limited simulation data. 
-For instance, transferring information from GMMB contracts can still be valuable when modeling GMWB contracts.
+Fine-tuning enables both the LSTM and the fully connected layers to update their weights, capturing the complex dynamics of the GMWB contracts more effectively.
+This is particularly beneficial when developing metamodels for the complex VA contracts with limited simulation data. 
+For instance, transferring information from the GMMB contracts can still be valuable when modeling the GMWB contracts.
 Both contracts share some common contract features and temporal patterns, which allows a pre-trained LSTM metamodel to capture generalizable features that provide a solid foundation for the target task.
 
 \begin{figure}[ht!]
@@ -603,13 +612,14 @@ Both contracts share some common contract features and temporal patterns, which 
     \label{fig3:figure4-1}
 \end{figure}
 
-Figure~\ref{fig3:figure4-1} illustrates the performance of the two-stage procedure with TL for GMWB contracts with dynamic lapse in predicting the tail scenarios and the $95\%$-CVaR.
-The graph provides a visual representation of how different TL approaches compare to training from scratch and the standard nested simulation procedure.
-Fine-tuning consistently outperforms both layer freezing and training from scratch across different simulation budgets, particularly in predicting tail scenarios and estimating the 95\%-CVaR. 
+Figure~\ref{fig3:figure4-1} illustrates the performance of the two-stage procedure with TL for GMWB contracts with the dynamic lapse in predicting the tail scenarios and the $95\%$-CVaR.
+The graph provides a visual representation of how different TL approaches compare to training from the scratch and the standard nested simulation procedure.
+Fine-tuning consistently outperforms both layer freezing and training from the scratch across different simulation budgets, particularly in predicting tail scenarios and estimating the 95\%-CVaR. 
+
 This finding is consistent with the training history and MSEs in Figure~\ref{fig3:figure4} and Table~\ref{tab3:transfer_learning_results_gmwb}, respectively.
-It's important to note that while these results are promising, they also highlight the complexity of modeling GMWB contracts with dynamic lapse. 
-The fact that fine-tuning outperforms layer freezing suggests that there are significant differences in the tail behavior of GMMB and GMWB contracts, particularly when dynamic lapse is considered. 
-These findings highlight the need for careful model selection and validation when applying TL techniques to different VA products.
+It is important to note that while these results are promising, they also highlight the complexity of modeling the GMWB contracts with the dynamic lapse. 
+The fact that fine-tuning outperforms layer freezing suggests that there are substantial differences in the tail behavior of the GMMB and GMWB contracts, particularly when the dynamic lapse is considered. 
+These findings highlight the need for careful model selection and validation when applying the TL techniques to different VA products.
 When the source and target tasks are substantially different, all layers need to be updated.
 Freezing some layers may lead to negative transfer.
 
@@ -617,8 +627,8 @@ Freezing some layers may lead to negative transfer.
 \subsection{Multi-task Learning}
 
 Multi-task learning enables the LSTM metamodels to learn shared representations across related VA contracts.
-In this section, we examine the performance of multitask learning applied to two types of VAs, GMMB and GMWB with dynamic lapse rates.
-The simulation datasets contrain $2,\!000$ samples for each contract type, and the LSTM metamodels are trained using multi-task learning. 
+In this section, we examine the performance of multitask learning applied to two types of VAs, GMMB and GMWB with the dynamic lapse rates.
+The simulation datasets contain $2,\!000$ samples for each contract type, and the LSTM metamodels are trained using multi-task learning. 
 In our experiments, Algorithm~\ref{alg3:multiTaskLearning} is used to train the LSTM metamodels simultaneously to minimize the multi-task MSE loss function in Equation~\ref{eq3:multiTaskLoss}.
 We use individual task training as a baseline for comparison, where the LSTM metamodels are trained separately on the GMMB and GMWB contracts.
 The objective is to assess how multitask learning can improve the training efficiency and performance of both products compared to individual task training.
@@ -629,10 +639,11 @@ The objective is to assess how multitask learning can improve the training effic
     \label{fig3:mtl}
 \end{figure}
 
-Figure~\ref{fig3:mtl} illustrates our multi-task learning framework for GMMB and GMWB contracts with dynamic lapse rates.
+Figure~\ref{fig3:mtl} illustrates our multi-task learning framework for GMMB and GMWB contracts with the dynamic lapse rates.
 The outer simulation paths for both contracts are the same, which are generated from the same nested simulation procedure with $100$ inner replications.
 The LSTM metamodels are trained simultaneously on both contracts.
-The LSTM layers are shared, and each contract has its own separate fully connected layers for contract loss predictions.
+The LSTM layers are shared to train for capturing general temporal patterns, and each contract has its own fully connected layers that are trained for contract loss predictions.
+
 
 \begin{figure}[ht!]
     \centering
@@ -660,14 +671,14 @@ The LSTM layers are shared, and each contract has its own separate fully connect
     \label{fig3:figure5}
 \end{figure}
 
-Figure~\ref{fig3:figure5} compares the learning curves for the training of GMMB and GMWB, with and without multitask learning.
-The comparison between multitask learning (Figure~\ref{subfig3-5:multiTask} and~\ref{subfig3-5:fineTuning}) and individual task training ((Figure~\ref{subfig3-5:gmmb_individual} and~\ref{subfig3-5:gmwb_individual})) demonstrates the benefit of multi-task learning for both products. 
-In the case of GMMB, multitask learning allows the model to achieve faster convergence while reducing overfitting.
-For GMWB, the multi-task learning framework helps to stablize the training process.
-The shared LSTM layers in the multitask model are able to capture common temporal patterns and dynamics, which benefits both GMMB and GMWB when training samples is scarce.
-Similar to pooling in Chapter~\ref{chap:project1} and~\ref{chap:project2} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
+Figure~\ref{fig3:figure5} compares the learning curves for the training of the GMMB and the GMWB, with and without the multitask learning.
+The comparison between the multitask learning (Figures~\ref{subfig3-5:multiTask} and~\ref{subfig3-5:fineTuning}) and the individual task training ((Figures~\ref{subfig3-5:gmmb_individual} and~\ref{subfig3-5:gmwb_individual})) demonstrates the benefit of the multi-task learning for both products. 
 
-\subsection{}
+In the case of the GMMB, the multi-task learning allows the model to achieve faster convergence while reducing overfitting.
+For the GMWB, the multi-task learning framework helps to stablize the training process.
+The shared LSTM layers in the multitask model are able to capture common temporal patterns and dynamics, which benefits both the GMMB and the GMWB when the training samples are scarce.
+
+Similar to the pooling in Chapters~\ref{chap:project1} and~\ref{chap:project2} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
 
 % \begin{figure}[ht!]
 %     \centering
@@ -690,25 +701,26 @@ Similar to pooling in Chapter~\ref{chap:project1} and~\ref{chap:project2} but on
 
 \section{Conclusion} \label{sec3:conclusion}
 
-In this chapter, we introduced a transfer learning framework to accelerate the training of LSTM metamodels for dynamic hedging of variable annuity contracts.
+In this chapter, we have introduced a transfer learning framework to accelerate the training of LSTM metamodels for dynamic hedging of variable annuity contracts.
 Traditional nested simulation procedures for VA risk management are computationally intensive.
-LSTM metamodels offer a data-driven approach to approximate the true contract losses, which can significantly reduce the computational cost of hedging a single VA contract.
+LSTM metamodels offer a data-driven approach to approximate the true contract losses, which can substantially reduce the computational cost of hedging a single VA contract.
 However, training LSTM metamodels on new VA contracts can be challenging due to the limited availability of simulation data.
-Our proposed framework leverages pre-trained LSTM networks and transfer learning techniques to adapt quickly metamodels to new but related VA contracts with minimal additional simulation cost.
-Fine-tuning a pre-trained LSTM metamodel on a new target task with limited data significantly improved training stability and predictive accuracy compared to training from scratch. 
+Our proposed framework leverages pre-trained LSTM networks and transfer learning techniques to adapt metamodels quickly to new but related VA contracts with a minimum amount of additional simulation cost.
+Fine-tuning a pre-trained LSTM metamodel on a new target task with a limited amount of data substantially improved training stability and predictive accuracy compared to training from the scratch. 
+
 Layer freezing further enhanced performance by retaining transferable temporal representations learned from the source task. 
 However, the success of these methods depends on the similarity between the source and target tasks. 
 When the tasks were closely related, freezing some neural network layers yields substantial benefits. 
-Conversely, when the source and target tasks diverged significantly, fine-tuning the entire network is more effective.
+Conversely, when the source and target tasks diverged substantially, fine-tuning the entire network is more effective.
 
-Multi-task learning offers a robust framework for transferring knowledge across related simulation schemes in LSTM metamodeling for nested simulations. 
+Multi-task learning offers a robust framework for transferring knowledge across related simulation schemes in the LSTM metamodeling for nested simulations. 
 By sharing representations through the LSTM layers, the model can learn more generalizable features that are beneficial across different VA contracts. 
 The multi-task approach is particularly beneficial when training data for individual tasks is scarce, as it effectively pools information across tasks to enhance learning efficiency and predictive performance.
 We have extended the idea of pooling in Chapter~\ref{chap:project1} and~\ref{chap:project2} to a higher level.
 Furthermore, a metamodel trained with multi-task learning can serve as a pre-trained model. 
 It is adaptable to various VA contracts and asset models, and it is a versatile tool for practical applications in dynamic hedging of VAs.
 
-The integration of transfer learning in LSTM metamodeling represents a significant advancement in robust risk management associated with variable annuity contracts.
+The integration of transfer learning in LSTM metamodeling represents an important advancement in robust risk management associated with variable annuity contracts.
 By effectively leveraging existing knowledge, financial institutions can maintain accurate and responsive risk management practices in a rapidly changing market environment. 
-The methodologies presented in this chapter attempt to make a significant contribution to the broader applications of transfer learning in financial modeling and risk assessment.
+The methodologies presented in this chapter attempt to make a contribution to the broader applications of transfer learning in financial modeling and risk assessment.
 
