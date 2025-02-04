@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.16)  4 FEB 2025 11:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.16)  4 FEB 2025 23:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1288,61 +1288,67 @@ Chapter 6.
 [128
 
 
-] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141]
-<./futureWork/tikz/ppo_diagram.pdf, id=2520, 341.91438pt x 301.87178pt>
+] [129]
+
+LaTeX Warning: Reference `sec:TL' on page 130 undefined on input line 43.
+
+
+LaTeX Warning: Reference `sec:experiments' on page 130 undefined on input line 44.
+
+[130] [131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141]
+<./futureWork/tikz/ppo_diagram.pdf, id=2524, 341.91438pt x 301.87178pt>
 File: ./futureWork/tikz/ppo_diagram.pdf Graphic file (type pdf)
 <use ./futureWork/tikz/ppo_diagram.pdf>
-Package pdftex.def Info: ./futureWork/tikz/ppo_diagram.pdf  used on input line 413.
+Package pdftex.def Info: ./futureWork/tikz/ppo_diagram.pdf  used on input line 412.
 (pdftex.def)             Requested size: 207.32315pt x 183.04523pt.
-<./futureWork/tikz/recurrentppo_diagram.pdf, id=2521, 285.00879pt x 257.36351pt>
+<./futureWork/tikz/recurrentppo_diagram.pdf, id=2525, 285.00879pt x 257.36351pt>
 File: ./futureWork/tikz/recurrentppo_diagram.pdf Graphic file (type pdf)
 <use ./futureWork/tikz/recurrentppo_diagram.pdf>
-Package pdftex.def Info: ./futureWork/tikz/recurrentppo_diagram.pdf  used on input line 419.
+Package pdftex.def Info: ./futureWork/tikz/recurrentppo_diagram.pdf  used on input line 418.
 (pdftex.def)             Requested size: 207.32315pt x 187.21797pt.
  [142] [143 <./futureWork/tikz/ppo_diagram.pdf> <./futureWork/tikz/recurrentppo_diagram.pdf>] [144]
-<./futureWork/figures/CVaR_histories.png, id=2605, 722.7pt x 361.35pt>
+<./futureWork/figures/CVaR_histories.png, id=2609, 722.7pt x 361.35pt>
 File: ./futureWork/figures/CVaR_histories.png Graphic file (type png)
 <use ./futureWork/figures/CVaR_histories.png>
-Package pdftex.def Info: ./futureWork/figures/CVaR_histories.png  used on input line 511.
+Package pdftex.def Info: ./futureWork/figures/CVaR_histories.png  used on input line 510.
 (pdftex.def)             Requested size: 414.6463pt x 207.32251pt.
  [145]
-<./futureWork/figures/PPO_DH.png, id=2619, 722.7pt x 433.62pt>
+<./futureWork/figures/PPO_DH.png, id=2623, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_DH.png Graphic file (type png)
 <use ./futureWork/figures/PPO_DH.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_DH.png  used on input line 534.
+Package pdftex.def Info: ./futureWork/figures/PPO_DH.png  used on input line 533.
 (pdftex.def)             Requested size: 230.36061pt x 138.21207pt.
-<./futureWork/figures/PPOs_GBM.png, id=2622, 722.7pt x 433.62pt>
+<./futureWork/figures/PPOs_GBM.png, id=2626, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPOs_GBM.png Graphic file (type png)
 <use ./futureWork/figures/PPOs_GBM.png>
-Package pdftex.def Info: ./futureWork/figures/PPOs_GBM.png  used on input line 545.
+Package pdftex.def Info: ./futureWork/figures/PPOs_GBM.png  used on input line 544.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
-<./futureWork/figures/PPOs_GBMRS.png, id=2623, 722.7pt x 433.62pt>
+<./futureWork/figures/PPOs_GBMRS.png, id=2627, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPOs_GBMRS.png Graphic file (type png)
 <use ./futureWork/figures/PPOs_GBMRS.png>
-Package pdftex.def Info: ./futureWork/figures/PPOs_GBMRS.png  used on input line 550.
+Package pdftex.def Info: ./futureWork/figures/PPOs_GBMRS.png  used on input line 549.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
- [146]
-<./futureWork/figures/PPO_cost_001.png, id=2629, 722.7pt x 433.62pt>
+ [146] [147 <./futureWork/figures/CVaR_histories.png> <./futureWork/figures/PPO_DH.png>]
+<./futureWork/figures/PPO_cost_001.png, id=2639, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_cost_001.png Graphic file (type png)
 <use ./futureWork/figures/PPO_cost_001.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_cost_001.png  used on input line 566.
+Package pdftex.def Info: ./futureWork/figures/PPO_cost_001.png  used on input line 565.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
-<./futureWork/figures/PPO_cost_02.png, id=2630, 722.7pt x 433.62pt>
+<./futureWork/figures/PPO_cost_02.png, id=2640, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_cost_02.png Graphic file (type png)
 <use ./futureWork/figures/PPO_cost_02.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_cost_02.png  used on input line 571.
+Package pdftex.def Info: ./futureWork/figures/PPO_cost_02.png  used on input line 570.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
- [147 <./futureWork/figures/CVaR_histories.png> <./futureWork/figures/PPO_DH.png>]
-<./futureWork/figures/PPO_anchor.png, id=2638, 722.7pt x 433.62pt>
+<./futureWork/figures/PPO_anchor.png, id=2642, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_anchor.png Graphic file (type png)
 <use ./futureWork/figures/PPO_anchor.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_anchor.png  used on input line 586.
+Package pdftex.def Info: ./futureWork/figures/PPO_anchor.png  used on input line 585.
 (pdftex.def)             Requested size: 460.72124pt x 276.43074pt.
  [148 <./futureWork/figures/PPOs_GBM.png> <./futureWork/figures/PPOs_GBMRS.png> <./futureWork/figures/PPO_cost_001.png> <./futureWork/figures/PPO_cost_02.png>]
-<./futureWork/figures/PPO_GMWB.png, id=2648, 722.7pt x 433.62pt>
+<./futureWork/figures/PPO_GMWB.png, id=2652, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_GMWB.png Graphic file (type png)
 <use ./futureWork/figures/PPO_GMWB.png>
-Package pdftex.def Info: ./futureWork/figures/PPO_GMWB.png  used on input line 598.
+Package pdftex.def Info: ./futureWork/figures/PPO_GMWB.png  used on input line 597.
 (pdftex.def)             Requested size: 460.72124pt x 276.43074pt.
  [149 <./futureWork/figures/PPO_anchor.png>] [150 <./futureWork/figures/PPO_GMWB.png>]) [151] (thesisDefense.bbl [152
 
@@ -1366,21 +1372,25 @@ Package natbib Warning: There were undefined citations.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
 (rerunfilecheck)             Checksum: A6CA31B7CF35F1FD95CC1F1797C8C78A;7393.
  ) 
 Here is how much of TeX's memory you used:
- 37424 strings out of 474486
- 760671 string characters out of 5744227
+ 37426 strings out of 474486
+ 760696 string characters out of 5744227
  1949542 words of memory out of 5000000
- 58400 multiletter control sequences out of 15000+600000
+ 58402 multiletter control sequences out of 15000+600000
  576156 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  109i,19n,107p,2400b,1338s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\user\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\user\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesisDefense.pdf (180 pages, 3328849 bytes).
+Output written on thesisDefense.pdf (180 pages, 3330474 bytes).
 PDF statistics:
- 3070 PDF objects out of 3580 (max. 8388607)
+ 3075 PDF objects out of 3580 (max. 8388607)
  720 named destinations out of 1000 (max. 500000)
  1095 words of extra memory for PDF output out of 10000 (max. 10000000)
 

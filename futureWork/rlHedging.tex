@@ -1,6 +1,6 @@
 \chapter{Future Work: Deep Hedging Variable Annuities with Transfer Learning} \label{chap:futureWork}
 
-In the evolving landscape of financial markets, insurance products such as VAs have gained significant interest due to their ability to provide both investment growth and guaranteed benefits. 
+In the evolving landscape of financial markets, insurance products such as VAs have gained a substantial amount of interest due to their ability to provide both investment growth and guaranteed benefits. 
 Managing the risks associated with these products, especially in volatile market conditions, is a complex task that demands sophisticated financial modeling techniques. 
 Reinforcement Learning (RL) has emerged as a powerful tool for addressing such complexities. With the recent advancement in deep learning, DNN architectures have been successfully applied to RL problems, leading to the development of deep reinforcement learning (DRL) algorithms. 
 These algorithms have demonstrated remarkable success decision-making tasks that must be optimized over time. 
@@ -10,45 +10,45 @@ Reinforcement learning is a branch of machine learning in which an agent learns 
 Through trial and error, the agent receives feedback in the form of rewards or penalties, allowing it to learn an optimal policy for achieving long-term goals. 
 In financial and actuarial contexts, RL has been applied to portfolio optimization, asset allocation, and risk management. 
 In a dynamic hedging problem, the agent is referred to as the decision-maker that tries to minimize financial risks over time horizon by adjusting the hedging portfolio based on the current environment, which is the current state of the financial markets and actuarial assumptions.
-By intergrating deep neural network, DRL extends this framework by enabling the agent to handle high-dimensional and complex environments. 
+By integrating deep neural network, DRL extends this framework by enabling the agent to handle high-dimensional and complex environments. 
 DRL has shown particular promise in finance because of its ability to process vast amounts of financial data and discover intricate patterns in market dynamics.
 Despite their success, DRL faces practical limitations when applied to real-world financial markets.
 Its most significant drawback is the requirement for extensive data and computational resources.
-Training a DRL agent from scratch requires a large dataset along with considerable computational time for exploration and learning.
-This is especially problematic for variable annuities, which are long-term insurance products that are sensitive to market fluctuations and underlying actuarial assumptions.
-Given that financial markets are highly dynamic, frequent retraining to account for new market regimes becomes necessary, which can lead to prohibitively high costs and computational inefficiency.
+Training a DRL agent from the scratch requires a large dataset along with considerable computational time for the purpose of exploration and learning.
+This is especially problematic for VA contracts, which are long-term insurance products that are sensitive to market fluctuations and underlying actuarial assumptions.
+Given that financial markets are highly dynamic, a frequent retraining to account for new market regimes becomes necessary, which can lead to prohibitively high costs and computational inefficiency.
 Moreover, using historical data leads to overfitting to the past. 
 An overfitting model can lead to suboptimal hedging strategies that perform poorly in changing market conditions.
 
-Transfer learning (TL) offers a compelling solution to the challenges posed by existing DRL approaches. 
+TL offers a compelling solution to the challenges posed by existing DRL approaches. 
 Similar to the TL framework proposed in Chapter~\ref{chap:project3}, TL can also be applied to DRL to accelerate the training.
-In the context of financial modeling, instead of training an RL agent from scratch every time underlying assumptions change, the model can utilize the knowledge gained from past market environments to accelerate the learning process under the new environment.
+In the context of financial modeling, instead of training an RL agent from the scratch every time underlying assumptions change, the model can utilize the knowledge gained from past market environments to accelerate the learning process under the new environment.
 TL in financial markets is particularly advantageous for addressing the data scarcity problem. 
 By transferring existing knowledge from similar environments, TL improves model performance in situations where historical data is limited or noisy. 
 This allows models using TL to be both more accurate and computationally efficient. 
 Additionally, TL enhances the robustness of models by allowing continuous learning. 
-Instead of retraining a deep RL model from scratch when market conditions shift, TL enables the reuse of pre-trained models, facilitating faster adaptation to new environments while avoiding overfitting to past conditions.
-In the risk management of variable annuities, transfer learning enables quicker adaptation to changing financial and actuarial assumptions by reusing information obtained from another set of related assumptions, such as the management of similar financial instruments or different market regimes. 
+Instead of retraining a deep RL model from the scratch when market conditions shift, TL enables the reuse of pre-trained models, facilitating a faster adaptation to new environments while avoiding overfitting to past conditions.
+In the risk management of VA contracts, transfer learning enables quicker adaptation to changing financial and actuarial assumptions by reusing information obtained from another set of related assumptions, such as the management of similar financial instruments or different market regimes. 
 A DRL agent equipped with transfer learning can adjust its strategies in response to new market data, making the model more adaptive and responsive without the need for costly retraining.
-More specifically, a DRL agent trained to manage variable annuities for a GMMB contract can apply its learned strategies to a GMWB contract with the same financial assumptions. 
+More specifically, a DRL agent trained to manage VA contracts for a GMMB contract can apply its learned strategies to a GMWB contract with the same financial assumptions. 
 A DRL agent trained for a VA product on a Black-Scholes asset model can transfer its knowledge to the training of a similar product on a stochastic volatility model.
-This approach significantly reduces the computational costs associated with the training of new VA products with different assumptions and improves the generalization of the model to unseen market conditions.
-By integrating transfer learning with existing DRL frameworks, we can eliminate the inefficiencies of training models from scratch, provide faster adaptability to new market conditions, and enhance the scalability and computational efficiency of financial models. 
-This approach offers a more robust and practical solution for managing variable annuities in dynamic and volatile financial markets.
+This approach substantially reduces the computational costs associated with the training of new VA products with different assumptions and improves the generalization of the model to unseen market conditions.
+By integrating the transfer learning with the existing DRL frameworks, we can eliminate the inefficiencies of training models from scratch, provide faster adaptability to new market conditions, and enhance the scalability and computational efficiency of financial models. 
+This approach offers a more robust and practical solution for managing VA contracts in dynamic and volatile financial markets.
 
 The rest of the chapter is organized as follows: 
-% Section~\ref{sec:MDP} introduces the mathematical formulation for hedging VAs and defines the key components of the framework.
-% Section~\ref{sec:RLAlgorithms} provides an overview of existing RL algorithms and their limitations in the context of hedging VAs.
-% Section~\ref{sec:PPO} introduces the proximal policy optimization algorithm and its application to the hedging of VAs.
-% Section~\ref{sec:TL} presents the transfer learning framework for accelerating the training of DRL agents in the dynamic hedging of VAs.
-% Section~\ref{sec:experiments} presents the experimental setup and results, comparing the performance of transfer learning with training from scratch.
-% Finally, Section~\ref{sec:FutureDirections} concludes the chapter and discusses future research directions.
+Section~\ref{sec:MDP} introduces the mathematical formulation for hedging VAs and defines the key components of the framework.
+Section~\ref{sec:RLAlgorithms} provides an overview of existing RL algorithms and their limitations in the context of hedging VAs.
+Section~\ref{sec:PPO} introduces the proximal policy optimization algorithm and its application to the hedging of VAs.
+Section~\ref{sec:TL} presents the transfer learning framework for accelerating the training of DRL agents in the dynamic hedging of VAs.
+Section~\ref{sec:experiments} presents the experimental setup and results, comparing the performance of transfer learning with training from scratch.
+Finally, Section~\ref{sec:FutureDirections} concludes the chapter and discusses future research directions.
 
 \section{Markov Decision Process for Hedging VAs} \label{sec:MDP}
 
 A Markov Decision Process (MDP) provides a mathematical framework for modeling decision-making in stochastic environments over time. 
 By formulating the VA hedging problem as an MDP, we can utilize RLalgorithms to learn optimal hedging policies directly from data.
-AnMDP is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$, where:
+An MDP is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$, where:
 
 \begin{itemize}
     \item $\mathcal{S}$ is a finite set of states.
@@ -169,12 +169,12 @@ The reward function $\mathcal{R}$ and discount factor $\gamma$ in a typical RL p
     \gamma      & = e^{-r}, \nonumber
 \end{align}
 where $R_t$ is the term reward received by the agent at time $t$, and the discount factor $\gamma$ is conveniently inherited from the risk-free rate $r$. 
-In hedging, the term reward $R_t$ should be drived from Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} to represent the performance of the hedging policy, i.e., how closely the hedging portfolio tracks the liability.
-For GMWB, we propose a term reward formulation that encourages the agent to maximize the expected reward with low hedging errors and transaction costs:
+In hedging, the term reward $R_t$ should be derived from Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} to represent the performance of the hedging policy, i.e., how closely the hedging portfolio tracks the liability.
+For the GMWB, we propose a term reward formulation that encourages the agent to maximize the expected reward with low hedging errors and transaction costs:
 \begin{equation} \label{eq3:rewardGMWB}
     R_t = F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}(\Delta_{t-1}), \quad t \in \{1,\ldots,T \}
 \end{equation}
-The reward function of GMWB directly links to the time-$t$ loss of a GMWB contract as in Equation~\ref{eq3:lossGMWB}.
+The reward function of the GMWB directly links to the time-$t$ loss of a GMWB contract as in Equation~\ref{eq3:lossGMWB}.
 The GMMB loss consists of an additional payoff at maturity $T$, thus its term reward is formulated as:
 \begin{equation} \label{eq3:rewardGMMB}
     R_t = 
@@ -222,8 +222,8 @@ The neural network takes the current state of the game as input and outputs the 
 \begin{equation}
     (\mathbf{\pi}, v) = f_{\theta}(s), \quad L(\theta) = - \mathbf{\pi}^{\intercal} \log(\mathbf{p}) + (z - v)^2  + c||\theta||^2,
 \end{equation}
-where $f_{\theta}$ is the neural network with parameters $\theta$, $s$ is the current state of the game, $\pi$ is the policy, $v$ is the value of the current state, and $c$ is a regularization parameter.
-$\mathbf{p}$ and $z$ are the probability distribution of the next move and the outcome of the game, respectively.
+where $f_{\theta}$ is a neural network with parameters $\theta$, $s$ is a current state of the game, $\pi$ is a policy, $v$ is a value of the current state, and $c$ is a regularization parameter.
+$\mathbf{p}$ and $z$ are a probability distribution of the next move and an outcome of the game, respectively.
 They are induced by a planning algorithm, i.e., Monte Carlo Tree Search (MCTS).
 Since it is infeasible to efficiently simulate trajectories in the game of Go, a planning algorithm is necessary to generate expected outcomes.
 The neural network $f_{\theta}$ is trained with a stochastic gradient descent algorithm to minimize $L$.
@@ -321,7 +321,7 @@ However, information of the underlying risk factors is leaked to the agent, whic
 To further improve the risk management of VAs under rough volatility models, we propose a model-free deep reinforcement learning approach to hedge VAs without explicit or implicit knowledge of the underlying risk factors.
 
 \section{Hedging VAs with a PPO Agent} \label{sec:PPO}
-In a hedging problem, an insurer aims to find a policy $\pi$ that maximize the expected reward over time.
+In a hedging problem, an insurer aims at finding a policy $\pi$ that maximizes the expected reward over time.
 In a policy-based RL approach like the PPO, both the policy and the value function are parameterized by deep neural networks.
 We denote the policy by $\pi_{\theta}$ and the value function by $V_{\phi}$, where $\theta$ and $\phi$ are the parameters of the value network and the policy network, respectively.
 The policy is updated according to an objective function that reflects the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
@@ -329,8 +329,7 @@ The policy is updated according to an objective function that reflects the advan
     \max_{\theta} \mathbb{E}\left[ \min \left\{ \Lambda_t(\theta)\hat{A}^{\pi_{\theta}}(s_t, a_t), \text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)  \right\} \right] \\
     \Lambda_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} 
 \end{align}
-
-where $\theta_{old}$ denotes the policy parameters at the previous iteration, $\epsilon$ is a clip range hyperparameter that controls the size of the policy update, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, and $\hat{A}^{\pi_{\theta}}(s_t, a_t)$ is the estimated advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$.
+where $\theta_{old}$ denotes the policy parameters at the previous iteration, $\epsilon$ is a clip range hyperparameter that controls the size of the policy update, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, and $\hat{A}^{\pi_{\theta}}(s_t, a_t)$ is an estimated advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$.
 In our implementation, the advantage function is estimated following the GAE method proposed by~\cite{schulman2015high}.
 The policy is updated by performing gradient ascent with respect to the policy parameters $\theta$ to maximize the objective function, which is estimated by sampling from the environment and computing the empirical average of the objective function over the sampled trajectories.
 The first component in the objective function, $\Lambda_t(\theta) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a surrogate objective function that approximates the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$, and the second component, $\text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a clipped surrogate objective function that prevents large policy updates and ensures more stable training.
@@ -425,7 +424,7 @@ Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the st
 \end{figure}
 
 The recurrent PPO algorithm is similar to the standard PPO algorithm, but it includes an LSTM component to capture the temporal dependencies in the data.
-However, the sequantial nature of the LSTM is not suitable for parallel computation, which slows down the training process.
+However, the sequantial nature of the LSTM is not suitable for a parallel computation, which slows down the training process.
 
 \section{Transfer Learning for Hedging VAs} \label{sec:TransferLearning}
 
@@ -438,14 +437,14 @@ This section introduces some transfer learning techniques that are relevant to o
 \subsection{Reward Shaping}
 
 In the context of hedging VAs using deep reinforcement learning and transfer learning, reward shaping becomes a crucial technique. 
-It involves modifying the reward function in the target domain to incorporate additional guidance, which often leads to more efficient learning and better performance.
+It involves modifying the reward function in the target domain to incorporate additional guidance, which often leads to more efficient learning and a better performance.
 This technique can be particularly useful for managing the complex risks associated with VAs, as it can guide the learning process towards strategies that are more effective in hedging these products.
 
 One way to implement reward shaping in this context is by introducing auxiliary rewards that reflect the performance of hedging strategies learned from the source domains.
 Reward shaping learns an auxiliary reward function $\mathcal{R}_s: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \rightarrow \mathbb{R}$ from the source domains.
 The auxiliary reward function is then used to shape the reward function in the target domain, $\mathcal{R}'_t = \mathcal{R}_t + \mathcal{R}_s$, by incorporating the insights gained from the source domains.
 
-Some popular reward shaping techniques include potential-based reward shaping~\citep{ng1999policy}, potential based state-action advice~\citep{wiewiora2003principled}, dynamic value function advice~\citep{harutyunyan2015expressing}.
+Some popular reward shaping techniques include potential-based reward shaping~\citep{ng1999policy}, potential-based state-action advice~\citep{wiewiora2003principled}, dynamic value function advice~\citep{harutyunyan2015expressing}.
 
 \subsection{Policy Transfer}
 
@@ -537,7 +536,7 @@ The performance of the agent is evaluated based on the average reward over an in
 \end{figure}
 
 This experiment compares the hedging performance of the recurrent PPO agent with LSTM and the deep hedging algorithm proposed by~\cite{buehler2019deep} for hedging VAs with a GMMB rider.
-The experiment is conducted with the same simulation budget.
+The experiment is conducted with the same amount ofsimulation budget.
 
 \begin{figure}[ht!]
     \centering
@@ -608,17 +607,18 @@ The results suggest that the GMWB rider introduces additional complexity to the 
 
 \section{Future Directions} \label{sec:FutureDirections}
 
-The proposed future work of this thesis aims to investigate how transfer learning can be effectively integrated into the training of PPO agents for dynamic hedging of VA contracts. 
+The proposed future work of this thesis aims at investigating how transfer learning can be effectively integrated into the training of PPO agents for dynamic hedging of VA contracts. 
 The primary goal is to enhance the adaptability and efficiency of hedging strategies in response to new VA products and changing market conditions. 
+
 
 The first objective is to establish a systematic approach for transferring policies learned by PPO agents from source tasks to target tasks in the context of dynamic hedging. 
 Source tasks may involve hedging a GMMB under a specific market model, while target tasks could entail hedging a GMWB under a different market model.
 
 To achieve this, the research will explore methodologies such as policy distillation, where knowledge from a pre-trained "teacher" policy is transferred to a "student" policy~\citep{rusu2015policy}.
 Policy distillation has been effective in compressing and transferring knowledge between networks, improving learning efficiency in RL settings.
-Another avenue is the use of pre-trained model initialization, wherein the policy network trained on the source task initializes the policy for the target task. 
-This method leverages the shared underlying structures between tasks, potentially accelerating convergence and improving performance 
-The framework will also consider feature representation transfer, aiming to reuse learned representations of market dynamics and policyholder behaviors between tasks. 
+Another avenue for future research is the use of pre-trained model initialization, wherein the policy network trained on the source task initializes the policy for the target task. 
+This method leverages the shared underlying structures between tasks, which can potentially accelerate convergence and improve performance.
+The framework will also consider feature representation transfer, which aims at reusing learned representations of market dynamics and policyholder behaviors between tasks. 
 By capturing common patterns across different contracts and market models, the PPO agent can more effectively generalize to new scenarios~\citep{bengio2012deep}.
 
-By addressing these objectives, the research aims to advance the field of financial risk management through the development of adaptive and efficient hedging strategies for variable annuities. The integration of transfer learning into PPO agents has the potential to significantly reduce computational costs and improve the robustness of hedging policies in dynamic market environments.
+By addressing these objectives, the research aims at advancing the field of financial risk management through the development of adaptive and efficient hedging strategies for VA contracts. The integration of transfer learning into PPO agents has the potential to substantially reduce computational costs and improve the robustness of hedging policies in dynamic market environments.
