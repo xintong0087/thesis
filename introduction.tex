@@ -35,11 +35,11 @@ In our numerical experiment, the best neural network metamodel surpasses the sta
 Chapter~\ref{chap:project2} also conducts sensitivity testing on the neural network metamodel. 
 We argue that for estimating tail risk measures of VA contract losses, the inner simulation can be replaced entirely by a suitable metamodel. 
 Eliminating the inner simulation can lead to more substantial computational savings without affecting estimation quality. 
-In the case of requiring extensive inner simulations for regulatory purposes, effective budget allocations can help achieve an improved estimator quality with the same computational budget.
+In the case of requiring extensive inner simulations for regulatory purposes, effective budget allocations can help achieve improved estimator quality with the same computational budget.
 In practice, underlying assumptions of the simulation model are subject to change, and new VA contracts are issued with different contract specifications.
 Simulation budgets are often scarce for new conditions.
 Chapter~\ref{chap:project3} uses transfer learning techniques for a quick adaptation of the neural network metamodel to new market conditions and new VA contracts.
-Our numerical experiments shows that an judicious use of transfer learning can lead to substantially better metamodels than those trained from the scratch.
+Our numerical experiments show that a judicious use of transfer learning can lead to substantially better metamodels than those trained from scratch.
 Chapter~\ref{chap:conclusion} concludes the thesis and discusses potential future research directions.
 Chapter~\ref{chap:futureWork} discusses the future directions of applying deep reinforcement learning in the dynamic hedging of VA contracts.
 
@@ -66,7 +66,7 @@ In nested simulation, an outer simulation generates a set of market scenarios ov
 By combining the results of the inner simulations across the outer scenarios, nested simulation provides an accurate estimate of the tail risk of the VA contract.
 
 Despite its robustness, nested simulation is computationally intensive, often requiring a substantial amount of computational resources and time. 
-Each scenario in the outer simulation requires numerous inner simulations to accurately estmate contract loss. 
+Each scenario in the outer simulation requires numerous inner simulations to accurately estimate contract loss. 
 This computational burden poses practical limitations, especially when a high degree of precision in tail risk estimation is required.
 To address this challenge, metamodeling techniques can be employed to approximate the inner simulation model and reduce the computational cost of nested simulation.
 
@@ -95,8 +95,8 @@ The process of metamodeling generally involves the following steps:
 \end{enumerate}
 
 The development of advanced machine learning models and deep learning techniques has enhanced metamodeling approaches for Monte Carlo simulations, especially in high-dimensional and complex problem settings.
-Example use cases for machine learning include~\cite{jin2020deep}, ~\cite{tang2020deep}, and~\cite{rosen2012metamodeling}.
-These methods offer powerful tools for capturing intricate patterns and nonlinear relationships that traditional metamodeling techniques might have to struggle to model them effectively.
+Example use cases for machine learning include~\cite{jin2020deep},~\cite{tang2020deep}, and~\cite{rosen2012metamodeling}.
+These methods offer powerful tools for capturing intricate patterns and nonlinear relationships that traditional metamodeling techniques might struggle to model effectively.
 In the following sections, we discuss machine learning algorithms in the context of metamodeling for Monte Carlo simulations and their applications in risk management.
 
 \section{Machine Learning for Risk Management Applications}
@@ -111,19 +111,19 @@ This section focuses on three widely used supervised learning models and two rei
 
 Supervised learning is a fundamental approach in machine learning where the algorithm learns a mapping from inputs to outputs based on example input-output pairs \cite{galton1886regression}. 
 In this paradigm, a model is trained on a labeled dataset, which means that each training example is associated with an output label or value. 
-The goal of a supervised learning paradigm is to learn a general rule that maps inputs (also known as features) to outputs (also known as target), enabling the model to make accurate predictions on new, unseen data.
+The goal of a supervised learning paradigm is to learn a general rule that maps inputs (also known as features) to outputs (also known as targets), enabling the model to make accurate predictions on new, unseen data.
 Supervised learning can be carried out in two domains of applications.
 These are:
 
 \begin{itemize} 
     \item \textbf{Classification}: The output variable is categorical, and the task is to assign inputs to one of several predefined categories to produce a qualitative prediction. 
-    Common use in finance and actuarial applications are fraud detection and credit scoring.
+    Common uses in finance and actuarial applications are fraud detection and credit scoring.
     \item \textbf{Regression}: The output variable is continuous, and the task is to predict a real-valued number and produce a quantitative prediction. 
     Examples in actuarial applications include predicting claim amounts, reserve estimates, asset pricing, and estimating tail risk measures of loss distributions.
 \end{itemize}
 
 This thesis focuses on regression models for risk management applications, where the goal is to predict a continuous target variable based on one or more input features.
-Given a dataset of $n$ observations $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$, where $x_i \in \mathbb{R}^d$ is the $d$-dimensional input feature vector, and $y_i \in \mathbb{R}$ is the target variable, a supervised learning algorithm aims to learning a function $f(;\theta): \mathbb{R}^d \rightarrow \mathbb{R}$ that best predicts the target variable $y$ given the input vector of features $x$ with a vector of function parameters $\theta$.
+Given a dataset of $n$ observations $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$, where $x_i \in \mathbb{R}^d$ is the $d$-dimensional input feature vector, and $y_i \in \mathbb{R}$ is the target variable, a supervised learning algorithm aims at learning a function $f(;\theta): \mathbb{R}^d \rightarrow \mathbb{R}$ that best predicts the target variable $y$ given the input vector of features $x$ with a vector of function parameters $\theta$.
 
 Linear regression, kernel regression, and neural networks all fall under the supervised learning category and are widely used in risk management applications.
 Despite the differences in their functional forms, all supervised learning models can be evaluated on a similar set of metrics.
@@ -152,11 +152,11 @@ A general form of a parametric regression model is given by:
 \begin{equation} \label{eq:regression}
     f(x; \theta) = \beta_0 + \sum_{j=1}^{p} \beta_j \phi_j(x),
 \end{equation}
-where $p$ is a number of features, $\beta_0, \beta_1, \ldots, \beta_p$ are trainable regression coefficients, and $\phi_j(x)$ are basis functions that transfrom the input $x$ to allow for non-linear modeling.
+where $p$ is a number of features, $\beta_0, \beta_1, \ldots, \beta_p$ are trainable regression coefficients, and $\phi_j(x)$ are basis functions that transform the input $x$ to allow for non-linear modeling.
 Basis functions can be any functions of $x$ that are chosen to capture the underlying structure of the data.
 Common choices include polynomial basis functions: $\phi_j(x) = x^j$ and Laguerre basis functions: $\phi_j(x) = e^{-x/2} L_j(x)$, where $L_j(x)$ are the Laguerre polynomials that are solutions to the Laguerre differential equation~\citep{szeg1939orthogonal}.
 The training of parametric regression refers to the process of estimating the regression coefficients $\beta_0, \beta_1, \ldots, \beta_p$ that minimize the loss function.
-For a MSE loss metrics, the optimal regression coefficients can be obtained by solving the normal equations.
+For a MSE loss metric, the optimal regression coefficients can be obtained by solving the normal equations.
 Parametric regression is a powerful tool for modeling linear relationships where the basis functions are known from expert knowledge for explicit feature engineering techniques~\citep{hastie2009elements}.
 These techniques utilize predefined functional forms to model the relationship between a set of independent variables and a dependent variable. 
 However, when data exhibits complex, non-linear relationships, linear models fall short. 
@@ -166,7 +166,7 @@ Extensions like polynomial regression and generalized linear models (GLMs) have 
 Nevertheless, these models can still be limited in capturing highly complex patterns of the data. 
 
 \subsection{Non-Parametric Regression Models}
-To overcome some of the previously mentioned limitations of the parametric regression, non-parametric methods such as kernel regression~\citep{hastie2009elements} are often employed. 
+To overcome some of the previously mentioned limitations of parametric regression methods, non-parametric methods such as kernel regression~\citep{hastie2009elements} are often employed. 
 Kernel regression estimates the relationship by averaging the values of the target variable over a local neighborhood of the input $x$.
 The kernel regression with the Nadaraya-Watson estimator is given by:
 \begin{equation}
@@ -175,19 +175,19 @@ The kernel regression with the Nadaraya-Watson estimator is given by:
 where $K(\cdot)$ is a kernel function, which assigns weights to the data points based on their distance to the input $x$, and $h$ is a bandwidth parameter that controls the smoothness of the estimated function.
 The objective of this approach is to estimate a feature-label relationship directly from the data without imposing a specific functional form of the regression function.
 However, they come with several drawbacks that limit their effectiveness, especially in high-dimensional settings or for large datasets. 
-One of the most important drawbacks of the non-parametric regression is the curse of dimensionality \cite{bellman1966dynamic}. 
+One of the most important drawbacks of non-parametric regression methods is the curse of dimensionality~\cite{bellman1966dynamic}. 
 As the number of features increases, the volume of the input space grows exponentially.
 Data points become sparse and the model may overfit to noise in the data.
 In addition, the computational cost associated with non-parametric methods often grows rapidly with the number of dimensions.
 Cross validation and distance calculation are two computationally expensive operations that are often required for a non-parametric regression.
-These drawbacks make the non-parametric regression impractical for modeling high-dimensional large-scale datasets. 
+These drawbacks make non-parametric regression methods impractical for modeling high-dimensional large-scale datasets. 
 
 \subsection{Feedforward Neural Networks}
 
 The progression from traditional parametric and non-parametric regression methods to neural network architectures has been driven by the need to model increasingly complex and high-dimensional data.
 Neural networks have emerged as powerful tools capable of overcoming many limitations of traditional regression methods. 
 They can learn complex, non-linear relationships in data without the need for explicit feature engineering.
-The most crude form of a neural network is the feedforward neural network (FNN), which consists of an input layer, one or more hidden layers, and an output layer~\citep{goodfellow2016}.
+The most basic form of a neural network is the feedforward neural network (FNN), which consists of an input layer, one or more hidden layers, and an output layer~\citep{goodfellow2016}.
 
 \begin{figure}[ht!]
     \centering
@@ -228,7 +228,7 @@ The choice of an activation function also plays a crucial role in the training o
 While sigmoid and hyperbolic tangent functions were popular in early neural networks, ReLU has become the default activation function for deep networks due to its ability to mitigate the vanishing gradient problem and promote sparse activations~\citep{lecun2015deep}.
 
 The key advantage of FNNs lies in their ability to perform automatic feature engineering without a direct human intervention. 
-Unlike traditional machine learning models that require manual selection and transformation of input features, neural networks learn to extract and compose features through their hidden layers during the training. 
+Unlike traditional machine learning models that require manual selection and transformation of input features, neural networks learn to extract and compose features through their hidden layers during their training. 
 Each hidden layer in the network captures higher-level abstractions of the input data by transforming the outputs of the previous layer through nonlinear activation functions~\citep{lecun2015deep}.
 Each layer builds upon the representations learned by the previous layer, enabling the network to capture multiple levels of abstraction. 
 This characteristic is crucial for modeling complex datasets with intricate patterns and relationships~\citep{bengio2013representation}.
@@ -251,7 +251,7 @@ This independence assumption limits their effectiveness in modeling financial ti
 The stylized facts of financial time series, such as volatility clustering, fat tails, and autocorrelation, are challenging to capture with traditional FNNs due to the absence of memory in the model~\citep{cont2001empirical}.
 
 To overcome the limitations of FNNs in handling sequential input, recurrent neural networks (RNNs) were introduced.
-In a RNN, the hidden state at each time step is a function of both the current input and the hidden state from the previous time period~\citep{elman1990finding}:
+In an RNN, the hidden state at each time step is a function of both the current input and the hidden state from the previous time period~\citep{elman1990finding}:
 
 \begin{equation}
     h_t = f(x_t, h_{t-1}; \theta),
@@ -305,30 +305,30 @@ The training process is typically performed over a number of epochs, where each 
 
 However, the training of neural networks is non-convex, and the optimization problem is challenging.
 Stochastic gradient descent (SGD) is a popular optimization algorithm for training neural networks.
-It updates the parameters using a single or a small batch of training examples at a time, which makes it much faster than the crude gradient descent.
+It updates the parameters using a single or a small batch of training examples at a time, which makes it much faster than a crude gradient descent.
 However, SGD may oscillate and converge slowly, especially in non-convex problems~\citep{bengio2016}.
 To address these issues, various adaptive learning rate methods have been proposed in the literature.
-The most popular approach is Adam optimizer, which is a SGD algorithm that adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
+The most popular approach is Adam optimizer, which is an SGD algorithm that adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
 
 Another common technique to improve the training of neural networks is a regularization technique to prevent overfitting.
 One effective regularization method is dropout, which randomly sets a fraction of neurons to zero during each training iteration~\citep{srivastava2014dropout}.
 This prevents neurons from co-adapting too much, encourages redundancy, and leads to a more robust model that generalizes better to unseen data.
 Early stopping is another regularization method that is relevant to our study.
 It involves monitoring the model's performance on a validation set and stopping training when the performance no longer improves~\citep{prechelt2002early}.
-This helps prevent over-fitting by stopping training before the model begins to fit to the noise in the data.
+This helps prevent overfitting by stopping training before the model begins to fit to the noise in the data.
 
 Evaluation of the performance of a neural network is challenging due to the absence of analytical tools.
 Existing machine learning literature addresses this challenge by splitting the data into three parts: training set, validation set, and test set.
-The training set is used to train the model, the validation set is used to tune the model hyper-parameters, and the test set is used to evaluate how well the model generalizes to unseen data.
-The test set is not used during training and is only used for an evaluation purpose.
+The training set is used to train the model, the validation set is used to tune the model hyperparameters, and the test set is used to evaluate how well the model generalizes to unseen data.
+The test set is not used during training and is only used for evaluation purposes.
 
-Under-fitting occurs when the training error is high, which means that the neural network fails to capture the underlying patterns in the training data.
-Over-fitting occurs when the neural network fits to the noise in the training data and cannot generalize results to unseen data.
-In machine learning literature, over-fitting is often quantified as the gap between the training error and the test error~\citep{bishop2006pattern}.
+Underfitting occurs when the training error is high, which means that the neural network fails to capture the underlying patterns in the training data.
+Overfitting occurs when the neural network fits to the noise in the training data and cannot generalize results to unseen data.
+In machine learning literature, overfitting is often quantified as the gap between the training error and the test error~\citep{bishop2006pattern}.
 During training, as the test dataset is not used, this quantity is estimated by using the validation set.
-If the validation error is high compared to the training error, the model is likely over-fitting to the training data.
+If the validation error is high compared to the training error, the model is likely overfitting to the training data.
 
-In practice, the ultimate performance of a neural network is often evalutated based on error metrics on the test dataset and how it compares with the training error. 
+In practice, the ultimate performance of a neural network is often evaluated based on error metrics on the test dataset and how it compares with the training error. 
 The test error is often thought to be a reliable indicator of the model's generalization capability for most machine learning applications.
 However, real-world datasets often contain noise.
 As the test dataset is separated from the training dataset, it is often contaminated with noise.
