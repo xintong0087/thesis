@@ -729,23 +729,23 @@ some DNN metamodels make \textbf{accurate loss predictions} for given scenarios.
         \toprule
         \textbf{Metamodel} & \textbf{Training error} & \textbf{Test error} & \textbf{True error}\\
         \midrule
-        MLR & $0.706 (\pm 8.34\times 10^{-4})$ & $0.713 (\pm 2.67 \times 10^{-2})$ & $0.706 (\pm 3.44 \times 10^{-4})$ \\
-        QPR & $0.543 (\pm 8.27\times 10^{-4})$ & $0.554 (\pm 2.32 \times 10^{-2})$ & $0.544 (\pm 4.12\times 10^{-4})$ \\
-        FNN & $0.129 (\pm 5.95\times 10^{-3})$ & $0.240 (\pm 9.82 \times 10^{-3})$ & $0.132 (\pm 5.82\times 10^{-3})$ \\
-        RNN & $0.132 (\pm 7.53\times 10^{-3})$ & $0.137 (\pm 7.62\times 10^{-3})$ & $0.119 (\pm 7.51\times 10^{-3})$ \\
-        LSTM & $0.075 (\pm 4.48\times 10^{-3})$ & $0.079 (\pm 5.35\times 10^{-3})$ & $0.063 (\pm 4.43\times 10^{-3})$ \\
-        RNN$^*$\footnotemark & $0.109 (\pm 5.20\times 10^{-3})$ & $0.128 (\pm 5.22\times 10^{-3})$ & $0.109 (\pm 5.20\times 10^{-3})$ \\
+        MLR & $0.706 (\pm 8.3\times 10^{-4})$ & $0.713 (\pm 2.7 \times 10^{-2})$ & $0.706 (\pm 3.4 \times 10^{-4})$ \\
+        QPR & $0.543 (\pm 8.3\times 10^{-4})$ & $0.554 (\pm 2.7 \times 10^{-2})$ & $0.544 (\pm 4.1 \times 10^{-4})$ \\
+        FNN & $0.129 (\pm 6.0\times 10^{-3})$ & $0.240 (\pm 9.8 \times 10^{-3})$ & $0.132 (\pm 5.8 \times 10^{-3})$ \\
+        RNN & $0.132 (\pm 7.5\times 10^{-3})$ & $0.137 (\pm 7.6 \times 10^{-3})$ & $0.119 (\pm 7.5 \times 10^{-3})$ \\
+        LSTM & $0.075 (\pm 4.5\times 10^{-3})$ & $0.079 (\pm 5.4 \times 10^{-3})$ & $0.063 (\pm 4.4 \times 10^{-3})$ \\
+        RNN$^*$\footnotemark & $0.109 (\pm 5.2\times 10^{-3})$ & $0.128 (\pm 5.2 \times 10^{-3})$ & $0.109 (\pm 5.2 \times 10^{-3})$ \\
         \bottomrule
         \end{tabular}
-        \caption{MSEs of metamodels for GMWB inner simulation model.}
+        \caption{Average MSEs and 95\% confidence bands of metamodels for GMWB inner simulation model.}
         \label{tab:gmwb_arch}
     \end{table}
 
     \footnotetext{This row summarizes the results of the well-trained RNNs.}
 
     \begin{itemize}
+        \item   RNN-based metamodels have lower true errors than their training errors.
         \item   DNN metamodels with suitable architectures \textbf{cut through the noise} in training labels.
-        \item   
     \end{itemize}
 
 \end{frame}
@@ -935,7 +935,7 @@ some DNN metamodels make \textbf{accurate loss predictions} for given scenarios.
 
     \begin{itemize}
         \item   Same color $\rightarrow$ same total simulation budget.
-        \item   $N = 10$ is a reasonable budget allocation for LSTM metamodels.
+        \item   $N' = 10$ is a reasonable budget allocation for LSTM metamodels.
     \end{itemize}
     
 \end{frame}

@@ -38,11 +38,11 @@
 
         \vspace*{2.0cm}
 
-        Waterloo, Ontario, Canada, 2024 \\
+        Waterloo, Ontario, Canada, 2025 \\
 
         \vspace*{1.0cm}
 
-        \copyright\ Xintong Li, 2024 \\
+        \copyright\ Xintong Li, 2025 \\
         \end{center}
 \end{titlepage}
 
@@ -73,7 +73,7 @@ The following served on the Examining Committee for this thesis. The decision of
 \begin{tabbing}
 Internal-External Member: \=  \kill % using longest text to define tab length
 Supervisor(s): \> Mingbin Feng \\
-\> Assistant Professor, Dept. of Statistics and Actuarial Science\\
+\> Associate Professor, Dept. of Statistics and Actuarial Science\\
 \> University of Waterloo \\[1cm]
 \> Tony S. Wirjanto \\
 \> Professor, Dept. of Statistics and Actuarial Science \\
@@ -129,23 +129,24 @@ I understand that my thesis may be made electronically available to the public.
 
 \begin{center}\textbf{Abstract}\end{center}
 
-Quantitative risk management of modern financial derivatives and actuarial products is intricate and often requires modelling the underlying stochasticity with Monte Carlo simulations.
-A simulation scheme is flexible, and it can easily adapt to changes in model assumptions and market conditions.
-However, as multiple sources of risk are considered over long time horizons, such simulation schemes become increasingly more expensive to implement. 
-Tremendous research effort has been dedicated in the design of computationally efficient machine learning-based procedures that mitigate the computational burden of a standard simulation procedure.
-In machine learning, model flexibility comes at the expense of model resilience, which is especially crucial for risk management tasks.
-This study considers the management of tail risk for complex financial and actuarial products with resilient machine learning-based nested simulation procedures.
+Risk management of financial derivatives and actuarial products is intricate and often requires modelling the underlying stochasticity with Monte Carlo simulations.
+Monte Carlo simulation is flexible, and it can easily adapt to changes in model assumptions and market conditions.
+However, as multiple sources of risk are considered over long time horizons, the simulation model becomes complex and time-consuming to run. 
+Tremendous research effort has been dedicated to the design of computationally efficient machine learning-based procedures that mitigate the computational burden of a standard simulation procedure.
+In machine learning, model flexibility comes at the expense of model resilience, which is crucial for risk management tasks.
+This study considers estimating tail risks of complex financial and actuarial products with resilient machine learning-based nested simulation procedures.
 We propose a novel metamodeling approach that integrates deep neural networks within a nested simulation framework for efficient risk estimation.
-Our approaches offer substantial improvements over standard simulation procedures associated with and illustrate how a resilient machine learning model is built for problem complexity, data structure, quality, and quantity.
-To further enhance adaptability to new variable annuity contracts and changing market conditions, the thesis introduces transfer learning techniques. 
-By reusing and fine-tuning pre-trained metamodels, the proposed approach accelerates the adaptation process to different contract features and evolving market dynamics without the need for retraining models from the scratch. 
+Our approaches offer substantial improvements over the associated standard simulation procedures.
+This study also illustrates how to build and assess resilient machine learning models for different problem complexities and different data structures, qualities, and quantities.
+To further enhance adaptability to new variable annuity contracts and changing market conditions, this thesis explores transfer learning techniques. 
+By reusing and fine-tuning pre-trained metamodels, the proposed approach accelerates the adaptation process to different contract features and evolving market dynamics without retraining models from scratch. 
 Transfer learning improves computational efficiency and enhances the robustness and flexibility of neural network metamodels in dynamic hedging of variable annuities.
 
-Extensive numerical experiments carried out in this thesis demonstrate that the proposed method achieves substantial improvements in computational efficiency, reducing simulation times by orders of magnitude compared to standard nested simulation procedures.
+Extensive numerical experiments in this thesis demonstrate that the proposed methods substantially improve computational efficiency, sometimes shortening runtime by orders of magnitude compared to standard nested simulation procedures. 
 The results indicate that the deep neural network metamodels with transfer learning can quickly adapt to new market scenarios and contract specifications.
-The findings of this research contribute to the advancement of risk management practices for complex actuarial products and financial derivatives.
+This research contributes to the advancement of risk management practices for complex actuarial products and financial derivatives.
 By leveraging advanced machine learning techniques, the thesis offers a practical and scalable solution for insurers to perform timely and accurate risk assessments.
-The integration of long short-term memory (LSTM) metamodels and transfer learning into a nested simulation framework represents a major step forwardtoward more efficient, adaptable, and robust methodologies in actuarial science and quantitative finance.
+The integration of long short-term memory metamodels and transfer learning into a nested simulation framework represents a major step forward toward more efficient, adaptable, and robust methodologies in actuarial science and quantitative finance.
 
 
 \cleardoublepage
@@ -155,10 +156,16 @@ The integration of long short-term memory (LSTM) metamodels and transfer learnin
 
 \begin{center}\textbf{Acknowledgements}\end{center}
 
-I would like to thank Professor Mingbin Feng and Professor Tony Wirjanto for their valuable support. 
-They have patiently helped me through my research journey.
-I am forever grateful for my true best friends, who have supported me during the most difficult times.
+I would like to express my deepest gratitude to Professor Mingbin Feng and Professor Tony Wirjanto for their invaluable support and guidance throughout my academic journey. 
+Their unwavering patience and profound wisdom have been instrumental in helping me navigate the complexities of my research. 
+I am deeply grateful for their mentorship, which has not only sharpened my analytical skills but also inspired me to pursue excellence in my work.
 
+Additionally, I extend my sincere thanks to my best friends, who have stood by me during the most challenging times. 
+Their unwavering support and encouragement have been a constant source of strength that helped me overcome obstacles and maintained my motivation throughout this process. 
+Words cannot fully convey how much their presence has meant to me over these years.
+
+I also wish to acknowledge the support of my family, who have always been a source of love and encouragement.
+They have provided me with the emotional stability I needed to focus on my studies and research.
 
 \cleardoublepage
 
