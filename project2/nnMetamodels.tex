@@ -55,7 +55,7 @@ Instead of relying solely on real-data and splitting it into multiple subsets, w
 By controlling the simulation design parameters, such as the number of independent replications, we can control the quality and also the quantity of the training labels fed into the neural networks.
 In such a controlled environment, we obtain more clear-cut answers to the above fundamental questions.
 
-In a nested simulation, a simulation model is used to generate a large number of outer scenarios, and each scenario is then used as an input to another simulation model, referred to as a inner simulation model.
+In a nested simulation, a simulation model is used to generate a large number of outer scenarios, and each scenario is then used as an input to another simulation model, referred to as an inner simulation model.
 Borrowing terminologies from the machine learning community, we can view a set of simulated outer scenarios and estimated hedging errors for those scenarios as \textit{features} and noisy \textit{labels}.
 The noise level of the labels can be controlled by the number of inner replications in the inner simulation model.
 One can train supervised learning models using these simulated features and labels.
@@ -107,7 +107,7 @@ Tail risk measures such as VaR and CVaR are widely used for setting a regulatory
 For example, European insurers set regulatory capital at $99.5\%$-VaR according to Solvency II~\cite{eiopa2014underlying}.
 In Canada, the regulatory capital requirement for VAs is set based on CVaRs as prescribed in~\cite{osfi2017life}.
 
-Let $L_1,L_2,\ldots,L_M$ be $M$ independent and identically distributed (i.i.d.) simulated losses of $L$ and let $L_{(1)}\leq L_{(2)}\leq \ldots\leq L_{(M)}$ be the corresponding ordered losses.
+Let $L_1,L_2,\ldots,L_M$ be $M$ independent and identically distributed (i.i.d.) simulated losses of $L$ and let $L_{(1)}\leq L_{(2)}\leq \ldots\leq L_{(M)}$ be the ordered losses.
 For a given confidence level $\alpha$ (assume that $\alpha M$ is an integer for simplicity), $\alpha$-VaR can be estimated by the sample quantile $\widehat{\VaR}_\alpha = L_{(\alpha M)}$. Also, $\alpha$-CVaR can be estimated by
 \begin{equation} \label{eq2:cvar-hat}
     \widehat{\CVaR}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}L_{(i)} = \frac{1}{(1-\alpha)M} \sum_{i \in \tail_{(1-\alpha )M}}L_{i}.
@@ -300,7 +300,7 @@ Similar to~\cite{dang2020efficient}, the proposed two-stage procedure in Algorit
 However, different from their fixed-budget simulation design, we attempt to achieve a target accuracy.
 Specifically, in stage 2 we propose using a standard procedure with the same number of inner replications, $N$, as a benchmark procedure.
 There are two different types of experiment designs for nested simulation procedures: fixed-budget design and fixed-accuracy design.
-In a fixed-budget design, the simulation budget is fixed and the goal is to achieve the highest degree of accuracy possible within the budget.
+In a fixed-budget design, the simulation budget is fixed, and the goal is to achieve the highest degree of accuracy possible within the budget.
 Let $\Gamma = MN$ be the simulation budget for the standard procedure, where each scenario receives $\frac{\Gamma}{M}$ inner replications.
 In the proposed two-stage procedure, suppose that stage 1 uses $1\%$ of the simulation budget, $\alpha = 95\%$, and $m=(1-\alpha)M$, then $99\%$ of the simulation budget is concentrated on $5\% M$ predicted tail scenarios in stage 2.
 In other words, each predicted tail scenario receives $\frac{99\% \Gamma}{5\% M}$ inner replications, almost 20 times more than that in the standard procedure.
@@ -309,7 +309,7 @@ If the metamodel is accurate in predicting true tail scenarios, the two-stage pr
 However, we believe that the goal of designing an efficient simulation procedure is to solve practical problems faster, so a target-accuracy design is more suitable, which refers to obtaining a similar level of accuracy as the standard procedure but with much less simulation budget.
 One other reason for recommending this fixed-accuracy design is to investigate whether DNN metamodels trained with much noisier labels can identify true tail scenarios with a similar degree of accuracy as the standard procedure.
 The size of the predicted tail scenario set in stage 1, $m$, is an important experiment design parameter that affects the correct identification of true tail scenarios and ultimately affects the estimation accuracy for CVaR.
-Clearly, there is a lower bound $m \geq (1-\alpha)M$ because the $\alpha$-CVaR is estimated by the average of $(1-\alpha)M$ largest losses at the end of stage 2.
+Clearly, there is a lower bound $m \geq (1-\alpha)M$ because the $\alpha$-CVaR is estimated by the average of the largest $(1-\alpha)M$ losses at the end of stage 2.
 For ease of reference, we call the additional percentage of predicted tail scenarios above this lower bound, i.e., $\epsilon = \frac{m - (1-\alpha)M}{M}$, as a \textit{safety margin}.
 On one hand, large $\epsilon$ is not desirable because it increases computations in stage 2.
 On the other hand, $\epsilon$ should be set reasonably large so that more true tail scenarios are included in the predicted tail scenario set $\widehat{\tail}_{m}^{PD}$ and are ultimately included in $\widehat{\tail}_{(1-\alpha )M}$ at the end of stage 2.
@@ -453,7 +453,7 @@ Our LSTM has the same architecture as the RNN but with LSTM cells in place of RN
     \label{tab:gmwb_arch}
 \end{table}
 
-\footnotetext{This row summarizes the error metrics of the well-trained RNN, where the ones suffers from a vanishing gradient issue are removed from the averages.}
+\footnotetext{This row summarizes the error metrics of the well-trained RNN, where the ones suffer from a vanishing gradient issue are removed from the averages.}
 
 For each metamodel, \num{100} independent macro replications are run.
 Each macro replication involves simulating a noisy dataset, randomly separating it into training and test data, fitting a metamodel, and forming predictions.
@@ -494,7 +494,7 @@ However, the price that RNN pays for a reduced number of parameters is the diffi
 Comparing the two metamodels with recurrent structures, a LSTM network overcomes two key drawbacks of a crude RNN.
 \begin{enumerate}
     \item It avoids the vanishing gradient problem during training, which makes the LSTM network easier to train than the RNN. Figure~\ref{fig2:QQ_RNN} shows the quantile-quantile (QQ) plots between the \textbf{training} labels and the RNN predictions for two macro replications, where training of the latter is hindered by the vanishing gradient problem. 
-    As a result, the half length of the $95\%$ confidence band of the RNN's training error is much larger than all other metamodels. 
+    As a result, the half-width of the $95\%$ confidence band of the RNN's training error is much larger than all other metamodels. 
     The last row of Table~\ref{tab:gmwb_arch} shows the average squared errors of the good RNN metamodels that have been successfully trained. 
     Removing the RNN metamodels that are ill-trained, the average squared errors of the RNN metamodels are lower than those of the FNN.
     This suggests that the RNN is more sensitive to noise in the sense of a stochastic gradient descent than the FNN.
@@ -508,7 +508,7 @@ Comparing the two metamodels with recurrent structures, a LSTM network overcomes
 In summary, the network depth ensures successful learning of the training dataset, and the network architecture serves as 
 \begin{enumerate}
     \item regularization that prevents over-fitting, and 
-    \item a prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data.
+    \item prior knowledge that guides the optimization algorithm to find a solution that generalizes well to unseen data.
 \end{enumerate}
 They are both crucial for the metamodels' performance.
 It is important to choose a \textit{suitable} architecture with a pre-set capacity that is large enough to learn the training dataset and generalize to the true feature-label relationship.
@@ -737,7 +737,7 @@ The test error approximates the true error and is directly observable.
 The differences in test errors of the LSTM metamodels are inconsistent with the differences in true errors.
 Therefore, test errors are not reliable indicators of the metamodels' noise tolerance.
 For practical applications that utilize nerual networks as metamodels, we recommend not to simulate the test scenarios.
-Instead, we recommend to simulate the true contract losses on a subset of training scenarios to evaluate the metamodels' generalization ability.
+Instead, we recommend simulating the true contract losses on a subset of training scenarios to evaluate the metamodels' generalization ability.
 
 In summary, our numerical experiments demonstrate that both LSTM metamodels are capable of learning the true inner simulation model from the noisy training labels.
 In most cases, a high-capacity metamodel is shown to perform better.
@@ -904,7 +904,7 @@ A single-stage procedure with a regular LSTM metamodel is particularly superior 
 Note that the single-stage procedure does not require a safety margin.
 By avoiding the calibration of the safety margin, it is more straight-forward to implement and is more efficient than the two-stage procedure.
 For a two-stage procedure with a $0\%$ safety margin, the extra computational cost is from the extensive inner simulation in stage 2.
-On $4$ $20$-core Intel Xeon Gold $\num{6230}$ processors, stage 2 of the two-stage procedure takes $30$ minutes to run with parallel processing, while the $95\%$ confidence band of training time of the high-capacity LSTM metamodel is $(19.64 \pm 0.94)$ minutes on a Nvidia RTX $\num{3060}$ Ti GPU.
+On $4$ $20$-core Intel Xeon Gold $\num{6230}$ processors, stage 2 of the two-stage procedure takes $30$ minutes to run with parallel processing, while the $95\%$ confidence band of training time of the high-capacity LSTM metamodel is $(19.64 \pm 0.94)$ minutes on an Nvidia RTX $\num{3060}$ Ti GPU.
 While the accuracy of the two-stage procedure is highly dependent on the safety margin, increasing the safety margin introduces extra computational cost.
 Therefore, while achieving a higher accuracy in estimating the CVaR, the single-stage procedure requires only $60\%$ computation time of the two-stage procedure.
 
@@ -912,12 +912,12 @@ Therefore, while achieving a higher accuracy in estimating the CVaR, the single-
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project2/figures/singleStage/MSEConvergence_lstmLoCap.png}
-        \caption{regular LSTM}
+        \caption{Regular LSTM}
         \label{subfig2:convLoCap}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project2/figures/singleStage/MSEConvergence_lstmHiCap.png}
-        \caption{high-capacity LSTM}
+        \caption{High-capacity LSTM}
         \label{subfig2:convHiCap}
     \end{subfigure}
     \caption{Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.} 
@@ -928,7 +928,7 @@ Therefore, while achieving a higher accuracy in estimating the CVaR, the single-
 To further investigate the single-stage procedure's performance, we conduct a convergence analysis on the LSTM metamodels.
 Figure~\ref{fig2:gammaConvergence} shows the log-log plots of the relative root mean square errors (RRMSE) between the LSTM metamodel CVaR predictions and the true CVaR against the total simulation budget $\Gamma$.
 For each budget $\Gamma$, the metamodels are trained for different combinations of $M$ and $N$, and the metamodel with the best RRMSE is plotted.
-While numerical results suggests that the CVaR estimator of the single-stage procedure with LSTM metamodels may have better accuracy than the two-stage procedure and the standard procedure when the number of outer scenarios is further increased, we found it difficult to compare their performance due to insufficient computational resources.
+While numerical results suggest that the CVaR estimator of the single-stage procedure with LSTM metamodels may have better accuracy than the two-stage procedure and the standard procedure when the number of outer scenarios is further increased, we found it difficult to compare their performance due to insufficient computational resources.
 For $\Gamma \leq \num{100000}$, the number of outer scenarios is fixed at $M = \num{100000}$, and only the number of inner replications is varied.
 Instead, we try to analyze the effect of the number of outer scenarios and the number of inner replications separately by fixing one and varying the other.
 
@@ -947,7 +947,7 @@ For an LSTM metamodel, increasing the data quality of the training labels has di
 For an increasing number of inner replications with a fixed number of outer scenarios, the RRMSE ceases to decrease after reaching $N = \num{100}$. 
 More specfically, when the quality of the training labels is fixed at $N = \num{10}$, the CVaR estimator of a single-stage procedure with a LSTM metamodel converge roughly in the order of $\mathcal{O}(M^{\frac{2}{3}})$.
 This observation resonates with the best possible convergence rate of a standard nested simulation procedure in~\cite{gordy2010nested}.
-Hence, in practice, we suggest to run the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.
+Hence, in practice, we suggest running the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.
 
 
 \section{Conclusion} \label{sec2:conclusion}
@@ -960,7 +960,7 @@ By showcasing the resilience of these models, our study aims at encouraging regu
 Our findings are particularly insightful in this context.
 
 In our numerical experiments, a LSTM metamodel is resilient to a high level of noise in training labels and is able to make accurate predictions. 
-This is a an encouraging evidence that DNN metamodels can be used to improve the efficiency of Monte Carlo simulation for quantitative risk management tasks that require a computational-expensive simulation procedure.
+This is an encouraging evidence that DNN metamodels can be used to improve the efficiency of Monte Carlo simulation for quantitative risk management tasks that require a computational-expensive simulation procedure.
 We propose two nested simulation procedures that use DNN metamodels to estimate risk measures of the hedging loss of a VA contract.
 For estimating tail risk measures, our two-stage procedure is designed to address regulatory concerns by avoiding the direct use of metamodel predictions but instead by using them to identify the potential tail scenarios.
 An extensive inner simulation is performed in this chapter to achieve a high level of accuracy on the predicted tail scenarios.
@@ -981,5 +981,5 @@ The versatility of neural networks could unlock new insights across a broad spec
 In this chapter, we have demonstrated the potential of DNN metamodels to estimate risk measures with high accuracy and efficiency when simulation data is abundant.
 In practice, simulation data is often scarce for new market conditions and new insurance products.
 DNN metamodels are known to suffer from over-fitting when the number of training samples is limited.
-In the next chapter, we will extend our study to transfer learning and show that DNN metamodels trained on a existing VA contract can be transferred to a new VA contract with different market conditions.
+In the next chapter, we will extend our study to transfer learning and show that DNN metamodels trained on an existing VA contract can be transferred to a new VA contract with different market conditions.
 We hypothesize that the DNN metamodel will generalize well to the new VA contract, and the computational savings from transfer learning will be substantial.

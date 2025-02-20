@@ -117,7 +117,7 @@ For the source task, we have a dataset $\mathcal{D}_{\text{So}} = { (X_{\text{So
 $X_{\text{So}}^{(i)} \in \mathcal{X}_{\text{So}}$ and $L_{\text{So}}^{(i)} \in \mathcal{Y}_{\text{So}}$.
 The ultimate objective is to learn a metamodel $f_{\text{Ta}}$ that predicts the VA contract losses $L_{\text{So}}$ from the scenarios $X_{\text{Ta}}$ in the form of a financial time series.
 TL starts by training a metamodel $f_{\text{So}}$ on the source domain $\mathcal{D}_{\text{So}}$.
-For both the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2}, $f_{\text{So}}$ is approximated by an LSTM network $f_{\text{So}}(\cdot ; \theta_{\text{So}})$, where the parameters of the LSTM network, $\theta_{\text{So}}$ are learned by minimizing a MSE loss function on the source domain.
+For both the two-stage procedure and the single-stage procedure in Chapter~\ref{chap:project2}, $f_{\text{So}}$ is approximated by an LSTM network $f_{\text{So}}(\cdot ; \theta_{\text{So}})$, where the parameters of the LSTM network, $\theta_{\text{So}}$ are learned by minimizing an MSE loss function on the source domain.
 Then the pre-trained parameters $\theta_{\text{So}}$ to inform the learning of $f_{\text{Ta}}(\cdot ; \theta_{\text{Ta}})$ on the target domain $\mathcal{D}_{\text{Ta}}$.
 The training on the target domain should encourage similarity between $\theta_{\text{So}}$ and $\theta_{\text{Ta}}$ to facilitate the transfer of knowledge.
 
@@ -133,7 +133,7 @@ For the target task, we initialize $\theta_{\text{Ta}} = \theta_{\text{So}}$ and
 \begin{algorithm}[ht!]
 \caption{Fine-tuning Metamodel for a Target Task}
 \begin{algorithmic}[1] \label{alg3:fineTuning}
-    \STATE \textbf{Input:} source dataset $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$ , target dataset $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$, learning rate $\alpha_{\text{So}}$ and smaller learning rate $\alpha_{\text{Ta}}$.
+    \STATE \textbf{Input:} source dataset $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$, target dataset $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$, learning rate $\alpha_{\text{So}}$ and smaller learning rate $\alpha_{\text{Ta}}$.
     
     \STATE Train a LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
     \begin{equation}
@@ -255,7 +255,7 @@ Criteria for selecting tasks with similar simulation schemes include:
 \end{itemize}
 
 Suppose that we aim at developing an LSTM metamodel for a GMWB contract under a stochastic volatility asset model, but we have limited data for this simulation scheme. 
-For multi-task learning, we can select related nested simulation simulation procedures with relatively abundant data, such as:
+For multi-task learning, we can select related nested simulation procedures with relatively abundant data, such as:
 
 
 \begin{itemize} 
@@ -399,7 +399,7 @@ We first examine the performance of fine-tuning and layer freezing in adapting L
 Figure~\ref{fig3:figure1} compares the performance of LSTM metamodels on the target tasks with and without TL.
 Learning histories of the LSTM metamodels is shown for the target task of metamodeling GMMB contract losses on the RS-GBM asset model with static lapse.
 The source task is hedging a GMMB contract on RS-GBM with no lapse, and the target task is hedging the same GMMB contract but with a static lapse.
-The simulation data for the target task is generated with the same nested simulation simulation procedure as the source task, except for the lapse feature.
+The simulation data for the target task is generated with the same nested simulation procedure as the source task, except for the lapse feature.
 Figure~\ref{subfig3-1:extensive} demonstrates the performance of the LSTM metamodel trained extensively only on the target task by using $M_{\text{TA}} = 50,\!000$ samples, which serves as a benchmark for this study. 
 The metamodel achieves a low validation MSE due to the availability of a large dataset.
 In contrast, Figure~\ref{subfig3-1:without} presents the results of training directly on the target task without pre-training on the source task.
@@ -408,7 +408,7 @@ It leads to highly unstable training dynamics with a substantial amount of fluct
 Learning without knowledge transfer leads poor generalization and extreme overfitting. 
 Often, the training data is limited for a new VA contract, and such instability is particularly problematic for a quick adaptation of LSTM metamodels.
 TL techniques like fine-tuning and layer freezing can help mitigate these challenges.
-Figure~\ref{subfig3-1:fineTuning} shows the results of fine-tuning a pretrained metamodel on RS-GBM with no lapse.
+Figure~\ref{subfig3-1:fineTuning} shows the results of fine-tuning a pre-trained metamodel on RS-GBM with no lapse.
 Fine-tuning offers a noticeable improvement over training without TL by reducing the instability in the validation MSE. 
 However, despite this improvement, fine-tuning may not fully mitigate the challenges of training with a small dataset.
 No negative trasfer is observed, but the fine-tuned metamodel struggles to achieve a low validation MSE.
@@ -440,7 +440,7 @@ This reduction in trainable parameters also accelerates the convergence, and it 
 \end{figure}
 
 We further investigate the performance of fine-tuning on the target task of metamodeling GMMB contract losses on RS-GBM with a dynamic lapse. 
-The source tasks used for pretraining are GMMB contracts on RS-GBM with no lapse and a static lapse, respectively. 
+The source tasks used for pre-training are GMMB contracts on RS-GBM with no lapse and a static lapse, respectively. 
 Figure~\ref{fig3:figure2} displays the learning curves of the LSTM metamodels fine-tuned from these two distinct source tasks.
 We observe that the performance of the fine-tuned metamodel is highly dependent on the similarity between the source and target tasks.
 Fine-tuning from a source task with a static lapse results in a faster convergence and a lower validation error.
@@ -548,7 +548,7 @@ Figure~\ref{fig3:figure4} illustrates the learning history of transferring pre-t
     \label{fig3:figure4}
 \end{figure}
 
-Figure~\ref{subfig3-4:extensive} presents the performance of an extensively trained LSTM metamodel on the target task using $\num{50000}$ samples, serving as a benchmark of best metamodel performance. 
+Figure~\ref{subfig3-4:extensive} presents the performance of an extensively trained LSTM metamodel on the target task using $\num{50000}$ samples, serving as a benchmark of the best metamodel performance. 
 The extensively trained metamodel achieves a low validation error and demonstrates stable convergence due to having enough training samples. 
 In contrast, Figure~\ref{subfig3-4:without} shows the results of training the metamodel directly on the target task with $\num{2000}$ training samples. 
 Fewer training samples and no prior knowledge leads to unstable training dynamics. 
@@ -572,12 +572,12 @@ Freezing the LSTM layers or the fully connected layer hinders the metamodel's ab
     \centering
     \begin{tabular}{lrrr}
         \toprule
-        \textbf{Model} & \textbf{Training Samples} & \textbf{Training MSE} & \textbf{True MSE} \\
+        \textbf{Model} & \textbf{Training samples} & \textbf{Training MSE} & \textbf{True MSE} \\
         \midrule
         Without TL & $\num{2000}$ & $0.3588$ & $0.4188$ \\
-        Fine Tuning & $\num{2000}$ & $0.1690$ & $0.1780$ \\
-        Layer Freezing & $\num{2000}$ & $0.1828$ & $0.2295$ \\
-        Extensive Training & $\num{50000}$ & $0.0853$ & $0.0726$ \\
+        Fine-tuning & $\num{2000}$ & $0.1690$ & $0.1780$ \\
+        Layer freezing & $\num{2000}$ & $0.1828$ & $0.2295$ \\
+        Extensive training & $\num{50000}$ & $0.0853$ & $0.0726$ \\
         \bottomrule
     \end{tabular}
     \caption{Comparison of different TL methods to GMWB contracts}
@@ -600,12 +600,12 @@ Both contracts share some common contract features and temporal patterns, which 
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4_1.png}
-        \caption{Tail scenarios identification} 
+        \caption{Identifying Tail scenarios} 
         \label{subfig3-4-1:tail}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4_2.png}
-        \caption{$95\%$-CVaR prediction}
+        \caption{$95\%$-CVaR predictions}
         \label{subfig3-4-2:CVaR}
     \end{subfigure}
     \caption{TL performance on RS-GBM GMWB with dynamic lapse}
@@ -627,11 +627,11 @@ Freezing some layers may lead to negative transfer.
 \subsection{Multi-task Learning}
 
 Multi-task learning enables the LSTM metamodels to learn shared representations across related VA contracts.
-In this section, we examine the performance of multitask learning applied to two types of VAs, GMMB and GMWB with the dynamic lapse rates.
+In this section, we examine the performance of multi-task learning applied to two types of VAs, GMMB and GMWB with the dynamic lapse rates.
 The simulation datasets contain $2,\!000$ samples for each contract type, and the LSTM metamodels are trained using multi-task learning. 
 In our experiments, Algorithm~\ref{alg3:multiTaskLearning} is used to train the LSTM metamodels simultaneously to minimize the multi-task MSE loss function in Equation~\ref{eq3:multiTaskLoss}.
 We use individual task training as a baseline for comparison, where the LSTM metamodels are trained separately on the GMMB and GMWB contracts.
-The objective is to assess how multitask learning can improve the training efficiency and performance of both products compared to individual task training.
+The objective is to assess how multi-task learning can improve the training efficiency and performance of both products compared to individual task training.
 
 \begin{figure}[ht!]
     \includegraphics[width=\textwidth]{./project3/tikz/mtl.pdf}
@@ -654,7 +654,7 @@ The LSTM layers are shared to train for capturing general temporal patterns, and
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure5b.png}
-        \caption{Task performance with multitask training}
+        \caption{Task performance with multi-task training}
         \label{subfig3-5:fineTuning}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
@@ -671,12 +671,12 @@ The LSTM layers are shared to train for capturing general temporal patterns, and
     \label{fig3:figure5}
 \end{figure}
 
-Figure~\ref{fig3:figure5} compares the learning curves for the training of the GMMB and the GMWB, with and without the multitask learning.
-The comparison between the multitask learning (Figures~\ref{subfig3-5:multiTask} and~\ref{subfig3-5:fineTuning}) and the individual task training ((Figures~\ref{subfig3-5:gmmb_individual} and~\ref{subfig3-5:gmwb_individual})) demonstrates the benefit of the multi-task learning for both products. 
+Figure~\ref{fig3:figure5} compares the learning curves for the training of the GMMB and the GMWB, with and without the multi-task learning.
+The comparison between the mult-itask learning (Figures~\ref{subfig3-5:multiTask} and~\ref{subfig3-5:fineTuning}) and the individual task training ((Figures~\ref{subfig3-5:gmmb_individual} and~\ref{subfig3-5:gmwb_individual})) demonstrates the benefit of the multi-task learning for both products. 
 
 In the case of the GMMB, the multi-task learning allows the model to achieve faster convergence while reducing overfitting.
 For the GMWB, the multi-task learning framework helps to stablize the training process.
-The shared LSTM layers in the multitask model are able to capture common temporal patterns and dynamics, which benefits both the GMMB and the GMWB when the training samples are scarce.
+The shared LSTM layers in the multi-task model are able to capture common temporal patterns and dynamics, which benefits both the GMMB and the GMWB when the training samples are scarce.
 
 Similar to the pooling in Chapters~\ref{chap:project1} and~\ref{chap:project2} but on a higher level, multi-task learning enables the LSTM metamodels to leverage shared representations across related VA contracts.
 
@@ -689,7 +689,7 @@ Similar to the pooling in Chapters~\ref{chap:project1} and~\ref{chap:project2} b
 %     \end{subfigure}\hfill
 %     \begin{subfigure}{0.48\textwidth}
 %         \includegraphics[width=\textwidth]{./project3/figures/figure5b.png}
-%         \caption{Task performance with multitask training}
+%         \caption{Task performance with multi-task training}
 %         \label{subfig3-6:fineTuning}
 %     \end{subfigure}    
 %     \label{fig3:figure6}

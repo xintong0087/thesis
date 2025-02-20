@@ -11,10 +11,9 @@ Database file #1: refP1.bib
 Database file #2: refP2.bib
 Database file #3: refP3.bib
 Database file #4: refOther.bib
-Warning--I didn't find a database entry for "heston1993stochastic"
 You've used 169 entries,
             1935 wiz_defined-function locations,
-            1371 strings with 32810 characters,
+            1370 strings with 32790 characters,
 and the built_in function-call counts, 69330 in all, are:
 = -- 6836
 > -- 2983
@@ -53,4 +52,3 @@ warning$ -- 0
 while$ -- 569
 width$ -- 0
 write$ -- 2202
-(There was 1 warning)
