@@ -8,10 +8,10 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Cross-validation for the kernel smoothing-based procedure with $\Gamma =\num {100000}$}}{52}{figure.caption.18}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Empirical convergence of regression procedure for European call options and $d=20$}}{53}{figure.caption.19}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different regression bases}}{55}{figure.caption.20}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{56}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Empirical convergence of nested simulation procedures for quadratic tracking error on different portfolios with $d=20$}}{55}{figure.caption.21}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Empirical convergence of nested simulation procedures for a W-shaped payoff}}{56}{figure.caption.22}%
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Empirical convergence of nested simulation procedures for different risk measures on Portfolio 1 with $d=20$}}{57}{figure.caption.23}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{58}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Empirical convergence of regression-based procedures for different levels of VaR and CVaR for Up and Out Barrier Call Options}}{57}{figure.caption.24}%
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Empirical convergence of regression-based nested simulation procedures for different asset models}}{58}{figure.caption.25}%
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Total computational cost for different procedures with $d=10$}}{62}{figure.caption.28}%
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Computational cost for implementing nested simulation procedures with $d=10$, excluding simulation time}}{63}{figure.caption.29}%
@@ -33,7 +33,7 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Layer Freezing on RS-GBM GMMB with dynamic lapse}}{118}{figure.caption.50}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{120}{figure.caption.52}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces TL performance on RS-GBM GMWB with dynamic lapse}}{122}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task Learning Framework for VA Contracts}}{123}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Multi-task learning framework for VA contracts}}{123}{figure.caption.55}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Multi-task Learning on RS-GBM GMMB and GMWB with dynamic lapse}}{124}{figure.caption.56}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

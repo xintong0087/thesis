@@ -97,10 +97,10 @@ In supervised learning, a \textbf{domain} $\mathcal{D}$ comprises a feature spac
 
 A typical TL framework for supervised learning consists of the following:
 \begin{itemize}
-    \item   \textbf{source domain}: $\mathcal{D}_{\text{So}} = \{\mathcal{X}_{\text{So}}, F_{\text{So}}(\mathbf{X})\}$
-    \item   \textbf{source task}: $\mathcal{T}_{\text{So}} = \{\mathcal{Y}_{\text{So}}, f_{\text{So}}(\cdot)\}$
-    \item   \textbf{target domain}: $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(\cdot)\}$
-    \item   \textbf{target task}: $\mathcal{T}_{\text{Ta}} = \{\mathcal{Y}_{\text{Ta}}, f_{\text{Ta}}(\cdot)\}$
+    \item   \textbf{source domain}: $\mathcal{D}_{\text{So}} = \{\mathcal{X}_{\text{So}}, F_{\text{So}}(\mathbf{X})\}$,
+    \item   \textbf{source task}: $\mathcal{T}_{\text{So}} = \{\mathcal{Y}_{\text{So}}, f_{\text{So}}(\cdot)\}$,
+    \item   \textbf{target domain}: $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(\cdot)\}$,
+    \item   \textbf{target task}: $\mathcal{T}_{\text{Ta}} = \{\mathcal{Y}_{\text{Ta}}, f_{\text{Ta}}(\cdot)\}$,
 \end{itemize}
 where $\mathcal{X}_{\text{So}}$ and $\mathcal{X}_{\text{Ta}}$ include input features derived from the outer simulation of two different VA contracts or market conditions, and $F_{\text{So}}$ and $F_{\text{Ta}}$ are the marginal probability distributions of the source and target domains, respectively.
 Hence, the source domain and task are related to one VA contract for a certain market condition, while the target domain and task are related to new VA contracts and market conditions for which we don't have the simulation budget to run the standard nested simulation procedure extensively.
@@ -137,20 +137,20 @@ For the target task, we initialize $\theta_{\text{Ta}} = \theta_{\text{So}}$ and
     
     \STATE Train a LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
     \begin{equation}
-        \theta_{\text{So}} = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2
+        \theta_{\text{So}} = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2.
     \end{equation}
 
     \STATE Initialize the target metamodel parameters $\theta_{\text{Ta}}$ using the pre-trained metamodel parameters:
     \[
-    \theta_{\text{Ta}} \gets \theta_{\text{So}}
+    \theta_{\text{Ta}} \gets \theta_{\text{So}}.
     \]
     
     \STATE Fine-tune the entire LSTM model $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ on the target dataset $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate $\alpha_{\text{Ta}}$:
     \begin{equation}
-        \theta_{\text{Ta}} = \min_{\theta} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta) - L_{\text{Ta}}^{(i)} \right)^2
+        \theta_{\text{Ta}} = \min_{\theta} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta) - L_{\text{Ta}}^{(i)} \right)^2.
     \end{equation}
     
-    \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ for the target task
+    \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ for the target task.
 \end{algorithmic}
 \end{algorithm}
 
@@ -172,22 +172,22 @@ The intuition behind layer freezing is that the lower layers capture general fea
         
         \STATE Train LSTM model $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
         \begin{equation}
-            \theta_{\text{So}} = [\theta_0, \theta_1] = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2
+            \theta_{\text{So}} = [\theta_0, \theta_1] = \min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} \left( f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)} \right)^2.
         \end{equation}
         
         \STATE Initialize the target model parameters $\theta_{\text{Ta}} = [\theta_0, \theta_1]$ using the pre-trained source model parameters $\theta_{\text{So}}$:
         \[
-        \theta_{\text{Ta}} \gets \theta_{\text{So}} = [\theta_0, \theta_1]
+        \theta_{\text{Ta}} \gets \theta_{\text{So}} = [\theta_0, \theta_1].
         \]
         
         \STATE Freeze the parameters of the shared layers $\theta_0$:
         
         \STATE Fine-tune the trainable layers $\theta_1$ on the target dataset $\mathcal{D}_{\text{Ta}}$ using Algorithm~\ref{alg3:fineTuning}:
         \begin{equation}
-            \theta_{\text{Ta}} = \min_{\theta_1} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; [\theta_0, \theta_1]) - L_{\text{Ta}}^{(i)} \right)^2
+            \theta_{\text{Ta}} = \min_{\theta_1} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; [\theta_0, \theta_1]) - L_{\text{Ta}}^{(i)} \right)^2.
         \end{equation}
         
-        \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; [\theta_0, \theta_1])$ for the target task
+        \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; [\theta_0, \theta_1])$ for the target task.
     \end{algorithmic}
     \end{algorithm}
 
@@ -211,7 +211,6 @@ The objective function for multi-task learning is the sum of the loss functions 
 \begin{equation} 
     \min_{\theta_0, \theta_1, \dots, \theta_K} = \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_1, \dots, \theta_K) - L_k^{(i)} \right)^2,
 \end{equation}
-
 where MSE loss function is used as the error metric, and $f_i(\cdot; \theta_0, \theta_1, \dots, \theta_K)$ is the output of the network for task $k$.
 In essence, multi-task learning uses a multi-head architecture, where each task has its own output head, but the shared LSTM layers learn a common representation across tasks.
 Transfer occurs through the shared LSTM layers $\theta_0$. 
@@ -226,12 +225,12 @@ The task-specific fully connected layers $[\theta_1, \dots, \theta_K]$ allow eac
     
         \STATE Train the multi-head LSTM metamodel on all $K$ tasks simultaneously by minimizing the multi-task loss function:
         \begin{equation} \label{eq3:multiTaskLoss}
-            \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2
+            \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2.
         \end{equation}
     
         \STATE Update both the shared parameters $\theta_0$ and task-specific parameters $\{\theta_k\}_{k=1}^K$ simultaneously using backpropagation and gradient descent with learning rate $\alpha$.
         
-        \STATE \textbf{Output:} Trained multi-task LSTM metamodel $f(\cdot; \theta_0, \{\theta_k\}_{k=1}^K)$ for all $K$ tasks
+        \STATE \textbf{Output:} Trained multi-task LSTM metamodel $f(\cdot; \theta_0, \{\theta_k\}_{k=1}^K)$ for all $K$ tasks.
     \end{algorithmic}
 \end{algorithm}
 
@@ -256,7 +255,6 @@ Criteria for selecting tasks with similar simulation schemes include:
 
 Suppose that we aim at developing an LSTM metamodel for a GMWB contract under a stochastic volatility asset model, but we have limited data for this simulation scheme. 
 For multi-task learning, we can select related nested simulation procedures with relatively abundant data, such as:
-
 
 \begin{itemize} 
     \item GMMB contracts under a stochastic volatility asset model. 
@@ -289,7 +287,7 @@ The goal is to leverage the knowledge acquired during training on a large datase
         
         \STATE Train the multi-task LSTM metamodel on all $K$ tasks simultaneously:
         \begin{equation}
-            \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2
+            \min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2.
         \end{equation}
         
         \STATE For a related task of hedging a new VA contract, combine fine-tuning and layer freezing:
@@ -303,7 +301,7 @@ The goal is to leverage the knowledge acquired during training on a large datase
         
         \STATE Fine-tune only $\theta_{\text{Ta}}$ on the new target dataset $\mathcal{D}_{\text{Ta}}$ using a smaller learning rate $\alpha_{\text{Ta}}$:
         \begin{equation}
-            \min_{\theta_{\text{Ta}}} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta_0, \theta_{\text{Ta}}) - L_{\text{Ta}}^{(i)} \right)^2
+            \min_{\theta_{\text{Ta}}} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} \left( f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta_0, \theta_{\text{Ta}}) - L_{\text{Ta}}^{(i)} \right)^2.
         \end{equation}
         
         \STATE \textbf{Output:} Final adapted LSTM metamodel $f_{\text{Ta}}(\cdot; \theta_0, \theta_{\text{Ta}})$ for the new VA contracts in the target task.
@@ -635,7 +633,7 @@ The objective is to assess how multi-task learning can improve the training effi
 
 \begin{figure}[ht!]
     \includegraphics[width=\textwidth]{./project3/tikz/mtl.pdf}
-    \caption{Multi-task Learning Framework for VA Contracts}
+    \caption{Multi-task learning framework for VA contracts}
     \label{fig3:mtl}
 \end{figure}
 

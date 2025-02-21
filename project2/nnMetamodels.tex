@@ -107,11 +107,12 @@ Tail risk measures such as VaR and CVaR are widely used for setting a regulatory
 For example, European insurers set regulatory capital at $99.5\%$-VaR according to Solvency II~\cite{eiopa2014underlying}.
 In Canada, the regulatory capital requirement for VAs is set based on CVaRs as prescribed in~\cite{osfi2017life}.
 
-Let $L_1,L_2,\ldots,L_M$ be $M$ independent and identically distributed (i.i.d.) simulated losses of $L$ and let $L_{(1)}\leq L_{(2)}\leq \ldots\leq L_{(M)}$ be the ordered losses.
+Let $L_1,L_2,\ldots,L_M$ be $M$ i.i.d. simulated losses of $L$ and let $L_{(1)}\leq L_{(2)}\leq \ldots\leq L_{(M)}$ be the ordered losses.
 For a given confidence level $\alpha$ (assume that $\alpha M$ is an integer for simplicity), $\alpha$-VaR can be estimated by the sample quantile $\widehat{\VaR}_\alpha = L_{(\alpha M)}$. Also, $\alpha$-CVaR can be estimated by
 \begin{equation} \label{eq2:cvar-hat}
     \widehat{\CVaR}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}L_{(i)} = \frac{1}{(1-\alpha)M} \sum_{i \in \tail_{(1-\alpha )M}}L_{i}.
 \end{equation}
+
 Equation \eqref{eq2:cvar-hat} is the same as \eqref{eq1:cvar-hat} except that we define a \textit{true tail scenario set} of size $k$ as $\tail_{k} = \{i: L_i > L_{(M-k)}\}$.
 In this study, the loss random variable of interest is the hedging error for VA.
 
@@ -290,7 +291,7 @@ We propose a two-stage procedure with a supervised learning metamodel that aims 
     \begin{enumerate} [label=\alph*., itemsep=0pt, parsep=0pt, topsep=0pt]
         \item Run Steps 2 and 3 of Algorithm~\ref{alg2:standardProcedure} with the same number of inner replications, $N$, but only on the predicted tail scenarios, i.e., scenarios in $\widehat{\tail}_{m}^{PD}$. Denote the standard procedure's estimated losses and sorted losses by $\Lhat^{ML}_i$ and $\Lhat^{ML}_{(i)}$, respectively, $i=1,\ldots,m$.
         \item Estimate the $\alpha$-CVaR of $L$ by 
-        $$\widehat{\CVaR}^{ML}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}\Lhat_{(i)}^{ML} = \frac{1}{(1-\alpha)M} \sum_{i \in \widehat{\tail}_{(1-\alpha )M}^{ML}}\Lhat_{i}^{ML},$$ 
+        $$\widehat{\CVaR}^{ML}_\alpha = \frac{1}{(1-\alpha)M} \sum_{i=\alpha M + 1}^{M}\Lhat_{(i)}^{ML} = \frac{1}{(1-\alpha)M} \sum_{i \in \widehat{\tail}_{(1-\alpha)M}^{ML}}\Lhat_{i}^{ML},$$ 
         where $\widehat{\tail}_{k}^{ML}$ denotes a predicted tail scenario set associated with the largest $k$ estimated losses.
     \end{enumerate}
 \end{algorithmic}
@@ -368,8 +369,8 @@ To make our examples more realistic, the VAs are also subject to a dynamic lapse
     \begin{equation}
         {}_{\frac{1}{12}}q^{base}_{x+\frac{t}{12}} = 
         \begin{cases}
-            0.00417 & \text{if } t < 84 \\
-            0.00833 & \text{if } t \geq 84
+            0.00417 & \text{if } t < 84, \\
+            0.00833 & \text{if } t \geq 84.
         \end{cases}
     \end{equation}
 \end{enumerate}
@@ -701,17 +702,17 @@ For consistency, the LSTM metamodels are trained with the same architecture and 
         \toprule
         \textbf{Model}      & \textbf{$N$}         & \textbf{Training error}                & \textbf{Test error}               & \textbf{True error}\\
         \midrule
-        LSTM                & $100$                & $0.075 (\pm4.5\times 10^{-3})$         & $0.079(\pm5.4\times 10^{-3})$     & $0.063 (\pm4.4\times 10^{-3})$ \\ 
-        High-capacity LSTM  & $100$                & $0.068 (\pm3.6\times 10^{-3})$         & $0.102(\pm6.1\times 10^{-2})$     & $0.060 (\pm3.6\times 10^{-3})$ \\
-        Average Difference  & $100$                & $-0.007$                               & $0.023$                           & $-0.003$ \\
+        LSTM                & $\num{100}$                & $0.075 (\pm4.5\times 10^{-3})$         & $0.079(\pm5.4\times 10^{-3})$     & $0.063 (\pm4.4\times 10^{-3})$ \\ 
+        High-capacity LSTM  & $\num{100}$                & $0.068 (\pm3.6\times 10^{-3})$         & $0.102(\pm6.1\times 10^{-2})$     & $0.060 (\pm3.6\times 10^{-3})$ \\
+        Average Difference  & $\num{100}$                & $-0.007$                               & $0.023$                           & $-0.003$ \\
         \hline
-        LSTM                & $10$                 & $0.195 (\pm1.1\times 10^{-3})$         & $0.193(\pm1.7\times 10^{-3})$     & $0.070 (\pm9.1\times 10^{-4})$ \\
-        High-capacity LSTM  & $10$                 & $0.157 (\pm2.0\times 10^{-3})$         & $0.199(\pm1.9\times 10^{-3})$     & $0.065 (\pm1.9\times 10^{-3})$ \\
-        Average Difference  & $10$                 & $-0.038$                               & $0.006$                           & $-0.005$ \\
+        LSTM                & $\num{10}$                 & $0.195 (\pm1.1\times 10^{-3})$         & $0.193(\pm1.7\times 10^{-3})$     & $0.070 (\pm9.1\times 10^{-4})$ \\
+        High-capacity LSTM  & $\num{10}$                 & $0.157 (\pm2.0\times 10^{-3})$         & $0.199(\pm1.9\times 10^{-3})$     & $0.065 (\pm1.9\times 10^{-3})$ \\
+        Average Difference  & $\num{10}$                 & $-0.038$                               & $0.006$                           & $-0.005$ \\
         \hline
-        LSTM                & $1$                  & $1.366 (\pm8.6\times 10^{-3})$         & $0.781(\pm6.0\times 10^{-3})$     & $0.129 (\pm5.0\times 10^{-3})$ \\
-        High-capacity LSTM  & $1$                  & $1.354 (\pm2.7\times 10^{-2})$         & $0.795(\pm8.3\times10^{-2})$      & $0.149 (\pm2.7\times 10^{-2})$ \\
-        Average Difference  & $1$                  & $-0.012$                               & $0.014$                           & \textcolor{red}{$0.020$} \\
+        LSTM                & $\num{1}$                  & $1.366 (\pm8.6\times 10^{-3})$         & $0.781(\pm6.0\times 10^{-3})$     & $0.129 (\pm5.0\times 10^{-3})$ \\
+        High-capacity LSTM  & $\num{1}$                  & $1.354 (\pm2.7\times 10^{-2})$         & $0.795(\pm8.3\times10^{-2})$      & $0.149 (\pm2.7\times 10^{-2})$ \\
+        Average Difference  & $\num{1}$                  & $-0.012$                               & $0.014$                           & \textcolor{red}{$0.020$} \\
         \bottomrule
     \end{tabular}
     \caption{MSEs of LSTM metamodels.}

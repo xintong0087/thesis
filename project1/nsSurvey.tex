@@ -54,7 +54,6 @@ Section~\ref{sec1:conclusion} concludes this chapter.
 In a nested estimation problem, we are interested in estimating the quantity 
 
 $$\rho(L) = \rho(L(X)),$$
-
 where $X \in \mathcal{X} \subset \mathbb{R}^d$, and $L = L(X)$ is a random variable whose distribution is characterized by $X$.
 $L(X)$ is not subject to direct evaluation, but it is the output of 
 
@@ -127,6 +126,7 @@ The $\alpha$-CVaR of $L$ is defined as
 \begin{equation}\label{eq1:cvar}
     \mbox{CVaR}_\alpha(L) =\frac{1}{1-\alpha} \int_{\alpha}^{1} q_v dv. 
 \end{equation}
+
 In the literature, CVaR are also known as Conditional Tail Expectation (CTE), Tail Value-at-Risk (TailVaR), and Expected Shortfall (ES).
 
 The rest of this section reviews the existing nested simulation procedures in the literature.
@@ -246,7 +246,6 @@ Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$
             $$\hat{L}^{\text{REG}}_{M, N}(X) = \Phi(X) \hat{\beta},$$
             where $\Phi$ is a chosen basis, and $\hat{\beta}$ is estimated from the training samples.
             In~\cite{broadie2015risk}, the convergence analysis is performed on the expectation (Equation~\eqref{eq1:sl-E}) and for smooth and Lipschitz continuous $h$. 
-            Connections between the expectation and the MSE are discussed in the Appendix.
     \item   Kernel smoothing:
             $$\hat{L}^{\text{KS}}_{M, N}(X) = \frac{\sum_{i=1}^M \hat{L}_{N, i} K_w(X - X_i)}{\sum_{i=1}^M K_w(X - X_i)}, $$
             where $K_w$ is a kernel function with bandwidth $w$.
@@ -256,7 +255,7 @@ Their estimators of $L(\cdot)$ are given by $\hat{L}^{\text{REG}}_{M, N}(\cdot)$
     \item   kNN~\citep{mack1981local}:
             \begin{equation*}
             \hat{L}^{\text{kNN}}_{M, N}(x) 
-            = \frac{\frac{1}{M R_M^d} \sum_{i=1}^M \hat{L}_{N, i} K\left(\frac{x - X_i}{R_M}\right)}{\frac{1}{M R_M^d} \sum_{i=1}^M K\left(\frac{x - X_i}{R_M}\right)}
+            = \frac{\frac{1}{M R_M^d} \sum_{i=1}^M \hat{L}_{N, i} K\left(\frac{x - X_i}{R_M}\right)}{\frac{1}{M R_M^d} \sum_{i=1}^M K\left(\frac{x - X_i}{R_M}\right)},
             \end{equation*}
             where $R_k$ is a Euclidean distance between $X_i$ and its $k$-th nearest neighbor, and $K:\mathbb{R}^d \mapsto \mathbb{R}$ is a bounded, nonnegative kernel function satisfying 
             \begin{align*}
@@ -284,15 +283,15 @@ We aim to minimize the MSE of the supervised learning-based nested simulation es
 We are also interested in the order of convergence of the estimator for all nested simulation procedures as the total simulation budget $\Gamma$ approaches infinity.
 
 \begin{align}
-    & \min_{M, N}  & \text{MSE}(\hat{\rho}^{\text{SL}}_{M, N}) = \mathbb{E} \left[ \left( \hat{\rho}^{\text{SL}}_{M, N} - \rho \right)^2 \right] \nonumber \\
-    & \text{subject to} & M \cdot N = \Gamma 
+    & \min_{M, N}  & \text{MSE}(\hat{\rho}^{\text{SL}}_{M, N}) = \mathbb{E} \left[ \left( \hat{\rho}^{\text{SL}}_{M, N} - \rho \right)^2 \right], \nonumber \\
+    & \text{subject to} & M \cdot N = \Gamma.
 \end{align}
 
 For the more complex metamodels, the convergence analysis of their MSEs is more challenging.
 More specifically, the KRR-based nested simulation~\citep{wang2022smooth} provides a convergence analysis in terms of AE.
 \begin{align}\label{eq1:ae}
     & \min_{M, N}  & \text{AE}(\hat{\rho}^{\text{SL}}_{M, N}) = \mathbb{E} \left[ \left| \hat{\rho}^{\text{KRR}}_{M, N} - \rho \right| \right] \nonumber \\
-    & \text{subject to} & M \cdot N = \Gamma 
+    & \text{subject to} & M \cdot N = \Gamma
 \end{align}
 Section~\ref{sec1:connection-mse-absolute-error} draws the connection between the MSE and the AE of the estimator in the context of nested simulation procedures.
 
@@ -319,7 +318,7 @@ In Section~\ref{sec1:sensitivity-option-type}, we implement the likelihood ratio
 With a total simulation budget $\Gamma$, we are interested in the orders of convergence of estimators for all nested simulation procedures, which are measured by their MSE about the risk measure $\rho$.
 
 \begin{align}
-    & \min ~~~ \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] \nonumber \\
+    & \min ~~~ \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right], \nonumber \\
     & \text{subject to} ~~~ M \cdot N = \Gamma, 
 \end{align}
 where $\Gamma$ is a simulation budget for a nested simulation procedure.
@@ -437,7 +436,7 @@ $$
 Let $s = -\frac{\xi}{2}$. Arranging the terms, we have
 
 $$
-    \mathbb{P} \left( |\hat{\rho}_{\gamma} - \rho| > d\gamma^{-\frac{\xi}{2}} \right) \leq \frac{C}{d^2}
+    \mathbb{P} \left( |\hat{\rho}_{\gamma} - \rho| > d\gamma^{-\frac{\xi}{2}} \right) \leq \frac{C}{d^2}.
 $$
 
 Hence, for all $\epsilon >0$, there exist $C^* = \sqrt{\frac{C}{\epsilon}}$ such that for all $\gamma \geq \Gamma$,
@@ -449,7 +448,7 @@ $$
 In essence, the above expression is a definition of convergence in probabilistic order, that is,
 
 $$
-    \left| \hat{\rho}_{\gamma} - \rho \right| = \mathcal{O}_\mathbb{P} \left( \Gamma^{-\frac{\xi}{2}} \right)
+    \left| \hat{\rho}_{\gamma} - \rho \right| = \mathcal{O}_\mathbb{P} \left( \Gamma^{-\frac{\xi}{2}} \right).
 $$
 
 \begin{theorem}\label{thm1:convergence-mse-prob}
@@ -475,14 +474,14 @@ where the first term can be bounded from above.
 \begin{align*}
     \mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s\}} \right] 
     & \leq d^2 \Gamma^{-2\xi} \cdot \mathbb{E} \left[ \mathbb{I}\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s \} \right] \\
-    & = d^2 \Gamma^{-2\xi} \cdot \mathbb{P} \left(|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s \right) \leq d^2 \Gamma^{-2\xi} 
+    & = d^2 \Gamma^{-2\xi} \cdot \mathbb{P} \left(|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s \right) \leq d^2 \Gamma^{-2\xi}.
 \end{align*}
 However, the second term is not always bounded. 
 If the random variable $\hat{\rho}_{\Gamma}$ admits a density function $f$, then the second term can be further decomposed as follows.
 
 \begin{align*}
     \mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^{-2\xi}\}} \right] 
-    & = \int_{-\infty}^{-d\Gamma^{-2k}} (x - \rho)^2 f(x) dx + \int_{d\Gamma^{-2\xi}}^{\infty} (x - \rho)^2 f(x) dx 
+    & = \int_{-\infty}^{-d\Gamma^{-2k}} (x - \rho)^2 f(x) dx + \int_{d\Gamma^{-2\xi}}^{\infty} (x - \rho)^2 f(x) dx.
 \end{align*}
 Hence, $\hat{\rho}_{\Gamma}$ converges in MSE to $\rho$ in order $2\xi$ if and only if both integrals converge in order higher than $2\xi$. 
 The above argument shows that the convergence in probabilistic order does not necessarily imply the convergence in MSE.
@@ -519,7 +518,7 @@ The MSE of the standard nested simulation procedure can be decomposed into two w
     & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  \frac{1}{M} \sum_{i=1}^M h\left(L_i \right)  \right)^2\right] \nonumber \\
     & ~~~~ + 2  \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M h\left(L_i \right) - \mathbb{E}\left[ h(L)\right] \right)^2 \right]  \nonumber \\
     & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] + \frac{2}{M} \text{Var}(h(L)) \nonumber \\
-    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] + \mathcal{O}(M^{-1}),
+    & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] + \mathcal{O}(M^{-1}).
 \end{align}
 
 In Equation~\eqref{eq1:mse-sns}, the last equality follows from Assumption~\ref{as1:sns}.
@@ -531,7 +530,7 @@ Another way to decompose the MSE is a bias-variance decomposition as in~\cite{go
 \begin{align}\label{eq1:mse-sns2}
     \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] 
     & = \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \mathbb{E} \left[ \hat{\rho}_{M, N} \right] \right)^2 \right] + \left( \mathbb{E} \left[ \hat{\rho}_{M, N} \right] - \rho \right)^2 \nonumber \\
-    & = \text{Var}(\hat{\rho}_{M, N}) + \text{Bias}^2(\hat{\rho}_{M, N})
+    & = \text{Var}(\hat{\rho}_{M, N}) + \text{Bias}^2(\hat{\rho}_{M, N}),
 \end{align}
 where $\text{Var}(\hat{\rho}_{M, N})$ is variance of the estimator and $\text{Bias}(\hat{\rho}_{M, N})$ is bias of the estimator about $\rho$.
 For a smooth function $h$, both ways of decomposing the MSE lead to the same order of convergence.
@@ -547,6 +546,7 @@ Their critical assumptions and convergence results are summarized and compared.
         \sup_{x \in \mathcal{X}} |h''(x)| & \leq C_{h, 2} < \infty.
     \end{align*}
 \end{assumption}
+
 Assumption~\ref{as1:sns-smooth} is similar to the smoothness assumption in~\cite{wang2022smooth}.
 Since $h$ is a smooth function, Taylor expansion can be applied to the first term in Equation~\eqref{eq1:mse-sns}.
 
@@ -554,7 +554,7 @@ Since $h$ is a smooth function, Taylor expansion can be applied to the first ter
     & \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] \nonumber \\
     & = \mathbb{E} \left[ \left( \frac{1}{M} \sum_{i=1}^M h'\left( L_i \right) \left( \hat{L}_{N, i} - L_i \right) +  \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}_{N, i} - L_i \right)^2 \right)^2\right] \nonumber \\
     & \leq 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{M} \sum_{i=1}^M h'\left( L_i \right) \left( \hat{L}_{N, i}- L_i \right) \right)^2\right]}_{S_1} \nonumber \\
-    & ~~~~ + 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}_{N, i} - L_i \right)^2 \right)^2\right]}_{S_2}
+    & ~~~~ + 2 \underbrace{\mathbb{E} \left[ \left( \frac{1}{2M} \sum_{i=1}^M h''\left( z_i \right) \left( \hat{L}_{N, i} - L_i \right)^2 \right)^2\right]}_{S_2},
 \end{align}
 where the last inequality is due to $2ab \leq a^2 + b^2$ for any $a, b \in \mathbb{R}$. 
 The two terms on the right-hand side of Equation~\eqref{eq1:taylor-sns} are analyzed separately.
@@ -567,7 +567,7 @@ We start with the first term $S_1$.
     & \leq C_1^2 \mathbb{E} \left[ \left(\frac{1}{M} \sum_{i=1}^M \bar{Z}_{N, i} \right)^2 \right] \nonumber \\
     & = C_1^2 \mathbb{E} \left[ \frac{1}{M^2} \sum_{i=1}^M \sum_{j=1}^M \bar{Z}_{N, i} \bar{Z}_{N, j} \right] \nonumber \\
     & = C_1^2 \mathbb{E} \left[ \frac{1}{M^2} \sum_{i=1}^M \bar{Z}_{N, i}^2 + \frac{1}{M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_{N, i} \bar{Z}_{N, j} \right] \nonumber \\
-    & \leq  \frac{C_1^2 C_{\nu, 1}}{MN} = \mathcal{O}(M^{-1} N^{-1})
+    & \leq  \frac{C_1^2 C_{\nu, 1}}{MN} = \mathcal{O}(M^{-1} N^{-1}),
 \end{align}
 where the last inequality in Equation~\eqref{eq1:s1-sns} is due to Assumption~\ref{as1:sns-noise}, independence of $X_i$ and $X_j$ for $i \neq j$, and the fact that the inner simulation noise has zero mean, i.e., $\mathbb{E} \left[ \bar{Z}_N \right] = 0$. 
 It remains to analyze the second term $S_2$, where Assumption \ref{as1:sns-noise-var} is necessary to ensure the existence of the fourth moment of the simulation noise and the convergence of the second term.
@@ -582,14 +582,15 @@ It remains to analyze the second term $S_2$, where Assumption \ref{as1:sns-noise
     & \leq C_2^2 \mathbb{E} \left[ \left(\frac{1}{2M} \sum_{i=1}^M \bar{Z}_{N, i}^2 \right)^2 \right] \nonumber \\
     & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \sum_{j=1}^M \bar{Z}_{N, i}^2 \bar{Z}_{N, j}^2 \right] \nonumber \\
     & = C_2^2 \mathbb{E} \left[ \frac{1}{2M^2} \sum_{i=1}^M \bar{Z}_{N, i}^4 + \frac{1}{2M^2} \sum_{i=1}^M \sum_{j \neq i}^M \bar{Z}_N^2(X_i) \bar{Z}_N^2(X_j) \right] \nonumber \\
-    & \leq  C_2^2 \left(\frac{ C_{\nu, 2} M}{2M^2N^2} + \frac{C_{\nu,1}^2M(M-1)}{2M^2N^2}\right) = \mathcal{O}(N^{-2})
+    & \leq  C_2^2 \left(\frac{ C_{\nu, 2} M}{2M^2N^2} + \frac{C_{\nu,1}^2M(M-1)}{2M^2N^2}\right) = \mathcal{O}(N^{-2}),
 \end{align}
 where the second inequality is due to Assumption~\ref{as1:sns-smooth}, and the last inequality follows from Assumption~\ref{as1:sns-noise-var} and the fact that $\hat{L}_N$ is a standard MC estimator of $L$.
 Combining Equation~\eqref{eq1:mse-sns},~\ref{eq1:taylor-sns},~\ref{eq1:s1-sns}, and~\ref{eq1:s2-sns}, we have
 
 \begin{equation}\label{eq1:mse-sns-smooth}
-    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-2})
+    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-2}).
 \end{equation}
+
 Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we provide the same rate of convergence as obtained for other risk measures in~\cite{gordy2010nested}.
 However, we observe that Equation~\eqref{eq1:s1-sns} converges in the order of $\mathcal{O}(M^{-1}N^{-1})$.
 The cross term here is potentially problematic, as setting $N$ as a negative power of $M$ may result in Equation~\eqref{eq1:s1-sns} to be divergent.
@@ -601,7 +602,7 @@ In order to avoid the cross term, we proceed to follow the bias-variance decompo
     & = \mathbb{E} \left[ \hat{\rho}_{M, N} \right] - \rho \nonumber \\
     & = \mathbb{E} \left[ \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) \right] - \mathbb{E} \left[ h\left(L \right) \right]  \nonumber \\
     & = \mathbb{E} \left[ h\left( \hat{L}_N \right) - h\left( L \right) \right] \nonumber \\
-    & = \mathbb{E} \left[h'\left( L \right) \left( \hat{L}_N - L \right) + \frac{1}{2} h''\left( z \right) \left( \hat{L}_N - L \right)^2 \right]
+    & = \mathbb{E} \left[h'\left( L \right) \left( \hat{L}_N - L \right) + \frac{1}{2} h''\left( z \right) \left( \hat{L}_N - L \right)^2 \right],
 \end{align}
 where the last equality follows from the Taylor expansion of the smooth function $h$.
 The first and second order Taylor expansion terms are analyzed separately in Equation~\eqref{eq1:bias-sns-smooth-Taylor1} and Equation~\eqref{eq1:bias-sns-smooth-Taylor2}.
@@ -610,20 +611,20 @@ The first and second order Taylor expansion terms are analyzed separately in Equ
     \mathbb{E} \left[ h'\left( L \right) \left( \hat{L}_N - L \right) \right]
     & = \mathbb{E} \left[ h'\left( L \right) \left( \hat{L}_N - L \right) \right] \nonumber \\
     & = \mathbb{E} \left[ \mathbb{E} \left[ h'\left( L \right) \left( \hat{L}_N - L \right)  | X \right] \right] \nonumber \\
-    & = \mathbb{E} \left[ h'\left( L \right) \mathbb{E} \left[ \hat{L}_N - L  | X \right] \right] = 0
+    & = \mathbb{E} \left[ h'\left( L \right) \mathbb{E} \left[ \hat{L}_N - L  | X \right] \right] = 0.
 \end{align}
 
 \begin{align}\label{eq1:bias-sns-smooth-Taylor2}
     \mathbb{E} \left[ h''\left( z \right) \left( \hat{L}_N - L \right)^2 \right]
     & \leq \mathbb{E} \left[ |h''\left( z \right)| \left( \hat{L}_N - L \right)^2 \right] \nonumber \\
     & \leq C_{h,2} \mathbb{E} \left[ \left( \hat{L}_N - L \right)^2 \right] \nonumber \\
-    & = C_{h,2} \text{Var}(\hat{L}_N) = \mathcal{O}\left( N^{-1} \right)
+    & = C_{h,2} \text{Var}(\hat{L}_N) = \mathcal{O}\left( N^{-1} \right).
 \end{align}
 
 It remains to analyze the variance term in Equation~\eqref{eq1:mse-sns2}.
 
 \begin{equation}\label{eq1:var-sns-smooth}
-    \text{Var}(\hat{\rho}_{M, N}) = \frac{1}{M} \text{Var}(h(\hat{L}_N)) = \mathcal{O}(M^{-1})
+    \text{Var}(\hat{\rho}_{M, N}) = \frac{1}{M} \text{Var}(h(\hat{L}_N)) = \mathcal{O}(M^{-1}).
 \end{equation}
 
 Equation~\eqref{eq1:var-sns-smooth} directly follows from Assumption~\ref{as1:sns} and the fact that $\hat{L}_N$ is a standard MC estimator of $L$.
@@ -665,7 +666,7 @@ For the Lipschitz continuous case, the first term in Equation~\eqref{eq1:mse-sns
     \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right]    
     & \leq \mathbb{E} \left[ \left( h\left( \hat{L}_N \right) -  h\left(L \right)  \right)^2\right]  \nonumber \\
     & \leq K^2 \mathbb{E} \left[ \left( \hat{L}_N -  L  \right)^2\right] \nonumber \\
-    & = K^2 \mathbb{E} \left[ \left( \bar{Z}_{N}(X) \right)^2\right] = \mathcal{O}(N^{-1})
+    & = K^2 \mathbb{E} \left[ \left( \bar{Z}_{N}(X) \right)^2\right] = \mathcal{O}(N^{-1}),
 \end{align}
 where the first inequality follows from Cauchy-Schwarz inequality, the second equality follows from Assumption~\ref{as1:sns-lip}, and the last equality follows from Assumption~\ref{as1:sns-noise}.
 
@@ -683,12 +684,13 @@ Using the bias-variance decomposition in Equation~\eqref{eq1:mse-sns2}, we obtai
     & \leq \mathbb{E} \left[ |h\left( \hat{L}_N \right) - h\left( L \right) | \right] \nonumber \\
     & \leq K \mathbb{E} \left[ |\hat{L}_N - L| \right] \nonumber \\
     & = K \mathbb{E} \left[ |\bar{Z}_N| \right] \nonumber \\
-    & \leq K \sqrt{\mathbb{E} \left[ \left( \bar{Z}_N \right)^2 \right]} = \mathcal{O}(N^{-1/2})
+    & \leq K \sqrt{\mathbb{E} \left[ \left( \bar{Z}_N \right)^2 \right]} = \mathcal{O}(N^{-1/2}).
 \end{align}
+
 The variance term in Equation~\eqref{eq1:mse-sns2} for Lipschitz continuous $h$ is identical to the one in Equation~\eqref{eq1:var-sns-smooth}.
 
 \begin{equation}
-    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-1})
+    \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-1}).
 \end{equation}
 
 Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we provide the same rate of convergence as obtained for other risk measures in~\cite{gordy2010nested}.
@@ -720,10 +722,11 @@ Without loss of generality, we assume that $\{(X_i, \bar{Y}_{n, i}), i = 1, \dot
 Let $f_{XY}(x, y)$ be a joint density of random vector $(X, Y)$, and $f_X(x) = \int f_{XY}(x, y) dy$ be a marginal density of $X$.
 Let $k$ be a sequence of positive integers $k = k(M)$ such that 
 \begin{align*}
-    k                   & \to \infty \\
-    \frac{k}{M}         & \to 0, ~~~ \text{as} ~ M \to \infty. \\
+    k                   & \to \infty, \\
+    \frac{k}{M}         & \to 0, ~~~ \text{as} ~ M \to \infty, \\
     \frac{\log(M)}{k}   & \to 0, ~~~ \text{as} ~ k \to \infty.
 \end{align*}
+
 A kNN-based nested simulation procedure with a model parameter $k$ estimates the risk measure $\rho = \mathbb{E} \left[ h(L) \right]$ with
 
 \begin{equation*}
@@ -761,7 +764,7 @@ Let $h$ be a smooth function, i.e., Assumption~\ref{as1:sns-smooth} holds.
 The bias of the estimator of $\rho$ for a kNN-based nested simulation procedure is analyzed following a Taylor expansion.
 \begin{align}\label{eq1:bias-knn}
     & \mathbb{E} \left[ h(\hat{L}^{\text{kNN}}_{M, n}(X)) - h(L) \right] \nonumber \\
-    & = \mathbb{E} \left[ h'(L) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right) + \frac{1}{2} h''(z) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right)^2 \right] 
+    & = \mathbb{E} \left[ h'(L) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right) + \frac{1}{2} h''(z) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right)^2 \right],
 \end{align}
 where the bias is decomposed into two terms, and $z$ is between $\hat{L}^{\text{kNN}}_{M, n}(X)$ and $L$.
 The first term in Equation~\eqref{eq1:bias-knn} is 
@@ -778,7 +781,7 @@ The second term in Equation~\eqref{eq1:bias-knn} is
     & ~~~~ \mathbb{E} \left[ h''(z) \left( \hat{L}^{\text{kNN}}_{M, n}(X) - L \right)^2 \right]  \nonumber \\
     & = \int_{\Omega} h''(z) \left(B_M^2(X) + V_M(x)\right) f_X(x) dx \nonumber \\
     & \leq C_2 \int_{\Omega} \left( \frac{C_{\text{kNN}} \cdot \text{Var}[Y| X = x]}{k} \int K^2(u) du + o\left(\frac{1}{k}\right) \right) f_X(x) dx \nonumber \\
-    & + C_2 \int_{\Omega} \left( A_{\text{kNN}}(x) \left(\frac{k}{M}\right)^{2/d} \left(1+o_x(1)\right) + B_{\text{kNN}} \cdot \left(\frac{1}{k} + o_x\left(\frac{1}{k}\right)\right) \right)^2 f_X(x) dx 
+    & + C_2 \int_{\Omega} \left( A_{\text{kNN}}(x) \left(\frac{k}{M}\right)^{2/d} \left(1+o_x(1)\right) + B_{\text{kNN}} \cdot \left(\frac{1}{k} + o_x\left(\frac{1}{k}\right)\right) \right)^2 f_X(x) dx,
 \end{align}
 where the second term in Equation~\eqref{eq1:bias-knn-2} is of higher order than Equation~\eqref{eq1:bias-knn-1}, and it is negligible since $kM^{-1} \to 0$ as $M \to \infty$ and $k \to \infty$, 
 The first term in Equation~\eqref{eq1:bias-knn-2} is $\mathcal{O}\left(\frac{1}{k}\right)$.
@@ -894,7 +897,7 @@ Assumption~\ref{as1:likelihood-ratio-marginal-density} and Assumption~\ref{as1:l
 
 \subsection{Assumptions for the Kernel-Based Procedure}
 For the kernel-based nested simulation procedure,~\cite{hong2017kernel} simplifies the analysis by assuming that for each $X_i$, the inner simulation budget $N$ is fixed together with the variance of the inner simulation noise $\bar{Z}_{N, i}$.
-In essence, this fixed variance design treats the $(X_i, \bar{Y}_{N, i})$ as independent and identically distributed observations of $(X, Y)$, and the kernel-based nested simulation procedure is analyzed as a non-parametric regression problem.
+In essence, this fixed variance design treats the $(X_i, \bar{Y}_{N, i})$ as i.i.d. observations of $(X, Y)$, and the kernel-based nested simulation procedure is analyzed as a non-parametric regression problem.
 Regularity conditions on $f_X(x)$, the density of $X$, and the conditional second moment of $Y$ are assumed to ensure the convergence of $\hat{L}^{\text{KS}}_{M, N}(X)$, the kernel smoothing estimator of $L$.
 
 \begin{assumption}
