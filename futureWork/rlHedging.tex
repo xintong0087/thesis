@@ -128,7 +128,7 @@ Similarly, the present value of the liability for a GMWB contract is
 L = \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t\eta_n \right)
 \end{equation}
 The GMWB payout is implicitly included in $F_t\eta_n$.
-Both Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} neglect the transaction cost to liquidate the hedge portfolio at maturity.
+Both Equation~\eqref{eq3:lossGMMB} and Equation~\eqref{eq3:lossGMWB} neglect the transaction cost to liquidate the hedge portfolio at maturity.
 The discrete-time hedging problem of VAs can be conveniently formulated as an MDP, where the states, actions, transition probabilities, policies, and rewards are defined as follows.
 
 \subsection{State Space}
@@ -155,7 +155,7 @@ In the following sections, we will refer to $\Delta_t$ as the policy.
 \subsection{Transition Probabilities}
 
 The transition probabilities $\mathcal{P}$ represent the probability of transitioning from one state to another from taking an action.
-In our setup, the transition probabilities are fully determined by Equation~\ref{eq3:lapse}, Equation~\ref{eq3:subaccount}, Equation~\ref{eq3:guarantee}, and Equation~\ref{eq3:withdrawal}.
+In our setup, the transition probabilities are fully determined by Equation~\eqref{eq3:lapse}, Equation~\eqref{eq3:subaccount}, Equation~\eqref{eq3:guarantee}, and Equation~\eqref{eq3:withdrawal}.
 Let $\mathcal{P}(\mathbf{s}_{t+1}|\mathbf{s}_t, a_t)$ be the probability of transitioning from state $\mathbf{s}_t$ to state $\mathbf{s}_{t+1}$ due to action $a_t$.
 Aside from the previous hedging weight $\Delta_{t-1}$, the transition probabilities are independent from the actions.
 Paths simulated from the transition probabilities are called trajectories (or episodes) of the MDP.
@@ -167,12 +167,12 @@ The reward function $\mathcal{R}$ and discount factor $\gamma$ in a typical RL p
     \gamma      & = e^{-r}, \nonumber
 \end{align}
 where $R_t$ is the term reward received by the agent at time $t$, and the discount factor $\gamma$ is conveniently inherited from the risk-free rate $r$. 
-In hedging, the term reward $R_t$ should be derived from Equation~\ref{eq3:lossGMMB} and Equation~\ref{eq3:lossGMWB} to represent the performance of the hedging policy, i.e., how closely the hedging portfolio tracks the liability.
+In hedging, the term reward $R_t$ should be derived from Equation~\eqref{eq3:lossGMMB} and Equation~\eqref{eq3:lossGMWB} to represent the performance of the hedging policy, i.e., how closely the hedging portfolio tracks the liability.
 For the GMWB, we propose a term reward formulation that encourages the agent to maximize the expected reward with low hedging errors and transaction costs:
 \begin{equation} \label{eq3:rewardGMWB}
     R_t = F_{t-1}\eta_n - \Delta_{t-1} |S_{t-1} - e^{-r}S_{t}| - C_{t-1}(\Delta_{t-1}), \quad t \in \{1,\ldots,T \}
 \end{equation}
-The reward function of the GMWB directly links to the time-$t$ loss of a GMWB contract as in Equation~\ref{eq3:lossGMWB}.
+The reward function of the GMWB directly links to the time-$t$ loss of a GMWB contract as in Equation~\eqref{eq3:lossGMWB}.
 The GMMB loss consists of an additional payoff at maturity $T$, thus its term reward is formulated as:
 \begin{equation} \label{eq3:rewardGMMB}
     R_t = 
@@ -378,7 +378,7 @@ The state representation $\mathbf{s}_t$ is fed into the LSTM at each time step t
 In a LSTM, the cell state $c_t$ stores a representation of historical information up to time $t$.
 It is updated at each time step by a forget gate $f_t$, an input gate $i_t$, and an output gate $o_t$.
 
-In a recurrent PPO with LSTM, the policy and reward function remain the same but with the new state representation in Equation~\ref{eq3:stateRNN}.
+In a recurrent PPO with LSTM, the policy and reward function remain the same but with the new state representation in Equation~\eqref{eq3:stateRNN}.
 Instead of following the standard PPO algorithm, the agent uses the recurrent PPO algorithm to learn an optimal policy for hedging VAs.
 Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the standard PPO and the recurrent PPO with LSTM, and Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent PPO algorithm and for training an agent to hedge VAs with non-Markovian dynamics.
 
