@@ -3,6 +3,60 @@ marp: true
 theme: default
 size: 16:9
 paginate: true
+style: |
+  section {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+  }
+  h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.3em;
+  }
+  h2, h3 {
+    color: #2c3e50;
+  }
+  code {
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+  }
+  ul, ol {
+    margin-left: 1em;
+  }
+  strong {
+    color: #e74c3c;
+  }
+  em {
+    color: #3498db;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .math-block {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-left: 3px solid #3498db;
+  }
+  blockquote {
+    border-left: 5px solid #3498db;
+    padding-left: 1em;
+    color: #555;
+  }
 footer: 'by Xintong Li'
 ---
 

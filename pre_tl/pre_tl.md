@@ -121,6 +121,97 @@ style: |
 
 ---
 
+## Mathematical Formulation of Transfer Learning
+
+In supervised learning, a **domain** $\mathcal{D}$ consists of:
+- Feature space $\mathcal{X}$
+- Marginal probability distribution $F$
+
+A **task** $\mathcal{T}$ consists of:
+- Label space $\mathcal{Y}$
+- Predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$
+
+---
+
+## Transfer Learning Framework
+
+- **Source domain**: $\mathcal{D}_{\text{So}} = \{\mathcal{X}_{\text{So}}, F_{\text{So}}(\mathbf{X})\}$
+- **Source task**: $\mathcal{T}_{\text{So}} = \{\mathcal{Y}_{\text{So}}, f_{\text{So}}(\cdot)\}$
+- **Target domain**: $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(\cdot)\}$
+- **Target task**: $\mathcal{T}_{\text{Ta}} = \{\mathcal{Y}_{\text{Ta}}, f_{\text{Ta}}(\cdot)\}$
+
+In our context of metamodeling nested simulation for VA contracts:
+
+- $\mathcal{X}_{\text{So}}$ and $\mathcal{X}_{\text{Ta}}$ include input features derived from the outer simulation
+- $F_{\text{So}}$ and $F_{\text{Ta}}$ are the outer simulation model that simulates the outer scenarios
+- $\mathcal{Y}_{\text{So}}$ and $\mathcal{Y}_{\text{Ta}}$ include the VA contract losses
+- $f_{\text{So}}$ and $f_{\text{Ta}}$ are the true contract losses that we want to approximate 
+
+---
+
+## Relating to Previous Work
+
+In the previous chapter, we have $\mathcal{D}_{\text{So}} = \mathcal{D}_{\text{Ta}}$ and $\mathcal{T}_{\text{So}} = \mathcal{T}_{\text{Ta}}$.
+
+- We trained the LSTM network on a simulation dataset
+- We used the same LSTM network to approximate the contract losses on the same data generating process
+
+However, as new contract features are introduced, we want to transfer previous knowledge when
+
+- we have **limited simulation budget** (data is scarce)
+- we want to save the cost of **building a new metamodel from scratch**
+
+---
+
+## Transfer Learning Implementation
+
+**Goal**: Improve learning when $\mathcal{D}_{\text{So}} \neq \mathcal{D}_{\text{Ta}}$ or $\mathcal{T}_{\text{So}} \neq \mathcal{T}_{\text{Ta}}$
+
+
+1. Train source model $f_{\text{So}}(\cdot ; \theta_{\text{So}})$ on dataset $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$
+
+2. Transfer knowledge by initializing target model with $\theta_{\text{So}}$
+
+3. Fine-tune $f_{\text{Ta}}(\cdot ; \theta_{\text{Ta}})$ on target domain $\mathcal{D}_{\text{Ta}}$
+
+
+---
+
+### Fine-tuning Algorithm for LSTM Metamodels in VA Hedging
+
+**Input**: 
+- Source dataset: $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$, Target dataset: $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$
+
+**Algorithm**:
+1. Train source LSTM metamodel $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$:
+   $$\theta_{\text{So}} = \arg\min_{\theta} \frac{1}{M_{\text{So}}} \sum_{i=1}^{M_{\text{So}}} (f_{\text{So}}(X_{\text{So}}^{(i)}; \theta) - L_{\text{So}}^{(i)})^2.$$
+
+2. Initialize target model: $\theta_{\text{Ta}} \leftarrow \theta_{\text{So}}$.
+
+3. Fine-tune $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ on $\mathcal{D}_{\text{Ta}}$:
+   $$\theta_{\text{Ta}} = \arg\min_{\theta} \frac{1}{M_{\text{Ta}}} \sum_{i=1}^{M_{\text{Ta}}} (f_{\text{Ta}}(X_{\text{Ta}}^{(i)}; \theta) - L_{\text{Ta}}^{(i)})^2.$$
+
+---
+
+### Layer Freezing
+
+**Input**: 
+- Source dataset: $\mathcal{D}_{\text{So}} = \{(X_{\text{So}}^{(i)}, L_{\text{So}}^{(i)})\}_{i=1}^{M_{\text{So}}}$, Target dataset: $\mathcal{D}_{\text{Ta}} = \{(X_{\text{Ta}}^{(i)}, L_{\text{Ta}}^{(i)})\}_{i=1}^{M_{\text{Ta}}}$
+
+**Algorithm**:
+1. Train source model $f_{\text{So}}(\cdot; \theta_{\text{So}})$ on $\mathcal{D}_{\text{So}}$
+2. Initialize $\theta_{\text{Ta}} \leftarrow \theta_{\text{So}}$
+3. Freeze LSTM layers in $\theta_{\text{Ta}}$
+4. Fine-tune unfrozen layers of $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ on $\mathcal{D}_{\text{Ta}}$
+
+**Output**: Adapted model $f_{\text{Ta}}(\cdot; \theta_{\text{Ta}})$ with frozen LSTM layers
+
+**Note**: Choice of layers to freeze depends on similarity between source and target tasks
+
+---
+
+
+
 ## Transfer Learning for VA Contracts
 
 **Key insight**: Different VA contracts share underlying financial and mathematical structures
@@ -129,6 +220,19 @@ style: |
 - Transfer between different contract types
 - Transfer between different valuation dates
 - Transfer between different market conditions
+
+---
+
+## VA Contracts and Asset Models
+| Contract | Asset Model | Lapse | $M_{\text{So}}$ | $M_{\text{Ta}}$ |
+|----------|-------------|-------|----------------|----------------|
+| GMMB     | GBM         | No    | 50,000         | N/A            |
+| GMMB     | RS-GBM      | No    | 50,000         | 2,000          |
+| GMMB     | RS-GBM      | Static| 50,000         | 2,000          |
+| GMMB     | RS-GBM      | Dynamic| 50,000        | 2,000          |
+| GMWB     | RS-GBM      | Dynamic| N/A           | 2,000          |
+
+All training data is generated by the standard procedure with 100 inner replications.
 
 ---
 
@@ -192,6 +296,17 @@ style: |
 
 *Table 1: Comparison of different TL methods on GMMB contracts (best MSE values)*
 
+
+
+---
+
+## Learning Curves: Effect of Similarity
+
+![height:400px](../project3/figures/figure3a.png) ![height:400px](../project3/figures/figure3b.png)
+
+*Figure 4: The effect of similarity between source and target on the convergence speed*
+- *Left: from No Lapse; right: from Static Lapse*
+
 ---
 
 # Transfer Knowledge to other Contract Types
@@ -202,10 +317,36 @@ style: |
 
 ## Learning Curves: Transfer Knowledge to other Contract Types
 
-![height:400px](../project3/figures/figure3a.png) ![height:400px](../project3/figures/figure3b.png)
+![height:400px](../project3/figures/figure4a.png) ![height:400px](../project3/figures/figure4b.png)
 
-*Figure 4: The effect of transfer learning on GMWB contracts*
-- *Left: extensive training on target task; right: without TL*
+*Figure 5: Learning curves of GMWB contracts*
+- *Left: 50000 samples; right: 2000 samples*
+
+---
+
+## Learning Curves: Effect of Similarity
+
+![height:400px](../project3/figures/figure4c.png) ![height:400px](../project3/figures/figure4d.png)
+
+*Figure 6: Comparison of different TL methods on GMWB contracts*
+- *Left: fine-tuning; right: layer freezing*
+
+---
+
+
+### Performance Comparison (GMMB → GMWB)
+
+| Model | Training MSE | True MSE |
+|-------|--------------|----------|
+| Without TL | 0.3588 | 0.4188 |
+| Fine Tuning | 0.1690 | 0.1780 |
+| Layer Freezing | 0.1828 | 0.2295 |
+| Extensive Training | 0.0853 | 0.0726 |
+
+- Fine-tuning outperforms layer freezing for dissimilar tasks
+- Both TL methods better than training from scratch
+- Extensive training still superior with abundant data
+
 ---
 
 ## Practical Implementation
@@ -216,6 +357,56 @@ style: |
   2. Freeze early layers
   3. Fine-tune later layers on target contract
   4. Deploy for production use
+
+**PyTorch** is recommended.
+- It is more flexible and easier to customize
+- It is more intuitive and easier to understand 
+- It is more efficient and easier to debug
+
+---
+
+## Multi-task Learning
+
+![width:900px](../project3/figures/mtl.png)
+
+- LSTM layers shared across multiple tasks
+- Task-specific fully connected layers
+- Objective: Minimize sum of loss functions across all tasks
+
+
+---
+
+## Multi-task Learning Framework 
+
+**Input**: Set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$ with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$, shared parameters $\theta_0$, and task-specific parameters $\theta_k$ for each task $k$
+  
+**Algorithm**:
+1. Train the multi-head LSTM metamodel on all $K$ tasks simultaneously by minimizing the multi-task loss function:
+
+   $$\min_{\theta_0, \{\theta_k\}_{k=1}^K} \sum_{k=1}^K \frac{1}{M_k} \sum_{i=1}^{M_k} \left( f_i(X_k^{(i)}; \theta_0, \theta_k) - L_k^{(i)} \right)^2$$
+
+2. Update both the shared parameters $\theta_0$ and task-specific parameters $\{\theta_k\}_{k=1}^K$ simultaneously using backpropagation and gradient descent with learning rate $\alpha$
+
+**Output**: Trained multi-task LSTM metamodel $f(\cdot; \theta_0, \{\theta_k\}_{k=1}^K)$ for all $K$ tasks
+
+
+---
+
+## Multi-task Learning: GMMB and GMWB
+
+![height:400px](../project3/figures/figure5a.png) ![height:400px](../project3/figures/figure5b.png)
+
+*Figure 5: Multi-task learning of GMMB and GMWB*
+- *Left: total MSE; right: individual MSE*
+
+---
+
+## Multi-task Learning: GMMB and GMWB
+
+![height:400px](../project3/figures/figure5c.png) ![height:400px](../project3/figures/figure5d.png)
+
+*Figure 6: Training without multi-task learning*
+- *Left: GMMB; right: GMWB*
 
 ---
 
@@ -241,13 +432,7 @@ style: |
 
 ## Future Directions
 
-- Automated transfer learning strategies
 - Incorporating domain knowledge into transfer process
-- Explainable AI techniques for regulatory compliance
 - Extension to other insurance and financial products
+- Multi-task learning with more than two tasks
 
----
-
-# Thank You
-
-Questions?
