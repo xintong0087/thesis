@@ -9,44 +9,44 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 Database file #1: ../refP1.bib
 Database file #2: ../refP2.bib
 Database file #3: ../refP3.bib
-You've used 7 entries,
+You've used 2 entries,
             1940 wiz_defined-function locations,
-            516 strings with 4789 characters,
-and the built_in function-call counts, 2686 in all, are:
-= -- 257
-> -- 121
-< -- 2
-+ -- 40
-- -- 40
-* -- 245
-:= -- 483
-add.period$ -- 21
-call.type$ -- 7
-change.case$ -- 55
-chr.to.int$ -- 7
-cite$ -- 7
-duplicate$ -- 94
-empty$ -- 175
-format.name$ -- 51
-if$ -- 502
+            489 strings with 3980 characters,
+and the built_in function-call counts, 781 in all, are:
+= -- 75
+> -- 31
+< -- 1
++ -- 10
+- -- 10
+* -- 70
+:= -- 141
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 15
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 27
+empty$ -- 53
+format.name$ -- 14
+if$ -- 146
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 38
-num.names$ -- 21
-pop$ -- 47
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 6
+pop$ -- 12
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 15
 quote$ -- 0
-skip$ -- 73
+skip$ -- 22
 stack$ -- 0
-substring$ -- 171
-swap$ -- 14
+substring$ -- 55
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 42
+type$ -- 12
 warning$ -- 0
-while$ -- 20
+while$ -- 6
 width$ -- 0
-write$ -- 89
+write$ -- 27

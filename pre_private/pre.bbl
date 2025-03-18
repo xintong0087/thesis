@@ -1,38 +1,9 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\astroncite{Broadie et~al.}{2015}]{broadie2015risk}
-Broadie, M., Du, Y., and Moallemi, C.~C. (2015).
-\newblock Risk estimation via regression.
-\newblock {\em Operations Research}, 63(5):1077--1097.
-
-\bibitem[\protect\astroncite{Feng and Song}{2020}]{feng2020optimal}
-Feng, M. and Song, E. (2020).
-\newblock Optimal nested simulation experiment design via likelihood ratio
-  method.
-\newblock {\em arXiv preprint arXiv:2008.13087}.
-
 \bibitem[\protect\astroncite{Gordy and Juneja}{2010}]{gordy2010nested}
 Gordy, M.~B. and Juneja, S. (2010).
 \newblock Nested simulation in portfolio risk measurement.
 \newblock {\em Management Science}, 56(10):1833--1848.
-
-\bibitem[\protect\astroncite{Hong et~al.}{2017}]{hong2017kernel}
-Hong, J.~L., Juneja, S., and Liu, G. (2017).
-\newblock Kernel smoothing for nested estimation with application to portfolio
-  risk measurement.
-\newblock {\em Operations Research}, 65(3):657--673.
-
-\bibitem[\protect\astroncite{Wang et~al.}{2022}]{wang2022smooth}
-Wang, W., Wang, Y., and Zhang, X. (2022).
-\newblock Smooth nested simulation: bridging cubic and square root convergence
-  rates in high dimensions.
-\newblock {\em arXiv preprint arXiv:2201.02958}.
-
-\bibitem[\protect\astroncite{Zhang et~al.}{2022}]{zhang2022sample}
-Zhang, K., Feng, M., Liu, G., and Wang, S. (2022).
-\newblock Sample recycling for nested simulation with application in portfolio
-  risk measurement.
-\newblock {\em arXiv preprint arXiv:2203.15929}.
 
 \bibitem[\protect\astroncite{Zhang et~al.}{2021}]{zhang2021bootstrap}
 Zhang, K., Liu, G., and Wang, S. (2021).

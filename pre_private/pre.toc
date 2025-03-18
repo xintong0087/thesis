@@ -1,6 +1,6 @@
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@sectionintoc {2}{Nested Simulation Procedures in Financial Engineering: A Selected Review}{5}{0}{2}
-\beamer@subsectionintoc {2}{1}{Theoretical Results}{9}{0}{2}
-\beamer@subsectionintoc {2}{2}{Finite-Sample Analysis}{12}{0}{2}
-\beamer@sectionintoc {3}{Using Deep Neural Network Metamodels for High-Dimensional Nested Simulation}{26}{0}{3}
-\beamer@sectionintoc {4}{Transfer Learning for Rapid Adaptation of DNN Metamodels}{52}{0}{4}
+\beamer@subsectionintoc {2}{1}{Theoretical Results}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Finite-Sample Analysis}{9}{0}{2}
+\beamer@sectionintoc {3}{Cutting Through the Noise: Using Deep Neural Network Metamodels for High-Dimensional Nested Simulation}{15}{0}{3}
+\beamer@sectionintoc {4}{Transfer Learning for Rapid Adaptation of DNN Metamodels}{31}{0}{4}

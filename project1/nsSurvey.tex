@@ -21,7 +21,7 @@ Subsequent research efforts have been made to improve the efficiency of nested s
 This is referred to as pooling.
 Different methods pool inner replications differently, using either a trained supervised learning metamodel or predefined likelihood ratio weights.
 \cite{broadie2015risk} propose a regression-based nested simulation procedure, which uses a trained regression metamodel to estimate the scenario-wise portfolio loss for an outer scenario by pooling the inner replications from all outer scenarios.
-For certain risk measures,~\cite{broadie2015risk} show that it’s optimal to allocate the entire simulation budget to outer-level simulations, keeping only 1 inner replication in each outer scenario.
+For certain risk measures,~\cite{broadie2015risk} show that it's optimal to allocate the entire simulation budget to outer-level simulations, keeping only 1 inner replication in each outer scenario.
 Similarly,~\cite{hong2017kernel},~\cite{feng2020optimal}, and~\cite{zhang2022sample} use a kernel smoothing model, a likelihood ratio model, and a kernel ridge regression (KRR) model as metamodels to pool the inner replications from all outer scenarios, respectively.
 In simulation studies, this approach—using a model of a simulation—is called metamodeling, and such models are termed metamodels~\citep{barton1998simulation}.
 Another line of research is a multi-level Monte Carlo (MLMC) method analyzed in~\cite{giles2019multilevel}, which is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest.
