@@ -71,16 +71,18 @@
 \headcommand {\beamer@framepages {29}{29}}
 \headcommand {\slideentry {3}{0}{16}{30/30}{}{0}}
 \headcommand {\beamer@framepages {30}{30}}
-\headcommand {\beamer@partpages {1}{31}}
-\headcommand {\beamer@subsectionpages {31}{31}}
-\headcommand {\beamer@sectionpages {31}{31}}
-\headcommand {\beamer@documentpages {31}}
-\headcommand {\gdef \inserttotalframenumber {29}}
 \headcommand {\beamer@sectionpages {15}{30}}
 \headcommand {\beamer@subsectionpages {15}{30}}
 \headcommand {\sectionentry {4}{TL for DNN Metamodels}{31}{Transfer Learning for Rapid Adaptation of DNN Metamodels}{0}}
-\headcommand {\beamer@sectionpages {31}{30}}
-\headcommand {\beamer@subsectionpages {31}{30}}
-\headcommand {\sectionentry {5}{\translate {References}}{31}{\translate {References}}{0}}
-\headcommand {\slideentry {5}{0}{0}{31/31}{}{0}}
+\headcommand {\slideentry {4}{0}{1}{31/31}{}{0}}
 \headcommand {\beamer@framepages {31}{31}}
+\headcommand {\beamer@partpages {1}{32}}
+\headcommand {\beamer@subsectionpages {31}{32}}
+\headcommand {\beamer@sectionpages {31}{32}}
+\headcommand {\beamer@documentpages {32}}
+\headcommand {\gdef \inserttotalframenumber {30}}
+\headcommand {\beamer@sectionpages {31}{31}}
+\headcommand {\beamer@subsectionpages {31}{31}}
+\headcommand {\sectionentry {5}{\translate {References}}{32}{\translate {References}}{0}}
+\headcommand {\slideentry {5}{0}{0}{32/32}{}{0}}
+\headcommand {\beamer@framepages {32}{32}}

@@ -929,11 +929,10 @@ And their empirical convergence across different:
         \label{tab:arch}
     \end{table}
 
-    Three datasets are considered:
+    In our experiment:
     \begin{itemize}
-        \item   \textcolor{color10_2}{Training}: 90,000 scenarios (100 inner replications).
-        \item   \textcolor{color10_3}{Test}: 10,000 scenarios (100 inner replications).
-        \item   \textcolor{color10_5}{True}: 100,000 scenarios (100,000 inner replications).
+        \item $95\%$-CVaR of loss for a GMWB with a 240-month maturity
+        \item 240-dimensional feature vector and 1-dimensional loss
     \end{itemize}
 
     \note{We consider the following metamodel architectures: \\}
@@ -957,11 +956,13 @@ And their empirical convergence across different:
         \includegraphics[width=\textwidth]{../project2/figures/datasets.png}
     \end{figure}
 
-    In our experiment:
+    Three datasets are considered:
     \begin{itemize}
-        \item $95\%$-CVaR of loss for a GMWB with a 240-month maturity
-        \item 240-dimensional feature vector and 1-dimensional loss
+        \item   \textcolor{color10_2}{Training}: 90,000 scenarios (100 inner replications).
+        \item   \textcolor{color10_3}{Test}: 10,000 scenarios (100 inner replications).
+        \item   \textcolor{color10_5}{True}: 100,000 scenarios (100,000 inner replications).
     \end{itemize}
+
 
 \note{To further clarify our research questions, we consider the following scenario: \\}
 \note{We have a noisy training data and a noisy test data. \\}
@@ -1472,49 +1473,46 @@ And their empirical convergence across different:
 
 \section[TL for DNN Metamodels]{Transfer Learning for Rapid Adaptation of DNN Metamodels}
 
+\begin{frame}{Transfer Learning for Rapid Adaptation of DNN Metamodels}
 
+    \textbf{Use Case:} Adapting deep neural network metamodels to changing conditions.
+    \begin{itemize}
+        \item   Retraining from scratch is computationally expensive.
+        \item   Efficient incorporation of new VA contract data.
+        \item   Balancing model accuracy and computational costs.
+    \end{itemize}
 
+    \vspace{10pt}
 
-% \begin{frame}{Transfer Learning for Rapid Adaptation of DNN Metamodels}
+    \textbf{Solution:} Transfer learning (TL) to develop adaptable, efficient metamodels for VA dynamic hedging.
 
-%     \textbf{Challenge:} Adapting deep neural network metamodels to changing conditions.
-%     \begin{itemize}
-%         \item   Retraining from scratch is computationally expensive.
-%         \item   Efficient incorporation of new VA contract data.
-%         \item   Balancing model accuracy and computational costs.
-%     \end{itemize}
+    \begin{itemize}
+        \item   Pre-train deep neural network on contracts with abundant simulation data.
+        \item   Fine-tune on smaller dataset of new contracts/market conditions.
+        \item   Leverages shared features between VA contracts.
+        \item   Computational savings:
+            \begin{itemize}
+                \item   Reduced training time.
+                \item   Fewer data points needed for good performance.
+            \end{itemize}
+    \end{itemize}
 
-%     \vspace{10pt}
+    \note{In this project, we propose a transfer learning framework for rapid adaptation of deep neural network metamodels in VA dynamic hedging.\\ }
+    \note{The problem is the same as the previous project. We want to use deep neural network metamodels to approximate the complex simulation model that involves dynamic hedging.\\}
+    \note{The difference is that we want to use transfer learning to speed up the training process.\\}
+    \note{This can be beneficial for the practical applications.\\}
+    \note{Firstly, new VA contracts are continuously issued.\\}
+    \note{Secondly, market conditions are changing.\\}
+    \note{Thirdly, the computational budget is limited.\\}
+    \note{Transfer learning can help us to adapt to the new market conditions quickly and efficiently.\\}
+    \note{We can pre-train the deep neural network metamodel on a large dataset of VA contracts with abundant simulation data.\\}
+    \note{Then, we can fine-tune the metamodel on a smaller dataset of new VA contracts with limited data.\\}
+    \note{The data is often limited for new VA contracts as simulation is expensive to run.\\}
+    \note{The shared features between VA contracts can be leveraged to speed up the training process.\\}
+    \note{We can also transfer the knowledge to other contract types.\\}
+    \note{When a new VA contract is issued, we can use transfer learning to adapt the metamodel to the new contract quickly.\\}
 
-%     \textbf{Solution:} Transfer learning (TL) to develop adaptable, efficient metamodels for VA dynamic hedging.
-
-%     \begin{itemize}
-%         \item   Pre-train deep neural network on contracts with abundant simulation data.
-%         \item   Fine-tune on smaller dataset of new contracts/market conditions.
-%         \item   Leverages shared features between VA contracts.
-%         \item   Computational savings:
-%             \begin{itemize}
-%                 \item   Reduced training time.
-%                 \item   Fewer data points needed for good performance.
-%             \end{itemize}
-%     \end{itemize}
-
-%     \note{In this project, we propose a transfer learning framework for rapid adaptation of deep neural network metamodels in VA dynamic hedging.\\ }
-%     \note{The problem is the same as the previous project. We want to use deep neural network metamodels to approximate the complex simulation model that involves dynamic hedging.\\}
-%     \note{The difference is that we want to use transfer learning to speed up the training process.\\}
-%     \note{This can be beneficial for the practical applications.\\}
-%     \note{Firstly, new VA contracts are continuously issued.\\}
-%     \note{Secondly, market conditions are changing.\\}
-%     \note{Thirdly, the computational budget is limited.\\}
-%     \note{Transfer learning can help us to adapt to the new market conditions quickly and efficiently.\\}
-%     \note{We can pre-train the deep neural network metamodel on a large dataset of VA contracts with abundant simulation data.\\}
-%     \note{Then, we can fine-tune the metamodel on a smaller dataset of new VA contracts with limited data.\\}
-%     \note{The data is often limited for new VA contracts as simulation is expensive to run.\\}
-%     \note{The shared features between VA contracts can be leveraged to speed up the training process.\\}
-%     \note{We can also transfer the knowledge to other contract types.\\}
-%     \note{When a new VA contract is issued, we can use transfer learning to adapt the metamodel to the new contract quickly.\\}
-
-% \end{frame}
+\end{frame}
 
 
 % \begin{frame}{Transfer Learning Framework}
