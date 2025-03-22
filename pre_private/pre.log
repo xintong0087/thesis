@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.16)  19 MAR 2025 19:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.16)  21 MAR 2025 08:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1482,25 +1482,222 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.30}) has 
 l.1515 \end{frame}
                   
 
-] (pre.bbl
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 1.
-
-) [32
+] [32
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{Navigation31}) has been already used, duplicate ignored
 
 \pgfpages@shipoutshipoutbox ...physicalpagesizes }
                                                   \endgroup 
-l.2094 \end{frame}
+l.1555 \end{frame}
                   
 pdfTeX warning (ext4): destination with the same identifier (name{page.31}) has been already used, duplicate ignored
 
 \pgfpages@shipoutshipoutbox ...physicalpagesizes }
                                                   \endgroup 
-l.2094 \end{frame}
+l.1555 \end{frame}
+                  
+
+] [33
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation32}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1588 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.32}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1588 \end{frame}
+                  
+
+]
+<../project3/figures/mtl.png, id=864, 2075.755pt x 293.095pt>
+File: ../project3/figures/mtl.png Graphic file (type png)
+<use ../project3/figures/mtl.png>
+Package pdftex.def Info: ../project3/figures/mtl.png  used on input line 1707.
+(pdftex.def)             Requested size: 276.559pt x 39.04733pt.
+ [34
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation33}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1707 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.33}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1707 \end{frame}
+                  
+
+] [35
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation34}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1747 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.34}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1747 \end{frame}
+                  
+
+ <../project3/figures/mtl.png>]
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 1747.
+ (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmss.fd
+File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [36
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation35}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1860 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.35}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1860 \end{frame}
+                  
+
+]
+<../project3/figures/figure3a.png, id=927, 578.16pt x 433.62pt>
+File: ../project3/figures/figure3a.png Graphic file (type png)
+<use ../project3/figures/figure3a.png>
+Package pdftex.def Info: ../project3/figures/figure3a.png  used on input line 1879.
+(pdftex.def)             Requested size: 157.6756pt x 118.25768pt.
+
+Overfull \hbox (4.03067pt too wide) in paragraph at lines 1879--1879
+[][]  
+ []
+
+<../project3/figures/figure3b.png, id=928, 578.16pt x 433.62pt>
+File: ../project3/figures/figure3b.png Graphic file (type png)
+<use ../project3/figures/figure3b.png>
+Package pdftex.def Info: ../project3/figures/figure3b.png  used on input line 1879.
+(pdftex.def)             Requested size: 157.6756pt x 118.25768pt.
+
+Overfull \hbox (4.03067pt too wide) in paragraph at lines 1879--1879
+[][]  
+ []
+
+[37
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation36}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1879 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.36}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1879 \end{frame}
+                  
+
+]
+<../project3/figures/figure4a.png, id=949, 578.16pt x 433.62pt>
+File: ../project3/figures/figure4a.png Graphic file (type png)
+<use ../project3/figures/figure4a.png>
+Package pdftex.def Info: ../project3/figures/figure4a.png  used on input line 1902.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+<../project3/figures/figure4b.png, id=950, 578.16pt x 433.62pt>
+File: ../project3/figures/figure4b.png Graphic file (type png)
+<use ../project3/figures/figure4b.png>
+Package pdftex.def Info: ../project3/figures/figure4b.png  used on input line 1902.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+ [38
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation37}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1902     \end{frame}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{page.37}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1902     \end{frame}
+                      
+
+ <../project3/figures/figure3a.png> <../project3/figures/figure3b.png>]
+<../project3/figures/figure4c.png, id=975, 578.16pt x 433.62pt>
+File: ../project3/figures/figure4c.png Graphic file (type png)
+<use ../project3/figures/figure4c.png>
+Package pdftex.def Info: ../project3/figures/figure4c.png  used on input line 1924.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+<../project3/figures/figure4d.png, id=976, 578.16pt x 433.62pt>
+File: ../project3/figures/figure4d.png Graphic file (type png)
+<use ../project3/figures/figure4d.png>
+Package pdftex.def Info: ../project3/figures/figure4d.png  used on input line 1924.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+ [39
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation38}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1924     \end{frame}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{page.38}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.1924     \end{frame}
+                      
+
+ <../project3/figures/figure4a.png> <../project3/figures/figure4b.png>] [40
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation39}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.2081 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.39}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.2081 \end{frame}
+                  
+
+ <../project3/figures/figure4c.png> <../project3/figures/figure4d.png>] (pre.bbl
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\translate ' on input line 1.
+
+) [41
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation40}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.2089 \end{frame}
+                  
+pdfTeX warning (ext4): destination with the same identifier (name{page.40}) has been already used, duplicate ignored
+
+\pgfpages@shipoutshipoutbox ...physicalpagesizes }
+                                                  \endgroup 
+l.2089 \end{frame}
                   
 
 ]
@@ -1513,20 +1710,20 @@ l.2094 \end{frame}
 \tf@snm=\write8
 \openout8 = `pre.snm'.
 
- [33
+ [42
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation32}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{Navigation41}) has been already used, duplicate ignored
 
 \pgfpages@shipoutshipoutbox ...physicalpagesizes }
                                                   \endgroup 
-l.2095 \end{document}
+l.2090 \end{document}
                      
-pdfTeX warning (ext4): destination with the same identifier (name{page.32}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.41}) has been already used, duplicate ignored
 
 \pgfpages@shipoutshipoutbox ...physicalpagesizes }
                                                   \endgroup 
-l.2095 \end{document}
+l.2090 \end{document}
                      
 
 ] (pre.aux)
@@ -1538,17 +1735,17 @@ Package rerunfilecheck Info: File `pre.out' has not changed.
 (rerunfilecheck)             Checksum: D05ADFE8EFA409B4F4A2282A0370EE5E;1881.
  ) 
 Here is how much of TeX's memory you used:
- 31250 strings out of 474486
- 652692 string characters out of 5744227
+ 31367 strings out of 474486
+ 655951 string characters out of 5744227
  1965542 words of memory out of 5000000
- 52813 multiletter control sequences out of 15000+600000
- 574703 words of font info for 98 fonts, out of 8000000 for 9000
+ 52908 multiletter control sequences out of 15000+600000
+ 575043 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,678b,1090s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\user\AppData\Local\MiKTeX\fonts/pk/ljfour/public/bbm/dpi600\bbm9.pk><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on pre.pdf (32 pages, 995192 bytes).
+ <C:\Users\user\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss0800.pk> <C:\Users\user\AppData\Local\MiKTeX\fonts/pk/ljfour/public/bbm/dpi600\bbm9.pk><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on pre.pdf (41 pages, 1242080 bytes).
 PDF statistics:
- 967 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1172 PDF objects out of 1200 (max. 8388607)
+ 94 named destinations out of 1000 (max. 500000)
+ 222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

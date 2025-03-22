@@ -1475,25 +1475,25 @@ And their empirical convergence across different:
 
 \begin{frame}{Transfer Learning for Rapid Adaptation of DNN Metamodels}
 
-    \textbf{Use Case:} Adapting deep neural network metamodels to changing conditions.
+    \textbf{Problem:} Updating models for new conditions is expensive.
     \begin{itemize}
-        \item   Retraining from scratch is computationally expensive.
-        \item   Efficient incorporation of new VA contract data.
-        \item   Balancing model accuracy and computational costs.
+        \item   Full retraining takes too much time.
+        \item   New VA contracts need quick model updates.
+        \item   Need balance between speed and accuracy.
     \end{itemize}
 
     \vspace{10pt}
 
-    \textbf{Solution:} Transfer learning (TL) to develop adaptable, efficient metamodels for VA dynamic hedging.
+    \textbf{Solution:} Transfer learning for faster model adaptation.
 
     \begin{itemize}
-        \item   Pre-train deep neural network on contracts with abundant simulation data.
-        \item   Fine-tune on smaller dataset of new contracts/market conditions.
-        \item   Leverages shared features between VA contracts.
-        \item   Computational savings:
+        \item   Train first on existing contract data.
+        \item   Update with small amount of new contract data.
+        \item   Reuse knowledge between similar contracts.
+        \item   Benefits:
             \begin{itemize}
-                \item   Reduced training time.
-                \item   Fewer data points needed for good performance.
+                \item   Faster training.
+                \item   Less data needed.
             \end{itemize}
     \end{itemize}
 
@@ -1515,77 +1515,77 @@ And their empirical convergence across different:
 \end{frame}
 
 
-% \begin{frame}{Transfer Learning Framework}
+\begin{frame}{Transfer Learning Framework}
 
-%     \textbf{Key Components:}
-%     \begin{itemize}
-%         \item   \textbf{Domain} $\mathcal{D}$: feature space $\mathcal{X}$ + probability distribution $F$
-%         \item   \textbf{Task} $\mathcal{T}$: label space $\mathcal{Y}$ + predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$
-%     \end{itemize}
+    \textbf{Key Components:}
+    \begin{itemize}
+        \item   \textbf{Domain} $\mathcal{D}$: feature space $\mathcal{X}$ + probability distribution $F$
+        \item   \textbf{Task} $\mathcal{T}$: label space $\mathcal{Y}$ + predictive function $f: \mathcal{X} \rightarrow \mathcal{Y}$
+    \end{itemize}
 
-%     \vspace{10pt}
-%     \textbf{Source vs. Target:}
-%     \begin{itemize}
-%         \item   \textbf{Source:} $\mathcal{D}_{\text{So}} = \{\mathcal{X}_{\text{So}}, F_{\text{So}}(X)\}$
-%         \item   \textbf{Target:} $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(X)\}$
-%     \end{itemize}
+    \vspace{10pt}
+    \textbf{Source vs. Target:}
+    \begin{itemize}
+        \item   \textbf{Source:} $\mathcal{D}_{\text{So}} = \{\mathcal{X}_{\text{So}}, F_{\text{So}}(X)\}$
+        \item   \textbf{Target:} $\mathcal{D}_{\text{Ta}} = \{\mathcal{X}_{\text{Ta}}, F_{\text{Ta}}(X)\}$
+    \end{itemize}
 
-%     \vspace{10pt}
-%     \textbf{Our Goal:}
-%     \begin{itemize}
-%         \item   \textbf{Input features} $X$: risk factors from outer simulation
-%         \item   \textbf{Output labels} $L$: contract losses
-%         \item   \textbf{Source and target}: from VAs with abundant simulation data to new VAs with limited data
-%         \item   \textbf{Goal}: improve $f_{\text{Ta}}(\cdot)$ using knowledge from $\mathcal{D}_{\text{So}}$ and $f_{\text{So}}(\cdot)$
-%     \end{itemize}
+    \vspace{10pt}
+    \textbf{Our Goal:}
+    \begin{itemize}
+        \item   \textbf{Input features} $X$: risk factors from outer simulation
+        \item   \textbf{Output labels} $L$: contract losses
+        \item   \textbf{Source and target}: from VAs with abundant simulation data to new VAs with limited data
+        \item   \textbf{Goal}: improve $f_{\text{Ta}}(\cdot)$ using knowledge from $\mathcal{D}_{\text{So}}$ and $f_{\text{So}}(\cdot)$
+    \end{itemize}
 
-%     \note{Transfer learning provides a formal framework for adapting models from one domain to another.\\}
-%     \note{The domain consists of a feature space and a probability distribution over that space.\\}
-%     \note{In our context, the feature space includes risk factors from the outer simulation.\\}
-%     \note{It is equipped with a probability distribution that describes the joint distribution of the risk factors.\\}
-%     \note{We don't know the exact joint distribution of the risk factors, but we can simulate outer scenarios from it using monte carlo simulation.\\}
-%     \note{The task consists of a label space and a predictive function mapping features to labels.\\}
-%     \note{For VA contracts, our labels are the contract losses under different scenarios.\\}
-%     \note{The source domain typically has abundant data - this could be existing VA contracts with extensive simulation data.\\}
-%     \note{The target domain has limited data - new VA contracts or existing contracts under new market conditions.\\}
-%     \note{Our goal is to leverage knowledge from the source domain to improve prediction in the target domain.\\}
-%     \note{This is particularly valuable when simulation data is expensive to generate for new contracts.\\}
-%     \note{The transfer learning approach allows us to maintain accuracy while significantly reducing computational requirements.\\}
+    \note{Transfer learning provides a formal framework for adapting models from one domain to another.\\}
+    \note{The domain consists of a feature space and a probability distribution over that space.\\}
+    \note{In our context, the feature space includes risk factors from the outer simulation.\\}
+    \note{It is equipped with a probability distribution that describes the joint distribution of the risk factors.\\}
+    \note{We don't know the exact joint distribution of the risk factors, but we can simulate outer scenarios from it using monte carlo simulation.\\}
+    \note{The task consists of a label space and a predictive function mapping features to labels.\\}
+    \note{For VA contracts, our labels are the contract losses under different scenarios.\\}
+    \note{The source domain typically has abundant data - this could be existing VA contracts with extensive simulation data.\\}
+    \note{The target domain has limited data - new VA contracts or existing contracts under new market conditions.\\}
+    \note{Our goal is to leverage knowledge from the source domain to improve prediction in the target domain.\\}
+    \note{This is particularly valuable when simulation data is expensive to generate for new contracts.\\}
+    \note{The transfer learning approach allows us to maintain accuracy while significantly reducing computational requirements.\\}
 
-% \end{frame}
+\end{frame}
 
-% \begin{frame}{Transfer Learning Techniques}
+\begin{frame}{Transfer Learning Techniques}
 
-%     \textbf{Common Techniques:}
-%     \begin{itemize}
-%         \item   \textbf{Fine-tuning:} a model pre-trained on a source task is used as a starting point for a target task.
-%         \item   \textbf{Layer freezing:} only part of the model is fine-tuned.
-%         \item   \textbf{Multi-task learning:} perform training on multiple tasks simultaneously.
-%     \end{itemize}
+    \textbf{Common Techniques:}
+    \begin{itemize}
+        \item   \textbf{Fine-tuning:} a model pre-trained on a source task is used as a starting point for a target task.
+        \item   \textbf{Layer freezing:} only part of the model is fine-tuned.
+        \item   \textbf{Multi-task learning:} perform training on multiple tasks simultaneously.
+    \end{itemize}
 
-%     \vspace{10pt}
+    \vspace{10pt}
 
-%     \textbf{Key considerations:}
-%     \begin{itemize}
-%         \item   Similarity between source and target tasks
-%         \item   Appropriate learning rate
-%     \end{itemize}
+    \textbf{Key considerations:}
+    \begin{itemize}
+        \item   Similarity between source and target tasks
+        \item   Appropriate learning rate
+    \end{itemize}
 
-%     \note{Fine-tuning involves using a pre-trained model as a starting point for a new task.\\}
-%     \note{This approach is effective when the source and target tasks are similar.\\}
-%     \note{For VA contracts, we can fine-tune models between different contract types or market conditions.\\}
-%     \note{Layer freezing is a technique where we keep some layers of the pre-trained model fixed.\\}
-%     \note{Typically, early layers capture general features while later layers are more task-specific.\\}
-%     \note{By freezing early layers, we preserve general knowledge while adapting task-specific layers.\\}
-%     \note{Multi-task learning trains a single model to perform multiple related tasks simultaneously.\\}
-%     \note{This approach can improve generalization by leveraging the domain-specific information across tasks.\\}
-%     \note{For VA contracts, we can train a model to handle multiple contract types or features.\\}
-%     \note{The learning rate is a critical hyperparameter in transfer learning.\\}
-%     \note{Typically, we use a smaller learning rate for fine-tuning compared to training from scratch.\\}
-%     \note{The similarity between source and target tasks greatly impacts transfer learning effectiveness.\\}
-%     \note{More similar tasks generally allow for more effective knowledge transfer.\\}
+    \note{Fine-tuning involves using a pre-trained model as a starting point for a new task.\\}
+    \note{This approach is effective when the source and target tasks are similar.\\}
+    \note{For VA contracts, we can fine-tune models between different contract types or market conditions.\\}
+    \note{Layer freezing is a technique where we keep some layers of the pre-trained model fixed.\\}
+    \note{Typically, early layers capture general features while later layers are more task-specific.\\}
+    \note{By freezing early layers, we preserve general knowledge while adapting task-specific layers.\\}
+    \note{Multi-task learning trains a single model to perform multiple related tasks simultaneously.\\}
+    \note{This approach can improve generalization by leveraging the domain-specific information across tasks.\\}
+    \note{For VA contracts, we can train a model to handle multiple contract types or features.\\}
+    \note{The learning rate is a critical hyperparameter in transfer learning.\\}
+    \note{Typically, we use a smaller learning rate for fine-tuning compared to training from scratch.\\}
+    \note{The similarity between source and target tasks greatly impacts transfer learning effectiveness.\\}
+    \note{More similar tasks generally allow for more effective knowledge transfer.\\}
 
-% \end{frame}
+\end{frame}
 
 % \begin{frame}{Fine-tuning Algorithm for LSTM Metamodels in VA Hedging}
 
@@ -1689,62 +1689,62 @@ And their empirical convergence across different:
 
 % \end{frame}
 
-% \begin{frame}{Multi-task Learning}
-%     \includegraphics[width=0.9\textwidth]{../project3/figures/mtl.png}
+\begin{frame}{Multi-task Learning}
+    \includegraphics[width=0.9\textwidth]{../project3/figures/mtl.png}
     
-%     \begin{itemize}
-%         \item LSTM layers shared across multiple tasks
-%         \item Task-specific fully connected layers
-%         \item Objective: Minimize sum of loss functions across all tasks
-%     \end{itemize}
+    \begin{itemize}
+        \item LSTM layers shared across multiple tasks
+        \item Task-specific fully connected layers
+        \item Objective: Minimize sum of loss functions across all tasks
+    \end{itemize}
     
-%     \note{Multi-task learning offers an alternative approach to transfer learning. \\}
-%     \note{Instead of sequential knowledge transfer, we train on multiple contract types simultaneously. \\}
-%     \note{The shared LSTM layers capture common features across different VA contracts. \\}
-%     \note{Task-specific layers then specialize for each contract type's unique characteristics. \\}
-%     \note{We will examine whether this approach can be more efficient than training separate models for each contract type. \\}
+    \note{Multi-task learning offers an alternative approach to transfer learning. \\}
+    \note{Instead of sequential knowledge transfer, we train on multiple contract types simultaneously. \\}
+    \note{The shared LSTM layers capture common features across different VA contracts. \\}
+    \note{Task-specific layers then specialize for each contract type's unique characteristics. \\}
+    \note{We will examine whether this approach can be more efficient than training separate models for each contract type. \\}
 
-% \end{frame}
+\end{frame}
 
-% \begin{frame}{Experiment Setup}
+\begin{frame}{Experiment Setup}
 
-%     \begin{table}[ht!] 
-%         \centering
-%         \begin{tabular}{lcccc} 
-%         \toprule
-%         \textbf{Contract} & \textbf{Asset Model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
-%         \midrule
-%         GMMB & GBM & No lapse & 50000 & N/A \\
-%         GMMB & RS-GBM & No lapse & 50000 & 2000 \\
-%         GMMB & RS-GBM & Static lapse & 50000 & 2000 \\
-%         GMMB & RS-GBM & Dynamic lapse & 50000 & 2000 \\
-%         GMWB & RS-GBM & Dynamic lapse & N/A & 2000 \\
-%         \bottomrule
-%         \end{tabular}
-%         \caption{VA Contracts for Transfer Learning Experiments}
-%     \end{table}
+    \begin{table}[ht!] 
+        \centering
+        \begin{tabular}{lcccc} 
+        \toprule
+        \textbf{Contract} & \textbf{Asset Model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
+        \midrule
+        GMMB & GBM & No lapse & 50000 & N/A \\
+        GMMB & RS-GBM & No lapse & 50000 & 2000 \\
+        GMMB & RS-GBM & Static lapse & 50000 & 2000 \\
+        GMMB & RS-GBM & Dynamic lapse & 50000 & 2000 \\
+        GMWB & RS-GBM & Dynamic lapse & N/A & 2000 \\
+        \bottomrule
+        \end{tabular}
+        \caption{VA Contracts for Transfer Learning Experiments}
+    \end{table}
 
-%     We aim to examine the performance of TL techniques
-%     \begin{itemize}
-%         \item   learning the lapse features,
-%         \item   learning the dynamic lapse, and 
-%         \item   transferring to other contract types.
-%     \end{itemize}
+    We aim to examine the performance of TL techniques
+    \begin{itemize}
+        \item   learning the lapse features,
+        \item   learning the dynamic lapse, and 
+        \item   transferring to other contract types.
+    \end{itemize}
 
 
-%     \note{We use a variety of VA contracts with different features to test transfer learning. \\}
-%     \note{The source model ($M_{\text{So}}$) is trained with 50,000 samples for comprehensive learning. \\}
-%     \note{The target model ($M_{\text{Ta}}$) uses only 2,000 samples to simulate limited data scenarios. \\}
-%     \note{We progress from simpler to more complex models (No lapse → Static → Dynamic). \\}
-%     \note{We examine both within-contract transfer (GMMB to GMMB with different features) and cross-contract transfer (GMMB to GMWB). \\}
-%     \note{The regime-switching GBM (RS-GBM) model captures more realistic market dynamics. \\}
-%     \note{All training data is generated using 100 inner replications for consistency. \\}
-%     \note{We compare fine-tuning and layer freezing as two primary transfer learning approaches. \\}
-%     \note{The experiments are designed to evaluate how similarity between source and target affects transfer efficiency. \\}
-%     \note{This is another attempt to use simulation models as data generating processes to examine deep neural networks. \\}
-%     \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable, or more generally, which layers of the neural network learn which features of the VA contracts. \\}
+    \note{We use a variety of VA contracts with different features to test transfer learning. \\}
+    \note{The source model ($M_{\text{So}}$) is trained with 50,000 samples for comprehensive learning. \\}
+    \note{The target model ($M_{\text{Ta}}$) uses only 2,000 samples to simulate limited data scenarios. \\}
+    \note{We progress from simpler to more complex models (No lapse → Static → Dynamic). \\}
+    \note{We examine both within-contract transfer (GMMB to GMMB with different features) and cross-contract transfer (GMMB to GMWB). \\}
+    \note{The regime-switching GBM (RS-GBM) model captures more realistic market dynamics. \\}
+    \note{All training data is generated using 100 inner replications for consistency. \\}
+    \note{We compare fine-tuning and layer freezing as two primary transfer learning approaches. \\}
+    \note{The experiments are designed to evaluate how similarity between source and target affects transfer efficiency. \\}
+    \note{This is another attempt to use simulation models as data generating processes to examine deep neural networks. \\}
+    \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable, or more generally, which layers of the neural network learn which features of the VA contracts. \\}
 
-% \end{frame}
+\end{frame}
 
 
 
@@ -1831,103 +1831,97 @@ And their empirical convergence across different:
     
 % \end{frame}
     
-%     \begin{frame}{Results: Accuracy Comparison}
-%         \begin{table}
-%             \begin{tabular}{lr}
-%             \toprule
-%             \textbf{Method and Setting} & \textbf{MSE} \\
-%             \midrule
-%             Extensive Training (Dynamic) & \textbf{0.0587} \\
-%             Fine-tuning (Static) & 0.0794 \\
-%             Layer Freezing (Static) & 0.0763 \\
-%             Layer Freezing (No Lapse) & 0.3361 \\
-%             Fine-tuning (No Lapse) & 0.4894 \\
-%             Without TL (Dynamic) & 0.2950 \\
-%             \bottomrule
-%             \end{tabular}
-%             \caption{Comparison of different TL methods on GMMB contracts (best MSE values)}
-%         \end{table}
+\begin{frame}{Results: Accuracy Comparison}
+        \begin{table}
+            \begin{tabular}{lr}
+            \toprule
+            \textbf{Method and Setting} & \textbf{MSE} \\
+            \midrule
+            Extensive Training (Dynamic) & \textbf{0.0587} \\
+            Fine-tuning (Static) & 0.0794 \\
+            Layer Freezing (Static) & 0.0763 \\
+            Layer Freezing (No Lapse) & 0.3361 \\
+            Fine-tuning (No Lapse) & 0.4894 \\
+            Without TL (Dynamic) & 0.2950 \\
+            \bottomrule
+            \end{tabular}
+            \caption{Comparison of different TL methods on GMMB contracts (best MSE values)}
+        \end{table}
 
-%     \note{This table summarizes the MSE values for different training methods. \\}
-%     \note{Extensive training with full data achieves the best performance (0.0587 MSE). \\}
-%     \note{Without transfer learning, training from scratch on dynamic lapse data yields mediocre results (0.2950 MSE). \\}
-%     \note{Transfer learning from static lapse models (both fine-tuning and layer freezing) performs well. \\}
-%     \note{Transfer from no lapse models performs poorly, demonstrating that negative transfer can occur. \\}
-%     \note{Negative transfer happens when source and target tasks are substantially different. \\}
-%     \note{In such cases, knowledge from the source model can actually hinder learning on the target task. \\}
-%     \note{This highlights the importance of selecting appropriate source models for transfer learning. \\}
+    \note{This table summarizes the MSE values for different training methods. \\}
+    \note{Extensive training with full data achieves the best performance (0.0587 MSE). \\}
+    \note{Without transfer learning, training from scratch on dynamic lapse data yields mediocre results (0.2950 MSE). \\}
+    \note{Transfer learning from static lapse models (both fine-tuning and layer freezing) performs well. \\}
+    \note{Transfer from no lapse models performs poorly, demonstrating that negative transfer can occur. \\}
+    \note{Negative transfer happens when source and target tasks are substantially different. \\}
+    \note{In such cases, knowledge from the source model can actually hinder learning on the target task. \\}
+    \note{This highlights the importance of selecting appropriate source models for transfer learning. \\}
     
-%     \end{frame}
+\end{frame}
     
-%     \begin{frame}{Learning Curves: Effect of Similarity}
-%     \begin{columns}
-%     \column{0.5\textwidth}
-%     \includegraphics[height=0.48\textheight]{../project3/figures/figure3a.png}
-%     \column{0.5\textwidth}
-%     \includegraphics[height=0.48\textheight]{../project3/figures/figure3b.png}
-%     \end{columns}
+\begin{frame}{Learning Curves: Effect of Similarity}
+    \begin{columns}
+    \column{0.5\textwidth}
+    \includegraphics[height=0.48\textheight]{../project3/figures/figure3a.png}
+    \column{0.5\textwidth}
+    \includegraphics[height=0.48\textheight]{../project3/figures/figure3b.png}
+    \end{columns}
     
-%     \textit{The effect of similarity between source and target on the convergence speed}
-%     \begin{itemize}
-%         \item \textit{Left: from No Lapse; right: from Static Lapse}
-%     \end{itemize}
+    \textit{The effect of similarity between source and target on the convergence speed}
+    \begin{itemize}
+        \item \textit{Left: from No Lapse; right: from Static Lapse}
+    \end{itemize}
     
-%     \note{These figures further illustrate how source-target similarity affects transfer learning performance. \\}
-%     \note{The left graph shows transfer from no lapse models, which has slower convergence. \\}
-%     \note{The right graph shows transfer from static lapse models, with faster convergence. \\}
-%     \note{This reinforces our finding that greater similarity between source and target domains leads to more effective knowledge transfer. \\}
-%     \end{frame}
+    \note{These figures further illustrate how source-target similarity affects transfer learning performance. \\}
+    \note{The left graph shows transfer from no lapse models, which has slower convergence. \\}
+    \note{The right graph shows transfer from static lapse models, with faster convergence. \\}
+    \note{This reinforces our finding that greater similarity between source and target domains leads to more effective knowledge transfer. \\}
+\end{frame}
     
-%     \begin{frame}{Transfer Knowledge to other Contract Types}
-%     \textbf{From GMMB to GMWB Contract}
+
     
-%     \note{Now we examine transfer learning between different contract types, not just different features. \\}
-%     \note{This is a more challenging transfer learning scenario as the contract structures differ significantly. \\}
-%     \note{GMMB (Guaranteed Minimum Maturity Benefit) and GMWB (Guaranteed Minimum Withdrawal Benefit) have different risk profiles and valuation approaches. \\}
-%     \end{frame}
+    \begin{frame}{Learning Curves: Transfer Knowledge to other Contract Types}
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure4a.png}
+            \caption{50000 samples}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure4b.png}
+            \caption{2000 samples}
+        \end{subfigure}
+        \caption{Learning curves of GMWB contracts}
+    \end{figure}
     
-%     \begin{frame}{Learning Curves: Transfer Knowledge to other Contract Types}
-%     \begin{figure}[ht]
-%         \centering
-%         \begin{subfigure}{0.48\textwidth}
-%             \includegraphics[width=\textwidth]{../project3/figures/figure4a.png}
-%             \caption{50000 samples}
-%         \end{subfigure}
-%         \begin{subfigure}{0.48\textwidth}
-%             \includegraphics[width=\textwidth]{../project3/figures/figure4b.png}
-%             \caption{2000 samples}
-%         \end{subfigure}
-%         \caption{Learning curves of GMWB contracts}
-%     \end{figure}
+    \note{These graphs show learning curves for GMWB contracts with different training sample sizes. \\}
+    \note{Left figure (50,000 samples) shows that with abundant data, all methods eventually converge well. \\}
+    \note{Right figure (2,000 samples) demonstrates the advantage of transfer learning in data-limited scenarios. \\}
+    \note{With limited data, transfer learning methods significantly outperform training from scratch. \\}
+    \note{This is particularly relevant for new products or market conditions where historical data is scarce. \\}
+    \end{frame}
     
-%     \note{These graphs show learning curves for GMWB contracts with different training sample sizes. \\}
-%     \note{Left figure (50,000 samples) shows that with abundant data, all methods eventually converge well. \\}
-%     \note{Right figure (2,000 samples) demonstrates the advantage of transfer learning in data-limited scenarios. \\}
-%     \note{With limited data, transfer learning methods significantly outperform training from scratch. \\}
-%     \note{This is particularly relevant for new products or market conditions where historical data is scarce. \\}
-%     \end{frame}
-    
-%     \begin{frame}{Learning Curves: Effect of Similarity}
-%     \begin{figure}[ht]
-%         \centering
-%         \begin{subfigure}{0.48\textwidth}
-%             \includegraphics[width=\textwidth]{../project3/figures/figure4c.png}
-%             \caption{Fine-tuning}
-%         \end{subfigure}
-%         \begin{subfigure}{0.48\textwidth}
-%             \includegraphics[width=\textwidth]{../project3/figures/figure4d.png}
-%             \caption{Layer Freezing}
-%         \end{subfigure}
-%         \caption{Comparison of different TL methods on GMWB contracts}
-%     \end{figure}
+    \begin{frame}{Learning Curves: Effect of Similarity}
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure4c.png}
+            \caption{Fine-tuning}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure4d.png}
+            \caption{Layer Freezing}
+        \end{subfigure}
+        \caption{Comparison of different TL methods on GMWB contracts}
+    \end{figure}
     
     
-%     \note{These figures compare fine-tuning vs. layer freezing approaches for GMWB contracts. \\}
-%     \note{Fine-tuning (left) allows all network parameters to be updated during training. \\}
-%     \note{Layer freezing (right) keeps early layers fixed and only updates later layers. \\}
-%     \note{For dissimilar contracts like GMMB to GMWB, fine-tuning generally performs better. \\}
-%     \note{This suggests that when transferring between different contract types, more flexibility in adaptation is beneficial. \\}
-%     \end{frame}
+    \note{These figures compare fine-tuning vs. layer freezing approaches for GMWB contracts. \\}
+    \note{Fine-tuning (left) allows all network parameters to be updated during training. \\}
+    \note{Layer freezing (right) keeps early layers fixed and only updates later layers. \\}
+    \note{For dissimilar contracts like GMMB to GMWB, fine-tuning generally performs better. \\}
+    \note{This suggests that when transferring between different contract types, more flexibility in adaptation is beneficial. \\}
+    \end{frame}
     
 %     \begin{frame}{Performance Comparison (GMMB → GMWB)}
 %     \begin{table}
@@ -2053,38 +2047,39 @@ And their empirical convergence across different:
 %     \note{These challenges represent important areas for future research. \\}
 %     \end{frame}
     
-%     \begin{frame}{Conclusions}
-%     \begin{itemize}
-%         \item Transfer learning significantly improves metamodeling for VA contracts:
-%         \begin{itemize}
-%             \item Faster training convergence
-%             \item Better prediction accuracy
-%             \item Reduced computational requirements
-%         \end{itemize}
-%         \item Enables more frequent risk assessments and faster decision-making
-%     \end{itemize}
+    \begin{frame}{Conclusions}
+    \begin{itemize}
+        \item Transfer learning significantly improves metamodeling for VA contracts:
+        \begin{itemize}
+            \item Faster training convergence
+            \item Better prediction accuracy
+            \item Reduced computational requirements
+        \end{itemize}
+        \item Enables more frequent risk assessments and faster decision-making
+    \end{itemize}
     
-%     \note{Our research demonstrates that transfer learning significantly enhances VA contract metamodeling. \\}
-%     \note{The benefits include faster convergence, better accuracy with limited data, and reduced computational needs. \\}
-%     \note{These improvements enable more frequent and timely risk assessments. \\}
-%     \note{This is particularly valuable in volatile markets where rapid decision-making is essential. \\}
-%     \note{The approach bridges the gap between traditional actuarial methods and modern machine learning techniques. \\}
-%     \end{frame}
+    \note{Our research demonstrates that transfer learning significantly enhances VA contract metamodeling. \\}
+    \note{The benefits include faster convergence, better accuracy with limited data, and reduced computational needs. \\}
+    \note{These improvements enable more frequent and timely risk assessments. \\}
+    \note{This is particularly valuable in volatile markets where rapid decision-making is essential. \\}
+    \note{The approach bridges the gap between traditional actuarial methods and modern machine learning techniques. \\}
     
-% \begin{frame}{Future Directions}
-%     \begin{itemize}
-%         \item Incorporating domain knowledge into transfer process
-%         \item Extension to other insurance and financial products
-%         \item Multi-task learning with more than two tasks
-%     \end{itemize}
+    \textbf{Future Work:}
+    \begin{itemize}
+        \item Incorporating domain knowledge into transfer process
+        \item Extension to other insurance and financial products
+        \item Multi-task learning with more than two tasks
+    \end{itemize}
     
-%     \note{Several promising directions exist for extending this research. \\}
-%     \note{Incorporating actuarial domain knowledge could further improve transfer learning effectiveness. \\}
-%     \note{The approach could be extended to other insurance products and financial derivatives. \\}
-%     \note{Multi-task learning could be expanded to handle more than two contract types simultaneously. \\}
-%     \note{Integration with existing risk management systems would facilitate practical adoption. \\}
-%     \note{Ultimately, these techniques could transform how financial institutions manage complex product portfolios. \\}
-% \end{frame}
+    \note{Several promising directions exist for extending this research. \\}
+    \note{Incorporating actuarial domain knowledge could further improve transfer learning effectiveness. \\}
+    \note{The approach could be extended to other insurance products and financial derivatives. \\}
+    \note{Multi-task learning could be expanded to handle more than two contract types simultaneously. \\}
+    \note{Integration with existing risk management systems would facilitate practical adoption. \\}
+    \note{Ultimately, these techniques could transform how financial institutions manage complex product portfolios. \\}
+
+\end{frame}
+
 
 
 \begin{frame}
