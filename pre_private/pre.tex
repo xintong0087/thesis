@@ -21,7 +21,7 @@ University of Waterloo % Your institution for the title page
 
 
 \jointwork{Supervised by Prof. Tony Wirjanto and Prof. Mingbin Feng}
-\conference{Thesis Defense, \\ University of Waterloo}
+\conference{Thesis Defense \\ University of Waterloo \\ 2025}
 
 
 %\usepackage[backend=bibtex,citestyle=authoryear-icomp,natbib,maxcitenames=1]{biblatex}
@@ -74,6 +74,11 @@ University of Waterloo % Your institution for the title page
 \beamertemplatenavigationsymbolsempty
 \begin{frame}[plain]
 \titlepage
+
+\note{Thank you for attending my thesis defense. \\}
+\note{Today, I will present my work on resilient machine learning approaches for fast risk evaluation and management of financial portfolios and variable annuities. \\}
+\note{I am supervised by Prof. Tony Wirjanto and Prof. Mingbin Feng. \\}
+
 \end{frame}
 }
 
@@ -85,6 +90,11 @@ University of Waterloo % Your institution for the title page
   \end{beamercolorbox}}
 \begin{frame}{Outline}
 \tableofcontents
+
+\note{My thesis focuses on improving nested simulation with supervised learning metamodels. It consists of three parts. \\}
+\note{In the first part, I focus on comparing different nested simulation procedures for risk evaluation of financial derivatives. \\}
+\note{In the second part, I examine deep neural network based nested simulation procedures for risk management of variable annuities. \\}
+\note{In the third part, I propose a transfer learning based nested simulation procedure for fast adaptation to new variable annuity contracts.}
 \end{frame}
 }
 \addtocounter{framenumber}{-2}
@@ -102,85 +112,91 @@ $$\rho(L) = \rho(L(X)), \;\;\; L(X) = \mathbb{E}\left[ Y|X=x \right]\vert_{x=X}.
 
 Involves two levels of Monte Carlo simulations:
 \begin{itemize}
-    \item Outer: underlying risk factors (outer scenarios), $X_i \sim F_X$
-    \item Inner: scenario-wise losses (inner replications), $Y_{ij} \sim F_{Y|X_i}$
-    \item Total simulation budget: $\Gamma = M \cdot N$
+    \item Outer: underlying risk factors, $X_i \sim F_X$
+    \item Inner: scenario-wise losses, $Y_{ij} \sim F_{Y|X_i}$
 \end{itemize}
 
 \vspace{10pt}
-\textbf{Computationally expensive}
 
-
-\note{In the context of quantitative risk management, nested simulation is used for risk evaluation of financial derivatives and insurance products. \\}
-\note{The nested structure is due to the fact that the loss random variable is in the form of a conditional expectation of the portfolio loss given the underlying risk factors. \\}
-\note{In our problems, the loss random variable $L$ depends on the risk factors $X$ and is the conditional expectation of the portfolio loss given $X$. \\}
-\note{More specifically, $X$ is $d$-dimensional and $L$ is 1-dimensional. \\}
-\note{Estimating a risk measure, $\rho(L)$, involves two levels of Monte Carlo simulations: outer level generates underlying risk factors, and inner level generates scenario-wise samples of portfolio losses. \\}
-\note{The nested structure makes the estimation computationally expensive. \\}
-\note{In this thesis, we focus on examining and improving the efficiency of nested simulation procedures mostly using supervised learning metamodels.}
-
-\end{frame}
-
-\begin{frame}{Common Risk Measures}
-
-\begin{itemize}
-    \item Smooth $h$, e.g., quadratic tracking error,
-
-    $$ \rho(L) = \mathbb{E} \left[ (L - b)^2 \right]; $$
-    
-    \item hockey-stick $h$: mean excess loss,
-    
-    $$ \rho(L) = \mathbb{E} \left[ L \cdot \mathbbm{1}_{\{L \geq u\}} \right]; $$
-    
-    \item indicator $h$: probability of large loss,
-    
-    $$ \rho(L) = \mathbb{E} \left[ \mathbbm{1}_{\{L \geq u\}} \right]; $$
-    
-    \item Value at Risk (VaR),
-    
-    $$ \rho_\alpha(L) = Q_\alpha(L) = \inf \{ u: \mathbb{P}(L \leq u) \geq \alpha \}; $$
-    
-    \item Conditional Value at Risk (CVaR) \footnotemark,
-    
-    $$ \rho_\alpha(L) = \mathbb{E} \left[ L \vert L \geq Q_\alpha(L) \right]. $$
-
-    \end{itemize}
-
-    \footnotetext{Note: If $Q_\alpha(L)$ falls in a probability mass, $\rho(L) = \frac{(\beta - \alpha)Q_\alpha(L) + (1- \beta) \mathbb{E} \left[ L \vert L \geq Q_\alpha(L) \right]}{1-\alpha}$.}
-
-\note{We consider different types of risk measures in this thesis. \\}
-\note{The first three are in expectation form, and the last two are quantile-based risk measures. \\}
-\note{The difference between the first three is the choice of the function $h$. \\}
-\note{$h$ can be a smooth function, a hockey-stick function, or an indicator function. \\}
-\note{The examples of risk measures are quadratic tracking error, mean excess loss, and probability of large loss. \\}
-\note{The last two are value at risk and conditional value at risk, which are widely used in practice. \\}
-\note{Note that the definition of CVaR requires the knowledge of the Value at Risk.}
-
-\end{frame}
-
-\section[Nested Simulation Procedures]{Nested Simulation Procedures in Financial Engineering: A Selected Review}
-
-\begin{frame}{Standard Nested Simulation}
-
+With an expensive total simulation budget $\Gamma = M \cdot N$:
 $$\hat{L}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
 
 \begin{itemize}
     \item Uses inner sample mean to estimate $L(X_i)$.
-    \item Proposed by \citet{gordy2010nested}; finds optimal growth order of $M$ and $N$.
-    \item \citet{zhang2021bootstrap} estimate the optimal $M$ and $N$ using a bootstrap method.
-    \item Computationally expensive and potentially \textbf{wasteful} use of budget.
 \end{itemize}
 
-\note{In our first project, we focus on comparing existing nested simulation procedures for different types of risk measures. \\}
-\note{They differ in the way they estimate $L(X_i)$, the portfolio loss conditional on the risk factors $X_i$. \\}
+
+\note{In the context of quantitative risk management, nested simulation is used for risk evaluation of financial derivatives and insurance products. \\}
+\note{The nested structure is due to the loss random variable being a conditional expectation of the portfolio loss given the underlying risk factors. \\}
+\note{In our problems, the loss $L$ depends on the risk factors $X$ and is the conditional expectation of the portfolio loss given the risk factors. \\}
+\note{More specifically, $X$ is $d$-dimensional and $L$ is 1-dimensional. \\}
+\note{Estimating a risk measure, $\rho(L)$, involves two levels of Monte Carlo simulations: a outer level generates underlying risk factors, and a inner level generates scenario-wise samples of portfolio losses. \\}
 \note{The standard nested simulation procedure uses the inner sample mean under that scenarioto estimate $L(X_i)$. \\}
-\note{The optimal growth order of $M$ and $N$ is found by \citet{gordy2010nested}. \\}
-\note{For a growing total simulation budget $\Gamma$, $M$ should grow in the order of $\Gamma^{2/3}$, and $N$ should grow in the order of $\Gamma^{1/3}$. \\}
-\note{For a finite-sample case, the bootstrap method is used to estimate the optimal $M$ and $N$ by \citet{zhang2021bootstrap}. \\}
-\note{Since the standard procedure only uses the information from the same scenario, it is potentially \textbf{wasteful} use of budget. \\}
-\note{Subsequent works focus on improving the efficiency of nested simulation by pooling inner replications from different outer scenarios.}
+\note{The nested structure makes the estimation computationally expensive. \\}
+\note{In this thesis, we focus on examining and improving the efficiency of nested simulation procedures mostly by pooling with supervised learning metamodels.}
 
 \end{frame}
+
+% \begin{frame}{Common Risk Measures}
+
+% \begin{itemize}
+%     \item Smooth $h$, e.g., quadratic tracking error,
+
+%     $$ \rho(L) = \mathbb{E} \left[ (L - b)^2 \right]; $$
+    
+%     \item hockey-stick $h$: mean excess loss,
+    
+%     $$ \rho(L) = \mathbb{E} \left[ L \cdot \mathbbm{1}_{\{L \geq u\}} \right]; $$
+    
+%     \item indicator $h$: probability of large loss,
+    
+%     $$ \rho(L) = \mathbb{E} \left[ \mathbbm{1}_{\{L \geq u\}} \right]; $$
+    
+%     \item Value at Risk (VaR),
+    
+%     $$ \rho_\alpha(L) = Q_\alpha(L) = \inf \{ u: \mathbb{P}(L \leq u) \geq \alpha \}; $$
+    
+%     \item Conditional Value at Risk (CVaR) \footnotemark,
+    
+%     $$ \rho_\alpha(L) = \mathbb{E} \left[ L \vert L \geq Q_\alpha(L) \right]. $$
+
+%     \end{itemize}
+
+%     \footnotetext{Note: If $Q_\alpha(L)$ falls in a probability mass, $\rho(L) = \frac{(\beta - \alpha)Q_\alpha(L) + (1- \beta) \mathbb{E} \left[ L \vert L \geq Q_\alpha(L) \right]}{1-\alpha}$.}
+
+% \note{We consider different types of risk measures in this thesis. \\}
+% \note{The first three are in expectation form, and the last two are quantile-based risk measures. \\}
+% \note{The difference between the first three is the choice of the function $h$. \\}
+% \note{$h$ can be a smooth function, a hockey-stick function, or an indicator function. \\}
+% \note{The examples of risk measures are quadratic tracking error, mean excess loss, and probability of large loss. \\}
+% \note{The last two are value at risk and conditional value at risk, which are widely used in practice. \\}
+% \note{Note that the definition of CVaR requires the knowledge of the Value at Risk.}
+
+% \end{frame}
+
+\section[Nested Simulation Procedures]{Nested Simulation Procedures in Financial Engineering: A Selected Review}
+
+% \begin{frame}{Standard Nested Simulation}
+
+% $$\hat{L}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
+
+% \begin{itemize}
+%     \item Uses inner sample mean to estimate $L(X_i)$.
+%     \item Proposed by \citet{gordy2010nested}; finds optimal growth order of $M$ and $N$.
+%     \item \citet{zhang2021bootstrap} estimate the optimal $M$ and $N$ using a bootstrap method.
+%     \item Computationally expensive and potentially \textbf{wasteful} use of budget.
+% \end{itemize}
+
+% \note{In our first project, we focus on comparing existing nested simulation procedures for different types of risk measures. \\}
+% \note{They differ in the way they estimate $L(X_i)$, the portfolio loss conditional on the risk factors $X_i$. \\}
+% \note{The standard nested simulation procedure uses the inner sample mean under that scenarioto estimate $L(X_i)$. \\}
+% \note{The optimal growth order of $M$ and $N$ is found by \citet{gordy2010nested}. \\}
+% \note{For a growing total simulation budget $\Gamma$, $M$ should grow in the order of $\Gamma^{2/3}$, and $N$ should grow in the order of $\Gamma^{1/3}$. \\}
+% \note{For a finite-sample case, the bootstrap method is used to estimate the optimal $M$ and $N$ by \citet{zhang2021bootstrap}. \\}
+% \note{Since the standard procedure only uses the information from the same scenario, it is potentially \textbf{wasteful} use of budget. \\}
+% \note{Subsequent works focus on improving the efficiency of nested simulation by pooling inner replications from different outer scenarios.}
+
+% \end{frame}
 
 % \begin{frame}{Other Nested Simulation Procedures}
 
@@ -228,15 +244,13 @@ We focus on procedures that \textbf{pool} with \textbf{supervised learning metam
 \vspace{10pt}
 There are \textbf{computational costs} associated with pooling inner replications.
 
-\note{A supervised learning based nested simulation procedure is implemented following these steps. \\}
+\note{Pooling can happen in different ways, and the key idea is to use the information from different outer scenarios to improve the efficiency of nested simulation. \\}
+\note{A supervised learning based nested simulation procedure pools with these steps. \\}
 \note{First, the user runs the standard nested simulation procedure to generate a set of outer scenarios and inner replications. \\}
-\note{Then, the outer scenarios and inner sample means can be treated as features and labels. \\}
-\note{Their relationship is then approximated by a supervised learning metamodel. \\}
-\note{Finally, the trained metamodel is used to make predictions for all $X \in \mathcal{X}$. \\}
-\note{In other words, instead of using the inner sample mean to estimate $L(X_i)$, we use the trained metamodel to make predictions of the portfolio loss. \\}
-\note{These loss predictions are then used to calculate the risk measures of interest. \\}
-\note{For most research in this area, the focus is on the convergence rate of the risk measure estimator in terms of the simulation budget. \\}
-\note{However, in this thesis, we note that there are other important aspects to consider, such as the cost of pooling that may come from metamodel training and validation. }
+\note{Then, the outer scenarios and inner sample means can be treated as features and labels for metamodel training. \\}
+\note{Finally, instead of the inner sample mean from the standard procedure, the metamodel predictions estimate the portfolio loss and the risk measures. \\}
+\note{Most existing works focus on the convergence rate of their estimators in terms of the simulation budget. \\}
+\note{However, we find that there is a cost of pooling that comes from metamodel training, validation, and prediction. }
 
 \end{frame}
 
@@ -292,15 +306,15 @@ There are \textbf{computational costs} associated with pooling inner replication
     \vspace{10pt}
 
 
-\note{We start by comparing the asymptotic convergence rates of different nested simulation procedures. \\}
-\note{These are the convergence rates of the MSE of the risk measure estimator when the total simulation budget $\Gamma$ goes to infinity, and when one follows the optimal growth order of $M$ and $N$. \\}
+\note{We start by comparing the asymptotic rates of different nested simulation procedures. \\}
+\note{These are the convergence rates of the MSE of the risk measure estimator when the total simulation budget $\Gamma$ goes to infinity. \\}
 \note{The standard procedure has the same convergence rate of $\mathcal{O}(\Gamma^{-2/3})$ for all types of $h$ considered. The rates in red are not available in the original works but are derived in this thesis. \\}
 \note{The regression-based procedure has $\mathcal{O}(\Gamma^{-1})$ convergence rate for smooth and hockey-stick $h$. \\}
-\note{It is achieved by only allowing $M$ to grow in the order of $\Gamma^{1}$. In their experiments, $N$ is set to equal a value of $1$. \\}
+\note{It is achieved by only allowing $M$ to grow. In their experiments, $N$ is set to equal a constant. \\}
 \note{The kernel smoothing procedure is the only procedure that depends on the asset dimension $d$. \\}
 \note{When risk factor $X$ is high-dimensional, the kernel smoothing procedure may converge slower than the standard procedure. \\}
 \note{The kernel ridge regression procedure and likelihood ratio procedure have the same convergence rate as the regression-based procedure. \\}
-\note{However, as we will see in the numerical experiments, their additional cost of pooling inner replications may offset their benefit of fast convergence rate. \\}
+\note{However, in our numerical experiments, we find that their additional cost of pooling may offset their benefit of fast asymptotic rates. \\}
 \note{Additionally for KRR, the authors analyze convergence of absolute error in probabilistic order instead of MSE.}
 
 \end{frame}
@@ -322,11 +336,9 @@ There are \textbf{computational costs} associated with pooling inner replication
 \note{In most theoretical works, the focus is on the convergence rate of the MSE of the risk measure estimator. \\}
 \note{However, for KRR, the authors analyze convergence of absolute error in probabilistic order. \\}
 \note{One of the contributions of this thesis is to bridge the gap between MSE and absolute error convergence. \\}
-\note{Let's first define the convergence in MSE and the convergence in probabilistic order. \\}
-\note{The convergence in MSE is the convergence of the MSE of the risk measure estimator to the true risk measure, that is, $\hat{\rho}_{\Gamma}$ minus $\rho$ squared. \\}
-\note{The convergence in probabilistic order is the convergence of the absolute error of the risk measure estimator to the true risk measure, that is, $|\hat{\rho}_{\Gamma} - \rho|$ to 0 in probability. \\}
-\note{We show that the convergence rate of the MSE of the risk measure estimator implies the convergence rate of the absolute error in probabilistic order. \\}
-\note{We will also show that the converse is not necessarily true.}
+\note{We first define the convergence in MSE and the convergence in probabilistic order. \\}
+\note{And we show that the convergence rate of $\Gamma^{-\xi}$ in MSE of the risk measure estimator implies the convergence rate of $\Gamma^{-\frac{\xi}{2}}$ in probabilistic order. \\}
+\note{We also show that the converse is not necessarily true.}
 
 \end{frame}
 
@@ -356,46 +368,53 @@ There are \textbf{computational costs} associated with pooling inner replication
 
 \subsection{Finite-Sample Analysis}
 
-\begin{frame}{Experiment Design}
+% \begin{frame}{Experiment Design}
 
-We compare 5 nested simulation procedures 
-\begin{itemize}
-    \item Standard nested simulation
-    \item Regression-based
-    \item Kernel smoothing
-    \item Likelihood ratio
-    \item Kernel ridge regression
-\end{itemize}
+% We compare 5 nested simulation procedures 
+% \begin{itemize}
+%     \item Standard nested simulation
+%     \item Regression-based
+%     \item Kernel smoothing
+%     \item Likelihood ratio
+%     \item Kernel ridge regression
+% \end{itemize}
 
-And their empirical convergence across different:
+% And their empirical convergence across different:
+% \begin{itemize}
+%     \item Risk measures
+%     \item Option types
+%     \item Asset dimensions
+%     \item Asset models (GBM vs. Heston)
+%     \item Regression bases (only for the regression-based procedure)
+% \end{itemize}
+
+% \note{Previously, we worked on the asymptotic convergence rates of different nested simulation procedures. \\}
+% \note{In practice, the total simulation budget is finite.}
+% \note{When the budget is finite, the theoretical convergence rate may not be the only thing we should consider. \\}
+% \note{We should also consider the cost of pooling itself. \\}
+% \note{The additional cost of pooling inner replications is not considered in the theoretical analysis of the previous works. \\}
+% \note{Neither it is mentioned in their numerical experiments. \\}
+% \note{More specifically, we have found that different research uses different numerical experiments to show the empirical rate of different procedures. \\}
+% \note{We aim to provide a fair and comprehensive analysis of the finite-sample performance of different nested simulation procedures. \\}
+% \note{Our numerical experiments test the empirical convergence rates of different nested simulation procedures across different risk measures, option types, asset dimensions, and asset models.}
+
+
+% \end{frame}
+
+\begin{frame}{Finite-Sample Performance}
+
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{../project1/figures/figure2a.png}
+\end{figure}
+
 \begin{itemize}
-    \item Risk measures
-    \item Option types
-    \item Asset dimensions
-    \item Asset models (GBM vs. Heston)
-    \item Regression bases (only for the regression-based procedure)
+    \item Standard, KRR, and likelihood ratio procedures are dimension-independent
+    \item Kernel smoothing and regression show sensitivity to dimension, but in different ways
 \end{itemize}
 
 \note{Previously, we worked on the asymptotic convergence rates of different nested simulation procedures. \\}
 \note{In practice, the total simulation budget is finite.}
 \note{When the budget is finite, the theoretical convergence rate may not be the only thing we should consider. \\}
-\note{We should also consider the cost of pooling itself. \\}
-\note{The additional cost of pooling inner replications is not considered in the theoretical analysis of the previous works. \\}
-\note{Neither it is mentioned in their numerical experiments. \\}
-\note{More specifically, we have found that different research uses different numerical experiments to show the empirical rate of different procedures. \\}
-\note{We aim to provide a fair and comprehensive analysis of the finite-sample performance of different nested simulation procedures. \\}
-\note{The following numerical experiments test the empirical convergence rates of different nested simulation procedures across different risk measures, option types, asset dimensions, and asset models.}
-
-
-\end{frame}
-
-\begin{frame}{Finite-Sample Performance}
-
-\begin{figure}
-    \includegraphics[width=\textwidth]{../project1/figures/figure1.png}
-    \caption{Empirical convergence rates of different procedures for the base case}
-\end{figure}
-
 \note{This figure shows the performance of all 5 procedures in their estimation of the quadratic tracking error for the portfolio of European call options.}
 \note{It is a log-log plot of the MSE of the estimator versus the total simulation budget $\Gamma$.}
 \note{For each procedure, we run 1000 macro replications of Monte Carlo simulations with different total simulation budgets. \\}
@@ -403,43 +422,21 @@ And their empirical convergence across different:
 \note{The slopes of the lines estimates the empirical convergence rates of the procedures. \\}
 \note{In the legend records the slopes of the lines and the corresponding asymptotic convergence rates of the procedures. \\}
 \note{In the most basic case, most procedures have their empirical convergence rates match their asymptotic convergence rates. \\}
-\note{However, as we will see after, this is not the case for all experiments. \\}
-\note{The following slides will show the sensitivity of the procedures to different factors. \\}
+\note{However, as we will see after, this is not the case for all experiments. }
 
 \end{frame}
 
-% \begin{frame}{Sensitivity to Asset Dimension}
-
-% \begin{figure}
-%     \includegraphics[width=\textwidth]{../project1/figures/figure2a.png}
-% \end{figure}
-
-% \begin{itemize}
-%     \item Standard, KRR, and likelihood ratio procedures are dimension-independent
-%     \item Kernel smoothing and regression show sensitivity to dimension, but in different ways
-% \end{itemize}
-
-% \note{This figure shows the sensitivity of the procedures to the asset dimension. \\}
-% \note{The asset dimension is the dimension of the risk factors $X$. \\}
-% \note{Everything is the same as the previous figure, except that the asset dimension is varied from 1 to 2. \\}
-% \note{The standard, regression, KRR, and likelihood ratio procedures are dimension-independent. \\}
-% \note{The kernel smoothing procedure is sensitive to the asset dimension. \\}
-% \note{Despite the fact that the kernel smoothing procedure has the same asymptotic convergence rate as before, it converges slower in practice. \\}
-
-
-% \end{frame}
 
 \begin{frame}{Sensitivity to Asset Dimension}
 
     \begin{figure}
-        \includegraphics[width=\textwidth]{../project1/figures/figure2b.png}
+        \includegraphics[width=0.9\textwidth]{../project1/figures/figure2b.png}
     \end{figure}
     
     \begin{itemize}
-        \item Standard, KRR, and likelihood ratio procedures are dimension-independent
-        \item Kernel smoothing and regression show sensitivity to dimension, but in different ways
+        \item Regression and kernel converge faster than their asymptotic rates
+        \item Results of other experiments are in the thesis (Figure 2.3 - Figure 2.11)
     \end{itemize}
-
 
 \note{This figure shows the same experiment as the previous figure, but we further increase the asset dimension to 20. \\}
 \note{The standard procedure is not affected by the asset dimension. \\}
@@ -447,33 +444,34 @@ And their empirical convergence across different:
 \note{The regression-based procedure is the only procedure that actually converges faster when the asset dimension is high. We will do a deeper dive into it in the following experiment. \\}
 \note{It is also worth noting that the likelihood ratio and KRR procedures are dimension-independent. \\}
 \note{While it is not shown in their empirical rate, due to their additional cost of pooling inner replications, we are not able to run these procedures when $\Gamma$ is large. \\}
+\note{In the thesis, we provide a detailed analysis of the sensitivity for all 5 procedures with more than 500 experiments. }
 
 \end{frame}
 
-\begin{frame}{Fast Convergence of Regression-based Procedure}
+% \begin{frame}{Fast Convergence of Regression-based Procedure}
 
-\begin{figure}
-    \includegraphics[width=\textwidth]{../project1/figures/figure3.png}
-\end{figure}
+% \begin{figure}
+%     \includegraphics[width=\textwidth]{../project1/figures/figure3.png}
+% \end{figure}
 
-\begin{itemize}
-    \item Higher initial convergence rate
-    \item Stabilizes to match asymptotic rate at higher budgets
-    \item Consistent across different asset dimensions
-\end{itemize}
+% \begin{itemize}
+%     \item Higher initial convergence rate
+%     \item Stabilizes to match asymptotic rate at higher budgets
+%     \item Consistent across different asset dimensions
+% \end{itemize}
 
-\note{To investigate the regression-based procedure, we further increase the total simulation budget $\Gamma$. \\}
-\note{The figure shows the performance of the regression-based procedure in the estimation of the quadratic tracking error for the portfolio of European call options. \\}
-\note{We separate different values of $\Gamma$ into two different parts. \\}
-\note{The first part is when $\Gamma$ is small. \\}
-\note{The second part is when $\Gamma$ is large. \\}
-\note{The first part is when the regression-based procedure has a higher convergence rate than its asymptotic convergence rate. \\}
-\note{The second part is when the regression-based procedure stabilizes and matches its asymptotic convergence rate. \\}
-\note{In our experiments, we find that the regression-based procedure is very poor when $\Gamma$ is small. \\}
-\note{It means that when we don't have enough data points, the regression-based procedure is particularly bad. \\}
-\note{As we increase the total simulation budget $\Gamma$, the regression-based procedure improves fast, and eventually matches the asymptotic convergence rate. \\}
+% \note{To investigate the regression-based procedure, we further increase the total simulation budget $\Gamma$. \\}
+% \note{The figure shows the performance of the regression-based procedure in the estimation of the quadratic tracking error for the portfolio of European call options. \\}
+% \note{We separate different values of $\Gamma$ into two different parts. \\}
+% \note{The first part is when $\Gamma$ is small. \\}
+% \note{The second part is when $\Gamma$ is large. \\}
+% \note{The first part is when the regression-based procedure has a higher convergence rate than its asymptotic convergence rate. \\}
+% \note{The second part is when the regression-based procedure stabilizes and matches its asymptotic convergence rate. \\}
+% \note{In our experiments, we find that the regression-based procedure is very poor when $\Gamma$ is small. \\}
+% \note{It means that when we don't have enough data points, the regression-based procedure is particularly bad. \\}
+% \note{As we increase the total simulation budget $\Gamma$, the regression-based procedure improves fast, and eventually matches the asymptotic convergence rate. \\}
 
-\end{frame}
+% \end{frame}
 
 % \begin{frame}{Sensitivity to Option Type}
 
@@ -572,22 +570,21 @@ And their empirical convergence across different:
 
 % \end{frame}
 
-\begin{frame}{Total Computation Time}
+\begin{frame}{Additional Computational Costs}
 
     \begin{figure}
-        \includegraphics[width=\textwidth]{../project1/figures/figure11b.png}
-        \caption{Total computation time for different procedures}
+        \includegraphics[width=\textwidth]{./time_comparison.png}
+        \caption{Additional computation time for different procedures}
     \end{figure}
 
-    \note{This figure shows the total computation time for different procedures. \\}
-    \note{It includes the time for both the simulation, training, validation, and everything else. \\}
+    \note{This figure shows the additional computation time for different procedures. \\}
+    \note{It includes the time for training, validation, and everything else. \\}
     \note{The total computation time of the standard procedure does not increase fast with $\Gamma$. \\}
     \note{It is because the computation time of estimating the optimal $M$ and $N$ does not increase for larger $\Gamma$. \\}
-    \note{The regression procedure and kernel smoothing procedure are the most efficient among metamodel-based procedures. \\}
-    \note{Our implementation of the kernel smoothing procedure is efficient because we only run the cross-validation once for all macro replications. \\}
-    \note{The likelihood ratio procedure and KRR procedure are more expensive due to their additional costs}
+    \note{Regression is the most efficient among metamodel-based procedures. \\}
+    \note{The likelihood ratio and KRR are more expensive due to their additional costs. \\}
     \note{The likelihood ratio weight calculations increase quadratically with $\Gamma$. \\}
-    \note{For KRR, the cost of cross-validation is so high that running it once still takes a very long time. \\}
+    \note{For KRR, the cost of cross-validation is too high. \\}
     \note{In the thesis includes a detailed analysis of the computational complexity of different procedures in terms of $\Gamma$.}
 
 \end{frame}
@@ -945,6 +942,53 @@ And their empirical convergence across different:
     
 \end{frame}
 
+
+
+\begin{frame}{Metamodel Performance}
+
+    \begin{figure}[H]
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/qprLN.png}
+        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/lstmLoCapLN.png}
+        \caption{QQ plots between true and predicted loss labels for QPR and LSTM metamodels}
+    \end{figure}
+
+    \begin{itemize}
+        \item   QPR make \textbf{inaccurate} loss predictions
+        \item   DNN metamodels are more flexible.
+    \end{itemize}
+
+    \note{We first take a look at their performance with QQ plots. \\}
+    \note{On the left is the QQ plot between the true loss labels and the predicted loss labels for QPR, and on the right is the QQ plot for LSTM. \\}
+    \note{Feature engineering for QPR is hardly feasible for our 240-dimensional $X$. Its poor performance is expected. \\}
+    \note{DNN metamodels are more flexible, and they can make more accurate loss predictions. \\}
+
+\end{frame}
+
+% \begin{frame}{Deep Neural Network Metamodels}
+
+%     \begin{figure}[H]
+%         \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/fnnLN.png}
+%         \caption{QQ plots between true and predicted loss labelsfor FNN and LSTM metamodels}
+%     \end{figure}
+
+%     \begin{itemize}
+%         \item   DNN metamodels are more flexible.
+%         \item   Time series features prefer LSTM over FNN.
+%         \item   Network architecture serves as regularization.
+%     \end{itemize}
+
+%     \note{We then consider the deep neural network metamodels. \\}
+%     \note{On the left is the QQ plot between the true loss labels and the predicted loss labels for FNN, and on the right is the QQ plot for LSTM. \\}
+%     \note{DNN metamodels are more flexible. \\}
+%     \note{We find that our time series outer scenarios prefer a LSTM metamodel over FNN. \\}
+%     \note{Network architecture is thought to serve as prior knowledge that regularizes DNNs. \\}
+%     \note{It decides how the individual neurons are connected to each other. \\}
+%     \note{For example, FNN is a fully-connected network, meaning that we don't impose any structure on the connections between neurons. \\}
+%     \note{In contrast, LSTM has a recurrent structure, meaning that the connections between neurons are time-dependent. \\}
+
+% \end{frame}
+
+
 \begin{frame}{Research Questions}
 
     \begin{itemize}
@@ -973,52 +1017,6 @@ And their empirical convergence across different:
 \note{We can use this true feature-label relationship to evaluate the performance of deep neural networks, which is usually not possible in practice. }
 
 \end{frame}
-
-
-\begin{frame}{Metamodel Performance}
-
-    \begin{figure}[H]
-        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/qprLN.png}
-        \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/lstmLoCapLN.png}
-        \caption{QQ plots between true and predicted loss labels for QPR and LSTM metamodels}
-    \end{figure}
-
-    \begin{itemize}
-        \item   QPR make \textbf{inaccurate} loss predictions
-        \item   DNN metamodels are more flexible.
-    \end{itemize}
-
-    \note{We first consider the traditional regression metamodels. \\}
-    \note{On the left is the QQ plot between the true loss labels and the predicted loss labels for MLR, and on the right is the QQ plot for QPR. \\}
-    \note{MLR and QPR metamodels make inaccurate loss predictions. \\}
-    \note{Feature engineering is hardly feasible for our 240-dimensional $X$. \\}
-    \note{We will see whether deep neural networks can make more accurate loss predictions. \\}
-
-\end{frame}
-
-% \begin{frame}{Deep Neural Network Metamodels}
-
-%     \begin{figure}[H]
-%         \includegraphics[width=0.48\textwidth]{../project2/figures/qqPlots/fnnLN.png}
-%         \caption{QQ plots between true and predicted loss labelsfor FNN and LSTM metamodels}
-%     \end{figure}
-
-%     \begin{itemize}
-%         \item   DNN metamodels are more flexible.
-%         \item   Time series features prefer LSTM over FNN.
-%         \item   Network architecture serves as regularization.
-%     \end{itemize}
-
-%     \note{We then consider the deep neural network metamodels. \\}
-%     \note{On the left is the QQ plot between the true loss labels and the predicted loss labels for FNN, and on the right is the QQ plot for LSTM. \\}
-%     \note{DNN metamodels are more flexible. \\}
-%     \note{We find that our time series outer scenarios prefer a LSTM metamodel over FNN. \\}
-%     \note{Network architecture is thought to serve as prior knowledge that regularizes DNNs. \\}
-%     \note{It decides how the individual neurons are connected to each other. \\}
-%     \note{For example, FNN is a fully-connected network, meaning that we don't impose any structure on the connections between neurons. \\}
-%     \note{In contrast, LSTM has a recurrent structure, meaning that the connections between neurons are time-dependent. \\}
-
-% \end{frame}
 
 \begin{frame}{Metamodel Performance on Different Datasets}
 
@@ -1056,13 +1054,10 @@ And their empirical convergence across different:
     \note{This is expected because DNNs are more flexible and expressive than traditional regression metamodels. \\}
     \note{What is more interesting is the comparison between the test and true errors. \\}
     \note{We find that the true errors of RNN-based metamodels are lower than their test errors. \\}
-    \note{This suggests that the RNN and LSTM metamodels are able to cut through the simulation noise and learn the true feature-label relationship. \\}
+    \note{This suggests that the RNN and LSTM metamodels can learn the true feature-label relationship. \\}
     \note{When we take another look at the table, we find that for LSTM, its true error is even lower than its training error. \\}
     \note{This is another evidence that LSTM metamodels are able to cut through the noise in training labels and fit to the true relationship. \\}
-    \note{We also find that the LSTM metamodel is able to cut through the noise in training labels and fit to the true relationship. \\}
-    \note{We have another finding for RNN. RNN metamodels suffer from the vanishing gradient problem. \\}
-    \note{This is why we make separate rows for well-trained RNNs and poorly-trained RNNs. \\}
-    \note{We will discuss this in the next slide. \\}
+    \note{RNN metamodels suffer from the vanishing gradient problem. This is why we make separate rows for well-trained RNNs and poorly-trained RNNs. }
 
 \end{frame}
 
@@ -1171,14 +1166,15 @@ And their empirical convergence across different:
         \item LSTM metamodels surpasses the standard procedure with $5\%$ safety margin.
     \end{itemize}
 
-    \note{We now consider the tail scenario identification for the two-stage procedure. \\}
-    \note{On the left is the tail scenario identification for the traditional regression metamodel, and on the right is the tail scenario identification for the LSTM metamodel. \\}
+    \note{We now consider the tail scenario identification and the CVaR estimation for the two-stage procedure. \\}
+    \note{On the left is the tail scenario identification plot, and on the right is the plot of CVaR. \\}
     \note{We compare the two-stage procedure with the standard procedure. \\}
     \note{When colored lines cross the grey dashed line, it means that the metamodel is able to identify the tail scenarios as well as the standard procedure. \\}
+    \note{And it should be able to estimate the CVaR as accurately as the standard procedure. \\}
     \note{We find that the LSTM metamodel is able to surpass the standard procedure on tail identification with a less than $5\%$ safety margin. \\}
     \note{However, the traditional regression metamodel is unable to identify the tail scenarios even with a high safety margin. \\}
     \note{A well-trained RNN is better than a FNN, but the poorly-trained RNN is far worse.}
-    \note{This further motivates the use of LSTM metamodels over RNN metamodels. \\}    
+    \note{The CVaR estimation plot shows similar results.}
         
 \end{frame}
 
@@ -1233,11 +1229,12 @@ And their empirical convergence across different:
 
     2 LSTMs of \textbf{different capacities} are examined based on their MSEs.
 
-    \note{We now consider the sensitivity testing for the DNN metamodels. \\}
-    \note{We are interested in the sensitivity of the DNN metamodels to the noise level in training labels and the number of training samples. \\}
+    \note{We now dig deeper into the research questions asked: how well do deep learning metamodels learn from noisy data? \\}
+    \note{We study this phenomenon by considering the sensitivity testing for the DNN metamodels. \\}
+    \note{The sensitivity of the DNN metamodels to the noise level in training labels and the number of training samples. \\}
     \note{In a simulation experiment, we can vary them to see how the DNN metamodels perform. \\}
-    \note{We consider the noise level in training labels by varying the number of inner replications $N'$. \\}
-    \note{We consider the number of training samples by varying the number of outer scenarios $M$. \\}
+    \note{We control the noise level in training labels by varying the number of inner replications $N'$. \\}
+    \note{We control the number of training samples by varying the number of outer scenarios $M$. \\}
     \note{We consider two LSTM metamodels of different capacities because we want to see if the capacity of the metamodel matters for overfitting. \\}
     \note{The high-capacity LSTM metamodel has 10 times more parameters than the regular LSTM metamodel}
 
@@ -1294,7 +1291,6 @@ And their empirical convergence across different:
 
     \note{This figure shows the QQ plots of the two LSTM metamodels. \\}
     \note{We plot the predicted losses versus the true losses for both LSTMs and different noise levels. \\}
-    \note{The closer the points are to the line, the better the model is. \\}
     \note{The high-capacity LSTM is better at low and medium noise levels, while the regular LSTM is better at high noise levels. \\}
     \note{We can see on the bottom right that the high-capacity LSTM has very poor performance.}
 
@@ -1359,10 +1355,16 @@ And their empirical convergence across different:
         \item   $N' = 10$ is a reasonable budget allocation for LSTM metamodels.
     \end{itemize}
 
-    \note{The findings are similar for the high-capacity LSTM metamodel. \\}
-    \note{We can find similar patterns as in the previous table. \\}
-    \note{The model is more sensitive to $N'$ than $M$, unless $N'$ is very small. \\}
-    \note{For a practical application, we recommend using the high-capacity LSTM metamodel with $N' = 10$ for almost all simulation budgets. }
+    \note{This table shows the MSEs of the two LSTM metamodels on different datasets. \\}
+    \note{We modify $M$, the number of outer scenarios, and $N'$, the number of inner replications. \\}
+    \note{$M$ is the number of data points in the training set, and $N'$ is the noise level in the training labels. \\}
+    \note{We have additional findings that the number of data points, $M$ also matters. \\}
+    \note{And it matters more for than $N'$ does. \\}
+    \note{In this table, the entries in the same diagonal represent the same total simulation budget. \\}
+    \note{It gives us a good indication of how much noise the LSTM metamodel can tolerate. \\}
+    \note{For a practical application, we almost want to increase $M$ as much as possible. \\}
+    \note{However, we can see that in the diagonal of red color, we should keep $N'$ at 10 and not lower it to 1. \\}
+    \note{We don't want the training labels to be too noisy.}
     
 \end{frame}
 
@@ -1464,9 +1466,8 @@ And their empirical convergence across different:
     \note{The single-stage procedure offers an excellent balance of efficiency and accuracy for practical applications.\\}
     \note{We've shown that allocating computational budget to increase outer scenarios rather than inner simulations yields better results.\\}
     \note{These insights provide valuable guidance for implementing machine learning in financial risk management.\\}
-
-    \note{For the research directions. In the future, we can apply deep neural network metamodels to other actuarial applications.\\}
-    \note{In the future, we can also apply transfer learning to speed up the training process for deep neural network metamodels.\\}
+    \note{For the research directions, we can apply deep neural network metamodels to other actuarial applications.\\}
+    \note{We can also apply transfer learning to speed up the training process for deep neural network metamodels.\\}
     
 \end{frame}
 
@@ -1550,7 +1551,7 @@ And their empirical convergence across different:
     \note{The target domain has limited data - new VA contracts or existing contracts under new market conditions.\\}
     \note{Our goal is to leverage knowledge from the source domain to improve prediction in the target domain.\\}
     \note{This is particularly valuable when simulation data is expensive to generate for new contracts.\\}
-    \note{The transfer learning approach allows us to maintain accuracy while significantly reducing computational requirements.\\}
+    \note{The transfer learning approach allows us to maintain accuracy while significantly reducing computational requirements.}
 
 \end{frame}
 
@@ -1560,30 +1561,32 @@ And their empirical convergence across different:
     \begin{itemize}
         \item   \textbf{Fine-tuning:} a model pre-trained on a source task is used as a starting point for a target task.
         \item   \textbf{Layer freezing:} only part of the model is fine-tuned.
-        \item   \textbf{Multi-task learning:} perform training on multiple tasks simultaneously.
     \end{itemize}
 
     \vspace{10pt}
 
-    \textbf{Key considerations:}
+    \textbf{Key considerations:} similarity between source and target tasks
+
+    \vspace{10pt}
+
+    \textbf{Experiment Design:}
     \begin{itemize}
-        \item   Similarity between source and target tasks
-        \item   Appropriate learning rate
+        \item   Source domain (50000 samples): GMMB with no lapse and GMMB with static lapse
+        \item   Target domain (2000 samples): GMMB with dynamic lapse
     \end{itemize}
 
+
     \note{Fine-tuning involves using a pre-trained model as a starting point for a new task.\\}
-    \note{This approach is effective when the source and target tasks are similar.\\}
     \note{For VA contracts, we can fine-tune models between different contract types or market conditions.\\}
     \note{Layer freezing is a technique where we keep some layers of the pre-trained model fixed.\\}
     \note{Typically, early layers capture general features while later layers are more task-specific.\\}
     \note{By freezing early layers, we preserve general knowledge while adapting task-specific layers.\\}
-    \note{Multi-task learning trains a single model to perform multiple related tasks simultaneously.\\}
-    \note{This approach can improve generalization by leveraging the domain-specific information across tasks.\\}
-    \note{For VA contracts, we can train a model to handle multiple contract types or features.\\}
-    \note{The learning rate is a critical hyperparameter in transfer learning.\\}
-    \note{Typically, we use a smaller learning rate for fine-tuning compared to training from scratch.\\}
-    \note{The similarity between source and target tasks greatly impacts transfer learning effectiveness.\\}
-    \note{More similar tasks generally allow for more effective knowledge transfer.\\}
+    \note{In our experiment, we use the same model architecture for all tasks. \\}
+    \note{Metamodels are trained with 50,000 samples on the source domain before transferring to the target domain with only 2000 samples. \\}
+    \note{We progress from simpler to more complex models (No lapse → Static → Dynamic). \\}
+    \note{The experiments are designed to evaluate how similarity between source and target affects transfer efficiency. \\}
+    \note{This is another attempt to use simulation models as data generating processes to examine deep neural networks. \\}
+    \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable, or more generally, which layers of the neural network learn which features of the VA contracts. }
 
 \end{frame}
 
@@ -1689,62 +1692,61 @@ And their empirical convergence across different:
 
 % \end{frame}
 
-\begin{frame}{Multi-task Learning}
-    \includegraphics[width=0.9\textwidth]{../project3/figures/mtl.png}
+% \begin{frame}{Multi-task Learning}
+%     \includegraphics[width=0.9\textwidth]{../project3/figures/mtl.png}
     
-    \begin{itemize}
-        \item LSTM layers shared across multiple tasks
-        \item Task-specific fully connected layers
-        \item Objective: Minimize sum of loss functions across all tasks
-    \end{itemize}
+%     \begin{itemize}
+%         \item LSTM layers shared across multiple tasks
+%         \item Task-specific fully connected layers
+%         \item Objective: Minimize sum of loss functions across all tasks
+%     \end{itemize}
     
-    \note{Multi-task learning offers an alternative approach to transfer learning. \\}
-    \note{Instead of sequential knowledge transfer, we train on multiple contract types simultaneously. \\}
-    \note{The shared LSTM layers capture common features across different VA contracts. \\}
-    \note{Task-specific layers then specialize for each contract type's unique characteristics. \\}
-    \note{We will examine whether this approach can be more efficient than training separate models for each contract type. \\}
+%     \note{Multi-task learning offers an alternative approach to transfer learning. \\}
+%     \note{Instead of sequential knowledge transfer, we train on multiple contract types simultaneously. \\}
+%     \note{The shared LSTM layers capture common features across different VA contracts. \\}
+%     \note{Task-specific layers then specialize for each contract type's unique characteristics. \\}
+%     \note{We will examine whether this approach can be more efficient than training separate models for each contract type. \\}
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}{Experiment Setup}
+% \begin{frame}{Experiment Setup}
 
-    \begin{table}[ht!] 
-        \centering
-        \begin{tabular}{lcccc} 
-        \toprule
-        \textbf{Contract} & \textbf{Asset Model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
-        \midrule
-        GMMB & GBM & No lapse & 50000 & N/A \\
-        GMMB & RS-GBM & No lapse & 50000 & 2000 \\
-        GMMB & RS-GBM & Static lapse & 50000 & 2000 \\
-        GMMB & RS-GBM & Dynamic lapse & 50000 & 2000 \\
-        GMWB & RS-GBM & Dynamic lapse & N/A & 2000 \\
-        \bottomrule
-        \end{tabular}
-        \caption{VA Contracts for Transfer Learning Experiments}
-    \end{table}
+%     \begin{table}[ht!] 
+%         \centering
+%         \begin{tabular}{lcccc} 
+%         \toprule
+%         \textbf{Contract} & \textbf{Asset Model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
+%         \midrule
+%         GMMB & GBM & No lapse & 50000 & N/A \\
+%         GMMB & RS-GBM & No lapse & 50000 & 2000 \\
+%         GMMB & RS-GBM & Static lapse & 50000 & 2000 \\
+%         GMMB & RS-GBM & Dynamic lapse & 50000 & 2000 \\
+%         GMWB & RS-GBM & Dynamic lapse & N/A & 2000 \\
+%         \bottomrule
+%         \end{tabular}
+%         \caption{VA Contracts for Transfer Learning Experiments}
+%     \end{table}
 
-    We aim to examine the performance of TL techniques
-    \begin{itemize}
-        \item   learning the lapse features,
-        \item   learning the dynamic lapse, and 
-        \item   transferring to other contract types.
-    \end{itemize}
+%     We aim to examine the performance of TL techniques
+%     \begin{itemize}
+%         \item   learning the lapse features,
+%         \item   learning the dynamic lapse, and 
+%         \item   transferring to other contract types.
+%     \end{itemize}
 
 
-    \note{We use a variety of VA contracts with different features to test transfer learning. \\}
-    \note{The source model ($M_{\text{So}}$) is trained with 50,000 samples for comprehensive learning. \\}
-    \note{The target model ($M_{\text{Ta}}$) uses only 2,000 samples to simulate limited data scenarios. \\}
-    \note{We progress from simpler to more complex models (No lapse → Static → Dynamic). \\}
-    \note{We examine both within-contract transfer (GMMB to GMMB with different features) and cross-contract transfer (GMMB to GMWB). \\}
-    \note{The regime-switching GBM (RS-GBM) model captures more realistic market dynamics. \\}
-    \note{All training data is generated using 100 inner replications for consistency. \\}
-    \note{We compare fine-tuning and layer freezing as two primary transfer learning approaches. \\}
-    \note{The experiments are designed to evaluate how similarity between source and target affects transfer efficiency. \\}
-    \note{This is another attempt to use simulation models as data generating processes to examine deep neural networks. \\}
-    \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable, or more generally, which layers of the neural network learn which features of the VA contracts. \\}
+%     \note{We use a variety of VA contracts with different features to test transfer learning. \\}
+%     \note{The source model ($M_{\text{So}}$) is trained with 50,000 samples for comprehensive learning. \\}
+%     \note{The target model ($M_{\text{Ta}}$) uses only 2,000 samples to simulate limited data scenarios. \\}
+%     \note{We progress from simpler to more complex models (No lapse → Static → Dynamic). \\}
+%     \note{We examine both within-contract transfer (GMMB to GMMB with different features) and cross-contract transfer (GMMB to GMWB). \\}
+%     \note{All training data is generated using 100 inner replications for consistency. \\}
+%     \note{We compare fine-tuning and layer freezing as two primary transfer learning approaches. \\}
+%     \note{The experiments are designed to evaluate how similarity between source and target affects transfer efficiency. \\}
+%     \note{This is another attempt to use simulation models as data generating processes to examine deep neural networks. \\}
+%     \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable, or more generally, which layers of the neural network learn which features of the VA contracts. \\}
 
-\end{frame}
+% \end{frame}
 
 
 

@@ -1,13 +1,3 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\astroncite{Gordy and Juneja}{2010}]{gordy2010nested}
-Gordy, M.~B. and Juneja, S. (2010).
-\newblock Nested simulation in portfolio risk measurement.
-\newblock {\em Management Science}, 56(10):1833--1848.
-
-\bibitem[\protect\astroncite{Zhang et~al.}{2021}]{zhang2021bootstrap}
-Zhang, K., Liu, G., and Wang, S. (2021).
-\newblock Bootstrap-based budget allocation for nested simulation.
-\newblock {\em Operations Research}.
-
 \end{thebibliography}
