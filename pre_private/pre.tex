@@ -2,8 +2,8 @@
 
 \input{./StyleFile.tex}
 
-\setbeameroption{show notes}
-\setbeameroption{show notes on second screen=right}
+% \setbeameroption{show notes}
+% \setbeameroption{show notes on second screen=right}
 
 \title[Resilient ML for Fast Risk Evaluation of VAs]{\textbf{Resilient Machine Learning Approaches \\ for Fast Risk Evaluation and Management \\ of Financial Portfolios and Variable Annuities}}
 
@@ -1572,7 +1572,7 @@ There are \textbf{computational costs} associated with pooling inner replication
     \textbf{Experiment Design:}
     \begin{itemize}
         \item   Source domain (50000 samples): GMMB with no lapse and GMMB with static lapse
-        \item   Target domain (2000 samples): GMMB with dynamic lapse
+        \item   Target domain (2000 samples): GMMB and GMWB with dynamic lapse 
     \end{itemize}
 
 
@@ -1858,72 +1858,83 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{Negative transfer happens when source and target tasks are substantially different. \\}
     \note{In such cases, knowledge from the source model can actually hinder learning on the target task. \\}
     \note{This highlights the importance of selecting appropriate source models for transfer learning. \\}
-    
+    \note{Note that for layer-freezing, freezing the LSTM layers lead to better performance. }
+
 \end{frame}
     
 \begin{frame}{Learning Curves: Effect of Similarity}
-    \begin{columns}
-    \column{0.5\textwidth}
-    \includegraphics[height=0.48\textheight]{../project3/figures/figure3a.png}
-    \column{0.5\textwidth}
-    \includegraphics[height=0.48\textheight]{../project3/figures/figure3b.png}
-    \end{columns}
-    
-    \textit{The effect of similarity between source and target on the convergence speed}
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure2a.png}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{../project3/figures/figure2b.png}
+        \end{subfigure}
+        \caption{Fine-tuning performance on GMMB with dynamic lapse}
+    \end{figure}
+
     \begin{itemize}
-        \item \textit{Left: from No Lapse; right: from Static Lapse}
+        \item Similarity between source and target domain matters
+        \item Negative transfer can happen for dissimilar tasks
     \end{itemize}
     
     \note{These figures further illustrate how source-target similarity affects transfer learning performance. \\}
     \note{The left graph shows transfer from no lapse models, which has slower convergence. \\}
     \note{The right graph shows transfer from static lapse models, with faster convergence. \\}
-    \note{This reinforces our finding that greater similarity between source and target domains leads to more effective knowledge transfer. \\}
+    \note{This reinforces our finding that greater similarity between source and target domains leads to more effective knowledge transfer. }
+
 \end{frame}
     
 
     
-    \begin{frame}{Learning Curves: Transfer Knowledge to other Contract Types}
+\begin{frame}{Learning Curves: Effect of Freezing Layers}
     \begin{figure}[ht]
         \centering
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure4a.png}
-            \caption{50000 samples}
+            \includegraphics[width=\textwidth]{../project3/figures/figure3a.png}
+            \caption{Freezing LSTM layers}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure4b.png}
-            \caption{2000 samples}
+            \includegraphics[width=\textwidth]{../project3/figures/figure3b.png}
+            \caption{Freezing fully connected layers}
         \end{subfigure}
-        \caption{Learning curves of GMWB contracts}
+        \caption{Learning dynamic lapse from a GMMB with static lapse}
     \end{figure}
+
+    \begin{itemize}
+        \item   When learning dynamic lapse, freezing the LSTM layers is suboptimal.
+        \item   Freezing the fully connected layers leads to better performance.
+    \end{itemize}
+
+    \note{These figures show the effect of freezing layers on the convergence of the model. \\}
+    \note{When learning dynamic lapse, freezing the LSTM layers leads to poor performance. \\}
+    \note{Freezing the fully connected layers is better since we are learning a dynamic lapse feature that introduces another source of stochasticity. \\}
+    \note{We suspect that the LSTM layers capture the time series component of the data, and the fully connected layers use the output of the LSTM layers to learn the VA contract losses.}
+
+\end{frame}
     
-    \note{These graphs show learning curves for GMWB contracts with different training sample sizes. \\}
-    \note{Left figure (50,000 samples) shows that with abundant data, all methods eventually converge well. \\}
-    \note{Right figure (2,000 samples) demonstrates the advantage of transfer learning in data-limited scenarios. \\}
-    \note{With limited data, transfer learning methods significantly outperform training from scratch. \\}
-    \note{This is particularly relevant for new products or market conditions where historical data is scarce. \\}
-    \end{frame}
-    
-    \begin{frame}{Learning Curves: Effect of Similarity}
+\begin{frame}{Metamodel Performance}
     \begin{figure}[ht]
         \centering
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure4c.png}
-            \caption{Fine-tuning}
+            \includegraphics[width=\textwidth]{../project3/figures/figure4_1.png}
+            \caption{Identifying tail scenarios}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure4d.png}
-            \caption{Layer Freezing}
+            \includegraphics[width=\textwidth]{../project3/figures/figure4_2.png}
+            \caption{CVaR estimation}
         \end{subfigure}
-        \caption{Comparison of different TL methods on GMWB contracts}
+        \caption{Comparison of different TL methods on transferring to GMWB contracts}
     \end{figure}
     
-    
-    \note{These figures compare fine-tuning vs. layer freezing approaches for GMWB contracts. \\}
-    \note{Fine-tuning (left) allows all network parameters to be updated during training. \\}
-    \note{Layer freezing (right) keeps early layers fixed and only updates later layers. \\}
+    \note{These figures examine the performance of transfer learning to GMWB contracts. \\}
+    \note{The source task is a GMMB, and the target task is a GMWB with dynamic lapse. \\}
     \note{For dissimilar contracts like GMMB to GMWB, fine-tuning generally performs better. \\}
     \note{This suggests that when transferring between different contract types, more flexibility in adaptation is beneficial. \\}
-    \end{frame}
+    \note{When combined with a 2-stage procedure, we are able to reach reasonable performance for GMWB contracts with limited data. }
+
+\end{frame}
     
 %     \begin{frame}{Performance Comparison (GMMB → GMWB)}
 %     \begin{table}
@@ -2049,7 +2060,7 @@ There are \textbf{computational costs} associated with pooling inner replication
 %     \note{These challenges represent important areas for future research. \\}
 %     \end{frame}
     
-    \begin{frame}{Conclusions}
+\begin{frame}{Conclusions}
     \begin{itemize}
         \item Transfer learning significantly improves metamodeling for VA contracts:
         \begin{itemize}
@@ -2060,33 +2071,35 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item Enables more frequent risk assessments and faster decision-making
     \end{itemize}
     
-    \note{Our research demonstrates that transfer learning significantly enhances VA contract metamodeling. \\}
-    \note{The benefits include faster convergence, better accuracy with limited data, and reduced computational needs. \\}
-    \note{These improvements enable more frequent and timely risk assessments. \\}
-    \note{This is particularly valuable in volatile markets where rapid decision-making is essential. \\}
-    \note{The approach bridges the gap between traditional actuarial methods and modern machine learning techniques. \\}
+    \vspace{10pt}
     
     \textbf{Future Work:}
     \begin{itemize}
         \item Incorporating domain knowledge into transfer process
         \item Extension to other insurance and financial products
-        \item Multi-task learning with more than two tasks
+        \item Multi-task learning
     \end{itemize}
     
+
+    \note{Our research demonstrates that transfer learning significantly enhances VA contract metamodeling. \\}
+    \note{The benefits include faster convergence, better accuracy with limited data, and reduced computational needs. \\}
+    \note{These improvements enable more frequent and timely risk assessments. \\}
+    \note{This is particularly valuable in volatile markets where rapid decision-making is essential. \\}
+    \note{The approach enables pooling on a higher level, that is, pooling across different contracts. \\}
+
     \note{Several promising directions exist for extending this research. \\}
     \note{Incorporating actuarial domain knowledge could further improve transfer learning effectiveness. \\}
     \note{The approach could be extended to other insurance products and financial derivatives. \\}
-    \note{Multi-task learning could be expanded to handle more than two contract types simultaneously. \\}
-    \note{Integration with existing risk management systems would facilitate practical adoption. \\}
-    \note{Ultimately, these techniques could transform how financial institutions manage complex product portfolios. \\}
+    \note{In the future, we can also consider multi-task learning to handle multiple contracts simultaneously. }
 
 \end{frame}
 
 
 
-\begin{frame}
+\begin{frame}[t,allowframebreaks]
     \frametitle{References}
     \bibliographystyle{apa}
-    \bibliography{../refP1, ../refP2, ../refP3}
+    \nocite{*}
+    \bibliography{../ref_pre}
 \end{frame}
 \end{document}

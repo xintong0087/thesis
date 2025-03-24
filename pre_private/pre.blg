@@ -3,52 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: pre.aux
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 The style file: apa.bst
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-I found no \citation commands---while reading file pre.aux
-Database file #1: ../refP1.bib
-Database file #2: ../refP2.bib
-Database file #3: ../refP3.bib
-You've used 0 entries,
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: ../ref_pre.bib
+You've used 14 entries,
             1940 wiz_defined-function locations,
-            475 strings with 3700 characters,
-and the built_in function-call counts, 17 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+            559 strings with 6164 characters,
+and the built_in function-call counts, 5258 in all, are:
+= -- 500
+> -- 236
+< -- 8
++ -- 79
+- -- 77
+* -- 473
+:= -- 951
+add.period$ -- 45
+call.type$ -- 14
+change.case$ -- 105
+chr.to.int$ -- 14
+cite$ -- 14
+duplicate$ -- 192
+empty$ -- 345
+format.name$ -- 97
+if$ -- 987
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 14
+newline$ -- 75
+num.names$ -- 44
+pop$ -- 90
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 106
 quote$ -- 0
-skip$ -- 1
+skip$ -- 145
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 307
+swap$ -- 30
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 82
 warning$ -- 0
-while$ -- 0
+while$ -- 39
 width$ -- 0
-write$ -- 2
-(There was 1 error message)
+write$ -- 185

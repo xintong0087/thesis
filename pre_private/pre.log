@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.16)  24 MAR 2025 13:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.16)  24 MAR 2025 15:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -633,34 +633,7 @@ File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \arrowsize=\dimen307
-)) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerfontthemeserif.sty)) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfpages.sty
-Package: pgfpages 2011/01/05 ver 0.02
- (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
-Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count345
-\calc@Bcount=\count346
-\calc@Adimen=\dimen308
-\calc@Bdimen=\dimen309
-\calc@Askip=\skip65
-\calc@Bskip=\skip66
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count347
-\calc@Cskip=\skip67
-)
-\pgf@logicalpages=\count348
-\pgf@firstshipout=\count349
-\pgf@lastshipout=\count350
-\pgf@currentshipout=\count351
-\pgf@cpn=\count352
-\pgf@shipoutnextto=\count353
-\pgfphysicalheight=\dimen310
-\pgfphysicalwidth=\dimen311
-\pgfpages@shipoutbox=\box101
-)
-\pgfpages@box@1=\box102
-\pgfpages@box@2=\box103
-
+)) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerfontthemeserif.sty))
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\\' on input line 14.
@@ -675,45 +648,57 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/appendixnumberbeamer\appendixnumberbeamer.sty) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen312
-\lightrulewidth=\dimen313
-\cmidrulewidth=\dimen314
-\belowrulesep=\dimen315
-\belowbottomsep=\dimen316
-\aboverulesep=\dimen317
-\abovetopsep=\dimen318
-\cmidrulesep=\dimen319
-\cmidrulekern=\dimen320
-\defaultaddspace=\dimen321
-\@cmidla=\count354
-\@cmidlb=\count355
-\@aboverulesep=\dimen322
-\@belowrulesep=\dimen323
-\@thisruleclass=\count356
-\@lastruleclass=\count357
-\@thisrulewidth=\dimen324
+\heavyrulewidth=\dimen308
+\lightrulewidth=\dimen309
+\cmidrulewidth=\dimen310
+\belowrulesep=\dimen311
+\belowbottomsep=\dimen312
+\aboverulesep=\dimen313
+\abovetopsep=\dimen314
+\cmidrulesep=\dimen315
+\cmidrulekern=\dimen316
+\defaultaddspace=\dimen317
+\@cmidla=\count345
+\@cmidlb=\count346
+\@aboverulesep=\dimen318
+\@belowrulesep=\dimen319
+\@thisruleclass=\count347
+\@lastruleclass=\count348
+\@thisrulewidth=\dimen320
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip68
-\bibsep=\skip69
+\bibhang=\skip65
+\bibsep=\skip66
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count358
+\c@NAT@ctr=\count349
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
 Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
- (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
+ (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count350
+\calc@Bcount=\count351
+\calc@Adimen=\dimen321
+\calc@Bdimen=\dimen322
+\calc@Askip=\skip67
+\calc@Bskip=\skip68
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count352
+\calc@Cskip=\skip69
+) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count359
-\l_MT_multwidth_dim=\dimen325
+\g_MT_multlinerow_int=\count353
+\l_MT_multwidth_dim=\dimen323
 \origjot=\skip70
-\l_MT_shortvdotswithinadjustabove_dim=\dimen326
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen327
-\l_MT_above_intertext_sep=\dimen328
-\l_MT_below_intertext_sep=\dimen329
-\l_MT_above_shortintertext_sep=\dimen330
-\l_MT_below_shortintertext_sep=\dimen331
-\xmathstrut@box=\box104
-\xmathstrut@dim=\dimen332
+\l_MT_shortvdotswithinadjustabove_dim=\dimen324
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen325
+\l_MT_above_intertext_sep=\dimen326
+\l_MT_below_intertext_sep=\dimen327
+\l_MT_above_shortintertext_sep=\dimen328
+\l_MT_below_shortintertext_sep=\dimen329
+\xmathstrut@box=\box101
+\xmathstrut@dim=\dimen330
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/bbm\bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
 LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
@@ -724,22 +709,22 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count360
+\c@float@type=\count354
 \float@exts=\toks48
-\float@box=\box105
+\float@box=\box102
 \@float@everytoks=\toks49
-\@floatcapt=\box106
+\@floatcapt=\box103
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks50
-\c@algorithm=\count361
+\c@algorithm=\count355
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count362
-\c@ALC@line=\count363
-\c@ALC@rem=\count364
-\c@ALC@depth=\count365
+\c@ALC@unique=\count356
+\c@ALC@line=\count357
+\c@ALC@rem=\count358
+\c@ALC@depth=\count359
 \ALC@tlm=\skip71
 \algorithmicindent=\skip72
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
@@ -748,29 +733,29 @@ Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen333
-\captionmargin=\dimen334
-\caption@leftmargin=\dimen335
-\caption@rightmargin=\dimen336
-\caption@width=\dimen337
-\caption@indent=\dimen338
-\caption@parindent=\dimen339
-\caption@hangindent=\dimen340
+\caption@tempdima=\dimen331
+\captionmargin=\dimen332
+\caption@leftmargin=\dimen333
+\caption@rightmargin=\dimen334
+\caption@width=\dimen335
+\caption@indent=\dimen336
+\caption@parindent=\dimen337
+\caption@hangindent=\dimen338
 Package caption Info: beamer document class detected.
  (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption-beamer.sto
 File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
 ))
-\c@caption@flags=\count366
-\c@continuedfloat=\count367
+\c@caption@flags=\count360
+\c@continuedfloat=\count361
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count368
+\c@subfigure=\count362
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count369
+\c@subtable=\count363
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
 Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
@@ -787,23 +772,23 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen341
-\pgfdecoratedremainingdistance=\dimen342
-\pgfdecoratedinputsegmentcompleteddistance=\dimen343
-\pgfdecoratedinputsegmentremainingdistance=\dimen344
-\pgf@decorate@distancetomove=\dimen345
-\pgf@decorate@repeatstate=\count370
-\pgfdecorationsegmentamplitude=\dimen346
-\pgfdecorationsegmentlength=\dimen347
+\pgfdecoratedcompleteddistance=\dimen339
+\pgfdecoratedremainingdistance=\dimen340
+\pgfdecoratedinputsegmentcompleteddistance=\dimen341
+\pgfdecoratedinputsegmentremainingdistance=\dimen342
+\pgf@decorate@distancetomove=\dimen343
+\pgf@decorate@repeatstate=\count364
+\pgfdecorationsegmentamplitude=\dimen344
+\pgfdecorationsegmentlength=\dimen345
 )
-\tikz@lib@dec@box=\box107
+\tikz@lib@dec@box=\box104
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex))
-\c@assumption=\count371
-\c@proposition=\count372
+\c@assumption=\count365
+\c@proposition=\count366
  (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count373
-\l__pdf_internal_box=\box108
+\l__color_backend_stack_int=\count367
+\l__pdf_internal_box=\box105
 ) (pre.aux)
 \openout1 = `pre.aux'.
 
@@ -862,16 +847,16 @@ LaTeX Font Info:    ... okay on input line 70.
 
 (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count374
-\scratchdimen=\dimen348
-\scratchbox=\box109
-\nofMPsegments=\count375
-\nofMParguments=\count376
+\scratchcounter=\count368
+\scratchdimen=\dimen346
+\scratchbox=\box106
+\nofMPsegments=\count369
+\nofMParguments=\count370
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count377
-\MPscratchDim=\dimen349
-\MPnumerator=\count378
-\makeMPintoPDFobject=\count379
+\MPscratchCnt=\count371
+\MPscratchDim=\dimen347
+\MPnumerator=\count372
+\makeMPintoPDFobject=\count373
 \everyMPtoPDFconversion=\toks52
 ) (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -905,23 +890,11 @@ File: ./UniversityOfWaterloo_logo_vert_rev_rgb.png Graphic file (type png)
 <use ./UniversityOfWaterloo_logo_vert_rev_rgb.png>
 Package pdftex.def Info: ./UniversityOfWaterloo_logo_vert_rev_rgb.png  used on input line 82.
 (pdftex.def)             Requested size: 122.91406pt x 79.83531pt.
- (pre.toc) [2
+ [1
 
-{C:/Users/user/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation1}) has been already used, duplicate ignored
+{C:/Users/user/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./UniversityOfWaterloo_logo_vert_rev_rgb.png>] (pre.toc) [2
 
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.98 \end{frame}
-                
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.98 \end{frame}
-                
-
- <./UniversityOfWaterloo_logo_vert_rev_rgb.png>]
+]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 138.
  (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -931,661 +904,188 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 138.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [3
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation2}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.138 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.138 \end{frame}
-                 
-
 ] [4
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation3}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.255 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.255 \end{frame}
-                 
 
 ] [5
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation4}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.320 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.320 \end{frame}
-                 
-
 ] [6
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation5}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.343 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.343 \end{frame}
-                 
-
 ]
-<../project1/figures/figure2a.png, id=197, 578.16pt x 325.215pt>
+<../project1/figures/figure2a.png, id=174, 578.16pt x 325.215pt>
 File: ../project1/figures/figure2a.png Graphic file (type png)
 <use ../project1/figures/figure2a.png>
 Package pdftex.def Info: ../project1/figures/figure2a.png  used on input line 427.
 (pdftex.def)             Requested size: 276.559pt x 155.56052pt.
  [7
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation6}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.427 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.427 \end{frame}
-                 
-
-]
-<../project1/figures/figure2b.png, id=224, 578.16pt x 325.215pt>
+ <../project1/figures/figure2a.png>]
+<../project1/figures/figure2b.png, id=193, 578.16pt x 325.215pt>
 File: ../project1/figures/figure2b.png Graphic file (type png)
 <use ../project1/figures/figure2b.png>
 Package pdftex.def Info: ../project1/figures/figure2b.png  used on input line 449.
 (pdftex.def)             Requested size: 276.559pt x 155.56052pt.
  [8
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation7}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.449 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.449 \end{frame}
-                 
-
- <../project1/figures/figure2a.png>]
-<./time_comparison.png, id=249, 578.16pt x 325.215pt>
+ <../project1/figures/figure2b.png>]
+<./time_comparison.png, id=212, 578.16pt x 325.215pt>
 File: ./time_comparison.png Graphic file (type png)
 <use ./time_comparison.png>
 Package pdftex.def Info: ./time_comparison.png  used on input line 590.
 (pdftex.def)             Requested size: 307.28987pt x 172.84944pt.
  [9
 
+ <./time_comparison.png>] [10
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation8}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.590 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.590 \end{frame}
-                 
-
- <../project1/figures/figure2b.png>] [10
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation9}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.647 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.647 \end{frame}
-                 
-
- <./time_comparison.png>]
-<../project2/figures/sns.pdf, id=298, 481.51494pt x 207.27136pt>
+]
+<../project2/figures/sns.pdf, id=248, 481.51494pt x 207.27136pt>
 File: ../project2/figures/sns.pdf Graphic file (type pdf)
 <use ../project2/figures/sns.pdf>
 Package pdftex.def Info: ../project2/figures/sns.pdf  used on input line 692.
 (pdftex.def)             Requested size: 307.28987pt x 132.27684pt.
  [11
 
+ <../project2/figures/sns.pdf>] [12
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation10}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.692 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.692 \end{frame}
-                 
-
-] [12
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation11}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.763 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.763 \end{frame}
-                 
-
- <../project2/figures/sns.pdf>] [13
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation12}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.805 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.805 \end{frame}
-                 
+] [13
 
 ] [14
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation13}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.878 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.13}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.878 \end{frame}
-                 
-
 ] [15
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation14}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.943 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.14}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.943 \end{frame}
-                 
-
 ]
-<../project2/figures/qqPlots/qprLN.png, id=450, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/qprLN.png, id=381, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/qprLN.png Graphic file (type png)
 <use ../project2/figures/qqPlots/qprLN.png>
 Package pdftex.def Info: ../project2/figures/qqPlots/qprLN.png  used on input line 965.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/qqPlots/lstmLoCapLN.png, id=451, 462.528pt x 346.896pt>
+<../project2/figures/qqPlots/lstmLoCapLN.png, id=382, 462.528pt x 346.896pt>
 File: ../project2/figures/qqPlots/lstmLoCapLN.png Graphic file (type png)
 <use ../project2/figures/qqPlots/lstmLoCapLN.png>
 Package pdftex.def Info: ../project2/figures/qqPlots/lstmLoCapLN.png  used on input line 965.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
  [16
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation15}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.965 \end{frame}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{page.15}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.965 \end{frame}
-                 
-
-]
-<../project2/figures/datasets.png, id=474, 867.24pt x 289.08pt>
+ <../project2/figures/qqPlots/qprLN.png> <../project2/figures/qqPlots/lstmLoCapLN.png>]
+<../project2/figures/datasets.png, id=402, 867.24pt x 289.08pt>
 File: ../project2/figures/datasets.png Graphic file (type png)
 <use ../project2/figures/datasets.png>
 Package pdftex.def Info: ../project2/figures/datasets.png  used on input line 1019.
 (pdftex.def)             Requested size: 307.28987pt x 102.42783pt.
  [17
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation16}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1019 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.16}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1019 \end{frame}
-                  
-
- <../project2/figures/qqPlots/qprLN.png> <../project2/figures/qqPlots/lstmLoCapLN.png>]
+ <../project2/figures/datasets.png>]
 Overfull \hbox (7.59067pt too wide) in paragraph at lines 1062--1062
  [] 
  []
 
 [18
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation17}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1062 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.17}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1062 \end{frame}
-                  
-
- <../project2/figures/datasets.png>] [19
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation18}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1154 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.18}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1154 \end{frame}
-                  
+] [19
 
 ]
-<../project2/figures/tailMatches/nnLN.png, id=542, 462.528pt x 346.896pt>
+<../project2/figures/tailMatches/nnLN.png, id=460, 462.528pt x 346.896pt>
 File: ../project2/figures/tailMatches/nnLN.png Graphic file (type png)
 <use ../project2/figures/tailMatches/nnLN.png>
 Package pdftex.def Info: ../project2/figures/tailMatches/nnLN.png  used on input line 1179.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
-<../project2/figures/CVaR/allLN.png, id=543, 462.528pt x 346.896pt>
+<../project2/figures/CVaR/allLN.png, id=461, 462.528pt x 346.896pt>
 File: ../project2/figures/CVaR/allLN.png Graphic file (type png)
 <use ../project2/figures/CVaR/allLN.png>
 Package pdftex.def Info: ../project2/figures/CVaR/allLN.png  used on input line 1179.
 (pdftex.def)             Requested size: 147.49782pt x 110.62257pt.
  [20
 
+ <../project2/figures/tailMatches/nnLN.png> <../project2/figures/CVaR/allLN.png>] [21
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation19}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1179 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.19}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1179 \end{frame}
-                  
-
-] [21
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation20}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1241 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.20}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1241 \end{frame}
-                  
-
- <../project2/figures/tailMatches/nnLN.png> <../project2/figures/CVaR/allLN.png>]
-<../project2/figures/qqPlots/lstmAll.png, id=589, 867.24pt x 578.16pt>
+]
+<../project2/figures/qqPlots/lstmAll.png, id=498, 867.24pt x 578.16pt>
 File: ../project2/figures/qqPlots/lstmAll.png Graphic file (type png)
 <use ../project2/figures/qqPlots/lstmAll.png>
 Package pdftex.def Info: ../project2/figures/qqPlots/lstmAll.png  used on input line 1297.
 (pdftex.def)             Requested size: 307.28987pt x 204.85565pt.
  [22
 
+ <../project2/figures/qqPlots/lstmAll.png>] [23
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation21}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1297 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.21}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1297 \end{frame}
-                  
-
-] [23
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation22}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1369 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.22}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1369 \end{frame}
-                  
-
- <../project2/figures/qqPlots/lstmAll.png>]
-<../project2/figures/singleStage/CVaRmediumNoise.png, id=633, 578.16pt x 433.62pt>
+]
+<../project2/figures/singleStage/CVaRmediumNoise.png, id=534, 578.16pt x 433.62pt>
 File: ../project2/figures/singleStage/CVaRmediumNoise.png Graphic file (type png)
 <use ../project2/figures/singleStage/CVaRmediumNoise.png>
 Package pdftex.def Info: ../project2/figures/singleStage/CVaRmediumNoise.png  used on input line 1392.
 (pdftex.def)             Requested size: 184.3758pt x 138.27823pt.
  [24
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation23}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1392 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.23}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1392 \end{frame}
-                  
-
-]
-<../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=655, 867.24pt x 361.35pt>
+ <../project2/figures/singleStage/CVaRmediumNoise.png>]
+<../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=553, 867.24pt x 361.35pt>
 File: ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png Graphic file (type png)
 <use ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>
 Package pdftex.def Info: ../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 1444.
 (pdftex.def)             Requested size: 307.28987pt x 128.03477pt.
  [25
 
+ <../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [26
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation24}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1444 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.24}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1444 \end{frame}
-                  
-
- <../project2/figures/singleStage/CVaRmediumNoise.png>] [26
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation25}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1472 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.25}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1472 \end{frame}
-                  
-
- <../project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [27
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation26}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1516 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.26}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1516 \end{frame}
-                  
+] [27
 
 ] [28
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation27}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1556 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.27}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1556 \end{frame}
-                  
-
 ] [29
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation28}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1591 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.28}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1591 \end{frame}
-                  
+] [30
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 1591.
- (C:\Users\user\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmss.fd
-File: ts1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [30
+<../project3/figures/figure2a.png, id=657, 578.16pt x 433.62pt>
+File: ../project3/figures/figure2a.png Graphic file (type png)
+<use ../project3/figures/figure2a.png>
+Package pdftex.def Info: ../project3/figures/figure2a.png  used on input line 1887.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+<../project3/figures/figure2b.png, id=658, 578.16pt x 433.62pt>
+File: ../project3/figures/figure2b.png Graphic file (type png)
+<use ../project3/figures/figure2b.png>
+Package pdftex.def Info: ../project3/figures/figure2b.png  used on input line 1887.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+ [31
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation29}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1862 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.29}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1862 \end{frame}
-                  
-
-]
-<../project3/figures/figure3a.png, id=782, 578.16pt x 433.62pt>
+ <../project3/figures/figure2a.png> <../project3/figures/figure2b.png>]
+<../project3/figures/figure3a.png, id=679, 578.16pt x 433.62pt>
 File: ../project3/figures/figure3a.png Graphic file (type png)
 <use ../project3/figures/figure3a.png>
-Package pdftex.def Info: ../project3/figures/figure3a.png  used on input line 1881.
-(pdftex.def)             Requested size: 157.6756pt x 118.25768pt.
-
-Overfull \hbox (4.03067pt too wide) in paragraph at lines 1881--1881
-[][]  
- []
-
-<../project3/figures/figure3b.png, id=783, 578.16pt x 433.62pt>
+Package pdftex.def Info: ../project3/figures/figure3a.png  used on input line 1915.
+(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
+<../project3/figures/figure3b.png, id=680, 578.16pt x 433.62pt>
 File: ../project3/figures/figure3b.png Graphic file (type png)
 <use ../project3/figures/figure3b.png>
-Package pdftex.def Info: ../project3/figures/figure3b.png  used on input line 1881.
-(pdftex.def)             Requested size: 157.6756pt x 118.25768pt.
-
-Overfull \hbox (4.03067pt too wide) in paragraph at lines 1881--1881
-[][]  
- []
-
-[31
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation30}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1881 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.30}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1881 \end{frame}
-                  
-
-]
-<../project3/figures/figure4a.png, id=804, 578.16pt x 433.62pt>
-File: ../project3/figures/figure4a.png Graphic file (type png)
-<use ../project3/figures/figure4a.png>
-Package pdftex.def Info: ../project3/figures/figure4a.png  used on input line 1904.
-(pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
-<../project3/figures/figure4b.png, id=805, 578.16pt x 433.62pt>
-File: ../project3/figures/figure4b.png Graphic file (type png)
-<use ../project3/figures/figure4b.png>
-Package pdftex.def Info: ../project3/figures/figure4b.png  used on input line 1904.
+Package pdftex.def Info: ../project3/figures/figure3b.png  used on input line 1915.
 (pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
  [32
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation31}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1904     \end{frame}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{page.31}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1904     \end{frame}
-                      
-
  <../project3/figures/figure3a.png> <../project3/figures/figure3b.png>]
-<../project3/figures/figure4c.png, id=830, 578.16pt x 433.62pt>
-File: ../project3/figures/figure4c.png Graphic file (type png)
-<use ../project3/figures/figure4c.png>
-Package pdftex.def Info: ../project3/figures/figure4c.png  used on input line 1926.
+<../project3/figures/figure4_1.png, id=700, 578.16pt x 433.62pt>
+File: ../project3/figures/figure4_1.png Graphic file (type png)
+<use ../project3/figures/figure4_1.png>
+Package pdftex.def Info: ../project3/figures/figure4_1.png  used on input line 1937.
 (pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
-<../project3/figures/figure4d.png, id=831, 578.16pt x 433.62pt>
-File: ../project3/figures/figure4d.png Graphic file (type png)
-<use ../project3/figures/figure4d.png>
-Package pdftex.def Info: ../project3/figures/figure4d.png  used on input line 1926.
+<../project3/figures/figure4_2.png, id=701, 578.16pt x 433.62pt>
+File: ../project3/figures/figure4_2.png Graphic file (type png)
+<use ../project3/figures/figure4_2.png>
+Package pdftex.def Info: ../project3/figures/figure4_2.png  used on input line 1937.
 (pdftex.def)             Requested size: 147.49782pt x 110.62126pt.
  [33
 
+ <../project3/figures/figure4_1.png> <../project3/figures/figure4_2.png>] [34
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation32}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1926     \end{frame}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{page.32}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.1926     \end{frame}
-                      
-
- <../project3/figures/figure4a.png> <../project3/figures/figure4b.png>] [34
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation33}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.2083 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.33}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.2083 \end{frame}
-                  
-
- <../project3/figures/figure4c.png> <../project3/figures/figure4d.png>] (pre.bbl
+] (pre.bbl
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\translate ' on input line 1.
 
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
 ) [35
 
+] [36
 
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation34}) has been already used, duplicate ignored
 
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.2091 \end{frame}
-                  
-pdfTeX warning (ext4): destination with the same identifier (name{page.34}) has been already used, duplicate ignored
+] [37
 
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.2091 \end{frame}
-                  
 
 ]
 \tf@nav=\write6
@@ -1597,23 +1097,7 @@ l.2091 \end{frame}
 \tf@snm=\write8
 \openout8 = `pre.snm'.
 
- [36
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{Navigation35}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.2092 \end{document}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{page.35}) has been already used, duplicate ignored
-
-\pgfpages@shipoutshipoutbox ...physicalpagesizes }
-                                                  \endgroup 
-l.2092 \end{document}
-                     
-
-] (pre.aux)
+ (pre.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1622,17 +1106,17 @@ Package rerunfilecheck Info: File `pre.out' has not changed.
 (rerunfilecheck)             Checksum: DCC9DE051700D108447D5EB2438997C9;1881.
  ) 
 Here is how much of TeX's memory you used:
- 31295 strings out of 474486
- 654660 string characters out of 5744227
- 1964542 words of memory out of 5000000
- 52858 multiletter control sequences out of 15000+600000
- 574383 words of font info for 94 fonts, out of 8000000 for 9000
+ 31145 strings out of 474486
+ 649938 string characters out of 5744227
+ 1943542 words of memory out of 5000000
+ 52696 multiletter control sequences out of 15000+600000
+ 574210 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,708b,1090s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\user\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss0800.pk><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on pre.pdf (35 pages, 1201298 bytes).
+<C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/user/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on pre.pdf (37 pages, 1167752 bytes).
 PDF statistics:
- 1007 PDF objects out of 1200 (max. 8388607)
- 80 named destinations out of 1000 (max. 500000)
+ 903 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 500000)
  212 words of extra memory for PDF output out of 10000 (max. 10000000)
 
