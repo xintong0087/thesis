@@ -2,8 +2,8 @@
 
 \input{./StyleFile.tex}
 
-\setbeameroption{show notes}
-\setbeameroption{show notes on second screen=right}
+% \setbeameroption{show notes}
+% \setbeameroption{show notes on second screen=right}
 
 \title[Resilient ML for Fast Risk Evaluation of VAs]{\textbf{Resilient Machine Learning Approaches \\ for Fast Risk Evaluation and Management \\ of Financial Portfolios and Variable Annuities}}
 
@@ -128,10 +128,9 @@ $$\hat{L}_{N, i} = \frac{1}{N} \sum_{j=1}^N Y_{ij}; ~~~ Y_{ij} \sim F_{Y|X_i} $$
 
 \note{In the context of quantitative risk management, nested simulation is used for risk evaluation of financial derivatives and insurance products. \\}
 \note{The nested structure is due to the loss random variable being a conditional expectation of the portfolio loss given the underlying risk factors. \\}
-\note{In our problems, the loss $L$ depends on the risk factors $X$ and is the conditional expectation of the portfolio loss given the risk factors. \\}
-\note{More specifically, $X$ is $d$-dimensional and $L$ is 1-dimensional. \\}
+\note{In our problems, the 1-dimensional loss $L$ depends on the $d$-dimensional risk factors $X$. \\}
 \note{Estimating a risk measure, $\rho(L)$, involves two levels of Monte Carlo simulations: a outer level generates underlying risk factors, and a inner level generates scenario-wise samples of portfolio losses. \\}
-\note{The standard nested simulation procedure uses the inner sample mean under that scenarioto estimate $L(X_i)$. \\}
+\note{The standard nested simulation procedure uses the inner sample mean under that scenario to estimate $L(X_i)$. \\}
 \note{The nested structure makes the estimation computationally expensive. \\}
 \note{In this thesis, we focus on examining and improving the efficiency of nested simulation procedures mostly by pooling with supervised learning metamodels.}
 
@@ -245,10 +244,10 @@ We focus on procedures that \textbf{pool} with \textbf{supervised learning metam
 There are \textbf{computational costs} associated with pooling inner replications.
 
 \note{Pooling can happen in different ways, and the key idea is to use the information from different outer scenarios to improve the efficiency of nested simulation. \\}
-\note{A supervised learning based nested simulation procedure pools with these steps. \\}
-\note{First, the user runs the standard nested simulation procedure to generate a set of outer scenarios and inner replications. \\}
-\note{Then, the outer scenarios and inner sample means can be treated as features and labels for metamodel training. \\}
-\note{Finally, instead of the inner sample mean from the standard procedure, the metamodel predictions estimate the portfolio loss and the risk measures. \\}
+\note{A supervised learning based procedure pools with these steps. \\}
+\note{First, the user runs the standard procedure to generate a set of outer scenarios and inner sample means. \\}
+\note{Then, they are treated as features and labels that train a metamodel. \\}
+\note{Instead of using the inner sample mean, risk measures are estimated with the metamodel predictions. \\}
 \note{Most existing works focus on the convergence rate of their estimators in terms of the simulation budget. \\}
 \note{However, we find that there is a cost of pooling that comes from metamodel training, validation, and prediction. }
 
@@ -307,14 +306,14 @@ There are \textbf{computational costs} associated with pooling inner replication
 
 
 \note{We start by comparing the asymptotic rates of different nested simulation procedures. \\}
-\note{These are the convergence rates of the MSE of the risk measure estimator when the total simulation budget $\Gamma$ goes to infinity. \\}
+\note{These are the convergence rates of the MSE when the total simulation budget $\Gamma$ goes to infinity. \\}
 \note{The standard procedure has the same convergence rate of $\mathcal{O}(\Gamma^{-2/3})$ for all types of $h$ considered. The rates in red are not available in the original works but are derived in this thesis. \\}
 \note{The regression-based procedure has $\mathcal{O}(\Gamma^{-1})$ convergence rate for smooth and hockey-stick $h$. \\}
 \note{It is achieved by only allowing $M$ to grow. In their experiments, $N$ is set to equal a constant. \\}
 \note{The kernel smoothing procedure is the only procedure that depends on the asset dimension $d$. \\}
 \note{When risk factor $X$ is high-dimensional, the kernel smoothing procedure may converge slower than the standard procedure. \\}
 \note{The kernel ridge regression procedure and likelihood ratio procedure have the same convergence rate as the regression-based procedure. \\}
-\note{However, in our numerical experiments, we find that their additional cost of pooling may offset their benefit of fast asymptotic rates. \\}
+\note{However, in our numerical experiments, we find that their additional cost of pooling is too high, which may offset their benefit of high asymptotic rates. \\}
 \note{Additionally for KRR, the authors analyze convergence of absolute error in probabilistic order instead of MSE.}
 
 \end{frame}
@@ -334,10 +333,10 @@ There are \textbf{computational costs} associated with pooling inner replication
 \end{block}
 
 \note{In most theoretical works, the focus is on the convergence rate of the MSE of the risk measure estimator. \\}
-\note{However, for KRR, the authors analyze convergence of absolute error in probabilistic order. \\}
+\note{However, the analysis of KRR is different. \\}
 \note{One of the contributions of this thesis is to bridge the gap between MSE and absolute error convergence. \\}
 \note{We first define the convergence in MSE and the convergence in probabilistic order. \\}
-\note{And we show that the convergence rate of $\Gamma^{-\xi}$ in MSE of the risk measure estimator implies the convergence rate of $\Gamma^{-\frac{\xi}{2}}$ in probabilistic order. \\}
+\note{And we show that the convergence rate of $\Gamma^{-\xi}$ in MSE implies the convergence rate of $\Gamma^{-\frac{\xi}{2}}$ in probabilistic order. \\}
 \note{We also show that the converse is not necessarily true.}
 
 \end{frame}
@@ -414,14 +413,13 @@ There are \textbf{computational costs} associated with pooling inner replication
 
 \note{Previously, we worked on the asymptotic convergence rates of different nested simulation procedures. \\}
 \note{In practice, the total simulation budget is finite.}
-\note{When the budget is finite, the theoretical convergence rate may not be the only thing we should consider. \\}
+\note{When the budget is finite, these theoretical rates may not be the only thing we should consider. \\}
 \note{This figure shows the performance of all 5 procedures in their estimation of the quadratic tracking error for the portfolio of European call options.}
 \note{It is a log-log plot of the MSE of the estimator versus the total simulation budget $\Gamma$.}
-\note{For each procedure, we run 1000 macro replications of Monte Carlo simulations with different total simulation budgets. \\}
 \note{For each data point on the plot, 1000 independent replications of the procedure are used to estimate the MSE. \\}
 \note{The slopes of the lines estimates the empirical convergence rates of the procedures. \\}
-\note{In the legend records the slopes of the lines and the corresponding asymptotic convergence rates of the procedures. \\}
-\note{In the most basic case, most procedures have their empirical convergence rates match their asymptotic convergence rates. \\}
+\note{In the legend records the slopes of the lines and the corresponding asymptotic rates. \\}
+\note{In this case, most procedures have their empirical convergence rates matching their asymptotic rates. \\}
 \note{However, as we will see after, this is not the case for all experiments. }
 
 \end{frame}
@@ -438,12 +436,12 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item Results of other experiments are in the thesis (Figure 2.3 - Figure 2.11)
     \end{itemize}
 
-\note{This figure shows the same experiment as the previous figure, but we further increase the asset dimension to 20. \\}
+\note{This figure shows the same experiment as the previous one, but we increase the asset dimension to 20. \\}
 \note{The standard procedure is not affected by the asset dimension. \\}
 \note{The kernel smoothing procedure actually converges faster than what its asymptotic convergence rate suggests. \\}
-\note{The regression-based procedure is the only procedure that actually converges faster when the asset dimension is high. We will do a deeper dive into it in the following experiment. \\}
-\note{It is also worth noting that the likelihood ratio and KRR procedures are dimension-independent. \\}
-\note{While it is not shown in their empirical rate, due to their additional cost of pooling inner replications, we are not able to run these procedures when $\Gamma$ is large. \\}
+\note{The regression-based procedure is the only procedure that converges faster when the asset dimension is high. The reason is the regression-based procedure is particularly bad when we don't have enough data points at low $\Gamma$. We did a follow-up experiment to show regression converges in its asymptotic rate at high $\Gamma$. \\}
+\note{Counter to what's on the graph, the likelihood ratio and KRR procedures are also sensitive to dimension. \\}
+\note{While it is not shown in their empirical rate, due to their additional cost of pooling, we are not able to run these procedures when $\Gamma$ is large. \\}
 \note{In the thesis, we provide a detailed analysis of the sensitivity for all 5 procedures with more than 500 experiments. }
 
 \end{frame}
@@ -616,7 +614,7 @@ There are \textbf{computational costs} associated with pooling inner replication
 
 % \end{frame}
 
-\begin{frame}{Conclusion}
+\begin{frame}{Future Work}
     Regression-based nested simulation procedure:
     \begin{itemize}
         \item Most robust and stable for limited budgets
@@ -636,12 +634,11 @@ There are \textbf{computational costs} associated with pooling inner replication
 
     Next project: examining performance of metamodel-based simulation procedures for variable annuities
 
-    \note{In our numerical experiemenct, we have shown that the regression-based procedure is the most cost-effective among all the procedures. \\}
+    \note{Before here, we have shown that the regression-based procedure is the most cost-effective among all the procedures. \\}
     \note{It is robust and efficient to implement for limited budget sizes, and has fast empirical convergence for option portfolios. \\}
-    \note{However, the regression-based procedure is not suitable for extremely high-dimensional risk factors or complex payoffs. \\}
-    \note{The first reason is that it is hard to find a good regression basis for high-dimensional risk factors. It will involve a lot of feature engineering and expert knowledge. \\}
-    \note{The second reason is that the regression-based procedure is not able to capture the nonlinearity in the payoff. \\}
-    \note{In the next project, we will examine the performance of metamodel-based simulation procedures for variable annuities. \\}
+    \note{However, the it is not suitable for modeling variable annuities. \\}
+    \note{It is hard to find a good regression basis for high-dimensional risk factors. It will involve a lot of feature engineering and expert knowledge. \\}
+    \note{In the next project, we will design a metamodel-based simulation procedures for variable annuities. \\}
     \note{This is where a neural network-based procedure can be more suitable as a form of automated feature engineering. }
 
 \end{frame}
@@ -687,7 +684,7 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{This hedge gets carried forward and updated at each time period with another simulation. \\}
     \note{The P\&L is then estimated by adding up the hedging error at each time period to the initial value of the VA contract. \\}
     \note{All the simulation mentioned is a single set of inner simulations for one outer scenario. \\}
-    \note{It is very expensive to run this standard nested simulation for VAs. \\}
+    \note{It is more expensive to run the standard nested for VAs. \\}
 
 \end{frame}
 
@@ -752,13 +749,13 @@ There are \textbf{computational costs} associated with pooling inner replication
         \end{itemize}
     \end{enumerate}
 
-\note{After numerical experiments, we find that the deep neural network metamodels are suitable for this problem. \\}
-\note{We use LSTM for the sequential data. It provides accurate tail scenario identification and significant computational savings by budget concentration. \\}
-\note{However, it is not transparent and interpretable. Many researchers are working on this topic. \\}
-\note{This is where we can contribute to the research. \\}
+\note{After some numerical experiments, we found that the deep neural network metamodels are suitable for this problem. \\}
+\note{We use LSTM for the sequential data. It can predict tail scenarios accurately, so we can use it to concentrate simulation budget on the tail scenarios. \\}
+\note{However, it is not transparent. Many researchers are working on this topic. \\}
+\note{This is where we can contribute to the field. \\}
 \note{By using nested simulation as a data generating process, we can study the noise tolerance of DNNs. \\}
-\note{The noise level in the training labels can be controlled by adjusting the simulation parameters. \\}
-\note{By examining the performance of DNNs with different noise levels, we can provide direct evidence on the transparency and interpretability of DNNs. \\}
+\note{We can control data quality and quantity by adjusting the simulation parameters. \\}
+\note{By examining the performance of DNNs, we can provide direct evidence on the transparency of DNNs. }
 
 \end{frame}
 
@@ -794,13 +791,11 @@ There are \textbf{computational costs} associated with pooling inner replication
     \item   Some DNN metamodels make \textbf{accurate loss predictions}
 \end{itemize}
 
-\note{The two-stage procedure is a two-step process that is based on the idea of budget concentration. \\}
-\note{First, we generate training data for the metamodel. \\}
-\note{We use a fraction of the simulation budget to run the standard nested simulation procedure with $M$ outer scenarios and $N'$ inner replications. \\}
-\note{We then train a metamodel using the feature-label pairs. \\}
-\note{We use the trained metamodel to make predictions for all outer scenarios. \\}
-\note{We then identify the predicted tail scenario set that contains the $m$ largest predicted losses. \\}
-\note{Finally, we run the standard nested simulation procedure on the predicted tail scenarios. \\}
+\note{Our two-stage procedure is based on the idea of budget concentration. \\}
+\note{In stage 1, we use a fraction of the simulation budget to run the standard nested simulation procedure. \\}
+\note{We then train a metamodel using the scenarios and the inner sample means. \\}
+\note{We use metamodel predictions to identify the tail scenario set that contains the $m$ largest predicted losses. \\}
+\note{In stage 2, we run the standard nested simulation procedure on these predicted tail scenarios. \\}
 
 \end{frame}
 
@@ -869,11 +864,11 @@ There are \textbf{computational costs} associated with pooling inner replication
     \item avoids specifying a safety margin $m$.
 \end{itemize}
 
-\note{The single-stage procedure shares the same idea of running the standard nested simulation procedure to generate training data for the metamodel. \\}
-\note{After a metamodel is trained, we use it to make predictions for VA contract losses accross all outer scenarios. \\}
-\note{The risk measure is estimated using the predicted losses of the metamodel. \\}
-\note{It is more efficient than the two-stage procedure because it avoids the second stage of the two-stage procedure. \\}
-\note{It also avoids specifying a safety margin $m$, which is a feature of the two-stage procedure that we will discuss later.}
+    \note{In our experiments, we found some DNN metamodels that can make accurate loss predictions, so we propose a single-stage procedure. \\}
+    \note{It shares the same idea of running the standard nested to get training data. \\}
+    \note{After a metamodel is trained, the risk measure is estimated using the metamodel predictions directly. \\}
+    \note{It is more efficient than the two-stage procedure because it avoids the stage 2 of the two-stage procedure. \\}
+    \note{It also avoids specifying a safety margin $m$, which is a feature of the two-stage procedure that we will discuss later.}
 
 \end{frame}
 
@@ -935,9 +930,8 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{We consider the following metamodel architectures: \\}
     \note{Multiple Linear Regression, Quadratic Polynomial Regression, Feedforward Neural Network, Recurrent Neural Network, and Long Short-Term Memory Network. \\}
     \note{Capacity is defined as the number of parameters in the metamodel. \\}
-    \note{Higher capacity metamodels are more flexible and expressive. \\}
     \note{Lower capacity metamodels are less likely to overfit. \\}
-    \note{The deep neural network metamodels are more flexible and expressive, but they are said to be more prone to overfitting. \\}
+    \note{The deep neural network metamodels are higher in capacity, but they are said to be more prone to overfitting. \\}
     \note{We will see whether this is indeed the case in our experiments. \\}
     
 \end{frame}
@@ -960,7 +954,7 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{We first take a look at their performance with QQ plots. \\}
     \note{On the left is the QQ plot between the true loss labels and the predicted loss labels for QPR, and on the right is the QQ plot for LSTM. \\}
     \note{Feature engineering for QPR is hardly feasible for our 240-dimensional $X$. Its poor performance is expected. \\}
-    \note{DNN metamodels are more flexible, and they can make more accurate loss predictions. \\}
+    \note{DNN metamodels are more flexible, and they can make more accurate predictions. \\}
 
 \end{frame}
 
@@ -1009,12 +1003,13 @@ There are \textbf{computational costs} associated with pooling inner replication
 
 
 \note{To further clarify our research questions, we consider the following scenario: \\}
-\note{We have a noisy training data and a noisy test data. \\}
+\note{We have noisy training data and noisy test data. \\}
 \note{We want to know what the metamodel learns from the noisy data. \\}
-\note{We also want to know how well the metamodel can make accurate loss predictions for given scenarios. \\}
-\note{In a simulation experiment, we can control the noise level in the training data and the test data. \\}
-\note{We also have access to the true feature-label relationship when we increase the number of replications. \\}
-\note{We can use this true feature-label relationship to evaluate the performance of deep neural networks, which is usually not possible in practice. }
+\note{We also want to know how well the metamodel can make accurate predictions. \\}
+\note{In a simulation experiment, we have control over the noise level in the training data and the test data. \\}
+\note{We also have access to the true relationship when we increase the number of replications. \\}
+\note{We can use this true relationship to evaluate the performance of deep neural networks, which is usually not possible in practice. \\ }
+\note{Instead of measuring the distance between the blue line and the orange dots, we can measure the distance between the blue line and the red line. }
 
 \end{frame}
 
@@ -1048,10 +1043,10 @@ There are \textbf{computational costs} associated with pooling inner replication
 
     \note{This table summarizes the results of our experiments. \\}
     \note{It is the most interesting finding that DNN metamodels with suitable architectures can \textbf{cut through the noise} in training labels. \\}
-    \note{The average MSEs of metamodels on the training, test, and true data are reported in the three columns, respectively. \\}
-    \note{Note that the training and test labels are noisy. The simulation noise is what makes them noisy, which is less present in the true data. \\}
+    \note{The average MSEs of metamodels on the training, test, and true data are reported in different colors. \\}
+    \note{Note that the training and test labels are noisy due to simulation noise. This noise is less present in the true labels. \\}
     \note{First, we note that DNN metamodels has lower training errors than the traditional regression metamodels. \\}
-    \note{This is expected because DNNs are more flexible and expressive than traditional regression metamodels. \\}
+    \note{This is expected because DNNs are more flexible. \\}
     \note{What is more interesting is the comparison between the test and true errors. \\}
     \note{We find that the true errors of RNN-based metamodels are lower than their test errors. \\}
     \note{This suggests that the RNN and LSTM metamodels can learn the true feature-label relationship. \\}
@@ -1134,18 +1129,17 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item   Higher margin: more budget spent on extensive simulation
     \end{itemize}
 
-    \note{For a two-stage procedure, we need to choose a safety margin $m$ to identify the tail scenarios. \\}
+    \note{Coming back to the two-stage procedure, we need to choose a safety margin $m$ to identify the tail scenarios. \\}
     \note{Consider estimating the $95\%$ CVaR with 100,000 outer scenarios. \\}
-    \note{On the top is the true tail and non-tail scenarios, and on the bottom is the predicted tail and non-tail scenarios. \\}
-    \note{The 5\% predicted tail scenarios are not guaranteed to contain all the true tail scenarios. \\}
-    \note{Therefore, we need to add a safety margin $m$ to the predicted tail scenarios. \\}
-    \note{On the bottom, we add a 2\% safety margin to the predicted tail scenarios. \\}
+    \note{On the top is the true tail and non-tail scenarios, and on the bottom is the predicted tail and non-tail. \\}
+    \note{The 5\% predicted tails are not guaranteed to contain all the true tails. \\}
+    \note{Therefore, we need to add a safety margin $m$. \\}
+    \note{On the bottom, we add a 2\% safety margin. \\}
     \note{This adds 2,000 more scenarios to the inner simulations. \\}
     \note{We may add another 2\% safety margin to be more confident. \\}
-    \note{This introduce a safety margin of $4\%$. $9000$ predicted tail scenarios are used for extensive inner simulations in stage 2. \\}
+    \note{This introduce a safety margin of $4\%$. In total, $9000$ predicted tails are used for extensive inner simulations in stage 2. \\}
     \note{This is a trade-off between accuracy and efficiency. \\}
-    \note{For a good metamodel, we only need a small safety margin to be accurate in tail identification. \\}
-    \note{However, for a bad metamodel, the safety margin needs to be large to identify all the tail scenarios. \\}
+    \note{For a regression metamodel, the safety margin needs to be large to identify all the tail scenarios. \\}
     \note{This comes at the cost of more inner simulations, which is computationally expensive. \\}
     \note{So, one of the limitations of the two-stage procedure is the choice of safety margin. \\}
     \note{It can be partially mitigated by using a good metamodel. \\}
@@ -1166,15 +1160,16 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item LSTM metamodels surpasses the standard procedure with $5\%$ safety margin.
     \end{itemize}
 
-    \note{We now consider the tail scenario identification and the CVaR estimation for the two-stage procedure. \\}
-    \note{On the left is the tail scenario identification plot, and on the right is the plot of CVaR. \\}
+    \note{We now consider the precentage of tail match and the CVaR estimates for the two-stage procedure. \\}
+    \note{On the left is the tail match plot, and on the right is the plot for CVaR. \\}
     \note{We compare the two-stage procedure with the standard procedure. \\}
-    \note{When colored lines cross the grey dashed line, it means that the metamodel is able to identify the tail scenarios as well as the standard procedure. \\}
-    \note{And it should be able to estimate the CVaR as accurately as the standard procedure. \\}
+    \note{When colored lines cross the grey dashed line, it means that the metamodel is able to identify the true tails as well as the standard procedure. \\}
+    \note{And it should be able to estimate the CVaR as accurately. \\}
     \note{We find that the LSTM metamodel is able to surpass the standard procedure on tail identification with a less than $5\%$ safety margin. \\}
     \note{However, the traditional regression metamodel is unable to identify the tail scenarios even with a high safety margin. \\}
+    \note{They are not even in the first plot. \\}
     \note{A well-trained RNN is better than a FNN, but the poorly-trained RNN is far worse.}
-    \note{The CVaR estimation plot shows similar results.}
+    \note{The CVaR plot shows similar results.}
         
 \end{frame}
 
@@ -1230,13 +1225,11 @@ There are \textbf{computational costs} associated with pooling inner replication
     2 LSTMs of \textbf{different capacities} are examined based on their MSEs.
 
     \note{We now dig deeper into the research questions asked: how well do deep learning metamodels learn from noisy data? \\}
-    \note{We study this phenomenon by considering the sensitivity testing for the DNN metamodels. \\}
-    \note{The sensitivity of the DNN metamodels to the noise level in training labels and the number of training samples. \\}
-    \note{In a simulation experiment, we can vary them to see how the DNN metamodels perform. \\}
-    \note{We control the noise level in training labels by varying the number of inner replications $N'$. \\}
-    \note{We control the number of training samples by varying the number of outer scenarios $M$. \\}
-    \note{We consider two LSTM metamodels of different capacities because we want to see if the capacity of the metamodel matters for overfitting. \\}
-    \note{The high-capacity LSTM metamodel has 10 times more parameters than the regular LSTM metamodel}
+    \note{We study this phenomenon by testing the sensitivity of the DNN metamodels to the noise level in training labels and the number of training samples. \\}
+    \note{In a simulation experiment, we have the flexibility to vary them. \\}
+    \note{Data quality is controlled by $N'$, and data quantity is controlled by $M$. \\}
+    \note{We consider two LSTM metamodels of different capacities. \\}
+    \note{The high-capacity LSTM has 10 times more parameters than the regular LSTM.}
 
 \end{frame}
 
@@ -1383,7 +1376,7 @@ There are \textbf{computational costs} associated with pooling inner replication
     \end{itemize}
 
     \note{This figure shows the CVaR estimates of the single-stage procedure. \\}
-    \note{We compare it with the two-stage procedure using regular LSTM metamodel with no safety margin. So we are using the 5\% metamodel predicted tails to estimate the 95\% CVaR with extensive simulation in stage 2. \\}
+    \note{We compare it with the two-stage procedure using regular LSTM metamodel with no safety margin. So we are using the 5\% metamodel predicted tails to run extensive simulation in stage 2. \\}
     \note{The single-stage procedure with LSTM metamodels outperforms the two-stage procedure when noise level is moderate. \\}
     \note{Due to its design, the single-stage procedure is more efficient than the two-stage procedure. \\}
     \note{Setting $N' = 10$ is a reasonable budget allocation for the single-stage procedure. \\}
@@ -1439,18 +1432,15 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{On the right, we fix $N'=10$ and vary $M$. \\}
     \note{We can see that the convergence rate is around $O(M^{-2/3})$. \\}
     \note{This finding is consistent with our previous analysis on the sensitivity of LSTM metamodels to data quality and data quantity. \\}
-    \note{Once the quality is good enough, the quantity is more important. \\}
+    \note{Once the quality is good enough, the quantity is more important. }
 
 \end{frame}
 
-\begin{frame}{Conclusion}
+\begin{frame}{Future Directions}
 
-    \textbf{Key Findings:}
+    \textbf{We have found that:}
     \begin{itemize}
-        \item   LSTMs are \textbf{resilient} to moderate levels of noise in training labels.
         \item   DNNs can learn \textbf{true} complex dynamic hedging model.
-        \item   Two-stage procedure addresses regulatory concerns.
-        \item   Single-stage procedure is \textbf{efficient}.
     \end{itemize}
 
     \vspace{10pt}
@@ -1461,13 +1451,10 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item   Fast adaptation to new contracts/market conditions.
     \end{itemize}
 
-    \note{In this project, we present our extensive research into LSTM metamodels in a simulation setting.\\}
-    \note{Our findings demonstrate that LSTMs can effectively learn complex hedging strategies even with noisy training data.\\}
-    \note{The single-stage procedure offers an excellent balance of efficiency and accuracy for practical applications.\\}
-    \note{We've shown that allocating computational budget to increase outer scenarios rather than inner simulations yields better results.\\}
-    \note{These insights provide valuable guidance for implementing machine learning in financial risk management.\\}
-    \note{For the research directions, we can apply deep neural network metamodels to other actuarial applications.\\}
-    \note{We can also apply transfer learning to speed up the training process for deep neural network metamodels.\\}
+    \note{In this project, we demonstrate that LSTMs can effectively learn complex hedging strategies even with noisy training data.\\}
+    \note{We can apply deep neural network metamodels to other actuarial products.\\}
+    \note{However, DNNs are data-hungry. We may not have enough time to simulate enough data for new products.\\}
+    \note{That's where transfer learning can help us to speed up the training process for contracts with not enough data.}
     
 \end{frame}
 
@@ -1500,18 +1487,14 @@ There are \textbf{computational costs} associated with pooling inner replication
 
     \note{In this project, we propose a transfer learning framework for rapid adaptation of deep neural network metamodels in VA dynamic hedging.\\ }
     \note{The problem is the same as the previous project. We want to use deep neural network metamodels to approximate the complex simulation model that involves dynamic hedging.\\}
-    \note{The difference is that we want to use transfer learning to speed up the training process.\\}
+    \note{The difference is that we want to use transfer learning to speed up the training process when the amount of data is limited.\\}
     \note{This can be beneficial for the practical applications.\\}
     \note{Firstly, new VA contracts are continuously issued.\\}
-    \note{Secondly, market conditions are changing.\\}
-    \note{Thirdly, the computational budget is limited.\\}
-    \note{Transfer learning can help us to adapt to the new market conditions quickly and efficiently.\\}
-    \note{We can pre-train the deep neural network metamodel on a large dataset of VA contracts with abundant simulation data.\\}
-    \note{Then, we can fine-tune the metamodel on a smaller dataset of new VA contracts with limited data.\\}
-    \note{The data is often limited for new VA contracts as simulation is expensive to run.\\}
+    \note{Secondly, the computational budget is limited for simulation.\\}
+    \note{With transfer learning, we can pre-train the deep neural network metamodel on a large dataset of VA contracts with abundant simulation data.\\}
+    \note{Then, we can fine-tune the metamodel on new VA contracts with limited data.\\}
     \note{The shared features between VA contracts can be leveraged to speed up the training process.\\}
-    \note{We can also transfer the knowledge to other contract types.\\}
-    \note{When a new VA contract is issued, we can use transfer learning to adapt the metamodel to the new contract quickly.\\}
+    \note{We can also try transferring knowledge to other contract types.}
 
 \end{frame}
 
@@ -1543,15 +1526,15 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{Transfer learning provides a formal framework for adapting models from one domain to another.\\}
     \note{The domain consists of a feature space and a probability distribution over that space.\\}
     \note{In our context, the feature space includes risk factors from the outer simulation.\\}
-    \note{It is equipped with a probability distribution that describes the joint distribution of the risk factors.\\}
+    % \note{It is equipped with a probability distribution that describes the joint distribution of the risk factors.\\}
     \note{We don't know the exact joint distribution of the risk factors, but we can simulate outer scenarios from it using monte carlo simulation.\\}
     \note{The task consists of a label space and a predictive function mapping features to labels.\\}
-    \note{For VA contracts, our labels are the contract losses under different scenarios.\\}
-    \note{The source domain typically has abundant data - this could be existing VA contracts with extensive simulation data.\\}
-    \note{The target domain has limited data - new VA contracts or existing contracts under new market conditions.\\}
-    \note{Our goal is to leverage knowledge from the source domain to improve prediction in the target domain.\\}
+    \note{For a VA dynamic hedging problem, our labels are the contract losses for different scenarios.\\}
+    \note{The source domain typically has abundant data - this could be existing VA contracts with extensive simulation done already.\\}
+    \note{The target domain, new VA contracts may have limited data.\\}
+    \note{Our goal is to leverage knowledge from the source domain to improve performance in the target domain.\\}
     \note{This is particularly valuable when simulation data is expensive to generate for new contracts.\\}
-    \note{The transfer learning approach allows us to maintain accuracy while significantly reducing computational requirements.}
+    \note{It allows us to maintain accuracy while significantly reducing computational requirements.}
 
 \end{frame}
 
@@ -1575,7 +1558,7 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item   Target domain (2000 samples): GMMB and GMWB with dynamic lapse 
     \end{itemize}
 
-
+    \note{There are several ways to transfer knowledge.}
     \note{Fine-tuning involves using a pre-trained model as a starting point for a new task.\\}
     \note{For VA contracts, we can fine-tune models between different contract types or market conditions.\\}
     \note{Layer freezing is a technique where we keep some layers of the pre-trained model fixed.\\}
@@ -1585,8 +1568,9 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{Metamodels are trained with 50,000 samples on the source domain before transferring to the target domain with only 2000 samples. \\}
     \note{We progress from simpler to more complex models (No lapse → Static → Dynamic). \\}
     \note{The experiments are designed to evaluate how similarity between source and target affects transfer efficiency. \\}
-    \note{This is another attempt to use simulation models as data generating processes to examine deep neural networks. \\}
-    \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable, or more generally, which layers of the neural network learn which features of the VA contracts. }
+    \note{This is another attempt to use simulation as data generating processes to examine deep neural networks. \\}
+    \note{By examining the transfer learning performance, we can gain insights into which parts of the neural network are transferable.\\}
+    \note{Or more generally, which layers of the neural network learn which features of the VA contracts. }
 
 \end{frame}
 
@@ -1851,14 +1835,13 @@ There are \textbf{computational costs} associated with pooling inner replication
         \end{table}
 
     \note{This table summarizes the MSE values for different training methods. \\}
-    \note{Extensive training with full data achieves the best performance (0.0587 MSE). \\}
-    \note{Without transfer learning, training from scratch on dynamic lapse data yields mediocre results (0.2950 MSE). \\}
-    \note{Transfer learning from static lapse models (both fine-tuning and layer freezing) performs well. \\}
-    \note{Transfer from no lapse models performs poorly, demonstrating that negative transfer can occur. \\}
+    \note{Extensive training with full data achieves the best performance. \\}
+    \note{Without transfer learning, training from scratch on dynamic lapse data yields mediocre results. \\}
+    \note{Transfer learning from static lapse models performs well. \\}
+    \note{Transfer from no lapse models performs poorly. It demonstrates that negative transfer can occur. \\}
     \note{Negative transfer happens when source and target tasks are substantially different. \\}
     \note{In such cases, knowledge from the source model can actually hinder learning on the target task. \\}
-    \note{This highlights the importance of selecting appropriate source models for transfer learning. \\}
-    \note{Note that for layer-freezing, freezing the LSTM layers lead to better performance. }
+    \note{This highlights the importance of selecting appropriate source models for transfer learning. }
 
 \end{frame}
     
@@ -1866,10 +1849,12 @@ There are \textbf{computational costs} associated with pooling inner replication
     \begin{figure}[ht]
         \centering
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure2a.png}
+            \includegraphics[width=\textwidth]{./figure2a.png}
+            \caption{From no lapse}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure2b.png}
+            \includegraphics[width=\textwidth]{./figure2b.png}
+            \caption{From static lapse}
         \end{subfigure}
         \caption{Fine-tuning performance on GMMB with dynamic lapse}
     \end{figure}
@@ -1879,7 +1864,7 @@ There are \textbf{computational costs} associated with pooling inner replication
         \item Negative transfer can happen for dissimilar tasks
     \end{itemize}
     
-    \note{These figures further illustrate how source-target similarity affects transfer learning performance. \\}
+    \note{These figures further illustrate the same idea. \\}
     \note{The left graph shows transfer from no lapse models, which has slower convergence. \\}
     \note{The right graph shows transfer from static lapse models, with faster convergence. \\}
     \note{This reinforces our finding that greater similarity between source and target domains leads to more effective knowledge transfer. }
@@ -1892,11 +1877,11 @@ There are \textbf{computational costs} associated with pooling inner replication
     \begin{figure}[ht]
         \centering
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure3a.png}
+            \includegraphics[width=\textwidth]{./figure3a.png}
             \caption{Freezing LSTM layers}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[width=\textwidth]{../project3/figures/figure3b.png}
+            \includegraphics[width=\textwidth]{./figure3b.png}
             \caption{Freezing fully connected layers}
         \end{subfigure}
         \caption{Learning dynamic lapse from a GMMB with static lapse}
@@ -1910,7 +1895,11 @@ There are \textbf{computational costs} associated with pooling inner replication
     \note{These figures show the effect of freezing layers on the convergence of the model. \\}
     \note{When learning dynamic lapse, freezing the LSTM layers leads to poor performance. \\}
     \note{Freezing the fully connected layers is better since we are learning a dynamic lapse feature that introduces another source of stochasticity. \\}
-    \note{We suspect that the LSTM layers capture the time series component of the data, and the fully connected layers use the output of the LSTM layers to learn the VA contract losses.}
+    \note{This counters the previous assumption that the early layers learn general features and should be freezed. \\}
+    \note{We suspect that the LSTM layers capture the time series component of the data, and the fully connected layers learn to model contract losses. \\}
+    \note{When new source of stochasticity is introduced, the LSTM layers are not able to capture it. \\}
+    \note{But static lapse and dynamic lapse, they are essentially the same contract with different lapse rates. \\}
+    \note{Also, I want to mention when transferring from no lapse to static lapse, freezing the LSTM layers is better.}
 
 \end{frame}
     
@@ -1928,8 +1917,8 @@ There are \textbf{computational costs} associated with pooling inner replication
         \caption{Comparison of different TL methods on transferring to GMWB contracts}
     \end{figure}
     
-    \note{These figures examine the performance of transfer learning to GMWB contracts. \\}
-    \note{The source task is a GMMB, and the target task is a GMWB with dynamic lapse. \\}
+    \note{These figures examine the performance of transfer learning from GMMB to GMWB contracts. \\}
+    \note{The source task is a GMMB, and the target task is a GMWB. Both with dynamic lapse. \\}
     \note{For dissimilar contracts like GMMB to GMWB, fine-tuning generally performs better. \\}
     \note{This suggests that when transferring between different contract types, more flexibility in adaptation is beneficial. \\}
     \note{When combined with a 2-stage procedure, we are able to reach reasonable performance for GMWB contracts with limited data. }
@@ -2061,36 +2050,31 @@ There are \textbf{computational costs} associated with pooling inner replication
 %     \end{frame}
     
 \begin{frame}{Conclusions}
+
+    We study supervised learning models with simulation data.
+
     \begin{itemize}
-        \item Transfer learning significantly improves metamodeling for VA contracts:
-        \begin{itemize}
-            \item Faster training convergence
-            \item Better prediction accuracy
-            \item Reduced computational requirements
-        \end{itemize}
-        \item Enables more frequent risk assessments and faster decision-making
+        \item   Additional cost of pooling may overweight benefits.
+        \item   DNNs cut through the simulation noise.
+        \item   Data quantity is more important once quality is good enough.
+        \item   Transferable features in different layers.
     \end{itemize}
     
     \vspace{10pt}
     
     \textbf{Future Work:}
     \begin{itemize}
-        \item Incorporating domain knowledge into transfer process
-        \item Extension to other insurance and financial products
-        \item Multi-task learning
+        \item Examine other types of DNNs.
+        \item Try multi-task learning.
     \end{itemize}
     
-
-    \note{Our research demonstrates that transfer learning significantly enhances VA contract metamodeling. \\}
-    \note{The benefits include faster convergence, better accuracy with limited data, and reduced computational needs. \\}
-    \note{These improvements enable more frequent and timely risk assessments. \\}
-    \note{This is particularly valuable in volatile markets where rapid decision-making is essential. \\}
-    \note{The approach enables pooling on a higher level, that is, pooling across different contracts. \\}
-
-    \note{Several promising directions exist for extending this research. \\}
-    \note{Incorporating actuarial domain knowledge could further improve transfer learning effectiveness. \\}
-    \note{The approach could be extended to other insurance products and financial derivatives. \\}
-    \note{In the future, we can also consider multi-task learning to handle multiple contracts simultaneously. }
+    \note{Our study of supervised learning models with simulation data revealed several key insights. \\}
+    \note{We found that while pooling data can be beneficial, the additional computational costs may sometimes outweigh the advantages. \\}
+    \note{Deep neural networks demonstrated remarkable ability to cut through the simulation noise. \\}
+    \note{Our results suggest that once data quality reaches a certain threshold, increasing quantity becomes more beneficial. \\}
+    \note{We also identified that different neural network layers contain different features that can be transferred between contract types. \\}
+    \note{For future work, we plan to explore other types of DNN architectures in other actuarial applications. \\}
+    \note{We also aim to implement multi-task learning approaches to simultaneously model multiple similar actuarial products. \\}
 
 \end{frame}
 
