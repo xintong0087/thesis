@@ -31,13 +31,13 @@
 \contentsline {subsection}{\numberline {2.4.6}Assumptions for the KRR-Based Procedure}{46}{subsection.2.4.6}%
 \contentsline {section}{\numberline {2.5}Finite-Sample Experiments}{46}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Sensitivity to the Asset Dimension}{49}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Empirical Convergence of Kernel Smoothing-Based Procedures}{50}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Empirical Convergence of Parametric Regression Procedures}{52}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.2}Empirical Convergence of Kernel Smoothing-Based Procedures}{51}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Empirical Convergence of Parametric Regression Procedures}{53}{subsection.2.5.3}%
 \contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{55}{subsection.2.5.4}%
 \contentsline {subsection}{\numberline {2.5.5}Sensitivity to level for VaR and CVaR}{57}{subsection.2.5.5}%
-\contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{58}{subsection.2.5.6}%
-\contentsline {subsection}{\numberline {2.5.7}Empirical Convergence of MLMC}{58}{subsection.2.5.7}%
-\contentsline {section}{\numberline {2.6}Computational Complexity}{59}{section.2.6}%
+\contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{57}{subsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.5.7}Empirical Convergence of MLMC}{59}{subsection.2.5.7}%
+\contentsline {section}{\numberline {2.6}Computational Complexity}{60}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Conclusion and Extensions}{64}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{66}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Introduction}{66}{section.3.1}%

@@ -11,7 +11,7 @@ In a typical nested simulation procedure, an outer-level simulation model genera
 For each outer scenario, an inner-level simulation model generates scenario-wise samples of the portfolio losses, which are referred to as the \textit{inner replications}.
 
 The nested simulation procedure is computationally expensive due to its nested structure. 
-Given a fixed computational budget, the nested simulation procedure should balance the number of outer scenarios and the number of inner replications to maximize computational efficiency.
+Given a fixed computational budget, the nestzed simulation procedure should balance the number of outer scenarios and the number of inner replications to maximize computational efficiency.
 \cite{gordy2010nested} first analyzed and proposed an optimal budget allocation for a standard nested simulation procedure.
 The term \textit{standard} refers to using a standard MC estimator, the sample mean of the inner replications to estimate a scenario-wise portfolio loss for an outer scenario.
 \cite{gordy2010nested} investigate an optimal budget allocation for a standard nested simulation procedure with respect to the MSE of the estimated risk measure.
@@ -169,7 +169,9 @@ The standard nested simulation estimators for different forms of $\rho$ are as f
 
 The MLMC method is a variance reduction technique that uses a hierarchy of approximations to the quantity of interest, and it uses the difference between the approximations to reduce the variance of the estimator.
 The MLMC method is particularly useful when the quantity of interest is expensive to evaluate, and the standard MC estimator has a high variance.
-The MLMC method estimates $\rho$ with an MLMC estimator:
+\textcolor{red}{For the nested expectation form $\rho = \mathbb{E}[h(L)]$, the MLMC method selects an approximation level $L$ with sufficient accuracy, and it uses the difference between the approximations to reduce the variance of the estimator.}
+\textcolor{red}{\sout{The MLMC method estimates $\rho$ with an MLMC estimator:}}
+
 
 \begin{equation*}
     \hat{\rho}^{\text{MLMC}}_\Gamma = \sum_{\upsilon=0}^{\Upsilon} \left( \frac{1}{M_{\upsilon}} \sum_{i=1}^{M_{\upsilon}} h(\hat{L}_{N_{\upsilon}}(X_{i, \upsilon})) - \frac{1}{M_{\upsilon-1}} \sum_{i=1}^{M_{\upsilon-1}} h(\hat{L}_{N_{\upsilon-1}}(X_{i, \upsilon-1})) \right), \quad X_{i, \upsilon} \sim F_X,
@@ -925,6 +927,8 @@ The theoretical framework has lent itself for a comparison of the asymptotic con
 However, a simulation budget in practice is almost always finite.
 In this section, we conduct a series of numerical experiments to compare the empirical convergence of the nested simulation procedures for different risk measures, option types, and asset dimensions.
 Numerical experiments are conducted on portfolios that consist of options on $d$ underlying assets, whose dynamics follow a multidimensional geometric Brownian motion with $0.3$ pairwise correlation.
+\textcolor{red}{The initial values of the assets are set to be $100$.}
+\textcolor{red}{The drifts are set to be $0.08$, and the risk free rate is set to be $0.05$.}
 
 A total of 5 nested simulation procedures are considered, namely a standard nested simulation procedure, a  regression-based, a kernel smoothing-based, a likelihood ratio-based, and a kernel ridge regression-based nested simulation procedure.
 For the standard nested simulation procedure, the bootstrap-based budget allocation strategy from~\cite{zhang2021bootstrap} is implemented to estimate the optimal values of outer and inner simulation budgets.
@@ -956,10 +960,13 @@ The procedures are compared for different portfolios consisting of different typ
     This portfolio longs 2 down-and-out barrier put options and shorts 1 barrier down-and-out put option. 
 \end{itemize}
 Except for Portfolio 5, 5 different asset dimensions are considered, i.e., $d = 1, 2, 5, 10, 20$.
+\textcolor{red}{All options have a maturity of $1$ year, and we are interested in the value of the portfolio at time $3/50$ year from now.}
 525 experiment settings that arise from an exhaustive combination of the above simulation procedures, risk measures, portfolios, and asset dimensions are generated.
 For each experiment setting, the estimation of the risk measure is repeated \num{1000} times to obtain the empirical MSE of the corresponding estimator under a range of simulation budgets.
 The total simulation budget $\Gamma$ ranges from $\num{10000}$ to $\num{10240000}$ in a geometric progression with a common ratio of $2$.
 The empirical convergence results of each estimator are measured and recorded to illustrate their empirical behavior under different risk measures, option types, and asset dimensions.
+\textcolor{red}{All numerical experiments are conducted on a linux server with four Intel Xeon Gold 6230 20-core 2.1 GHz CPU with 768 GB RAM.}
+
 We start by examining the empirical convergence results for the most basic case, i.e., a quadratic tracking error risk measure for European call options on Portfolio 1 with $d = 1$.
 
 \begin{figure}[ht!]
@@ -1205,6 +1212,8 @@ With a limited total budget, the regression-based nested simulation procedure is
 
 The MLMC procedure is a variance reduction technique that is designed to reduce the computational cost of nested simulation procedures.
 The theoretical analysis in~\cite{giles2019multilevel} shows that the MLMC procedure has a faster empirical rate of convergence than the standard nested simulation procedure when the risk measure of interest is the probability of a large loss over a threshold $u$, i.e., the nested expectation case with $h$ being an indicator function.
+\textcolor{red}{In this numerical experiment, the initial number of inner replications, the refinement factor, the r-value for adaptive algorithm are set to be $4$, $4$, and $1.5$, respectively.}
+\textcolor{red}{We note that the MLMC procedure focuses on adaptive allocation of the simulation budget and is fundamentally different from supervised learning-based nested simulation procedures. And their results are not directly comparable.}
 
 \begin{table}[ht]
     \centering
