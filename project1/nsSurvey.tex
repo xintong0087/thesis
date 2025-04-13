@@ -394,7 +394,7 @@ In~\cite{wang2022smooth}, the authors of the \gls{var}-based nested simulation p
 Instead of showing the convergence of the \gls{var}-based estimator in terms of \gls{mse} as in~\cite{gordy2010nested}, we show the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae}.
 Our findings in Section~\ref{sec1:connection-mse-absolute-error} show that the analysis of ~\cite{wang2022smooth} indeed bridges the gap, but only in terms of convergence in probabilistic order for \gls{ae}.
 
-\subsection{Connections between Convergence in \gls{mse} and AE}\label{sec1:connection-mse-absolute-error}
+\subsection{Connections between Convergence in MSE and AE}\label{sec1:connection-mse-absolute-error}
 
 This section establishes the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae} in the context of nested simulation procedures.
 In order to show the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae}, we first need to state the definition for a sequence of random variables to converge in those two forms.
@@ -409,9 +409,9 @@ In order to show the connections between the convergence in \gls{mse} and the co
 
 \begin{definition}
     Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$. 
-    We write $|\hat{\rho}_{\Gamma} - \rho| = \mathcal{O}_{\mathbb{P}}(\Gamma^{-\xi})$, that is $\hat{\rho}_{\Gamma}$ converges in probabilistic order $\xi$ to $\rho$ if for a sufficiently large $\Gamma$, for all $\epsilon > 0$ there exists a constant $C$ such that
+    We write $|\hat{\rho}_{\Gamma} - \rho| = \mathcal{O}_{\mathbb{P}}(\Gamma^{-\xi})$, that is $\hat{\rho}_{\Gamma}$ converges in probabilistic order $\xi$ to $\rho$ if for a sufficiently large $\Gamma$, \textcolor{red}{for any $\epsilon > 0$ there exists a $C_\epsilon$ such that}
     $$
-         \mathbb{P} \left( \left| \hat{\rho}_{\Gamma} - \rho \right| \geq C \Gamma^{-\xi} \right) \leq \epsilon.
+         \mathbb{P} \left( \left| \hat{\rho}_{\Gamma} - \rho \right| \geq C_\epsilon \Gamma^{-\xi} \right) \leq \epsilon.
     $$
 \end{definition}
 

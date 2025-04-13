@@ -195,7 +195,7 @@ The recursion is initialized with $(\Stilde_t,\Ftilde_t,\Gtilde_t) = (S_t,F_t,G_
 
 \subsection{Dynamic Hedging for Variable Annuities}\label{subsec:dynamicHedge}
 
-Below we provide a scheme used to perform a multi-period nested simulation in estimating (profit and loss) P\&L for one outer scenario.
+Below we provide a scheme used to perform a multi-period nested simulation in estimating \gls{pl} for one outer scenario.
 
 \begin{figure}[ht]
     \centering
@@ -223,7 +223,7 @@ Therefore, the time~$t$ hedging error, which is the cash flow incurred by the in
 \begin{equation}\label{eq2:hedgingerror}
     HE_t = H_t - H^{bf}_t, \quad t=1,\ldots, T-1.
 \end{equation}
-The P\&L of the \gls{va} contract includes cost of the initial hedge ($H_0$), hedging errors~\eqref{eq2:hedgingerror}, unwinding of the hedge at maturity ($H^{bf}_T$), and unhedged liability ($V_0$).
+The \gls{pl} of the \gls{va} contract includes cost of the initial hedge ($H_0$), hedging errors~\eqref{eq2:hedgingerror}, unwinding of the hedge at maturity ($H^{bf}_T$), and unhedged liability ($V_0$).
 Mathematically, the present value of these cash flows is given by
 \begin{equation}\label{eq2:lossrv}
 L = H_0 + \sum_{t=1}^{T-1} e^{-rt} HE_t - e^{-rT} H^{bf}_T + V_0 = \sum_{t=0}^{T-1}\Delta_t (e^{-rt}S_t - e^{-r(t+1)}S_{t+1}) + V_0,
@@ -574,7 +574,7 @@ Figure~\ref{fig2:QQ_REG} and Figure~\ref{fig2:QQ_NN} shows the QQ plots between 
     \label{fig2:QQ_REG}
 \end{figure}
 
-Comparing with the MSE table in Table~\ref{tab:gmwb_arch} that summarizes the overall fit, QQ plots offer a closer look at the metamodels' performance on different parts of the loss distribution.
+Comparing with the \gls{mse} table in Table~\ref{tab:gmwb_arch} that summarizes the overall fit, QQ plots offer a closer look at the metamodels' performance on different parts of the loss distribution.
 Figure~\ref{fig2:QQ_REG} show the regression metamodel predictions and the loss labels in the true dataset.
 Between the two regression metamodels, the \gls{qpr} metamodel has a slightly better fit for larger losses.
 Nevertheless, the predictions of both regression metamodels are far from the true labels, and their fit on the tail is particularly undesirable.
@@ -653,7 +653,7 @@ Figure~\ref{fig2:tailMatches} depicts the average percentage of correctly identi
 Each quantity is averaged over $100$ macro replications.
 For a fixed safety margin, the percentage of tail matches of the traditional regression metamodels are substantially lower than the ones of the neural networks.
 We observe that a poor metamodel such as the \gls{qpr} identifies less than $40\%$ of the true tail scenario without any safety margin.
-In contrast, a well-suited metamodel such as the \gls{lstm} identifies more than $75\%$ of the true tail scenarios without any safety margin and more than the QPR metamodel does with $15\%$ of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies $100\%$ of the true tail scenarios on with a $10\%$ safety margin for a \gls{gmab} contract.
+In contrast, a well-suited metamodel such as the \gls{lstm} identifies more than $75\%$ of the true tail scenarios without any safety margin and more than the \gls{qpr} metamodel does with $15\%$ of safety margin\footnote{The metamodel in~\cite{dang2020efficient} identifies $100\%$ of the true tail scenarios on with a $10\%$ safety margin for a \gls{gmab} contract.
 The \gls{gmab} contract is simpler than the \gls{gmwb} contract, and the true tail scenarios are easier to identify. 
 For a \gls{gmab}, our \gls{lstm} metamodel identifies $100\%$ of the true tail scenarios with a $2.5\%$ safety margin}.
 The \gls{rnn} metamodel suffers from the vanishing gradient problem during the training stage. 
@@ -663,7 +663,7 @@ The \gls{fnn} metamodel has a better fit than the regression metamodels, but it 
 For comparison, the horizontal dotted line shows the percentage of correctly identified true tails for the standard nested simulation procedure.
 A good metamodel should be able to identify a similar percentage of true tail scenarios as the standard procedure does with a reasonable safety margin.
 Otherwise, the two-stage procedure will offer no computational advantage in simulation budget over the standard procedure.
-The \gls{lstm} metamodel can reach similar percentage with a $5\%$ safety margin.
+The \gls{lstm} metamodel can reach similar percentage \textcolor{red}{of correctly identified true tail scenarios} with a $5\%$ safety margin.
 This indicates that the \gls{lstm} metamodel should be able to reach the same level of accuracy as the standard procedure with only $20\%$ of the simulation budget.
 
 \begin{figure}[ht!]
@@ -823,8 +823,8 @@ The number of outer scenarios corresponds to the number of data points in the tr
 
 Table~\ref{tab2:lstm_sens} and~\ref{tab2:hicaplstm_sens} show the average squared errors between the \gls{lstm} predictions and the true losses for increasing $M$ and $N$.
 The last rows of Table~\ref{tab2:lstm_sens} and Table~\ref{tab2:hicaplstm_sens} show the performance of the regular and high capacity \gls{lstm} metamodels trained with $M=\num{100000}$ training labels with different noise levels.
-We observe that an increasing $N$ reduces the MSE, but the reduction is not substantial for a regular \gls{lstm} when $N$ is larger than $\num{10}$.
-For the high-capacity \gls{lstm}, the MSE is substantially reduced when $N$ is increased from $\num{1}$ to $\num{100}$, but the reduction is not substantial when $N$ is increased from $\num{100}$ to $\num{1000}$.
+We observe that an increasing $N$ reduces the \gls{mse}, but the reduction is not substantial for a regular \gls{lstm} when $N$ is larger than $\num{10}$.
+For the high-capacity \gls{lstm}, the \gls{mse} is substantially reduced when $N$ is increased from $\num{1}$ to $\num{100}$, but the reduction is not substantial when $N$ is increased from $\num{100}$ to $\num{1000}$.
 Another way to interpret the results in Table~\ref{tab2:lstm_sens} is to compare the MSEs for the same budget of $\Gamma = M \times N$. 
 
 Table entries on the same off-diagonal have the same simulation budget $\Gamma$.
@@ -946,8 +946,8 @@ Therefore, while achieving a higher accuracy in estimating the \gls{cvar}, the s
 
 
 To further investigate the single-stage procedure's performance, we conduct a convergence analysis on the \gls{lstm} metamodels.
-Figure~\ref{fig2:gammaConvergence} shows the log-log plots of the relative root mean square errors (RRMSE) between the \gls{lstm} metamodel \gls{cvar} predictions and the true \gls{cvar} against the total simulation budget $\Gamma$.
-For each budget $\Gamma$, the metamodels are trained for different combinations of $M$ and $N$, and the metamodel with the best RRMSE is plotted.
+Figure~\ref{fig2:gammaConvergence} shows the log-log plots of the \gls{rrmse} between the \gls{lstm} metamodel \gls{cvar} predictions and the true \gls{cvar} against the total simulation budget $\Gamma$.
+For each budget $\Gamma$, the metamodels are trained for different combinations of $M$ and $N$, and the metamodel with the best \gls{rrmse} is plotted.
 While numerical results suggest that the \gls{cvar} estimator of the single-stage procedure with \gls{lstm} metamodels may have better accuracy than the two-stage procedure and the standard procedure when the number of outer scenarios is further increased, we found it difficult to compare their performance due to insufficient computational resources.
 For $\Gamma \leq \num{100000}$, the number of outer scenarios is fixed at $M = \num{100000}$, and only the number of inner replications is varied.
 Instead, we try to analyze the effect of the number of outer scenarios and the number of inner replications separately by fixing one and varying the other.
@@ -959,12 +959,12 @@ Instead, we try to analyze the effect of the number of outer scenarios and the n
     \label{fig2:mnConvergence}
 \end{figure}
 
-Figure~\ref{fig2:mnConvergence} shows the log-log plots of the RRMSE between the \gls{lstm} metamodel \gls{cvar} predictions and the true \gls{cvar} against the simulation budget.
-The left figure shows the empirical convergence of the RRMSE for increasing inner replications with a fixed number of outer scenarios ($M=\num{100000}$), and the right figure shows the empirical convergence of the RRMSE for increasing outer scenarios with a fixed number of inner replications ($N=\num{10}$).
+Figure~\ref{fig2:mnConvergence} shows the log-log plots of the \gls{rrmse} between the \gls{lstm} metamodel \gls{cvar} predictions and the true \gls{cvar} against the simulation budget.
+The left figure shows the empirical convergence of the \gls{rrmse} for increasing inner replications with a fixed number of outer scenarios ($M=\num{100000}$), and the right figure shows the empirical convergence of the \gls{rrmse} for increasing outer scenarios with a fixed number of inner replications ($N=\num{10}$).
 Due to computational constraints, we are not able to run the two-stage procedure and the standard procedure with more outer scenarios or more inner replications, therefore the comparison between the single-stage procedure is only available up to $M = \num{100000}$ and $N = \num{1000}$.
-We observe that the RRMSE decreases as the simulation budget increases, and the rate of convergence is higher when the quantity of the data increases.
+We observe that the \gls{rrmse} decreases as the simulation budget increases, and the rate of convergence is higher when the quantity of the data increases.
 For an \gls{lstm} metamodel, increasing the data quality of the training labels has diminishing returns, which is consistent with the results in Figure~\ref{fig2:mnConvergence}.
-For an increasing number of inner replications with a fixed number of outer scenarios, the RRMSE ceases to decrease after reaching $N = \num{100}$. 
+For an increasing number of inner replications with a fixed number of outer scenarios, the \gls{rrmse} ceases to decrease after reaching $N = \num{100}$. 
 More specfically, when the quality of the training labels is fixed at $N = \num{10}$, the \gls{cvar} estimator of a single-stage procedure with a \gls{lstm} metamodel converge roughly in the order of $\mathcal{O}(M^{\frac{2}{3}})$.
 This observation resonates with the best possible convergence rate of a standard nested simulation procedure in~\cite{gordy2010nested}.
 Hence, in practice, we suggest running the single-stage procedure with a moderate number of inner replications and a large number of outer scenarios to achieve a high level of accuracy with a reasonable computational cost.

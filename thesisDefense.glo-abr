@@ -1,4 +1,3 @@
-\glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{vii}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{viii}
 \glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{x}
 \glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{x}
@@ -157,7 +156,6 @@
 \glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{28}
 \glossaryentry{AE?\glossentry{ae}|setentrycounter[]{page}"\glsnumberformat}{28}
 \glossaryentry{AE?\glossentry{ae}|setentrycounter[]{page}"\glsnumberformat}{28}
-\glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{29}
 \glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{29}
 \glossaryentry{AE?\glossentry{ae}|setentrycounter[]{page}"\glsnumberformat}{29}
 \glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{29}
@@ -362,10 +360,12 @@
 \glossaryentry{GMMB?\glossentry{gmmb}|setentrycounter[]{page}"\glsnumberformat}{75}
 \glossaryentry{GMWB?\glossentry{gmwb}|setentrycounter[]{page}"\glsnumberformat}{75}
 \glossaryentry{GMWB?\glossentry{gmwb}|setentrycounter[]{page}"\glsnumberformat}{75}
+\glossaryentry{P"\&L?\glossentry{pl}|setentrycounter[]{page}"\glsnumberformat}{75}
 \glossaryentry{VA?\glossentry{va}|setentrycounter[]{page}"\glsnumberformat}{76}
 \glossaryentry{VA?\glossentry{va}|setentrycounter[]{page}"\glsnumberformat}{76}
 \glossaryentry{VA?\glossentry{va}|setentrycounter[]{page}"\glsnumberformat}{76}
 \glossaryentry{VA?\glossentry{va}|setentrycounter[]{page}"\glsnumberformat}{76}
+\glossaryentry{P"\&L?\glossentry{pl}|setentrycounter[]{page}"\glsnumberformat}{76}
 \glossaryentry{VA?\glossentry{va}|setentrycounter[]{page}"\glsnumberformat}{76}
 \glossaryentry{GMWB?\glossentry{gmwb}|setentrycounter[]{page}"\glsnumberformat}{77}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{77}
@@ -488,6 +488,7 @@
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{87}
 \glossaryentry{RNN?\glossentry{rnn}|setentrycounter[]{page}"\glsnumberformat}{87}
 \glossaryentry{DNN?\glossentry{dnn}|setentrycounter[]{page}"\glsnumberformat}{87}
+\glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{88}
 \glossaryentry{QPR?\glossentry{qpr}|setentrycounter[]{page}"\glsnumberformat}{88}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{88}
 \glossaryentry{QPR?\glossentry{qpr}|setentrycounter[]{page}"\glsnumberformat}{88}
@@ -504,6 +505,7 @@
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{91}
 \glossaryentry{QPR?\glossentry{qpr}|setentrycounter[]{page}"\glsnumberformat}{91}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{91}
+\glossaryentry{QPR?\glossentry{qpr}|setentrycounter[]{page}"\glsnumberformat}{91}
 \glossaryentry{RNN?\glossentry{rnn}|setentrycounter[]{page}"\glsnumberformat}{91}
 \glossaryentry{GMAB?\glossentry{gmab}|setentrycounter[]{page}"\glsnumberformat}{91}
 \glossaryentry{GMAB?\glossentry{gmab}|setentrycounter[]{page}"\glsnumberformat}{91}
@@ -518,7 +520,7 @@
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{92}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{92}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{92}
-\glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{93}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{93}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{93}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{93}
@@ -567,8 +569,10 @@
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{96}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{96}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{96}
+\glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{96}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{96}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{96}
+\glossaryentry{MSE?\glossentry{mse}|setentrycounter[]{page}"\glsnumberformat}{96}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{97}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{97}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{97}
@@ -603,15 +607,22 @@
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{101}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{RRMSE?\glossentry{rrmse}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{CVaR?\glossentry{cvar}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{LSTM?\glossentry{lstm}|setentrycounter[]{page}"\glsnumberformat}{102}
 \glossaryentry{DNN?\glossentry{dnn}|setentrycounter[]{page}"\glsnumberformat}{103}
