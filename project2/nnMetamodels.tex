@@ -139,6 +139,7 @@ Denote the policyholder's (random) time of death by $\tau>0$.
 The contract expires at $T'=\min\{T,\tau\}$, which isthe earlier of the contract maturity and the death of the policyholder.
 Let $S_t$, $F_t$, and $G_t$ be an indexed stock price, the subaccount value and a guarantee value, respectively, at time $t=1,2,\ldots,T$.
 Evolution of the subaccount value and the guarantee value of a \gls{va} contract affect the contract payout.
+Let the triplet $X_t = (S_t, F_t, G_t)$ be the state of the \gls{va} contract at time $t$.
 Note that the policyholder's (random) time of death also affects the timing of the benefit payout for certain types of \gls{va} such as \gls{gmab}, but this is not considered in our study for simplicity.
 For clarity, we use $F_t$ and $F_{t_+}$ to denote the sub-account value just before and just after the withdrawal at time $t$, if any.
 Let $\eta_g$ be a gross rate of management fee that is deducted from the fund value at each period and let $\eta_n < \eta_g$ be a net rate of management fee income to the insurer.
@@ -173,25 +174,52 @@ In practice, the simulation model may also incorporate additional complications 
 
 At any time $t=1,\ldots,T$, the insurer's liability in a \gls{va} contract is the present value of all payments, net of the fee income.
 For example, suppose that the per-period risk-free rate is $r$, then
-the insurer's time-$t$ liability for a \gls{gmmb} contract is $V_t = e^{-r(T-t)}\cdot (G_T - F_T)^+ - \sum_{s=t+1}^{T} e^{-r(T-s)} F_s \eta_n$.
-Also, the insurer's time-$t$ liability for a \gls{gmwb} contract is $V_t = \sum_{s=t+1}^{T} e^{-r(T-s)} [(I_s - F_s)^+- \eta_n F_s] $.
+\textcolor{red}{the insurer's time-$t$ liability for a \gls{gmwb} contract is}
 
-For example, consider the time-$t$ liability $V_t$ of a \gls{gmwb}:
-Suppose that given the stock sample path, which is an outer path $S_1,\ldots,S_t$, one can simulate future stock prices $\Stilde_{t+1},\ldots,\Stilde_{T}$, e.g., inner sample paths, based on some asset model such as a Black-Scholes model.
+\begin{equation} \label{eq2:liability-gmwb}
+    V_t = V(\mathbf{S}_t) = \mathbb{E} \left[ e^{-r(T-t)}\cdot (G_T - F_T)^+ - \sum_{s=t+1}^{T} e^{-r(T-s)} F_s \eta_n \big\vert \mathbf{S}_t \right],
+\end{equation}
+
+where $\mathbf{S}_t = (S_0, S_1, \ldots, S_t)$ is the (outer) sample path up to time $t$, and the conditional expectation is taken with respect to the inner sample paths $\Stilde_{t+1},\ldots,\Stilde_{T}$ given the outer path $\mathbf{S}_t$.
 The tilde symbol ($\sim$) over a quantity denotes its association with the inner simulation.
+In practice, given the stock sample path, which is an outer path $S_1,\ldots,S_t$, one can simulate these future stock prices $\Stilde_{t+1},\ldots,\Stilde_{T}$ with an inner simulation model that is based on some asset model such as \gls{gbm} or \gls{rsgbm}.
 Given the time~$t$ state $(S_t,F_t,G_t)$, following~\cite{cathcart2015calculating} the sensitivity of $V_t$ with respect to $S_t$ can be estimated by a pathwise estimator~\citep{glasserman2004monte}:
 \begin{align}\label{eq2:delta}
-    \Delta_t(\Stilde_{t+1},\ldots,\Stilde_{T} | S_t) = \frac{\partial V_t}{\partial S_t} = \sum_{s=t+1}^{T} e^{-r(T-s)} \left[\bm{1}\{\Itilde_s > \Ftilde_s\} \cdot \left( \frac{\partial \Itilde_s}{ \partial S_t} - \frac{\partial \Ftilde_s}{ \partial S_t}\right)- \eta_n \frac{\partial \Ftilde_s}{ \partial S_t}\right], \nonumber \\
-    t=0,\ldots,T-1,
+    \Delta_t(\Stilde_{t+1},\ldots,\Stilde_{T} | \mathbf{S}_t) 
+    & = \frac{\partial V_t}{\partial S_t} \nonumber \\
+    & = \frac{\partial}{\partial S_t} \mathbb{E} \left[ e^{-r(T-t)}\cdot (G_T - F_T)^+ - \sum_{s=t+1}^{T} e^{-r(T-s)} F_s \eta_n \big\vert \mathbf{S}_t \right] \nonumber \\
+    & = \mathbb{E} \left[ \frac{\partial}{\partial S_t} \left( e^{-r(T-t)}\cdot (G_T - F_T)^+ - \sum_{s=t+1}^{T} e^{-r(T-s)} F_s \eta_n \right) \big\vert \mathbf{S}_t \right] 
 \end{align}
-where $\bm{1}\{\cdot\}$ is an indicator function and
-\begin{align*}
-    \frac{\partial \Ftilde_s}{ \partial S_t} &= \bm{1}\{\Itilde_{s-1} < \Ftilde_{s-1}\}\cdot\left( \frac{\partial \Ftilde_{s-1}}{ \partial S_t} - \frac{\partial \Itilde_{s-1}}{ \partial S_t}\right) \cdot \frac{\Stilde_s}{\Stilde_{s-1}}\cdot (1-\eta_g),\\
-    \frac{\partial \Gtilde_s}{ \partial S_t} &= \bm{1}\{\Gtilde_{s-1} < \Ftilde_{s}\}\cdot\frac{\partial \Ftilde_{s}}{ \partial S_t} + \bm{1}\{\Gtilde_{s-1} \geq \Ftilde_{s}\}\cdot\frac{\partial \Gtilde_{s-1}}{ \partial S_t},\\
-    \frac{\partial \Itilde_s}{ \partial S_t} &= \gamma \frac{\partial \Gtilde_s}{ \partial S_t}.
-\end{align*}
-The recursion is initialized with $(\Stilde_t,\Ftilde_t,\Gtilde_t) = (S_t,F_t,G_t)$, $\frac{\partial \Ftilde_s}{ \partial S_t} = \frac{\Ftilde_t}{S_t}$, and $\frac{\partial \Gtilde_s}{ \partial S_t} = \frac{\partial \Itilde_s}{ \partial S_t} = 0$.
 
+For an inner simulation path $\Stilde_{t+1},\ldots,\Stilde_{T}$ of the \gls{gmwb} contract, the sensitivity of $V_t$ can be calculated by the following recursion:
+\begin{equation}
+    \sum_{s=t+1}^{T} e^{-r(T-s)} \left[\bm{1}\{\Itilde_{t,s} > \Ftilde_{t,s}\} \cdot \left( \frac{\partial \Itilde_{t,s}}{ \partial S_t} - \frac{\partial \Ftilde_{t,s}}{ \partial S_t}\right)- \eta_n \frac{\partial \Ftilde_{t,s}}{ \partial S_t}\right], \nonumber \\
+    t=0,\ldots,T-1, 
+\end{equation}
+where $\bm{1}\{\cdot\}$ is an indicator function, $\Stilde_t = (S_{t, t+1},\ldots,S_{t, T})$, $\Ftilde_t = (F_{t, t+1},\ldots,F_{t, T})$, $\Gtilde_t = (G_{t, t+1},\ldots,G_{t, T})$, $\Itilde_t = (I_{t, t+1},\ldots,I_{t, T})$, and
+\begin{align} \label{eq2:partial-derivatives}
+    \frac{\partial \Ftilde_{t, s}}{ \partial S_t} &= \bm{1}\{\Itilde_{t, s-1} < \Ftilde_{t, s-1}\}\cdot\left( \frac{\partial \Ftilde_{t, s-1}}{ \partial S_t} - \frac{\partial \Itilde_{t, s-1}}{ \partial S_t}\right) \cdot \frac{\Stilde_{t, s}}{\Stilde_{t, s-1}}\cdot (1-\eta_g),\nonumber \\
+    \frac{\partial \Gtilde_{t, s}}{ \partial S_t} &= \bm{1}\{\Gtilde_{t, s-1} < \Ftilde_{t, s}\}\cdot\frac{\partial \Ftilde_{t, s}}{ \partial S_t} + \bm{1}\{\Gtilde_{t, s-1} \geq \Ftilde_{t, s}\}\cdot\frac{\partial \Gtilde_{t, s-1}}{ \partial S_t},\nonumber \\
+    \frac{\partial \Itilde_{t, s}}{ \partial S_t} &= \gamma \frac{\partial \Gtilde_{t, s}}{ \partial S_t}.
+\end{align}
+At each inner simulation, the sample path at $t$ is initialized as:
+\begin{equation}
+    (\tilde{X}_{t, t}) = (\tilde{S}_{t, t}, \tilde{F}_{t, t}, \tilde{G}_{t, t}) = (S_t, F_t, G_t) = (X_t)
+\end{equation}
+W
+Before withdrawal at $t$, the partial derivatives are initialized. $\tilde{F}_{t, t}$ is set to be proportional to $\tilde{S}_{t}$, such that:
+\begin{equation}
+    \frac{\partial \Ftilde_{t, t}}{ \partial S_t} = \frac{\partial F_t}{ \partial S_t} = \frac{F_t}{S_t}.
+\end{equation}
+$\tilde{G}_{t, t}$ and $\tilde{I}_{t, t}$ are fixed as constants, such that:
+\begin{equation}
+    \frac{\partial \Gtilde_{t, t}}{ \partial S_t} = \frac{\partial G_{t}}{ \partial S_t} = 0, \quad \frac{\partial \Itilde_{t, t}}{ \partial S_t} = \gamma \frac{\partial I_{t}}{ \partial S_t} = 0.
+\end{equation}
+
+Note that in \eqref{eq2:partial-derivatives}, no calculation is needed for $F_t < I_t$. 
+In this case, the sub-account is already depleted at time $t$ and withdrawals are not allowed.
+Therefore, \gls{gmwb}'s future liabilities beyond time $t$ are no longer affected by the stock price $S_t$, so no hedging is necessary.
+In other words, when $F_t < I_t$, the inner simulation can be skipped and set $\Delta_t = 0$.
 
 \subsection{Dynamic Hedging for Variable Annuities}\label{subsec:dynamicHedge}
 

@@ -7,15 +7,15 @@
 \contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{61}{table.caption.29}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{83}{table.caption.33}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and \gls {mse}s of metamodels for \gls {gmwb} inner simulation model.}}{84}{table.caption.34}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{94}{table.caption.40}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and \gls {mse}s of metamodels for \gls {gmwb} inner simulation model.}}{85}{table.caption.34}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{95}{table.caption.40}%
 \contentsline {table}{\numberline {3.4}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{97}{table.caption.42}%
 \contentsline {table}{\numberline {3.5}{\ignorespaces MSE between high-capacity LSTM predicted losses and true losses.}}{97}{table.caption.43}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Spearman (Pearson) correlation coefficients of high-capacity LSTM predictions.}}{98}{table.caption.44}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Spearman (Pearson) correlation coefficients of high-capacity LSTM predictions.}}{99}{table.caption.44}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces \gls {va} Contracts for Transfer Learning Experiments}}{117}{table.caption.49}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different \gls {tl} methods on \gls {gmmb} contracts}}{122}{table.caption.53}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of different TL methods to GMWB contracts}}{124}{table.caption.55}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces \gls {va} Contracts for Transfer Learning Experiments}}{118}{table.caption.49}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different \gls {tl} methods on \gls {gmmb} contracts}}{123}{table.caption.53}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of different TL methods to GMWB contracts}}{125}{table.caption.55}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces \gls {ppo} Hyperparameters and \gls {gmmb} Contract Specifications}}{149}{table.caption.60}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces \gls {ppo} Hyperparameters and \gls {gmmb} Contract Specifications}}{150}{table.caption.60}%
