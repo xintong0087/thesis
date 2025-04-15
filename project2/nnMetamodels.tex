@@ -206,17 +206,15 @@ At each inner simulation, the sample path at $t$ is initialized as:
 \begin{equation}
     (\tilde{X}_{t, t}) = (\tilde{S}_{t, t}, \tilde{F}_{t, t}, \tilde{G}_{t, t}) = (S_t, F_t, G_t) = (X_t)
 \end{equation}
-W
 Before withdrawal at $t$, the partial derivatives are initialized. $\tilde{F}_{t, t}$ is set to be proportional to $\tilde{S}_{t}$, such that:
 \begin{equation}
-    \frac{\partial \Ftilde_{t, t}}{ \partial S_t} = \frac{\partial F_t}{ \partial S_t} = \frac{F_t}{S_t}.
+    \frac{\partial \Ftilde_{t, t}}{ \partial S_t} = \frac{\partial F_t}{ \partial S_t} = \frac{F_t}{S_t},
 \end{equation}
-$\tilde{G}_{t, t}$ and $\tilde{I}_{t, t}$ are fixed as constants, such that:
+and $\tilde{G}_{t, t}$ and $\tilde{I}_{t, t}$ are fixed as constants, such that:
 \begin{equation}
     \frac{\partial \Gtilde_{t, t}}{ \partial S_t} = \frac{\partial G_{t}}{ \partial S_t} = 0, \quad \frac{\partial \Itilde_{t, t}}{ \partial S_t} = \gamma \frac{\partial I_{t}}{ \partial S_t} = 0.
 \end{equation}
-
-Note that in \eqref{eq2:partial-derivatives}, no calculation is needed for $F_t < I_t$. 
+Note that in Equation~\ref{eq2:partial-derivatives}, no calculation is needed for $F_t \leq I_t$. 
 In this case, the sub-account is already depleted at time $t$ and withdrawals are not allowed.
 Therefore, \gls{gmwb}'s future liabilities beyond time $t$ are no longer affected by the stock price $S_t$, so no hedging is necessary.
 In other words, when $F_t < I_t$, the inner simulation can be skipped and set $\Delta_t = 0$.
@@ -237,15 +235,22 @@ In a dynamic hedging program, a hedge portfolio is set up and periodically rebal
 For simplicity, in this study we consider delta hedging for a generic \gls{va} liability using one stock and one bond.
 The metamodeling procedures presented in Section~\ref{sec2:metamodel2Stage} and Section~\ref{sec2:metamodel1Stage} can be trivially adapted to more general hedging strategies.
 
-Consider a \gls{va} contract which delta hedge portfolio at any time~$t$, $t=0,1,\ldots,T-1$, consists of $\Delta_t$ units in the underlying stock and $B_t$ amount of a risk-free zero-coupon bond maturing at time $T$.
-The value of the hedge portfolio at time~$(t-1)$ is:
+Consider hedging a \gls{va} contract whose sub-account is invested in a stock, and the hedging portfolio is rebalanced monthly.
+At $t \leq T$, a dynamic equation can be specified for the sub-account value $F_t$, in the absence of withdrawals, as:
+\begin{equation*}
+    F_t = F_{t-1} \cdot \frac{S_t}{S_{t-1}} \cdot (1-\eta_g)
+\end{equation*}
+where $\eta_g> \eta_n$ is the gross rate of management fee that is deducted from the sub-account value at the end of each month.
+The delta hedge portfolio at any month~$t$, $t=0,1,\ldots,T-1$, consists of $\Delta_t$ units in the underlying stock and $B_t$ amount of a risk-free zero-coupon bond maturing at $T$ months.
+The value of the hedge portfolio at month~$(t-1)$ is:
 \begin{equation*}
     H_{t-1} = \Delta_{t-1} S_{t-1} + B_{t-1},
 \end{equation*}
-where $S_t$ is an underlying stock price and any time $t>0$.
-This hedge portfolio is brought forward to the next rebalancing time~$t$, when its value becomes:
+where $S_t$ is an underlying stock price and any month $t>0$.
+Assuming there is no rebalacing between $t-1$ and $t$, this hedge portfolio is brought forward to month~$t$,.
+Its value at month~$t$ becomes:
 \begin{equation*}
-    H_{t}^{bf} = \Delta_{t-1} S_{t} + B_{t-1}e^{r}.
+    H_{t}^{bf} = \Delta_{t-1} S_{t} + B_{t-1}e^{-rt}.
 \end{equation*}
 Therefore, the time~$t$ hedging error, which is the cash flow incurred by the insurer due to rebalancing at time~$t$, is
 \begin{equation}\label{eq2:hedgingerror}
