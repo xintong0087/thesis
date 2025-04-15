@@ -9,7 +9,6 @@
 \gls{dnn} have attracted attentions of researchers and practitioners due to their success~\citep{hastie2009elements,lecun2015deep} in solving real-world machine learning tasks such as AlphaGo~\citep{silver2016mastering} and ChatGPT~\citep{chatgpt}.
 Since the first artificial neural network model~\citep{mcculloch1943logical} and the first algorithm for training a perceptron~\citep{rosenblatt1958perceptron}, especially after the introduction of backpropagation~\citep{rumelhart1985learning} and the growth of high-performance computing, the field of artificial neural network and deep learning in general has been growing rapidly.
 Two specialized neural network architectures that are relevant to our study are \gls{rnn}~\citep{williams1989learning,sutskever2014sequence} and \gls{lstm}~\citep{hochreiter1997long,chung2014empirical}.
-In the field of actuarial science, a metamodel is commonly referred to as a proxy model.
 Despite their success, \gls{dnn} models are often criticized for their lack of transparency and interpretability, which hinders their adoption in financial and actuarial applications.
 Enormous research efforts have been spent to test and improve the robustness of \gls{dnn} models with carefully designed noise injection methods.
 ~\cite{poole2014analyzing} show that injecting synthetic noise before and after hidden unit activations during training improves the performance of autoencoders.
@@ -55,12 +54,31 @@ Instead of relying solely on real-data and splitting it into multiple subsets, w
 By controlling the simulation design parameters, such as the number of independent replications, we can control the quality and also the quantity of the training labels fed into the neural networks.
 In such a controlled environment, we obtain more clear-cut answers to the above fundamental questions.
 
-In a nested simulation, a simulation model is used to generate a large number of outer scenarios, and each scenario is then used as an input to another simulation model, referred to as an inner simulation model.
+Estimating tail risk measures of portfolios of complex \gls{va}s usually requires nested simulation.
+In the nested simulation, the outer simulation involves projecting scenarios of key risk factors under a $\mathbb{P}$ measure, while the inner simulations are used to value payoffs uder guarantees of varying complexity, under a $\mathbb{Q}$ measure.
+
+For insurers, large-scale nested simulations for assessing \gls{va} losses are generally computationally intensive; i.e., a large number of outer level simulations are needed to estimate extreme tails for calculations of tail risk measures, and a large number of inner simulations are also needed at each time step, because the embedded options are out of money. 
+In addition, the required calculations need to be repeated for each \gls{va} contract, or cluster of \gls{va} contracts.
+Consequently, insurers are interested in techniques for nested simulation models that produce accurate results within the confines of a finite computational budget.
+
+There are two main approaches that can be used to improve the efficiency of inner simulations.
+The first one uses a dynamic, non-uniform allocation of the inner simulation budget, and the second uses a proxy model to replace the inner simulation step.
+Some work uses a combination of both approaches.
+
+In Chapter~\ref{chap:project1}, the likelihood ratio approach is used to allocate the inner simulation budget using likelihood ratio weights, i.e., importance sampling.
+Proxy models are tractable analytic functions or flexible empirical functions that are used to replace the inner simulation stage of a nested simulation.
+Empirical proxies may be intrinsic or extrinsic to the simulation process. Extrinsic proxy functions are selected to be close to the inner simulation values and therefore require detailed information about the payoffs that are evaluated in the inner simulation step. 
+Empirical proxies are constructed by using an initial pilot simulation to develop factors or functionals that can subsequently be used in place of the inner simulation. 
+A prominent expirical proxy method discussed in the literature is the least squares Monte Carlo method~\citep{longstaff2001valuing}.
+In Chapter~\ref{chap:project1}, supervised learning models, including linear regression, \gls{knn}, and \gls{krr}, are used as proxy models for inner simulations.
+This chapter introduces a proxy model to reduce the computational requirements of inner simulations of \gls{va}s by replacing the inner simulation step of a nested simulation procedure. 
+This proxy model is chosen to be a flexible empirical function, i.e., a \gls{dnn} metamodel.
+
+In our study, supervised learning metamodels are trained using data simulated from an initial pilot simulation.
+They are then used to replace the time-consuming inner simulations by the trained model.
 Borrowing terminologies from the machine learning community, we can view a set of simulated outer scenarios and estimated hedging errors for those scenarios as \textit{features} and noisy \textit{labels}.
 The noise level of the labels can be controlled by the number of inner replications in the inner simulation model.
-One can train supervised learning models using these simulated features and labels.
-They are then used to replace the time-consuming inner simulations by the trained model.
-We refer to the trained supervised learning models as \textit{metamodels} of the inner simulation, which is also known as the \textit{surrogate models} in the simulation literature.
+We refer to the trained supervised learning proxy models as \textit{metamodels} of the inner simulation, which is also known as the \textit{surrogate models} in the simulation literature.
 Metamodeling is a popular approach to reduce the computational burden of simulation-based applications by replacing the time-consuming simulation with a metamodel.
 The metamodel is trained using a set of simulated data, and it is used to predict the simulation output for new inputs.
 The study of metamodeling is an active research area in the simulation literature, and using \gls{dnn}s as metamodels is a relatively new development.
@@ -256,17 +274,31 @@ Therefore, the time~$t$ hedging error, which is the cash flow incurred by the in
 \begin{equation}\label{eq2:hedgingerror}
     HE_t = H_t - H^{bf}_t, \quad t=1,\ldots, T-1.
 \end{equation}
-The \gls{pl} of the \gls{va} contract includes cost of the initial hedge ($H_0$), hedging errors~\eqref{eq2:hedgingerror}, unwinding of the hedge at maturity ($H^{bf}_T$), and unhedged liability ($V_0$).
-Mathematically, the present value of these cash flows is given by
+The \gls{pl} of the \gls{va} contract includes cost of the initial hedge ($H_0$), the periodic hedging gains and losses due to rebalancing at each time $t=1,\ldots,T-1$ (Equation~\ref{eq2:hedgingerror}), unwinding of the hedge at maturity ($H^{bf}_T$), the payment of guaranteed benefit, and the management fee income.
+The present value of these cash flows, discounted at the risk-free rate, is the insurer's overall \gls{pl} from the \gls{va} contract.
+At $t=0$, the insurer's overall \gls{pl}, i.e., the loss random variable $L$ to which a risk measure is applied, is given by
+\begin{align}\label{eq2:lossrvtw}
+L & = H_0 + \sum_{t=1}^{T-1} e^{-rt} HE_t - e^{-rT} H^{bf}_T + V_0  \nonumber \\
+  & = H_0 + \sum_{t=1}^{T-1} e^{-rt} (H_t - H_t^{bf}) - e^{-rT} H^{bf}_T + V_0  \nonumber \\
+  & = B_0 + S_0 V_0 + \sum_{t=1}^{T-1} e^{-rt} \left( B_t + S_t \Delta_t - B_{t-1} \frac{e^{-r(t-1)}}{e^{-rt}} - S_{t-1} \Delta_{t-1}  \right) - e^{-rT} S_T \Delta_{T-1} + V_0,  \nonumber 
+\end{align}
+where $V_0$ can be thought of as a discounted payoff of the \gls{va} contract at $t=0$, net of fee income in the absense of any hedging.
+The terms $H_0 + \sum_{t=1}^{T-1} e^{-rt} HE_t - e^{-rT} H^{bf}_T$ is the gain or loss from hedging.
+It consists of three components:
+\begin{itemize}
+    \item   $H_0$ is the initial cost of the hedging portfolio, 
+    \item   $\sum_{t=1}^{T-1} e^{-rt} HE_t$ is the gain or loss from all rebalacing trades at time $t=1,\ldots,T-1$, and
+    \item   $-e^{-rT} H^{bf}_T$ is the proceeds from unwinding the hedge at maturity $T$.
+\end{itemize}
+Rearranging the terms in Equation~\ref{eq2:lossrvtw}, the loss random variable $L$ can be simplified as
 \begin{equation}\label{eq2:lossrv}
-L = H_0 + \sum_{t=1}^{T-1} e^{-rt} HE_t - e^{-rT} H^{bf}_T + V_0 = \sum_{t=0}^{T-1}\Delta_t (e^{-rt}S_t - e^{-r(t+1)}S_{t+1}) + V_0,
+    L = \sum_{t=0}^{T-1}\Delta_t (e^{-rt}S_t - e^{-r(t+1)}S_{t+1}) + V_0.
 \end{equation}
-where the second equality holds by a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$.
-
+Equation~\ref{eq2:lossrv} shows that in bond holdings of hedging portfolio, all intermediate bond transactions cancel out since the interest rate $r$ at which bond value accumulates is the same as rate at which \gls{pl}s from bond transactions are discounted. 
+In the stock holdings of the hedging portfolio, the gain or loss arises from the inital set-up of stock future holdings and the \gls{pl} from each rebalancing trade.
 In~\eqref{eq2:lossrv}, $\Delta_t$ and $V_0$ are determined by using a risk-neutral measure $\mathbb{Q}$ while the distribution of $L$ is under a real-world measure $\mathbb{P}$.
 If $\Delta_t$ and $V_0$ cannot be calculated analytically, a nested simulation is required to estimate the tail risk measure of $L$.
-Recall from Section~\ref{subsec:VApayout} that the stock sample path, regardless of the inner or outer simulation or a combination of both, determines the evolution of the triplet $(S_t,F_t,G_t)$.
-Specifically, the outer scenarios $\bS^{(i)} = (S_{1}^{(i)},\ldots,S_{T}^{(i)})$, $i=1,\ldots,M$ are generated under $\mathbb{P}$.
+Specifically, the outer scenarios $\bS^{(i)} = (S_{1}^{(i)},\ldots,S_{T}^{(i)})$, $i=1,\ldots,M$ are generated under $\mathbb{P}$ measures to estimate the loss distribution.
 At each time~$t=1,\ldots,T-1$ of a given outer scenario $\bS^{(i)}$, inner sample paths $\bStilde_{t}^{(j)} = (\Stilde_{t+1}^{(j)},\ldots,\Stilde_{T}^{(j)})$, $j=1,\ldots,N$ are generated under $\mathbb{Q}$ to estimate $\Delta_t^{(i)}$, $i=1,\ldots,M$.
 Also, $V_0^{(i)}$, $i=1,\ldots,M$ are estimated under $\mathbb{Q}$ via inner simulations at time $0$.
 Recall from Section~\ref{subsec:VApayout} that the stock's sample path, regardless of inner or outer simulation or a combination of both, determines the evolution of the triplet $(S_t,F_t,G_t)$.
