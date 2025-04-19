@@ -530,7 +530,22 @@ The \gls{mse} of the standard nested simulation procedure can be decomposed into
     & = 2 \mathbb{E} \left[  \left( \frac{1}{M} \sum_{i=1}^M h\left( \hat{L}_{N, i} \right) -  h\left(L_i \right)  \right)^2\right] + \mathcal{O}(M^{-1}).
 \end{align}
 
-In Equation~\eqref{eq1:mse-sns}, the last equality follows from Assumption~\ref{as1:sns}.
+\textcolor{red}{In Equation~\eqref{eq1:mse-sns}, the first inequality follows from Cauchy-Schwarz inequality.
+One way to express the Cauchy-Schwarz inequality is 
+$(x_1y_1 + x_2y_2)^2 \leq (x_1^2 + x_2^2)(y_1^2 + y_2^2)$.
+Let $\mathbf{x} = (x_1, x_2)$ and $\mathbf{y} = (y_1, y_2)$.
+The Cauchy-Schwarz inequality can be written as}
+\begin{equation*}
+    \langle \mathbf{x}, \mathbf{y} \rangle^2  = \left( \Vert \mathbf{x} \Vert \cdot \Vert \mathbf{y} \Vert \cdot \cos a \right)^2 \leq \Vert \mathbf{x} \Vert^2 \cdot \Vert \mathbf{y} \Vert^2.
+\end{equation*}
+\textcolor{red}{By setting $x_1 = \rho_{M,N}- \rho_M$, $x_2 = \rho_M - \rho$, $y_1 = y_2 = 1$, we have }
+\begin{align*}
+    \left( \rho_{M,N} - \rho_M + \rho_M - \rho \right)^2 
+    & \leq \left( (\rho_{M,N} - \rho_M)^2 + (\rho_M - \rho)^2 \right) \left( 1^2 + 1^2 \right) \\
+    & = 2 \left( (\rho_{M,N} - \rho_M)^2 + (\rho_M - \rho)^2 \right) \\
+    & = 2  (\rho_{M,N} - \rho_M)^2 + 2 (\rho_M - \rho)^2.
+\end{align*}
+The last equality follows from Assumption~\ref{as1:sns}.
 The analysis of the first term is different for smooth and Lipschitz continuous $h$. 
 We will analyze them separately below.
 
@@ -678,6 +693,7 @@ For the Lipschitz continuous case, the first term in Equation~\eqref{eq1:mse-sns
     & = K^2 \mathbb{E} \left[ \left( \bar{Z}_{N}(X) \right)^2\right] = \mathcal{O}(N^{-1}),
 \end{align}
 where the first inequality follows from Cauchy-Schwarz inequality, the second equality follows from Assumption~\ref{as1:sns-lip}, and the last equality follows from Assumption~\ref{as1:sns-noise}.
+
 
 \begin{equation}
     \mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(M^{-1}) + \mathcal{O}(N^{-1})
@@ -1105,6 +1121,7 @@ We are able to clearly observe this phenomenon for the regression metamodel, and
     The regression metamodel ceases to improve after reaching a certain level ($\Gamma = 10^6$ in our case), and the improvement of simulation variance dominates.
 \end{itemize}
 Due to high computational costs, we are not able to conduct experiments for higher budget levels, but we expect the \gls{mse} of the regression-based nested simulation procedure to stabilize after $\Gamma = 10^6$, and the empirical rate of convergence to approach its asymptotic rate.
+\textcolor{red}{The empirical convergence rates reported in the graph legends are higher than the actual rates after regression-based nested simulation procedure reaches the asymptotic convergence regime.}
 In the context of nested simulation procedures, a parametric regression metamodel has several advantages over a non-parametric regression metamodel.
 \begin{itemize}
     \item Parametric regression achieves a good empirical convergence behavior for a moderate simulation budget.

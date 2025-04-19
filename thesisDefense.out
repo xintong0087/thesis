@@ -59,7 +59,7 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{Fine-tuning}{section.4.2}% 59
 \BOOKMARK [2][-]{subsection.4.2.2}{Layer Freezing}{section.4.2}% 60
 \BOOKMARK [2][-]{subsection.4.2.3}{Multi-task Learning}{section.4.2}% 61
-\BOOKMARK [2][-]{subsection.4.2.4}{Rapid Adaptation of lstm Metamodels}{section.4.2}% 62
+\BOOKMARK [2][-]{subsection.4.2.4}{Rapid Adaptation of LSTM Metamodels}{section.4.2}% 62
 \BOOKMARK [1][-]{section.4.3}{Numerical Experiments}{chapter.4}% 63
 \BOOKMARK [2][-]{subsection.4.3.1}{Learning Lapse Features}{section.4.3}% 64
 \BOOKMARK [2][-]{subsection.4.3.2}{Transfer to VAs with a Dynamic Lapse}{section.4.3}% 65
