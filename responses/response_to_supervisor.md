@@ -7,11 +7,11 @@ The page numbers are from the revised draft, and the page numbers in brackets ar
 - **Added in Chapter 2, Page 48(47):** Added a paragraph to explain maturity date of the options in the numerical experiments in Chapter 2.
 - **Added in Chapter 2, Page 48(47):** Computing platform details for the numerical experiments in Chapter 2.
 - **Added in Chapter 2, Page 59(58):** Added a paragraph to explain the Heston model parameters.
-- The numerical experiments in Chapter 3 and Chapter 4 have sufficient details.
+- The numerical experiments in Chapter 3 and Chapter 4 now have sufficient details.
 
 ### 2. Appendix Addition
 - **New Addition (After Page xiv):** Added an appendix for all acronyms.
-- I am still searching for a good practice to separate the acronyms into multiple tables according to the content.
+- After careful consideration, only one acronym table is added. The reason is that the number of acronyms used in this thesis is relatively small, making a single consolidated table more appropriate and efficient.
 
 ### 3. Clarification of Expected Values
 - **Chapter 3, Pages 75-77(72):** 
@@ -39,17 +39,17 @@ The page numbers are from the revised draft, and the page numbers in brackets ar
 ### 7. Cauchy-Schwarz Inequality
 - **Chapter 2, Page 32:** 
     - Added explanation between the inequality:
-        E[(ρ̂M,N - ρ)²] ≤ 2E[(ρ̂M,N - ρM)²] + 2E[(ρM - ρ)²]
+        $$\mathbb{E}[(\hat{\rho}_{M,N} - \rho)^2] \leq 2\mathbb{E}[(\hat{\rho}_{M,N} - \rho_M)^2] + 2\mathbb{E}[(\rho_M - \rho)^2]$$
     - Included proper explanation for Cauchy-Schwarz inequality.
 
 ### 8. Taylor Expansion Clarification
 - **Chapter 2, Page 34(33):** 
-    - Clearly defined variable z when applying Taylor expansion.
+    - Clearly defined variable $z$ when applying Taylor expansion.
 - **Global check (Pages 37(36), 42(41)):** Verified all other Taylor expansions are clearly explained.
 
 ### 9. Section 2.3.1 Rewrite
 - **Chapter 2, Pages 29-30(28-30):** Rewrote section 2.3.1 to clarify Definitions 4.
-- I was not able to find existing statistical results that can be applied to the proof of Theorem 1.
+- I was not able to find existing statistical results that can be applied to the proof of Theorem 1. Theorem 1 showed the connections between the convergence rates that are in different forms and it fundamentally different from the classic L2 theory that convergence in L2 implies convergence in probability.
 
 ### 10. Minor Items
 - **Page i:** Moved copyright statement to first page.
