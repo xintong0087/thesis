@@ -1,0 +1,135 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\begin{center}
+\large
+    Revisions needed for Xintong's thesis (Ben's notes)
+\end{center}
+
+\begin{enumerate}
+    \item Add sufficient details to \textbf{every} numerical experiments. (suggested by Emil)
+    \begin{enumerate}
+        \item Dynamic asset model (e.g., Black-Scholes, regime-switching, etc.)
+        \item All model parameters (i.e., risk-free rates, volatilities, correlations in all regimes, etc.).
+        \item Computing platforms, if applicable (i.e., personal laptop, desktop, university servers, etc.)
+    \end{enumerate}
+
+    \item Add an appendix to summarize all acronyms (suggested by Emil)
+    \begin{enumerate}
+        \item I think at least two summary tables are needed: One for different variable annuity riders (i.e., GMWB, GMMB, GLWB, etc.) and one for different machine learning models (i.e., QPR, RNN, LSTM, etc.).
+
+        \item You might want to add a third table to summarize other acronyms that don't fall into the above two categories.
+    \end{enumerate}
+
+    \item Clarify expected values, sample average as an estimator of the expected value, and pathwise sample of an expected value. (suggested by Yuying). This is \textbf{a major issue and a high-priority item} that must be properly addressed. Tony has offered some helpful insights in his notes. I give mine too below. 
+
+    \begin{enumerate}
+        \item Use GMMB as an example to explain the missing expectation that Yuying had in mind: An insurer's time-$t$ liability for a GMMB contract
+        \begin{align*}
+            V_t = V(\bm{S}_t) = E[e^{-r(T-t)}(G_T-F_T)^+ - \sum_{s=t+1}^T e^-r(T-s) F_s \eta_n | \bm{S}_t]
+        \end{align*}
+    where
+    \begin{enumerate}
+        \item $\bm{S}_t$ is the (outer) stock path up to time $t$
+        \item The (conditional) expectation is taken with respect to the inner sample path $\widetilde{S}_{t+1},\ldots,\widetilde{S}_T$ given the outer path $\bm{S}_t$
+    \end{enumerate}
+    By removing the (conditional) expectation, I believe you meant the time-$t$ liability for one simulate inner path. But the value for one simulated path does not equal to the (conditional) expected value.
+
+    Please do a global check. When revising the thesis, please try to understand readers' perspective. A reader who has not gone through this project would easily be confused. So your writing needs to be very clear in every detail.
+
+    \item Similar idea for the pathwise delta
+    \begin{align*}
+        \Delta_t(\widetilde{S}_{t+1},\ldots,\widetilde{S}_T | \bm{S}_t) &= \frac{\partial V_t}{\partial S_t} \\
+        &= \frac{\partial }{\partial S_t} V(\bm{S}_t)\\
+        &=\frac{\partial }{\partial S_t} E[e^{-r(T-t)}(G_T-F_T)^+ - \sum_{s=t+1}^T e^-r(T-s) F_s \eta_n | \bm{S}_t]\\
+        &\stackrel{*}{=} E[\frac{\partial }{\partial S_t}e^{-r(T-t)}(G_T-F_T)^+ - \sum_{s=t+1}^T e^-r(T-s) F_s \eta_n | \bm{S}_t]\\
+    \end{align*}
+    A few things needs to be clarified
+    \begin{enumerate}
+        \item The value $V(\bm{S}_t)$ is a function of $\bm{S}_t=(S_1,\ldots,S_t)$, but you are only taking derivative with respect to the last value $S_t$
+
+        \item You are passing through the partial derivative inside the expectation. This is the technique called infinitesimal perturbation analysis (IPA). This technique allows you to take derivative for each inner sample path first (i.e., the pathwise derivative) then use the sample average of the pathwise derivative to approximate the (conditional) expected value.
+    \end{enumerate}
+
+    \item In my opinions, you should also clarify how the recursive pathwise derivatives (on page 73) are derived, i.e., based on the account evolution on page 72.
+    \end{enumerate}
+    
+
+    \item Clarify "What is the neural network approximating?" (suggested by Yuying).
+    \begin{enumerate}
+        \item The neural network approximates  $L$ in Equation (3.4), where
+        \begin{align*}
+            L=L(\bm{S}_T) = L(\Delta_0,\ldots,\Delta_{T-1}, S_0,\ldots,S_T).
+        \end{align*}
+        \item The loss $L$ depends on all $\Delta_0,\ldots,\Delta_{T-1}$ and each $\Delta_t$ depends on $\bm{S}_t$, as discussed above.
+
+        \item The loss also depends on all $S_0,\ldots,S_T$ directly, too.
+
+        \item Since $L(\bm{S}_T)$ is a function of the \textbf{entire} outer path, the neural network $\widehat{L}(\bm{S}_T)$ approximates $L$ and is also a function of the entire outer path.
+
+        \item Statistically speaking, $L(\bm{S}_T)$ is a random variable because $\bm{S}_T$ is random. Nonetheless, we can see $L(\bm{S}_T)$ as a function of the underlying random path $\bm{S}_T$ and approximate this function.
+
+        \item You should revise not only the math equations, but also paragraphs leading up to the equations and those after the equations.
+
+        \item Please do a careful global revision rather than only the two places mentioned above.
+        \end{enumerate}
+
+        
+
+        
+
+    \item Remove reference for regression or use a different reference. (suggested by Mary Hardy). 
+    \begin{enumerate}
+        \item WILL ADD MORE DETAILS LATER. I do not remember which specific reference she was referring to. 
+    \end{enumerate}
+
+    \item Rewrite the Multi-level Monte Carlo sections (suggested by Mary Hardy)
+    \begin{enumerate}
+        \item Clarify the descriptions for multi-level Monte Carlo
+        \item Add more details in the numerical experiments for readers to replicate the results
+    \end{enumerate}
+
+    \item Add a line between the following inequality explaining the use of Cauchy-Schwarz inequality:
+    \begin{align*}
+        E[(\hat{\rho}_{M,N}-\rho)^2] \leq 2E[(\hat{\rho}_{M,N}-\rho_M)^2] + 2E[(\rho_M-\rho)^2].
+    \end{align*}
+
+    One way to express the Cauchy-Schwarz inequality is (you will need some reference)
+    \begin{align*}
+        (x_1y_1 + x_2y_2)^2 \leq (x_1^2 +x_2^2)(y_1^2 +y_2^2)
+    \end{align*}
+    So setting $x_1 = \hat{\rho}_{M,N}-\rho_M$, $x_2 = \rho_M-\rho$, $y_1=y_2=1$, we get
+    \begin{align*}
+        (\hat{\rho}_{M,N}-\rho)^2 &= [(\hat{\rho}_{M,N}-\rho_M) + (\rho_M-\rho)]^2\\
+        &= (x_1y_1 + x_2y_2)^2 \\
+        &\leq (x_1^2+x_2^2)(y_1^2+y_2^2)\\
+        &=2(\hat{\rho}_{M,N}-\rho_M)^2 + 2(\rho_M-\rho)^2
+    \end{align*}
+
+    \item Variable $z$ needs to be clearly defined when applying Taylor expansion. (suggested by Chengguo)
+    \begin{enumerate}
+        \item Chengguo mentioned Equation (2.16), but you should do a global check to make sure all Taylor expansions are clearly explained.
+    \end{enumerate}
+
+    \item Rewrite section 2.3.1 and re-evaluate the contributions of Theorem 1, specially in light of the well-know statistical property that L2-convergence implies convergence in probability. This was a main issue raised by Chengguo during the defence. Questions about this part were not answered well. Thus this is a \textbf{high-priority item}. 
+    \begin{enumerate}
+        \item Chengguo suggested (1) clarifying the definitions (4 \& 5), (2) cleaning up the proof by applying existing statistical results when possible, (3) re-evaluating the theoretical contributions of Theorem 1 and reposition it (i.e., tone down) if appropriate.
+    \end{enumerate}
+    
+    \item Minor items
+    \begin{enumerate}
+        \item Move copyright to first page.
+        \item Add a paragraph under the "sole-author" declaration that part of this thesis has been published in a WSC proceeding.
+    \end{enumerate}
+\end{enumerate}
+    
+\end{document}
