@@ -1,4 +1,11 @@
-# Pareto random variable
+# Supporting information for the connection between convergence in MSE and AE
+
+This document provides the supporting information for the comment made on Page 29-30 of the manuscript.
+It uses two examples to show that the convergence in MSE in order of $\mathcal{O}(\Gamma^{-k})$ does not imply the convergence in probability in order of $\mathcal{O}(\Gamma^{-k/2})$.
+For the case of a Pareto random variable and a normal random variable, we are not able to prove the convergence in probability based on the convergence in MSE.
+Further assumptions are needed to bridge the gap.
+
+## Pareto random variable
 
 Consider a random variable $(\rho_\Gamma-\rho)$  that follows a Pareto distribution with parameters $\Gamma^{-1}$ and $\alpha$.
 

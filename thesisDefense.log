@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.4.26)  26 APR 2025 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.4.26)  30 APR 2025 10:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -771,11 +771,11 @@ File: glossaries-extra-abbrstyles.def 2025/04/12 v1.6 (NLCT)
 )
 \mglselementindex=\count389
 )
-runsystem(makeindex -s "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.ist -t "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.glg -o "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.gls "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.glo)...quotation error in system command.
+runsystem(makeindex -s thesisDefense.ist -t thesisDefense.glg -o thesisDefense.gls thesisDefense.glo)...executed safely (allowed).
 
-runsystem(makeindex -s "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.ist -t "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.glg-abr -o "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.gls-abr "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.glo-abr)...quotation error in system command.
+runsystem(makeindex -s thesisDefense.ist -t thesisDefense.glg-abr -o thesisDefense.gls-abr thesisDefense.glo-abr)...executed safely (allowed).
 
-runsystem(makeindex -s "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.ist -t "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.symbols-glg -o "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.symbols-gls "kpsewhich:majorissue:Sofar,youhavenotcheckedforMiKTeXupdates."\thesisDefense.symbols-glo)...quotation error in system command.
+runsystem(makeindex -s thesisDefense.ist -t thesisDefense.symbols-glg -o thesisDefense.symbols-gls thesisDefense.symbols-glo)...executed safely (allowed).
 
 \glswrite=\write4
 \glo@main@file=\write5
@@ -925,18 +925,18 @@ Overfull \hbox (21.1626pt too wide) in paragraph at lines 46--46
  []
 
 [2] [3] [4] [5] [6] [7]
-<./project3/tikz/fnn.pdf, id=1265, 310.52211pt x 276.96675pt>
+<./project3/tikz/fnn.pdf, id=1276, 310.52211pt x 276.96675pt>
 File: ./project3/tikz/fnn.pdf Graphic file (type pdf)
 <use ./project3/tikz/fnn.pdf>
 Package pdftex.def Info: ./project3/tikz/fnn.pdf  used on input line 193.
 (pdftex.def)             Requested size: 207.32315pt x 184.92015pt.
-<./project3/tikz/lstm.pdf, id=1268, 276.82422pt x 233.0075pt>
+<./project3/tikz/lstm.pdf, id=1279, 276.82422pt x 233.0075pt>
 File: ./project3/tikz/lstm.pdf Graphic file (type pdf)
 <use ./project3/tikz/lstm.pdf>
 Package pdftex.def Info: ./project3/tikz/lstm.pdf  used on input line 199.
 (pdftex.def)             Requested size: 207.32315pt x 174.51343pt.
  [8] [9 <./project3/tikz/fnn.pdf> <./project3/tikz/lstm.pdf>] [10] [11] [12] [13]
-<./project2/figures/datasets.png, id=1434, 867.24pt x 289.08pt>
+<./project2/figures/datasets.png, id=1445, 867.24pt x 289.08pt>
 File: ./project2/figures/datasets.png Graphic file (type png)
 <use ./project2/figures/datasets.png>
 Package pdftex.def Info: ./project2/figures/datasets.png  used on input line 341.
@@ -951,429 +951,432 @@ Overfull \hbox (4.34338pt too wide) in paragraph at lines 256--259
 \OT1/cmr/m/n/12 et al.[][] ([][]2015[][]), the con-ver-gence anal-y-sis is per-formed on the ex-pec-ta-tion (Equa-tion [])
  []
 
-[24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
+[24] [25] [26]
+Overfull \hbox (24.31271pt too wide) in paragraph at lines 342--343
+[][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
 
-LaTeX Warning: Reference `thm1:convergence-mse-prob' on page 36 undefined on input line 691.
+[27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
+Overfull \hbox (15.95308pt too wide) in paragraph at lines 625--626
+[][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+ []
 
-[36] [37]
-
-LaTeX Warning: Reference `thm1:convergence-mse-prob' on page 38 undefined on input line 752.
-
-[38] [39] [40] [41] [42] [43] [44] [45] [46]
-<./project1/figures/figure1.png, id=1990, 578.16pt x 325.215pt>
+[37] [38] [39] [40] [41] [42] [43] [44]
+<./project1/figures/figure1.png, id=1973, 578.16pt x 325.215pt>
 File: ./project1/figures/figure1.png Graphic file (type png)
 <use ./project1/figures/figure1.png>
-Package pdftex.def Info: ./project1/figures/figure1.png  used on input line 1020.
+Package pdftex.def Info: ./project1/figures/figure1.png  used on input line 893.
 (pdftex.def)             Requested size: 322.50345pt x 181.40457pt.
- [47 <./project1/figures/figure1.png>] [48]
-<./project1/figures/figure2a.png, id=2013, 578.16pt x 325.215pt>
+ [45] [46 <./project1/figures/figure1.png>]
+<./project1/figures/figure2a.png, id=1997, 578.16pt x 325.215pt>
 File: ./project1/figures/figure2a.png Graphic file (type png)
 <use ./project1/figures/figure2a.png>
-Package pdftex.def Info: ./project1/figures/figure2a.png  used on input line 1050.
+Package pdftex.def Info: ./project1/figures/figure2a.png  used on input line 923.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure2b.png, id=2014, 578.16pt x 325.215pt>
+<./project1/figures/figure2b.png, id=1998, 578.16pt x 325.215pt>
 File: ./project1/figures/figure2b.png Graphic file (type png)
 <use ./project1/figures/figure2b.png>
-Package pdftex.def Info: ./project1/figures/figure2b.png  used on input line 1051.
+Package pdftex.def Info: ./project1/figures/figure2b.png  used on input line 924.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [49 <./project1/figures/figure2a.png> <./project1/figures/figure2b.png>]
-<./project1/figures/figure4a.png, id=2025, 578.16pt x 325.215pt>
+ [47 <./project1/figures/figure2a.png> <./project1/figures/figure2b.png>]
+<./project1/figures/figure4a.png, id=2009, 578.16pt x 325.215pt>
 File: ./project1/figures/figure4a.png Graphic file (type png)
 <use ./project1/figures/figure4a.png>
-Package pdftex.def Info: ./project1/figures/figure4a.png  used on input line 1076.
+Package pdftex.def Info: ./project1/figures/figure4a.png  used on input line 949.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure4b.png, id=2026, 578.16pt x 325.215pt>
+<./project1/figures/figure4b.png, id=2010, 578.16pt x 325.215pt>
 File: ./project1/figures/figure4b.png Graphic file (type png)
 <use ./project1/figures/figure4b.png>
-Package pdftex.def Info: ./project1/figures/figure4b.png  used on input line 1077.
+Package pdftex.def Info: ./project1/figures/figure4b.png  used on input line 950.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [50 <./project1/figures/figure4a.png> <./project1/figures/figure4b.png>]
-<./project1/figures/figure5a.png, id=2036, 578.16pt x 325.215pt>
+ [48]
+<./project1/figures/figure5a.png, id=2018, 578.16pt x 325.215pt>
 File: ./project1/figures/figure5a.png Graphic file (type png)
 <use ./project1/figures/figure5a.png>
-Package pdftex.def Info: ./project1/figures/figure5a.png  used on input line 1100.
+Package pdftex.def Info: ./project1/figures/figure5a.png  used on input line 973.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure5b.png, id=2037, 578.16pt x 325.215pt>
+<./project1/figures/figure5b.png, id=2019, 578.16pt x 325.215pt>
 File: ./project1/figures/figure5b.png Graphic file (type png)
 <use ./project1/figures/figure5b.png>
-Package pdftex.def Info: ./project1/figures/figure5b.png  used on input line 1101.
+Package pdftex.def Info: ./project1/figures/figure5b.png  used on input line 974.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [51 <./project1/figures/figure5a.png> <./project1/figures/figure5b.png>]
-<./project1/figures/figure3.png, id=2050, 578.16pt x 325.215pt>
+ [49 <./project1/figures/figure4a.png> <./project1/figures/figure4b.png>] [50 <./project1/figures/figure5a.png> <./project1/figures/figure5b.png>]
+<./project1/figures/figure3.png, id=2036, 578.16pt x 325.215pt>
 File: ./project1/figures/figure3.png Graphic file (type png)
 <use ./project1/figures/figure3.png>
-Package pdftex.def Info: ./project1/figures/figure3.png  used on input line 1128.
+Package pdftex.def Info: ./project1/figures/figure3.png  used on input line 1001.
 (pdftex.def)             Requested size: 322.50345pt x 181.40457pt.
- [52 <./project1/figures/figure3.png>] [53]
-<./project1/figures/figure13a.png, id=2066, 578.16pt x 325.215pt>
+ [51 <./project1/figures/figure3.png>]
+<./project1/figures/figure13a.png, id=2051, 578.16pt x 325.215pt>
 File: ./project1/figures/figure13a.png Graphic file (type png)
 <use ./project1/figures/figure13a.png>
-Package pdftex.def Info: ./project1/figures/figure13a.png  used on input line 1164.
+Package pdftex.def Info: ./project1/figures/figure13a.png  used on input line 1037.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure13b.png, id=2067, 578.16pt x 325.215pt>
+<./project1/figures/figure13b.png, id=2052, 578.16pt x 325.215pt>
 File: ./project1/figures/figure13b.png Graphic file (type png)
 <use ./project1/figures/figure13b.png>
-Package pdftex.def Info: ./project1/figures/figure13b.png  used on input line 1165.
+Package pdftex.def Info: ./project1/figures/figure13b.png  used on input line 1038.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure6a.png, id=2070, 578.16pt x 325.215pt>
+<./project1/figures/figure6a.png, id=2055, 578.16pt x 325.215pt>
 File: ./project1/figures/figure6a.png Graphic file (type png)
 <use ./project1/figures/figure6a.png>
-Package pdftex.def Info: ./project1/figures/figure6a.png  used on input line 1180.
+Package pdftex.def Info: ./project1/figures/figure6a.png  used on input line 1053.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure6b.png, id=2071, 578.16pt x 325.215pt>
+<./project1/figures/figure6b.png, id=2056, 578.16pt x 325.215pt>
 File: ./project1/figures/figure6b.png Graphic file (type png)
 <use ./project1/figures/figure6b.png>
-Package pdftex.def Info: ./project1/figures/figure6b.png  used on input line 1181.
+Package pdftex.def Info: ./project1/figures/figure6b.png  used on input line 1054.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [54 <./project1/figures/figure13a.png> <./project1/figures/figure13b.png>]
-<./project1/figures/figure7a.png, id=2082, 578.16pt x 325.215pt>
+ [52]
+<./project1/figures/figure7a.png, id=2064, 578.16pt x 325.215pt>
 File: ./project1/figures/figure7a.png Graphic file (type png)
 <use ./project1/figures/figure7a.png>
-Package pdftex.def Info: ./project1/figures/figure7a.png  used on input line 1193.
+Package pdftex.def Info: ./project1/figures/figure7a.png  used on input line 1066.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure7b.png, id=2083, 578.16pt x 325.215pt>
+<./project1/figures/figure7b.png, id=2065, 578.16pt x 325.215pt>
 File: ./project1/figures/figure7b.png Graphic file (type png)
 <use ./project1/figures/figure7b.png>
-Package pdftex.def Info: ./project1/figures/figure7b.png  used on input line 1194.
+Package pdftex.def Info: ./project1/figures/figure7b.png  used on input line 1067.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure8a.png, id=2090, 578.16pt x 325.215pt>
+ [53 <./project1/figures/figure13a.png> <./project1/figures/figure13b.png> <./project1/figures/figure6a.png> <./project1/figures/figure6b.png>]
+<./project1/figures/figure8a.png, id=2079, 578.16pt x 325.215pt>
 File: ./project1/figures/figure8a.png Graphic file (type png)
 <use ./project1/figures/figure8a.png>
-Package pdftex.def Info: ./project1/figures/figure8a.png  used on input line 1208.
+Package pdftex.def Info: ./project1/figures/figure8a.png  used on input line 1081.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure8b.png, id=2091, 578.16pt x 325.215pt>
+<./project1/figures/figure8b.png, id=2080, 578.16pt x 325.215pt>
 File: ./project1/figures/figure8b.png Graphic file (type png)
 <use ./project1/figures/figure8b.png>
-Package pdftex.def Info: ./project1/figures/figure8b.png  used on input line 1209.
+Package pdftex.def Info: ./project1/figures/figure8b.png  used on input line 1082.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [55 <./project1/figures/figure6a.png> <./project1/figures/figure6b.png> <./project1/figures/figure7a.png> <./project1/figures/figure7b.png>]
-<./project1/figures/figure9a.png, id=2108, 578.16pt x 325.215pt>
+ [54 <./project1/figures/figure7a.png> <./project1/figures/figure7b.png> <./project1/figures/figure8a.png> <./project1/figures/figure8b.png>]
+<./project1/figures/figure9a.png, id=2096, 578.16pt x 325.215pt>
 File: ./project1/figures/figure9a.png Graphic file (type png)
 <use ./project1/figures/figure9a.png>
-Package pdftex.def Info: ./project1/figures/figure9a.png  used on input line 1230.
+Package pdftex.def Info: ./project1/figures/figure9a.png  used on input line 1103.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure9b.png, id=2109, 578.16pt x 325.215pt>
+<./project1/figures/figure9b.png, id=2097, 578.16pt x 325.215pt>
 File: ./project1/figures/figure9b.png Graphic file (type png)
 <use ./project1/figures/figure9b.png>
-Package pdftex.def Info: ./project1/figures/figure9b.png  used on input line 1231.
+Package pdftex.def Info: ./project1/figures/figure9b.png  used on input line 1104.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [56 <./project1/figures/figure8a.png> <./project1/figures/figure8b.png>]
-<./project1/figures/figure10a.png, id=2122, 578.16pt x 325.215pt>
+ [55 <./project1/figures/figure9a.png> <./project1/figures/figure9b.png>]
+<./project1/figures/figure10a.png, id=2110, 578.16pt x 325.215pt>
 File: ./project1/figures/figure10a.png Graphic file (type png)
 <use ./project1/figures/figure10a.png>
-Package pdftex.def Info: ./project1/figures/figure10a.png  used on input line 1255.
+Package pdftex.def Info: ./project1/figures/figure10a.png  used on input line 1128.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure10b.png, id=2123, 578.16pt x 325.215pt>
+<./project1/figures/figure10b.png, id=2111, 578.16pt x 325.215pt>
 File: ./project1/figures/figure10b.png Graphic file (type png)
 <use ./project1/figures/figure10b.png>
-Package pdftex.def Info: ./project1/figures/figure10b.png  used on input line 1256.
+Package pdftex.def Info: ./project1/figures/figure10b.png  used on input line 1129.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [57 <./project1/figures/figure9a.png> <./project1/figures/figure9b.png>] [58 <./project1/figures/figure10a.png> <./project1/figures/figure10b.png>] [59] [60]
-<./project1/figures/figure11a.png, id=2194, 578.16pt x 325.215pt>
+ [56 <./project1/figures/figure10a.png> <./project1/figures/figure10b.png>] [57] [58] [59]
+<./project1/figures/figure11a.png, id=2182, 578.16pt x 325.215pt>
 File: ./project1/figures/figure11a.png Graphic file (type png)
 <use ./project1/figures/figure11a.png>
-Package pdftex.def Info: ./project1/figures/figure11a.png  used on input line 1376.
+Package pdftex.def Info: ./project1/figures/figure11a.png  used on input line 1249.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure11b.png, id=2195, 578.16pt x 325.215pt>
+<./project1/figures/figure11b.png, id=2183, 578.16pt x 325.215pt>
 File: ./project1/figures/figure11b.png Graphic file (type png)
 <use ./project1/figures/figure11b.png>
-Package pdftex.def Info: ./project1/figures/figure11b.png  used on input line 1377.
+Package pdftex.def Info: ./project1/figures/figure11b.png  used on input line 1250.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [61]
-<./project1/figures/figure12a.png, id=2206, 578.16pt x 325.215pt>
+ [60 <./project1/figures/figure11a.png> <./project1/figures/figure11b.png>]
+<./project1/figures/figure12a.png, id=2194, 578.16pt x 325.215pt>
 File: ./project1/figures/figure12a.png Graphic file (type png)
 <use ./project1/figures/figure12a.png>
-Package pdftex.def Info: ./project1/figures/figure12a.png  used on input line 1398.
+Package pdftex.def Info: ./project1/figures/figure12a.png  used on input line 1271.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
-<./project1/figures/figure12b.png, id=2207, 578.16pt x 325.215pt>
+<./project1/figures/figure12b.png, id=2195, 578.16pt x 325.215pt>
 File: ./project1/figures/figure12b.png Graphic file (type png)
 <use ./project1/figures/figure12b.png>
-Package pdftex.def Info: ./project1/figures/figure12b.png  used on input line 1399.
+Package pdftex.def Info: ./project1/figures/figure12b.png  used on input line 1272.
 (pdftex.def)             Requested size: 221.14421pt x 124.39185pt.
- [62 <./project1/figures/figure11a.png> <./project1/figures/figure11b.png> <./project1/figures/figure12a.png> <./project1/figures/figure12b.png>] [63]) (project2/nnMetamodels.tex [64] [65]
+ [61 <./project1/figures/figure12a.png> <./project1/figures/figure12b.png>]) (project2/nnMetamodels.tex [62] [63]
 Chapter 3.
-[66
+[64
 
 
-] [67] [68] [69] [70] [71] [72] [73] [74
+] [65] [66] [67] [68] [69] [70] [71] [72
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.2.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.234 \end{equation}
                     ]
-<./project2/figures/sns.pdf, id=2500, 481.51494pt x 207.27136pt>
+<./project2/figures/sns.pdf, id=2481, 481.51494pt x 207.27136pt>
 File: ./project2/figures/sns.pdf Graphic file (type pdf)
 <use ./project2/figures/sns.pdf>
 Package pdftex.def Info: ./project2/figures/sns.pdf  used on input line 246.
 (pdftex.def)             Requested size: 391.61586pt x 168.57834pt.
- [75 <./project2/figures/sns.pdf>] [76]
+ [73 <./project2/figures/sns.pdf>] [74]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 308.
- [77] [78] [79] [80] [81] [82] [83] [84] [85] [86] [87]
-<./project2/figures/2a_QQ_good_training.png, id=2816, 578.16pt x 433.62pt>
+ [75] [76] [77] [78] [79] [80] [81] [82] [83] [84] [85]
+<./project2/figures/2a_QQ_good_training.png, id=2796, 578.16pt x 433.62pt>
 File: ./project2/figures/2a_QQ_good_training.png Graphic file (type png)
 <use ./project2/figures/2a_QQ_good_training.png>
 Package pdftex.def Info: ./project2/figures/2a_QQ_good_training.png  used on input line 614.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project2/figures/2b_QQ_bad_training.png, id=2817, 578.16pt x 433.62pt>
+<./project2/figures/2b_QQ_bad_training.png, id=2797, 578.16pt x 433.62pt>
 File: ./project2/figures/2b_QQ_bad_training.png Graphic file (type png)
 <use ./project2/figures/2b_QQ_bad_training.png>
 Package pdftex.def Info: ./project2/figures/2b_QQ_bad_training.png  used on input line 618.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project2/figures/qqPlots/mlrLN.png, id=2821, 462.528pt x 346.896pt>
+<./project2/figures/qqPlots/mlrLN.png, id=2801, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/mlrLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/mlrLN.png>
 Package pdftex.def Info: ./project2/figures/qqPlots/mlrLN.png  used on input line 641.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/qqPlots/qprLN.png, id=2822, 462.528pt x 346.896pt>
+<./project2/figures/qqPlots/qprLN.png, id=2802, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/qprLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/qprLN.png>
 Package pdftex.def Info: ./project2/figures/qqPlots/qprLN.png  used on input line 645.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [88 <./project2/figures/2a_QQ_good_training.png> <./project2/figures/2b_QQ_bad_training.png>]
-<./project2/figures/qqPlots/fnnLN.png, id=2836, 462.528pt x 346.896pt>
+ [86 <./project2/figures/2a_QQ_good_training.png> <./project2/figures/2b_QQ_bad_training.png>]
+<./project2/figures/qqPlots/fnnLN.png, id=2816, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/fnnLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/fnnLN.png>
 Package pdftex.def Info: ./project2/figures/qqPlots/fnnLN.png  used on input line 667.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/qqPlots/lstmLoCapLN.png, id=2837, 462.528pt x 346.896pt>
+<./project2/figures/qqPlots/lstmLoCapLN.png, id=2817, 462.528pt x 346.896pt>
 File: ./project2/figures/qqPlots/lstmLoCapLN.png Graphic file (type png)
 <use ./project2/figures/qqPlots/lstmLoCapLN.png>
 Package pdftex.def Info: ./project2/figures/qqPlots/lstmLoCapLN.png  used on input line 671.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [89 <./project2/figures/qqPlots/mlrLN.png> <./project2/figures/qqPlots/qprLN.png>] [90 <./project2/figures/qqPlots/fnnLN.png> <./project2/figures/qqPlots/lstmLoCapLN.png>]
-<./project2/figures/tailMatches/regLN.png, id=2863, 462.528pt x 346.896pt>
+ [87 <./project2/figures/qqPlots/mlrLN.png> <./project2/figures/qqPlots/qprLN.png>] [88 <./project2/figures/qqPlots/fnnLN.png> <./project2/figures/qqPlots/lstmLoCapLN.png>]
+<./project2/figures/tailMatches/regLN.png, id=2844, 462.528pt x 346.896pt>
 File: ./project2/figures/tailMatches/regLN.png Graphic file (type png)
 <use ./project2/figures/tailMatches/regLN.png>
 Package pdftex.def Info: ./project2/figures/tailMatches/regLN.png  used on input line 716.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/tailMatches/nnLN.png, id=2864, 462.528pt x 346.896pt>
+<./project2/figures/tailMatches/nnLN.png, id=2845, 462.528pt x 346.896pt>
 File: ./project2/figures/tailMatches/nnLN.png Graphic file (type png)
 <use ./project2/figures/tailMatches/nnLN.png>
 Package pdftex.def Info: ./project2/figures/tailMatches/nnLN.png  used on input line 720.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [91]
-<./project2/figures/CVaR/allLN.png, id=2889, 462.528pt x 346.896pt>
+ [89]
+<./project2/figures/CVaR/allLN.png, id=2870, 462.528pt x 346.896pt>
 File: ./project2/figures/CVaR/allLN.png Graphic file (type png)
 <use ./project2/figures/CVaR/allLN.png>
 Package pdftex.def Info: ./project2/figures/CVaR/allLN.png  used on input line 747.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/CVaR/zoomedLN.png, id=2890, 462.528pt x 346.896pt>
+<./project2/figures/CVaR/zoomedLN.png, id=2871, 462.528pt x 346.896pt>
 File: ./project2/figures/CVaR/zoomedLN.png Graphic file (type png)
 <use ./project2/figures/CVaR/zoomedLN.png>
 Package pdftex.def Info: ./project2/figures/CVaR/zoomedLN.png  used on input line 752.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
- [92 <./project2/figures/tailMatches/regLN.png> <./project2/figures/tailMatches/nnLN.png>] [93 <./project2/figures/CVaR/allLN.png> <./project2/figures/CVaR/zoomedLN.png>] [94]
-<./project2/figures/qqPlots/lstmAll.png, id=2949, 867.24pt x 578.16pt>
+ [90 <./project2/figures/tailMatches/regLN.png> <./project2/figures/tailMatches/nnLN.png>] [91 <./project2/figures/CVaR/allLN.png> <./project2/figures/CVaR/zoomedLN.png>] [92]
+<./project2/figures/qqPlots/lstmAll.png, id=2930, 867.24pt x 578.16pt>
 File: ./project2/figures/qqPlots/lstmAll.png Graphic file (type png)
 <use ./project2/figures/qqPlots/lstmAll.png>
 Package pdftex.def Info: ./project2/figures/qqPlots/lstmAll.png  used on input line 844.
 (pdftex.def)             Requested size: 460.72124pt x 307.14674pt.
- [95] [96 <./project2/figures/qqPlots/lstmAll.png>] [97] [98]
-<./project2/figures/cor_heatmap.png, id=3008, 578.16pt x 433.62pt>
+ [93] [94 <./project2/figures/qqPlots/lstmAll.png>] [95] [96]
+<./project2/figures/cor_heatmap.png, id=2989, 578.16pt x 433.62pt>
 File: ./project2/figures/cor_heatmap.png Graphic file (type png)
 <use ./project2/figures/cor_heatmap.png>
 Package pdftex.def Info: ./project2/figures/cor_heatmap.png  used on input line 948.
 (pdftex.def)             Requested size: 276.43555pt x 207.3214pt.
- [99 <./project2/figures/cor_heatmap.png>]
-<./project2/figures/singleStage/CVaRmediumNoise.png, id=3025, 578.16pt x 433.62pt>
+ [97 <./project2/figures/cor_heatmap.png>]
+<./project2/figures/singleStage/CVaRmediumNoise.png, id=3006, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRmediumNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRmediumNoise.png>
 Package pdftex.def Info: ./project2/figures/singleStage/CVaRmediumNoise.png  used on input line 970.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project2/figures/singleStage/CVaRhighNoise.png, id=3026, 578.16pt x 433.62pt>
+<./project2/figures/singleStage/CVaRhighNoise.png, id=3007, 578.16pt x 433.62pt>
 File: ./project2/figures/singleStage/CVaRhighNoise.png Graphic file (type png)
 <use ./project2/figures/singleStage/CVaRhighNoise.png>
 Package pdftex.def Info: ./project2/figures/singleStage/CVaRhighNoise.png  used on input line 974.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [100 <./project2/figures/singleStage/CVaRmediumNoise.png> <./project2/figures/singleStage/CVaRhighNoise.png>]
-<./project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=3052, 462.528pt x 346.896pt>
+ [98 <./project2/figures/singleStage/CVaRmediumNoise.png> <./project2/figures/singleStage/CVaRhighNoise.png>]
+<./project2/figures/singleStage/MSEConvergence_lstmLoCap.png, id=3033, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png>
 Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap.png  used on input line 1009.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=3053, 462.528pt x 346.896pt>
+<./project2/figures/singleStage/MSEConvergence_lstmHiCap.png, id=3034, 462.528pt x 346.896pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png>
 Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmHiCap.png  used on input line 1014.
 (pdftex.def)             Requested size: 221.14421pt x 165.85712pt.
-<./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=3063, 867.24pt x 361.35pt>
+<./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png, id=3044, 867.24pt x 361.35pt>
 File: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png Graphic file (type png)
 <use ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>
 Package pdftex.def Info: ./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png  used on input line 1032.
 (pdftex.def)             Requested size: 460.72124pt x 191.96672pt.
- [101] [102 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png> <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png> <./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [103]) (project3/draft.tex [104] [105]
+ [99] [100 <./project2/figures/singleStage/MSEConvergence_lstmLoCap.png> <./project2/figures/singleStage/MSEConvergence_lstmHiCap.png> <./project2/figures/singleStage/MSEConvergence_lstmLoCap_MN.png>] [101]) (project3/draft.tex [102] [103]
 Chapter 4.
-[106
+[104
 
 
-] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118]
-<./project3/figures/figure1a.png, id=3475, 578.16pt x 433.62pt>
+] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116]
+<./project3/figures/figure1a.png, id=3456, 578.16pt x 433.62pt>
 File: ./project3/figures/figure1a.png Graphic file (type png)
 <use ./project3/figures/figure1a.png>
 Package pdftex.def Info: ./project3/figures/figure1a.png  used on input line 376.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure1b.png, id=3476, 578.16pt x 433.62pt>
+<./project3/figures/figure1b.png, id=3457, 578.16pt x 433.62pt>
 File: ./project3/figures/figure1b.png Graphic file (type png)
 <use ./project3/figures/figure1b.png>
 Package pdftex.def Info: ./project3/figures/figure1b.png  used on input line 381.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure1c.png, id=3479, 578.16pt x 433.62pt>
+<./project3/figures/figure1c.png, id=3460, 578.16pt x 433.62pt>
 File: ./project3/figures/figure1c.png Graphic file (type png)
 <use ./project3/figures/figure1c.png>
 Package pdftex.def Info: ./project3/figures/figure1c.png  used on input line 386.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure1d.png, id=3480, 578.16pt x 433.62pt>
+<./project3/figures/figure1d.png, id=3461, 578.16pt x 433.62pt>
 File: ./project3/figures/figure1d.png Graphic file (type png)
 <use ./project3/figures/figure1d.png>
 Package pdftex.def Info: ./project3/figures/figure1d.png  used on input line 391.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [119] [120 <./project3/figures/figure1a.png> <./project3/figures/figure1b.png> <./project3/figures/figure1c.png> <./project3/figures/figure1d.png>]
-<./project3/figures/figure2a.png, id=3525, 578.16pt x 433.62pt>
+ [117] [118 <./project3/figures/figure1a.png> <./project3/figures/figure1b.png> <./project3/figures/figure1c.png> <./project3/figures/figure1d.png>]
+<./project3/figures/figure2a.png, id=3506, 578.16pt x 433.62pt>
 File: ./project3/figures/figure2a.png Graphic file (type png)
 <use ./project3/figures/figure2a.png>
 Package pdftex.def Info: ./project3/figures/figure2a.png  used on input line 430.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure2b.png, id=3526, 578.16pt x 433.62pt>
+<./project3/figures/figure2b.png, id=3507, 578.16pt x 433.62pt>
 File: ./project3/figures/figure2b.png Graphic file (type png)
 <use ./project3/figures/figure2b.png>
 Package pdftex.def Info: ./project3/figures/figure2b.png  used on input line 435.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [121 <./project3/figures/figure2a.png> <./project3/figures/figure2b.png>]
-<./project3/figures/figure3a.png, id=3546, 578.16pt x 433.62pt>
+ [119 <./project3/figures/figure2a.png> <./project3/figures/figure2b.png>]
+<./project3/figures/figure3a.png, id=3528, 578.16pt x 433.62pt>
 File: ./project3/figures/figure3a.png Graphic file (type png)
 <use ./project3/figures/figure3a.png>
 Package pdftex.def Info: ./project3/figures/figure3a.png  used on input line 464.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure3b.png, id=3547, 578.16pt x 433.62pt>
+<./project3/figures/figure3b.png, id=3529, 578.16pt x 433.62pt>
 File: ./project3/figures/figure3b.png Graphic file (type png)
 <use ./project3/figures/figure3b.png>
 Package pdftex.def Info: ./project3/figures/figure3b.png  used on input line 469.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [122 <./project3/figures/figure3a.png> <./project3/figures/figure3b.png>] [123]
-<./project3/figures/figure4a.png, id=3598, 578.16pt x 433.62pt>
+ [120 <./project3/figures/figure3a.png> <./project3/figures/figure3b.png>] [121]
+<./project3/figures/figure4a.png, id=3578, 578.16pt x 433.62pt>
 File: ./project3/figures/figure4a.png Graphic file (type png)
 <use ./project3/figures/figure4a.png>
 Package pdftex.def Info: ./project3/figures/figure4a.png  used on input line 529.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4b.png, id=3599, 578.16pt x 433.62pt>
+<./project3/figures/figure4b.png, id=3579, 578.16pt x 433.62pt>
 File: ./project3/figures/figure4b.png Graphic file (type png)
 <use ./project3/figures/figure4b.png>
 Package pdftex.def Info: ./project3/figures/figure4b.png  used on input line 534.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4c.png, id=3602, 578.16pt x 433.62pt>
+<./project3/figures/figure4c.png, id=3582, 578.16pt x 433.62pt>
 File: ./project3/figures/figure4c.png Graphic file (type png)
 <use ./project3/figures/figure4c.png>
 Package pdftex.def Info: ./project3/figures/figure4c.png  used on input line 539.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4d.png, id=3603, 578.16pt x 433.62pt>
+<./project3/figures/figure4d.png, id=3583, 578.16pt x 433.62pt>
 File: ./project3/figures/figure4d.png Graphic file (type png)
 <use ./project3/figures/figure4d.png>
 Package pdftex.def Info: ./project3/figures/figure4d.png  used on input line 544.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [124 <./project3/figures/figure4a.png> <./project3/figures/figure4b.png> <./project3/figures/figure4c.png> <./project3/figures/figure4d.png>] [125]
-<./project3/figures/figure4_1.png, id=3643, 578.16pt x 433.62pt>
+ [122 <./project3/figures/figure4a.png> <./project3/figures/figure4b.png> <./project3/figures/figure4c.png> <./project3/figures/figure4d.png>] [123]
+<./project3/figures/figure4_1.png, id=3625, 578.16pt x 433.62pt>
 File: ./project3/figures/figure4_1.png Graphic file (type png)
 <use ./project3/figures/figure4_1.png>
 Package pdftex.def Info: ./project3/figures/figure4_1.png  used on input line 603.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure4_2.png, id=3644, 578.16pt x 433.62pt>
+<./project3/figures/figure4_2.png, id=3626, 578.16pt x 433.62pt>
 File: ./project3/figures/figure4_2.png Graphic file (type png)
 <use ./project3/figures/figure4_2.png>
 Package pdftex.def Info: ./project3/figures/figure4_2.png  used on input line 608.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [126 <./project3/figures/figure4_1.png> <./project3/figures/figure4_2.png>]
-<./project3/tikz/mtl.pdf, id=3675, 630.61696pt x 94.3776pt>
+ [124 <./project3/figures/figure4_1.png> <./project3/figures/figure4_2.png>]
+<./project3/tikz/mtl.pdf, id=3657, 630.61696pt x 94.3776pt>
 File: ./project3/tikz/mtl.pdf Graphic file (type pdf)
 <use ./project3/tikz/mtl.pdf>
 Package pdftex.def Info: ./project3/tikz/mtl.pdf  used on input line 638.
 (pdftex.def)             Requested size: 460.72124pt x 68.95265pt.
-<./project3/figures/figure5a.png, id=3681, 578.16pt x 433.62pt>
+<./project3/figures/figure5a.png, id=3663, 578.16pt x 433.62pt>
 File: ./project3/figures/figure5a.png Graphic file (type png)
 <use ./project3/figures/figure5a.png>
 Package pdftex.def Info: ./project3/figures/figure5a.png  used on input line 652.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure5b.png, id=3682, 578.16pt x 433.62pt>
+<./project3/figures/figure5b.png, id=3664, 578.16pt x 433.62pt>
 File: ./project3/figures/figure5b.png Graphic file (type png)
 <use ./project3/figures/figure5b.png>
 Package pdftex.def Info: ./project3/figures/figure5b.png  used on input line 657.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure5c.png, id=3683, 578.16pt x 433.62pt>
+<./project3/figures/figure5c.png, id=3665, 578.16pt x 433.62pt>
 File: ./project3/figures/figure5c.png Graphic file (type png)
 <use ./project3/figures/figure5c.png>
 Package pdftex.def Info: ./project3/figures/figure5c.png  used on input line 662.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
-<./project3/figures/figure5d.png, id=3684, 578.16pt x 433.62pt>
+<./project3/figures/figure5d.png, id=3666, 578.16pt x 433.62pt>
 File: ./project3/figures/figure5d.png Graphic file (type png)
 <use ./project3/figures/figure5d.png>
 Package pdftex.def Info: ./project3/figures/figure5d.png  used on input line 667.
 (pdftex.def)             Requested size: 221.14421pt x 165.8558pt.
- [127 <./project3/tikz/mtl.pdf>] [128 <./project3/figures/figure5a.png> <./project3/figures/figure5b.png> <./project3/figures/figure5c.png> <./project3/figures/figure5d.png>]) (conclusion.tex [129]
+ [125 <./project3/tikz/mtl.pdf>] [126 <./project3/figures/figure5a.png> <./project3/figures/figure5b.png> <./project3/figures/figure5c.png> <./project3/figures/figure5d.png>]) (conclusion.tex [127]
 Chapter 5.
+[128
+
+
+]) (futureWork/rlHedging.tex [129]
+Chapter 6.
 [130
 
 
-]) (futureWork/rlHedging.tex [131]
-Chapter 6.
-[132
-
-
-] [133] [134] [135] [136] [137] [138] [139] [140] [141] [142] [143] [144] [145]
-<./futureWork/tikz/ppo_diagram.pdf, id=4076, 341.91438pt x 301.87178pt>
+] [131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141] [142] [143]
+<./futureWork/tikz/ppo_diagram.pdf, id=4057, 341.91438pt x 301.87178pt>
 File: ./futureWork/tikz/ppo_diagram.pdf Graphic file (type pdf)
 <use ./futureWork/tikz/ppo_diagram.pdf>
 Package pdftex.def Info: ./futureWork/tikz/ppo_diagram.pdf  used on input line 411.
 (pdftex.def)             Requested size: 207.32315pt x 183.04523pt.
-<./futureWork/tikz/recurrentppo_diagram.pdf, id=4079, 285.00879pt x 257.36351pt>
+<./futureWork/tikz/recurrentppo_diagram.pdf, id=4060, 285.00879pt x 257.36351pt>
 File: ./futureWork/tikz/recurrentppo_diagram.pdf Graphic file (type pdf)
 <use ./futureWork/tikz/recurrentppo_diagram.pdf>
 Package pdftex.def Info: ./futureWork/tikz/recurrentppo_diagram.pdf  used on input line 417.
 (pdftex.def)             Requested size: 207.32315pt x 187.21797pt.
- [146] [147 <./futureWork/tikz/ppo_diagram.pdf> <./futureWork/tikz/recurrentppo_diagram.pdf>] [148]
-<./futureWork/figures/CVaR_histories.png, id=4181, 722.7pt x 361.35pt>
+ [144] [145 <./futureWork/tikz/ppo_diagram.pdf> <./futureWork/tikz/recurrentppo_diagram.pdf>] [146]
+<./futureWork/figures/CVaR_histories.png, id=4162, 722.7pt x 361.35pt>
 File: ./futureWork/figures/CVaR_histories.png Graphic file (type png)
 <use ./futureWork/figures/CVaR_histories.png>
 Package pdftex.def Info: ./futureWork/figures/CVaR_histories.png  used on input line 509.
 (pdftex.def)             Requested size: 414.6463pt x 207.32251pt.
- [149]
-<./futureWork/figures/PPO_DH.png, id=4202, 722.7pt x 433.62pt>
+ [147]
+<./futureWork/figures/PPO_DH.png, id=4184, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_DH.png Graphic file (type png)
 <use ./futureWork/figures/PPO_DH.png>
 Package pdftex.def Info: ./futureWork/figures/PPO_DH.png  used on input line 532.
 (pdftex.def)             Requested size: 230.36061pt x 138.21207pt.
-<./futureWork/figures/PPOs_GBM.png, id=4210, 722.7pt x 433.62pt>
+<./futureWork/figures/PPOs_GBM.png, id=4192, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPOs_GBM.png Graphic file (type png)
 <use ./futureWork/figures/PPOs_GBM.png>
 Package pdftex.def Info: ./futureWork/figures/PPOs_GBM.png  used on input line 543.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
-<./futureWork/figures/PPOs_GBMRS.png, id=4211, 722.7pt x 433.62pt>
+<./futureWork/figures/PPOs_GBMRS.png, id=4193, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPOs_GBMRS.png Graphic file (type png)
 <use ./futureWork/figures/PPOs_GBMRS.png>
 Package pdftex.def Info: ./futureWork/figures/PPOs_GBMRS.png  used on input line 548.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
- [150]
-<./futureWork/figures/PPO_cost_001.png, id=4233, 722.7pt x 433.62pt>
+ [148]
+<./futureWork/figures/PPO_cost_001.png, id=4214, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_cost_001.png Graphic file (type png)
 <use ./futureWork/figures/PPO_cost_001.png>
 Package pdftex.def Info: ./futureWork/figures/PPO_cost_001.png  used on input line 564.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
-<./futureWork/figures/PPO_cost_02.png, id=4234, 722.7pt x 433.62pt>
+<./futureWork/figures/PPO_cost_02.png, id=4215, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_cost_02.png Graphic file (type png)
 <use ./futureWork/figures/PPO_cost_02.png>
 Package pdftex.def Info: ./futureWork/figures/PPO_cost_02.png  used on input line 569.
 (pdftex.def)             Requested size: 207.32315pt x 124.3902pt.
- [151 <./futureWork/figures/CVaR_histories.png> <./futureWork/figures/PPO_DH.png>]
-<./futureWork/figures/PPO_anchor.png, id=4247, 722.7pt x 433.62pt>
+ [149 <./futureWork/figures/CVaR_histories.png> <./futureWork/figures/PPO_DH.png>]
+<./futureWork/figures/PPO_anchor.png, id=4228, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_anchor.png Graphic file (type png)
 <use ./futureWork/figures/PPO_anchor.png>
 Package pdftex.def Info: ./futureWork/figures/PPO_anchor.png  used on input line 584.
 (pdftex.def)             Requested size: 460.72124pt x 276.43074pt.
- [152 <./futureWork/figures/PPOs_GBM.png> <./futureWork/figures/PPOs_GBMRS.png> <./futureWork/figures/PPO_cost_001.png> <./futureWork/figures/PPO_cost_02.png>]
-<./futureWork/figures/PPO_GMWB.png, id=4260, 722.7pt x 433.62pt>
+ [150 <./futureWork/figures/PPOs_GBM.png> <./futureWork/figures/PPOs_GBMRS.png> <./futureWork/figures/PPO_cost_001.png> <./futureWork/figures/PPO_cost_02.png>]
+<./futureWork/figures/PPO_GMWB.png, id=4242, 722.7pt x 433.62pt>
 File: ./futureWork/figures/PPO_GMWB.png Graphic file (type png)
 <use ./futureWork/figures/PPO_GMWB.png>
 Package pdftex.def Info: ./futureWork/figures/PPO_GMWB.png  used on input line 596.
 (pdftex.def)             Requested size: 460.72124pt x 276.43074pt.
- [153 <./futureWork/figures/PPO_anchor.png>] [154 <./futureWork/figures/PPO_GMWB.png>]) [155] (thesisDefense.bbl [156
+ [151 <./futureWork/figures/PPO_anchor.png>] [152 <./futureWork/figures/PPO_GMWB.png>]) [153] (thesisDefense.bbl [154
 
 
 
@@ -1383,30 +1386,29 @@ Underfull \hbox (badness 1406) in paragraph at lines 110--113
 []\OT1/cmr/m/n/12 Brown, T. B. (2020).  Lan-guage mod-els are few-shot learn-ers.  \OT1/cmr/m/it/12 arXiv preprint
  []
 
-[157] [158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168]) (appendix.tex) [169] (thesisDefense.aux)
+[155] [156] [157] [158] [159] [160] [161] [162] [163] [164] [165] [166]) (appendix.tex [167] [168
+
+
+]) [169] (thesisDefense.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `thesisDefense.out' has not changed.
-(rerunfilecheck)             Checksum: 8531BE35A17E8DBB2FF695E80F4FD2AF;7433.
+(rerunfilecheck)             Checksum: 4D5189817146E21EBAE623245FAC513A;7428.
  ) 
 Here is how much of TeX's memory you used:
- 41665 strings out of 474486
- 881296 string characters out of 5741867
+ 41661 strings out of 474486
+ 881192 string characters out of 5741867
  1952542 words of memory out of 5000000
- 62609 multiletter control sequences out of 15000+600000
+ 62606 multiletter control sequences out of 15000+600000
  576262 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,19n,93p,2554b,1338s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\XintongLi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\XintongLi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/XintongLi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesisDefense.pdf (185 pages, 3631896 bytes).
+Output written on thesisDefense.pdf (185 pages, 3634575 bytes).
 PDF statistics:
  4701 PDF objects out of 5155 (max. 8388607)
- 774 named destinations out of 1000 (max. 500000)
+ 773 named destinations out of 1000 (max. 500000)
  1103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
