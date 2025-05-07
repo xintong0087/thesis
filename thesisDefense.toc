@@ -2,7 +2,7 @@
 \contentsline {chapter}{List of Figures}{xi}{section*.4}%
 \contentsline {chapter}{Abbreviations}{xiv}{section*.7}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Risk Management of Variable Annuities with Nested Simulation}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.1}Risk Management of VAs with Nested Simulation}{3}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Metamodeling for Monte Carlo Simulation}{4}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Machine Learning for Risk Management Applications}{5}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Supervised Learning Models}{5}{subsection.1.3.1}%
@@ -17,10 +17,10 @@
 \contentsline {subsection}{\numberline {2.2.1}The Standard Nested Simulation Procedure}{20}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Multi-level Monte Carlo}{21}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Supervised Learning Metamodels}{22}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Likelihood Ratio Method}{26}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Problem Statement}{27}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.4}Likelihood Ratio Method}{25}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Problem Statement}{26}{subsection.2.2.5}%
 \contentsline {section}{\numberline {2.3}Asymptotic Analysis}{27}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Asymptotic Analysis for the Standard Nested Simulation Procedure}{29}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.1}Asymptotic Analysis for the Standard Nested Simulation Procedure}{28}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Asymptotic Analysis of a kNN-based Nested Simulation Procedure for a Smooth Function}{37}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}Convergence Orders and Critical Assumptions of Nested Simulation Procedures}{40}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Standard Assumptions}{41}{subsection.2.4.1}%

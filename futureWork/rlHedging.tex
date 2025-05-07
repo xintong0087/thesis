@@ -130,8 +130,8 @@ L = \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t
 The \gls{gmwb} payout is implicitly included in $F_t\eta_n$.
 Both Equation~\eqref{eq3:lossGMMB} and Equation~\eqref{eq3:lossGMWB} neglect the transaction cost to liquidate the hedge portfolio at maturity.
 The discrete-time hedging problem of VAs can be conveniently formulated as an \gls{mdp}, where the states, actions, transition probabilities, policies, and rewards are defined as follows.
-\textcolor{red}{Different from the formulation in Chapter~\ref{chap:project2}, the hedging weight $\Delta_0, \ldots, \Delta_{T-1}$ are not estimated from inner simulation steps but are directly controlled by a \gls{drl} agent.
-Thus, the hedging weight $\Delta_t$ at time $t$ is estimated using a neural network whose input is the state $\mathbf{s}_t$ and output is $\Delta_t$.}
+Different from the formulation in Chapter~\ref{chap:project2}, the hedging weight $\Delta_0, \ldots, \Delta_{T-1}$ are not estimated from inner simulation steps but are directly controlled by a \gls{drl} agent.
+Thus, the hedging weight $\Delta_t$ at time $t$ is estimated using a neural network whose input is the state $\mathbf{s}_t$ and output is $\Delta_t$.
 
 \subsection{State Space}
 The state space $\mathcal{S}$ represents all the information needed to characterize the hedging environment.

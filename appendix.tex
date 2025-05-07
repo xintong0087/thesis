@@ -1,25 +1,5 @@
 \chapter*{Appendix} \label{chap:appendix}
 
-% \section*{Connection between the convergence in distribution and MSE} \label{sec:appendix1}
-
-% In this section, we provide a proof of the connection between the convergence in distribution and the convergence of the MSE of the estimator.
-% In~\cite{broadie2015risk}, the authors show that asymptotically, the regression-based nested simulation estimator converges in distribution to the true value $\rho$.
-
-% \begin{equation}
-%     \sqrt{M}\cdot \left( \mathbb{E}\left[h(\hat{L}_{M,N}^{\text{REG}}(X; \hat{\beta})) - h\left( g(X) \right) \right] - \mathcal{B}_{\mathcal{M}, M} \right) \overset{\mathcal{D}}{\to} \mathcal{N} \left( 0, C_{\mathcal{M}, h} \left( 1+ \frac{C_{\Phi}}{N} \right) \right)
-% \end{equation}
-
-% where $\mathcal{B}_{\mathcal{M}, M}$ is the model bias term. $C_{\mathcal{M}, h}$ and $C_{\Phi}$ are constants that do not depend on $M$ or $N$.
-% Assume constant model error, the regression-based nested simulation estimator is asymptotically normal with decaying variance as $M$ and $N$ increase.
-
-% The mean squared error (MSE) of the estimator is given by
-
-% \begin{equation}
-%     \text{MSE} = \mathbb{E}\left[ \left( h(\hat{L}_{M,N}^{\text{REG}}(X; \hat{\beta})) - h\left( g(X) \right) \right)^2 \right] = \mathcal{O}(M^{-1})
-% \end{equation}
-
-% In this section, we want to show that the convergence in distribution in~\cite{broadie2015risk} implies the convergence of the MSE in the order of $\mathcal{O}(M^{-1})$.
-
 \section{Connections between Convergence in MSE and AE}\label{appendix:connection-mse-absolute-error}
 
 This section establishes the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae} in the context of nested simulation procedures.
@@ -42,106 +22,25 @@ In order to show the connections between the convergence in \gls{mse} and the co
 \end{definition}
 
 We start our analysis by showing the convergence in probabilistic order from the convergence in \gls{mse}.
-\textcolor{red}{Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$, and assume that $\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right] = \mathcal{O} \left( \Gamma^{-\xi-\delta} \right)$ for an arbitrarily small $\delta > 0$.}
-\textcolor{red}{Then, from the definition of convergence in \gls{mse}, }
+Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$, and assume that $\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right] = \mathcal{O} \left( \Gamma^{-\xi-\delta} \right)$ for an arbitrarily small $\delta > 0$.
+Then, from the definition of convergence in \gls{mse}, 
 $$
     \limsup_{\Gamma \to \infty} \frac{\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right]}{\Gamma^{-\xi-\delta}} \leq C.
 $$
-\textcolor{red}{for a constant $C > 0$.}
+for a constant $C > 0$.
 
-\textcolor{red}{The above inequality implies that}
+The above inequality implies that
 $$
 \limsup_{\Gamma \to \infty} \frac{\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right]}{\Gamma^{-\xi}} =0.
 $$
 
-\textcolor{red}{Therefore, by Chebyshev's inequality, for any $\epsilon > 0$, we have}
+Therefore, by Chebyshev's inequality, for any $\epsilon > 0$, we have
 $$
 \mathbb{P} \left( \left| \hat{\rho}_{\Gamma} - \rho \right| \Gamma^{\xi/2} > C  \right) \leq \frac{\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \Gamma^{\xi} \right]}{C^2 } \rightarrow 0 
 $$
-\textcolor{red}{as $\Gamma \to \infty$.}
+as $\Gamma \to \infty$.
 
-\textcolor{red}{Therefore, $\hat{\rho}_{\Gamma}$ converges in probabilistic order $\xi/2$ to $\rho$ as $\Gamma \to \infty$, that is,}
+Therefore, $\hat{\rho}_{\Gamma}$ converges in probabilistic order $\xi/2$ to $\rho$ as $\Gamma \to \infty$, that is,
 $$
 \left| \hat{\rho}_{\Gamma} - \rho \right| = \mathcal{O}_{\mathbb{P}} \left( \Gamma^{-\xi/2} \right).
 $$
-
-
-
-
-
-
-% Hence, there exists some $\Gamma$ such that for all $\gamma \geq \Gamma$,
-% $$
-% \mathbb{E} \left[ \left(\hat{\rho}_{\gamma} - \rho\right)^2 \right] \leq C\gamma^{-\xi-\delta}.
-% $$
-% The convergence in probabilistic order can be shown by separating the expectation into two parts: tail and non-tail components.
-% $$
-% \mathbb{E} \left[ \left(\hat{\rho}_{\gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\gamma} - \rho| \leq d\gamma^s\}} \right] + \mathbb{E} \left[ \left(\hat{\rho}_{\gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\gamma} - \rho| > d\gamma^s\}} \right] \leq C\gamma^{-\xi}.
-% $$
-% The first term is always positive, and the second term can be bounded from below by the indicator function.
-% \begin{align*}
-% \mathbb{E} \left[ \left(\hat{\rho}_{\gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\gamma} - \rho| > d\gamma^s\}} \right] 
-% & \geq \mathbb{E} \left[ d^2 \gamma^{2s} \cdot \mathbb{I}\{|\hat{\rho}_{\gamma} - \rho| > d\gamma^s\} \right] \\
-% & = d^2 \gamma^{2s} \cdot \mathbb{E} \left[ \mathbb{I}\{|\hat{\rho}_{\gamma} - \rho| > d\gamma^s \} \right] \\
-% & = d^2 \gamma^{2s} \cdot \mathbb{P} \left(|\hat{\rho}_{\gamma} - \rho| > d\gamma^s \right).
-% \end{align*}
-
-% Combining bounds on the two terms, we have
-
-% $$
-%     d^2 \gamma^{2s} \mathbb{P} \left(|\hat{\rho}_{\gamma} - \rho| > d\gamma^s \right) \leq C \gamma^{-\xi}.
-% $$
-
-% Let $s = -\frac{\xi}{2}$. Arranging the terms, we have
-
-% $$
-%     \mathbb{P} \left( |\hat{\rho}_{\gamma} - \rho| > d\gamma^{-\frac{\xi}{2}} \right) \leq \frac{C}{d^2}.
-% $$
-
-% Hence, for all $\epsilon >0$, there exist $C^* = \sqrt{\frac{C}{\epsilon}}$ such that for all $\gamma \geq \Gamma$,
-
-% $$
-%     \mathbb{P} \left( |\hat{\rho}_{\gamma} - \rho| > C^*\gamma^{-\frac{\xi}{2}} \right) \leq \epsilon
-% $$
-
-% In essence, the above expression is a definition of convergence in probabilistic order, that is,
-
-% $$
-%     \left| \hat{\rho}_{\gamma} - \rho \right| = \mathcal{O}_\mathbb{P} \left( \Gamma^{-\frac{\xi}{2}} \right).
-% $$
-
-% \begin{theorem}\label{thm1:convergence-mse-prob}
-%     Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$. 
-%     If $\hat{\rho}_{\Gamma}$ converges in MSE to $\rho$ in order $\xi$, then $\hat{\rho}_{\Gamma}$ converges in probabilistic order to $\rho$ in order $\frac{\xi}{2}$.
-% \end{theorem}
-
-% Theorem~\ref{thm1:convergence-mse-prob} provides a formal connection between the \textcolor{red}{rate of convergence} in \gls{mse} and that in probabilistic order for \gls{ae} in the context of nested simulation.
-% It is a general result that can be applied to any nested simulation procedure that converges in \gls{mse} to $\rho$ in order $\xi$.
-% If the estimator converges in \gls{mse} to $\rho$ in order $\xi$, then it converges in probabilistic order to $\rho$ in order $\frac{\xi}{2}$.
-
-% While the convergence in \gls{mse} implies the convergence in probabilistic order, the converse is not necessarily true.
-% Similarly, the above argument is applied in reverse.
-% Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$, and assume that $|\hat{\rho}_{\Gamma} - \rho| = \mathcal{O}_{\mathbb{P}}(\Gamma^{-\xi})$.
-% The \gls{mse} of $\hat{\rho}_{\Gamma}$ can be separated into the same two parts.
-
-% $$
-%     \mathbb{E}\left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right] = \mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\Gamma} - \rho| \leq d\Gamma^{-2\xi}\}} \right] + \mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^{-2\xi}\}} \right], 
-% $$
-% where the first term can be bounded from above.
-
-% \begin{align*}
-%     \mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s\}} \right] 
-%     & \leq d^2 \Gamma^{-2\xi} \cdot \mathbb{E} \left[ \mathbb{I}\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s \} \right] \\
-%     & = d^2 \Gamma^{-2\xi} \cdot \mathbb{P} \left(|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^s \right) \leq d^2 \Gamma^{-2\xi}.
-% \end{align*}
-% However, the second term is not always bounded. 
-% If the random variable $\hat{\rho}_{\Gamma}$ admits a density function $f$, then the second term can be further decomposed as follows.
-
-% \begin{align*}
-%     \mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \cdot \mathbb{I}_{\{|\hat{\rho}_{\Gamma} - \rho| > d\Gamma^{-2\xi}\}} \right] 
-%     & = \int_{-\infty}^{-d\Gamma^{-2k}} (x - \rho)^2 f(x) dx + \int_{d\Gamma^{-2\xi}}^{\infty} (x - \rho)^2 f(x) dx.
-% \end{align*}
-% Hence, $\hat{\rho}_{\Gamma}$ converges in \gls{mse} to $\rho$ in order $2\xi$ if and only if both integrals converge in order higher than $2\xi$. 
-% The above argument shows that the convergence in probabilistic order does not necessarily imply the convergence in \gls{mse}.
-% Hence, the converse of Theorem~\ref{thm1:convergence-mse-prob} is not necessarily true, and the convergence in probabilistic order is a weaker form of convergence than the convergence in \gls{mse}.
-% The immediate implication of this result is that the results in~\cite{wang2022smooth}, which show the convergence in probabilistic order for the \gls{ae} is not necessarily equivalent to the convergence in \gls{mse}.
