@@ -27,7 +27,7 @@ In the context of financial modeling, instead of training an \gls{rl} agent from
 By transferring existing knowledge from similar environments, \gls{tl} improves model performance in situations where historical data is limited or noisy. 
 This allows models using \gls{tl} to be both more accurate and computationally efficient. 
 Additionally, \gls{tl} enhances the robustness of models by allowing continuous learning. 
-Instead of retraining a deep \gls{rl} model from the scratch when market conditions shift, \gls{tl} enables the reuse of pre-trained models, facilitating a faster adaptation to new environments while avoiding overfitting to past conditions.
+Instead of retraining a \gls{drl} model from the scratch when market conditions shift, \gls{tl} enables the reuse of pre-trained models, facilitating a faster adaptation to new environments while avoiding overfitting to past conditions.
 In the risk management of \gls{va} contracts, \gls{tl} enables quicker adaptation to changing financial and actuarial assumptions by reusing information obtained from another set of related assumptions, such as the management of similar financial instruments or different market regimes. 
 A \gls{drl} agent equipped with \gls{tl} can adjust its strategies in response to new market data, making the model more adaptive and responsive without the need for costly retraining.
 More specifically, a \gls{drl} agent trained to manage \gls{va} contracts for a \gls{gmmb} contract can apply its learned strategies to a \gls{gmwb} contract with the same financial assumptions. 
@@ -39,13 +39,13 @@ This approach offers a more robust and practical solution for managing \gls{va} 
 The rest of the chapter is organized as follows: 
 Section~\ref{sec:MDP} introduces the mathematical formulation for hedging \gls{va} contracts and defines the key components of the framework.
 Section~\ref{sec:RLAlgorithms} provides an overview of existing \gls{rl} algorithms and their limitations in the context of hedging \gls{va} contracts.
-Section~\ref{sec:PPO} introduces the proximal policy optimization algorithm and its application to the hedging of \gls{va} contracts.
+Section~\ref{sec:PPO} introduces the \gls{ppo} algorithm and its application to the hedging of \gls{va} contracts.
 Finally, Section~\ref{sec:FutureDirections} concludes the chapter and discusses future research directions.
 
 \section{Markov Decision Process for Hedging VA Contracts} \label{sec:MDP}
 
 A \gls{mdp} provides a mathematical framework for modeling decision-making in stochastic environments over time. 
-By formulating the \gls{va} hedging problem as an \gls{mdp}, we can utilize RLalgorithms to learn optimal hedging policies directly from data.
+By formulating the \gls{va} hedging problem as an \gls{mdp}, we can utilize \gls{rl} algorithms to learn optimal hedging policies directly from data.
 An \gls{mdp} is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$, where:
 
 \begin{itemize}
@@ -89,7 +89,7 @@ At each time $t=1,\ldots,T$, the following events take place in the following or
         b, & \text{if } x > b,
     \end{cases}
     $$
-    and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners’ (NAIC) Valuation Manual 21~\citep{naic2021}.
+    and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners’ Valuation Manual 21~\citep{naic2021}.
     \item The sub-account value changes according to the growth of the underlying stock and the (gross) management fee is deducted. That is, 
         \begin{equation} \label{eq3:subaccount}
             F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g)\cdot(1-q_t),
@@ -231,12 +231,12 @@ The neural network takes the current state of the game as input and outputs the 
 \end{equation}
 where $f_{\theta}$ is a neural network with parameters $\theta$, $s$ is a current state of the game, $\pi$ is a policy, $v$ is a value of the current state, and $c$ is a regularization parameter.
 $\mathbf{p}$ and $z$ are a probability distribution of the next move and an outcome of the game, respectively.
-They are induced by a planning algorithm, i.e., Monte Carlo Tree Search (MCTS).
+They are induced by a planning algorithm, i.e., \gls{mcts}.
 Since it is infeasible to efficiently simulate trajectories in the game of Go, a planning algorithm is necessary to generate expected outcomes.
 The neural network $f_{\theta}$ is trained with a stochastic gradient descent algorithm to minimize $L$.
 $L$ has three components.
 The last term penalizes large neural network weights.
-Its first two terms measure the similarity between $f_{\theta}(s)$, the learned policy and value function, with the action and game outcome planned by the MCTS.
+Its first two terms measure the similarity between $f_{\theta}(s)$, the learned policy and value function, with the action and game outcome planned by the \gls{mcts}.
 The neural network is trained to fit the planned outcomes of the game.
 It stores a global solution that predicts the outcome of the game and the next move before they are actually observed.
 This is known as model-based \gls{rl}~\citep{sutton2018reinforcement}.
@@ -248,8 +248,8 @@ In contrast to AlphaZero, deep hedging~\citep{buehler2019deep} uses monte carlo 
 These simulations are conducted based on predefined stochastic asset models. 
 The parameters and structure of these models are specified in advance, dictating the behavior of the simulated asset prices.
 
-A common choice of $\rho$ is a CVaR.
-In practice, the neural network $f_{\theta}$ is trained to minimize the empirical CVaR over a batch of trajectories.
+A common choice of $\rho$ is a \gls{cvar}.
+In practice, the neural network $f_{\theta}$ is trained to minimize the empirical \gls{cvar} over a batch of trajectories.
 In other words, planning is done through $\rho$, which measures the performance of a hedging policy over a batch of complete trajectories.
 The neural network, representing the hedging policy, is trained using the data generated from these simulations. 
 The objective is to learn a strategy that minimizes a tail risk measure of the total present liability.
@@ -337,7 +337,7 @@ The policy is updated according to an objective function that reflects the advan
     \Lambda_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} 
 \end{align}
 where $\theta_{old}$ denotes the policy parameters at the previous iteration, $\epsilon$ is a clip range hyperparameter that controls the size of the policy update, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, and $\hat{A}^{\pi_{\theta}}(s_t, a_t)$ is an estimated advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$.
-In our implementation, the advantage function is estimated following the GAE method proposed by~\cite{schulman2015high}.
+In our implementation, the advantage function is estimated following the Generalized Advantage Estimation method proposed by~\cite{schulman2015high}.
 The policy is updated by performing gradient ascent with respect to the policy parameters $\theta$ to maximize the objective function, which is estimated by sampling from the environment and computing the empirical average of the objective function over the sampled trajectories.
 The first component in the objective function, $\Lambda_t(\theta) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a surrogate objective function that approximates the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$, and the second component, $\text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a clipped surrogate objective function that prevents large policy updates and ensures more stable training.
 The \gls{trpo} algorithm proposed by~\cite{schulman2015trust} uses a similar clipped surrogate objective function to ensure that the policy update does not deviate too far from the old policy, but \gls{ppo} simplifies the optimization problem by using a clipped surrogate objective function instead of a hard-coded constraint on the policy update.
@@ -521,7 +521,7 @@ The environment is designed to simulate the dynamics of the \gls{va} contract an
         $T$                 & 240       \\
         \bottomrule
     \end{tabular}
-    \caption{\gls{ppo} Hyperparameters and \gls{gmmb} Contract Specifications} 
+    \caption{Model hyperparameters and \gls{gmmb} contract specifications} 
     \label{tab3:hyperparameters}
 \end{table}
 
@@ -536,7 +536,7 @@ The underlying asset price $S_t$ is modeled as a \gls{gbm} with a drift rate $\m
 
 Figure~\ref{fig3:dh-transfers} illustrates the hedging performance of the deep hedging algorithm with \gls{tl} for hedging \gls{va} contracts with a \gls{gmmb} rider.
 The first deep hedging agent is directly trained on the Heston asset model, and the second deep hedging agent is trained with \gls{tl} from the \gls{gbm} model.
-The figure plot the 95\%-CVaR of hedging errors against training epochs for both agents.
+The figure plot the 95\%-\gls{cvar} of hedging errors against training epochs for both agents.
 The deep hedging agent with \gls{tl} outperforms the deep hedging agent trained on the Heston model in both mastery and generalization.
 The agent with \gls{tl} achieves a lower loss in the target domain and adapts more quickly to the new environment, indicating that the agent has learned a more robust hedging strategy that can be effectively applied to a more complex environment.
 
@@ -643,4 +643,5 @@ This method leverages the shared underlying structures between tasks, which can 
 The framework will also consider feature representation transfer, which aims at reusing learned representations of market dynamics and policyholder behaviors between tasks. 
 By capturing common patterns across different contracts and market models, the \gls{ppo} agent can more effectively generalize to new scenarios~\citep{bengio2012deep}.
 
-By addressing these objectives, the research aims at advancing the field of financial risk management through the development of adaptive and efficient hedging strategies for \gls{va} contracts. The integration of \gls{tl} into \gls{ppo} agents has the potential to substantially reduce computational costs and improve the robustness of hedging policies in dynamic market environments.
+By addressing these objectives, the research aims at advancing the field of financial risk management through the development of adaptive and efficient hedging strategies for \gls{va} contracts. 
+The integration of \gls{tl} into \gls{ppo} agents has the potential to substantially reduce computational costs and improve the robustness of hedging policies in dynamic market environments.

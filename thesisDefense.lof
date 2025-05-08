@@ -22,11 +22,11 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for neural network metamodels.}}{88}{figure.caption.37}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Percentage of correctly identified true tail scenarios by different metamodels.}}{90}{figure.caption.38}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Average $95\%$-CVaR estimates by different procedures. The right figure is a zoomed-in version of the left figure.}}{91}{figure.caption.39}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{94}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces QQ-plots between true losses (x-axis) and predicted losses (y-axis) for two LSTM metamodels.}}{95}{figure.caption.41}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Difference between Spearman and Pearson correlations for high-capacity LSTM metamodel.}}{97}{figure.caption.45}%
 \contentsline {figure}{\numberline {3.9}{\ignorespaces CVaR estimates of the single-stage procedure with metamodels.}}{98}{figure.caption.46}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Empirical convergence of CVaR for the single-stage procedure with LSTM metamodels.}}{100}{figure.caption.47}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{100}{figure.caption.48}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Empirical convergence of the single-stage procedure with a LSTM metamodel.}}{101}{figure.caption.48}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Metamodel performance on \gls {rsgbm} \gls {gmmb} with static lapse}}{118}{figure.caption.50}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Fine-tuned Metamodel performance on \gls {rsgbm} \gls {gmmb} with a dynamic lapse}}{119}{figure.caption.51}%
@@ -38,9 +38,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces \gls {ppo} Network Architectures}}{146}{figure.caption.59}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with \gls {tl}}}{150}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with \gls {tl}}}{149}{figure.caption.61}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent \gls {ppo} and deep hedging}}{150}{figure.caption.62}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard \gls {ppo} and recurrent \gls {ppo}}}{151}{figure.caption.63}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard \gls {ppo} and recurrent \gls {ppo}}}{150}{figure.caption.63}%
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent \gls {ppo} and delta hedging with different transaction costs}}{151}{figure.caption.64}%
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent \gls {ppo} with or without anchor}}{152}{figure.caption.65}%
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent \gls {ppo} with \gls {gmwb}}}{153}{figure.caption.66}%
