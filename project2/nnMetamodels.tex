@@ -14,7 +14,7 @@ Enormous research efforts have been spent to test and improve the robustness of 
 ~\cite{poole2014analyzing} show that injecting synthetic noise before and after hidden unit activations during training improves the performance of autoencoders.
 ~\cite{neelakantan2015adding} improve learning for \gls{dnn}s by injecting synthetic noise to the gradients during backpropagations.
 A branch of research has been devoted to understanding the resilience of neural network models to noise in training labels.
-For example,~\cite{luo2016understanding} show that adding synthetic label noise to the convolutional neural network (\gls{cnn}) can improve its ability to capture global features. 
+For example,~\cite{luo2016understanding} show that adding synthetic label noise to the \gls{cnn} can improve its ability to capture global features. 
 ~\cite{srivastava2014dropout} quantify the error tolerance by injecting synthetic label noise with a custom Boltzmann machine hardware.
 ~\cite{szegedy2013intriguing} find that neural networks are vulnerable to adversarial examples, and~\cite{goodfellow2014explaining} design an efficient method to generate such noisy examples to exploit the vulnerability to adversarial perturbations.
 ~\cite{carlini2017towards} design targeted attacks to training labels to test the robustness of neural networks. 
@@ -54,7 +54,7 @@ Instead of relying solely on real-data and splitting it into multiple subsets, w
 By controlling the simulation design parameters, such as the number of independent replications, we can control the quality and also the quantity of the training labels fed into the neural networks.
 In such a controlled environment, we obtain more clear-cut answers to the above fundamental questions.
 
-Estimating tail risk measures of portfolios of complex \gls{va}s usually requires nested simulation.
+Estimating tail risk measures of portfolios of complex \gls{va} contracts usually requires nested simulation.
 In the nested simulation, the outer simulation involves projecting scenarios of key risk factors under a $\mathbb{P}$ measure, while the inner simulations are used to value payoffs uder guarantees of varying complexity, under a $\mathbb{Q}$ measure.
 
 For insurers, large-scale nested simulations for assessing \gls{va} losses are generally computationally intensive; i.e., a large number of outer level simulations are needed to estimate extreme tails for calculations of tail risk measures, and a large number of inner simulations are also needed at each time step, because the embedded options are out of money. 
@@ -69,9 +69,9 @@ In Chapter~\ref{chap:project1}, the likelihood ratio approach is used to allocat
 Proxy models are tractable analytic functions or flexible empirical functions that are used to replace the inner simulation stage of a nested simulation.
 Empirical proxies may be intrinsic or extrinsic to the simulation process. Extrinsic proxy functions are selected to be close to the inner simulation values and therefore require detailed information about the payoffs that are evaluated in the inner simulation step. 
 Empirical proxies are constructed by using an initial pilot simulation to develop factors or functionals that can subsequently be used in place of the inner simulation. 
-A prominent expirical proxy method discussed in the literature is the least squares Monte Carlo method~\citep{longstaff2001valuing}.
+A prominent expirical proxy method discussed in the literature is the least squares \gls{mc} method~\citep{longstaff2001valuing}.
 In Chapter~\ref{chap:project1}, supervised learning models, including linear regression, \gls{knn}, and \gls{krr}, are used as proxy models for inner simulations.
-This chapter introduces a proxy model to reduce the computational requirements of inner simulations of \gls{va}s by replacing the inner simulation step of a nested simulation procedure. 
+This chapter introduces a proxy model to reduce the computational requirements of inner simulations of \gls{va} contracts by replacing the inner simulation step of a nested simulation procedure. 
 This proxy model is chosen to be a flexible empirical function, i.e., a \gls{dnn} metamodel.
 
 In our study, supervised learning metamodels are trained using data simulated from an initial pilot simulation.
@@ -84,7 +84,7 @@ The metamodel is trained using a set of simulated data, and it is used to predic
 The study of metamodeling is an active research area in the simulation literature, and using \gls{dnn}s as metamodels is a relatively new development.
 ~\cite{fonseca2003simulation} provide general guidelines for simulation metamodeling with neural networks,~\cite{lieu2022adaptive} use \gls{dnn}s as metamodels of a simulation model for a structural reliability analysis, and~\cite{salle2014efficient} show that neural network metamodels help achieve higher degree of prediction accuracy that other metamodels in approximating agent-based simulation models.
 A popular metamodel in nested simulation procedures is stochastic kriging.
-~\cite{liu2010stochastic} use stochastic kriging as a metamodel of Monte Carlo simulations to estimate the \gls{cvar} of a portfolio of derivative securities, and~\cite{gan2015valuation} use a stochastic kriging for an efficient valuation of large portfolios of \gls{va} contracts.
+~\cite{liu2010stochastic} use stochastic kriging as a metamodel of \gls{mc} simulations to estimate the \gls{cvar} of a portfolio of derivative securities, and~\cite{gan2015valuation} use a stochastic kriging for an efficient valuation of large portfolios of \gls{va} contracts.
 Other studies, such as ~\cite{broadie2015risk},~\cite{hong2017kernel}, and~\cite{zhang2022sample} use a regression, a kernel smoothing, and a likelihood ratio method, respectively as metamodels.
 Our study has three key distinctions over the existing ones:
 \begin{enumerate}
@@ -103,7 +103,7 @@ In this chapter, \gls{dnn} metamodels and \gls{dnn} models are used almost inter
 \end{itemize}
 
 The rest of this chapter is organized as follows.
-Section~\ref{sec2:problem-formulation} presents the problem settings for tail risk measures and dynamic hedging of \gls{va}s. 
+Section~\ref{sec2:problem-formulation} presents the problem settings for tail risk measures and dynamic hedging of \gls{va} contracts. 
 Section~\ref{sec2:metamodel2Stage} proposes an efficient two-stage nested simulation procedure that uses \gls{dnn}s as metamodels to help reduce a simulation budget by only performing computations on identified tail scenarios. 
 Section~\ref{sec2:metamodel1Stage} proposes a single-stage nested simulation procedure that estimates risk measures directly with metamodel predictions.
 Section~\ref{sec2:numerical} demonstrates the efficiency of \gls{dnn} metamodels and examines the error tolerance of two \gls{lstm} metamodels with different numbers of trainable parameters. 
@@ -111,7 +111,7 @@ Lastly, practical suggestions are provided for the choice of suitable metamodels
 
 \section{Problem Formulation} \label{sec2:problem-formulation}
 
-In this section we present notations, problem settings, and a simulation model for risk estimation for hedging errors of \gls{va}s.
+In this section we present notations, problem settings, and a simulation model for risk estimation for hedging errors of \gls{va} contracts.
 A main goal of this section is to showcase the complexity of the simulation model, which we use as a data generator to train \gls{dnn} metamodels (Section~\ref{sec2:metamodel2Stage} and Section~\ref{sec2:metamodel1Stage}).
 For readers who are interested in the examination of a neural network metamodel, it is sufficient to understand that our simulation model generates data with 240 features and 1 real-value label and our metamodels are generally applicable to any simulation model that generates data with similar characteristics.
 
@@ -123,7 +123,7 @@ Consider a loss random variable $L$ which losses and gains lie in the right and 
 For a given confidence level $\alpha\in [0,1]$, the $\alpha$-\gls{var} and $\alpha$-\gls{cvar} are defined in Equation~\eqref{eq1:var} and Equation~\eqref{eq1:cvar}, respectively.
 Tail risk measures such as \gls{var} and \gls{cvar} are widely used for setting a regulatory and economic capital, which is the amount of capital a financial institution holds to cover its risk.
 For example, European insurers set regulatory capital at $99.5\%$-\gls{var} according to Solvency II~\cite{eiopa2014underlying}.
-In Canada, the regulatory capital requirement for \gls{va}s is set based on \gls{cvar}s as prescribed in~\cite{osfi2017life}.
+In Canada, the regulatory capital requirement for \gls{va} contracts is set based on \gls{cvar}s as prescribed in~\cite{osfi2017life}.
 
 Let $L_1,L_2,\ldots,L_M$ be $M$ i.i.d. simulated losses of $L$ and let $L_{(1)}\leq L_{(2)}\leq \ldots\leq L_{(M)}$ be the ordered losses.
 For a given confidence level $\alpha$ (assume that $\alpha M$ is an integer for simplicity), $\alpha$-\gls{var} can be estimated by the sample quantile $\widehat{\VaR}_\alpha = L_{(\alpha M)}$. Also, $\alpha$-\gls{cvar} can be estimated by
@@ -305,7 +305,7 @@ Recall from Section~\ref{subsec:VApayout} that the stock's sample path, regardle
 For \gls{gmwb}, a standard nested simulation procedure to estimate the $\alpha$-\gls{cvar} of $L$ is described in Algorithm~\ref{alg2:standardProcedure} below.
 
 \begin{algorithm} 
-\caption{Standard Nested Simulation Procedure for Estimating CVaR for GMWB Hedging Losses}
+\caption{Standard Nested Simulation Procedure for Estimating CVaR for \gls{gmwb} Hedging Losses}
 \begin{algorithmic}[1] \label{alg2:standardProcedure}
     \STATE  For $i=1,\ldots,M$, simulate outer scenarios $\bS^{(i)} = (S_{1}^{(i)},\ldots,S_{T}^{(i)})$ under the real-world measure $\mathbb{P}$.
     \STATE  For $t=0$, simulate time-$0$ inner paths $\bStilde_{0}^{(j)} = (\Stilde_{1}^{(j)},\Stilde_{2}^{(j)},\ldots,\Stilde_{T}^{(j)})$, $j=1,\ldots,N$ under $\mathbb{Q}$, then estimate $V_0$ by $\Vhat_0 = \sum_{s=1}^{T} e^{-r(T-s)} [(I_s - F_s)^+- \eta_n F_s]$ and $\Deltahat_0 = \Delta_0(\Stilde_{1}^{(j)},\ldots,\Stilde_{T}^{(j)} | S_0)$.
@@ -323,7 +323,7 @@ We make four observations:
 \begin{itemize}
     \item   Each inner simulation is time-consuming, as it includes $T$ simulation experiments: one at each time $t=0,\ldots,T-1$,
     \item   After running inner simulations for $M$ scenarios, we obtain simulated data as feature-label pairs, $(\bS^{(i)}, \Lhat_i)$, $i=1,\ldots,M$; the feature vector $\bS$ is $T$ dimensional.
-    \item   $\Lhat_i^{MC}$ is a standard Monte Carlo estimator of the true loss for scenario $\bS^{(i)}$. 
+    \item   $\Lhat_i^{MC}$ is a standard \gls{mc} estimator of the true loss for scenario $\bS^{(i)}$. 
     It is an unbiased estimator and its variance is inversely proportional to the number of inner replications $N$. 
     As $N$ approaches infinity, $\Lhat_i^{MC}$ converges to the true loss $L_i$, and
     \item   Most importantly, when estimating tail risk measures such as $\alpha$-\gls{cvar}, only a small number of estimated losses, which is those associated with the set of tail scenarios $\widehat{\tail}_{k}$ are used in the estimator.
@@ -433,7 +433,7 @@ We consider estimating the $95\%$ \gls{cvar} of the hedging loss of a \gls{gmwb}
 The \gls{va} contracts have a 20-year maturity and are delta-hedged with monthly rebalancing, i.e., $T=240$ rebalancing periods.
 The gross and net management fees are $\eta_g = 0.2\%$ and $\eta_n=0.1\%$, respectively.
 The withdrawal rate for \gls{gmwb} is $0.375\%$ per month.
-To make our examples more realistic, the \gls{va}s are also subject to a dynamic lapse model with the following key features~\citep{naic2021}:
+To make our examples more realistic, the \gls{va} contracts are also subject to a dynamic lapse model with the following key features~\citep{naic2021}:
 \begin{enumerate}
     \item When a policyholder lapses, both the fund value ($F$) and guarantee value ($G$) are reduced proportionally.
     \item The monthly lapse rate from time $t$ to $t + 1$, denoted as ${}_{\frac{1}{12}}q^l_{x+\frac{t}{12}}$, is given by:
@@ -489,7 +489,7 @@ In our experiments, the standard nested simulation procedure is mainly used in t
 
 Five metamodels are considered in this experiment: \gls{mlr}, \gls{qpr} without interaction terms, \gls{fnn}, \gls{rnn}, and \gls{lstm} network.
 \gls{mlr} and \gls{qpr} are two common metamodels in the simulation literature, and their implemention is straightfoward in our simulation setting.
-\gls{fnn} is a generic neural network while \gls{rnn} and \gls{lstm} are specialized models to accommodate the sequential structure of our time-series features.
+\gls{fnn} (Equation~\refeq{eq:fnn}) is a generic neural network while \gls{rnn} (Equation~\refeq{eq:rnn}) and \gls{lstm} (Equation~\refeq{eq:lstm}) are specialized models to accommodate the sequential structure of our time-series features.
 A $\tanh$ activation function is used for \gls{rnn} and \gls{lstm} layers, and a ReLU activation function is used for the fully-connected layers.
 All neural network metamodels are trained by the Adam optimizer~\citep{kingma2014adam} with an initial learning rate of $0.001$ and an exponential learning rate decay schedule.
 All \gls{dnn} metamodels are trained with a dropout rate of $10\%$.
@@ -508,6 +508,7 @@ Our \gls{rnn} and \gls{lstm} networks have three hidden layers.
 They contain similar numbers of neurons as the \gls{fnn} but have deeper network structures.
 For \gls{rnn}, two of its hidden layers are recurrent layers that capture the temporal dependency in the feature, and its last hidden layer is a standard feedforward layer that transforms the previous hidden states into a 32-dimension vector for target prediction.
 Our \gls{lstm} has the same architecture as the \gls{rnn} but with \gls{lstm} cells in place of \gls{rnn} cells.
+.
 
 % Fill this table with new results
 \begin{table}[ht!]
@@ -772,7 +773,7 @@ This is because the two-stage procedure's \gls{cvar} estimates are based on the 
 
 For financial and actuarial applications, regulators and practitioners are often concerned about the robustness of \gls{dnn} models to noise in training labels, which hinders the adoption of these models in practice.
 Since the true relationship is unknown in real-world applications, most deep learning literature illustrates the impact of noise by artificially injecting noise into real-world datasets, which is already noisy prior to the injection.
-In our numerical experiments, we are able to use Monte Carlo simulation to generate a true dataset that approximates the true hedging losses with a high degree of precision, and, as a result, we are able to explore the important question of whether deep learning models are indeed capable of learning the true feature-label relationship from noisy training labels.
+In our numerical experiments, we are able to use \gls{mc} simulation to generate a true dataset that approximates the true hedging losses with a high degree of precision, and, as a result, we are able to explore the important question of whether deep learning models are indeed capable of learning the true feature-label relationship from noisy training labels.
 In this section, we treat the standard nested simulation procedure as a data generator and examine the noise tolerance of \gls{lstm} metamodels by varying the numbers of the outer scenarios ($M$) and the inner replications ($N$) used to generate the training samples.
 
 The number of outer scenarios corresponds to the number of feature-label pairs in the training dataset, and the number of inner replications controls the noise level in the training labels.
@@ -1051,11 +1052,11 @@ When new outer scenarios are generated, a trained \gls{lstm} metamodel can disti
 
 Our novel experiment design allows us to examine the impact of label noise on \gls{dnn} models.
 We find that a \gls{dnn} with a suitable architecture is able to cut through the noise in training labels and learn the true complex dynamic hedging model.
-By showcasing the resilience of these models, our study aims at encouraging regulatory bodies to recognize the value and applicability of deep learning metamodels in financial risk management, and it provides informed suggestions and guidance for the incorporation and oversight of advanced deep learning metamodel in Monte Carlo Simulation in financial applications.
+By showcasing the resilience of these models, our study aims at encouraging regulatory bodies to recognize the value and applicability of deep learning metamodels in financial risk management, and it provides informed suggestions and guidance for the incorporation and oversight of advanced deep learning metamodel in \gls{mc} Simulation in financial applications.
 Our findings are particularly insightful in this context.
 
-In our numerical experiments, a \gls{lstm} metamodel is resilient to a high level of noise in training labels and is able to make accurate predictions. 
-This is an encouraging evidence that \gls{dnn} metamodels can be used to improve the efficiency of Monte Carlo simulation for quantitative risk management tasks that require a computational-expensive simulation procedure.
+In our numerical experiments, a \gls{lstm} metamodel is resilient to a moderate level of noise in training labels and is able to make accurate predictions. 
+This is an encouraging evidence that \gls{dnn} metamodels can be used to improve the efficiency of \gls{mc} simulation for quantitative risk management tasks that require a computational-expensive simulation procedure.
 We propose two nested simulation procedures that use \gls{dnn} metamodels to estimate risk measures of the hedging loss of a \gls{va} contract.
 For estimating tail risk measures, our two-stage procedure is designed to address regulatory concerns by avoiding the direct use of metamodel predictions but instead by using them to identify the potential tail scenarios.
 An extensive inner simulation is performed in this chapter to achieve a high level of accuracy on the predicted tail scenarios.
@@ -1064,7 +1065,7 @@ However, the safety margin in the two-stage procedure is a user's choice and is 
 Our single-stage procedure uses the metamodel predictions to estimate the risk measure directly.
 It is more efficient and can be extended to estimate risk measures that require knowledge of the entire loss distribution.
 Our numerical experiments demonstrate that the proposed single-stage procedure with \gls{dnn} metamodels result in further computational savings over our two-stage procedure. 
-Furthermore, our numerical results provide evidences for adopting \gls{dnn} metamodels in Monte Carlo simulation for risk management tasks.
+Furthermore, our numerical results provide evidences for adopting \gls{dnn} metamodels in \gls{mc} simulation for risk management tasks.
 Through our systematic empirical study of the noise tolerance of \gls{dnn} metamodels, we address regulatory concerns by showing that a \gls{lstm} metamodel with moderate model capacity is resilient to a high level of noise in training labels and is able to make accurate predictions.
 A possible future research direction is to apply \gls{dnn} metamodels in other financial risk management tasks that requires complex nested simulation with high-dimensional outer scenarios.
 Another future research direction is to investigate the impact of label noise on other deep learning models, such as convolutional neural networks and transformer models, and to compare their performance with \gls{lstm} metamodels in nested simulation procedures. 

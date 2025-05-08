@@ -1,10 +1,10 @@
 \chapter{Future Work: Deep Hedging Variable Annuities with Transfer Learning} \label{chap:futureWork}
 
-In the evolving landscape of financial markets, insurance products such as VAs have gained a substantial amount of interest due to their ability to provide both investment growth and guaranteed benefits. 
+In the evolving landscape of financial markets, insurance products such as \gls{va} contracts have gained a substantial amount of interest due to their ability to provide both investment growth and guaranteed benefits. 
 Managing the risks associated with these products, especially in volatile market conditions, is a complex task that demands sophisticated financial modeling techniques. 
-\gls{rl} has emerged as a powerful tool for addressing such complexities. With the recent advancement in deep learning, \gls{dnn} architectures have been successfully applied to \gls{rl} problems, leading to the development of deep reinforcement learning (\gls{drl}) algorithms. 
+\gls{rl} has emerged as a powerful tool for addressing such complexities. With the recent advancement in deep learning, \gls{dnn} architectures have been successfully applied to \gls{rl} problems, leading to the development of \gls{drl} algorithms. 
 These algorithms have demonstrated remarkable success decision-making tasks that must be optimized over time. 
-In the context of managing VAs, \gls{drl} has shown promise in optimizing hedging strategies where long-term financial and policyholder decisions interact dynamically with changing market conditions.
+In the context of managing \gls{va} contracts, \gls{drl} has shown promise in optimizing hedging strategies where long-term financial and policyholder decisions interact dynamically with changing market conditions.
 
 Reinforcement learning is a branch of machine learning in which an agent learns to make sequential decisions by interacting with its environment. 
 Through trial and error, the agent receives feedback in the form of rewards or penalties, allowing it to learn an optimal policy for achieving long-term goals. 
@@ -37,12 +37,12 @@ By integrating the transfer learning with the existing \gls{drl} frameworks, we 
 This approach offers a more robust and practical solution for managing \gls{va} contracts in dynamic and volatile financial markets.
 
 The rest of the chapter is organized as follows: 
-Section~\ref{sec:MDP} introduces the mathematical formulation for hedging VAs and defines the key components of the framework.
-Section~\ref{sec:RLAlgorithms} provides an overview of existing \gls{rl} algorithms and their limitations in the context of hedging VAs.
-Section~\ref{sec:PPO} introduces the proximal policy optimization algorithm and its application to the hedging of VAs.
+Section~\ref{sec:MDP} introduces the mathematical formulation for hedging \gls{va} contracts and defines the key components of the framework.
+Section~\ref{sec:RLAlgorithms} provides an overview of existing \gls{rl} algorithms and their limitations in the context of hedging \gls{va} contracts.
+Section~\ref{sec:PPO} introduces the proximal policy optimization algorithm and its application to the hedging of \gls{va} contracts.
 Finally, Section~\ref{sec:FutureDirections} concludes the chapter and discusses future research directions.
 
-\section{Markov Decision Process for Hedging VAs} \label{sec:MDP}
+\section{Markov Decision Process for Hedging VA Contracts} \label{sec:MDP}
 
 A \gls{mdp} provides a mathematical framework for modeling decision-making in stochastic environments over time. 
 By formulating the \gls{va} hedging problem as an \gls{mdp}, we can utilize RLalgorithms to learn optimal hedging policies directly from data.
@@ -58,8 +58,8 @@ An \gls{mdp} is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \
 
 The objective in an \gls{mdp} is to find a policy, $\pi: \mathcal{S} \rightarrow \mathbb{P}(\mathcal{A})$, that maximizes the cumulative reward over time.
 A \gls{mdp} provides a mathematical framework for solving sequential decision-making tasks in an enviornment where outcomes are partly random and partly under the control of a hedging agent. 
-For hedging VAs, the asset dynamics and the mortality model are not controlled by the agent, but the agent controls the cumulative reward by deciding on the hedging weights.
-In this section, we reformulate the hedging enviornment of VAs from Section~\ref{subsec:VApayout} as an \gls{mdp} and define the key components of the \gls{mdp}.
+For hedging \gls{va} contracts, the asset dynamics and the mortality model are not controlled by the agent, but the agent controls the cumulative reward by deciding on the hedging weights.
+In this section, we reformulate the hedging enviornment of \gls{va} contracts from Section~\ref{subsec:VApayout} as an \gls{mdp} and define the key components of the \gls{mdp}.
 
 \subsection{Hedging Environment of Variable Annuities} \label{subsec:VASimulation}
 
@@ -81,7 +81,15 @@ At each time $t=1,\ldots,T$, the following events take place in the following or
         \begin{equation} \label{eq3:lapse}
             q_t = q_t^B \cdot \text{clip} (M_q (\frac{G_{t-1}}{F_{t-1}} - D_q), L_q, U_q),
         \end{equation}
-    where $q_t^B$ is the base lapse rate, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners’ (NAIC) Valuation Manual 21~\citep{naic2021}.
+    where $q_t^B$ is the base lapse rate, $\text{clip}(x, a, b)$ is a function that clips the value of $x$ to be within the range $[a, b]$, i.e.,
+    $$
+    \text{clip}(x, a, b) = \begin{cases}
+        a, & \text{if } x < a \\
+        x, & \text{if } a \leq x \leq b \\
+        b, & \text{if } x > b,
+    \end{cases}
+    $$
+    and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners’ (NAIC) Valuation Manual 21~\citep{naic2021}.
     \item The sub-account value changes according to the growth of the underlying stock and the (gross) management fee is deducted. That is, 
         \begin{equation} \label{eq3:subaccount}
             F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g)\cdot(1-q_t),
@@ -129,7 +137,7 @@ L = \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t
 \end{equation}
 The \gls{gmwb} payout is implicitly included in $F_t\eta_n$.
 Both Equation~\eqref{eq3:lossGMMB} and Equation~\eqref{eq3:lossGMWB} neglect the transaction cost to liquidate the hedge portfolio at maturity.
-The discrete-time hedging problem of VAs can be conveniently formulated as an \gls{mdp}, where the states, actions, transition probabilities, policies, and rewards are defined as follows.
+The discrete-time hedging problem of \gls{va} contracts can be conveniently formulated as an \gls{mdp}, where the states, actions, transition probabilities, policies, and rewards are defined as follows.
 Different from the formulation in Chapter~\ref{chap:project2}, the hedging weight $\Delta_0, \ldots, \Delta_{T-1}$ are not estimated from inner simulation steps but are directly controlled by a \gls{drl} agent.
 Thus, the hedging weight $\Delta_t$ at time $t$ is estimated using a neural network whose input is the state $\mathbf{s}_t$ and output is $\Delta_t$.
 
@@ -251,7 +259,7 @@ These models describe how asset prices evolve over time, and more importantly, t
 While model-based approaches can be powerful when the model accurately reflects reality, they are susceptible to model risk, i.e., the risk that the chosen model is incorrect or incomplete. 
 It can lead to suboptimal hedging strategies if the real market deviates from the model assumptions.
 
-For hedging VAs,~\cite{xu2020variable} propose a deep hedging algorithm that falls into this category of model-based \gls{rl}.
+For hedging \gls{va} contracts,~\cite{xu2020variable} propose a deep hedging algorithm that falls into this category of model-based \gls{rl}.
 A cost function is defined to minimize the expected shortfall of the total present liability.
 ~\cite{carbonneau2021deep} extends the model-based approach to hedging long-term financial derivatives and compares the performance of deep hedging strategies trained with different cost functions.
 In deep hedging~\citep{buehler2019deep} the state space of the \gls{mdp} contains the previous hedging weight.
@@ -269,11 +277,11 @@ In contrast, a model-free approach does not require a explicit design for differ
 \subsection{Model-Free RL for Hedging}
     
 In a model-free reinforcement learning approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
-For hedging VAs, the agent does not have access to a planning algorithm or the underlying stochastic asset model, and it must learn the optimal policy by directly interacting with the environment.
+For hedging \gls{va} contracts, the agent does not have access to a planning algorithm or the underlying stochastic asset model, and it must learn the optimal policy by directly interacting with the environment.
 
 Model-free \gls{rl} algorithms gain its popularity in robotics tasks, where transition probabilities in the environment are unknown and can be affected by the agent's actions.
 In the context of hedging, existing studies use transaction costs as a function of the hedging weights, which makes the transition probabilities independent on the actions.
-However, the trade size can affect the asset price in a real environment~\citep{hasbrouck1991measuring}, which makes the model-free approach a promising direction for hedging VAs in the real market.
+However, the trade size can affect the asset price in a real environment~\citep{hasbrouck1991measuring}, which makes the model-free approach a promising direction for hedging \gls{va} contracts in the real market.
 
 Boardly speaking, model-free \gls{rl} can be categorized into two types: value-based \gls{rl} and policy-based \gls{rl}.
 Value-based approaches learn the value function directly from the data and derive the policy from the learned value function. 
@@ -315,11 +323,11 @@ The policy is updated by performing gradient ascent with respect to the policy p
 
 Representative algorithms include the \gls{trpo} algorithm proposed by~\cite{schulman2015trust} and the \gls{ppo} algorithm proposed by~\cite{schulman2017proximal}.
 ~\cite{du2020deep} show that the \gls{ppo} algorithm is more sample efficient and stable than the value-based approaches in training agents to hedge financial derivatives.
-The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the \gls{ppo} algorithm to hedge \gls{gmmb} with a GMDB rider under the Black-Scholes framework.
+The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the \gls{ppo} algorithm to hedge \gls{gmmb} with a \gls{gmdb} rider under the Black-Scholes framework.
 However, information of the underlying risk factors is leaked to the agent, which makes their study pseudo-model-free.
-To further improve the risk management of VAs under rough volatility models, we propose a model-free deep reinforcement learning approach to hedge VAs without explicit or implicit knowledge of the underlying risk factors.
+To further improve the risk management of \gls{va} contracts under rough volatility models, we propose a model-free deep reinforcement learning approach to hedge \gls{va} contracts without explicit or implicit knowledge of the underlying risk factors.
 
-\section{Hedging VAs with a PPO Agent} \label{sec:PPO}
+\section{Hedging VA contracts with a PPO Agent} \label{sec:PPO}
 In a hedging problem, an insurer aims at finding a policy $\pi$ that maximizes the expected reward over time.
 In a policy-based \gls{rl} approach like the \gls{ppo}, both the policy and the value function are parameterized by deep neural networks.
 We denote the policy by $\pi_{\theta}$ and the value function by $V_{\phi}$, where $\theta$ and $\phi$ are the parameters of the value network and the policy network, respectively.
@@ -356,16 +364,16 @@ For a in-depth discussion on the implementation details of both \gls{trpo} and \
     \end{algorithmic}
 \end{algorithm}
 
-Algorithm~\ref{alg3:ppoHedging} outlines the \gls{ppo} algorithm for training an agent to hedge VAs.
+Algorithm~\ref{alg3:ppoHedging} outlines the \gls{ppo} algorithm for training an agent to hedge \gls{va} contracts.
 At each iteration $k$, the agent collects a set of trajectories $\mathcal{D}_k$ by interacting with the environment (Section~\ref{subsec:VASimulation}) with the current policy $\pi_{\theta_k}$.
 The agent then computes the rewards $\hat{R}_t$ for each trajectory in $\mathcal{D}_k$ and estimates the advantage function with $\hat{A}_{\pi_{\theta_k}}(s_t, a_t)$ using the value function $V_{\phi_k}$.
 The policy parameters $\theta_{k+1}$ are updated by performing gradient ascent with respect to the policy parameters to maximize the clipped surrogate objective function.
 The value function parameters $\phi_{k+1}$ are updated by minimizing the mean squared error between the predicted value and the actual collected reward.
-The agent iterates this process until convergence to learn an optimal policy for hedging VAs.
+The agent iterates this process until convergence to learn an optimal policy for hedging \gls{va} contracts.
 
 \subsection{Accounting for Non-Markovian Dynamics}
 
-In the context of hedging VAs, the state space is partially observed.
+In the context of hedging \gls{va} contracts, the state space is partially observed.
 The agent does not have access to the contract specifications and the underlying risk factors.
 Furthermore, a rough volatility model introduces non-Markovian dynamics, i.e., the future state of the system depends on the entire history of the system.
 To address the non-Markovian dynamics, an \gls{lstm} component is added to the state representation $\mathbf{s}_t$ to capture the temporal dependencies in the data.
@@ -373,15 +381,24 @@ This approach is known as recurrent \gls{ppo}~\citep{ni2021recurrent}.
 Let $h_t$ be the hidden state of the \gls{lstm} at time $t$.
 The state representation $\mathbf{s}_t$ is fed into the \gls{lstm} at each time step to update the hidden state $h_t$.
 \begin{equation} \label{eq3:stateRNN}
-    \mathbf{s}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}), \quad h_t = \text{\gls{lstm}}(\mathbf{s}_t, h_{t-1})
+    \mathbf{s}_t = (S_t, F_t, G_t, \tau, \Delta_{t-1}), \quad h_t = \text{LSTM}(\mathbf{s}_t, h_{t-1}),
 \end{equation}
-
+where 
+\begin{align} 
+    h_t &= o_t \odot \tanh(c_t), \nonumber \\
+    c_t &= f_t \odot c_{t-1} + i_t \odot g_t, \nonumber \\
+    i_t &= a(W_i \mathbf{s}_t + U_i h_{t-1} + b_i), \nonumber \\
+    f_t &= a(W_f \mathbf{s}_t + U_f h_{t-1} + b_f), \nonumber \\
+    o_t &= a(W_o \mathbf{s}_t + U_o h_{t-1} + b_o), \nonumber \\
+    g_t &= a(W_g \mathbf{s}_t + U_g h_{t-1} + b_g), 
+\end{align}
 In a \gls{lstm}, the cell state $c_t$ stores a representation of historical information up to time $t$.
 It is updated at each time step by a forget gate $f_t$, an input gate $i_t$, and an output gate $o_t$.
+Equation~\ref{eq:lstm} provides a general intoduction to \gls{lstm} for a generic time series input $x_t$.
 
 In a recurrent \gls{ppo} with \gls{lstm}, the policy and reward function remain the same but with the new state representation in Equation~\eqref{eq3:stateRNN}.
-Instead of following the standard \gls{ppo} algorithm, the agent uses the recurrent \gls{ppo} algorithm to learn an optimal policy for hedging VAs.
-Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the standard \gls{ppo} and the recurrent \gls{ppo} with \gls{lstm}, and Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent \gls{ppo} algorithm and for training an agent to hedge VAs with non-Markovian dynamics.
+Instead of following the standard \gls{ppo} algorithm, the agent uses the recurrent \gls{ppo} algorithm to learn an optimal policy for hedging \gls{va} contracts.
+Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the standard \gls{ppo} and the recurrent \gls{ppo} with \gls{lstm}, and Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent \gls{ppo} algorithm and for training an agent to hedge \gls{va} contracts with non-Markovian dynamics.
 
 \begin{algorithm}
     \caption{Recurrent \gls{ppo} with \gls{lstm} for Hedging Variable Annuities} 
@@ -425,19 +442,19 @@ Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the st
 The recurrent \gls{ppo} algorithm is similar to the standard \gls{ppo} algorithm, but it includes an \gls{lstm} component to capture the temporal dependencies in the data.
 However, the sequantial nature of the \gls{lstm} is not suitable for a parallel computation, which slows down the training process.
 
-\section{Transfer Learning for Hedging VAs} \label{sec:TransferLearning}
+\section{Transfer Learning for Hedging VA contracts} \label{sec:TransferLearning}
 
 In the context of deep hedging, various research has been conducted to improve the hedging strategies on real-world data by leveraging knowledge from simulated data.
 Most of the research uses the offline-online learning approach, where the hedging strategies are first trained with simulation data, but updated in real-time based on new market information and continuous learning to adapt to changing market dynamics.
 The most relevant paper to our study is~\cite{xiao2021optimal}, which use policy gradient algorithms to train hedging strategies for European options with simulation data from Heston model and then updated in real-time hedging S\&P 500 index options.
 To the best of our knowledge, no research has been conducted to improve the hedging strategies with the state-of-the-art transfer learning techniques.
-This section introduces some transfer learning techniques that are relevant to our task of hedging VAs.
+This section introduces some transfer learning techniques that are relevant to our task of hedging \gls{va} contracts.
 
 \subsection{Reward Shaping}
 
-In the context of hedging VAs using deep reinforcement learning and transfer learning, reward shaping becomes a crucial technique. 
+In the context of hedging \gls{va} contracts using deep reinforcement learning and transfer learning, reward shaping becomes a crucial technique. 
 It involves modifying the reward function in the target domain to incorporate additional guidance, which often leads to more efficient learning and a better performance.
-This technique can be particularly useful for managing the complex risks associated with VAs, as it can guide the learning process towards strategies that are more effective in hedging these products.
+This technique can be particularly useful for managing the complex risks associated with \gls{va} contracts, as it can guide the learning process towards strategies that are more effective in hedging these products.
 
 One way to implement reward shaping in this context is by introducing auxiliary rewards that reflect the performance of hedging strategies learned from the source domains.
 Reward shaping learns an auxiliary reward function $\mathcal{R}_s: \mathcal{S} \times \mathcal{A} \times \mathcal{S} \rightarrow \mathbb{R}$ from the source domains.
@@ -477,7 +494,7 @@ Some common metrics for evaluating generalization include:
 
 \section{Numerical Experiments} \label{sec:Experiments}
 
-We present a numerical experiment to demonstrate the effectiveness of the model-free \gls{ppo} algorithm for hedging VAs with transaction costs.
+We present a numerical experiment to demonstrate the effectiveness of the model-free \gls{ppo} algorithm for hedging \gls{va} contracts with transaction costs.
 We consider a \gls{va} contract with a maturity of $T=240$ months and a \gls{gmmb} rider with a simulation environment described in Section~\ref{subsec:VASimulation}.
 The simulation enviornment is implemented in Python using the OpenAI Gym framework~\citep{brockman2016openai}, and the neural networks are programmed using the PyTorch library~\citep{paszke2019pytorch}.
 The environment is designed to simulate the dynamics of the \gls{va} contract and provide the agent with the current state of the \gls{va} with the contract specifications and the financial market information described in Table~\ref{tab3:hyperparameters}.
@@ -511,7 +528,7 @@ The underlying asset price $S_t$ is modeled as a \gls{gbm} with a drift rate $\m
     \label{fig3:dh-transfers}
 \end{figure}
 
-Figure~\ref{fig3:dh-transfers} illustrates the hedging performance of the deep hedging algorithm with transfer learning for hedging VAs with a \gls{gmmb} rider.
+Figure~\ref{fig3:dh-transfers} illustrates the hedging performance of the deep hedging algorithm with transfer learning for hedging \gls{va} contracts with a \gls{gmmb} rider.
 The first deep hedging agent is directly trained on the Heston asset model, and the second deep hedging agent is trained with transfer learning from the \gls{gbm} model.
 The figure plot the 95\%-CVaR of hedging errors against training epochs for both agents.
 The deep hedging agent with transfer learning outperforms the deep hedging agent trained on the Heston model in both mastery and generalization.
@@ -534,7 +551,7 @@ The performance of the agent is evaluated based on the average reward over an in
     \label{fig3:ppo_dh}
 \end{figure}
 
-This experiment compares the hedging performance of the recurrent \gls{ppo} agent with \gls{lstm} and the deep hedging algorithm proposed by~\cite{buehler2019deep} for hedging VAs with a \gls{gmmb} rider.
+This experiment compares the hedging performance of the recurrent \gls{ppo} agent with \gls{lstm} and the deep hedging algorithm proposed by~\cite{buehler2019deep} for hedging \gls{va} contracts with a \gls{gmmb} rider.
 The experiment is conducted with the same amount ofsimulation budget.
 
 \begin{figure}[ht!]
@@ -552,7 +569,7 @@ The experiment is conducted with the same amount ofsimulation budget.
     \label{fig3:ppo_result}
 \end{figure}
 
-Figure~\ref{fig3:ppo_result} illustrates the hedging performance of the standard \gls{ppo} and the recurrent \gls{ppo} with \gls{lstm} for hedging VAs with transaction costs $C=0.005$.
+Figure~\ref{fig3:ppo_result} illustrates the hedging performance of the standard \gls{ppo} and the recurrent \gls{ppo} with \gls{lstm} for hedging \gls{va} contracts with transaction costs $C=0.005$.
 The figures show the distributions of the hedging errors incurred by the agents over the $10^3$ test episodes for the \gls{gbm} and the \gls{rsgbm} asset models.
 For both asset models, the recurrent \gls{ppo} outperforms the standard \gls{ppo} in terms of hedging performance.
 For the regime-switching \gls{gbm}, the 95\%-VaR of hedging errors of the recurrent \gls{ppo} and the standard \gls{ppo} are $136.24$ and $147.14$, respectively.
@@ -598,7 +615,7 @@ The results show that the agent with the model information does not outperform t
     \label{fig3:ppo_GMWB}
 \end{figure}
 
-Figure~\ref{fig3:ppo_GMWB} illustrates the hedging performance of the recurrent \gls{ppo} agent for hedging VAs with a \gls{gmwb} rider.
+Figure~\ref{fig3:ppo_GMWB} illustrates the hedging performance of the recurrent \gls{ppo} agent for hedging \gls{va} contracts with a \gls{gmwb} rider.
 The experiment is conducted with the same hyperparameters as the experiment with the \gls{gmmb} rider.
 Unlike the \gls{gmmb} rider, the \gls{ppo} agent struggles to learn an optimal hedging strategy for the \gls{va} with a \gls{gmwb} rider.
 The hedging errors of the \gls{ppo} agent are more dispersed, indicating that more training episodes are needed to achieve a satisfactory hedging performance.

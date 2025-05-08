@@ -6,14 +6,13 @@ Risk management is a key component of modern financial systems.
 Successful risk management practice can enhance financial stability and resilience for individual companies and for the financial system as well.
 \gls{va} contracts are a popular type of complex insurance product that is linked to the performance of underlying assets.
 They provide a guaranteed minimum income benefit to the policyholder regardless of the performance of the underlying assets.
-Advanced Monte Carlo simulation techniques, particularly nested simulation procedures, become indispensable for risk assessment of such products.
-In contrast to finite-difference methods, a Monte Carlo simulation scheme is more flexible and can be easily adapted to model tail risk with a rule-based design.
-~\cite{glasserman2004monte} provide a comprehensive overview of Monte Carlo simulation methods in financial engineering and risk management applications.
+Advanced \gls{mc} simulation techniques, particularly nested simulation procedures, become indispensable for risk assessment of such products.
+In contrast to finite-difference methods, a \gls{mc} simulation scheme is more flexible and can be easily adapted to model tail risk with a rule-based design. ~\cite{glasserman2004monte} provide a comprehensive overview of \gls{mc} simulation methods in financial engineering and risk management applications.
 In this thesis, we focus on building and analyzing nested simulation procedures for risk management applications of financial derivatives and insurance products.
 Nested simulation, also known as nested stochastic modeling and stochastic-on-stochastic modeling, becomes a necessary tool when stochastic simulation of a parameter of interest is contingent on another quantity to be determined stochastically.
 In the context of financial engineering, nested simulation is used to model the tail risk of a contract whose payoff depends on a set of underlying risk factors.
 For example, estimating the value of an exotic option over a risk horizon requires simulation given a realization of the underlying assets over that horizon.
-A standard nested simulation procedure consists of two levels of simulation: the outer-level simulation generates the underlying risk factors, while the inner-level simulation estimates the value of interest with the inner sample mean from another level of Monte Carlo simulation.
+A standard nested simulation procedure consists of two levels of simulation: the outer-level simulation generates the underlying risk factors, while the inner-level simulation estimates the value of interest with the inner sample mean from another level of \gls{mc} simulation.
 This nested structure allows for accurate estimation given sufficient computational resources, but it also introduces additional complexity in the simulation design and implementation.
 Furthermore, in real-world applications, the computational burden of a nested simulation can be prohibitive.
 The number of inner simulations required to achieve a desired level of accuracy for each outer scenario can be large.
@@ -25,7 +24,7 @@ This thesis addresses two key problems that necessitate nested simulation:
     \item estimating the risk of a portfolio of financial options and 
     \item dynamic hedging of \gls{va} contracts with a delta hedging strategy.
 \end{itemize}
-Risk management of VAs is a challenging problem due to the complex interactions between the policyholder's behavior and the financial market dynamics.
+Risk management of \gls{va} contracts is a challenging problem due to the complex interactions between the policyholder's behavior and the financial market dynamics.
 We focus mainly on the estimation of tail risk measures of \gls{va} contract losses using metamodel-based nested simulation procedures.
 This thesis consists of four chapters.
 Chapter \ref{chap:project1} summarizes theoretical convergence results of several state-of-the-art single-period nested simulation procedures under the same analytical framework.
@@ -47,15 +46,15 @@ Chapter~\ref{chap:futureWork} explores future applications of deep reinforcement
 
 \gls{va} contracts are index-linked insurance products that offer policyholders the upside potential of equity markets while providing guarantees against downside risk.
 These products have gained a substantial amount of interest as they address the needs of individuals seeking both wealth accumulation and financial security, especially in the context of retirement planning.
-The key feature of VAs is their embedded guarantees, which ensure a specified minimum benefit regardless of market performance.
+The key feature of \gls{va} contracts is their embedded guarantees, which ensure a specified minimum benefit regardless of market performance.
 Two \gls{va} contracts that are most relevant to this thesis are \gls{gmmb} and \gls{gmwb}.
 The \gls{gmmb} guarantees that at the maturity of the contract, the policyholder will receive no less than the initial investment or a predetermined minimum amount.
 The \gls{gmwb} allows policyholders to withdraw a specified percentage of their benefit base each period during the contract horizon~\citep{hardy2003investment}.
-While these guarantees make VAs more attractive to consumers by offering protection against market downturns and ensuring income stability, they also introduce significant financial risks for insurers.
+While these guarantees make \gls{va} contracts more attractive to consumers by offering protection against market downturns and ensuring income stability, they also introduce significant financial risks for insurers.
 The embedded options within \gls{gmmb} and \gls{gmwb} expose insurers to market risk, longevity risk, and policyholder behavior risk.
 Therefore, an effective management of these risks is crucial for insurers to maintain solvency and meet regulatory capital requirements.
 
-One of the primary risk management strategies employed by insurers to mitigate the financial risks associated with VAs is dynamic hedging.
+One of the primary risk management strategies employed by insurers to mitigate the financial risks associated with \gls{va} contracts is dynamic hedging.
 Dynamic hedging involves frequent adjustments to a portfolio of financial instruments to offset changes in guarantee values due to market movements~\citep{hull2016options}.
 This strategy aims to neutralize the insurer's liability sensitivity to market fluctuations by constructing a hedging portfolio that replicates the guarantees' cash flows.
 However, dynamic hedging introduces complexity in estimating the insurer's overall risk exposure.
@@ -73,10 +72,10 @@ To address this challenge, metamodeling techniques can be employed to approximat
 \section{Metamodeling for Monte Carlo Simulation}
 
 Metamodeling, or surrogate modeling, approximates complex simulation models with simpler, computationally efficient models.
-In Monte Carlo simulations, metamodels reduce computational costs by approximating simulation outputs based on input variables~\citep{kleijnen2018design}.
-This section introduces metamodeling for a Monte Carlo simulation, elaborates on its methodologies, and highlights its importance in practical applications.
+In \gls{mc} simulations, metamodels reduce computational costs by approximating simulation outputs based on input variables~\citep{kleijnen2018design}.
+This section introduces metamodeling for a \gls{mc} simulation, elaborates on its methodologies, and highlights its importance in practical applications.
 
-Monte Carlo simulations are widely used for modeling and analyzing complex systems that are probabilistic in nature.
+\gls{mc} simulations are widely used for modeling and analyzing complex systems that are probabilistic in nature.
 These simulations often require a substantial amount of computational resources, especially when a high degree of accuracy or a high number of iterations is necessary~\citep{glasserman2004monte}.
 Metamodeling addresses this challenge by constructing an approximate model (known as a metamodel) that emulates the behavior of the original simulation model with much less computational effort.
 The metamodel serves as a predictive model that maps input variables to output responses.
@@ -94,10 +93,10 @@ The process of metamodeling generally involves the following steps:
     \item \textbf{Application}: Use the metamodel to predict simulation outputs for new input combinations.
 \end{enumerate}
 
-The development of advanced machine learning models and deep learning techniques has enhanced metamodeling approaches for Monte Carlo simulations, especially in high-dimensional and complex problem settings.
+The development of advanced machine learning models and deep learning techniques has enhanced metamodeling approaches for \gls{mc} simulations, especially in high-dimensional and complex problem settings.
 Examples of machine learning applications include~\cite{jin2020deep},~\cite{tang2020deep}, and~\cite{rosen2012metamodeling}.
 These methods offer powerful tools for capturing intricate patterns and nonlinear relationships that traditional metamodeling techniques might struggle to model effectively.
-In the following sections, we discuss machine learning algorithms in the context of metamodeling for Monte Carlo simulations and their applications in risk management.
+In the following sections, we discuss machine learning algorithms in the context of metamodeling for \gls{mc} simulations and their applications in risk management.
 
 \section{Machine Learning for Risk Management Applications}
 
@@ -208,7 +207,7 @@ Figure~\ref{subfig:fnn} shows a \gls{fnn} architecture with one hidden layer.
 The input layer receives the input features, which are then passed through the hidden layer(s) to the output layer.
 Each layer consists of multiple neurons, which apply a non-linear activation function to the weighted sum of the inputs.
 
-\begin{equation}
+\begin{equation} \label{eq:fnn}
     f(x; \theta) = f^{(k)}(f^{(k-1)} \cdots (f^{(2)}(f^{(1)}(x;\theta^{(1)});\theta^{(2)} )\cdots ;\theta^{(k-1)});\theta^{(k)}),
 \end{equation}
 where $\theta = (\theta^{(1)}, \theta^{(2)}, \ldots, \theta^{(k)})$ are trainable parameters of the neural network, $f^{(i)}$ is an $i$-th layer of the neural network, $x$ is an input feature vector, $f^{(1)}(x;\theta^{(1)}) = x$, $f^{(k)}$ is an output layer, $k$ is a number of layers, and $f^{(i)}$ is an output of the $i$-th layer.
@@ -238,7 +237,7 @@ The main difference is that, in neural networks, the input features to the regre
 The most well-known theorem in neural network theory is the universal approximation theorem~\citep{hornik1989multilayer}.
 It states that given appropriate activation functions $a$, a feedforward neural network with a single hidden layer containing a finite number of neurons can approximate any continuous function on a compact subset of $\mathbb{R}^n$ to arbitrary accuracy.
 Despite this theoretical guarantee for single-layer neural networks, in practice, \gls{dnn} with multiple hidden layers have been shown to be more effective at capturing complex patterns and relationships in data~\citep{lecun2015deep}.
-Examples include AlexNet~\citep{krizhevsky2012imagenet}, VGG~\citep{simonyan2014very}, and ResNet~\citep{he2016deep}, which have achieved state-of-the-art performance on image classification tasks.
+Examples include AlexNet~\citep{krizhevsky2012imagenet}, Visual Geometic Group~\citep{simonyan2014very}, and ResNet~\citep{he2016deep}, which have achieved state-of-the-art performance on image classification tasks.
 In this thesis, we focus on the application of deep neural networks, specifically \gls{lstm}, as metamodels for nested simulation procedures in risk management applications.
 
 \subsection{Long Short-Term Memory Networks} \label{subsec:LSTM}
@@ -247,10 +246,10 @@ Building upon the capabilities of \gls{fnn}s, we recognize that while \gls{fnn}s
 This independence assumption limits their effectiveness in modeling financial time series, where temporal dependencies play a critical role.
 The stylized facts of financial time series, such as volatility clustering, fat tails, and autocorrelation, are challenging to capture with traditional \gls{fnn}s due to the absence of memory in the model~\citep{cont2001empirical}.
 
-To overcome the limitations of \gls{fnn}s in handling sequential input, \gls{rnn}s were introduced.
+To overcome the limitations of \gls{fnn}s in handling sequential input, A \gls{rnn} was introduced.
 In an \gls{rnn}, the hidden state at each time step is a function of both the current input and the hidden state from the previous time period~\citep{elman1990finding}:
 
-\begin{equation}
+\begin{equation} \label{eq:rnn}
     h_t = f(x_t, h_{t-1}; \theta),
 \end{equation}
 where $h_t$ is the hidden state at time $t$, $x_t$ is the input at time $t$, $h_{t-1}$ is the hidden state at time $t-1$, and $f$ is the recurrent function parameterized by $\theta$.
@@ -260,19 +259,19 @@ During training, gradients propagated backward through time can either diminish 
 This limitation is particularly problematic in modeling long-term financial contracts and insurance guarantees, where patterns may span over extended periods.
 
 To address these issues, a \gls{lstm} network was developed by~\citet{hochreiter1997long}.
-It is a specialized form of RNNs designed to capture long-term dependencies more effectively with the help of \gls{rnn} memory cells and gating mechanisms.
+It is a specialized form of \gls{rnn}s designed to capture long-term dependencies more effectively with the help of \gls{rnn} memory cells and gating mechanisms.
 
-\begin{align*}
-    i_t &= a(W_i x_t + U_i h_{t-1} + b_i), \\
-    f_t &= a(W_f x_t + U_f h_{t-1} + b_f), \\
-    o_t &= a(W_o x_t + U_o h_{t-1} + b_o), \\
-    g_t &= a(W_g x_t + U_g h_{t-1} + b_g), \\
-    c_t &= f_t \odot c_{t-1} + i_t \odot g_t, \\
+\begin{align} \label{eq:lstm}
+    i_t &= a(W_i x_t + U_i h_{t-1} + b_i), \nonumber \\
+    f_t &= a(W_f x_t + U_f h_{t-1} + b_f), \nonumber \\
+    o_t &= a(W_o x_t + U_o h_{t-1} + b_o), \nonumber \\
+    g_t &= a(W_g x_t + U_g h_{t-1} + b_g), \nonumber \\
+    c_t &= f_t \odot c_{t-1} + i_t \odot g_t, \nonumber \\
     h_t &= o_t \odot \tanh(c_t),
-\end{align*}
+\end{align}
 where $i_t, f_t, o_t, g_t, c_t, h_t$ are an input gate, a forget gate, an output gate, a cell input, a cell state, and a hidden state at time $t$, respectively.
 $W_i$, $W_f$, $W_o$, $W_g$, $U_i$, $U_f$, $U_o$, $U_g$ are weight matrices, and $b_i$, $b_f$, $b_o$, $b_g$ are bias vectors.
-$a$ is the activation function, typically the sigmoid function, and $\odot$ denotes element-wise multiplication.
+$a$ is the activation function, typically the sigmoid function, and $\odot$ denotes an element-wise multiplication.
 
 \begin{equation*}
     a(z) = \frac{1}{1 + e^{-z}}.
@@ -305,7 +304,7 @@ However, the training of neural networks is non-convex, and the optimization pro
 It updates the parameters using a single or a small batch of training examples at a time, which makes it much faster than a crude gradient descent.
 However, \gls{sgd} may oscillate and converge slowly, especially in non-convex problems~\citep{bengio2016}.
 To address these issues, various adaptive learning rate methods have been proposed in the literature.
-The most popular approach is Adam optimizer, which is an SGD algorithm that adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
+The most popular approach is the Adam optimizer, which is an \gls{sgd} algorithm that adjusts the learning rate during training to improve convergence speed and stability~\citep{kingma2014adam}.
 
 Another common technique to improve the training of neural networks is a regularization technique to prevent overfitting.
 One effective regularization method is dropout, which randomly sets a fraction of neurons to zero during each training iteration~\citep{srivastava2014dropout}.

@@ -149,7 +149,7 @@ The standard nested simulation estimators for different forms of $\rho$ are as f
             \begin{equation*}
                 \hat{\rho}_{M, N} = \frac{1}{M} \sum_{i=1}^M h(\hat{L}_{N, i}) = \frac{1}{M} \sum_{i=1}^M h(\bar{Y}_{N, i}), \quad X_i \sim F_X.
             \end{equation*}
-    \item   Value at risk (\gls{var}):
+    \item   \gls{var}:
             \begin{equation*}
                 \hat{\rho}_{M, N} = \hat{L}_{(\lceil \alpha M \rceil)}.
             \end{equation*}
@@ -183,7 +183,7 @@ Supervised learning-based nested simulation procedures treat the inner simulatio
 In this metamodeling approach, $L(\cdot)$ can be approximated by $\hat{L}^{\text{SL}}_{M, N}(\cdot)$, which is based on a family of chosen function and observations from the standard nested simulation procedure.
 Consider the observation pairs $(X_i, \hat{L}_{N, i})$ for $i \in \{1, \dots, M\}$ as training data.
 We can use supervised learning to approximate $L_i$ by $\hat{L}_{M, N}^{\text{SL}}(X_i)$ and to pool the inner replications from all outer scenarios.
-Specifically, $\hat{L}^{\text{SL}}{M, N}(\cdot)$ denotes a supervised learning model trained on $(X_i, \hat{L}{N, i})$ for $i \in {1, \dots, M}$.
+Specifically, $\hat{L}^{\text{SL}}{M, N}(\cdot)$ denotes a supervised learning model trained on $(X_i, \hat{L}_{N, i})$ for $i \in {1, \dots, M}$.
 This is the output of the standard nested simulation procedure with $M$ outer scenarios and $N$ inner replications.
 To evaluate the convergence of the supervised learning-based nested simulation procedure, we consider the convergence behavior of the supervised learning model $h(\hat{L}^{\text{SL}}_{M, N}(\cdot))$ to the true risk measure $\rho = h(L(\cdot))$.
 More specifically, we want to study the following quantity
@@ -1297,7 +1297,7 @@ For kernel-based procedures, the computational cost is heavily dependent on the 
 For a nested estimation problem with a given computational budget, we suggest the use of the regression-based simulation procedure when the budget size is moderate. 
 It is efficient to implement, and it exhibits fast empirical convergence in estimating risk measures for popular option portfolios. 
 However, we have only examined the performance for option portfolios in this study, where finding a suitable set of basis functions for regression is relatively easy.
-In practice, a variable annuity contract is often high-dimensional in time with a complex payoff structure, and it is a challenging problem for nested simulation procedures.
+In practice, a \gls{va} contract is often high-dimensional in time with a complex payoff structure, and it is a challenging problem for nested simulation procedures.
 The time dependence in the feature space leads to multi-collinearity, and the regression-based procedure may not be the best choice in such instances.
 In such cases, a neural network-based procedure may be more suitable, as it is a data-driven algorithm that finds a suitable set of basis functions automatically.
-In Chapter~\ref{chap:project2}, we examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for variable annuities.
+In Chapter~\ref{chap:project2}, we examine the performance of regression-based and neural network-based nested simulation procedures for estimating risk measures for \gls{va} contracts.
