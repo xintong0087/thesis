@@ -38,7 +38,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces \gls {ppo} Network Architectures}}{146}{figure.caption.59}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with transfer learning}}{150}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Hedging performance of deep hedging with \gls {tl}}}{150}{figure.caption.61}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Hedging performance of recurrent \gls {ppo} and deep hedging}}{150}{figure.caption.62}%
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Hedging performance of standard \gls {ppo} and recurrent \gls {ppo}}}{151}{figure.caption.63}%
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent \gls {ppo} and delta hedging with different transaction costs}}{151}{figure.caption.64}%

@@ -6,7 +6,7 @@ Managing the risks associated with these products, especially in volatile market
 These algorithms have demonstrated remarkable success decision-making tasks that must be optimized over time. 
 In the context of managing \gls{va} contracts, \gls{drl} has shown promise in optimizing hedging strategies where long-term financial and policyholder decisions interact dynamically with changing market conditions.
 
-Reinforcement learning is a branch of machine learning in which an agent learns to make sequential decisions by interacting with its environment. 
+\gls{rl} is a branch of machine learning in which an agent learns to make sequential decisions by interacting with its environment. 
 Through trial and error, the agent receives feedback in the form of rewards or penalties, allowing it to learn an optimal policy for achieving long-term goals. 
 In financial and actuarial contexts, \gls{rl} has been applied to portfolio optimization, asset allocation, and risk management. 
 In a dynamic hedging problem, the agent is referred to as the decision-maker that tries to minimize financial risks over time horizon by adjusting the hedging portfolio based on the current environment, which is the current state of the financial markets and actuarial assumptions.
@@ -28,12 +28,12 @@ By transferring existing knowledge from similar environments, \gls{tl} improves 
 This allows models using \gls{tl} to be both more accurate and computationally efficient. 
 Additionally, \gls{tl} enhances the robustness of models by allowing continuous learning. 
 Instead of retraining a deep \gls{rl} model from the scratch when market conditions shift, \gls{tl} enables the reuse of pre-trained models, facilitating a faster adaptation to new environments while avoiding overfitting to past conditions.
-In the risk management of \gls{va} contracts, transfer learning enables quicker adaptation to changing financial and actuarial assumptions by reusing information obtained from another set of related assumptions, such as the management of similar financial instruments or different market regimes. 
-A \gls{drl} agent equipped with transfer learning can adjust its strategies in response to new market data, making the model more adaptive and responsive without the need for costly retraining.
+In the risk management of \gls{va} contracts, \gls{tl} enables quicker adaptation to changing financial and actuarial assumptions by reusing information obtained from another set of related assumptions, such as the management of similar financial instruments or different market regimes. 
+A \gls{drl} agent equipped with \gls{tl} can adjust its strategies in response to new market data, making the model more adaptive and responsive without the need for costly retraining.
 More specifically, a \gls{drl} agent trained to manage \gls{va} contracts for a \gls{gmmb} contract can apply its learned strategies to a \gls{gmwb} contract with the same financial assumptions. 
 A \gls{drl} agent trained for a \gls{va} product on a Black-Scholes asset model can transfer its knowledge to the training of a similar product on a stochastic volatility model.
 This approach substantially reduces the computational costs associated with the training of new \gls{va} products with different assumptions and improves the generalization of the model to unseen market conditions.
-By integrating the transfer learning with the existing \gls{drl} frameworks, we can eliminate the inefficiencies of training models from scratch, provide faster adaptability to new market conditions, and enhance the scalability and computational efficiency of financial models. 
+By integrating the \gls{tl} with the existing \gls{drl} frameworks, we can eliminate the inefficiencies of training models from scratch, provide faster adaptability to new market conditions, and enhance the scalability and computational efficiency of financial models. 
 This approach offers a more robust and practical solution for managing \gls{va} contracts in dynamic and volatile financial markets.
 
 The rest of the chapter is organized as follows: 
@@ -123,7 +123,7 @@ Therefore, the time~$t$ hedging error, i.e., the cash flow incurred by the insur
 \begin{equation}
     HE_t = H_t - H^{bf}_t, \quad t=1,\ldots, T-1.
 \end{equation}
-The P\&L of the \gls{va} contract includes the cost of the initial hedge ($H_0$), the hedging errors~\eqref{eq2:hedgingerror}, the unwinding of the hedge at maturity ($H^{bf}_T$), and the contract payout at time~$t\in \{0,\ldots,T\}$.
+The \gls{pl} of the \gls{va} contract includes the cost of the initial hedge ($H_0$), the hedging errors~\eqref{eq2:hedgingerror}, the unwinding of the hedge at maturity ($H^{bf}_T$), and the contract payout at time~$t\in \{0,\ldots,T\}$.
 Mathematically, the present value of the liability for a \gls{gmmb} contract is 
 \begin{align} \label{eq3:lossGMMB}
 L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t + \sum_{t=1}^T e^{-rt} C_t - \sum_{t=1}^T e^{-rt} F_t\eta_n + e^{-rT} (G_t - F_t)^+  \nonumber \\ 
@@ -221,7 +221,7 @@ The advantage function quantifies the advantage of taking action $a_t$ in state 
 \section{Exising RL Algorithms and Their Limitations} \label{sec:RLAlgorithms}
 
 \subsection{Model-Based RL: From AlphaZero to Deep Hedging}
-Deep reinforcement learning first attacted attentions when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
+\gls{drl} first attacted attentions when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
 Soon after, AlphaZero~\citep{silver2016mastering} emerged as a model-based \gls{rl} algorithm that improves over self-plays.
 It quickly extended beyond Go to other games like Chess and Shogi.
 In essence, the AlphaZero agent use a neural network to paramaterize the policy and the value function.
@@ -276,7 +276,7 @@ In contrast, a model-free approach does not require a explicit design for differ
 
 \subsection{Model-Free RL for Hedging}
     
-In a model-free reinforcement learning approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
+In a model-free \gls{rl} approach, the agent is a trial-and-error learner that interacts with the environment to learn the optimal policy by iteratively updating the policy and the value function based on the observed states, actions, and rewards.
 For hedging \gls{va} contracts, the agent does not have access to a planning algorithm or the underlying stochastic asset model, and it must learn the optimal policy by directly interacting with the environment.
 
 Model-free \gls{rl} algorithms gain its popularity in robotics tasks, where transition probabilities in the environment are unknown and can be affected by the agent's actions.
@@ -287,10 +287,10 @@ Boardly speaking, model-free \gls{rl} can be categorized into two types: value-b
 Value-based approaches learn the value function directly from the data and derive the policy from the learned value function. 
 The value function is learned by training a \gls{dnn} to approximate the value function, which quantifies the expected cumulative reward over time. 
 The policy is then derived from the learned value function by selecting the action that maximizes the value function at each state. 
-~\cite{mnih2015human} is the first paper to demonstrate the effectiveness of value-based deep reinforcement learning in training agents to play Atari games.
+~\cite{mnih2015human} is the first paper to demonstrate the effectiveness of value-based \gls{drl} in training agents to play Atari games.
 To update the value function, the \gls{dnn} is trained to minimize the difference between the current value function and the target value function, which is updated based on the maximum expected reward from the previous iteration.
 When trained to approximate the value function, the \gls{dnn} benefits from the use of experience replay buffers, which is proposed by~\cite{lin1992self} to store and sample historical transitions and uniformly sampled during training to enhance the sample efficiency and stability of the learning process.
-~\cite{kolm2019dynamic} uses a value-based deep reinforcement learning approach to hedge European options under the \gls{gbm} asset model.
+~\cite{kolm2019dynamic} uses a value-based \gls{drl} approach to hedge European options under the \gls{gbm} asset model.
 
 In valued-based approaches, the value function is updated iteratively with the maximum expected reward of all possible actions, which can be computationally expensive for continuous action spaces.
 To overcome this difficulty, a policy-based approach estimates the value function before realization of the final payoff of the hedging portfolio, which is particularly useful for hedging long-term financial derivatives or \gls{va} contracts.
@@ -325,7 +325,7 @@ Representative algorithms include the \gls{trpo} algorithm proposed by~\cite{sch
 ~\cite{du2020deep} show that the \gls{ppo} algorithm is more sample efficient and stable than the value-based approaches in training agents to hedge financial derivatives.
 The most relevant paper to our study is~\cite{chong2023pseudo}, which uses the \gls{ppo} algorithm to hedge \gls{gmmb} with a \gls{gmdb} rider under the Black-Scholes framework.
 However, information of the underlying risk factors is leaked to the agent, which makes their study pseudo-model-free.
-To further improve the risk management of \gls{va} contracts under rough volatility models, we propose a model-free deep reinforcement learning approach to hedge \gls{va} contracts without explicit or implicit knowledge of the underlying risk factors.
+To further improve the risk management of \gls{va} contracts under rough volatility models, we propose a model-free \gls{drl} approach to hedge \gls{va} contracts without explicit or implicit knowledge of the underlying risk factors.
 
 \section{Hedging VA contracts with a PPO Agent} \label{sec:PPO}
 In a hedging problem, an insurer aims at finding a policy $\pi$ that maximizes the expected reward over time.
@@ -341,7 +341,7 @@ In our implementation, the advantage function is estimated following the GAE met
 The policy is updated by performing gradient ascent with respect to the policy parameters $\theta$ to maximize the objective function, which is estimated by sampling from the environment and computing the empirical average of the objective function over the sampled trajectories.
 The first component in the objective function, $\Lambda_t(\theta) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a surrogate objective function that approximates the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi_{\theta_{old}}$, and the second component, $\text{clip}(\Lambda_t(\theta), 1-\epsilon, 1 + \epsilon) \hat{A}^{\pi_{\theta}}(s_t, a_t)$, is a clipped surrogate objective function that prevents large policy updates and ensures more stable training.
 The \gls{trpo} algorithm proposed by~\cite{schulman2015trust} uses a similar clipped surrogate objective function to ensure that the policy update does not deviate too far from the old policy, but \gls{ppo} simplifies the optimization problem by using a clipped surrogate objective function instead of a hard-coded constraint on the policy update.
-Compared to \gls{trpo}, \gls{ppo} is more computationally efficient and easier to implement, making it a popular choice for training deep reinforcement learning agents.
+Compared to \gls{trpo}, \gls{ppo} is more computationally efficient and easier to implement, making it a popular choice for training \gls{drl} agents.
 For a in-depth discussion on the implementation details of both \gls{trpo} and \gls{ppo}, we refer the reader to~\cite{engstrom2020implementation}.
 
 \begin{algorithm} 
@@ -447,12 +447,12 @@ However, the sequantial nature of the \gls{lstm} is not suitable for a parallel 
 In the context of deep hedging, various research has been conducted to improve the hedging strategies on real-world data by leveraging knowledge from simulated data.
 Most of the research uses the offline-online learning approach, where the hedging strategies are first trained with simulation data, but updated in real-time based on new market information and continuous learning to adapt to changing market dynamics.
 The most relevant paper to our study is~\cite{xiao2021optimal}, which use policy gradient algorithms to train hedging strategies for European options with simulation data from Heston model and then updated in real-time hedging S\&P 500 index options.
-To the best of our knowledge, no research has been conducted to improve the hedging strategies with the state-of-the-art transfer learning techniques.
-This section introduces some transfer learning techniques that are relevant to our task of hedging \gls{va} contracts.
+To the best of our knowledge, no research has been conducted to improve the hedging strategies with the state-of-the-art \gls{tl} techniques.
+This section introduces some \gls{tl} techniques that are relevant to our task of hedging \gls{va} contracts.
 
 \subsection{Reward Shaping}
 
-In the context of hedging \gls{va} contracts using deep reinforcement learning and transfer learning, reward shaping becomes a crucial technique. 
+In the context of hedging \gls{va} contracts using \gls{drl} and \gls{tl}, reward shaping becomes a crucial technique. 
 It involves modifying the reward function in the target domain to incorporate additional guidance, which often leads to more efficient learning and a better performance.
 This technique can be particularly useful for managing the complex risks associated with \gls{va} contracts, as it can guide the learning process towards strategies that are more effective in hedging these products.
 
@@ -464,7 +464,7 @@ Some popular reward shaping techniques include potential-based reward shaping~\c
 
 \subsection{Policy Transfer}
 
-The most straightforward approach to transfer learning is to directly transfer the policy learned from the source domains to the target domain via policy distillation.
+The most straightforward approach to \gls{tl} is to directly transfer the policy learned from the source domains to the target domain via policy distillation.
 Policy distillation is a technique that transfers the knowledge from a teacher policy to a student policy by training the student policy to mimic the teacher policy up to a certain extent.
 The teacher policy is learned from the source domains, and the student policy learns the hedging strategies in the target domain while guided by the teacher policy.
 In the Distral algorithm~\citep{teh2017distral}, the student policy maximizes a multi-task objective:
@@ -478,7 +478,7 @@ where a set of $K$ teacher policies $\pi_{E_i}$ are learned from the source doma
 
 \subsection{Evaluation Metrics}
 
-The metrics discussed for evaluating transfer learning approaches focus on two key aspects: mastery and generalization. 
+The metrics discussed for evaluating \gls{tl} approaches focus on two key aspects: mastery and generalization. 
 Mastery assesses the agent's final performance level in the target domain, indicating how effectively it has learned a specific task from previous knowledge. 
 Some common metrics for evaluating mastery include:
 Generalization, on the other hand, refers to the agent's ability to quickly adapt its learned knowledge to the target domain.
@@ -524,15 +524,15 @@ The underlying asset price $S_t$ is modeled as a \gls{gbm} with a drift rate $\m
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{./futureWork/figures/CVaR_histories.png}
-    \caption{Hedging performance of deep hedging with transfer learning}
+    \caption{Hedging performance of deep hedging with \gls{tl}}
     \label{fig3:dh-transfers}
 \end{figure}
 
-Figure~\ref{fig3:dh-transfers} illustrates the hedging performance of the deep hedging algorithm with transfer learning for hedging \gls{va} contracts with a \gls{gmmb} rider.
-The first deep hedging agent is directly trained on the Heston asset model, and the second deep hedging agent is trained with transfer learning from the \gls{gbm} model.
+Figure~\ref{fig3:dh-transfers} illustrates the hedging performance of the deep hedging algorithm with \gls{tl} for hedging \gls{va} contracts with a \gls{gmmb} rider.
+The first deep hedging agent is directly trained on the Heston asset model, and the second deep hedging agent is trained with \gls{tl} from the \gls{gbm} model.
 The figure plot the 95\%-CVaR of hedging errors against training epochs for both agents.
-The deep hedging agent with transfer learning outperforms the deep hedging agent trained on the Heston model in both mastery and generalization.
-The agent with transfer learning achieves a lower loss in the target domain and adapts more quickly to the new environment, indicating that the agent has learned a more robust hedging strategy that can be effectively applied to a more complex environment.
+The deep hedging agent with \gls{tl} outperforms the deep hedging agent trained on the Heston model in both mastery and generalization.
+The agent with \gls{tl} achieves a lower loss in the target domain and adapts more quickly to the new environment, indicating that the agent has learned a more robust hedging strategy that can be effectively applied to a more complex environment.
 
 For the \gls{ppo} agent, we use a regular \gls{ppo} and a recurrent \gls{ppo} with an \gls{lstm} component to capture the temporal dependencies in the data.
 The weights of the value network and the policy network are initialized with orthogonal initialization~\citep{engstrom2020implementation} with scaling $\sqrt{2}$ and the bias terms set to zero.
@@ -558,12 +558,12 @@ The experiment is conducted with the same amount ofsimulation budget.
     \centering
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\textwidth]{./futureWork/figures/PPOs_GBM.png}
-        \caption{GBM}
+        \caption{\gls{gbm}}
     \end{subfigure}
     \hspace{1cm}
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\textwidth]{./futureWork/figures/PPOs_GBMRS.png}
-        \caption{Regime-switching GBM}
+        \caption{\gls{rsgbm}}
     \end{subfigure}
     \caption{Hedging performance of standard \gls{ppo} and recurrent \gls{ppo}} 
     \label{fig3:ppo_result}
@@ -572,7 +572,7 @@ The experiment is conducted with the same amount ofsimulation budget.
 Figure~\ref{fig3:ppo_result} illustrates the hedging performance of the standard \gls{ppo} and the recurrent \gls{ppo} with \gls{lstm} for hedging \gls{va} contracts with transaction costs $C=0.005$.
 The figures show the distributions of the hedging errors incurred by the agents over the $10^3$ test episodes for the \gls{gbm} and the \gls{rsgbm} asset models.
 For both asset models, the recurrent \gls{ppo} outperforms the standard \gls{ppo} in terms of hedging performance.
-For the regime-switching \gls{gbm}, the 95\%-VaR of hedging errors of the recurrent \gls{ppo} and the standard \gls{ppo} are $136.24$ and $147.14$, respectively.
+For the \gls{rsgbm}, the 95\%-VaR of hedging errors of the recurrent \gls{ppo} and the standard \gls{ppo} are $136.24$ and $147.14$, respectively.
 The hedging errors of the recurrent \gls{ppo} are more concentrated around zero, indicating that historical information captured by the \gls{lstm} component helps the agent make better hedging decisions even in the enviornment is Markovian.
 
 \begin{figure}[ht!]
@@ -623,7 +623,7 @@ The results suggest that the \gls{gmwb} rider introduces additional complexity t
 
 \section{Future Directions} \label{sec:FutureDirections}
 
-The proposed future work of this thesis aims at investigating how transfer learning can be effectively integrated into the training of \gls{ppo} agents for dynamic hedging of \gls{va} contracts. 
+The proposed future work of this thesis aims at investigating how \gls{tl} can be effectively integrated into the training of \gls{ppo} agents for dynamic hedging of \gls{va} contracts. 
 The primary goal is to enhance the adaptability and efficiency of hedging strategies in response to new \gls{va} products and changing market conditions. 
 
 
@@ -637,4 +637,4 @@ This method leverages the shared underlying structures between tasks, which can 
 The framework will also consider feature representation transfer, which aims at reusing learned representations of market dynamics and policyholder behaviors between tasks. 
 By capturing common patterns across different contracts and market models, the \gls{ppo} agent can more effectively generalize to new scenarios~\citep{bengio2012deep}.
 
-By addressing these objectives, the research aims at advancing the field of financial risk management through the development of adaptive and efficient hedging strategies for \gls{va} contracts. The integration of transfer learning into \gls{ppo} agents has the potential to substantially reduce computational costs and improve the robustness of hedging policies in dynamic market environments.
+By addressing these objectives, the research aims at advancing the field of financial risk management through the development of adaptive and efficient hedging strategies for \gls{va} contracts. The integration of \gls{tl} into \gls{ppo} agents has the potential to substantially reduce computational costs and improve the robustness of hedging policies in dynamic market environments.

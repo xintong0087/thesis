@@ -1,6 +1,6 @@
 \contentsline {chapter}{List of Tables}{x}{section*.2}%
-\contentsline {chapter}{List of Figures}{xi}{section*.4}%
-\contentsline {chapter}{Abbreviations}{xiv}{section*.7}%
+\contentsline {chapter}{List of Figures}{xii}{section*.4}%
+\contentsline {chapter}{Abbreviations}{xv}{section*.7}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Risk Management of VAs with Nested Simulation}{3}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Metamodeling for Monte Carlo Simulation}{4}{section.1.2}%
@@ -36,8 +36,8 @@
 \contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{52}{subsection.2.5.4}%
 \contentsline {subsection}{\numberline {2.5.5}Sensitivity to level for VaR and CVaR}{55}{subsection.2.5.5}%
 \contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{55}{subsection.2.5.6}%
-\contentsline {subsection}{\numberline {2.5.7}Empirical Convergence of MLMC}{57}{subsection.2.5.7}%
-\contentsline {section}{\numberline {2.6}Computational Complexity}{58}{section.2.6}%
+\contentsline {subsection}{\numberline {2.5.7}Empirical Convergence of MLMC}{56}{subsection.2.5.7}%
+\contentsline {section}{\numberline {2.6}Computational Complexity}{57}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Conclusion and Extensions}{62}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Cutting Through the Noise: Using Deep Neural Network Metamodels for High Dimensional Nested Simulation}{64}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Introduction}{64}{section.3.1}%
@@ -85,6 +85,6 @@
 \contentsline {subsection}{\numberline {6.4.2}Policy Transfer}{147}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{147}{subsection.6.4.3}%
 \contentsline {section}{\numberline {6.5}Numerical Experiments}{148}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Future Directions}{153}{section.6.6}%
+\contentsline {section}{\numberline {6.6}Future Directions}{152}{section.6.6}%
 \contentsline {chapter}{\textbf {References}}{155}{section*.67}%
 \contentsline {section}{\numberline {6.7}Connections between Convergence in MSE and AE}{169}{section.6.7}%

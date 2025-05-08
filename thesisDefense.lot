@@ -6,7 +6,7 @@
 \contentsline {table}{\numberline {2.4}{\ignorespaces MSEs of the MLMC procedure for different levels}}{57}{table.caption.28}%
 \contentsline {table}{\numberline {2.5}{\ignorespaces Additional computational costs of nested simulation procedures aside from simulation}}{58}{table.caption.29}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the regime-switching model (monthly rates)}}{81}{table.caption.33}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Real-world parameters for the \gls {rsgbm} model (monthly rates)}}{81}{table.caption.33}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces Architectures and \gls {mse}s of metamodels for \gls {gmwb} inner simulation model.}}{83}{table.caption.34}%
 \contentsline {table}{\numberline {3.3}{\ignorespaces MSEs of LSTM metamodels.}}{93}{table.caption.40}%
 \contentsline {table}{\numberline {3.4}{\ignorespaces MSE between regular LSTM predicted losses and true losses.}}{95}{table.caption.42}%

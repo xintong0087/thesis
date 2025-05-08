@@ -827,7 +827,7 @@ Furthermore, the convergence analysis of the \gls{krr}-based nested simulation p
 The theoretical framework has lent itself for a comparison of the asymptotic convergence behavior for different nested simulation procedures.
 However, a simulation budget in practice is almost always finite.
 In this section, we conduct a series of numerical experiments to compare the empirical convergence of the nested simulation procedures for different risk measures, option types, and asset dimensions.
-Numerical experiments are conducted on portfolios that consist of options on $d$ underlying assets, whose dynamics follow a multidimensional geometric Brownian motion with $0.3$ pairwise correlation.
+Numerical experiments are conducted on portfolios that consist of options on $d$ underlying assets, whose dynamics follow a multidimensional \gls{gbm} with $0.3$ pairwise correlation.
 The initial values of the assets are set to be $100$.
 The drifts are set to be $0.08$, and the risk free rate is set to be $0.05$.
 
@@ -1093,7 +1093,7 @@ The empirical rates of convergence of the regression-based nested simulation pro
 
 \subsection{Sensitivity to the Asset Model}\label{sec1:sensitivity-assetModel}
 
-Our previous numerical experiments have been conducted under the assumption that the underlying asset dynamics follow a multidimensional geometric Brownian motion with $0.3$ pairwise correlation.
+Our previous numerical experiments have been conducted under the assumption that the underlying asset dynamics follow a multidimensional \gls{gbm} with $0.3$ pairwise correlation.
 To examine the sensitivity of the empirical convergence behavior to the asset model, we consider a stochastic volatility model of a Heston type~\citep{heston1993closed}.
 In a Heston model, the asset price and the volatility are correlated, and the volatility is a stochastic process.
 
@@ -1113,7 +1113,7 @@ In this experiment, the initial asset price and the volatility are set to be $10
 \label{fig1:sens_model}
 \end{figure}
 
-In Figure~\ref{fig1:sens_model}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-\gls{cvar} are illustrated for different asset models, i.e., a geometric Brownian motion and a Heston model.
+In Figure~\ref{fig1:sens_model}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-\gls{cvar} are illustrated for different asset models, i.e., a \gls{gbm} and a Heston model.
 The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the asset model.
 
 In summary, we find the empirical convergence behavior of the regression-based nested simulation procedure to be stable across different risk measures, option types, asset dimensions, levels of \gls{var} and \gls{cvar}, asset models, and regression bases.

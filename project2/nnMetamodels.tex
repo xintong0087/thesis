@@ -450,7 +450,7 @@ To make our examples more realistic, the \gls{va} contracts are also subject to 
     \end{equation}
 \end{enumerate}
 
-The risk-free rate is $0.2\%$ per month and the underlying asset $S_t$ is modeled by a regime-switching geometric Brownian motion with parameters specified in Table~\ref{tab:regime_params}.
+The risk-free rate is $0.2\%$ per month and the underlying asset $S_t$ is modeled by a \gls{rsgbm} with parameters specified in Table~\ref{tab:regime_params}.
 
 \begin{table}[ht]
     \centering
@@ -467,7 +467,7 @@ The risk-free rate is $0.2\%$ per month and the underlying asset $S_t$ is modele
         Transition probability from regime 2  & $0.20$ \\
         \bottomrule
     \end{tabular}
-    \caption{Real-world parameters for the regime-switching model (monthly rates)}
+    \caption{Real-world parameters for the \gls{rsgbm} model (monthly rates)}
     \label{tab:regime_params}
 \end{table}
 
@@ -490,7 +490,7 @@ In our experiments, the standard nested simulation procedure is mainly used in t
 Five metamodels are considered in this experiment: \gls{mlr}, \gls{qpr} without interaction terms, \gls{fnn}, \gls{rnn}, and \gls{lstm} network.
 \gls{mlr} and \gls{qpr} are two common metamodels in the simulation literature, and their implemention is straightfoward in our simulation setting.
 \gls{fnn} (Equation~\refeq{eq:fnn}) is a generic neural network while \gls{rnn} (Equation~\refeq{eq:rnn}) and \gls{lstm} (Equation~\refeq{eq:lstm}) are specialized models to accommodate the sequential structure of our time-series features.
-A $\tanh$ activation function is used for \gls{rnn} and \gls{lstm} layers, and a ReLU activation function is used for the fully-connected layers.
+A $\tanh$ activation function is used for \gls{rnn} and \gls{lstm} layers, and a \gls{relu} activation function is used for the fully-connected layers.
 All neural network metamodels are trained by the Adam optimizer~\citep{kingma2014adam} with an initial learning rate of $0.001$ and an exponential learning rate decay schedule.
 All \gls{dnn} metamodels are trained with a dropout rate of $10\%$.
 The architectures and training settings are typical choices in the deep learning literature.
