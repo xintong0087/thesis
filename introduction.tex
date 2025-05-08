@@ -93,22 +93,22 @@ The process of metamodeling generally involves the following steps:
     \item \textbf{Application}: Use the metamodel to predict simulation outputs for new input combinations.
 \end{enumerate}
 
-The development of advanced machine learning models and deep learning techniques has enhanced metamodeling approaches for \gls{mc} simulations, especially in high-dimensional and complex problem settings.
-Examples of machine learning applications include~\cite{jin2020deep},~\cite{tang2020deep}, and~\cite{rosen2012metamodeling}.
+The development of advanced \gls{ml} models and deep learning techniques has enhanced metamodeling approaches for \gls{mc} simulations, especially in high-dimensional and complex problem settings.
+Examples of \gls{ml} applications include~\cite{jin2020deep},~\cite{tang2020deep}, and~\cite{rosen2012metamodeling}.
 These methods offer powerful tools for capturing intricate patterns and nonlinear relationships that traditional metamodeling techniques might struggle to model effectively.
-In the following sections, we discuss machine learning algorithms in the context of metamodeling for \gls{mc} simulations and their applications in risk management.
+In the following sections, we discuss \gls{ml} algorithms in the context of metamodeling for \gls{mc} simulations and their applications in risk management.
 
 \section{Machine Learning for Risk Management Applications}
 
-Machine learning (ML) algorithms are essential tools for identifying complex patterns and relationships in data.
+\gls{ml} algorithms are essential tools for identifying complex patterns and relationships in data.
 In particular, they are well-suited for handling non-linearities and large-scale data structures, which are challenging for traditional statistical methods.
-In the context of risk management, ML algorithms have been widely used for predicting financial time series, estimating risk measures, and optimizing trading strategies.
-ML algorithms can be broadly categorized into supervised learning, unsupervised learning, and reinforcement learning.
+In the context of risk management, \gls{ml} algorithms have been widely used for predicting financial time series, estimating risk measures, and optimizing trading strategies.
+\gls{ml} algorithms can be broadly categorized into supervised learning, unsupervised learning, and reinforcement learning.
 This section focuses on three widely used supervised learning models and two reinforcement learning algorithms that are most relevant to risk management applications.
 
 \subsection{Supervised Learning Models}
 
-Supervised learning is a fundamental approach in machine learning where the algorithm learns a mapping from inputs to outputs based on example input-output pairs~\cite{galton1886regression}.
+Supervised learning is a fundamental approach in \gls{ml} where the algorithm learns a mapping from inputs to outputs based on example input-output pairs~\cite{galton1886regression}.
 In this paradigm, a model is trained on a labeled dataset, which means that each training example is associated with an output label or value.
 The goal of a supervised learning paradigm is to learn a general rule that maps inputs (also known as features) to outputs (also known as targets), enabling the model to make accurate predictions on new, unseen data.
 Supervised learning is usually applied in two domains:
@@ -143,7 +143,7 @@ A regression model predicts a continuous target variable based on one or more in
 A multiple linear regression is a simple and interpretable model that attempts to predict a target variable as a linear combination of input features.
 It assumes a linear relationship between the target output and one or more input features.
 This method has been thoroughly explored in statistical literature.
-\citet{bishop2006pattern} provide an extensive treatment of regression techniques in the broader context of machine learning.
+\citet{bishop2006pattern} provide an extensive treatment of regression techniques in the broader context of \gls{ml}.
 It is known as a parametric regression because it assumes a specific functional form for the input-output relationship with a finite set of parameters~\citep{seber2012linear}.
 A general form of a parametric regression model is given by:
 \begin{equation} \label{eq:regression}
@@ -224,7 +224,7 @@ The activation function choice is crucial for training neural networks.
 While sigmoid and hyperbolic tangent functions were popular in early neural networks, \gls{relu} has become the default activation function for deep networks due to its ability to mitigate the vanishing gradient problem and promote sparse activations~\citep{lecun2015deep}.
 
 The key advantage of \gls{fnn}s lies in their ability to perform automatic feature engineering without a direct human intervention.
-Unlike traditional machine learning models that require manual selection and transformation of input features, neural networks learn to extract and compose features through their hidden layers during their training.
+Unlike traditional \gls{ml} models that require manual selection and transformation of input features, neural networks learn to extract and compose features through their hidden layers during their training.
 Each hidden layer in the network captures higher-level abstractions of the input data by transforming the outputs of the previous layer through nonlinear activation functions~\citep{lecun2015deep}.
 Each layer builds upon the representations learned by the previous layer, enabling the network to capture multiple levels of abstraction.
 This characteristic is crucial for modeling complex datasets with intricate patterns and relationships~\citep{bengio2013representation}.
@@ -314,18 +314,18 @@ It involves monitoring the model's performance on a validation set and stopping 
 This helps prevent overfitting by stopping training before the model begins to fit to the noise in the data.
 
 Evaluation of the performance of a neural network is challenging due to the absence of analytical tools.
-Existing machine learning literature addresses this challenge by splitting the data into three parts: training set, validation set, and test set.
+Existing \gls{ml} literature addresses this challenge by splitting the data into three parts: training set, validation set, and test set.
 The training set is used to train the model, the validation set is used to tune the model hyperparameters, and the test set is used to evaluate how well the model generalizes to unseen data.
 The test set is not used during training and is only used for evaluation purposes.
 
 Underfitting occurs when the training error is high, which means that the neural network fails to capture the underlying patterns in the training data.
 Overfitting occurs when the neural network fits to the noise in the training data and cannot generalize results to unseen data.
-In machine learning literature, overfitting is often quantified as the gap between the training error and the test error~\citep{bishop2006pattern}.
+In \gls{ml} literature, overfitting is often quantified as the gap between the training error and the test error~\citep{bishop2006pattern}.
 During training, as the test dataset is not used, this quantity is estimated by using the validation set.
 If the validation error is high compared to the training error, the model is likely overfitting to the training data.
 
 In practice, the ultimate performance of a neural network is often evaluated based on error metrics on the test dataset and how it compares with the training error.
-The test error is often thought to be a reliable indicator of the model's generalization capability for most machine learning applications.
+The test error is often thought to be a reliable indicator of the model's generalization capability for most \gls{ml} applications.
 However, real-world datasets often contain noise.
 As the test dataset is separated from the training dataset, it is often contaminated with noise.
 Therefore, the test error may not be robust for evaluating the generalization capability of a neural network.
@@ -342,7 +342,7 @@ In the rest of this thesis, we will use ``test dataset'' or ``test labels'' to r
     \label{fig:datasets}
 \end{figure}
 
-Figure~\ref{fig:datasets} shows datasets with different levels of noise in a typical machine learning setting.
+Figure~\ref{fig:datasets} shows datasets with different levels of noise in a typical \gls{ml} setting.
 The left panel illustrates the common practice of using a test dataset that is separate from the training dataset that is contaminated with noise.
 The right panel shows an alternative approach of using \textit{true labels} generated from the true relationship.
 In a simulation context, the true relationship, which is the simulation model that generates the data, is visible to the user.

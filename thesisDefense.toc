@@ -33,7 +33,7 @@
 \contentsline {subsection}{\numberline {2.5.1}Sensitivity to the Asset Dimension}{47}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Empirical Convergence of Kernel Smoothing-Based Procedures}{48}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Empirical Convergence of Parametric Regression Procedures}{50}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{52}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.4}Sensitivity to the Option Types and Risk Measures}{53}{subsection.2.5.4}%
 \contentsline {subsection}{\numberline {2.5.5}Sensitivity to level for VaR and CVaR}{55}{subsection.2.5.5}%
 \contentsline {subsection}{\numberline {2.5.6}Sensitivity to the Asset Model}{55}{subsection.2.5.6}%
 \contentsline {subsection}{\numberline {2.5.7}Empirical Convergence of MLMC}{56}{subsection.2.5.7}%
@@ -62,7 +62,7 @@
 \contentsline {section}{\numberline {4.3}Numerical Experiments}{114}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Learning Lapse Features}{117}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Transfer to VAs with a Dynamic Lapse}{119}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to other Contract Types}{121}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.3}Transfer Knowledge to Other Contract Types}{121}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Multi-task Learning}{125}{subsection.4.3.4}%
 \contentsline {section}{\numberline {4.4}Conclusion}{127}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Conclusion}{128}{chapter.5}%
@@ -75,7 +75,7 @@
 \contentsline {subsection}{\numberline {6.1.5}Transition Probabilities}{136}{subsection.6.1.5}%
 \contentsline {subsection}{\numberline {6.1.6}Reward and Discount Factor}{136}{subsection.6.1.6}%
 \contentsline {subsection}{\numberline {6.1.7}Value Function and Advantage Function}{137}{subsection.6.1.7}%
-\contentsline {section}{\numberline {6.2}Exising RL Algorithms and Their Limitations}{137}{section.6.2}%
+\contentsline {section}{\numberline {6.2}Existing RL Algorithms and Their Limitations}{137}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Model-Based RL: From AlphaZero to Deep Hedging}{137}{subsection.6.2.1}%
 \contentsline {subsection}{\numberline {6.2.2}Model-Free RL for Hedging}{139}{subsection.6.2.2}%
 \contentsline {section}{\numberline {6.3}Hedging VA contracts with a PPO Agent}{142}{section.6.3}%
@@ -87,4 +87,3 @@
 \contentsline {section}{\numberline {6.5}Numerical Experiments}{148}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Future Directions}{152}{section.6.6}%
 \contentsline {chapter}{\textbf {References}}{155}{section*.67}%
-\contentsline {section}{\numberline {6.7}Connections between Convergence in MSE and AE}{169}{section.6.7}%

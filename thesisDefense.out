@@ -62,7 +62,7 @@
 \BOOKMARK [1][-]{section.4.3}{Numerical Experiments}{chapter.4}% 62
 \BOOKMARK [2][-]{subsection.4.3.1}{Learning Lapse Features}{section.4.3}% 63
 \BOOKMARK [2][-]{subsection.4.3.2}{Transfer to VAs with a Dynamic Lapse}{section.4.3}% 64
-\BOOKMARK [2][-]{subsection.4.3.3}{Transfer Knowledge to other Contract Types}{section.4.3}% 65
+\BOOKMARK [2][-]{subsection.4.3.3}{Transfer Knowledge to Other Contract Types}{section.4.3}% 65
 \BOOKMARK [2][-]{subsection.4.3.4}{Multi-task Learning}{section.4.3}% 66
 \BOOKMARK [1][-]{section.4.4}{Conclusion}{chapter.4}% 67
 \BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 68
@@ -75,7 +75,7 @@
 \BOOKMARK [2][-]{subsection.6.1.5}{Transition Probabilities}{section.6.1}% 75
 \BOOKMARK [2][-]{subsection.6.1.6}{Reward and Discount Factor}{section.6.1}% 76
 \BOOKMARK [2][-]{subsection.6.1.7}{Value Function and Advantage Function}{section.6.1}% 77
-\BOOKMARK [1][-]{section.6.2}{Exising RL Algorithms and Their Limitations}{chapter.6}% 78
+\BOOKMARK [1][-]{section.6.2}{Existing RL Algorithms and Their Limitations}{chapter.6}% 78
 \BOOKMARK [2][-]{subsection.6.2.1}{Model-Based RL: From AlphaZero to Deep Hedging}{section.6.2}% 79
 \BOOKMARK [2][-]{subsection.6.2.2}{Model-Free RL for Hedging}{section.6.2}% 80
 \BOOKMARK [1][-]{section.6.3}{Hedging VA contracts with a PPO Agent}{chapter.6}% 81
@@ -87,4 +87,3 @@
 \BOOKMARK [1][-]{section.6.5}{Numerical Experiments}{chapter.6}% 87
 \BOOKMARK [1][-]{section.6.6}{Future Directions}{chapter.6}% 88
 \BOOKMARK [0][-]{section*.67}{References}{}% 89
-\BOOKMARK [1][-]{section.6.7}{Connections between Convergence in MSE and AE}{section*.67}% 90

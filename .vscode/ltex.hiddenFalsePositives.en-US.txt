@@ -1,3 +1,0 @@
-{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QDespite being more advanced than kernel smoothing, the KRR-based procedure requires a less stringent smoothness assumption on \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
-{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThis phenomenon is due to the fact that the convergence analysis for the KRR-based nested simulation procedure is shown in terms of an absolute error (AE), which is a less stringent error metric than MSE.\\E$"}
-{"rule":"EN_COMPOUNDS","sentence":"^\\QFor clarity, we use \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q and \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q to denote the sub-account value just before and just after the withdrawal at time \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, if any.\\E$"}

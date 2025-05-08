@@ -219,7 +219,7 @@ The task-specific fully connected layers $[\theta_1, \dots, \theta_K]$ allow eac
 
 
 \begin{algorithm}
-    \caption{Multi-task Learning Framework for \gls{lstm} Metamodels}
+    \caption{Multi-task Learning Framework for LSTM Metamodels}
     \begin{algorithmic}[1] \label{alg3:multiTaskLearning}
         \STATE \textbf{Input:} learning rate $\alpha$, set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$ with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$, task-specific parameters $\theta_k$ for each task $k$, and shared parameters $\theta_0$.
     
@@ -279,7 +279,7 @@ The goal is to leverage the knowledge acquired during training on a large datase
 
 
 \begin{algorithm}
-    \caption{Transfer Learning Framework for \gls{lstm} Metamodels: Combining Fine-tuning, Layer Freezing, and Multi-task Learning}
+    \caption{TL Framework for LSTM Metamodels: Combining Fine-tuning, Layer Freezing, and Multi-task Learning}
     \begin{algorithmic}[1] \label{alg3:combined}
         \STATE \textbf{Input:} Set of $K$ tasks $\{\mathcal{T}_k\}_{k=1}^K$, with datasets $\mathcal{D}_k = \{(X_k^{(i)}, L_k^{(i)})\}_{i=1}^{M_k}$ for each task $k$, target dataset $\mathcal{D}_{\text{Ta}}$, learning rate $\alpha_{\text{So}}$ and $\alpha_{\text{Ta}}$, shared parameters $\theta_0$, task-specific parameters $\theta_k$ for each task $k$.
         
@@ -338,7 +338,7 @@ The experiments are run on a machine with a AMD Ryzen 9 7900X processor with 32 
     \centering
     \begin{tabular}{lcccc} 
     \toprule
-    \textbf{Contract} & \textbf{Asset Model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
+    \textbf{Contract} & \textbf{Asset model} & \textbf{Lapse} & \textbf{$M_{\text{So}}$}  & \textbf{$M_{\text{Ta}}$}\\
     \midrule
     \gls{gmmb} & \gls{rsgbm} & No lapse & $\num{50000}$ & N/A \\
     \gls{gmmb} & \gls{rsgbm} & Static lapse & $\num{50000}$ & $\num{2000}$ \\
@@ -346,7 +346,7 @@ The experiments are run on a machine with a AMD Ryzen 9 7900X processor with 32 
     \gls{gmwb} & \gls{rsgbm} & Dynamic lapse & N/A & $\num{2000}$ \\
     \bottomrule
     \end{tabular}
-    \caption{\gls{va} Contracts for Transfer Learning Experiments}
+    \caption{VA contracts for TL experiments}
     \label{tab3:contracts}
 \end{table}
 
@@ -360,10 +360,10 @@ The training dataset for the target task has $M_{\text{Ta}} = \num{2000}$ sample
 During the training on both the source and target tasks, $10\%$ of the data is split into a validation dataset to monitor the training process and prevent overfitting by using early stopping.
 The complexity of the simulation schemes increases from the first task to the last task, and the \gls{lstm} metamodels need to adapt to the new conditions with a limited amount of training data on the target tasks.
 
-All \gls{lstm} metamodels are evaluated based on their training history graphs for the target task, which plot training and validation MSE against the number of training epochs.
+All \gls{lstm} metamodels are evaluated based on their training history graphs for the target task, which plot training and validation \gls{mse} against the number of training epochs.
 The training history graphs visualize the learning curves of the \gls{lstm} metamodels, which provide insights into stability and convergence behavior the metamodels.
-We measure the generalization performance of the \gls{lstm} metamodels using the true MSE, which quantifies the accuracy of the \gls{lstm} metamodels in approximating the true inner simulation model of \gls{va} contracts.
-The true MSE is computed by comparing the metamodel predictions with the true contract losses, which are approximated by the standard nested simulation procedure with $\num{100000}$ inner replications.
+We measure the generalization performance of the \gls{lstm} metamodels using the true \gls{mse}, which quantifies the accuracy of the \gls{lstm} metamodels in approximating the true inner simulation model of \gls{va} contracts.
+The true \gls{mse} is computed by comparing the metamodel predictions with the true contract losses, which are approximated by the standard nested simulation procedure with $\num{100000}$ inner replications.
 Hyperparameters and network architectures for the \gls{lstm} metamodels are kept the same as the \gls{lstm} metamodel in Section~\ref{sec2:numerical}. 
 Due to a limited amount of computational resources, macro replications are not feasible for the \gls{tl} experiments.
 
@@ -374,25 +374,25 @@ Due to a limited amount of computational resources, macro replications are not f
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure1a.png}
-        \caption{Extensive Training on Target Task} 
+        \caption{Extensive training on target task} 
         \label{subfig3-1:extensive}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure1b.png}
-        \caption{Without \gls{tl}}
+        \caption{Without TL}
         \label{subfig3-1:without}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure1c.png}
-        \caption{With Fine-tuning}
+        \caption{With fine-tuning}
         \label{subfig3-1:fineTuning}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure1d.png}
-        \caption{With Layer Freezing}
+        \caption{With layer freezing}
         \label{subfig3-1:layerFreezing}
     \end{subfigure}
-    \caption{Metamodel performance on \gls{rsgbm} \gls{gmmb} with static lapse}
+    \caption{Metamodel performance on GMMB with RS-GBM and static lapse}
     \label{fig3:figure1}
 \end{figure}
 
@@ -428,15 +428,15 @@ This reduction in trainable parameters also accelerates the convergence, and it 
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure2a.png}
-        \caption{Fine-tuning from No Lapse} 
+        \caption{Fine-tuning from no lapse} 
         \label{subfig3-2:fromNolapse}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure2b.png}
-        \caption{Fine-tuning from Static Lapse}
+        \caption{Fine-tuning from static lapse}
         \label{subfig3-2:fromLapse}
     \end{subfigure}
-    \caption{Fine-tuned Metamodel performance on \gls{rsgbm} \gls{gmmb} with a dynamic lapse}
+    \caption{Fine-tuned metamodel performance on GMMB with RS-GBM and dynamic lapse}
     \label{fig3:figure2}
 \end{figure}
 
@@ -467,10 +467,10 @@ When the source task diverges substantially from the target task, the transferre
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure3b.png}
-        \caption{Freezing the Fully Connected Layer}
+        \caption{Freezing the fully connected layer}
         \label{subfig3-3:freezeFC}
     \end{subfigure}
-    \caption{Layer Freezing on \gls{rsgbm} \gls{gmmb} with dynamic lapse}
+    \caption{Layer freezing on GMMB with RS-GBM and dynamic lapse}
     \label{fig3:figure3}
 \end{figure}
 
@@ -488,14 +488,14 @@ In the case of learning the dynamic lapse features, freezing the \gls{lstm} laye
     \centering
     \begin{tabular}{lllll}
     \toprule
-    \textbf{Lapse Type} & \textbf{Extensive} & \textbf{Fine-tuning} & \textbf{Layer Freezing} & \textbf{Without \gls{tl}} \\
+    \textbf{Lapse type} & \textbf{Extensive} & \textbf{Fine-tuning} & \textbf{Layer freezing} & \textbf{Without \gls{tl}} \\
     \midrule
     No Lapse & N/A & $0.4894$ & $0.3361$ & N/A \\
     Static Lapse & N/A & $0.0794$ & $0.0763$ & N/A \\
     Dynamic Lapse & $0.0587$ &  N/A &  N/A & $0.2950$ \\
     \bottomrule
     \end{tabular}
-    \caption{Comparison of different \gls{tl} methods on \gls{gmmb} contracts}
+    \caption{Comparison of different TL methods on GMMB contracts}
     \label{tab3:transfer_learning_results}
 \end{table}
 
@@ -504,19 +504,19 @@ The calculations are based on the metamodel predictions and the true contract lo
 The first two rows show the performance of transferring knowledge from \gls{gmmb} contracts with no lapse and the static lapse to the target task of \gls{gmmb} with the dynamic lapse.
 The last row shows the performance of training without \gls{tl} on the target task.
 The results demonstrate the effectiveness of fine-tuning and layer freezing in transferring knowledge from a related source tasks to the target task. 
-When transferring from a source task with the static lapse to a target task with the dynamic lapse, the MSEs achieved are $0.0794$ for fine-tuning and $0.0763$ for layer freezing.
-The benchmark MSE of $0.0587$, obtained from extensive training on the \gls{gmmb} dynamic lapse task with much more samples.
+When transferring from a source task with the static lapse to a target task with the dynamic lapse, the \gls{mse}s achieved are $0.0794$ for fine-tuning and $0.0763$ for layer freezing.
+The benchmark \gls{mse} of $0.0587$, obtained from extensive training on the \gls{gmmb} dynamic lapse task with much more samples.
 
 While \gls{tl} from static lapse \gls{gmmb} do not reach this level of accuracy due to the limited data in the target task, they substantially outperform training without \gls{tl}. 
 This indicates that the models pre-trained on a static lapse setting are effective in capturing relevant features that are transferable to the dynamic lapse scenario.
 
-However, when the source task is less similar to the target task, the benefits of \gls{tl} are less pronounced. The MSEs in this case are higher, with fine-tuning resulting in $0.4894$ and layer freezing achieving $0.3361$. 
+However, when the source task is less similar to the target task, the benefits of \gls{tl} are less pronounced. The \gls{mse}s in this case are higher, with fine-tuning resulting in $0.4894$ and layer freezing achieving $0.3361$. 
 This suggests that the divergence between the source and target tasks can lead to negative transfer.
 These results highlight the importance of selecting source tasks that share significant similarities with the target task to maximize the effectiveness of \gls{tl}. 
 When the source and target contracts are substantially different, the pre-trained metamodels may struggle to adapt to the new conditions, as they may not have learned features relevant to the target task.
 There is no negative transfer observed, but the knowledge transfer is limited.
 
-\subsection{Transfer Knowledge to other Contract Types}
+\subsection{Transfer Knowledge to Other Contract Types}
 
 When transferring knowledge from one \gls{va} contract type to another, the \gls{lstm} metamodel needs to adapt to different contract features and time series dynamics.
 We consider the task of metamodeling \gls{gmwb} contract losses on \gls{rsgbm} asset model with the dynamic lapse, with the source tasks being a \gls{gmmb} contract on \gls{rsgbm} also with the dynamic lapse.
@@ -527,25 +527,25 @@ Figure~\ref{fig3:figure4} illustrates the learning history of transferring pre-t
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4a.png}
-        \caption{Extensive Training on Target Task} 
+        \caption{Extensive training on target task} 
         \label{subfig3-4:extensive}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4b.png}
-        \caption{Without \gls{tl}}
+        \caption{Without TL}
         \label{subfig3-4:without}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4c.png}
-        \caption{With Fine-tuning}
+        \caption{With fine-tuning}
         \label{subfig3-4:fineTuning}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4d.png}
-        \caption{With Layer Freezing}
+        \caption{With layer freezing}
         \label{subfig3-4:layerFreezing}
     \end{subfigure}
-    \caption{TL performance on RS-GBM GMWB with dynamic lapse}
+    \caption{TL performance on GMWB with RS-GBM and dynamic lapse}
     \label{fig3:figure4}
 \end{figure}
 
@@ -553,7 +553,7 @@ Figure~\ref{subfig3-4:extensive} presents the performance of an extensively trai
 The extensively trained metamodel achieves a low validation error and demonstrates stable convergence due to having enough training samples. 
 In contrast, Figure~\ref{subfig3-4:without} shows the results of training the metamodel directly on the target task with $\num{2000}$ training samples. 
 Fewer training samples and no prior knowledge leads to unstable training dynamics. 
-The validation MSE fluctuates substantially.
+The validation \gls{mse} fluctuates substantially.
 
 When applying fine-tuning from the \gls{gmmb} source task (Figure~\ref{subfig3-4:fineTuning}), the metamodel exhibits an improved performance compared to the training without \gls{tl}. 
 Fine-tuning results in a lower validation error and more stable convergence.
@@ -573,7 +573,7 @@ Freezing the \gls{lstm} layers or the fully connected layer hinders the metamode
     \centering
     \begin{tabular}{lrrr}
         \toprule
-        \textbf{Model} & \textbf{Training samples} & \textbf{Training MSE} & \textbf{True MSE} \\
+        \textbf{Model} & \textbf{Training samples} & \textbf{Training \gls{mse}} & \textbf{True \gls{mse}} \\
         \midrule
         Without \gls{tl} & $\num{2000}$ & $0.3588$ & $0.4188$ \\
         Fine-tuning & $\num{2000}$ & $0.1690$ & $0.1780$ \\
@@ -585,8 +585,8 @@ Freezing the \gls{lstm} layers or the fully connected layer hinders the metamode
     \label{tab3:transfer_learning_results_gmwb}
 \end{table}
 
-Table~\ref{tab3:transfer_learning_results_gmwb} summarizes the true MSEs of the \gls{lstm} metamodels on the \gls{gmwb} contracts.
-Training MSE and true MSE are computed using the training labels and the true contract losses approximated with $\num{100000}$ inner replications, respectively.
+Table~\ref{tab3:transfer_learning_results_gmwb} summarizes the true \gls{mse}s of the \gls{lstm} metamodels on the \gls{gmwb} contracts.
+Training \gls{mse} and true \gls{mse} are computed using the training labels and the true contract losses approximated with $\num{100000}$ inner replications, respectively.
 This is consistent with the terminology used in Chapter~\ref{chap:project2}.
 The \gls{tl} methods are compared to training from the scratch.
 The suboptimal performance of layer freezing in this context indicates that the difference between the source and target tasks is too substantial for this method to be effective. 
@@ -601,7 +601,7 @@ Both contracts share some common contract features and temporal patterns, which 
     \centering
     \begin{subfigure}{0.48\textwidth}
         \includegraphics[width=\textwidth]{./project3/figures/figure4_1.png}
-        \caption{Identifying Tail scenarios} 
+        \caption{Identifying tail scenarios} 
         \label{subfig3-4-1:tail}
     \end{subfigure}\hfill
     \begin{subfigure}{0.48\textwidth}
@@ -609,7 +609,7 @@ Both contracts share some common contract features and temporal patterns, which 
         \caption{$95\%$-CVaR predictions}
         \label{subfig3-4-2:CVaR}
     \end{subfigure}
-    \caption{TL performance on \gls{rsgbm} GMWB with dynamic lapse}
+    \caption{TL performance on GMWB with RS-GBM and dynamic lapse}
     \label{fig3:figure4-1}
 \end{figure}
 
@@ -617,7 +617,7 @@ Figure~\ref{fig3:figure4-1} illustrates the performance of the two-stage procedu
 The graph provides a visual representation of how different \gls{tl} approaches compare to training from the scratch and the standard nested simulation procedure.
 Fine-tuning consistently outperforms both layer freezing and training from the scratch across different simulation budgets, particularly in predicting tail scenarios and estimating the 95\%-CVaR. 
 
-This finding is consistent with the training history and MSEs in Figure~\ref{fig3:figure4} and Table~\ref{tab3:transfer_learning_results_gmwb}, respectively.
+This finding is consistent with the training history and \gls{mse}s in Figure~\ref{fig3:figure4} and Table~\ref{tab3:transfer_learning_results_gmwb}, respectively.
 It is important to note that while these results are promising, they also highlight the complexity of modeling the \gls{gmwb} contracts with the dynamic lapse. 
 The fact that fine-tuning outperforms layer freezing suggests that there are substantial differences in the tail behavior of the \gls{gmmb} and \gls{gmwb} contracts, particularly when the dynamic lapse is considered. 
 These findings highlight the need for careful model selection and validation when applying the \gls{tl} techniques to different \gls{va} products.
@@ -630,7 +630,7 @@ Freezing some layers may lead to negative transfer.
 Multi-task learning enables the \gls{lstm} metamodels to learn shared representations across related \gls{va} contracts.
 In this section, we examine the performance of multi-task learning applied to two types of \gls{va} contracts, \gls{gmmb} and \gls{gmwb} with the dynamic lapse rates.
 The simulation datasets contain $2,\!000$ samples for each contract type, and the \gls{lstm} metamodels are trained using multi-task learning. 
-In our experiments, Algorithm~\ref{alg3:multiTaskLearning} is used to train the \gls{lstm} metamodels simultaneously to minimize the multi-task MSE loss function in Equation~\eqref{eq3:multiTaskLoss}.
+In our experiments, Algorithm~\ref{alg3:multiTaskLearning} is used to train the \gls{lstm} metamodels simultaneously to minimize the multi-task \gls{mse} loss function in Equation~\eqref{eq3:multiTaskLoss}.
 We use individual task training as a baseline for comparison, where the \gls{lstm} metamodels are trained separately on the \gls{gmmb} and \gls{gmwb} contracts.
 The objective is to assess how multi-task learning can improve the training efficiency and performance of both products compared to individual task training.
 
@@ -668,7 +668,7 @@ The \gls{lstm} layers are shared to train for capturing general temporal pattern
         \caption{GMWB individual task training}
         \label{subfig3-5:gmwb_individual}
     \end{subfigure}
-    \caption{Multi-task Learning on \gls{rsgbm} GMMB and GMWB with dynamic lapse}
+    \caption{Multi-task learning on GMMB and GMWB with RS-GBM and dynamic lapse}
     \label{fig3:figure5}
 \end{figure}
 

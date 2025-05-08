@@ -57,9 +57,9 @@ An \gls{mdp} is defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \
 \end{itemize}
 
 The objective in an \gls{mdp} is to find a policy, $\pi: \mathcal{S} \rightarrow \mathbb{P}(\mathcal{A})$, that maximizes the cumulative reward over time.
-A \gls{mdp} provides a mathematical framework for solving sequential decision-making tasks in an enviornment where outcomes are partly random and partly under the control of a hedging agent. 
+A \gls{mdp} provides a mathematical framework for solving sequential decision-making tasks in an environment where outcomes are partly random and partly under the control of a hedging agent. 
 For hedging \gls{va} contracts, the asset dynamics and the mortality model are not controlled by the agent, but the agent controls the cumulative reward by deciding on the hedging weights.
-In this section, we reformulate the hedging enviornment of \gls{va} contracts from Section~\ref{subsec:VApayout} as an \gls{mdp} and define the key components of the \gls{mdp}.
+In this section, we reformulate the hedging environment of \gls{va} contracts from Section~\ref{subsec:VApayout} as an \gls{mdp} and define the key components of the \gls{mdp}.
 
 \subsection{Hedging Environment of Variable Annuities} \label{subsec:VASimulation}
 
@@ -89,7 +89,7 @@ At each time $t=1,\ldots,T$, the following events take place in the following or
         b, & \text{if } x > b,
     \end{cases}
     $$
-    and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners’ Valuation Manual 21~\citep{naic2021}.
+    and $M_q$, $D_q$, $L_q$, and $U_q$ are the model parameters taken from National Association of Insurance Commissioners' Valuation Manual 21~\citep{naic2021}.
     \item The sub-account value changes according to the growth of the underlying stock and the (gross) management fee is deducted. That is, 
         \begin{equation} \label{eq3:subaccount}
             F_t = F_{(t-1)_+}\cdot\frac{S_{t}}{S_{t-1}}\cdot(1-\eta_g)\cdot(1-q_t),
@@ -129,7 +129,7 @@ Mathematically, the present value of the liability for a \gls{gmmb} contract is
 L   & = H_0 - e^{-rT} H^{bf}_T + \sum_{t=1}^{T-1} e^{-rt} HE_t + \sum_{t=1}^T e^{-rt} C_t - \sum_{t=1}^T e^{-rt} F_t\eta_n + e^{-rT} (G_t - F_t)^+  \nonumber \\ 
     & = e^{-rT} (G_T - F_{T^+})^+ + \sum_{t=1}^T e^{-rt}  \left( \Delta_{t-1} (S_{t-1} - e^{-r} S_t) + C_t - F_t\eta_n \right) 
 \end{align}
-where the equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$, and $C_t := C \cdot S_{t-1} \cdot |\Delta_t - \Delta_{t-1}|$ is the tranaction cost at time $t$~\citep{garleanu2013dynamic}.
+where the equality holds by a rearrangement of terms and a telescopic sum simplification of $e^{-rt}B_t$, $t=0,\ldots,T-1$, and $C_t := C \cdot S_{t-1} \cdot |\Delta_t - \Delta_{t-1}|$ is the transaction cost at time $t$~\citep{garleanu2013dynamic}.
 Hence, the present liability consist of the hedging errors, the transaction costs, the net management fees, and the contract payouts.
 Similarly, the present value of the liability for a \gls{gmwb} contract is
 \begin{equation} \label{eq3:lossGMWB}
@@ -218,13 +218,13 @@ Based on Equations~\ref{eq3:V_pi} and~\ref{eq3:Q_pi}, the advantage function, $A
 
 The advantage function quantifies the advantage of taking action $a_t$ in state $s_t$ over following the policy $\pi$.
 
-\section{Exising RL Algorithms and Their Limitations} \label{sec:RLAlgorithms}
+\section{Existing RL Algorithms and Their Limitations} \label{sec:RLAlgorithms}
 
 \subsection{Model-Based RL: From AlphaZero to Deep Hedging}
-\gls{drl} first attacted attentions when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
+\gls{drl} first attracted attention when AlphaGo~\citep{silver2016mastering} surpasses human in playing Go. 
 Soon after, AlphaZero~\citep{silver2016mastering} emerged as a model-based \gls{rl} algorithm that improves over self-plays.
 It quickly extended beyond Go to other games like Chess and Shogi.
-In essence, the AlphaZero agent use a neural network to paramaterize the policy and the value function.
+In essence, the AlphaZero agent use a neural network to parameterize the policy and the value function.
 The neural network takes the current state of the game as input and outputs the probability distribution of the next move and a value of the current state.
 \begin{equation}
     (\mathbf{\pi}, v) = f_{\theta}(s), \quad L(\theta) = - \mathbf{\pi}^{\intercal} \log(\mathbf{p}) + (z - v)^2  + c||\theta||^2,
@@ -244,7 +244,7 @@ Using a model allows for planning, i.e., decision-making take place using future
 
 In a typical hedging problem, the transition probabilities are independent from the hedging weights, i.e., the actions.
 This simplifies the planning as complete trajectories can be simulated without the need of a planning algorithm.
-In contrast to AlphaZero, deep hedging~\citep{buehler2019deep} uses monte carlo simulations to generate sample paths of asset dynamics.
+In contrast to AlphaZero, deep hedging~\citep{buehler2019deep} uses \gls{mc} simulations to generate sample paths of asset dynamics.
 These simulations are conducted based on predefined stochastic asset models. 
 The parameters and structure of these models are specified in advance, dictating the behavior of the simulated asset prices.
 
@@ -283,7 +283,7 @@ Model-free \gls{rl} algorithms gain its popularity in robotics tasks, where tran
 In the context of hedging, existing studies use transaction costs as a function of the hedging weights, which makes the transition probabilities independent on the actions.
 However, the trade size can affect the asset price in a real environment~\citep{hasbrouck1991measuring}, which makes the model-free approach a promising direction for hedging \gls{va} contracts in the real market.
 
-Boardly speaking, model-free \gls{rl} can be categorized into two types: value-based \gls{rl} and policy-based \gls{rl}.
+Broadly speaking, model-free \gls{rl} can be categorized into two types: value-based \gls{rl} and policy-based \gls{rl}.
 Value-based approaches learn the value function directly from the data and derive the policy from the learned value function. 
 The value function is learned by training a \gls{dnn} to approximate the value function, which quantifies the expected cumulative reward over time. 
 The policy is then derived from the learned value function by selecting the action that maximizes the value function at each state. 
@@ -407,7 +407,7 @@ Instead of following the standard \gls{ppo} algorithm, the agent uses the recurr
 Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the standard \gls{ppo} and the recurrent \gls{ppo} with \gls{lstm}, and Algorithm~\ref{alg3:ppoHedging-rnn} outlines the recurrent \gls{ppo} algorithm and for training an agent to hedge \gls{va} contracts with non-Markovian dynamics.
 
 \begin{algorithm}
-    \caption{Recurrent \gls{ppo} with \gls{lstm} for Hedging Variable Annuities} 
+    \caption{Recurrent PPO with LSTM for Hedging Variable Annuities} 
     \begin{algorithmic}[1] \label{alg3:ppoHedging-rnn}
         \STATE  Initialize policy parameters $\theta_0$ and value function parameters $\phi_0$.
         \STATE  Initialize the \gls{lstm} layers with random weights, and set the hidden state $h_0$ to zeros.
@@ -432,16 +432,16 @@ Figure~\ref{fig3:architecturePPO} illustrates the network architecture of the st
     \centering
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\textwidth]{./futureWork/tikz/ppo_diagram.pdf}
-        \caption{regular \gls{ppo}}
+        \caption{Regular PPO}
         \label{subfig3:architecturePPO}
     \end{subfigure}
     \hspace{1cm}
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\textwidth]{./futureWork/tikz/recurrentppo_diagram.pdf}
-        \caption{Recurrent \gls{ppo} with \gls{lstm}}
+        \caption{Recurrent PPO with LSTM}
         \label{subfig3:architectureLSTMPPO}
     \end{subfigure}
-    \caption{\gls{ppo} Network Architectures} 
+    \caption{PPO Network Architectures} 
     \label{fig3:architecturePPO}
 \end{figure}
 
@@ -521,7 +521,7 @@ The environment is designed to simulate the dynamics of the \gls{va} contract an
         $T$                 & 240       \\
         \bottomrule
     \end{tabular}
-    \caption{Model hyperparameters and \gls{gmmb} contract specifications} 
+    \caption{Model hyperparameters and GMMB contract specifications} 
     \label{tab3:hyperparameters}
 \end{table}
 
@@ -530,7 +530,7 @@ The underlying asset price $S_t$ is modeled as a \gls{gbm} with a drift rate $\m
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{./futureWork/figures/CVaR_histories.png}
-    \caption{Hedging performance of deep hedging with \gls{tl}}
+    \caption{Hedging performance of deep hedging with TL}
     \label{fig3:dh-transfers}
 \end{figure}
 
@@ -553,7 +553,7 @@ The performance of the agent is evaluated based on the average reward over an in
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.5\textwidth]{./futureWork/figures/PPO_DH.png}
-    \caption{Hedging performance of recurrent \gls{ppo} and deep hedging}
+    \caption{Hedging performance of recurrent PPO and deep hedging}
     \label{fig3:ppo_dh}
 \end{figure}
 
@@ -564,14 +564,14 @@ The experiment is conducted with the same amount ofsimulation budget.
     \centering
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\textwidth]{./futureWork/figures/PPOs_GBM.png}
-        \caption{\gls{gbm}}
+        \caption{GBM}
     \end{subfigure}
     \hspace{1cm}
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\textwidth]{./futureWork/figures/PPOs_GBMRS.png}
-        \caption{\gls{rsgbm}}
+        \caption{RS-GBM}
     \end{subfigure}
-    \caption{Hedging performance of standard \gls{ppo} and recurrent \gls{ppo}} 
+    \caption{Hedging performance of standard PPO and recurrent PPO} 
     \label{fig3:ppo_result}
 \end{figure}
 
@@ -592,7 +592,7 @@ The hedging errors of the recurrent \gls{ppo} are more concentrated around zero,
         \includegraphics[width=\textwidth]{./futureWork/figures/PPO_cost_02.png}
         \caption{$C = 0.02$}
     \end{subfigure}
-    \caption{Hedging performance of recurrent \gls{ppo} and delta hedging with different transaction costs} 
+    \caption{Hedging performance of recurrent PPO and delta hedging with different transaction costs} 
     \label{fig3:ppo_cost}
 \end{figure}
 
@@ -605,7 +605,7 @@ However, as the transaction cost increases, delta hedging becomes less effective
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=\textwidth]{./futureWork/figures/PPO_anchor.png}
-    \caption{Hedging performance of recurrent \gls{ppo} with or without anchor}
+    \caption{Hedging performance of recurrent PPO with or without anchor}
     \label{fig3:ppo_anchor}
 \end{figure}
 
@@ -617,7 +617,7 @@ The results show that the agent with the model information does not outperform t
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=\textwidth]{./futureWork/figures/PPO_GMWB.png}
-    \caption{Hedging performance of recurrent \gls{ppo} with \gls{gmwb}}
+    \caption{Hedging performance of recurrent PPO with GMWB}
     \label{fig3:ppo_GMWB}
 \end{figure}
 

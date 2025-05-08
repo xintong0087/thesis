@@ -1,29 +1,29 @@
 \chapter*{Appendix} \label{chap:appendix}
 
-\section{Connections between Convergence in MSE and AE}\label{appendix:connection-mse-absolute-error}
+\section*{Connections between Convergence in MSE and AE}
 
-This section establishes the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae} in the context of nested simulation procedures.
+This appendix sketches out the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae} in the context of nested simulation procedures in Chapter~\ref{chap:project1}.
 In order to show the connections between the convergence in \gls{mse} and the convergence in probabilistic order for \gls{ae}, we first need to state the definition for a sequence of random variables to converge in those two forms.
 
-\begin{definition}
+\begin{definitionA1*}
     Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$. 
     We write $\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right] = \mathcal{O} \left( \Gamma^{-\xi} \right)$, that is, $\hat{\rho}_{\Gamma}$ converges in \gls{mse} to $\rho$ in order $\xi$ if there exists a constant $C$ such that
     $$
         \limsup_{\Gamma \to \infty} \frac{\mathbb{E} \left[\left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right]}{\Gamma^{-\xi}} \leq C.
     $$
-\end{definition}
+\end{definitionA1*}
 
-\begin{definition}
+\begin{definitionA2*}
     Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$. 
     We write $|\hat{\rho}_{\Gamma} - \rho| = \mathcal{O}_{\mathbb{P}}(\Gamma^{-\xi})$, that is $\hat{\rho}_{\Gamma}$ converges in probabilistic order $\xi$ to $\rho$ if for a sufficiently large $\Gamma$, for any $\epsilon > 0$ there exists a $C$ such that
     $$
          \mathbb{P} \left( \left| \hat{\rho}_{\Gamma} - \rho \right| \geq C \Gamma^{-\xi} \right) \leq \epsilon.
     $$
-\end{definition}
+\end{definitionA2*}
 
 We start our analysis by showing the convergence in probabilistic order from the convergence in \gls{mse}.
 Let $\hat{\rho}_{\Gamma}$ be an estimator of $\rho$ with a simulation budget of $\Gamma$, and assume that $\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right] = \mathcal{O} \left( \Gamma^{-\xi-\delta} \right)$ for an arbitrarily small $\delta > 0$.
-Then, from the definition of convergence in \gls{mse}, 
+Then, from the definition of convergence in \gls{mse}, we obtain
 $$
     \limsup_{\Gamma \to \infty} \frac{\mathbb{E} \left[ \left(\hat{\rho}_{\Gamma} - \rho\right)^2 \right]}{\Gamma^{-\xi-\delta}} \leq C.
 $$

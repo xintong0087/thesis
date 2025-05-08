@@ -6,7 +6,7 @@
 
 \section{Introduction}
 
-\gls{dnn} have attracted attentions of researchers and practitioners due to their success~\citep{hastie2009elements,lecun2015deep} in solving real-world machine learning tasks such as AlphaGo~\citep{silver2016mastering} and ChatGPT~\citep{chatgpt}.
+\gls{dnn} have attracted attentions of researchers and practitioners due to their success~\citep{hastie2009elements,lecun2015deep} in solving real-world \gls{ml} tasks such as AlphaGo~\citep{silver2016mastering} and ChatGPT~\citep{chatgpt}.
 Since the first artificial neural network model~\citep{mcculloch1943logical} and the first algorithm for training a perceptron~\citep{rosenblatt1958perceptron}, especially after the introduction of backpropagation~\citep{rumelhart1985learning} and the growth of high-performance computing, the field of artificial neural network and deep learning in general has been growing rapidly.
 Two specialized neural network architectures that are relevant to our study are \gls{rnn}~\citep{williams1989learning,sutskever2014sequence} and \gls{lstm}~\citep{hochreiter1997long,chung2014empirical}.
 Despite their success, \gls{dnn} models are often criticized for their lack of transparency and interpretability, which hinders their adoption in financial and actuarial applications.
@@ -76,7 +76,7 @@ This proxy model is chosen to be a flexible empirical function, i.e., a \gls{dnn
 
 In our study, supervised learning metamodels are trained using data simulated from an initial pilot simulation.
 They are then used to replace the time-consuming inner simulations by the trained model.
-Borrowing terminologies from the machine learning community, we can view a set of simulated outer scenarios and estimated hedging errors for those scenarios as \textit{features} and noisy \textit{labels}.
+Borrowing terminologies from the \gls{ml} community, we can view a set of simulated outer scenarios and estimated hedging errors for those scenarios as \textit{features} and noisy \textit{labels}.
 The noise level of the labels can be controlled by the number of inner replications in the inner simulation model.
 We refer to the trained supervised learning proxy models as \textit{metamodels} of the inner simulation, which is also known as the \textit{surrogate models} in the simulation literature.
 Metamodeling is a popular approach to reduce the computational burden of simulation-based applications by replacing the time-consuming simulation with a metamodel.
@@ -88,7 +88,7 @@ A popular metamodel in nested simulation procedures is stochastic kriging.
 Other studies, such as ~\cite{broadie2015risk},~\cite{hong2017kernel}, and~\cite{zhang2022sample} use a regression, a kernel smoothing, and a likelihood ratio method, respectively as metamodels.
 Our study has three key distinctions over the existing ones:
 \begin{enumerate}
-    \item  our metamodel has high-dimensional inputs. In machine learning terminology, the features are high-dimensional vectors.
+    \item  our metamodel has high-dimensional inputs. In \gls{ml} terminology, the features are high-dimensional vectors.
     To estimate the hedging error of a typical \gls{va} contract, the number of features is in the order of hundreds, which is at least one order of magnitude larger than the number of features in the aforementioned studies,
     \item  for estimating tail risk measures, our metamodel is only used for tail scenario identification but is \textit{not} used in the estimation of the tail risk measures.
     This is a feature designed particularly to convince regulators that the losses used in estimating the risk measure are based on a transparent inner simulation model rather than on some black-box metamodels, and
@@ -305,7 +305,7 @@ Recall from Section~\ref{subsec:VApayout} that the stock's sample path, regardle
 For \gls{gmwb}, a standard nested simulation procedure to estimate the $\alpha$-\gls{cvar} of $L$ is described in Algorithm~\ref{alg2:standardProcedure} below.
 
 \begin{algorithm} 
-\caption{Standard Nested Simulation Procedure for Estimating CVaR for \gls{gmwb} Hedging Losses}
+\caption{Standard Nested Simulation Procedure for Estimating CVaR for GMWB Hedging Losses}
 \begin{algorithmic}[1] \label{alg2:standardProcedure}
     \STATE  For $i=1,\ldots,M$, simulate outer scenarios $\bS^{(i)} = (S_{1}^{(i)},\ldots,S_{T}^{(i)})$ under the real-world measure $\mathbb{P}$.
     \STATE  For $t=0$, simulate time-$0$ inner paths $\bStilde_{0}^{(j)} = (\Stilde_{1}^{(j)},\Stilde_{2}^{(j)},\ldots,\Stilde_{T}^{(j)})$, $j=1,\ldots,N$ under $\mathbb{Q}$, then estimate $V_0$ by $\Vhat_0 = \sum_{s=1}^{T} e^{-r(T-s)} [(I_s - F_s)^+- \eta_n F_s]$ and $\Deltahat_0 = \Delta_0(\Stilde_{1}^{(j)},\ldots,\Stilde_{T}^{(j)} | S_0)$.
@@ -467,7 +467,7 @@ The risk-free rate is $0.2\%$ per month and the underlying asset $S_t$ is modele
         Transition probability from regime 2  & $0.20$ \\
         \bottomrule
     \end{tabular}
-    \caption{Real-world parameters for the \gls{rsgbm} model (monthly rates)}
+    \caption{Real-world parameters for the RS-GBM model (monthly rates)}
     \label{tab:regime_params}
 \end{table}
 
@@ -497,7 +497,7 @@ The architectures and training settings are typical choices in the deep learning
 The training labels are normalized to have a zero mean and a unit standard deviation.
 The numbers of trainable parameters are recorded in the second column of Table~\ref{tab:gmwb_arch}.
 We observe that the three \gls{dnn} metamodels have orders of magnitudes more trainable parameters than the two traditional regression metamodels.
-Following the convention in machine learning literature, the three \gls{dnn} metamodels are said to have much higher \textit{model capacities}.
+Following the convention in \gls{ml} literature, the three \gls{dnn} metamodels are said to have much higher \textit{model capacities}.
 Treating regression metamodels as shallow neural networks, \gls{mlr} and \gls{qpr} are two neural networks with no hidden layer. 
 For a traditional regression metamodel, the numbers of neurons in its input layer equals to the cardinality of its regression basis.
 On the other hand, the three \gls{dnn} metamodels have several hidden layers and are more flexible than \gls{mlr} and \gls{qpr}.
@@ -526,7 +526,7 @@ Our \gls{lstm} has the same architecture as the \gls{rnn} but with \gls{lstm} ce
     \gls{rnn}$^*$\footnotemark & $\num{32021}$ & $0.109 (\pm 5.20\times 10^{-3})$  & $0.128 (\pm 5.22\times 10^{-3})$  & $0.109 (\pm 5.20\times 10^{-3})$ \\
     \bottomrule
     \end{tabular}
-    \caption{Architectures and \gls{mse}s of metamodels for \gls{gmwb} inner simulation model.}
+    \caption{Architectures and MSEs of metamodels for GMWB inner simulation model.}
     \label{tab:gmwb_arch}
 \end{table}
 
@@ -697,7 +697,7 @@ We compare our two-stage procedure to a benchmark standard nested simulation pro
 In stage 1 of the proposed procedure, we first run inner simulations with $N'=100$ inner replications for each of the $M=\num{100000}$ outer scenarios.
 So, stage 1's simulation budget is $10\%$ of the standard procedure's.
 The resulting feature-label pairs $\{(\bS^{(i)}, \Lhat_i): i=1,\ldots,M\}$ is used for training different  metamodels.
-Specifically, following the convention in machine learning literature, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ samples (representing $90\%$, $5\%$, and $5\%$ of the dataset), respectively.
+Specifically, following the convention in \gls{ml} literature, we split this dataset into three parts: The training, validation, and test sets have $\num{90000}$, $\num{5000}$, and $\num{5000}$ samples (representing $90\%$, $5\%$, and $5\%$ of the dataset), respectively.
 At the end of stage 1, $m$ predicted tail scenarios are identified by the trained metamodels.
 In stage 2, $N=\num{1000}$ inner replications are run for all predicted tail scenarios.
 This is the same number of replications as the benchmark standard procedure.

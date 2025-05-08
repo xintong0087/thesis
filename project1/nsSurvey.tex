@@ -45,6 +45,7 @@ Section~\ref{sec1:convergence-orders} summarizes the asymptotic convergence orde
 Section~\ref{sec1:numerical-experiments} presents the numerical experiments and the comparisons of different nested simulation procedures with respect to different risk measures, problem dimensions, and payoff complexities.
 Section~\ref{sec1:computational-complexity} discusses the computational complexity of different nested simulation procedures.
 Section~\ref{sec1:conclusion} concludes this chapter.
+In appendix, we briefly sketch out connections between two modes of convergence for nested simulation procedures.
 
 \section{Problem Formulation}\label{sec1:problem-formulation}
 
@@ -92,7 +93,7 @@ In general, a more complex metamodel requires a higher-order smoothness for $h$ 
 Despite being more advanced than kernel smoothing, the \gls{krr}-based procedure requires a less stringent smoothness assumption on $h$.
 At first sight, it is counterintuitive that a more complex metamodel requires a less stringent smoothness assumption.
 This phenomenon is due to the fact that the convergence analysis for the \gls{krr}-based nested simulation procedure is shown in terms of \gls{ae}, a different error metric than \gls{mse}.
-In the appendix, Section~\ref{appendix:connection-mse-absolute-error} includes a discussion of the connection between the \gls{mse} and the \gls{ae} of the estimator in the context of nested simulation procedures.
+In appendix, we include a discussion of the connection between the \gls{mse} and the \gls{ae} of the estimator in the context of nested simulation procedures.
 In Table~\ref{tab1:smoothness}, the standard nested simulation procedure is the only procedure without an asymptotic convergence analysis for smooth $h$.
 Section~\ref{sec1:sns} fills this gap by providing the asymptotic convergence analysis for the standard nested simulation procedure in terms of \gls{mse}.
 
@@ -300,7 +301,7 @@ More specifically, the \gls{krr}-based nested simulation~\citep{wang2022smooth} 
     & \min_{M, N}  & \text{AE}(\hat{\rho}^{\text{SL}}_{M, N}) = \mathbb{E} \left[ \left| \hat{\rho}^{\text{KRR}}_{M, N} - \rho \right| \right] \nonumber \\
     & \text{subject to} & M \cdot N = \Gamma
 \end{align}
-Section~\ref{appendix:connection-mse-absolute-error} draws the connection between the \gls{mse} and the \gls{ae} of the estimator in the context of nested simulation procedures.
+In appendix, we sketch out the connection between the \gls{mse} and the \gls{ae} of the estimator in the context of nested simulation procedures.
 
 \subsection{Likelihood Ratio Method}
 
@@ -346,9 +347,9 @@ The remainder of this section aims to fill the gap in the literature by offering
     \hline
     \textbf{Estimator for} $L$ & \textbf{Smooth} $h$ & \textbf{Lipschitz}(\textbf{hockey-stick} $h$) & \textbf{Indicator} $h$ & \textbf{\gls{var}} & \textbf{\gls{cvar}} \\
     \hline
-    Standard MC & $\star$ & $\star$($\checkmark$) & $\checkmark$ & $\checkmark$ & $\times$ \\
+    Standard \gls{mc} & $\star$ & $\star$($\checkmark$) & $\checkmark$ & $\checkmark$ & $\times$ \\
     \hline
-    Multi-level MC & $\times$ & $\times$($\times$) & $\checkmark$ & $\times$ & $\times$ \\
+    \gls{mlmc} & $\times$ & $\times$($\times$) & $\checkmark$ & $\times$ & $\times$ \\
     \hline
     Regression & $\checkmark$ & $\checkmark$($\checkmark$) & $\times$ & $\times$ & $\times$ \\
     \hline
@@ -387,7 +388,7 @@ $$
 $$
 
 In~\cite{wang2022smooth}, the authors of the \gls{krr}-based nested simulation procedures claim to have bridged the gap between the cubic and square root convergence rates of nested simulation procedures. However, they analyze convergence in probabilistic order, and it is only applicable in terms of \gls{ae}. 
-In Section~\ref{appendix:connection-mse-absolute-error}, we illustrate the connection between the convergence in \gls{mse} and the convergence in \gls{ae}.
+In appendix, we sketch out the connection between the convergence in \gls{mse} and the convergence in \gls{ae}.
 
 \subsection{Asymptotic Analysis for the Standard Nested Simulation Procedure}\label{sec1:sns}
 In~\cite{gordy2010nested}, the authors analyze the asymptotic convergence of the standard nested simulation procedure in terms of \gls{mse}. 
@@ -548,7 +549,7 @@ Combining Equation~\eqref{eq1:bias-sns-smooth-Taylor1},~\ref{eq1:bias-sns-smooth
 
 \begin{theorem}\label{thm1:sns-smooth}
     Let $h$ be a smooth function. 
-    MSE of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
+    \gls{mse} of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
     $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-2/3}).$$
 \end{theorem}
 
@@ -607,7 +608,7 @@ Setting $M = \mathcal{O}(\Gamma^{2/3})$ and $N = \mathcal{O}(\Gamma^{1/3})$, we 
 
 \begin{theorem}
     Let $h$ be a Lipschitz continuous function. 
-    MSE of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
+    \gls{mse} of the standard nested simulation procedure converges in order $\Gamma^{2/3}$, that is,
     $$\mathbb{E} \left[ \left( \hat{\rho}_{M, N} - \rho \right)^2 \right] = \mathcal{O}(\Gamma^{-1/2}).$$
 \end{theorem}
 
@@ -732,7 +733,7 @@ The results are summarized in~\ref{tab1:asymConv-order}, where the orders of con
     Likelihood ratio & $\mathcal{O}(\Gamma^{-1})$ & $\times$ / $\mathcal{O}(\Gamma^{-1})$ & $\mathcal{O}(\Gamma^{-1})$ & $\times$ & $\times$ \\
     \hline
     \end{tabular}
-    \caption{Asymptotic rate of convergence of nested simulation procedures in \gls{mse}}
+    \caption{Asymptotic rate of convergence of nested simulation procedures in MSE}
 \label{tab1:asymConv-order}
 \end{table}
 
@@ -778,7 +779,7 @@ In addition to Assumption~\ref{as1:sns-joint-density-bound}, the \gls{mlmc} proc
     $f_Q$, the density of $Q$ exists, and there exist positive constants $q_0$ such that $f_Q(q) \leq q_0$ for all $q \in [0, q_0]$.
 \end{assumption}
 
-Assumption~\ref{as1:mlmc-q} ensures that the conditional expectation of $Y$ given $X$ is not concentrated around zero, as ~\cite{giles2019multilevel} show the asymptotic convergence of the MLMC procedure only when $\rho$ is in the nested expectation form with $h$ being an indicator function, i.e., $h(x) = \mathbb{I}_{\{x \geq 0\}}$.
+Assumption~\ref{as1:mlmc-q} ensures that the conditional expectation of $Y$ given $X$ is not concentrated around zero, as ~\cite{giles2019multilevel} show the asymptotic convergence of the \gls{mlmc} procedure only when $\rho$ is in the nested expectation form with $h$ being an indicator function, i.e., $h(x) = \mathbb{I}_{\{x \geq 0\}}$.
 
 \subsection{Assumptions for the Likelihood Ratio-Based Procedure}
 In addition to Assumption~\ref{as1:sns-joint-density-bound}, the likelihood ratio-based nested simulation procedure requires assumptions on the marginal density of $H$, the random variable that characterizes the stochasticity of the inner simulation model.
@@ -866,7 +867,7 @@ All options have a maturity of $1$ year, and we are interested in the value of t
 For each experiment setting, the estimation of the risk measure is repeated \num{1000} times to obtain the empirical \gls{mse} of the corresponding estimator under a range of simulation budgets.
 The total simulation budget $\Gamma$ ranges from $\num{10000}$ to $\num{10240000}$ in a geometric progression with a common ratio of $2$.
 The empirical convergence results of each estimator are measured and recorded to illustrate their empirical behavior under different risk measures, option types, and asset dimensions.
-All numerical experiments are conducted on a linux server with four Intel Xeon Gold 6230 20-core 2.1 GHz CPU with 768 GB RAM.
+All numerical experiments are conducted on a Linux server with four Intel Xeon Gold 6230 20-core 2.1 GHz CPU with 768 GB RAM.
 
 We start by examining the empirical convergence results for the most basic case, i.e., a quadratic tracking error risk measure for European call options on Portfolio 1 with $d = 1$.
 
@@ -1023,7 +1024,7 @@ To examine the sensitivity of the empirical convergence behavior to the regressi
 \end{figure}
 
 In Figure~\ref{fig1:sens_basis}, the empirical convergence results of the regression-based nested simulation procedure for a quadratic tracking error and a 90\%-\gls{cvar} are illustrated for the two different regression bases.
-The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the chosen regression basis.
+The empirical rates of convergence of the regression-based nested simulation procedure are observed to be insensitive to the chosen type of regression basis.
 
 \subsection{Sensitivity to the Option Types and Risk Measures}\label{sec1:sensitivity-option-type}
 
@@ -1130,7 +1131,7 @@ We note that the \gls{mlmc} procedure focuses on adaptive allocation of the simu
     \centering
     \begin{tabular}{rrrrrr}
     \toprule
-    \textbf{Level} & \textbf{Bias} & \textbf{Variance} & \textbf{MSE} & $\Gamma$ & \textbf{MSE of SNS} \\ 
+    \textbf{Level} & \textbf{Bias} & \textbf{Variance} & \textbf{\gls{mse}} & $\Gamma$ & \textbf{\gls{mse} of SNS} \\ 
     \hline\hline
     0 & 0.118  & 0.104  & 0.1364 & 6400     & 0.1660    \\
     1 & 0.102  & 0.0916 & 0.1020 & 27600    & 0.1305    \\
