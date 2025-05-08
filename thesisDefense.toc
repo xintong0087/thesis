@@ -81,10 +81,10 @@
 \contentsline {section}{\numberline {6.3}Hedging VA contracts with a PPO Agent}{142}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}Accounting for Non-Markovian Dynamics}{144}{subsection.6.3.1}%
 \contentsline {section}{\numberline {6.4}Transfer Learning for Hedging VA contracts}{146}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Reward Shaping}{146}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.1}Reward Shaping}{147}{subsection.6.4.1}%
 \contentsline {subsection}{\numberline {6.4.2}Policy Transfer}{147}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{147}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.3}Evaluation Metrics}{148}{subsection.6.4.3}%
 \contentsline {section}{\numberline {6.5}Numerical Experiments}{148}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Future Directions}{152}{section.6.6}%
+\contentsline {section}{\numberline {6.6}Future Directions}{153}{section.6.6}%
 \contentsline {chapter}{\textbf {References}}{155}{section*.67}%
 \contentsline {section}{\numberline {6.7}Connections between Convergence in MSE and AE}{169}{section.6.7}%

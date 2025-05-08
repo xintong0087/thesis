@@ -1,7 +1,7 @@
 This is makeindex, version 2.17 [TeX Live 2024] (kpathsea + Thai support).
 Scanning style file ./thesisDefense.ist...........................done (27 attributes redefined, 0 ignored).
 Scanning input file thesisDefense.glo-abr.....done (1266 entries accepted, 0 rejected).
-Sorting entries.............done (14322 comparisons).
-Generating output file thesisDefense.gls-abr....done (290 lines written, 0 warnings).
+Sorting entries.............done (14403 comparisons).
+Generating output file thesisDefense.gls-abr....done (287 lines written, 0 warnings).
 Output written in thesisDefense.gls-abr.
 Transcript written in thesisDefense.glg-abr.

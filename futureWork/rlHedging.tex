@@ -393,8 +393,14 @@ where
     g_t &= a(W_g \mathbf{s}_t + U_g h_{t-1} + b_g), 
 \end{align}
 In a \gls{lstm}, the cell state $c_t$ stores a representation of historical information up to time $t$.
-It is updated at each time step by a forget gate $f_t$, an input gate $i_t$, and an output gate $o_t$.
-Equation~\ref{eq:lstm} provides a general intoduction to \gls{lstm} for a generic time series input $x_t$.
+The variables $i_t, f_t, o_t, g_t, c_t, h_t$ are an input gate, a forget gate, an output gate, a cell input, a cell state, and a hidden state at time $t$, respectively.
+$W_i$, $W_f$, $W_o$, $W_g$, $U_i$, $U_f$, $U_o$, $U_g$ are weight matrices, and $b_i$, $b_f$, $b_o$, $b_g$ are bias vectors.
+$a$ is the activation function, typically a sigmoid function 
+\begin{equation} \label{eq3:sigmoid}
+    a(x) = \frac{1}{1 + e^{-x}}.
+\end{equation}
+$\odot$ denotes an element-wise multiplication.
+Section~\ref{subsec:LSTM} provides a general intoduction to \gls{lstm} for a generic time series input $x_t$.
 
 In a recurrent \gls{ppo} with \gls{lstm}, the policy and reward function remain the same but with the new state representation in Equation~\eqref{eq3:stateRNN}.
 Instead of following the standard \gls{ppo} algorithm, the agent uses the recurrent \gls{ppo} algorithm to learn an optimal policy for hedging \gls{va} contracts.
