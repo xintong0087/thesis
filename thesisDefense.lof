@@ -44,3 +44,4 @@
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Hedging performance of recurrent PPO and delta hedging with different transaction costs}}{151}{figure.caption.64}%
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Hedging performance of recurrent PPO with or without anchor}}{152}{figure.caption.65}%
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Hedging performance of recurrent PPO with GMWB}}{153}{figure.caption.66}%
+\addvspace {10\p@ }

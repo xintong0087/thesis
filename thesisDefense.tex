@@ -110,10 +110,8 @@
 \usepackage{color}
 \usepackage{inputenc}
 \usepackage[round]{natbib}
-\usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{bm,enumitem}
 \usepackage{makecell}
@@ -174,12 +172,12 @@
 		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
 \hypersetup{
     plainpages=false,       % needed if Roman numbers in frontpages
-    unicode=false,          % non-Latin characters in Acrobat's bookmarks
-    pdftoolbar=true,        % show Acrobat's toolbar?
-    pdfmenubar=true,        % show Acrobat's menu?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={uWaterloo\ LaTeX\ Thesis\ Template},    % title: CHANGE THIS TEXT!
+%    pdftitle={uWaterloo\ LaTeX\ Thesis\ Template},    % title: CHANGE THIS TEXT!
 %    pdfauthor={Author},    % author: CHANGE THIS TEXT! and uncomment this line
 %    pdfsubject={Subject},  % subject: CHANGE THIS TEXT! and uncomment this line
 %    pdfkeywords={keyword1} {key2} {key3}, % list of keywords, and uncomment this line if desired
@@ -291,15 +289,6 @@
 \newabbreviation{mcts}{MCTS}{Monte Carlo Tree Search}
 
 
-% List of Symbols
-\newglossary*{symbols}{List of Symbols}
-\newglossaryentry{loss}
-{
-name={$L$},
-sort={label},
-type=symbols,
-description={Loss random variable of a financial contract}
-}
  
 \makeglossaries
 
@@ -365,6 +354,12 @@ description={Loss random variable of a financial contract}
 % The following statement causes the specified references to be added to the bibliography% even if they were not 
 % cited in the text. The asterisk is a wildcard that causes all entries in the bibliographic database to be included (optional).
 \nocite{*}
+
+\appendix
+
+\chapter*{APPENDICES}
+
+\addcontentsline{toc}{chapter}{APPENDICES}
 
 \input{appendix}
 

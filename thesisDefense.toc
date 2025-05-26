@@ -1,6 +1,6 @@
-\contentsline {chapter}{List of Tables}{x}{section*.2}%
-\contentsline {chapter}{List of Figures}{xi}{section*.4}%
-\contentsline {chapter}{Abbreviations}{xiv}{section*.7}%
+\contentsline {chapter}{List of Figures}{x}{section*.2}%
+\contentsline {chapter}{List of Tables}{xiii}{section*.4}%
+\contentsline {chapter}{List of Abbreviations}{xiv}{section*.7}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Risk Management of VAs with Nested Simulation}{3}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Metamodeling for Monte Carlo Simulation}{4}{section.1.2}%
@@ -87,3 +87,5 @@
 \contentsline {section}{\numberline {6.5}Numerical Experiments}{148}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Future Directions}{152}{section.6.6}%
 \contentsline {chapter}{\textbf {References}}{155}{section*.67}%
+\contentsline {chapter}{APPENDICES}{169}{appendix*.69}%
+\contentsline {chapter}{\numberline {A}Connections between Convergence in MSE and AE}{170}{appendix.A}%

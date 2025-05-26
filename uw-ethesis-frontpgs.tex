@@ -42,7 +42,7 @@
 
         \vspace*{0.2cm}
 
-        \copyright\ Xintong Li, 2025 \\
+        \copyright\ Xintong Li 2025 \\
         \end{center}
 \end{titlepage}
 
@@ -116,13 +116,9 @@ Other Member(s): \>  Emiliano Valdez \\
 % -------------------------------
   % The following is a sample Delaration Page as provided by the GSO
   % December 13th, 2006.  It is designed for an electronic thesis.
+\begin{center}\textbf{Author's Declaration}\end{center}
   \noindent
 I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
-
-\bigskip
-  
-\noindent
-Part of the work in this thesis has been published in a Winter Simulation Conference proceeding.
 
   \bigskip
   
@@ -184,13 +180,6 @@ They have provided me with the emotional stability I needed to focus on my studi
 \cleardoublepage
 \phantomsection    % allows hyperref to link to the correct page
 
-\glsunsetall
-% L I S T   O F   T A B L E S
-% ---------------------------
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoftables
-\cleardoublepage
-\phantomsection		% allows hyperref to link to the correct page
 
 % L I S T   O F   F I G U R E S
 % -----------------------------
@@ -200,11 +189,20 @@ They have provided me with the emotional stability I needed to focus on my studi
 \phantomsection		% allows hyperref to link to the correct page
 
 
-\glsresetall
+
+% L I S T   O F   T A B L E S
+% ---------------------------
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+
 
 % GLOSSARIES (Lists of definitions, abbreviations, symbols, etc. provided by the glossaries-extra package)
 % -----------------------------
-\printglossaries
+\renewcommand*{\abbreviationsname}{List of Abbreviations}
+\printglossary[type=abbreviations]
 \cleardoublepage
 \phantomsection		% allows hyperref to link to the correct page
 
